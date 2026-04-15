@@ -228,7 +228,15 @@ function selectPart(part) {
   document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
   placeholder.style.display = 'none';
   const form = document.getElementById('form-' + part);
-  if (form) form.classList.add('visible');
+  
+  if (form) {
+    form.classList.add('visible');
+    // 모바일 자동 스크롤 로직 추가
+    if (window.innerWidth <= 900) {
+      document.querySelector('.panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
   document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
   const hs = document.getElementById('hs-' + part);
   if (hs) hs.classList.add('active');
