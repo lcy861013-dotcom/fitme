@@ -62,16 +62,37 @@
 
     <div class="body-container">
       <svg class="body-svg" viewBox="0 0 280 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="140" cy="52" r="38" stroke="#2a2a2a" stroke-width="2" fill="#1a1a1a"/>
-        <rect x="130" y="88" width="20" height="20" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/>
-        <path d="M88 108 L192 108 L200 240 L80 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M88 112 L52 200 L62 204 L98 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M192 112 L228 200 L218 204 L182 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M80 240 L78 270 L202 270 L200 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M80 268 L72 370 L108 370 L116 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M72 374 L68 460 L108 460 L108 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M200 268 L208 370 L172 370 L164 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        <path d="M208 374 L212 460 L172 460 L172 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        <!-- Body Parts with IDs for Scaling -->
+        <g id="svg-head">
+          <circle cx="140" cy="52" r="38" stroke="#2a2a2a" stroke-width="2" fill="#1a1a1a"/>
+        </g>
+        <g id="svg-neck">
+          <rect x="130" y="88" width="20" height="20" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/>
+        </g>
+        <g id="svg-torso">
+          <path d="M88 108 L192 108 L200 240 L80 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-arm-l">
+          <path d="M88 112 L52 200 L62 204 L98 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-arm-r">
+          <path d="M192 112 L228 200 L218 204 L182 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-hip">
+          <path d="M80 240 L78 270 L202 270 L200 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-leg-l-upper">
+          <path d="M80 268 L72 370 L108 370 L116 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-leg-l-lower">
+          <path d="M72 374 L68 460 L108 460 L108 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-leg-r-upper">
+          <path d="M200 268 L208 370 L172 370 L164 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
+        <g id="svg-leg-r-lower">
+          <path d="M208 374 L212 460 L172 460 L172 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
+        </g>
       </svg>
 
       <!-- Hotspots -->
@@ -103,10 +124,9 @@
         <p data-i18n="placeholder-text">왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
       </div>
 
-      <!-- Weight & Height -->
+      <!-- Measurement forms -->
       <div class="measurement-form" id="form-height">
         <div class="form-title" data-i18n="form-title-height">TOTAL HEIGHT / 키</div>
-        <div class="form-desc" data-i18n="form-desc-height">전체 키는 비율 분석의 핵심 데이터입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-height">키 (cm)</label>
           <input class="input-field" type="number" id="input-height" placeholder="180">
@@ -116,7 +136,6 @@
 
       <div class="measurement-form" id="form-weight">
         <div class="form-title" data-i18n="form-title-weight">WEIGHT / 체중</div>
-        <div class="form-desc" data-i18n="form-desc-weight">정밀한 체형 및 BMI 분석을 위해 필요합니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-weight">체중 (kg)</label>
           <input class="input-field" type="number" id="input-weight" placeholder="75">
@@ -166,7 +185,6 @@
 
       <div class="measurement-form" id="form-upper-arm">
         <div class="form-title" data-i18n="form-title-upper-arm">UPPER ARM / 상완</div>
-        <div class="form-desc" data-i18n="form-desc-upper-arm">어깨뼈에서 팔꿈치 중간까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
           <input class="input-field" type="number" id="upper-arm-len" placeholder="30">
@@ -176,7 +194,6 @@
 
       <div class="measurement-form" id="form-lower-arm">
         <div class="form-title" data-i18n="form-title-lower-arm">LOWER ARM / 하완</div>
-        <div class="form-desc" data-i18n="form-desc-lower-arm">팔꿈치 중간에서 손목뼈까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
           <input class="input-field" type="number" id="lower-arm-len" placeholder="25">
@@ -204,7 +221,6 @@
 
       <div class="measurement-form" id="form-upper-leg">
         <div class="form-title" data-i18n="form-title-upper-leg">THIGH / 대퇴 (허벅지)</div>
-        <div class="form-desc" data-i18n="form-desc-upper-leg">골반뼈 끝에서 무릎 중간까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
           <input class="input-field" type="number" id="upper-leg-len" placeholder="42">
@@ -214,7 +230,6 @@
 
       <div class="measurement-form" id="form-lower-leg">
         <div class="form-title" data-i18n="form-title-lower-leg">SHIN / 하퇴 (종아리)</div>
-        <div class="form-desc" data-i18n="form-desc-lower-leg">무릎 중간에서 복숭아뼈까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
           <input class="input-field" type="number" id="lower-leg-len" placeholder="38">
@@ -233,10 +248,29 @@
 
       <!-- Expert Analysis Result -->
       <div class="analysis-card" id="analysis-result">
-        <div class="form-title" style="color:var(--text)" data-i18n="analysis-report-title">전문가 분석 리포트</div>
+        <div class="analysis-header">
+          <div class="form-title" style="color:var(--text); margin-bottom: 0;" data-i18n="analysis-report-title">전문가 분석 리포트</div>
+          <div class="share-group">
+            <button class="share-btn" onclick="shareResult()" title="Share Link">🔗</button>
+            <button class="share-btn" onclick="saveAsImage()" title="Save as Image">📸</button>
+          </div>
+        </div>
         <p id="analysis-text" style="font-size:14px; margin: 15px 0; color:var(--accent)"></p>
-        <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom: 10px;"></p>
-        <p style="font-size:12px; color:var(--muted)" data-i18n="analysis-note">*위 분석은 입력된 수치 기반의 통계적 결과입니다.</p>
+        <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom: 20px;"></p>
+        
+        <!-- Style Recommendations -->
+        <div class="style-section">
+          <h4 data-i18n="style-best-title">✨ BEST 스타일 추천</h4>
+          <div class="style-grid" id="best-styles">
+            <!-- Dynamic Cards -->
+          </div>
+          <h4 data-i18n="style-worst-title" style="margin-top:20px;">⚠️ 주의할 스타일</h4>
+          <div class="style-grid" id="worst-styles">
+            <!-- Dynamic Cards -->
+          </div>
+        </div>
+
+        <p style="font-size:12px; color:var(--muted); margin-top: 20px;" data-i18n="analysis-note">*위 분석은 입력된 수치 기반의 통계적 결과입니다.</p>
       </div>
     </div>
 
