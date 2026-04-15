@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FITME — 전문가용 신체 비율 분석 플랫폼</title>
+  <title>FITME — Global Body Proportion Analysis Platform</title>
   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,26 +11,49 @@
 
 <header>
   <a href="#" class="logo">FIT<span>ME</span></a>
-  <nav>
-    <a href="#guide">측정 가이드</a>
-    <a href="#analysis">비율 분석</a>
-    <a href="#about">About</a>
-  </nav>
+  <div style="display: flex; align-items: center; gap: 15px;">
+    <select id="lang-select" class="lang-switcher" onchange="setLanguage(this.value)">
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="en">🇺🇸 English</option>
+      <option value="jp">🇯🇵 日本語</option>
+      <option value="cn">🇨🇳 中文</option>
+    </select>
+    <nav>
+      <a href="#guide" data-i18n="nav-guide">측정 가이드</a>
+      <a href="#analysis" data-i18n="nav-analysis">비율 분석</a>
+      <a href="#about" data-i18n="nav-about">About</a>
+    </nav>
+  </div>
 </header>
 
-<!-- Expert Guide Section (For AdSense & SEO) -->
+<!-- Expert & Smartphone Guide Section -->
 <section class="guide-content" id="guide">
-  <h2 class="guide-title">올바른 신체 치수 측정 가이드</h2>
-  <p class="guide-text">
-    정확한 신체 비율 분석을 위해서는 올바른 도구와 자세가 중요합니다. 줄자를 사용하여 몸에 너무 조이지 않게 측정하며, 거울 앞에서 바른 자세로 서서 측정하는 것을 권장합니다. 
-    특히 하체 길이는 골반뼈 상단부터 발목까지의 수직 거리를 의미하며, 이는 여러분의 패션 스타일링에 가장 큰 영향을 미치는 요소입니다.
-  </p>
+  <h2 class="guide-title" data-i18n="guide-title">올바른 신체 치수 측정 가이드</h2>
+  <div class="guide-grid">
+    <div class="guide-card">
+      <h3 data-i18n="phone-guide-title">📱 스마트폰 활용 측정법 (No Tape?)</h3>
+      <p class="guide-text" data-i18n="phone-guide-desc">
+        줄자가 없으신가요? 여러분의 스마트폰을 사용해 보세요! 
+        최신 스마트폰의 평균 세로 길이는 약 15cm입니다. 
+        예를 들어, 무릎에서 골반까지 스마트폰이 약 3번 들어간다면 해당 부위의 길이는 약 45cm로 추정할 수 있습니다. 
+        이 방법을 통해 언제 어디서나 나만의 핏을 측정해 보세요.
+      </p>
+    </div>
+    <div class="guide-card">
+      <h3 data-i18n="pro-guide-title">📏 전문가 권장 측정 자세</h3>
+      <p class="guide-text" data-i18n="pro-guide-desc">
+        정확한 비율 분석을 위해 거울 앞에서 바른 자세로 서서 측정하세요. 
+        특히 키(Height)와 체중(Weight)은 신체 밸런스를 분석하는 핵심 데이터입니다. 
+        체중은 옷의 두께와 상관없이 가장 가벼운 상태에서 측정하는 것이 정확합니다.
+      </p>
+    </div>
+  </div>
 </section>
 
 <div class="main-container" id="analysis">
   <!-- LEFT: BODY FIGURE -->
   <div class="body-section">
-    <div class="section-label">부위를 클릭하여 측정값을 입력하세요</div>
+    <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
 
     <div class="body-container">
       <svg class="body-svg" viewBox="0 0 280 480" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,147 +70,160 @@
       </svg>
 
       <!-- Hotspots -->
-      <button class="hotspot" id="hs-height" style="left:50%; top:-5%;" onclick="selectPart('height')" title="키">📏</button>
-      <button class="hotspot" id="hs-head" style="left:50%; top:11%;" onclick="selectPart('head')" title="머리">👤</button>
-      <button class="hotspot" id="hs-shoulder" style="left:50%; top:23%;" onclick="selectPart('shoulder')" title="어깨">↔</button>
-      <button class="hotspot" id="hs-chest" style="left:50%; top:33%;" onclick="selectPart('chest')" title="가슴">◉</button>
-      <button class="hotspot" id="hs-arm" style="left:14%; top:42%;" onclick="selectPart('arm')" title="팔">💪</button>
-      <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')" title="허리">○</button>
-      <button class="hotspot" id="hs-hip" style="left:50%; top:57%;" onclick="selectPart('hip')" title="골반">↕</button>
-      <button class="hotspot" id="hs-thigh" style="left:30%; top:68%;" onclick="selectPart('thigh')" title="정강이">┃</button>
-      <button class="hotspot" id="hs-knee" style="left:30%; top:80%;" onclick="selectPart('knee')" title="허벅지">⊕</button>
-      <button class="hotspot" id="hs-foot" style="left:30%; top:95%;" onclick="selectPart('foot')" title="발">👟</button>
+      <button class="hotspot" id="hs-height" style="left:50%; top:-5%;" onclick="selectPart('height')" title="Height">📏</button>
+      <button class="hotspot" id="hs-weight" style="left:50%; top:50%;" onclick="selectPart('weight')" title="Weight">⚖️</button>
+      <button class="hotspot" id="hs-head" style="left:50%; top:11%;" onclick="selectPart('head')" title="Head">👤</button>
+      <button class="hotspot" id="hs-shoulder" style="left:50%; top:23%;" onclick="selectPart('shoulder')" title="Shoulder">↔</button>
+      <button class="hotspot" id="hs-chest" style="left:50%; top:33%;" onclick="selectPart('chest')" title="Chest">◉</button>
+      <button class="hotspot" id="hs-arm" style="left:14%; top:42%;" onclick="selectPart('arm')" title="Arm">💪</button>
+      <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')" title="Waist">○</button>
+      <button class="hotspot" id="hs-hip" style="left:50%; top:57%;" onclick="selectPart('hip')" title="Hip">↕</button>
+      <button class="hotspot" id="hs-thigh" style="left:30%; top:68%;" onclick="selectPart('thigh')" title="Shin">┃</button>
+      <button class="hotspot" id="hs-knee" style="left:30%; top:80%;" onclick="selectPart('knee')" title="Thigh">⊕</button>
+      <button class="hotspot" id="hs-foot" style="left:30%; top:95%;" onclick="selectPart('foot')" title="Foot">👟</button>
     </div>
   </div>
 
   <!-- RIGHT: PANEL -->
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-title" id="panel-title">신체 정보 입력</div>
-      <div class="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+      <div class="panel-title" id="panel-title" data-i18n="panel-title">신체 정보 입력</div>
+      <div class="panel-subtitle" data-i18n="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
     </div>
 
     <div class="input-area">
       <div class="input-placeholder" id="placeholder">
-        <p>왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
+        <p data-i18n="placeholder-text">왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
       </div>
 
-      <!-- Height (Added for ratio analysis) -->
+      <!-- Weight & Height -->
       <div class="measurement-form" id="form-height">
-        <div class="form-title">TOTAL HEIGHT / 키</div>
-        <div class="form-desc">전체 키는 비율 분석의 가장 중요한 기준입니다.</div>
+        <div class="form-title" data-i18n="form-title-height">TOTAL HEIGHT / 키</div>
+        <div class="form-desc" data-i18n="form-desc-height">전체 키는 비율 분석의 핵심 데이터입니다.</div>
         <div class="input-group">
-          <label class="input-label">키 (cm)</label>
-          <input class="input-field" type="number" id="input-height" placeholder="예: 180">
+          <label class="input-label" data-i18n="label-height">키 (cm)</label>
+          <input class="input-field" type="number" id="input-height" placeholder="180">
         </div>
-        <button class="btn btn-primary" onclick="savePart('height')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('height')" data-i18n="btn-save">저장하기</button>
       </div>
 
-      <!-- Other forms (head, shoulder, etc.) -->
-      <div class="measurement-form" id="form-head">
-        <div class="form-title">HEAD / 머리</div>
+      <div class="measurement-form" id="form-weight">
+        <div class="form-title" data-i18n="form-title-weight">WEIGHT / 체중</div>
+        <div class="form-desc" data-i18n="form-desc-weight">정밀한 체형 및 BMI 분석을 위해 필요합니다.</div>
         <div class="input-group">
-          <label class="input-label">머리 둘레 (cm)</label>
-          <input class="input-field" type="number" id="head-circ" placeholder="예: 57">
+          <label class="input-label" data-i18n="label-weight">체중 (kg)</label>
+          <input class="input-field" type="number" id="input-weight" placeholder="75">
         </div>
-        <button class="btn btn-primary" onclick="savePart('head')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('weight')" data-i18n="btn-save">저장하기</button>
+      </div>
+
+      <!-- Other forms (truncated for brevity, logic remains same) -->
+      <!-- [All forms (head to foot) will be updated via main.js dynamic text] -->
+      <div class="measurement-form" id="form-head">
+        <div class="form-title" data-i18n="form-title-head">HEAD / 머리</div>
+        <div class="input-group">
+          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
+          <input class="input-field" type="number" id="head-circ" placeholder="57">
+        </div>
+        <button class="btn btn-primary" onclick="savePart('head')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-shoulder">
-        <div class="form-title">SHOULDER / 어깨</div>
+        <div class="form-title" data-i18n="form-title-shoulder">SHOULDER / 어깨</div>
         <div class="input-group">
-          <label class="input-label">어깨 너비 (cm)</label>
-          <input class="input-field" type="number" id="shoulder-width" placeholder="예: 44">
+          <label class="input-label" data-i18n="label-width">너비 (cm)</label>
+          <input class="input-field" type="number" id="shoulder-width" placeholder="44">
         </div>
-        <button class="btn btn-primary" onclick="savePart('shoulder')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('shoulder')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-chest">
-        <div class="form-title">CHEST / 가슴</div>
+        <div class="form-title" data-i18n="form-title-chest">CHEST / 가슴</div>
         <div class="input-group">
-          <label class="input-label">가슴 둘레 (cm)</label>
-          <input class="input-field" type="number" id="chest-circ" placeholder="예: 95">
+          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
+          <input class="input-field" type="number" id="chest-circ" placeholder="95">
         </div>
-        <button class="btn btn-primary" onclick="savePart('chest')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('chest')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-arm">
-        <div class="form-title">ARM / 팔</div>
+        <div class="form-title" data-i18n="form-title-arm">ARM / 팔</div>
         <div class="input-group">
-          <label class="input-label">전체 팔 길이 (cm)</label>
-          <input class="input-field" type="number" id="arm-len" placeholder="예: 60">
+          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
+          <input class="input-field" type="number" id="arm-len" placeholder="60">
         </div>
-        <button class="btn btn-primary" onclick="savePart('arm')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('arm')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-waist">
-        <div class="form-title">WAIST / 허리</div>
+        <div class="form-title" data-i18n="form-title-waist">WAIST / 허리</div>
         <div class="input-group">
-          <label class="input-label">허리 둘레 (cm)</label>
-          <input class="input-field" type="number" id="waist-circ" placeholder="예: 78">
+          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
+          <input class="input-field" type="number" id="waist-circ" placeholder="78">
         </div>
-        <button class="btn btn-primary" onclick="savePart('waist')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('waist')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-hip">
-        <div class="form-title">HIP / 골반</div>
+        <div class="form-title" data-i18n="form-title-hip">HIP / 골반</div>
         <div class="input-group">
-          <label class="input-label">골반 둘레 (cm)</label>
-          <input class="input-field" type="number" id="hip-circ" placeholder="예: 92">
+          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
+          <input class="input-field" type="number" id="hip-circ" placeholder="92">
         </div>
-        <button class="btn btn-primary" onclick="savePart('hip')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('hip')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-thigh">
-        <div class="form-title">SHIN / 복숭아뼈~무릎</div>
+        <div class="form-title" data-i18n="form-title-thigh">SHIN / 복숭아뼈~무릎</div>
         <div class="input-group">
-          <label class="input-label">길이 (cm)</label>
-          <input class="input-field" type="number" id="thigh-len" placeholder="예: 38">
+          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
+          <input class="input-field" type="number" id="thigh-len" placeholder="38">
         </div>
-        <button class="btn btn-primary" onclick="savePart('thigh')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('thigh')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-knee">
-        <div class="form-title">THIGH / 무릎~골반</div>
+        <div class="form-title" data-i18n="form-title-knee">THIGH / 무릎~골반</div>
         <div class="input-group">
-          <label class="input-label">길이 (cm)</label>
-          <input class="input-field" type="number" id="knee-len" placeholder="예: 42">
+          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
+          <input class="input-field" type="number" id="knee-len" placeholder="42">
         </div>
-        <button class="btn btn-primary" onclick="savePart('knee')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('knee')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-foot">
-        <div class="form-title">FOOT / 발</div>
+        <div class="form-title" data-i18n="form-title-foot">FOOT / 발</div>
         <div class="input-group">
-          <label class="input-label">발 사이즈 (mm)</label>
-          <input class="input-field" type="number" id="foot-size" placeholder="예: 260">
+          <label class="input-label" data-i18n="label-size">사이즈 (mm)</label>
+          <input class="input-field" type="number" id="foot-size" placeholder="260">
         </div>
-        <button class="btn btn-primary" onclick="savePart('foot')">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('foot')" data-i18n="btn-save">저장하기</button>
       </div>
 
-      <!-- Expert Analysis Result (Hidden by default) -->
+      <!-- Expert Analysis Result -->
       <div class="analysis-card" id="analysis-result">
-        <div class="form-title" style="color:var(--text)">전문가 분석 리포트</div>
+        <div class="form-title" style="color:var(--text)" data-i18n="analysis-report-title">전문가 분석 리포트</div>
         <p id="analysis-text" style="font-size:14px; margin: 15px 0; color:var(--accent)"></p>
-        <p style="font-size:12px; color:var(--muted)">*위 분석은 입력된 수치 기반의 통계적 결과입니다.</p>
+        <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom: 10px;"></p>
+        <p style="font-size:12px; color:var(--muted)" data-i18n="analysis-note">*위 분석은 입력된 수치 기반의 통계적 결과입니다.</p>
       </div>
     </div>
 
     <div style="padding: 20px 32px; border-top: 1px solid var(--border)">
-      <button class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 전문가 신체 비율 분석하기</button>
-      <button class="btn btn-outline" onclick="resetAll()">초기화</button>
+      <button class="btn btn-accent2" onclick="runExpertAnalysis()" data-i18n="btn-analyze">🔥 전문가 신체 비율 분석하기</button>
+      <button class="btn btn-outline" onclick="resetAll()" data-i18n="btn-reset">초기화</button>
     </div>
   </div>
 </div>
 
 <footer id="about">
   <div class="footer-links">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Service</a>
-    <a href="#">Contact Us</a>
-    <a href="#">About FITME</a>
+    <a href="#" data-i18n="footer-privacy">Privacy Policy</a>
+    <a href="#" data-i18n="footer-terms">Terms of Service</a>
+    <a href="#" data-i18n="footer-contact">Contact Us</a>
+    <a href="#" data-i18n="footer-about">About FITME</a>
   </div>
-  <p class="footer-copy">&copy; 2026 FITME. All rights reserved. 전문적인 신체 데이터 분석 서비스를 제공합니다.</p>
+  <p class="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
 </footer>
 
 <div class="toast" id="toast"></div>
