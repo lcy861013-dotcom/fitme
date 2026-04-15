@@ -77,15 +77,17 @@
       <!-- Hotspots -->
       <button class="hotspot" id="hs-height" style="left:50%; top:-5%;" onclick="selectPart('height')" title="Height">📏</button>
       <button class="hotspot" id="hs-weight" style="left:50%; top:50%;" onclick="selectPart('weight')" title="Weight">⚖️</button>
-      <button class="hotspot" id="hs-head" style="left:50%; top:11%;" onclick="selectPart('head')" title="Head">👤</button>
-      <button class="hotspot" id="hs-shoulder" style="left:50%; top:23%;" onclick="selectPart('shoulder')" title="Shoulder">↔</button>
+      <button class="hotspot" id="hs-head" style="left:50%; top:10%;" onclick="selectPart('head')" title="Head">👤</button>
+      <button class="hotspot" id="hs-neck" style="left:50%; top:20%;" onclick="selectPart('neck')" title="Neck">🧣</button>
+      <button class="hotspot" id="hs-shoulder" style="left:50%; top:25%;" onclick="selectPart('shoulder')" title="Shoulder">↔</button>
       <button class="hotspot" id="hs-chest" style="left:50%; top:33%;" onclick="selectPart('chest')" title="Chest">◉</button>
-      <button class="hotspot" id="hs-arm" style="left:14%; top:42%;" onclick="selectPart('arm')" title="Arm">💪</button>
+      <button class="hotspot" id="hs-upper-arm" style="left:15%; top:34%;" onclick="selectPart('upper-arm')" title="Upper Arm">💪</button>
+      <button class="hotspot" id="hs-lower-arm" style="left:12%; top:45%;" onclick="selectPart('lower-arm')" title="Lower Arm">✋</button>
       <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')" title="Waist">○</button>
       <button class="hotspot" id="hs-hip" style="left:50%; top:57%;" onclick="selectPart('hip')" title="Hip">↕</button>
-      <button class="hotspot" id="hs-thigh" style="left:30%; top:68%;" onclick="selectPart('thigh')" title="Shin">┃</button>
-      <button class="hotspot" id="hs-knee" style="left:30%; top:80%;" onclick="selectPart('knee')" title="Thigh">⊕</button>
-      <button class="hotspot" id="hs-foot" style="left:30%; top:95%;" onclick="selectPart('foot')" title="Foot">👟</button>
+      <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')" title="Upper Leg">┃</button>
+      <button class="hotspot" id="hs-lower-leg" style="left:28%; top:85%;" onclick="selectPart('lower-leg')" title="Lower Leg">⊕</button>
+      <button class="hotspot" id="hs-foot" style="left:30%; top:96%;" onclick="selectPart('foot')" title="Foot">👟</button>
     </div>
   </div>
 
@@ -122,15 +124,26 @@
         <button class="btn btn-primary" onclick="savePart('weight')" data-i18n="btn-save">저장하기</button>
       </div>
 
-      <!-- Other forms (truncated for brevity, logic remains same) -->
-      <!-- [All forms (head to foot) will be updated via main.js dynamic text] -->
       <div class="measurement-form" id="form-head">
         <div class="form-title" data-i18n="form-title-head">HEAD / 머리</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
           <input class="input-field" type="number" id="head-circ" placeholder="57">
         </div>
+        <div class="input-group">
+          <label class="input-label" data-i18n="label-head-height">세로 길이 (cm)</label>
+          <input class="input-field" type="number" id="head-height" placeholder="22">
+        </div>
         <button class="btn btn-primary" onclick="savePart('head')" data-i18n="btn-save">저장하기</button>
+      </div>
+
+      <div class="measurement-form" id="form-neck">
+        <div class="form-title" data-i18n="form-title-neck">NECK / 목</div>
+        <div class="input-group">
+          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
+          <input class="input-field" type="number" id="neck-circ" placeholder="38">
+        </div>
+        <button class="btn btn-primary" onclick="savePart('neck')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-shoulder">
@@ -151,13 +164,24 @@
         <button class="btn btn-primary" onclick="savePart('chest')" data-i18n="btn-save">저장하기</button>
       </div>
 
-      <div class="measurement-form" id="form-arm">
-        <div class="form-title" data-i18n="form-title-arm">ARM / 팔</div>
+      <div class="measurement-form" id="form-upper-arm">
+        <div class="form-title" data-i18n="form-title-upper-arm">UPPER ARM / 상완</div>
+        <div class="form-desc" data-i18n="form-desc-upper-arm">어깨뼈에서 팔꿈치 중간까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="arm-len" placeholder="60">
+          <input class="input-field" type="number" id="upper-arm-len" placeholder="30">
         </div>
-        <button class="btn btn-primary" onclick="savePart('arm')" data-i18n="btn-save">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('upper-arm')" data-i18n="btn-save">저장하기</button>
+      </div>
+
+      <div class="measurement-form" id="form-lower-arm">
+        <div class="form-title" data-i18n="form-title-lower-arm">LOWER ARM / 하완</div>
+        <div class="form-desc" data-i18n="form-desc-lower-arm">팔꿈치 중간에서 손목뼈까지의 길이입니다.</div>
+        <div class="input-group">
+          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
+          <input class="input-field" type="number" id="lower-arm-len" placeholder="25">
+        </div>
+        <button class="btn btn-primary" onclick="savePart('lower-arm')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-waist">
@@ -178,22 +202,24 @@
         <button class="btn btn-primary" onclick="savePart('hip')" data-i18n="btn-save">저장하기</button>
       </div>
 
-      <div class="measurement-form" id="form-thigh">
-        <div class="form-title" data-i18n="form-title-thigh">SHIN / 복숭아뼈~무릎</div>
+      <div class="measurement-form" id="form-upper-leg">
+        <div class="form-title" data-i18n="form-title-upper-leg">THIGH / 대퇴 (허벅지)</div>
+        <div class="form-desc" data-i18n="form-desc-upper-leg">골반뼈 끝에서 무릎 중간까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="thigh-len" placeholder="38">
+          <input class="input-field" type="number" id="upper-leg-len" placeholder="42">
         </div>
-        <button class="btn btn-primary" onclick="savePart('thigh')" data-i18n="btn-save">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('upper-leg')" data-i18n="btn-save">저장하기</button>
       </div>
 
-      <div class="measurement-form" id="form-knee">
-        <div class="form-title" data-i18n="form-title-knee">THIGH / 무릎~골반</div>
+      <div class="measurement-form" id="form-lower-leg">
+        <div class="form-title" data-i18n="form-title-lower-leg">SHIN / 하퇴 (종아리)</div>
+        <div class="form-desc" data-i18n="form-desc-lower-leg">무릎 중간에서 복숭아뼈까지의 길이입니다.</div>
         <div class="input-group">
           <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="knee-len" placeholder="42">
+          <input class="input-field" type="number" id="lower-leg-len" placeholder="38">
         </div>
-        <button class="btn btn-primary" onclick="savePart('knee')" data-i18n="btn-save">저장하기</button>
+        <button class="btn btn-primary" onclick="savePart('lower-leg')" data-i18n="btn-save">저장하기</button>
       </div>
 
       <div class="measurement-form" id="form-foot">
