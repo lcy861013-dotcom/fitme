@@ -157,6 +157,28 @@
     .style-section h4 { font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
     .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .style-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.6; }
+    /* Enhanced analysis styles */
+    .body-type-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,255,71,0.1); border: 1px solid var(--accent); border-radius: 100px; padding: 6px 16px; margin-bottom: 12px; }
+    .body-type-badge .badge-label { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 2px; color: var(--accent); }
+    .analysis-summary { font-size: 13px; color: var(--text); line-height: 1.9; margin-bottom: 8px; }
+    .analysis-tip { background: rgba(232,255,71,0.05); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: 12px; color: var(--muted); line-height: 1.8; margin: 10px 0 16px; }
+    .prop-stats { display: flex; flex-direction: column; gap: 10px; margin: 14px 0 18px; }
+    .prop-row { display: flex; flex-direction: column; gap: 4px; }
+    .prop-label { font-size: 11px; color: var(--muted); letter-spacing: 0.5px; font-family: 'DM Sans', sans-serif; display: flex; justify-content: space-between; }
+    .prop-label span { color: var(--accent); font-weight: 700; }
+    .prop-track { height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .prop-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.8s ease; }
+    .occasion-section { margin: 18px 0; }
+    .occasion-section-title { font-size: 12px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
+    .occasion-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+    .occ-tab { padding: 6px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: 11px; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; color: var(--muted); }
+    .occ-tab.active, .occ-tab:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
+    .occ-panel { display: none; }
+    .occ-panel.active { display: block; animation: fadeIn 0.2s; }
+    .outfit-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; transition: border-color 0.2s; }
+    .outfit-item:hover { border-color: var(--accent); }
+    .outfit-combo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
+    .outfit-why { font-size: 11px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
 
     /* SAVED LIST */
     .saved-list { padding: 16px 24px; border-top: 1px solid var(--border); max-height: 200px; overflow-y: auto; display: none; }
@@ -493,9 +515,18 @@
               <button class="share-btn" onclick="copyLink()">🔗</button>
             </div>
           </div>
-          <p id="analysis-text" style="font-size:14px; margin:12px 0; color:var(--accent); line-height:1.7;"></p>
-          <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:16px;"></p>
-          <div class="style-section">
+          <!-- body type badge -->
+          <div id="analysis-badge"></div>
+          <!-- summary text -->
+          <p id="analysis-text" class="analysis-summary"></p>
+          <div id="analysis-tip"></div>
+          <!-- BMI + proportion stats -->
+          <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:6px;"></p>
+          <div id="analysis-props"></div>
+          <!-- occasion recommendations -->
+          <div id="analysis-occasions"></div>
+          <!-- best / worst -->
+          <div class="style-section" style="margin-top:18px;">
             <h4 id="analysis-best-title">✨ BEST 스타일 추천</h4>
             <div class="style-grid" id="best-styles"></div>
             <h4 id="analysis-worst-title" style="margin-top:16px;">⚠️ 주의할 스타일</h4>
@@ -800,13 +831,28 @@
       'bmi':['저체중','정상 체중 ✓','과체중','비만'],
       'body-inv':'어깨가 골반보다 넓은 역삼각형 체형입니다. (어깨/골반: {r})','body-tri':'골반이 어깨보다 넓은 삼각형 체형입니다. (어깨/골반: {r})','body-rect':'어깨와 골반이 균형잡힌 직사각형/모래시계 체형입니다. (비율: {r})',
       'body-default':'더 많은 측정값을 입력하면 정확한 분석이 가능합니다.',
-      'best-inv':['와이드 팬츠 / 하의 볼륨','밝은 색상 하의','스트레이트핏 팬츠'],
-      'worst-inv':['라글란 소매 상의','패드 어깨 재킷','넓은 네크라인'],
-      'best-tri':['오버사이즈 상의','밝은 색상 상의','어깨 강조 디자인'],
-      'worst-tri':['타이트한 미니스커트','밝은 색상 하의','낮은 허리선 팬츠'],
-      'best-rect':['허리 강조 코디','벨트 활용','피티드 상의'],
-      'worst-rect':['루즈핏 올인원','허리 라인 없는 원피스'],
-      'best-def':['레귤러핏 팬츠','심플한 단색 상의'],'worst-def':['극단적으로 타이트한 의류']
+      'best-inv':['와이드 팬츠 / 하의 볼륨','밝은 색상 하의','플레어·A라인 스커트','스트레이트핏 팬츠','미디 길이 원피스'],
+      'worst-inv':['라글란 소매 상의','패드 어깨 재킷','보트넥·넓은 네크라인','오프숄더 탑','수평 스트라이프 상의'],
+      'best-tri':['오버사이즈 상의','밝은 색상 상의','어깨 강조 디자인','퍼프 슬리브','보트넥·오프숄더'],
+      'worst-tri':['타이트한 미니스커트','밝은 색상 하의','낮은 허리선 팬츠','볼드 패턴 하의'],
+      'best-rect':['허리 강조 코디','벨트 활용','피티드 상의','랩 원피스','하이웨이스트 스타일'],
+      'worst-rect':['루즈핏 올인원','허리 라인 없는 원피스','오버사이즈 전신룩'],
+      'best-def':['레귤러핏 팬츠','심플한 단색 상의','클래식 미디 원피스'],'worst-def':['극단적으로 타이트한 의류'],
+      'occasion-title':'상황별 추천 코디',
+      'occasion-meeting':'💕 미팅 · 소개팅',
+      'occasion-business':'💼 비즈니스 캐주얼',
+      'occasion-casual':'👕 일상 캐주얼',
+      'outfit-why-label':'이 코디가 잘 어울리는 이유',
+      'prop-leg':'다리 비율','prop-whr':'허리-힙 비율','prop-shoulder':'어깨-힙 밸런스',
+      'body-type-inv':'역삼각형 체형','body-type-tri':'삼각형 체형','body-type-rect':'균형형 체형','body-type-def':'체형 분석 중',
+      'body-strength-inv':'넓은 어깨와 슬림한 하체가 특징인 강인하고 세련된 체형입니다. 하의에 볼륨감을 주면 이상적인 균형을 만들 수 있어요.',
+      'body-strength-tri':'탄탄한 하체와 슬림한 상체가 매력인 체형입니다. 상체에 볼륨감을 주면 균형잡힌 실루엣을 만들 수 있어요.',
+      'body-strength-rect':'어깨와 힙이 균형잡혀 있어 대부분의 스타일이 잘 소화되는 다재다능한 체형입니다. 허리 라인을 강조하면 모래시계 실루엣 완성!',
+      'body-strength-def':'키와 체중, 어깨 너비를 입력하면 정확한 체형 분석이 가능합니다. 더 많은 부위를 측정할수록 맞춤 추천이 세밀해져요.',
+      'body-tip-inv':'핵심은 시선을 하체로 유도하는 것! 밝은 색 하의, 패턴 하의, 와이드 실루엣으로 균형을 잡아보세요.',
+      'body-tip-tri':'상체를 풍성하게, 하체는 심플하게! 어깨선을 강조하거나 상체에 포인트 컬러·볼드 디자인을 활용해보세요.',
+      'body-tip-rect':'허리 라인이 핵심! 벨트·터크인·하이웨이스트를 적극 활용해 허리를 강조하면 훨씬 세련되게 보여요.',
+      'body-tip-def':'측정값을 더 입력할수록 나에게 딱 맞는 스타일 추천을 받을 수 있어요.'
     },
     en: {
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
@@ -841,13 +887,28 @@
       'bmi':['Underweight','Normal weight ✓','Overweight','Obese'],
       'body-inv':'Inverted triangle — shoulders wider than hips. (ratio: {r})','body-tri':'Triangle — hips wider than shoulders. (ratio: {r})','body-rect':'Balanced rectangle / hourglass body type. (ratio: {r})',
       'body-default':'Enter more measurements for a detailed analysis.',
-      'best-inv':['Wide-leg pants','Bright-colored bottoms','Straight-fit trousers'],
-      'worst-inv':['Raglan sleeve tops','Padded shoulder jackets','Wide necklines'],
-      'best-tri':['Oversized tops','Bright-colored tops','Shoulder-accentuating designs'],
-      'worst-tri':['Tight miniskirts','Bright-colored bottoms','Low-rise pants'],
-      'best-rect':['Waist-defining outfits','Belt styling','Fitted tops'],
-      'worst-rect':['Loose all-in-ones','Waistless dresses'],
-      'best-def':['Regular-fit pants','Simple solid-color tops'],'worst-def':['Extremely tight clothing']
+      'best-inv':['Wide-leg pants','Bright-colored bottoms','Flared / A-line skirts','Straight-fit trousers','Midi-length dresses'],
+      'worst-inv':['Raglan sleeve tops','Padded shoulder jackets','Boat neck / wide necklines','Off-shoulder tops','Horizontal stripe tops'],
+      'best-tri':['Oversized tops','Bright-colored tops','Shoulder-accentuating designs','Puff sleeves','Boat neck / off-shoulder'],
+      'worst-tri':['Tight miniskirts','Bright-colored bottoms','Low-rise pants','Bold-patterned bottoms'],
+      'best-rect':['Waist-defining outfits','Belt styling','Fitted tops','Wrap dresses','High-waist styles'],
+      'worst-rect':['Loose all-in-ones','Waistless dresses','Head-to-toe oversized looks'],
+      'best-def':['Regular-fit pants','Simple solid-color tops','Classic midi dress'],'worst-def':['Extremely tight clothing'],
+      'occasion-title':'Occasion-Based Outfit Picks',
+      'occasion-meeting':'💕 Date / First Meet',
+      'occasion-business':'💼 Business Casual',
+      'occasion-casual':'👕 Everyday Casual',
+      'outfit-why-label':'Why it works',
+      'prop-leg':'Leg ratio','prop-whr':'Waist-hip ratio','prop-shoulder':'Shoulder-hip balance',
+      'body-type-inv':'Inverted Triangle','body-type-tri':'Triangle','body-type-rect':'Balanced / Hourglass','body-type-def':'Analyzing Body Type',
+      'body-strength-inv':'Broad shoulders and slim hips define this powerful, sporty silhouette. Adding lower-body volume creates an ideal balance.',
+      'body-strength-tri':'A firm lower body and slim upper body are your assets. Adding shoulder emphasis creates a beautifully balanced look.',
+      'body-strength-rect':'Your balanced shoulder-to-hip ratio means most styles work well. Defining the waist unlocks a perfect hourglass silhouette.',
+      'body-strength-def':'Enter height, weight, and shoulder width for a detailed body type analysis. More measurements = more personalized recommendations.',
+      'body-tip-inv':'Key: draw attention downward! Bright-colored bottoms, patterned skirts, and wide-leg silhouettes create perfect balance.',
+      'body-tip-tri':'Larger on top, simpler on the bottom! Bold shoulder lines and upper-body statement pieces are your best tools.',
+      'body-tip-rect':'The waist is everything! Belts, tuck-ins, and high-waist styles define your middle for a chic silhouette.',
+      'body-tip-def':'Enter more measurements for precise, personalized style recommendations tailored to your unique proportions.'
     },
     ja: {
       'nav-guide':'測定ガイド','nav-analysis':'体型分析','nav-about':'About',
@@ -1494,54 +1555,253 @@
     items.innerHTML = html;
   }
 
+  // === Occasion outfit data ===
+  const occasionOutfits = {
+    ko: {
+      inv: {
+        meeting: [
+          { combo: '크림 와이드 슬랙스 + 차콜 V넥 니트 + 로퍼', why: 'V넥이 어깨의 넓이를 시각적으로 줄여주고, 와이드 슬랙스가 하체 볼륨을 더해 완벽한 균형감을 만들어요.' },
+          { combo: '플로럴 미디 스커트 + 화이트 크롭 블라우스 + 플랫 샌들', why: '풍성한 스커트 볼륨이 하체를 강조해 전체적으로 여성스럽고 균형잡힌 실루엣이 완성돼요.' }
+        ],
+        business: [
+          { combo: '하이웨이스트 A라인 스커트 + 터크인 블라우스 + 미드힐', why: '하이웨이스트 라인이 허리를 강조하고, A라인이 하체 볼륨을 자연스럽게 만들어줘요.' },
+          { combo: '와이드 팬츠 수트 + 심플 이너 + 펌프스', why: '와이드 수트 팬츠가 하체에 무게감을 더해 상하 균형이 완벽하게 맞아요.' }
+        ],
+        casual: [
+          { combo: '와이드 데님 + 수평 스트라이프 긴팔 티 + 스니커즈', why: '수평 스트라이프 상의가 어깨를 좁아 보이게 하고, 와이드 데님이 균형을 잡아줘요.' },
+          { combo: '팔라초 팬츠 + 무지 슬리브리스 + 크로스백', why: '넉넉한 팔라초 팬츠가 하체에 여유를 줘서 편하면서도 스타일리시한 룩이 완성돼요.' }
+        ]
+      },
+      tri: {
+        meeting: [
+          { combo: '오프숄더 블라우스 + 다크 스트레이트 팬츠 + 킬힐', why: '오프숄더로 어깨선을 드러내 상체 볼륨을 주고, 다크 하의가 하체를 슬림하게 만들어줘요.' },
+          { combo: '퍼프 슬리브 원피스 (무릎 길이) + 웨지힐', why: '퍼프 소매가 어깨를 강조하고, 무릎 길이 스커트 라인이 하체를 자연스럽게 커버해줘요.' }
+        ],
+        business: [
+          { combo: '숄더 패드 블레이저 + 슬랙스 + 로퍼', why: '블레이저 어깨 라인이 상체를 넓어 보이게 해 상하 균형을 확실하게 맞춰줘요.' },
+          { combo: '스트라이프 보트넥 블라우스 + 네이비 슬랙스 + 구두', why: '보트넥이 쇄골과 어깨를 드러내 상체에 시선을 집중시키고, 네이비 팬츠가 하체를 정돈해줘요.' }
+        ],
+        casual: [
+          { combo: '오버사이즈 후드 + 스키니 데님 + 스니커즈', why: '오버사이즈 상의가 상체 볼륨을 살리고, 스키니 데님이 탄탄한 다리 라인을 부각해줘요.' },
+          { combo: '밝은 색 크롭 재킷 + 짙은 색 조거 팬츠 + 슬리퍼', why: '밝은 상의·짙은 하의 대비 배색이 자연스럽게 시선을 상체로 이끌어요.' }
+        ]
+      },
+      rect: {
+        meeting: [
+          { combo: '랩 원피스 (미디 길이) + 뮬 힐 + 심플 목걸이', why: '랩 원피스 디자인이 허리를 자연스럽게 강조해 여성스럽고 세련된 실루엣을 만들어줘요.' },
+          { combo: '하이웨이스트 플리츠 스커트 + 크롭 니트 + 앵클 부츠', why: '크롭 상의 + 하이웨이스트 조합으로 허리가 잘록해 보이고 다리도 길어 보여요.' }
+        ],
+        business: [
+          { combo: '피티드 블레이저 + 하이웨이스트 팬츠 + 힐 + 벨트', why: '허리 벨트로 실루엣을 잡아줘 프로페셔널하면서도 세련된 비즈니스룩이 완성돼요.' },
+          { combo: '타이트 펜슬 스커트 + 터크인 블라우스 + 로퍼', why: '터크인과 펜슬 스커트 조합이 허리 라인을 또렷하게 강조해줘요.' }
+        ],
+        casual: [
+          { combo: '하이웨이스트 진 + 크롭 티셔츠 + 스니커즈', why: '크롭 티 + 하이웨이스트로 허리가 잘록하게 보이는 가장 기본적인 데일리 룩이에요.' },
+          { combo: '벨티드 코트 + 슬랙스 + 로퍼', why: '허리 벨트가 있는 코트가 전체 실루엣을 예쁘게 잡아주는 올인원 룩이에요.' }
+        ]
+      },
+      default: {
+        meeting: [
+          { combo: '슬랙스 + 블라우스 + 로퍼', why: '단정하고 깔끔한 인상을 주는 무난하면서도 세련된 미팅 코디예요.' },
+          { combo: '미디 원피스 + 앵클 부츠', why: '한 벌로 완성되는 실용적인 데이트룩으로, 어떤 체형에도 잘 어울려요.' }
+        ],
+        business: [
+          { combo: '블레이저 + 슬랙스 + 힐', why: '어떤 체형에도 잘 맞는 가장 무난하고 세련된 비즈니스 캐주얼이에요.' }
+        ],
+        casual: [
+          { combo: '데님 + 단색 티셔츠 + 스니커즈', why: '가장 편하고 실용적인 기본 캐주얼 룩이에요.' }
+        ]
+      }
+    },
+    en: {
+      inv: {
+        meeting: [
+          { combo: 'Cream wide-leg trousers + charcoal V-neck knit + loafers', why: 'The V-neck visually narrows broad shoulders; wide trousers add hip volume for a perfectly balanced look.' },
+          { combo: 'Floral midi skirt + white crop blouse + flat sandals', why: 'The full skirt adds lower-body volume, creating a feminine and balanced silhouette.' }
+        ],
+        business: [
+          { combo: 'High-waist A-line skirt + tucked-in blouse + mid heels', why: 'High-waist line defines the waist; A-line naturally adds volume to the lower half.' },
+          { combo: 'Wide-leg pantsuit + simple inner + pumps', why: 'Wide-leg trousers add lower-body weight to balance the broader shoulders perfectly.' }
+        ],
+        casual: [
+          { combo: 'Wide-leg denim + horizontal stripe long-sleeve + sneakers', why: 'Horizontal stripes visually reduce shoulder width; wide denim balances the silhouette.' },
+          { combo: 'Palazzo pants + solid sleeveless top + crossbody bag', why: 'Relaxed palazzo pants give lower-body ease for an effortless yet stylish everyday look.' }
+        ]
+      },
+      tri: {
+        meeting: [
+          { combo: 'Off-shoulder blouse + dark straight trousers + heels', why: 'Off-shoulder reveals the shoulders and collarbone for upper-body volume; dark bottoms slim the hips.' },
+          { combo: 'Puff-sleeve midi dress + wedge heels', why: 'Puff sleeves emphasize shoulders; the midi length softly covers the lower body.' }
+        ],
+        business: [
+          { combo: 'Shoulder-pad blazer + slacks + loafers', why: 'Blazer shoulder lines broaden the upper body, creating a strong shoulder-to-hip balance.' },
+          { combo: 'Striped boat-neck blouse + navy slacks + oxford shoes', why: 'Boat neck highlights the collarbone and draws eyes upward; navy slacks keep the lower half tidy.' }
+        ],
+        casual: [
+          { combo: 'Oversized hoodie + skinny jeans + sneakers', why: 'Oversized top adds upper-body volume while skinny jeans elongate and highlight the legs.' },
+          { combo: 'Bright crop jacket + dark jogger pants + slides', why: 'The light top / dark bottom contrast naturally draws attention to the upper body.' }
+        ]
+      },
+      rect: {
+        meeting: [
+          { combo: 'Wrap dress (midi length) + mule heels + simple necklace', why: 'Wrap dress design naturally cinches the waist for a feminine and polished silhouette.' },
+          { combo: 'High-waist pleated skirt + crop knit + ankle boots', why: 'Crop top + high-waist combo makes the waist look defined and legs appear longer.' }
+        ],
+        business: [
+          { combo: 'Fitted blazer + high-waist trousers + heels + belt', why: 'A waist belt shapes the silhouette beautifully — professional yet chic.' },
+          { combo: 'Pencil skirt + tucked-in blouse + loafers', why: 'Tuck-in + pencil skirt clearly defines the waist line for a sleek look.' }
+        ],
+        casual: [
+          { combo: 'High-waist jeans + crop tee + sneakers', why: 'Crop tee + high-waist is the essential daily formula for a defined, flattering waist.' },
+          { combo: 'Belted coat + slacks + loafers', why: 'A waist-belted coat shapes the entire silhouette — a complete, stylish one-look outfit.' }
+        ]
+      },
+      default: {
+        meeting: [
+          { combo: 'Slacks + blouse + loafers', why: 'Clean and polished — a reliably flattering first-meeting outfit for any body type.' },
+          { combo: 'Midi dress + ankle boots', why: 'One-piece simplicity for an effortless date look that works universally.' }
+        ],
+        business: [
+          { combo: 'Blazer + slacks + heels', why: 'The universally flattering business casual formula.' }
+        ],
+        casual: [
+          { combo: 'Denim + solid tee + sneakers', why: 'The most versatile and comfortable everyday casual look.' }
+        ]
+      }
+    }
+  };
+
   function runExpertAnalysis() {
     const h = measurements.height?.val;
     const w = measurements.weight?.val;
     const shoulder = measurements.shoulder?.width;
     const waist = measurements.waist?.circ;
     const hip = measurements.hip?.circ;
+    const upperLeg = measurements['upper-leg']?.len;
+    const lowerLeg = measurements['lower-leg']?.len;
 
     if (!h && !w && !shoulder) { showToast(t('toast-need-data')); return; }
 
-    let analysis = '', bmi = '', best = [], worst = [];
     const lc = i18n[currentLang] || i18n.en;
+    const occ = occasionOutfits[currentLang] || occasionOutfits.en;
 
+    // === BMI ===
+    let bmiStr = '';
     if (h && w) {
-      const bmiVal = (w / ((h/100) ** 2)).toFixed(1);
+      const bmiVal = +(w / ((h/100) ** 2)).toFixed(1);
       const bmiLabels = lc['bmi'] || i18n.en['bmi'];
       const bmiLabel = bmiVal < 18.5 ? bmiLabels[0] : bmiVal < 23 ? bmiLabels[1] : bmiVal < 25 ? bmiLabels[2] : bmiLabels[3];
-      bmi = `BMI: ${bmiVal} — ${bmiLabel}`;
+      bmiStr = `BMI ${bmiVal} — ${bmiLabel}`;
     }
 
-    if (shoulder && waist && hip) {
-      const sw = parseFloat(shoulder), hw = parseFloat(hip);
-      const ratio = (sw / hw).toFixed(2);
-      if (ratio > 1.1) {
-        analysis = (lc['body-inv'] || i18n.en['body-inv']).replace('{r}', ratio);
-        best = lc['best-inv'] || i18n.en['best-inv'];
-        worst = lc['worst-inv'] || i18n.en['worst-inv'];
-      } else if (ratio < 0.9) {
-        analysis = (lc['body-tri'] || i18n.en['body-tri']).replace('{r}', ratio);
-        best = lc['best-tri'] || i18n.en['best-tri'];
-        worst = lc['worst-tri'] || i18n.en['worst-tri'];
-      } else {
-        analysis = (lc['body-rect'] || i18n.en['body-rect']).replace('{r}', ratio);
-        best = lc['best-rect'] || i18n.en['best-rect'];
-        worst = lc['worst-rect'] || i18n.en['worst-rect'];
-      }
+    // === Body type ===
+    let bodyType = 'default', ratio = null;
+    if (shoulder && hip) {
+      ratio = +(parseFloat(shoulder) / parseFloat(hip)).toFixed(2);
+      if (ratio > 1.1) bodyType = 'inv';
+      else if (ratio < 0.9) bodyType = 'tri';
+      else bodyType = 'rect';
+    }
+
+    const typeKey = 'body-type-' + (bodyType === 'default' ? 'def' : bodyType);
+    const strengthKey = 'body-strength-' + (bodyType === 'default' ? 'def' : bodyType);
+    const tipKey = 'body-tip-' + (bodyType === 'default' ? 'def' : bodyType);
+    const typeName = lc[typeKey] || i18n.en[typeKey] || '';
+    const strength = lc[strengthKey] || i18n.en[strengthKey] || '';
+    const tip = lc[tipKey] || i18n.en[tipKey] || '';
+
+    // === Best / Worst ===
+    const best = lc['best-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['best-' + (bodyType === 'default' ? 'def' : bodyType)];
+    const worst = lc['worst-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['worst-' + (bodyType === 'default' ? 'def' : bodyType)];
+
+    // === Proportion stats ===
+    const stats = [];
+    if (shoulder && hip) {
+      const pct = Math.min(100, Math.round(ratio * 50));
+      stats.push({ label: lc['prop-shoulder'] || i18n.en['prop-shoulder'], val: `${ratio}`, pct });
+    }
+    if (h && upperLeg && lowerLeg) {
+      const legLen = parseFloat(upperLeg) + parseFloat(lowerLeg);
+      const legRatio = +(legLen / parseFloat(h) * 100).toFixed(1);
+      const legPct = Math.min(100, Math.round(legRatio * 1.6));
+      stats.push({ label: lc['prop-leg'] || i18n.en['prop-leg'], val: `${legRatio}%`, pct: legPct, note: legRatio >= 50 ? '↑' : legRatio >= 46 ? '~' : '↓' });
+    }
+    if (waist && hip) {
+      const whr = +(parseFloat(waist) / parseFloat(hip)).toFixed(2);
+      const whrPct = Math.min(100, Math.round(whr * 100));
+      stats.push({ label: lc['prop-whr'] || i18n.en['prop-whr'], val: `${whr}`, pct: whrPct });
+    }
+
+    // === Occasion data ===
+    const occData = (occ[bodyType] || occ.default);
+    const occTitle = lc['occasion-title'] || i18n.en['occasion-title'];
+    const occMeeting = lc['occasion-meeting'] || i18n.en['occasion-meeting'];
+    const occBusiness = lc['occasion-business'] || i18n.en['occasion-business'];
+    const occCasual = lc['occasion-casual'] || i18n.en['occasion-casual'];
+    const whyLabel = lc['outfit-why-label'] || i18n.en['outfit-why-label'];
+
+    // === Render badge ===
+    const badgeEmojiMap = { inv: '🔺', tri: '🔻', rect: '⬛', default: '📐' };
+    document.getElementById('analysis-badge').innerHTML = typeName
+      ? `<div class="body-type-badge"><span>${badgeEmojiMap[bodyType] || '📐'}</span><span class="badge-label">${typeName}</span></div>`
+      : '';
+
+    // === Render summary ===
+    document.getElementById('analysis-text').textContent = strength;
+    document.getElementById('analysis-tip').innerHTML = tip
+      ? `<div class="analysis-tip">💡 ${tip}</div>`
+      : '';
+
+    // === BMI ===
+    document.getElementById('bmi-text').textContent = bmiStr;
+
+    // === Proportion stats ===
+    if (stats.length > 0) {
+      document.getElementById('analysis-props').innerHTML = `<div class="prop-stats">${
+        stats.map(s => `<div class="prop-row">
+          <div class="prop-label">${s.label}<span>${s.val}${s.note ? ' ' + s.note : ''}</span></div>
+          <div class="prop-track"><div class="prop-fill" style="width:${s.pct}%"></div></div>
+        </div>`).join('')
+      }</div>`;
     } else {
-      analysis = lc['body-default'] || i18n.en['body-default'];
-      best = lc['best-def'] || i18n.en['best-def'];
-      worst = lc['worst-def'] || i18n.en['worst-def'];
+      document.getElementById('analysis-props').innerHTML = '';
     }
 
-    document.getElementById('analysis-text').textContent = analysis;
-    document.getElementById('bmi-text').textContent = bmi;
+    // === Occasion recommendations ===
+    const buildOutfits = (arr) => arr.map(item =>
+      `<div class="outfit-item">
+        <div class="outfit-combo">👗 ${item.combo}</div>
+        <div class="outfit-why"><strong>${whyLabel}:</strong> ${item.why}</div>
+      </div>`
+    ).join('');
+
+    document.getElementById('analysis-occasions').innerHTML = `
+      <div class="occasion-section">
+        <div class="occasion-section-title">${occTitle}</div>
+        <div class="occasion-tabs">
+          <button class="occ-tab active" onclick="switchOccTab(this,'occ-meeting')">${occMeeting}</button>
+          <button class="occ-tab" onclick="switchOccTab(this,'occ-business')">${occBusiness}</button>
+          <button class="occ-tab" onclick="switchOccTab(this,'occ-casual')">${occCasual}</button>
+        </div>
+        <div id="occ-meeting" class="occ-panel active">${buildOutfits(occData.meeting)}</div>
+        <div id="occ-business" class="occ-panel">${buildOutfits(occData.business)}</div>
+        <div id="occ-casual" class="occ-panel">${buildOutfits(occData.casual)}</div>
+      </div>`;
+
+    // === Best / Worst ===
     document.getElementById('best-styles').innerHTML = best.map(s => `<div class="style-item">✅ ${s}</div>`).join('');
     document.getElementById('worst-styles').innerHTML = worst.map(s => `<div class="style-item">⚠️ ${s}</div>`).join('');
+
     document.getElementById('analysis-result').classList.add('visible');
     document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     showToast(t('toast-done'));
+  }
+
+  function switchOccTab(btn, panelId) {
+    btn.closest('.occasion-section').querySelectorAll('.occ-tab').forEach(b => b.classList.remove('active'));
+    btn.closest('.occasion-section').querySelectorAll('.occ-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
   }
 
   function copyLink() {
@@ -1558,6 +1818,7 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
+    ['analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','analysis-occasions','best-styles','worst-styles'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
     document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
     showToast(t('toast-reset'));
