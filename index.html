@@ -787,6 +787,12 @@
       'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발'
     };
     document.getElementById('panel-title').textContent = titles[part] || part;
+    // 모바일에서 입력 패널로 자동 스크롤
+    if (window.innerWidth <= 900) {
+      setTimeout(() => {
+        document.querySelector('.panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
   }
 
   function selectRadio(group, value) {
