@@ -132,6 +132,12 @@
     .radio-btn:hover { border-color: var(--accent); color: var(--text); }
     .radio-btn.selected { border-color: var(--accent); background: rgba(232,255,71,0.1); color: var(--accent); font-weight: 700; }
 
+    /* GENDER TOGGLE */
+    .gender-toggle { display: flex; gap: 8px; padding: 16px 24px 0; }
+    .gender-btn { flex: 1; padding: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .gender-btn.active { border-color: var(--accent); background: rgba(232,255,71,0.1); color: var(--accent); }
+    .gender-btn:hover:not(.active) { border-color: var(--muted); color: var(--text); }
+
     /* BUTTONS */
     .btn { display: block; width: 100%; padding: 13px; border: none; border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 12px; }
     .btn-primary { background: var(--accent); color: var(--bg); }
@@ -177,6 +183,7 @@
     .occ-panel.active { display: block; animation: fadeIn 0.2s; }
     .outfit-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; transition: border-color 0.2s; }
     .outfit-item:hover { border-color: var(--accent); }
+    .outfit-visual { font-size: 28px; text-align: center; margin-bottom: 8px; background: var(--bg); border-radius: 10px; padding: 10px; letter-spacing: 4px; }
     .outfit-combo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
     .outfit-why { font-size: 11px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
 
@@ -376,7 +383,6 @@
         <button class="hotspot" id="hs-upper-arm" style="left:14%; top:34%;" onclick="selectPart('upper-arm')">💪</button>
         <button class="hotspot" id="hs-lower-arm" style="left:11%; top:46%;" onclick="selectPart('lower-arm')">✋</button>
         <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')">○</button>
-        <button class="hotspot" id="hs-hip" style="left:50%; top:56%;" onclick="selectPart('hip')">↕</button>
         <button class="hotspot" id="hs-weight" style="left:88%; top:50%;" onclick="selectPart('weight')">⚖️</button>
         <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')">┃</button>
         <button class="hotspot" id="hs-lower-leg" style="left:28%; top:84%;" onclick="selectPart('lower-leg')">⊕</button>
@@ -388,6 +394,10 @@
       <div class="panel-header">
         <div class="panel-title" id="panel-title">신체 정보 입력</div>
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+      </div>
+      <div class="gender-toggle">
+        <button class="gender-btn active" id="gender-female" onclick="setGender('female')">👩 여성</button>
+        <button class="gender-btn" id="gender-male" onclick="setGender('male')">👨 남성</button>
       </div>
       <div class="input-area">
         <div class="input-placeholder" id="placeholder">
@@ -465,16 +475,10 @@
 
         <div class="measurement-form" id="form-waist">
           <div class="form-title">WAIST / 허리</div>
-          <div class="form-desc">가장 얇은 허리 부분의 둘레를 측정하세요.</div>
-          <div class="input-group"><label class="input-label">허리 둘레 (cm)</label><input class="input-field" type="number" id="waist-circ" placeholder="78"></div>
+          <div class="form-desc">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
+          <div class="input-group"><label class="input-label">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5"></div>
+          <div style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
           <button class="btn btn-primary btn-save" onclick="savePart('waist')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-hip">
-          <div class="form-title">HIP / 골반</div>
-          <div class="form-desc">골반의 가장 넓은 부분의 둘레를 측정하세요.</div>
-          <div class="input-group"><label class="input-label">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="92"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('hip')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-leg">
@@ -1478,7 +1482,14 @@
   const measurements = {};
   const radioSelections = {};
   let filledCount = 0;
-  const totalParts = 12;
+  const totalParts = 11;
+  let currentGender = 'female';
+
+  function setGender(g) {
+    currentGender = g;
+    document.getElementById('gender-female').classList.toggle('active', g === 'female');
+    document.getElementById('gender-male').classList.toggle('active', g === 'male');
+  }
 
   function selectPart(part) {
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
@@ -1511,8 +1522,7 @@
     else if (part === 'chest') { data.circ = document.getElementById('chest-circ').value; data.size = radioSelections['top']; hasData = data.circ || data.size; }
     else if (part === 'upper-arm') { data.len = document.getElementById('upper-arm-len').value; hasData = data.len; }
     else if (part === 'lower-arm') { data.len = document.getElementById('lower-arm-len').value; hasData = data.len; }
-    else if (part === 'waist') { data.circ = document.getElementById('waist-circ').value; hasData = data.circ; }
-    else if (part === 'hip') { data.circ = document.getElementById('hip-circ').value; hasData = data.circ; }
+    else if (part === 'waist') { data.inch = document.getElementById('waist-circ').value; data.circ = data.inch ? (parseFloat(data.inch) * 2.54).toFixed(1) : ''; hasData = data.inch; }
     else if (part === 'upper-leg') { data.len = document.getElementById('upper-leg-len').value; data.circ = document.getElementById('upper-leg-circ').value; hasData = data.len || data.circ; }
     else if (part === 'lower-leg') { data.len = document.getElementById('lower-leg-len').value; hasData = data.len; }
     else if (part === 'foot') { data.size = document.getElementById('foot-size').value; data.width = radioSelections['footw']; hasData = data.size || data.width; }
@@ -1547,7 +1557,7 @@
       else if (part === 'shoulder') v = data.width + 'cm';
       else if (part === 'chest') v = (data.circ ? data.circ + 'cm' : '') + (data.size ? ' / ' + data.size : '');
       else if (part === 'upper-arm' || part === 'lower-arm' || part === 'lower-leg') v = data.len + 'cm';
-      else if (part === 'waist' || part === 'hip') v = data.circ + 'cm';
+      else if (part === 'waist') v = data.inch + '"' + (data.circ ? ' (' + data.circ + 'cm)' : '');
       else if (part === 'upper-leg') v = (data.len || '?') + 'cm / ' + (data.circ || '?') + 'cm';
       else if (part === 'foot') v = (data.size ? data.size + 'mm' : '') + (data.width ? ' / ' + data.width : '');
       html += `<div class="saved-item"><span class="saved-item-label">${(partNames[part] || part).toUpperCase()}</span><span class="saved-item-value">${v}</span></div>`;
@@ -1556,117 +1566,257 @@
   }
 
   // === Occasion outfit data ===
+  // outfit emoji icons per category
+  const outfitIcon = { meeting: '💕', business: '💼', casual: '👕' };
+  // visual style icons for outfit cards
+  const styleVisual = {
+    female: { inv: '🕴️→👗', tri: '👗→🧥', rect: '👗', default: '✨' },
+    male:   { inv: '🧥', tri: '🧥→👔', rect: '👔', default: '✨' }
+  };
+
   const occasionOutfits = {
     ko: {
-      inv: {
-        meeting: [
-          { combo: '크림 와이드 슬랙스 + 차콜 V넥 니트 + 로퍼', why: 'V넥이 어깨의 넓이를 시각적으로 줄여주고, 와이드 슬랙스가 하체 볼륨을 더해 완벽한 균형감을 만들어요.' },
-          { combo: '플로럴 미디 스커트 + 화이트 크롭 블라우스 + 플랫 샌들', why: '풍성한 스커트 볼륨이 하체를 강조해 전체적으로 여성스럽고 균형잡힌 실루엣이 완성돼요.' }
-        ],
-        business: [
-          { combo: '하이웨이스트 A라인 스커트 + 터크인 블라우스 + 미드힐', why: '하이웨이스트 라인이 허리를 강조하고, A라인이 하체 볼륨을 자연스럽게 만들어줘요.' },
-          { combo: '와이드 팬츠 수트 + 심플 이너 + 펌프스', why: '와이드 수트 팬츠가 하체에 무게감을 더해 상하 균형이 완벽하게 맞아요.' }
-        ],
-        casual: [
-          { combo: '와이드 데님 + 수평 스트라이프 긴팔 티 + 스니커즈', why: '수평 스트라이프 상의가 어깨를 좁아 보이게 하고, 와이드 데님이 균형을 잡아줘요.' },
-          { combo: '팔라초 팬츠 + 무지 슬리브리스 + 크로스백', why: '넉넉한 팔라초 팬츠가 하체에 여유를 줘서 편하면서도 스타일리시한 룩이 완성돼요.' }
-        ]
+      female: {
+        inv: {
+          img: ['👗','🩱','👖'],
+          meeting: [
+            { combo: '크림 와이드 슬랙스 + 차콜 V넥 니트 + 로퍼', why: 'V넥이 어깨의 넓이를 시각적으로 줄여주고, 와이드 슬랙스가 하체 볼륨을 더해 완벽한 균형감을 만들어요.' },
+            { combo: '플로럴 미디 스커트 + 화이트 크롭 블라우스 + 플랫 샌들', why: '풍성한 스커트 볼륨이 하체를 강조해 전체적으로 여성스럽고 균형잡힌 실루엣이 완성돼요.' }
+          ],
+          business: [
+            { combo: '하이웨이스트 A라인 스커트 + 터크인 블라우스 + 미드힐', why: '하이웨이스트 라인이 허리를 강조하고, A라인이 하체 볼륨을 자연스럽게 만들어줘요.' },
+            { combo: '와이드 팬츠 수트 + 심플 이너 + 펌프스', why: '와이드 수트 팬츠가 하체에 무게감을 더해 상하 균형이 완벽하게 맞아요.' }
+          ],
+          casual: [
+            { combo: '와이드 데님 + 스트라이프 긴팔 티 + 스니커즈', why: '수평 스트라이프 상의가 어깨를 좁아 보이게 하고, 와이드 데님이 균형을 잡아줘요.' },
+            { combo: '팔라초 팬츠 + 무지 슬리브리스 + 크로스백', why: '넉넉한 팔라초 팬츠가 하체에 여유를 줘서 편하면서도 스타일리시한 룩이 완성돼요.' }
+          ]
+        },
+        tri: {
+          img: ['🧥','👔','👗'],
+          meeting: [
+            { combo: '오프숄더 블라우스 + 다크 스트레이트 팬츠 + 킬힐', why: '오프숄더로 어깨선을 드러내 상체 볼륨을 주고, 다크 하의가 하체를 슬림하게 만들어줘요.' },
+            { combo: '퍼프 슬리브 원피스 (무릎 길이) + 웨지힐', why: '퍼프 소매가 어깨를 강조하고, 무릎 길이 스커트 라인이 하체를 자연스럽게 커버해줘요.' }
+          ],
+          business: [
+            { combo: '숄더 패드 블레이저 + 슬랙스 + 로퍼', why: '블레이저 어깨 라인이 상체를 넓어 보이게 해 상하 균형을 확실하게 맞춰줘요.' },
+            { combo: '스트라이프 보트넥 블라우스 + 네이비 슬랙스 + 구두', why: '보트넥이 쇄골과 어깨를 드러내 상체에 시선을 집중시키고, 네이비 팬츠가 하체를 정돈해줘요.' }
+          ],
+          casual: [
+            { combo: '오버사이즈 후드 + 스키니 데님 + 스니커즈', why: '오버사이즈 상의가 상체 볼륨을 살리고, 스키니 데님이 탄탄한 다리 라인을 부각해줘요.' },
+            { combo: '밝은 색 크롭 재킷 + 짙은 색 조거 팬츠 + 슬리퍼', why: '밝은 상의·짙은 하의 대비 배색이 자연스럽게 시선을 상체로 이끌어요.' }
+          ]
+        },
+        rect: {
+          img: ['👗','🥻','👘'],
+          meeting: [
+            { combo: '랩 원피스 (미디 길이) + 뮬 힐 + 심플 목걸이', why: '랩 원피스 디자인이 허리를 자연스럽게 강조해 여성스럽고 세련된 실루엣을 만들어줘요.' },
+            { combo: '하이웨이스트 플리츠 스커트 + 크롭 니트 + 앵클 부츠', why: '크롭 상의 + 하이웨이스트 조합으로 허리가 잘록해 보이고 다리도 길어 보여요.' }
+          ],
+          business: [
+            { combo: '피티드 블레이저 + 하이웨이스트 팬츠 + 힐 + 벨트', why: '허리 벨트로 실루엣을 잡아줘 프로페셔널하면서도 세련된 비즈니스룩이 완성돼요.' },
+            { combo: '타이트 펜슬 스커트 + 터크인 블라우스 + 로퍼', why: '터크인과 펜슬 스커트 조합이 허리 라인을 또렷하게 강조해줘요.' }
+          ],
+          casual: [
+            { combo: '하이웨이스트 진 + 크롭 티셔츠 + 스니커즈', why: '크롭 티 + 하이웨이스트로 허리가 잘록하게 보이는 가장 기본적인 데일리 룩이에요.' },
+            { combo: '벨티드 코트 + 슬랙스 + 로퍼', why: '허리 벨트가 있는 코트가 전체 실루엣을 예쁘게 잡아주는 올인원 룩이에요.' }
+          ]
+        },
+        default: {
+          img: ['✨','👗','👠'],
+          meeting: [
+            { combo: '슬랙스 + 블라우스 + 로퍼', why: '단정하고 깔끔한 인상을 주는 무난하면서도 세련된 미팅 코디예요.' },
+            { combo: '미디 원피스 + 앵클 부츠', why: '한 벌로 완성되는 실용적인 데이트룩으로, 어떤 체형에도 잘 어울려요.' }
+          ],
+          business: [
+            { combo: '블레이저 + 슬랙스 + 힐', why: '어떤 체형에도 잘 맞는 가장 무난하고 세련된 비즈니스 캐주얼이에요.' }
+          ],
+          casual: [
+            { combo: '데님 + 단색 티셔츠 + 스니커즈', why: '가장 편하고 실용적인 기본 캐주얼 룩이에요.' }
+          ]
+        }
       },
-      tri: {
-        meeting: [
-          { combo: '오프숄더 블라우스 + 다크 스트레이트 팬츠 + 킬힐', why: '오프숄더로 어깨선을 드러내 상체 볼륨을 주고, 다크 하의가 하체를 슬림하게 만들어줘요.' },
-          { combo: '퍼프 슬리브 원피스 (무릎 길이) + 웨지힐', why: '퍼프 소매가 어깨를 강조하고, 무릎 길이 스커트 라인이 하체를 자연스럽게 커버해줘요.' }
-        ],
-        business: [
-          { combo: '숄더 패드 블레이저 + 슬랙스 + 로퍼', why: '블레이저 어깨 라인이 상체를 넓어 보이게 해 상하 균형을 확실하게 맞춰줘요.' },
-          { combo: '스트라이프 보트넥 블라우스 + 네이비 슬랙스 + 구두', why: '보트넥이 쇄골과 어깨를 드러내 상체에 시선을 집중시키고, 네이비 팬츠가 하체를 정돈해줘요.' }
-        ],
-        casual: [
-          { combo: '오버사이즈 후드 + 스키니 데님 + 스니커즈', why: '오버사이즈 상의가 상체 볼륨을 살리고, 스키니 데님이 탄탄한 다리 라인을 부각해줘요.' },
-          { combo: '밝은 색 크롭 재킷 + 짙은 색 조거 팬츠 + 슬리퍼', why: '밝은 상의·짙은 하의 대비 배색이 자연스럽게 시선을 상체로 이끌어요.' }
-        ]
-      },
-      rect: {
-        meeting: [
-          { combo: '랩 원피스 (미디 길이) + 뮬 힐 + 심플 목걸이', why: '랩 원피스 디자인이 허리를 자연스럽게 강조해 여성스럽고 세련된 실루엣을 만들어줘요.' },
-          { combo: '하이웨이스트 플리츠 스커트 + 크롭 니트 + 앵클 부츠', why: '크롭 상의 + 하이웨이스트 조합으로 허리가 잘록해 보이고 다리도 길어 보여요.' }
-        ],
-        business: [
-          { combo: '피티드 블레이저 + 하이웨이스트 팬츠 + 힐 + 벨트', why: '허리 벨트로 실루엣을 잡아줘 프로페셔널하면서도 세련된 비즈니스룩이 완성돼요.' },
-          { combo: '타이트 펜슬 스커트 + 터크인 블라우스 + 로퍼', why: '터크인과 펜슬 스커트 조합이 허리 라인을 또렷하게 강조해줘요.' }
-        ],
-        casual: [
-          { combo: '하이웨이스트 진 + 크롭 티셔츠 + 스니커즈', why: '크롭 티 + 하이웨이스트로 허리가 잘록하게 보이는 가장 기본적인 데일리 룩이에요.' },
-          { combo: '벨티드 코트 + 슬랙스 + 로퍼', why: '허리 벨트가 있는 코트가 전체 실루엣을 예쁘게 잡아주는 올인원 룩이에요.' }
-        ]
-      },
-      default: {
-        meeting: [
-          { combo: '슬랙스 + 블라우스 + 로퍼', why: '단정하고 깔끔한 인상을 주는 무난하면서도 세련된 미팅 코디예요.' },
-          { combo: '미디 원피스 + 앵클 부츠', why: '한 벌로 완성되는 실용적인 데이트룩으로, 어떤 체형에도 잘 어울려요.' }
-        ],
-        business: [
-          { combo: '블레이저 + 슬랙스 + 힐', why: '어떤 체형에도 잘 맞는 가장 무난하고 세련된 비즈니스 캐주얼이에요.' }
-        ],
-        casual: [
-          { combo: '데님 + 단색 티셔츠 + 스니커즈', why: '가장 편하고 실용적인 기본 캐주얼 룩이에요.' }
-        ]
+      male: {
+        inv: {
+          img: ['🧥','👔','👖'],
+          meeting: [
+            { combo: '슬림핏 슬랙스 + 피티드 옥스포드 셔츠 + 더비슈즈', why: '피티드 셔츠가 넓은 어깨를 활용해 V라인을 극대화하고, 슬림 슬랙스가 전체 라인을 날렵하게 잡아줘요.' },
+            { combo: '차콜 치노 + V넥 니트 + 화이트 이너 레이어드 + 로퍼', why: 'V넥 레이어드로 시선을 상체 중앙으로 모아 탄탄한 체형이 더욱 돋보여요.' }
+          ],
+          business: [
+            { combo: '피티드 투버튼 수트 + 화이트 드레스셔츠 + 슬림 타이 + 구두', why: '피티드 수트가 넓은 어깨와 좁은 허리의 V-taper를 완벽하게 드러내줘요.' },
+            { combo: '그레이 슬랙스 + 피티드 블레이저 + 터틀넥 이너', why: '터틀넥 위 블레이저 조합이 어깨 라인을 강조하면서도 세련된 레이어드 룩을 완성해요.' }
+          ],
+          casual: [
+            { combo: '슬림핏 청바지 + 포켓 티셔츠 + 레더 스니커즈', why: '심플한 티셔츠가 탄탄한 상체 라인을 자연스럽게 드러내고, 슬림핏 데님이 날렵한 하체를 만들어요.' },
+            { combo: '치노 팬츠 + 스트라이프 셔츠 + 화이트 스니커즈', why: '버티컬 스트라이프가 상체를 길어 보이게 하고, 치노가 캐주얼하면서도 단정한 느낌을 줘요.' }
+          ]
+        },
+        tri: {
+          img: ['🧥','👔','🩳'],
+          meeting: [
+            { combo: '다크 스트레이트 팬츠 + 버티컬 스트라이프 셔츠 + 구두', why: '버티컬 스트라이프가 상체를 넓어 보이게 하고, 다크 팬츠가 하체를 정돈해줘요.' },
+            { combo: '슬랙스 + 오버사이즈 재킷 + 이너 티 + 로퍼', why: '오버사이즈 재킷이 어깨 라인을 넓혀 상체 볼륨을 만들어 상하 균형을 잡아줘요.' }
+          ],
+          business: [
+            { combo: '다크 수트 + 버티컬 스트라이프 드레스셔츠 + 구두', why: '세로줄 패턴이 상체를 시각적으로 넓히고, 다크 수트가 전체 라인을 슬림하게 잡아줘요.' },
+            { combo: '더블 브레스트 블레이저 + 다크 슬랙스 + 첼시부츠', why: '더블 버튼 블레이저가 어깨를 강조해 상체에 무게감을 더해줘요.' }
+          ],
+          casual: [
+            { combo: '다크 스트레이트 데님 + 롱 카디건 + 이너 티 + 스니커즈', why: '롱 카디건이 상하체를 연결해 전체 라인을 길어 보이게 하고, 다크 데님이 하체를 정돈해요.' },
+            { combo: '블랙 조거 팬츠 + 오버사이즈 후드집업 + 러닝화', why: '오버사이즈 상의가 상체 볼륨을 살리고, 블랙 하의가 하체를 슬림하게 만들어줘요.' }
+          ]
+        },
+        rect: {
+          img: ['👔','🧥','👖'],
+          meeting: [
+            { combo: '와이드 슬랙스 + 피티드 니트 + 로퍼', why: '피티드 니트가 상체 라인을 깔끔하게 잡고, 와이드 슬랙스가 여유로운 분위기를 연출해요.' },
+            { combo: '테일러드 팬츠 + 크루넥 니트 + 더비슈즈', why: '크루넥 니트의 가로 라인이 어깨를 넓어 보이게 해 균형잡힌 체형을 더욱 돋보여요.' }
+          ],
+          business: [
+            { combo: '클래식 수트 + 드레스셔츠 + 포켓 스퀘어 + 구두', why: '직사각형 체형은 클래식 수트가 가장 잘 어울려요. 단정하고 신뢰감 있는 인상을 줘요.' },
+            { combo: '블레이저 + 치노 팬츠 + 로퍼', why: '블레이저+치노 조합이 스마트 캐주얼의 정석으로, 균형잡힌 체형에 잘 맞아요.' }
+          ],
+          casual: [
+            { combo: '배기 데님 + 박시 티셔츠 + 청키 스니커즈', why: '박시 실루엣이 균형잡힌 체형에 여유로운 분위기를 더해 트렌디한 룩을 완성해요.' },
+            { combo: '트랙 팬츠 + 크루넥 스웨트셔츠 + 러닝화', why: '전체적으로 여유있는 실루엣이 균형잡힌 체형에 편안하면서도 스포티한 느낌을 줘요.' }
+          ]
+        },
+        default: {
+          img: ['✨','👔','👟'],
+          meeting: [
+            { combo: '슬랙스 + 깔끔한 셔츠 + 로퍼', why: '단정하고 신뢰감을 주는 기본 미팅 코디로, 어떤 체형에도 잘 어울려요.' },
+            { combo: '치노 팬츠 + 니트 + 더비슈즈', why: '스마트 캐주얼의 정석으로 첫인상을 좋게 만들어줘요.' }
+          ],
+          business: [
+            { combo: '블레이저 + 슬랙스 + 드레스셔츠 + 구두', why: '어떤 체형에도 잘 맞는 가장 무난하고 세련된 비즈니스룩이에요.' }
+          ],
+          casual: [
+            { combo: '청바지 + 단색 티셔츠 + 스니커즈', why: '가장 편하고 실용적인 기본 캐주얼 룩이에요.' }
+          ]
+        }
       }
     },
     en: {
-      inv: {
-        meeting: [
-          { combo: 'Cream wide-leg trousers + charcoal V-neck knit + loafers', why: 'The V-neck visually narrows broad shoulders; wide trousers add hip volume for a perfectly balanced look.' },
-          { combo: 'Floral midi skirt + white crop blouse + flat sandals', why: 'The full skirt adds lower-body volume, creating a feminine and balanced silhouette.' }
-        ],
-        business: [
-          { combo: 'High-waist A-line skirt + tucked-in blouse + mid heels', why: 'High-waist line defines the waist; A-line naturally adds volume to the lower half.' },
-          { combo: 'Wide-leg pantsuit + simple inner + pumps', why: 'Wide-leg trousers add lower-body weight to balance the broader shoulders perfectly.' }
-        ],
-        casual: [
-          { combo: 'Wide-leg denim + horizontal stripe long-sleeve + sneakers', why: 'Horizontal stripes visually reduce shoulder width; wide denim balances the silhouette.' },
-          { combo: 'Palazzo pants + solid sleeveless top + crossbody bag', why: 'Relaxed palazzo pants give lower-body ease for an effortless yet stylish everyday look.' }
-        ]
+      female: {
+        inv: {
+          img: ['👗','🩱','👖'],
+          meeting: [
+            { combo: 'Cream wide-leg trousers + charcoal V-neck knit + loafers', why: 'The V-neck visually narrows broad shoulders; wide trousers add lower-body volume for perfect balance.' },
+            { combo: 'Floral midi skirt + white crop blouse + flat sandals', why: 'The full skirt adds lower-body volume, creating a feminine and balanced silhouette.' }
+          ],
+          business: [
+            { combo: 'High-waist A-line skirt + tucked-in blouse + mid heels', why: 'High-waist line defines the waist; A-line naturally adds volume to the lower half.' },
+            { combo: 'Wide-leg pantsuit + simple inner + pumps', why: 'Wide-leg trousers add lower-body weight to perfectly balance the broader shoulders.' }
+          ],
+          casual: [
+            { combo: 'Wide-leg denim + striped long-sleeve + sneakers', why: 'Horizontal stripes visually reduce shoulder width; wide denim balances the silhouette.' },
+            { combo: 'Palazzo pants + solid sleeveless top + crossbody bag', why: 'Relaxed palazzo pants give lower-body ease for an effortless yet stylish look.' }
+          ]
+        },
+        tri: {
+          img: ['🧥','👔','👗'],
+          meeting: [
+            { combo: 'Off-shoulder blouse + dark straight trousers + heels', why: 'Off-shoulder reveals shoulders and collarbone for upper-body volume; dark bottoms slim the lower half.' },
+            { combo: 'Puff-sleeve midi dress + wedge heels', why: 'Puff sleeves emphasize shoulders; midi length softly covers the lower body.' }
+          ],
+          business: [
+            { combo: 'Shoulder-pad blazer + slacks + loafers', why: 'Blazer shoulder lines broaden the upper body, creating a strong balance.' },
+            { combo: 'Striped boat-neck blouse + navy slacks + oxford shoes', why: 'Boat neck highlights the collarbone and draws eyes upward; navy slacks tidy the lower half.' }
+          ],
+          casual: [
+            { combo: 'Oversized hoodie + skinny jeans + sneakers', why: 'Oversized top adds upper-body volume; skinny jeans elongate and highlight the legs.' },
+            { combo: 'Bright crop jacket + dark jogger pants + slides', why: 'The light top / dark bottom contrast naturally draws attention to the upper body.' }
+          ]
+        },
+        rect: {
+          img: ['👗','🥻','👘'],
+          meeting: [
+            { combo: 'Wrap dress (midi length) + mule heels + simple necklace', why: 'Wrap dress naturally cinches the waist for a feminine and polished silhouette.' },
+            { combo: 'High-waist pleated skirt + crop knit + ankle boots', why: 'Crop top + high-waist makes the waist look defined and legs appear longer.' }
+          ],
+          business: [
+            { combo: 'Fitted blazer + high-waist trousers + heels + belt', why: 'A waist belt shapes the silhouette beautifully — professional yet chic.' },
+            { combo: 'Pencil skirt + tucked-in blouse + loafers', why: 'Tuck-in + pencil skirt clearly defines the waist line for a sleek look.' }
+          ],
+          casual: [
+            { combo: 'High-waist jeans + crop tee + sneakers', why: 'Crop tee + high-waist is the essential formula for a defined, flattering waist.' },
+            { combo: 'Belted coat + slacks + loafers', why: 'A waist-belted coat shapes the entire silhouette — a complete one-look outfit.' }
+          ]
+        },
+        default: {
+          img: ['✨','👗','👠'],
+          meeting: [
+            { combo: 'Slacks + blouse + loafers', why: 'Clean and polished — a reliable first-meeting outfit for any body type.' },
+            { combo: 'Midi dress + ankle boots', why: 'One-piece simplicity for an effortless date look that works universally.' }
+          ],
+          business: [
+            { combo: 'Blazer + slacks + heels', why: 'The universally flattering business casual formula.' }
+          ],
+          casual: [
+            { combo: 'Denim + solid tee + sneakers', why: 'The most versatile and comfortable everyday casual look.' }
+          ]
+        }
       },
-      tri: {
-        meeting: [
-          { combo: 'Off-shoulder blouse + dark straight trousers + heels', why: 'Off-shoulder reveals the shoulders and collarbone for upper-body volume; dark bottoms slim the hips.' },
-          { combo: 'Puff-sleeve midi dress + wedge heels', why: 'Puff sleeves emphasize shoulders; the midi length softly covers the lower body.' }
-        ],
-        business: [
-          { combo: 'Shoulder-pad blazer + slacks + loafers', why: 'Blazer shoulder lines broaden the upper body, creating a strong shoulder-to-hip balance.' },
-          { combo: 'Striped boat-neck blouse + navy slacks + oxford shoes', why: 'Boat neck highlights the collarbone and draws eyes upward; navy slacks keep the lower half tidy.' }
-        ],
-        casual: [
-          { combo: 'Oversized hoodie + skinny jeans + sneakers', why: 'Oversized top adds upper-body volume while skinny jeans elongate and highlight the legs.' },
-          { combo: 'Bright crop jacket + dark jogger pants + slides', why: 'The light top / dark bottom contrast naturally draws attention to the upper body.' }
-        ]
-      },
-      rect: {
-        meeting: [
-          { combo: 'Wrap dress (midi length) + mule heels + simple necklace', why: 'Wrap dress design naturally cinches the waist for a feminine and polished silhouette.' },
-          { combo: 'High-waist pleated skirt + crop knit + ankle boots', why: 'Crop top + high-waist combo makes the waist look defined and legs appear longer.' }
-        ],
-        business: [
-          { combo: 'Fitted blazer + high-waist trousers + heels + belt', why: 'A waist belt shapes the silhouette beautifully — professional yet chic.' },
-          { combo: 'Pencil skirt + tucked-in blouse + loafers', why: 'Tuck-in + pencil skirt clearly defines the waist line for a sleek look.' }
-        ],
-        casual: [
-          { combo: 'High-waist jeans + crop tee + sneakers', why: 'Crop tee + high-waist is the essential daily formula for a defined, flattering waist.' },
-          { combo: 'Belted coat + slacks + loafers', why: 'A waist-belted coat shapes the entire silhouette — a complete, stylish one-look outfit.' }
-        ]
-      },
-      default: {
-        meeting: [
-          { combo: 'Slacks + blouse + loafers', why: 'Clean and polished — a reliably flattering first-meeting outfit for any body type.' },
-          { combo: 'Midi dress + ankle boots', why: 'One-piece simplicity for an effortless date look that works universally.' }
-        ],
-        business: [
-          { combo: 'Blazer + slacks + heels', why: 'The universally flattering business casual formula.' }
-        ],
-        casual: [
-          { combo: 'Denim + solid tee + sneakers', why: 'The most versatile and comfortable everyday casual look.' }
-        ]
+      male: {
+        inv: {
+          img: ['🧥','👔','👖'],
+          meeting: [
+            { combo: 'Slim-fit slacks + fitted Oxford shirt + derby shoes', why: 'Fitted shirt maximizes the V-taper of broad shoulders; slim slacks keep the silhouette sharp.' },
+            { combo: 'Charcoal chinos + V-neck knit + white inner layer + loafers', why: 'V-neck layering draws attention to the center of the chest, highlighting the athletic build.' }
+          ],
+          business: [
+            { combo: 'Fitted 2-button suit + white dress shirt + slim tie + oxford shoes', why: 'Fitted suit perfectly showcases the broad shoulders and slim waist V-taper.' },
+            { combo: 'Grey slacks + fitted blazer + turtleneck inner', why: 'Turtleneck under blazer emphasizes the shoulder line while creating a polished layered look.' }
+          ],
+          casual: [
+            { combo: 'Slim-fit jeans + pocket tee + leather sneakers', why: 'Simple tee naturally reveals the upper body lines; slim jeans create a sharp lower silhouette.' },
+            { combo: 'Chino pants + striped shirt + white sneakers', why: 'Vertical stripes elongate the upper body; chinos give a casual yet neat look.' }
+          ]
+        },
+        tri: {
+          img: ['🧥','👔','🩳'],
+          meeting: [
+            { combo: 'Dark straight trousers + vertical stripe shirt + dress shoes', why: 'Vertical stripes visually broaden the upper body; dark trousers keep the lower half tidy.' },
+            { combo: 'Slacks + oversized jacket + inner tee + loafers', why: 'Oversized jacket adds shoulder width to create upper-body volume and balance.' }
+          ],
+          business: [
+            { combo: 'Dark suit + vertical stripe dress shirt + oxford shoes', why: 'Vertical pattern broadens the upper body visually; dark suit streamlines the overall silhouette.' },
+            { combo: 'Double-breasted blazer + dark slacks + chelsea boots', why: 'Double-button blazer emphasizes the shoulders, adding upper-body structure.' }
+          ],
+          casual: [
+            { combo: 'Dark straight denim + long cardigan + inner tee + sneakers', why: 'Long cardigan connects the upper and lower halves to elongate the silhouette; dark denim tidies the lower body.' },
+            { combo: 'Black jogger pants + oversized hoodie + running shoes', why: 'Oversized top adds upper-body volume; black bottoms keep the lower half slim.' }
+          ]
+        },
+        rect: {
+          img: ['👔','🧥','👖'],
+          meeting: [
+            { combo: 'Wide-leg slacks + fitted knit + loafers', why: 'Fitted knit cleanly defines the upper body; wide slacks give a relaxed and stylish feel.' },
+            { combo: 'Tailored trousers + crew-neck knit + derby shoes', why: 'Crew-neck\'s horizontal line visually widens shoulders, enhancing the balanced frame.' }
+          ],
+          business: [
+            { combo: 'Classic suit + dress shirt + pocket square + shoes', why: 'Balanced body types suit classic suits best — creates a trustworthy, polished impression.' },
+            { combo: 'Blazer + chino pants + loafers', why: 'Blazer + chinos is the smart casual standard, perfectly suited to balanced proportions.' }
+          ],
+          casual: [
+            { combo: 'Baggy denim + boxy tee + chunky sneakers', why: 'Boxy silhouette adds a relaxed, trendy feel that works beautifully with balanced proportions.' },
+            { combo: 'Track pants + crew-neck sweatshirt + running shoes', why: 'Relaxed silhouette gives a comfortable, sporty look that complements a balanced frame.' }
+          ]
+        },
+        default: {
+          img: ['✨','👔','👟'],
+          meeting: [
+            { combo: 'Slacks + clean shirt + loafers', why: 'Neat and reliable — a universally flattering first-meeting outfit.' },
+            { combo: 'Chino pants + knit + derby shoes', why: 'Smart casual standard that creates a great first impression.' }
+          ],
+          business: [
+            { combo: 'Blazer + slacks + dress shirt + shoes', why: 'The universally flattering business look for any body type.' }
+          ],
+          casual: [
+            { combo: 'Jeans + solid tee + sneakers', why: 'The most versatile and comfortable everyday casual look.' }
+          ]
+        }
       }
     }
   };
@@ -1676,14 +1826,15 @@
     const w = measurements.weight?.val;
     const shoulder = measurements.shoulder?.width;
     const waist = measurements.waist?.circ;
-    const hip = measurements.hip?.circ;
+    const waistCm = measurements.waist?.circ;   // already converted to cm
     const upperLeg = measurements['upper-leg']?.len;
     const lowerLeg = measurements['lower-leg']?.len;
 
     if (!h && !w && !shoulder) { showToast(t('toast-need-data')); return; }
 
     const lc = i18n[currentLang] || i18n.en;
-    const occ = occasionOutfits[currentLang] || occasionOutfits.en;
+    const langOcc = occasionOutfits[currentLang] || occasionOutfits.en;
+    const genderOcc = langOcc[currentGender] || langOcc.female;
 
     // === BMI ===
     let bmiStr = '';
@@ -1694,12 +1845,14 @@
       bmiStr = `BMI ${bmiVal} — ${bmiLabel}`;
     }
 
-    // === Body type ===
+    // === Body type (shoulder width vs waist cm) ===
+    // shoulder width × 2 ≈ shoulder circumference, compare to waist circumference
     let bodyType = 'default', ratio = null;
-    if (shoulder && hip) {
-      ratio = +(parseFloat(shoulder) / parseFloat(hip)).toFixed(2);
-      if (ratio > 1.1) bodyType = 'inv';
-      else if (ratio < 0.9) bodyType = 'tri';
+    if (shoulder && waistCm) {
+      const sw2 = parseFloat(shoulder) * 2;
+      ratio = +(sw2 / parseFloat(waistCm)).toFixed(2);
+      if (ratio > 1.2) bodyType = 'inv';      // broad shoulders vs waist
+      else if (ratio < 0.95) bodyType = 'tri'; // wider waist vs shoulders
       else bodyType = 'rect';
     }
 
@@ -1726,24 +1879,20 @@
       const legPct = Math.min(100, Math.round(legRatio * 1.6));
       stats.push({ label: lc['prop-leg'] || i18n.en['prop-leg'], val: `${legRatio}%`, pct: legPct, note: legRatio >= 50 ? '↑' : legRatio >= 46 ? '~' : '↓' });
     }
-    if (waist && hip) {
-      const whr = +(parseFloat(waist) / parseFloat(hip)).toFixed(2);
-      const whrPct = Math.min(100, Math.round(whr * 100));
-      stats.push({ label: lc['prop-whr'] || i18n.en['prop-whr'], val: `${whr}`, pct: whrPct });
-    }
-
     // === Occasion data ===
-    const occData = (occ[bodyType] || occ.default);
+    const occData = genderOcc[bodyType] || genderOcc.default;
     const occTitle = lc['occasion-title'] || i18n.en['occasion-title'];
     const occMeeting = lc['occasion-meeting'] || i18n.en['occasion-meeting'];
     const occBusiness = lc['occasion-business'] || i18n.en['occasion-business'];
     const occCasual = lc['occasion-casual'] || i18n.en['occasion-casual'];
     const whyLabel = lc['outfit-why-label'] || i18n.en['outfit-why-label'];
+    const imgs = occData.img || ['👗','👔','👟'];
+    const genderEmoji = currentGender === 'male' ? '👨' : '👩';
 
     // === Render badge ===
     const badgeEmojiMap = { inv: '🔺', tri: '🔻', rect: '⬛', default: '📐' };
     document.getElementById('analysis-badge').innerHTML = typeName
-      ? `<div class="body-type-badge"><span>${badgeEmojiMap[bodyType] || '📐'}</span><span class="badge-label">${typeName}</span></div>`
+      ? `<div class="body-type-badge"><span>${genderEmoji}</span><span>${badgeEmojiMap[bodyType] || '📐'}</span><span class="badge-label">${typeName}</span></div>`
       : '';
 
     // === Render summary ===
@@ -1756,9 +1905,20 @@
     document.getElementById('bmi-text').textContent = bmiStr;
 
     // === Proportion stats ===
-    if (stats.length > 0) {
+    const statItems = [];
+    if (shoulder && waistCm) {
+      const pct = Math.min(100, Math.round(ratio * 50));
+      statItems.push({ label: lc['prop-shoulder'] || i18n.en['prop-shoulder'], val: `${ratio}`, pct });
+    }
+    if (h && upperLeg && lowerLeg) {
+      const legLen = parseFloat(upperLeg) + parseFloat(lowerLeg);
+      const legRatio = +(legLen / parseFloat(h) * 100).toFixed(1);
+      const legPct = Math.min(100, Math.round(legRatio * 1.6));
+      statItems.push({ label: lc['prop-leg'] || i18n.en['prop-leg'], val: `${legRatio}%`, pct: legPct, note: legRatio >= 50 ? '↑' : legRatio >= 46 ? '~' : '↓' });
+    }
+    if (statItems.length > 0) {
       document.getElementById('analysis-props').innerHTML = `<div class="prop-stats">${
-        stats.map(s => `<div class="prop-row">
+        statItems.map(s => `<div class="prop-row">
           <div class="prop-label">${s.label}<span>${s.val}${s.note ? ' ' + s.note : ''}</span></div>
           <div class="prop-track"><div class="prop-fill" style="width:${s.pct}%"></div></div>
         </div>`).join('')
@@ -1768,9 +1928,10 @@
     }
 
     // === Occasion recommendations ===
-    const buildOutfits = (arr) => arr.map(item =>
+    const buildOutfits = (arr, occImg) => arr.map((item, i) =>
       `<div class="outfit-item">
-        <div class="outfit-combo">👗 ${item.combo}</div>
+        <div class="outfit-visual">${occImg[i % occImg.length] || '✨'}</div>
+        <div class="outfit-combo">${item.combo}</div>
         <div class="outfit-why"><strong>${whyLabel}:</strong> ${item.why}</div>
       </div>`
     ).join('');
@@ -1783,9 +1944,9 @@
           <button class="occ-tab" onclick="switchOccTab(this,'occ-business')">${occBusiness}</button>
           <button class="occ-tab" onclick="switchOccTab(this,'occ-casual')">${occCasual}</button>
         </div>
-        <div id="occ-meeting" class="occ-panel active">${buildOutfits(occData.meeting)}</div>
-        <div id="occ-business" class="occ-panel">${buildOutfits(occData.business)}</div>
-        <div id="occ-casual" class="occ-panel">${buildOutfits(occData.casual)}</div>
+        <div id="occ-meeting" class="occ-panel active">${buildOutfits(occData.meeting, imgs)}</div>
+        <div id="occ-business" class="occ-panel">${buildOutfits(occData.business, imgs)}</div>
+        <div id="occ-casual" class="occ-panel">${buildOutfits(occData.casual, imgs)}</div>
       </div>`;
 
     // === Best / Worst ===
@@ -1819,6 +1980,7 @@
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
     ['analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','analysis-occasions','best-styles','worst-styles'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+    setGender('female');
     document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
     showToast(t('toast-reset'));
