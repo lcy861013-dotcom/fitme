@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FITME — Global Body Proportion Analysis Platform</title>
   <meta name="description" content="FITME는 신체 치수를 입력하면 나만의 핏을 분석해주는 글로벌 바디 비율 분석 플랫폼입니다.">
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0a0a;
@@ -19,7 +19,7 @@
       --border: #2a2a2a;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', 'DM Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC', 'Noto Sans Thai', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'DM Sans', sans-serif; }
 
     /* HEADER */
     header {
@@ -222,8 +222,19 @@
     <select id="lang-select" class="lang-switcher" onchange="setLanguage(this.value)">
       <option value="ko">🇰🇷 한국어</option>
       <option value="en">🇺🇸 English</option>
-      <option value="jp">🇯🇵 日本語</option>
-      <option value="cn">🇨🇳 中文</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="zh">🇨🇳 中文</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="pt">🇧🇷 Português</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="ru">🇷🇺 Русский</option>
+      <option value="ar">🇸🇦 العربية</option>
+      <option value="hi">🇮🇳 हिन्दी</option>
+      <option value="th">🇹🇭 ภาษาไทย</option>
+      <option value="id">🇮🇩 Indonesia</option>
+      <option value="vi">🇻🇳 Tiếng Việt</option>
     </select>
     <nav>
       <a onclick="showPage('home')" data-i18n="nav-guide">측정 가이드</a>
@@ -248,25 +259,25 @@
   <section class="guide-content" id="guide">
     <div class="section-header">
       <div class="section-tag">HOW TO MEASURE</div>
-      <h2 class="section-title">키가 같아도, 핏은 다르다</h2>
-      <p style="font-size:14px; color:var(--muted); margin-top:10px;">다리 길이, 팔 길이, 어깨 너비 — 진짜 비율은 직접 재야 알 수 있습니다</p>
+      <h2 class="section-title" id="guide-section-title">키가 같아도, 핏은 다르다</h2>
+      <p id="guide-section-sub" style="font-size:14px; color:var(--muted); margin-top:10px;">다리 길이, 팔 길이, 어깨 너비 — 진짜 비율은 직접 재야 알 수 있습니다</p>
     </div>
     <div class="guide-grid">
       <div class="guide-card featured">
-        <h3>📱 줄자 없이 지금 바로 — 스마트폰으로 내 비율 재기</h3>
-        <p>줄자가 없어도 괜찮아요. 지금 손에 든 스마트폰 하나면 충분합니다.<br>최신 스마트폰의 평균 세로 길이는 <strong style="color:var(--accent);">약 15cm</strong>. 이걸 자로 활용하면 됩니다.</p>
+        <h3 id="guide-card-title">📱 줄자 없이 지금 바로 — 스마트폰으로 내 비율 재기</h3>
+        <p id="guide-card-desc">줄자가 없어도 괜찮아요. 지금 손에 든 스마트폰 하나면 충분합니다.<br>최신 스마트폰의 평균 세로 길이는 <strong style="color:var(--accent);">약 15cm</strong>. 이걸 자로 활용하면 됩니다.</p>
         <div class="guide-steps">
           <div class="guide-step">
             <div class="step-num">01</div>
-            <p>스마트폰을 세로로 잡고 측정 부위에 대어 몇 번 들어가는지 세세요</p>
+            <p id="guide-step1-p">스마트폰을 세로로 잡고 측정 부위에 대어 몇 번 들어가는지 세세요</p>
           </div>
           <div class="guide-step">
             <div class="step-num">02</div>
-            <p>횟수 × 15cm = 해당 부위 길이<br>예) 3번 → 약 45cm</p>
+            <p id="guide-step2-p">횟수 × 15cm = 해당 부위 길이<br>예) 3번 → 약 45cm</p>
           </div>
           <div class="guide-step">
             <div class="step-num">03</div>
-            <p>측정 결과를 왼쪽 인체 도형에 입력하면 비율 분석 완료!</p>
+            <p id="guide-step3-p">측정 결과를 왼쪽 인체 도형에 입력하면 비율 분석 완료!</p>
           </div>
         </div>
       </div>
@@ -363,14 +374,14 @@
           <div class="form-title">HEIGHT / 키</div>
           <div class="form-desc">전체 신장을 입력하세요.</div>
           <div class="input-group"><label class="input-label">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174"></div>
-          <button class="btn btn-primary" onclick="savePart('height')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('height')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-weight">
           <div class="form-title">WEIGHT / 체중</div>
           <div class="form-desc">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
           <div class="input-group"><label class="input-label">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68"></div>
-          <button class="btn btn-primary" onclick="savePart('weight')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('weight')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-head">
@@ -386,14 +397,14 @@
               <div class="radio-btn" onclick="selectRadio('hat','FREE')">FREE</div>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="savePart('head')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('head')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-shoulder">
           <div class="form-title">SHOULDER / 어깨</div>
           <div class="form-desc">어깨 끝에서 끝까지 너비를 측정하세요.</div>
           <div class="input-group"><label class="input-label">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44"></div>
-          <button class="btn btn-primary" onclick="savePart('shoulder')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('shoulder')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-chest">
@@ -410,35 +421,35 @@
               <div class="radio-btn" onclick="selectRadio('top','2XL')">2XL</div>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="savePart('chest')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('chest')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-arm">
           <div class="form-title">UPPER ARM / 상완</div>
           <div class="form-desc">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32"></div>
-          <button class="btn btn-primary" onclick="savePart('upper-arm')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('upper-arm')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-lower-arm">
           <div class="form-title">LOWER ARM / 하완</div>
           <div class="form-desc">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26"></div>
-          <button class="btn btn-primary" onclick="savePart('lower-arm')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('lower-arm')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-waist">
           <div class="form-title">WAIST / 허리</div>
           <div class="form-desc">가장 얇은 허리 부분의 둘레를 측정하세요.</div>
           <div class="input-group"><label class="input-label">허리 둘레 (cm)</label><input class="input-field" type="number" id="waist-circ" placeholder="78"></div>
-          <button class="btn btn-primary" onclick="savePart('waist')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('waist')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-hip">
           <div class="form-title">HIP / 골반</div>
           <div class="form-desc">골반의 가장 넓은 부분의 둘레를 측정하세요.</div>
           <div class="input-group"><label class="input-label">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="92"></div>
-          <button class="btn btn-primary" onclick="savePart('hip')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('hip')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-leg">
@@ -446,14 +457,14 @@
           <div class="form-desc">골반에서 무릎까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42"></div>
           <div class="input-group"><label class="input-label">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54"></div>
-          <button class="btn btn-primary" onclick="savePart('upper-leg')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('upper-leg')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-lower-leg">
           <div class="form-title">SHIN / 종아리</div>
           <div class="form-desc">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38"></div>
-          <button class="btn btn-primary" onclick="savePart('lower-leg')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('lower-leg')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-foot">
@@ -469,12 +480,12 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" onclick="savePart('foot')">저장하기</button>
+          <button class="btn btn-primary btn-save" onclick="savePart('foot')">저장하기</button>
         </div>
 
         <div class="analysis-card" id="analysis-result">
           <div class="analysis-header">
-            <div class="form-title" style="color:var(--text);">분석 리포트</div>
+            <div class="form-title" id="analysis-report-title" style="color:var(--text);">분석 리포트</div>
             <div class="share-group">
               <button class="share-btn" onclick="copyLink()">🔗</button>
             </div>
@@ -482,40 +493,40 @@
           <p id="analysis-text" style="font-size:14px; margin:12px 0; color:var(--accent); line-height:1.7;"></p>
           <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:16px;"></p>
           <div class="style-section">
-            <h4>✨ BEST 스타일 추천</h4>
+            <h4 id="analysis-best-title">✨ BEST 스타일 추천</h4>
             <div class="style-grid" id="best-styles"></div>
-            <h4 style="margin-top:16px;">⚠️ 주의할 스타일</h4>
+            <h4 id="analysis-worst-title" style="margin-top:16px;">⚠️ 주의할 스타일</h4>
             <div class="style-grid" id="worst-styles"></div>
           </div>
-          <p style="font-size:11px; color:var(--muted); margin-top:16px;">*입력된 수치 기반의 통계적 분석 결과입니다.</p>
+          <p id="analysis-disclaimer" style="font-size:11px; color:var(--muted); margin-top:16px;">*입력된 수치 기반의 통계적 분석 결과입니다.</p>
         </div>
       </div>
 
       <div class="progress-bar">
-        <div class="progress-label"><span>입력 완료</span><span id="progress-text">0 / 12</span></div>
+        <div class="progress-label"><span id="progress-label-text">입력 완료</span><span id="progress-text">0 / 12</span></div>
         <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
       </div>
 
       <div class="saved-list" id="saved-list">
-        <div class="saved-list-title">저장된 측정값</div>
+        <div class="saved-list-title" id="saved-list-title">저장된 측정값</div>
         <div id="saved-items"></div>
       </div>
 
       <div class="panel-actions">
-        <button class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
-        <button class="btn btn-outline" onclick="resetAll()">초기화</button>
+        <button id="btn-analyze" class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
+        <button id="btn-reset" class="btn btn-outline" onclick="resetAll()">초기화</button>
       </div>
     </div>
   </div>
 
   <footer>
     <div class="footer-links">
-      <a onclick="showPage('privacy')">개인정보처리방침</a>
-      <a onclick="showPage('terms')">이용약관</a>
-      <a onclick="showPage('about')">About FITME</a>
-      <a href="mailto:fitme.contact@gmail.com">Contact Us</a>
+      <a onclick="showPage('privacy')" data-i18n="footer-privacy">개인정보처리방침</a>
+      <a onclick="showPage('terms')" data-i18n="footer-terms">이용약관</a>
+      <a onclick="showPage('about')" data-i18n="footer-about">About FITME</a>
+      <a href="mailto:fitme.contact@gmail.com" data-i18n="footer-contact">Contact Us</a>
     </div>
-    <p class="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
+    <p class="footer-copy" data-i18n="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
   </footer>
 </div>
 
@@ -749,6 +760,647 @@
 <div class="toast" id="toast"></div>
 
 <script>
+  // ============================================================
+  // I18N — 15 languages
+  // ============================================================
+  const i18n = {
+    ko: {
+      'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-about':'About',
+      'hero-tag':'글로벌 바디 분석 플랫폼',
+      'hero-sub':'신체 치수를 입력하면 나만의 핏을 분석해드립니다.<br>패션 스타일 추천부터 비율 분석까지.',
+      'hero-btn':'시작하기 →',
+      'guide-section-title':'키가 같아도, 핏은 다르다',
+      'guide-section-sub':'다리 길이, 팔 길이, 어깨 너비 — 진짜 비율은 직접 재야 알 수 있습니다',
+      'guide-card-title':'📱 줄자 없이 지금 바로 — 스마트폰으로 내 비율 재기',
+      'guide-card-desc':'줄자가 없어도 괜찮아요. 지금 손에 든 스마트폰 하나면 충분합니다.<br>최신 스마트폰의 평균 세로 길이는 <strong style="color:var(--accent);">약 15cm</strong>. 이걸 자로 활용하면 됩니다.',
+      'guide-step1':'스마트폰을 세로로 잡고 측정 부위에 대어 몇 번 들어가는지 세세요',
+      'guide-step2':'횟수 × 15cm = 해당 부위 길이<br>예) 3번 → 약 45cm',
+      'guide-step3':'측정 결과를 왼쪽 인체 도형에 입력하면 비율 분석 완료!',
+      'blog-title':'패션 & 핏 가이드',
+      'blog1-title':'나에게 맞는 팬츠 핏 찾기','blog1-desc':'슬림핏, 와이드핏, 테이퍼드핏... 체형에 따라 어떤 팬츠가 어울리는지 알아보세요.',
+      'blog2-title':'발볼 넓은 분들을 위한 신발 가이드','blog2-desc':'발볼이 넓어서 신발 고르기 힘드셨나요? 브랜드별 발볼 너비 비교 가이드입니다.',
+      'blog3-title':'황금비율 체형 만들기','blog3-desc':'어깨 너비, 허리, 골반 비율로 내 체형 타입을 파악하고 최적의 스타일을 찾아보세요.',
+      'section-label':'부위를 클릭하여 측정값을 입력하세요',
+      'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
+      'placeholder-text':'왼쪽 인체 도형에서<br>부위를 클릭해 주세요',
+      'save-btn':'저장하기','analyze-btn':'🔥 신체 비율 분석하기','reset-btn':'초기화',
+      'progress-label':'입력 완료','saved-list-title':'저장된 측정값',
+      'analysis-report-title':'분석 리포트','analysis-best':'✨ BEST 스타일 추천','analysis-worst':'⚠️ 주의할 스타일',
+      'analysis-disclaimer':'*입력된 수치 기반의 통계적 분석 결과입니다.',
+      'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'About FITME','footer-contact':'Contact Us',
+      'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'toast-enter-value':'값을 입력해주세요!','toast-saved':' 저장 완료! ✓','toast-link':'링크 복사됨! 🔗',
+      'toast-need-data':'먼저 키, 체중, 어깨 너비를 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
+      'confirm-reset':'모든 측정값을 초기화할까요?',
+      'parts':{ height:'키', weight:'체중', head:'머리', shoulder:'어깨', chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완', waist:'허리', hip:'골반', 'upper-leg':'허벅지', 'lower-leg':'종아리', foot:'발' },
+      'titles':{ height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리', shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴', 'upper-arm':'UPPER ARM / 상완', 'lower-arm':'LOWER ARM / 하완', waist:'WAIST / 허리', hip:'HIP / 골반', 'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발' },
+      'bmi':['저체중','정상 체중 ✓','과체중','비만'],
+      'body-inv':'어깨가 골반보다 넓은 역삼각형 체형입니다. (어깨/골반: {r})','body-tri':'골반이 어깨보다 넓은 삼각형 체형입니다. (어깨/골반: {r})','body-rect':'어깨와 골반이 균형잡힌 직사각형/모래시계 체형입니다. (비율: {r})',
+      'body-default':'더 많은 측정값을 입력하면 정확한 분석이 가능합니다.',
+      'best-inv':['와이드 팬츠 / 하의 볼륨','밝은 색상 하의','스트레이트핏 팬츠'],
+      'worst-inv':['라글란 소매 상의','패드 어깨 재킷','넓은 네크라인'],
+      'best-tri':['오버사이즈 상의','밝은 색상 상의','어깨 강조 디자인'],
+      'worst-tri':['타이트한 미니스커트','밝은 색상 하의','낮은 허리선 팬츠'],
+      'best-rect':['허리 강조 코디','벨트 활용','피티드 상의'],
+      'worst-rect':['루즈핏 올인원','허리 라인 없는 원피스'],
+      'best-def':['레귤러핏 팬츠','심플한 단색 상의'],'worst-def':['극단적으로 타이트한 의류']
+    },
+    en: {
+      'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
+      'hero-tag':'Global Body Analysis Platform',
+      'hero-sub':'Enter your measurements to find your perfect fit.<br>Fashion recommendations & proportion analysis.',
+      'hero-btn':'Get Started →',
+      'guide-section-title':'Same Height, Different Fit',
+      'guide-section-sub':'Leg length, arm length, shoulder width — true proportions can only be known by measuring',
+      'guide-card-title':'📱 Measure Right Now — Using Your Smartphone',
+      'guide-card-desc':'No measuring tape? No problem. Your smartphone is all you need.<br>Average smartphone length is about <strong style="color:var(--accent);">15cm</strong> — use it as a ruler.',
+      'guide-step1':'Hold your phone vertically and count how many times it fits along the body part',
+      'guide-step2':'Count × 15cm = length of that part<br>e.g. 3 times → ~45cm',
+      'guide-step3':'Enter the measurements in the body diagram on the left to get your analysis!',
+      'blog-title':'Fashion & Fit Guide',
+      'blog1-title':'Find Your Perfect Pants Fit','blog1-desc':'Slim fit, wide fit, tapered fit... find out which pants suit your body type.',
+      'blog2-title':'Shoe Guide for Wide Feet','blog2-desc':'Struggling to find shoes for wide feet? A brand-by-brand width comparison guide.',
+      'blog3-title':'Achieving the Golden Ratio Body','blog3-desc':'Identify your body type with shoulder, waist and hip ratios and find your ideal style.',
+      'section-label':'Click a body part to enter measurements',
+      'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
+      'placeholder-text':'Click a body part<br>on the left to start',
+      'save-btn':'Save','analyze-btn':'🔥 Analyze My Proportions','reset-btn':'Reset',
+      'progress-label':'Completed','saved-list-title':'Saved Measurements',
+      'analysis-report-title':'Analysis Report','analysis-best':'✨ BEST Style Picks','analysis-worst':'⚠️ Styles to Avoid',
+      'analysis-disclaimer':'*Statistical analysis based on entered measurements.',
+      'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service','footer-about':'About FITME','footer-contact':'Contact Us',
+      'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'toast-enter-value':'Please enter a value!','toast-saved':' saved! ✓','toast-link':'Link copied! 🔗',
+      'toast-need-data':'Please enter height, weight & shoulder width first!','toast-done':'Analysis complete! 🔥','toast-reset':'Reset complete',
+      'confirm-reset':'Reset all measurements?',
+      'parts':{ height:'Height', weight:'Weight', head:'Head', shoulder:'Shoulder', chest:'Chest', 'upper-arm':'Upper Arm', 'lower-arm':'Lower Arm', waist:'Waist', hip:'Hip', 'upper-leg':'Thigh', 'lower-leg':'Shin', foot:'Foot' },
+      'titles':{ height:'HEIGHT', weight:'WEIGHT', head:'HEAD', shoulder:'SHOULDER', chest:'CHEST', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST', hip:'HIP', 'upper-leg':'THIGH', 'lower-leg':'SHIN', foot:'FOOT' },
+      'bmi':['Underweight','Normal weight ✓','Overweight','Obese'],
+      'body-inv':'Inverted triangle — shoulders wider than hips. (ratio: {r})','body-tri':'Triangle — hips wider than shoulders. (ratio: {r})','body-rect':'Balanced rectangle / hourglass body type. (ratio: {r})',
+      'body-default':'Enter more measurements for a detailed analysis.',
+      'best-inv':['Wide-leg pants','Bright-colored bottoms','Straight-fit trousers'],
+      'worst-inv':['Raglan sleeve tops','Padded shoulder jackets','Wide necklines'],
+      'best-tri':['Oversized tops','Bright-colored tops','Shoulder-accentuating designs'],
+      'worst-tri':['Tight miniskirts','Bright-colored bottoms','Low-rise pants'],
+      'best-rect':['Waist-defining outfits','Belt styling','Fitted tops'],
+      'worst-rect':['Loose all-in-ones','Waistless dresses'],
+      'best-def':['Regular-fit pants','Simple solid-color tops'],'worst-def':['Extremely tight clothing']
+    },
+    ja: {
+      'nav-guide':'測定ガイド','nav-analysis':'体型分析','nav-about':'About',
+      'hero-tag':'グローバル体型分析プラットフォーム',
+      'hero-sub':'体の寸法を入力して、あなただけのフィットを分析します。<br>ファッション提案から体型分析まで。',
+      'hero-btn':'始める →',
+      'guide-section-title':'同じ身長でも、フィットは違う',
+      'guide-section-sub':'脚の長さ、腕の長さ、肩幅 — 本当の体型は実際に測ってこそわかります',
+      'guide-card-title':'📱 今すぐ測れる — スマートフォンで体型を計る',
+      'guide-card-desc':'メジャーがなくても大丈夫。スマートフォン一台で十分です。<br>平均的なスマートフォンの縦長は約<strong style="color:var(--accent);">15cm</strong>。これを定規として活用しましょう。',
+      'guide-step1':'スマートフォンを縦に持ち、測定部位に当てて何回入るか数えます',
+      'guide-step2':'回数 × 15cm = その部位の長さ<br>例）3回 → 約45cm',
+      'guide-step3':'結果を左の体型図に入力して、体型分析完了！',
+      'blog-title':'ファッション & フィットガイド',
+      'blog1-title':'自分に合うパンツを見つける','blog1-desc':'スリム、ワイド、テーパード…体型別に似合うパンツを探しましょう。',
+      'blog2-title':'幅広足の人のための靴ガイド','blog2-desc':'靴選びに困っていませんか？ブランド別の幅比較ガイドです。',
+      'blog3-title':'黄金比率の体型を作る','blog3-desc':'肩・ウエスト・ヒップの比率から体型タイプを把握し、最適なスタイルを探しましょう。',
+      'section-label':'部位をクリックして寸法を入力してください',
+      'panel-title-default':'体型情報入力','panel-subtitle-default':'正確な分析のために寸法を入力してください。',
+      'placeholder-text':'左の体型図から<br>部位をクリックしてください',
+      'save-btn':'保存する','analyze-btn':'🔥 体型比率を分析する','reset-btn':'リセット',
+      'progress-label':'入力完了','saved-list-title':'保存された測定値',
+      'analysis-report-title':'分析レポート','analysis-best':'✨ おすすめスタイル','analysis-worst':'⚠️ 避けるべきスタイル',
+      'analysis-disclaimer':'*入力された数値に基づく統計的な分析結果です。',
+      'footer-privacy':'プライバシーポリシー','footer-terms':'利用規約','footer-about':'About FITME','footer-contact':'お問い合わせ',
+      'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'toast-enter-value':'値を入力してください！','toast-saved':'を保存しました ✓','toast-link':'リンクをコピーしました 🔗',
+      'toast-need-data':'まず身長・体重・肩幅を入力してください！','toast-done':'分析完了！ 🔥','toast-reset':'リセット完了',
+      'confirm-reset':'すべての測定値をリセットしますか？',
+      'parts':{ height:'身長', weight:'体重', head:'頭', shoulder:'肩', chest:'胸', 'upper-arm':'上腕', 'lower-arm':'前腕', waist:'ウエスト', hip:'ヒップ', 'upper-leg':'太もも', 'lower-leg':'ふくらはぎ', foot:'足' },
+      'titles':{ height:'HEIGHT / 身長', weight:'WEIGHT / 体重', head:'HEAD / 頭', shoulder:'SHOULDER / 肩', chest:'CHEST / 胸', 'upper-arm':'UPPER ARM / 上腕', 'lower-arm':'LOWER ARM / 前腕', waist:'WAIST / ウエスト', hip:'HIP / ヒップ', 'upper-leg':'THIGH / 太もも', 'lower-leg':'SHIN / ふくらはぎ', foot:'FOOT / 足' },
+      'bmi':['低体重','標準体重 ✓','過体重','肥満'],
+      'body-inv':'逆三角形体型（肩 > ヒップ）。比率: {r}','body-tri':'三角形体型（ヒップ > 肩）。比率: {r}','body-rect':'バランスの取れた長方形・砂時計体型。比率: {r}',
+      'body-default':'より多くの測定値を入力するとより詳しい分析ができます。',
+      'best-inv':['ワイドパンツ','明るい色のボトムス','ストレートパンツ'],'worst-inv':['ラグランスリーブ','パッド入りジャケット','広いネックライン'],
+      'best-tri':['オーバーサイズトップス','明るい色のトップス','肩を強調するデザイン'],'worst-tri':['タイトミニスカート','明るい色のボトムス','ローライズパンツ'],
+      'best-rect':['ウエストを強調するコーデ','ベルト活用','フィットしたトップス'],'worst-rect':['ルーズオールインワン','ウエストラインのないワンピース'],
+      'best-def':['レギュラーフィットパンツ','シンプルな無地トップス'],'worst-def':['極端にタイトな服']
+    },
+    zh: {
+      'nav-guide':'测量指南','nav-analysis':'比例分析','nav-about':'关于',
+      'hero-tag':'全球体型分析平台',
+      'hero-sub':'输入您的身体尺寸，分析专属于您的完美比例。<br>从时尚推荐到体型分析，一应俱全。',
+      'hero-btn':'开始使用 →',
+      'guide-section-title':'身高相同，比例各异',
+      'guide-section-sub':'腿长、臂长、肩宽 — 真实的体型比例需要亲自测量',
+      'guide-card-title':'📱 现在就能测 — 用智能手机测量体型',
+      'guide-card-desc':'没有卷尺？没关系，一部智能手机就够了。<br>主流智能手机的平均长度约为<strong style="color:var(--accent);">15cm</strong>，将其作为尺子使用。',
+      'guide-step1':'竖握手机，贴近测量部位，数一数能量几次',
+      'guide-step2':'次数 × 15cm = 该部位长度<br>例）3次 → 约45cm',
+      'guide-step3':'将测量结果输入左侧人体图，体型分析完成！',
+      'blog-title':'时尚 & 穿搭指南',
+      'blog1-title':'找到适合你的裤型','blog1-desc':'修身、阔腿、锥形裤……了解哪种裤型最适合你的体型。',
+      'blog2-title':'宽脚型选鞋指南','blog2-desc':'宽脚型选鞋困难？各品牌宽度对比指南来了。',
+      'blog3-title':'打造黄金比例体型','blog3-desc':'通过肩宽、腰围、臀围比例了解自己的体型，找到最佳穿搭风格。',
+      'section-label':'点击身体部位输入测量值',
+      'panel-title-default':'身体信息输入','panel-subtitle-default':'请输入尺寸以进行精确分析。',
+      'placeholder-text':'请点击左侧<br>人体图上的部位',
+      'save-btn':'保存','analyze-btn':'🔥 分析我的体型比例','reset-btn':'重置',
+      'progress-label':'已完成','saved-list-title':'已保存的测量值',
+      'analysis-report-title':'分析报告','analysis-best':'✨ 最佳穿搭推荐','analysis-worst':'⚠️ 不建议的穿搭',
+      'analysis-disclaimer':'*基于输入数值的统计分析结果。',
+      'footer-privacy':'隐私政策','footer-terms':'服务条款','footer-about':'关于 FITME','footer-contact':'联系我们',
+      'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'toast-enter-value':'请输入数值！','toast-saved':'已保存 ✓','toast-link':'链接已复制 🔗',
+      'toast-need-data':'请先输入身高、体重和肩宽！','toast-done':'分析完成！ 🔥','toast-reset':'已重置',
+      'confirm-reset':'确定重置所有测量值吗？',
+      'parts':{ height:'身高', weight:'体重', head:'头部', shoulder:'肩宽', chest:'胸围', 'upper-arm':'上臂', 'lower-arm':'前臂', waist:'腰围', hip:'臀围', 'upper-leg':'大腿', 'lower-leg':'小腿', foot:'脚' },
+      'titles':{ height:'HEIGHT / 身高', weight:'WEIGHT / 体重', head:'HEAD / 头部', shoulder:'SHOULDER / 肩宽', chest:'CHEST / 胸围', 'upper-arm':'UPPER ARM / 上臂', 'lower-arm':'LOWER ARM / 前臂', waist:'WAIST / 腰围', hip:'HIP / 臀围', 'upper-leg':'THIGH / 大腿', 'lower-leg':'SHIN / 小腿', foot:'FOOT / 脚' },
+      'bmi':['偏瘦','正常体重 ✓','超重','肥胖'],
+      'body-inv':'倒三角体型（肩宽 > 臀宽）。比率: {r}','body-tri':'三角体型（臀宽 > 肩宽）。比率: {r}','body-rect':'均衡矩形/沙漏体型。比率: {r}',
+      'body-default':'输入更多测量值可获得更详细的分析。',
+      'best-inv':['阔腿裤','浅色下装','直筒裤'],'worst-inv':['插肩袖上衣','垫肩西装','宽领口'],
+      'best-tri':['宽松上衣','浅色上衣','强调肩部的设计'],'worst-tri':['紧身迷你裙','浅色下装','低腰裤'],
+      'best-rect':['突出腰线的搭配','腰带造型','修身上衣'],'worst-rect':['宽松连体衣','无腰线连衣裙'],
+      'best-def':['直筒裤','简约纯色上衣'],'worst-def':['极度紧身的服装']
+    },
+    fr: {
+      'nav-guide':'Guide de mesure','nav-analysis':'Analyse corporelle','nav-about':'À propos',
+      'hero-tag':'Plateforme mondiale d\'analyse corporelle',
+      'hero-sub':'Entrez vos mensurations pour analyser votre fit parfait.<br>Recommandations mode et analyse des proportions.',
+      'hero-btn':'Commencer →',
+      'guide-section-title':'Même taille, fit différent',
+      'guide-section-sub':'Longueur des jambes, des bras, largeur des épaules — vos vraies proportions ne se connaissent qu\'en mesurant',
+      'guide-card-title':'📱 Mesurez maintenant — avec votre smartphone',
+      'guide-card-desc':'Pas de mètre ruban ? Pas de problème. Votre smartphone suffit.<br>La longueur moyenne d\'un smartphone est d\'environ <strong style="color:var(--accent);">15 cm</strong> — utilisez-le comme règle.',
+      'guide-step1':'Tenez votre téléphone verticalement et comptez combien de fois il s\'adapte le long de la partie du corps',
+      'guide-step2':'Nombre × 15 cm = longueur de cette partie<br>ex. 3 fois → ~45 cm',
+      'guide-step3':'Entrez les résultats dans le schéma corporel à gauche pour obtenir votre analyse !',
+      'blog-title':'Guide mode & fit',
+      'blog1-title':'Trouver le pantalon parfait','blog1-desc':'Slim, large, fuselé... Découvrez quel pantalon correspond à votre morphologie.',
+      'blog2-title':'Guide chaussures pour pieds larges','blog2-desc':'Vous avez du mal à trouver des chaussures ? Voici un guide comparatif par marque.',
+      'blog3-title':'Atteindre le ratio corporel idéal','blog3-desc':'Identifiez votre morphologie avec les ratios épaules/taille/hanches.',
+      'section-label':'Cliquez sur une partie du corps pour entrer les mesures',
+      'panel-title-default':'Informations corporelles','panel-subtitle-default':'Entrez vos mensurations pour une analyse précise.',
+      'placeholder-text':'Cliquez sur une partie<br>du corps à gauche',
+      'save-btn':'Enregistrer','analyze-btn':'🔥 Analyser mes proportions','reset-btn':'Réinitialiser',
+      'progress-label':'Complété','saved-list-title':'Mesures enregistrées',
+      'analysis-report-title':'Rapport d\'analyse','analysis-best':'✨ Meilleurs styles recommandés','analysis-worst':'⚠️ Styles à éviter',
+      'analysis-disclaimer':'*Résultats d\'analyse statistique basés sur les mesures saisies.',
+      'footer-privacy':'Politique de confidentialité','footer-terms':'Conditions d\'utilisation','footer-about':'À propos de FITME','footer-contact':'Nous contacter',
+      'footer-copy':'© 2026 FITME. Service mondial d\'analyse corporelle.',
+      'toast-enter-value':'Veuillez entrer une valeur !','toast-saved':' enregistré ✓','toast-link':'Lien copié ! 🔗',
+      'toast-need-data':'Entrez d\'abord taille, poids et largeur des épaules !','toast-done':'Analyse terminée ! 🔥','toast-reset':'Réinitialisation effectuée',
+      'confirm-reset':'Réinitialiser toutes les mesures ?',
+      'parts':{ height:'Taille', weight:'Poids', head:'Tête', shoulder:'Épaules', chest:'Poitrine', 'upper-arm':'Haut du bras', 'lower-arm':'Avant-bras', waist:'Taille', hip:'Hanches', 'upper-leg':'Cuisse', 'lower-leg':'Mollet', foot:'Pied' },
+      'titles':{ height:'HEIGHT / Taille', weight:'WEIGHT / Poids', head:'HEAD / Tête', shoulder:'SHOULDER / Épaules', chest:'CHEST / Poitrine', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST / Taille', hip:'HIP / Hanches', 'upper-leg':'THIGH / Cuisse', 'lower-leg':'SHIN / Mollet', foot:'FOOT / Pied' },
+      'bmi':['Insuffisance pondérale','Poids normal ✓','Surpoids','Obésité'],
+      'body-inv':'Morphologie en V (épaules > hanches). Ratio: {r}','body-tri':'Morphologie en A (hanches > épaules). Ratio: {r}','body-rect':'Morphologie rectangle / sablier équilibré. Ratio: {r}',
+      'body-default':'Entrez plus de mesures pour une analyse détaillée.',
+      'best-inv':['Pantalons larges','Bas de couleur claire','Pantalons droits'],'worst-inv':['Hauts raglan','Vestes à épaulettes','Encolures larges'],
+      'best-tri':['Hauts oversize','Hauts de couleur claire','Designs accentuant les épaules'],'worst-tri':['Mini-jupes serrées','Bas de couleur claire','Pantalons taille basse'],
+      'best-rect':['Tenues marquant la taille','Ceintures','Hauts ajustés'],'worst-rect':['Combinaisons amples','Robes sans taille'],
+      'best-def':['Pantalons coupe droite','Hauts unis simples'],'worst-def':['Vêtements extrêmement serrés']
+    },
+    es: {
+      'nav-guide':'Guía de medición','nav-analysis':'Análisis corporal','nav-about':'Acerca de',
+      'hero-tag':'Plataforma global de análisis corporal',
+      'hero-sub':'Ingresa tus medidas para analizar tu fit perfecto.<br>Recomendaciones de moda y análisis de proporciones.',
+      'hero-btn':'Comenzar →',
+      'guide-section-title':'Misma altura, fit diferente',
+      'guide-section-sub':'Largo de piernas, brazos, ancho de hombros — tus proporciones reales solo se conocen midiendo',
+      'guide-card-title':'📱 Mide ahora mismo — con tu smartphone',
+      'guide-card-desc':'¿Sin cinta métrica? Sin problema. Tu smartphone es suficiente.<br>La longitud promedio de un smartphone es de unos <strong style="color:var(--accent);">15 cm</strong> — úsalo como regla.',
+      'guide-step1':'Sostén tu teléfono verticalmente y cuenta cuántas veces cabe en la parte del cuerpo',
+      'guide-step2':'Veces × 15 cm = longitud de esa parte<br>ej. 3 veces → ~45 cm',
+      'guide-step3':'¡Ingresa los resultados en el diagrama corporal y obtén tu análisis!',
+      'blog-title':'Guía de moda & fit',
+      'blog1-title':'Encuentra tu pantalón perfecto','blog1-desc':'Slim, ancho, recto... Descubre qué pantalón va con tu tipo de cuerpo.',
+      'blog2-title':'Guía de calzado para pies anchos','blog2-desc':'¿Dificultades para encontrar zapatos? Guía comparativa por marca.',
+      'blog3-title':'Alcanzar la proporción áurea corporal','blog3-desc':'Identifica tu tipo de cuerpo con las proporciones de hombros, cintura y caderas.',
+      'section-label':'Haz clic en una parte del cuerpo para ingresar medidas',
+      'panel-title-default':'Información corporal','panel-subtitle-default':'Ingresa tus medidas para un análisis preciso.',
+      'placeholder-text':'Haz clic en una parte<br>del cuerpo a la izquierda',
+      'save-btn':'Guardar','analyze-btn':'🔥 Analizar mis proporciones','reset-btn':'Reiniciar',
+      'progress-label':'Completado','saved-list-title':'Medidas guardadas',
+      'analysis-report-title':'Informe de análisis','analysis-best':'✨ Mejores estilos recomendados','analysis-worst':'⚠️ Estilos a evitar',
+      'analysis-disclaimer':'*Resultados de análisis estadístico basado en las medidas ingresadas.',
+      'footer-privacy':'Política de privacidad','footer-terms':'Términos de servicio','footer-about':'Acerca de FITME','footer-contact':'Contáctanos',
+      'footer-copy':'© 2026 FITME. Servicio global de análisis corporal.',
+      'toast-enter-value':'¡Por favor ingresa un valor!','toast-saved':' guardado ✓','toast-link':'¡Enlace copiado! 🔗',
+      'toast-need-data':'¡Ingresa primero altura, peso y ancho de hombros!','toast-done':'¡Análisis completo! 🔥','toast-reset':'Reinicio completado',
+      'confirm-reset':'¿Reiniciar todas las medidas?',
+      'parts':{ height:'Altura', weight:'Peso', head:'Cabeza', shoulder:'Hombros', chest:'Pecho', 'upper-arm':'Brazo sup.', 'lower-arm':'Antebrazo', waist:'Cintura', hip:'Caderas', 'upper-leg':'Muslo', 'lower-leg':'Pantorrilla', foot:'Pie' },
+      'titles':{ height:'HEIGHT / Altura', weight:'WEIGHT / Peso', head:'HEAD / Cabeza', shoulder:'SHOULDER / Hombros', chest:'CHEST / Pecho', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST / Cintura', hip:'HIP / Caderas', 'upper-leg':'THIGH / Muslo', 'lower-leg':'SHIN / Pantorrilla', foot:'FOOT / Pie' },
+      'bmi':['Bajo peso','Peso normal ✓','Sobrepeso','Obesidad'],
+      'body-inv':'Triángulo invertido (hombros > caderas). Ratio: {r}','body-tri':'Triángulo (caderas > hombros). Ratio: {r}','body-rect':'Cuerpo rectangular / reloj de arena. Ratio: {r}',
+      'body-default':'Ingresa más medidas para un análisis detallado.',
+      'best-inv':['Pantalones anchos','Colores claros abajo','Pantalones rectos'],'worst-inv':['Tops raglán','Chaquetas con hombreras','Escotes anchos'],
+      'best-tri':['Tops oversize','Colores claros arriba','Diseños que resaltan hombros'],'worst-tri':['Minifaldas ajustadas','Colores claros abajo','Pantalones de tiro bajo'],
+      'best-rect':['Outfits que marcan la cintura','Uso de cinturones','Tops entallados'],'worst-rect':['Monos sueltos','Vestidos sin cintura'],
+      'best-def':['Pantalones corte recto','Tops lisos simples'],'worst-def':['Ropa extremadamente ajustada']
+    },
+    pt: {
+      'nav-guide':'Guia de medição','nav-analysis':'Análise corporal','nav-about':'Sobre',
+      'hero-tag':'Plataforma global de análise corporal',
+      'hero-sub':'Insira suas medidas para analisar o seu fit perfeito.<br>Recomendações de moda e análise de proporções.',
+      'hero-btn':'Começar →',
+      'guide-section-title':'Mesma altura, fit diferente',
+      'guide-section-sub':'Comprimento das pernas, braços, largura dos ombros — suas proporções reais só são conhecidas medindo',
+      'guide-card-title':'📱 Meça agora mesmo — com seu smartphone',
+      'guide-card-desc':'Sem fita métrica? Sem problema. Seu smartphone é suficiente.<br>O comprimento médio de um smartphone é de cerca de <strong style="color:var(--accent);">15 cm</strong> — use-o como régua.',
+      'guide-step1':'Segure o celular verticalmente e conte quantas vezes ele cabe na parte do corpo',
+      'guide-step2':'Vezes × 15 cm = comprimento dessa parte<br>ex. 3 vezes → ~45 cm',
+      'guide-step3':'Insira os resultados no diagrama corporal e obtenha sua análise!',
+      'blog-title':'Guia de moda & fit',
+      'blog1-title':'Encontre a calça perfeita','blog1-desc':'Slim, wide, tapered... Descubra qual calça combina com seu tipo de corpo.',
+      'blog2-title':'Guia de sapatos para pés largos','blog2-desc':'Dificuldade em encontrar sapatos? Guia comparativo por marca.',
+      'blog3-title':'Alcançando a proporção áurea','blog3-desc':'Identifique seu tipo de corpo com as proporções de ombros, cintura e quadris.',
+      'section-label':'Clique em uma parte do corpo para inserir medidas',
+      'panel-title-default':'Informações corporais','panel-subtitle-default':'Insira suas medidas para uma análise precisa.',
+      'placeholder-text':'Clique em uma parte<br>do corpo à esquerda',
+      'save-btn':'Salvar','analyze-btn':'🔥 Analisar minhas proporções','reset-btn':'Reiniciar',
+      'progress-label':'Concluído','saved-list-title':'Medidas salvas',
+      'analysis-report-title':'Relatório de análise','analysis-best':'✨ Melhores estilos recomendados','analysis-worst':'⚠️ Estilos a evitar',
+      'analysis-disclaimer':'*Resultados de análise estatística com base nas medidas inseridas.',
+      'footer-privacy':'Política de privacidade','footer-terms':'Termos de serviço','footer-about':'Sobre o FITME','footer-contact':'Fale conosco',
+      'footer-copy':'© 2026 FITME. Serviço global de análise corporal.',
+      'toast-enter-value':'Por favor, insira um valor!','toast-saved':' salvo ✓','toast-link':'Link copiado! 🔗',
+      'toast-need-data':'Insira primeiro altura, peso e largura dos ombros!','toast-done':'Análise concluída! 🔥','toast-reset':'Reinicialização concluída',
+      'confirm-reset':'Reiniciar todas as medidas?',
+      'parts':{ height:'Altura', weight:'Peso', head:'Cabeça', shoulder:'Ombros', chest:'Peito', 'upper-arm':'Braço sup.', 'lower-arm':'Antebraço', waist:'Cintura', hip:'Quadril', 'upper-leg':'Coxa', 'lower-leg':'Panturrilha', foot:'Pé' },
+      'titles':{ height:'HEIGHT / Altura', weight:'WEIGHT / Peso', head:'HEAD / Cabeça', shoulder:'SHOULDER / Ombros', chest:'CHEST / Peito', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST / Cintura', hip:'HIP / Quadril', 'upper-leg':'THIGH / Coxa', 'lower-leg':'SHIN / Panturrilha', foot:'FOOT / Pé' },
+      'bmi':['Abaixo do peso','Peso normal ✓','Sobrepeso','Obesidade'],
+      'body-inv':'Triângulo invertido (ombros > quadris). Razão: {r}','body-tri':'Triângulo (quadris > ombros). Razão: {r}','body-rect':'Corpo retângulo / ampulheta. Razão: {r}',
+      'body-default':'Insira mais medidas para uma análise detalhada.',
+      'best-inv':['Calças largas','Cores claras embaixo','Calças retas'],'worst-inv':['Tops raglan','Blazers com ombreiras','Decotes largos'],
+      'best-tri':['Tops oversized','Cores claras em cima','Designs que destacam ombros'],'worst-tri':['Minissaias justas','Cores claras embaixo','Calças de cós baixo'],
+      'best-rect':['Looks que marcam a cintura','Uso de cintos','Tops justos'],'worst-rect':['Macacões soltos','Vestidos sem cintura'],
+      'best-def':['Calças corte reto','Tops lisos simples'],'worst-def':['Roupas extremamente justas']
+    },
+    de: {
+      'nav-guide':'Messanleitung','nav-analysis':'Körperanalyse','nav-about':'Über uns',
+      'hero-tag':'Globale Körperanalyse-Plattform',
+      'hero-sub':'Gib deine Maße ein und analysiere deinen perfekten Fit.<br>Von Modeempfehlungen bis zur Proportionsanalyse.',
+      'hero-btn':'Loslegen →',
+      'guide-section-title':'Gleiche Größe, anderer Fit',
+      'guide-section-sub':'Beinlänge, Armlänge, Schulterbreite — wahre Proportionen kennt man nur durch Messen',
+      'guide-card-title':'📱 Jetzt messen — mit deinem Smartphone',
+      'guide-card-desc':'Kein Maßband? Kein Problem. Dein Smartphone reicht aus.<br>Die durchschnittliche Länge eines Smartphones beträgt ca. <strong style="color:var(--accent);">15 cm</strong> — nutze es als Lineal.',
+      'guide-step1':'Halte das Handy senkrecht und zähle, wie oft es auf den Körperteil passt',
+      'guide-step2':'Anzahl × 15 cm = Länge des Körperteils<br>z.B. 3 Mal → ~45 cm',
+      'guide-step3':'Gib die Ergebnisse in das Körperdiagramm ein und erhalte deine Analyse!',
+      'blog-title':'Mode & Fit Guide',
+      'blog1-title':'Die perfekte Hose finden','blog1-desc':'Slim, Weite, Tapered... Finde heraus, welche Hose zu deinem Körpertyp passt.',
+      'blog2-title':'Schuhguide für breite Füße','blog2-desc':'Probleme beim Schuhe finden? Ein Markenvergleich nach Breite.',
+      'blog3-title':'Den goldenen Ratio-Körper erreichen','blog3-desc':'Ermittle deinen Körpertyp anhand von Schulter-, Taille- und Hüftproportionen.',
+      'section-label':'Klicke auf einen Körperteil, um Maße einzugeben',
+      'panel-title-default':'Körperinformationen','panel-subtitle-default':'Bitte Maße für eine genaue Analyse eingeben.',
+      'placeholder-text':'Körperteil links<br>anklicken',
+      'save-btn':'Speichern','analyze-btn':'🔥 Meine Proportionen analysieren','reset-btn':'Zurücksetzen',
+      'progress-label':'Abgeschlossen','saved-list-title':'Gespeicherte Maße',
+      'analysis-report-title':'Analysebericht','analysis-best':'✨ Beste Style-Empfehlungen','analysis-worst':'⚠️ Zu vermeidende Styles',
+      'analysis-disclaimer':'*Statistische Analyseergebnisse basierend auf eingegebenen Maßen.',
+      'footer-privacy':'Datenschutz','footer-terms':'Nutzungsbedingungen','footer-about':'Über FITME','footer-contact':'Kontakt',
+      'footer-copy':'© 2026 FITME. Globaler Körperanalyse-Service.',
+      'toast-enter-value':'Bitte Wert eingeben!','toast-saved':' gespeichert ✓','toast-link':'Link kopiert! 🔗',
+      'toast-need-data':'Bitte zuerst Größe, Gewicht und Schulterbreite eingeben!','toast-done':'Analyse abgeschlossen! 🔥','toast-reset':'Zurückgesetzt',
+      'confirm-reset':'Alle Maße zurücksetzen?',
+      'parts':{ height:'Größe', weight:'Gewicht', head:'Kopf', shoulder:'Schultern', chest:'Brust', 'upper-arm':'Oberarm', 'lower-arm':'Unterarm', waist:'Taille', hip:'Hüfte', 'upper-leg':'Oberschenkel', 'lower-leg':'Wade', foot:'Fuß' },
+      'titles':{ height:'HEIGHT / Größe', weight:'WEIGHT / Gewicht', head:'HEAD / Kopf', shoulder:'SHOULDER / Schultern', chest:'CHEST / Brust', 'upper-arm':'UPPER ARM / Oberarm', 'lower-arm':'LOWER ARM / Unterarm', waist:'WAIST / Taille', hip:'HIP / Hüfte', 'upper-leg':'THIGH / Oberschenkel', 'lower-leg':'SHIN / Wade', foot:'FOOT / Fuß' },
+      'bmi':['Untergewicht','Normalgewicht ✓','Übergewicht','Adipositas'],
+      'body-inv':'Umgekehrtes Dreieck (Schultern > Hüften). Verhältnis: {r}','body-tri':'Dreieck (Hüften > Schultern). Verhältnis: {r}','body-rect':'Ausgewogener Rechteck-/Sanduhr-Körpertyp. Verhältnis: {r}',
+      'body-default':'Gib mehr Maße ein für eine detailliertere Analyse.',
+      'best-inv':['Weite Hosen','Helle Farben unten','Gerade Hosen'],'worst-inv':['Raglan-Tops','Schulterpolster-Jacken','Breite Ausschnitte'],
+      'best-tri':['Oversized Tops','Helle Farben oben','Schulter-betonte Designs'],'worst-tri':['Enge Miniröcke','Helle Farben unten','Niedrige Taillenhosen'],
+      'best-rect':['Taille-betonende Outfits','Gürtel-Styling','Anliegende Tops'],'worst-rect':['Weite Overalls','Taillenlose Kleider'],
+      'best-def':['Regular-Fit Hosen','Schlichte Einfarbige Tops'],'worst-def':['Extrem enge Kleidung']
+    },
+    it: {
+      'nav-guide':'Guida alle misure','nav-analysis':'Analisi corporea','nav-about':'Chi siamo',
+      'hero-tag':'Piattaforma globale di analisi corporea',
+      'hero-sub':'Inserisci le tue misure per analizzare il tuo fit perfetto.<br>Consigli moda e analisi delle proporzioni.',
+      'hero-btn':'Inizia →',
+      'guide-section-title':'Stessa altezza, fit diverso',
+      'guide-section-sub':'Lunghezza gambe, braccia, larghezza spalle — le proporzioni reali si conoscono solo misurandosi',
+      'guide-card-title':'📱 Misura adesso — con il tuo smartphone',
+      'guide-card-desc':'Niente metro? Nessun problema. Basta il tuo smartphone.<br>La lunghezza media di uno smartphone è di circa <strong style="color:var(--accent);">15 cm</strong> — usalo come righello.',
+      'guide-step1':'Tieni il telefono in verticale e conta quante volte si adatta lungo la parte del corpo',
+      'guide-step2':'Volte × 15 cm = lunghezza di quella parte<br>es. 3 volte → ~45 cm',
+      'guide-step3':'Inserisci i risultati nel diagramma corporeo e ottieni la tua analisi!',
+      'blog-title':'Guida moda & fit',
+      'blog1-title':'Trova il pantalone perfetto','blog1-desc':'Slim, largo, affusolato... Scopri quale pantalone si adatta alla tua corporatura.',
+      'blog2-title':'Guida scarpe per piedi larghi','blog2-desc':'Difficoltà a trovare scarpe? Una guida comparativa per marchio.',
+      'blog3-title':'Raggiungere le proporzioni auree','blog3-desc':'Identifica il tuo tipo di corpo con le proporzioni di spalle, vita e fianchi.',
+      'section-label':'Clicca su una parte del corpo per inserire le misure',
+      'panel-title-default':'Informazioni corporee','panel-subtitle-default':'Inserisci le misure per un\'analisi precisa.',
+      'placeholder-text':'Clicca una parte<br>del corpo a sinistra',
+      'save-btn':'Salva','analyze-btn':'🔥 Analizza le mie proporzioni','reset-btn':'Azzera',
+      'progress-label':'Completato','saved-list-title':'Misure salvate',
+      'analysis-report-title':'Report di analisi','analysis-best':'✨ Migliori stili consigliati','analysis-worst':'⚠️ Stili da evitare',
+      'analysis-disclaimer':'*Risultati di analisi statistica basati sulle misure inserite.',
+      'footer-privacy':'Privacy','footer-terms':'Termini di servizio','footer-about':'Chi è FITME','footer-contact':'Contattaci',
+      'footer-copy':'© 2026 FITME. Servizio globale di analisi corporea.',
+      'toast-enter-value':'Inserisci un valore!','toast-saved':' salvato ✓','toast-link':'Link copiato! 🔗',
+      'toast-need-data':'Inserisci prima altezza, peso e larghezza spalle!','toast-done':'Analisi completata! 🔥','toast-reset':'Azzeramento completato',
+      'confirm-reset':'Azzerare tutte le misure?',
+      'parts':{ height:'Altezza', weight:'Peso', head:'Testa', shoulder:'Spalle', chest:'Petto', 'upper-arm':'Braccio sup.', 'lower-arm':'Avambraccio', waist:'Vita', hip:'Fianchi', 'upper-leg':'Coscia', 'lower-leg':'Polpaccio', foot:'Piede' },
+      'titles':{ height:'HEIGHT / Altezza', weight:'WEIGHT / Peso', head:'HEAD / Testa', shoulder:'SHOULDER / Spalle', chest:'CHEST / Petto', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST / Vita', hip:'HIP / Fianchi', 'upper-leg':'THIGH / Coscia', 'lower-leg':'SHIN / Polpaccio', foot:'FOOT / Piede' },
+      'bmi':['Sottopeso','Peso normale ✓','Sovrappeso','Obesità'],
+      'body-inv':'Triangolo invertito (spalle > fianchi). Rapporto: {r}','body-tri':'Triangolo (fianchi > spalle). Rapporto: {r}','body-rect':'Corpo rettangolo / clessidra. Rapporto: {r}',
+      'body-default':'Inserisci più misure per un\'analisi dettagliata.',
+      'best-inv':['Pantaloni larghi','Colori chiari in basso','Pantaloni dritti'],'worst-inv':['Top raglan','Giacche con spalline','Scollature ampie'],
+      'best-tri':['Top oversize','Colori chiari in alto','Design che accentua le spalle'],'worst-tri':['Minigonne strette','Colori chiari in basso','Pantaloni a vita bassa'],
+      'best-rect':['Look che valorizzano la vita','Uso di cinture','Top aderenti'],'worst-rect':['Tute morbide','Abiti senza vita'],
+      'best-def':['Pantaloni taglio dritto','Top tinta unita semplici'],'worst-def':['Abiti estremamente attillati']
+    },
+    ru: {
+      'nav-guide':'Руководство по измерениям','nav-analysis':'Анализ телосложения','nav-about':'О нас',
+      'hero-tag':'Глобальная платформа анализа телосложения',
+      'hero-sub':'Введите свои мерки, чтобы найти идеальный фит.<br>Рекомендации по моде и анализ пропорций.',
+      'hero-btn':'Начать →',
+      'guide-section-title':'Одинаковый рост, разный фит',
+      'guide-section-sub':'Длина ног, рук, ширина плеч — истинные пропорции можно узнать только измерив',
+      'guide-card-title':'📱 Измерьте прямо сейчас — с помощью смартфона',
+      'guide-card-desc':'Нет рулетки? Не проблема. Хватит вашего смартфона.<br>Средняя длина смартфона около <strong style="color:var(--accent);">15 см</strong> — используйте его как линейку.',
+      'guide-step1':'Держите телефон вертикально и считайте, сколько раз он помещается вдоль части тела',
+      'guide-step2':'Раз × 15 см = длина этой части<br>напр. 3 раза → ~45 см',
+      'guide-step3':'Введите результаты в схему тела слева и получите анализ!',
+      'blog-title':'Гид по моде и фиту',
+      'blog1-title':'Найдите идеальные брюки','blog1-desc':'Слим, широкие, зауженные... Узнайте, какие брюки подходят вашему типу фигуры.',
+      'blog2-title':'Гид по обуви для широкой стопы','blog2-desc':'Трудно найти обувь? Сравнительный гид по брендам.',
+      'blog3-title':'Достижение золотых пропорций тела','blog3-desc':'Определите свой тип фигуры по соотношению плеч, талии и бёдер.',
+      'section-label':'Нажмите на часть тела, чтобы ввести мерки',
+      'panel-title-default':'Данные о теле','panel-subtitle-default':'Введите мерки для точного анализа.',
+      'placeholder-text':'Нажмите на часть тела<br>на схеме слева',
+      'save-btn':'Сохранить','analyze-btn':'🔥 Анализировать пропорции','reset-btn':'Сбросить',
+      'progress-label':'Завершено','saved-list-title':'Сохранённые мерки',
+      'analysis-report-title':'Отчёт об анализе','analysis-best':'✨ Лучшие стили','analysis-worst':'⚠️ Стили, которых стоит избегать',
+      'analysis-disclaimer':'*Статистический анализ на основе введённых мерок.',
+      'footer-privacy':'Политика конфиденциальности','footer-terms':'Условия использования','footer-about':'О FITME','footer-contact':'Связаться с нами',
+      'footer-copy':'© 2026 FITME. Глобальный сервис анализа телосложения.',
+      'toast-enter-value':'Пожалуйста, введите значение!','toast-saved':' сохранено ✓','toast-link':'Ссылка скопирована! 🔗',
+      'toast-need-data':'Сначала введите рост, вес и ширину плеч!','toast-done':'Анализ завершён! 🔥','toast-reset':'Сброс выполнен',
+      'confirm-reset':'Сбросить все мерки?',
+      'parts':{ height:'Рост', weight:'Вес', head:'Голова', shoulder:'Плечи', chest:'Грудь', 'upper-arm':'Плечо', 'lower-arm':'Предплечье', waist:'Талия', hip:'Бёдра', 'upper-leg':'Бедро', 'lower-leg':'Голень', foot:'Стопа' },
+      'titles':{ height:'HEIGHT / Рост', weight:'WEIGHT / Вес', head:'HEAD / Голова', shoulder:'SHOULDER / Плечи', chest:'CHEST / Грудь', 'upper-arm':'UPPER ARM / Плечо', 'lower-arm':'LOWER ARM / Предплечье', waist:'WAIST / Талия', hip:'HIP / Бёдра', 'upper-leg':'THIGH / Бедро', 'lower-leg':'SHIN / Голень', foot:'FOOT / Стопа' },
+      'bmi':['Недостаточный вес','Нормальный вес ✓','Избыточный вес','Ожирение'],
+      'body-inv':'Перевёрнутый треугольник (плечи > бёдра). Соотношение: {r}','body-tri':'Треугольник (бёдра > плечи). Соотношение: {r}','body-rect':'Прямоугольник / песочные часы. Соотношение: {r}',
+      'body-default':'Введите больше мерок для подробного анализа.',
+      'best-inv':['Широкие брюки','Светлые цвета снизу','Прямые брюки'],'worst-inv':['Реглан-топы','Пиджаки с подкладными плечами','Широкие вырезы'],
+      'best-tri':['Оверсайз-топы','Светлые цвета сверху','Дизайны, подчёркивающие плечи'],'worst-tri':['Обтягивающие мини-юбки','Светлые цвета снизу','Брюки с заниженной талией'],
+      'best-rect':['Наряды, подчёркивающие талию','Пояса','Облегающие топы'],'worst-rect':['Свободные комбинезоны','Платья без талии'],
+      'best-def':['Брюки прямого кроя','Простые однотонные топы'],'worst-def':['Чрезмерно облегающая одежда']
+    },
+    ar: {
+      'nav-guide':'دليل القياس','nav-analysis':'تحليل الجسم','nav-about':'حولنا',
+      'hero-tag':'منصة تحليل الجسم العالمية',
+      'hero-sub':'أدخل قياساتك لتحليل ملاءمتك المثالية.<br>توصيات الأزياء وتحليل النسب.',
+      'hero-btn':'ابدأ الآن ←',
+      'guide-section-title':'نفس الطول، ملاءمة مختلفة',
+      'guide-section-sub':'طول الساقين والذراعين وعرض الكتفين — النسب الحقيقية تُعرف بالقياس فقط',
+      'guide-card-title':'📱 اقس الآن — باستخدام هاتفك الذكي',
+      'guide-card-desc':'بدون شريط قياس؟ لا مشكلة. هاتفك الذكي يكفي.<br>متوسط طول الهاتف الذكي حوالي <strong style="color:var(--accent);">15 سم</strong> — استخدمه كمسطرة.',
+      'guide-step1':'أمسك الهاتف عموديًا وعد كم مرة يناسب الجزء المراد قياسه',
+      'guide-step2':'العدد × 15 سم = طول ذلك الجزء<br>مثال: 3 مرات ← حوالي 45 سم',
+      'guide-step3':'أدخل النتائج في مخطط الجسم على اليسار واحصل على تحليلك!',
+      'blog-title':'دليل الموضة والملاءمة',
+      'blog1-title':'اعثر على البنطال المثالي','blog1-desc':'ضيق، واسع، متدرج... اكتشف أي بنطال يناسب نوع جسمك.',
+      'blog2-title':'دليل الأحذية للقدم العريضة','blog2-desc':'صعوبة في إيجاد أحذية؟ دليل مقارنة بالعلامات التجارية.',
+      'blog3-title':'تحقيق نسبة الجسم الذهبية','blog3-desc':'حدد نوع جسمك من خلال نسب الكتفين والخصر والوركين.',
+      'section-label':'انقر على جزء من الجسم لإدخال القياسات',
+      'panel-title-default':'معلومات الجسم','panel-subtitle-default':'أدخل قياساتك للحصول على تحليل دقيق.',
+      'placeholder-text':'انقر على جزء من الجسم<br>في الجانب الأيسر',
+      'save-btn':'حفظ','analyze-btn':'🔥 تحليل نسب جسمي','reset-btn':'إعادة تعيين',
+      'progress-label':'مكتمل','saved-list-title':'القياسات المحفوظة',
+      'analysis-report-title':'تقرير التحليل','analysis-best':'✨ أفضل أنماط موصى بها','analysis-worst':'⚠️ أنماط يجب تجنبها',
+      'analysis-disclaimer':'*نتائج تحليل إحصائي بناءً على القياسات المدخلة.',
+      'footer-privacy':'سياسة الخصوصية','footer-terms':'شروط الخدمة','footer-about':'حول FITME','footer-contact':'اتصل بنا',
+      'footer-copy':'© 2026 FITME. خدمة تحليل الجسم العالمية.',
+      'toast-enter-value':'الرجاء إدخال قيمة!','toast-saved':' محفوظ ✓','toast-link':'تم نسخ الرابط! 🔗',
+      'toast-need-data':'أدخل الطول والوزن وعرض الكتفين أولاً!','toast-done':'اكتمل التحليل! 🔥','toast-reset':'تمت إعادة التعيين',
+      'confirm-reset':'إعادة تعيين جميع القياسات؟',
+      'parts':{ height:'الطول', weight:'الوزن', head:'الرأس', shoulder:'الكتفان', chest:'الصدر', 'upper-arm':'العضد', 'lower-arm':'الساعد', waist:'الخصر', hip:'الوركان', 'upper-leg':'الفخذ', 'lower-leg':'الساق', foot:'القدم' },
+      'titles':{ height:'الطول', weight:'الوزن', head:'الرأس', shoulder:'الكتفان', chest:'الصدر', 'upper-arm':'العضد', 'lower-arm':'الساعد', waist:'الخصر', hip:'الوركان', 'upper-leg':'الفخذ', 'lower-leg':'الساق', foot:'القدم' },
+      'bmi':['نقص الوزن','وزن طبيعي ✓','زيادة الوزن','سمنة'],
+      'body-inv':'مثلث مقلوب (الكتفان > الوركان). النسبة: {r}','body-tri':'مثلث (الوركان > الكتفان). النسبة: {r}','body-rect':'مستطيل / ساعة رملية متوازنة. النسبة: {r}',
+      'body-default':'أدخل المزيد من القياسات للحصول على تحليل مفصل.',
+      'best-inv':['بنطلونات واسعة','ألوان فاتحة في الأسفل','بنطلونات مستقيمة'],'worst-inv':['قمم راغلان','سترات بكتف محشو','فتحات رقبة واسعة'],
+      'best-tri':['قمم أوفرسايز','ألوان فاتحة في الأعلى','تصاميم تبرز الكتفين'],'worst-tri':['تنانير ميني ضيقة','ألوان فاتحة في الأسفل','بنطلونات خصر منخفض'],
+      'best-rect':['ملابس تبرز الخصر','استخدام الأحزمة','قمم مناسبة'],'worst-rect':['أوفرول فضفاض','فساتين بدون خصر'],
+      'best-def':['بنطلونات قصة مستقيمة','قمم بسيطة أحادية اللون'],'worst-def':['ملابس ضيقة للغاية']
+    },
+    hi: {
+      'nav-guide':'माप गाइड','nav-analysis':'शरीर विश्लेषण','nav-about':'हमारे बारे में',
+      'hero-tag':'वैश्विक शरीर विश्लेषण प्लेटफ़ॉर्म',
+      'hero-sub':'अपने माप दर्ज करें और अपना परफेक्ट फिट खोजें।<br>फैशन सुझाव और अनुपात विश्लेषण।',
+      'hero-btn':'शुरू करें →',
+      'guide-section-title':'एक ही ऊंचाई, अलग फिट',
+      'guide-section-sub':'पैरों की लंबाई, हाथों की लंबाई, कंधे की चौड़ाई — सच्चे अनुपात माप कर ही जाने जाते हैं',
+      'guide-card-title':'📱 अभी मापें — अपने स्मार्टफोन से',
+      'guide-card-desc':'मापने का टेप नहीं है? कोई बात नहीं। आपका स्मार्टफोन काफी है।<br>औसत स्मार्टफोन की लंबाई लगभग <strong style="color:var(--accent);">15 सेमी</strong> है — इसे रूलर की तरह उपयोग करें।',
+      'guide-step1':'फोन को लंबवत पकड़ें और शरीर के हिस्से पर कितनी बार फिट होता है गिनें',
+      'guide-step2':'बार × 15 सेमी = उस हिस्से की लंबाई<br>उदा. 3 बार → ~45 सेमी',
+      'guide-step3':'परिणाम बाईं ओर के शरीर आरेख में दर्ज करें और अपना विश्लेषण पाएं!',
+      'blog-title':'फैशन और फिट गाइड',
+      'blog1-title':'परफेक्ट पैंट खोजें','blog1-desc':'स्लिम, वाइड, टेपर्ड... जानें कौन सी पैंट आपके शरीर पर सूट करती है।',
+      'blog2-title':'चौड़े पैरों के लिए जूते गाइड','blog2-desc':'जूते ढूंढने में परेशानी? ब्रांड-वार चौड़ाई तुलना गाइड।',
+      'blog3-title':'सुनहरे अनुपात का शरीर पाएं','blog3-desc':'कंधे, कमर और कूल्हे के अनुपात से अपना शरीर प्रकार जानें।',
+      'section-label':'माप दर्ज करने के लिए शरीर के हिस्से पर क्लिक करें',
+      'panel-title-default':'शरीर की जानकारी','panel-subtitle-default':'सटीक विश्लेषण के लिए माप दर्ज करें।',
+      'placeholder-text':'बाईं ओर शरीर के<br>किसी हिस्से पर क्लिक करें',
+      'save-btn':'सहेजें','analyze-btn':'🔥 मेरे अनुपात का विश्लेषण करें','reset-btn':'रीसेट करें',
+      'progress-label':'पूर्ण','saved-list-title':'सहेजे गए माप',
+      'analysis-report-title':'विश्लेषण रिपोर्ट','analysis-best':'✨ सर्वश्रेष्ठ स्टाइल सुझाव','analysis-worst':'⚠️ बचने वाले स्टाइल',
+      'analysis-disclaimer':'*दर्ज मापों पर आधारित सांख्यिकीय विश्लेषण परिणाम।',
+      'footer-privacy':'गोपनीयता नीति','footer-terms':'सेवा की शर्तें','footer-about':'FITME के बारे में','footer-contact':'संपर्क करें',
+      'footer-copy':'© 2026 FITME. वैश्विक शरीर विश्लेषण सेवा।',
+      'toast-enter-value':'कृपया एक मान दर्ज करें!','toast-saved':' सहेजा गया ✓','toast-link':'लिंक कॉपी हुआ! 🔗',
+      'toast-need-data':'पहले ऊंचाई, वजन और कंधे की चौड़ाई दर्ज करें!','toast-done':'विश्लेषण पूर्ण! 🔥','toast-reset':'रीसेट पूर्ण',
+      'confirm-reset':'सभी माप रीसेट करें?',
+      'parts':{ height:'ऊंचाई', weight:'वजन', head:'सिर', shoulder:'कंधे', chest:'छाती', 'upper-arm':'ऊपरी बांह', 'lower-arm':'अग्रबाहु', waist:'कमर', hip:'कूल्हे', 'upper-leg':'जांघ', 'lower-leg':'पिंडली', foot:'पैर' },
+      'titles':{ height:'HEIGHT / ऊंचाई', weight:'WEIGHT / वजन', head:'HEAD / सिर', shoulder:'SHOULDER / कंधे', chest:'CHEST / छाती', 'upper-arm':'UPPER ARM / ऊपरी बांह', 'lower-arm':'LOWER ARM / अग्रबाहु', waist:'WAIST / कमर', hip:'HIP / कूल्हे', 'upper-leg':'THIGH / जांघ', 'lower-leg':'SHIN / पिंडली', foot:'FOOT / पैर' },
+      'bmi':['कम वजन','सामान्य वजन ✓','अधिक वजन','मोटापा'],
+      'body-inv':'उल्टा त्रिभुज (कंधे > कूल्हे)। अनुपात: {r}','body-tri':'त्रिभुज (कूल्हे > कंधे)। अनुपात: {r}','body-rect':'संतुलित आयताकार/घड़े की आकृति। अनुपात: {r}',
+      'body-default':'विस्तृत विश्लेषण के लिए अधिक माप दर्ज करें।',
+      'best-inv':['चौड़ी पैंट','नीचे हल्के रंग','सीधी पैंट'],'worst-inv':['रेगलन टॉप','पैडेड शोल्डर जैकेट','चौड़ी नेकलाइन'],
+      'best-tri':['ओवरसाइज़ टॉप','ऊपर हल्के रंग','कंधे उभारने वाले डिजाइन'],'worst-tri':['तंग मिनीस्कर्ट','नीचे हल्के रंग','लो-राइज़ पैंट'],
+      'best-rect':['कमर उभारने वाले आउटफिट','बेल्ट का उपयोग','फिटेड टॉप'],'worst-rect':['ढीले ऑल-इन-वन','कमर-रेखा रहित पोशाक'],
+      'best-def':['रेगुलर फिट पैंट','सादे एकरंगी टॉप'],'worst-def':['अत्यधिक तंग कपड़े']
+    },
+    th: {
+      'nav-guide':'คู่มือการวัด','nav-analysis':'วิเคราะห์สัดส่วน','nav-about':'เกี่ยวกับเรา',
+      'hero-tag':'แพลตฟอร์มวิเคราะห์สัดส่วนร่างกายระดับโลก',
+      'hero-sub':'ป้อนการวัดร่างกายเพื่อวิเคราะห์ฟิตที่สมบูรณ์แบบ<br>คำแนะนำแฟชั่นและการวิเคราะห์สัดส่วน',
+      'hero-btn':'เริ่มต้น →',
+      'guide-section-title':'ส่วนสูงเท่ากัน ฟิตต่างกัน',
+      'guide-section-sub':'ความยาวขา ความยาวแขน ความกว้างไหล่ — สัดส่วนจริงรู้ได้จากการวัดเท่านั้น',
+      'guide-card-title':'📱 วัดได้เดี๋ยวนี้ — ด้วยสมาร์ทโฟนของคุณ',
+      'guide-card-desc':'ไม่มีสายวัด? ไม่เป็นไร สมาร์ทโฟนเครื่องเดียวก็พอ<br>ความยาวเฉลี่ยของสมาร์ทโฟนคือประมาณ <strong style="color:var(--accent);">15 ซม.</strong> ใช้เป็นไม้บรรทัดได้เลย',
+      'guide-step1':'ถือโทรศัพท์แนวตั้งแล้วนับว่าวางได้กี่ครั้งตามส่วนของร่างกาย',
+      'guide-step2':'จำนวนครั้ง × 15 ซม. = ความยาวของส่วนนั้น<br>เช่น 3 ครั้ง → ประมาณ 45 ซม.',
+      'guide-step3':'ป้อนผลลัพธ์ในแผนภาพร่างกายด้านซ้ายแล้วรับการวิเคราะห์!',
+      'blog-title':'คู่มือแฟชั่นและฟิต',
+      'blog1-title':'หากางเกงที่ใช่สำหรับคุณ','blog1-desc':'สลิม, วายด์, เทเปอร์... ค้นพบกางเกงที่เหมาะกับรูปร่างของคุณ',
+      'blog2-title':'คู่มือรองเท้าสำหรับเท้ากว้าง','blog2-desc':'หารองเท้าลำบาก? คู่มือเปรียบเทียบความกว้างแต่ละแบรนด์',
+      'blog3-title':'สร้างสัดส่วนร่างกายสัดส่วนทอง','blog3-desc':'ระบุประเภทร่างกายจากสัดส่วนไหล่ เอว และสะโพก',
+      'section-label':'คลิกที่ส่วนของร่างกายเพื่อป้อนการวัด',
+      'panel-title-default':'ข้อมูลร่างกาย','panel-subtitle-default':'ป้อนการวัดเพื่อการวิเคราะห์ที่แม่นยำ',
+      'placeholder-text':'คลิกที่ส่วนของร่างกาย<br>ทางด้านซ้าย',
+      'save-btn':'บันทึก','analyze-btn':'🔥 วิเคราะห์สัดส่วนของฉัน','reset-btn':'รีเซ็ต',
+      'progress-label':'เสร็จสิ้น','saved-list-title':'การวัดที่บันทึกไว้',
+      'analysis-report-title':'รายงานการวิเคราะห์','analysis-best':'✨ สไตล์ที่แนะนำ','analysis-worst':'⚠️ สไตล์ที่ควรหลีกเลี่ยง',
+      'analysis-disclaimer':'*ผลการวิเคราะห์ทางสถิติตามการวัดที่ป้อน',
+      'footer-privacy':'นโยบายความเป็นส่วนตัว','footer-terms':'ข้อกำหนดการใช้บริการ','footer-about':'เกี่ยวกับ FITME','footer-contact':'ติดต่อเรา',
+      'footer-copy':'© 2026 FITME. บริการวิเคราะห์ร่างกายระดับโลก',
+      'toast-enter-value':'กรุณากรอกค่า!','toast-saved':' บันทึกแล้ว ✓','toast-link':'คัดลอกลิงก์แล้ว! 🔗',
+      'toast-need-data':'กรุณากรอกส่วนสูง น้ำหนัก และความกว้างไหล่ก่อน!','toast-done':'วิเคราะห์เสร็จสิ้น! 🔥','toast-reset':'รีเซ็ตแล้ว',
+      'confirm-reset':'รีเซ็ตการวัดทั้งหมดหรือไม่?',
+      'parts':{ height:'ส่วนสูง', weight:'น้ำหนัก', head:'หัว', shoulder:'ไหล่', chest:'หน้าอก', 'upper-arm':'ต้นแขน', 'lower-arm':'แขนท่อนล่าง', waist:'เอว', hip:'สะโพก', 'upper-leg':'ต้นขา', 'lower-leg':'น่อง', foot:'เท้า' },
+      'titles':{ height:'HEIGHT / ส่วนสูง', weight:'WEIGHT / น้ำหนัก', head:'HEAD / หัว', shoulder:'SHOULDER / ไหล่', chest:'CHEST / หน้าอก', 'upper-arm':'UPPER ARM / ต้นแขน', 'lower-arm':'LOWER ARM / แขนล่าง', waist:'WAIST / เอว', hip:'HIP / สะโพก', 'upper-leg':'THIGH / ต้นขา', 'lower-leg':'SHIN / น่อง', foot:'FOOT / เท้า' },
+      'bmi':['น้ำหนักต่ำ','น้ำหนักปกติ ✓','น้ำหนักเกิน','อ้วน'],
+      'body-inv':'รูปสามเหลี่ยมกลับหัว (ไหล่ > สะโพก) อัตราส่วน: {r}','body-tri':'รูปสามเหลี่ยม (สะโพก > ไหล่) อัตราส่วน: {r}','body-rect':'รูปร่างสมดุล/ทรงนาฬิกาทราย อัตราส่วน: {r}',
+      'body-default':'ป้อนการวัดเพิ่มเติมเพื่อการวิเคราะห์ที่ละเอียด',
+      'best-inv':['กางเกงขากว้าง','สีอ่อนด้านล่าง','กางเกงขาตรง'],'worst-inv':['เสื้อแขนราเกลน','แจ็คเก็ตเสริมไหล่','คอเสื้อกว้าง'],
+      'best-tri':['เสื้อโอเวอร์ไซส์','สีอ่อนด้านบน','ดีไซน์เน้นไหล่'],'worst-tri':['มินิสเกิร์ตรัดรูป','สีอ่อนด้านล่าง','กางเกงเอวต่ำ'],
+      'best-rect':['ชุดเน้นเอว','ใช้เข็มขัด','เสื้อฟิต'],'worst-rect':['ชุดจัมพ์สูทหลวม','ชุดเดรสไม่มีเอว'],
+      'best-def':['กางเกงตัดตรง','เสื้อสีพื้นเรียบ'],'worst-def':['เสื้อผ้าคับเกินไป']
+    },
+    id: {
+      'nav-guide':'Panduan Pengukuran','nav-analysis':'Analisis Tubuh','nav-about':'Tentang Kami',
+      'hero-tag':'Platform Analisis Tubuh Global',
+      'hero-sub':'Masukkan ukuranmu untuk menganalisis fit sempurnamu.<br>Rekomendasi fashion dan analisis proporsi.',
+      'hero-btn':'Mulai →',
+      'guide-section-title':'Tinggi Sama, Fit Berbeda',
+      'guide-section-sub':'Panjang kaki, lengan, lebar bahu — proporsi aslimu hanya bisa diketahui dengan mengukur',
+      'guide-card-title':'📱 Ukur Sekarang — Dengan Smartphone-mu',
+      'guide-card-desc':'Tidak punya meteran? Tidak masalah. Smartphone-mu sudah cukup.<br>Panjang rata-rata smartphone adalah sekitar <strong style="color:var(--accent);">15 cm</strong> — gunakan sebagai penggaris.',
+      'guide-step1':'Pegang ponsel secara vertikal dan hitung berapa kali muat di bagian tubuh',
+      'guide-step2':'Kali × 15 cm = panjang bagian tersebut<br>mis. 3 kali → ~45 cm',
+      'guide-step3':'Masukkan hasilnya di diagram tubuh di kiri dan dapatkan analisismu!',
+      'blog-title':'Panduan Fashion & Fit',
+      'blog1-title':'Temukan Celana yang Tepat','blog1-desc':'Slim, wide, tapered... Temukan celana yang cocok untuk tubuhmu.',
+      'blog2-title':'Panduan Sepatu untuk Kaki Lebar','blog2-desc':'Sulit menemukan sepatu? Panduan perbandingan lebar per merek.',
+      'blog3-title':'Mencapai Proporsi Tubuh Ideal','blog3-desc':'Kenali tipe tubuhmu dari proporsi bahu, pinggang, dan pinggul.',
+      'section-label':'Klik bagian tubuh untuk memasukkan ukuran',
+      'panel-title-default':'Informasi Tubuh','panel-subtitle-default':'Masukkan ukuranmu untuk analisis yang akurat.',
+      'placeholder-text':'Klik bagian tubuh<br>di sebelah kiri',
+      'save-btn':'Simpan','analyze-btn':'🔥 Analisis Proporsi Saya','reset-btn':'Reset',
+      'progress-label':'Selesai','saved-list-title':'Ukuran Tersimpan',
+      'analysis-report-title':'Laporan Analisis','analysis-best':'✨ Rekomendasi Gaya Terbaik','analysis-worst':'⚠️ Gaya yang Harus Dihindari',
+      'analysis-disclaimer':'*Hasil analisis statistik berdasarkan ukuran yang dimasukkan.',
+      'footer-privacy':'Kebijakan Privasi','footer-terms':'Syarat Layanan','footer-about':'Tentang FITME','footer-contact':'Hubungi Kami',
+      'footer-copy':'© 2026 FITME. Layanan Analisis Tubuh Global.',
+      'toast-enter-value':'Masukkan nilai terlebih dahulu!','toast-saved':' tersimpan ✓','toast-link':'Tautan disalin! 🔗',
+      'toast-need-data':'Masukkan tinggi, berat, dan lebar bahu terlebih dahulu!','toast-done':'Analisis selesai! 🔥','toast-reset':'Reset selesai',
+      'confirm-reset':'Reset semua ukuran?',
+      'parts':{ height:'Tinggi', weight:'Berat', head:'Kepala', shoulder:'Bahu', chest:'Dada', 'upper-arm':'Lengan Atas', 'lower-arm':'Lengan Bawah', waist:'Pinggang', hip:'Pinggul', 'upper-leg':'Paha', 'lower-leg':'Betis', foot:'Kaki' },
+      'titles':{ height:'HEIGHT / Tinggi', weight:'WEIGHT / Berat', head:'HEAD / Kepala', shoulder:'SHOULDER / Bahu', chest:'CHEST / Dada', 'upper-arm':'UPPER ARM / Lengan Atas', 'lower-arm':'LOWER ARM / Lengan Bawah', waist:'WAIST / Pinggang', hip:'HIP / Pinggul', 'upper-leg':'THIGH / Paha', 'lower-leg':'SHIN / Betis', foot:'FOOT / Kaki' },
+      'bmi':['Berat badan kurang','Berat badan normal ✓','Kelebihan berat badan','Obesitas'],
+      'body-inv':'Segitiga terbalik (bahu > pinggul). Rasio: {r}','body-tri':'Segitiga (pinggul > bahu). Rasio: {r}','body-rect':'Persegi panjang / jam pasir seimbang. Rasio: {r}',
+      'body-default':'Masukkan lebih banyak ukuran untuk analisis yang lebih detail.',
+      'best-inv':['Celana lebar','Warna terang di bawah','Celana lurus'],'worst-inv':['Atasan raglan','Jaket berpadding bahu','Leher baju lebar'],
+      'best-tri':['Atasan oversized','Warna terang di atas','Desain yang menonjolkan bahu'],'worst-tri':['Rok mini ketat','Warna terang di bawah','Celana pinggang rendah'],
+      'best-rect':['Outfit yang menonjolkan pinggang','Pakai ikat pinggang','Atasan pas badan'],'worst-rect':['Overall longgar','Gaun tanpa pinggang'],
+      'best-def':['Celana regular fit','Atasan polos sederhana'],'worst-def':['Pakaian yang terlalu ketat']
+    },
+    vi: {
+      'nav-guide':'Hướng dẫn đo','nav-analysis':'Phân tích cơ thể','nav-about':'Về chúng tôi',
+      'hero-tag':'Nền tảng phân tích cơ thể toàn cầu',
+      'hero-sub':'Nhập số đo của bạn để phân tích vóc dáng hoàn hảo.<br>Gợi ý thời trang và phân tích tỷ lệ cơ thể.',
+      'hero-btn':'Bắt đầu →',
+      'guide-section-title':'Chiều cao như nhau, dáng khác nhau',
+      'guide-section-sub':'Chiều dài chân, tay, chiều rộng vai — tỷ lệ thực sự chỉ biết khi đo',
+      'guide-card-title':'📱 Đo ngay bây giờ — bằng điện thoại thông minh',
+      'guide-card-desc':'Không có thước dây? Không sao. Điện thoại thông minh của bạn là đủ.<br>Chiều dài trung bình của điện thoại là khoảng <strong style="color:var(--accent);">15 cm</strong> — dùng làm thước.',
+      'guide-step1':'Cầm điện thoại theo chiều dọc và đếm xem đặt bao nhiêu lần vào vùng cơ thể',
+      'guide-step2':'Số lần × 15 cm = chiều dài vùng đó<br>vd. 3 lần → ~45 cm',
+      'guide-step3':'Nhập kết quả vào sơ đồ cơ thể bên trái và nhận phân tích!',
+      'blog-title':'Hướng dẫn thời trang & vóc dáng',
+      'blog1-title':'Tìm quần phù hợp','blog1-desc':'Slim, wide, tapered... Tìm loại quần phù hợp với dáng người.',
+      'blog2-title':'Hướng dẫn giày cho bàn chân rộng','blog2-desc':'Khó tìm giày? Hướng dẫn so sánh độ rộng theo thương hiệu.',
+      'blog3-title':'Đạt tỷ lệ cơ thể vàng','blog3-desc':'Xác định loại cơ thể qua tỷ lệ vai, eo và hông.',
+      'section-label':'Nhấp vào bộ phận cơ thể để nhập số đo',
+      'panel-title-default':'Thông tin cơ thể','panel-subtitle-default':'Nhập số đo để phân tích chính xác.',
+      'placeholder-text':'Nhấp vào bộ phận cơ thể<br>ở phía bên trái',
+      'save-btn':'Lưu','analyze-btn':'🔥 Phân tích tỷ lệ của tôi','reset-btn':'Đặt lại',
+      'progress-label':'Hoàn thành','saved-list-title':'Số đo đã lưu',
+      'analysis-report-title':'Báo cáo phân tích','analysis-best':'✨ Phong cách được gợi ý','analysis-worst':'⚠️ Phong cách nên tránh',
+      'analysis-disclaimer':'*Kết quả phân tích thống kê dựa trên số đo đã nhập.',
+      'footer-privacy':'Chính sách bảo mật','footer-terms':'Điều khoản dịch vụ','footer-about':'Về FITME','footer-contact':'Liên hệ',
+      'footer-copy':'© 2026 FITME. Dịch vụ phân tích cơ thể toàn cầu.',
+      'toast-enter-value':'Vui lòng nhập giá trị!','toast-saved':' đã lưu ✓','toast-link':'Đã sao chép liên kết! 🔗',
+      'toast-need-data':'Vui lòng nhập chiều cao, cân nặng và chiều rộng vai trước!','toast-done':'Phân tích hoàn tất! 🔥','toast-reset':'Đã đặt lại',
+      'confirm-reset':'Đặt lại tất cả số đo?',
+      'parts':{ height:'Chiều cao', weight:'Cân nặng', head:'Đầu', shoulder:'Vai', chest:'Ngực', 'upper-arm':'Cánh tay trên', 'lower-arm':'Cẳng tay', waist:'Eo', hip:'Hông', 'upper-leg':'Đùi', 'lower-leg':'Bắp chân', foot:'Bàn chân' },
+      'titles':{ height:'HEIGHT / Chiều cao', weight:'WEIGHT / Cân nặng', head:'HEAD / Đầu', shoulder:'SHOULDER / Vai', chest:'CHEST / Ngực', 'upper-arm':'UPPER ARM / Cánh tay', 'lower-arm':'LOWER ARM / Cẳng tay', waist:'WAIST / Eo', hip:'HIP / Hông', 'upper-leg':'THIGH / Đùi', 'lower-leg':'SHIN / Bắp chân', foot:'FOOT / Bàn chân' },
+      'bmi':['Thiếu cân','Cân nặng bình thường ✓','Thừa cân','Béo phì'],
+      'body-inv':'Tam giác ngược (vai > hông). Tỷ lệ: {r}','body-tri':'Tam giác (hông > vai). Tỷ lệ: {r}','body-rect':'Hình chữ nhật / đồng hồ cát cân bằng. Tỷ lệ: {r}',
+      'body-default':'Nhập thêm số đo để phân tích chi tiết hơn.',
+      'best-inv':['Quần ống rộng','Màu sáng ở dưới','Quần ống thẳng'],'worst-inv':['Áo tay raglan','Áo khoác độn vai','Cổ áo rộng'],
+      'best-tri':['Áo oversized','Màu sáng ở trên','Thiết kế nhấn mạnh vai'],'worst-tri':['Chân váy mini bó','Màu sáng ở dưới','Quần lưng thấp'],
+      'best-rect':['Trang phục nhấn eo','Dùng thắt lưng','Áo bó sát'],'worst-rect':['Jumpsuit rộng','Đầm không có eo'],
+      'best-def':['Quần cắt thẳng','Áo trơn đơn giản'],'worst-def':['Quần áo quá bó']
+    }
+  };
+
+  // ============================================================
+  // LANGUAGE STATE & APPLY
+  // ============================================================
+  let currentLang = (function() {
+    const nav = navigator.language || '';
+    const map = { ja:'ja', zh:'zh', fr:'fr', es:'es', pt:'pt', de:'de', it:'it', ru:'ru', ar:'ar', hi:'hi', th:'th', id:'id', vi:'vi', ko:'ko' };
+    for (const [code, lang] of Object.entries(map)) {
+      if (nav.toLowerCase().startsWith(code)) return lang;
+    }
+    return 'en';
+  })();
+
+  function t(key) { return (i18n[currentLang] || i18n.en)[key] || (i18n.en[key] || key); }
+
+  function applyTranslations() {
+    const lang = currentLang;
+    // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
+    const htmlKeys = new Set(['hero-sub','guide-card-desc','guide-step2']);
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const val = t(key);
+      if (htmlKeys.has(key)) el.innerHTML = val; else el.textContent = val;
+    });
+    // guide section (no data-i18n, use IDs)
+    const set = (id, val, html) => { const el = document.getElementById(id); if (el) { if(html) el.innerHTML = val; else el.textContent = val; } };
+    set('guide-section-title', t('guide-section-title'));
+    set('guide-section-sub', t('guide-section-sub'));
+    set('guide-card-title', t('guide-card-title'));
+    set('guide-card-desc', t('guide-card-desc'), true);
+    set('guide-step1-p', t('guide-step1'));
+    set('guide-step2-p', t('guide-step2'), true);
+    set('guide-step3-p', t('guide-step3'));
+    // panel
+    set('panel-title', t('panel-title-default'));
+    set('panel-subtitle', t('panel-subtitle-default'));
+    set('placeholder-text', t('placeholder-text'), true);
+    // buttons
+    set('btn-analyze', t('analyze-btn'));
+    set('btn-reset', t('reset-btn'));
+    set('progress-label-text', t('progress-label'));
+    set('saved-list-title', t('saved-list-title'));
+    // analysis result labels
+    set('analysis-report-title', t('analysis-report-title'));
+    set('analysis-best-title', t('analysis-best'));
+    set('analysis-worst-title', t('analysis-worst'));
+    set('analysis-disclaimer', t('analysis-disclaimer'));
+    // all save buttons
+    document.querySelectorAll('.btn-save').forEach(btn => btn.textContent = t('save-btn'));
+    // RTL
+    document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+  }
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.getElementById('lang-select').value = lang;
+    applyTranslations();
+  }
+
   // PAGE NAVIGATION
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -756,9 +1408,7 @@
     window.scrollTo(0, 0);
   }
 
-  function showBlogPost(id) {
-    showPage(id);
-  }
+  function showBlogPost(id) { showPage(id); }
 
   // STATE
   const measurements = {};
@@ -766,28 +1416,14 @@
   let filledCount = 0;
   const totalParts = 12;
 
-  const partNames = {
-    height:'키', weight:'체중', head:'머리', shoulder:'어깨',
-    chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완',
-    waist:'허리', hip:'골반', 'upper-leg':'허벅지',
-    'lower-leg':'종아리', foot:'발'
-  };
-
   function selectPart(part) {
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('form-' + part).classList.add('visible');
     document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
     document.getElementById('hs-' + part).classList.add('active');
-    const titles = {
-      height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리',
-      shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴',
-      'upper-arm':'UPPER ARM / 상완', 'lower-arm':'LOWER ARM / 하완',
-      waist:'WAIST / 허리', hip:'HIP / 골반',
-      'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발'
-    };
+    const titles = (i18n[currentLang] || i18n.en)['titles'] || i18n.en['titles'];
     document.getElementById('panel-title').textContent = titles[part] || part;
-    // 모바일에서 입력 패널로 자동 스크롤
     if (window.innerWidth <= 900) {
       setTimeout(() => {
         document.querySelector('.panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -817,13 +1453,14 @@
     else if (part === 'lower-leg') { data.len = document.getElementById('lower-leg-len').value; hasData = data.len; }
     else if (part === 'foot') { data.size = document.getElementById('foot-size').value; data.width = radioSelections['footw']; hasData = data.size || data.width; }
 
-    if (!hasData) { showToast('값을 입력해주세요!'); return; }
+    if (!hasData) { showToast(t('toast-enter-value')); return; }
     const isNew = !measurements[part];
     measurements[part] = data;
     if (isNew) { filledCount++; document.getElementById('hs-' + part).classList.add('filled'); }
     updateProgress();
     updateSavedList();
-    showToast(partNames[part] + ' 저장 완료! ✓');
+    const partLabel = ((i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'])[part] || part;
+    showToast(partLabel + t('toast-saved'));
   }
 
   function updateProgress() {
@@ -837,6 +1474,7 @@
     const items = document.getElementById('saved-items');
     if (!Object.keys(measurements).length) { list.style.display = 'none'; return; }
     list.style.display = 'block';
+    const partNames = (i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'];
     let html = '';
     for (const [part, data] of Object.entries(measurements)) {
       let v = '';
@@ -848,7 +1486,7 @@
       else if (part === 'waist' || part === 'hip') v = data.circ + 'cm';
       else if (part === 'upper-leg') v = (data.len || '?') + 'cm / ' + (data.circ || '?') + 'cm';
       else if (part === 'foot') v = (data.size ? data.size + 'mm' : '') + (data.width ? ' / ' + data.width : '');
-      html += `<div class="saved-item"><span class="saved-item-label">${partNames[part].toUpperCase()}</span><span class="saved-item-value">${v}</span></div>`;
+      html += `<div class="saved-item"><span class="saved-item-label">${(partNames[part] || part).toUpperCase()}</span><span class="saved-item-value">${v}</span></div>`;
     }
     items.innerHTML = html;
   }
@@ -860,42 +1498,38 @@
     const waist = measurements.waist?.circ;
     const hip = measurements.hip?.circ;
 
-    if (!h && !w && !shoulder) { showToast('먼저 키, 체중, 어깨 너비를 입력해주세요!'); return; }
+    if (!h && !w && !shoulder) { showToast(t('toast-need-data')); return; }
 
-    let analysis = '';
-    let bmi = '';
-    let best = [];
-    let worst = [];
+    let analysis = '', bmi = '', best = [], worst = [];
+    const lc = i18n[currentLang] || i18n.en;
 
     if (h && w) {
       const bmiVal = (w / ((h/100) ** 2)).toFixed(1);
-      bmi = `BMI: ${bmiVal} — `;
-      if (bmiVal < 18.5) bmi += '저체중';
-      else if (bmiVal < 23) bmi += '정상 체중 ✓';
-      else if (bmiVal < 25) bmi += '과체중';
-      else bmi += '비만';
+      const bmiLabels = lc['bmi'] || i18n.en['bmi'];
+      const bmiLabel = bmiVal < 18.5 ? bmiLabels[0] : bmiVal < 23 ? bmiLabels[1] : bmiVal < 25 ? bmiLabels[2] : bmiLabels[3];
+      bmi = `BMI: ${bmiVal} — ${bmiLabel}`;
     }
 
     if (shoulder && waist && hip) {
-      const sw = parseFloat(shoulder), ww = parseFloat(waist), hw = parseFloat(hip);
+      const sw = parseFloat(shoulder), hw = parseFloat(hip);
       const ratio = (sw / hw).toFixed(2);
       if (ratio > 1.1) {
-        analysis = `어깨가 골반보다 넓은 역삼각형 체형입니다. (어깨/골반 비율: ${ratio})`;
-        best = ['와이드 팬츠 / 하의 볼륨', '밝은 색상 하의', '스트레이트핏 팬츠'];
-        worst = ['라글란 소매 상의', '패드 어깨 재킷', '넓은 네크라인'];
+        analysis = (lc['body-inv'] || i18n.en['body-inv']).replace('{r}', ratio);
+        best = lc['best-inv'] || i18n.en['best-inv'];
+        worst = lc['worst-inv'] || i18n.en['worst-inv'];
       } else if (ratio < 0.9) {
-        analysis = `골반이 어깨보다 넓은 삼각형 체형입니다. (어깨/골반 비율: ${ratio})`;
-        best = ['오버사이즈 상의', '밝은 색상 상의', '어깨 강조 디자인'];
-        worst = ['타이트한 미니스커트', '밝은 색상 하의', '낮은 허리선 팬츠'];
+        analysis = (lc['body-tri'] || i18n.en['body-tri']).replace('{r}', ratio);
+        best = lc['best-tri'] || i18n.en['best-tri'];
+        worst = lc['worst-tri'] || i18n.en['worst-tri'];
       } else {
-        analysis = `어깨와 골반이 균형잡힌 직사각형/모래시계 체형입니다. (비율: ${ratio})`;
-        best = ['허리 강조 코디', '벨트 활용', '피티드 상의'];
-        worst = ['루즈핏 올인원', '허리 라인 없는 원피스'];
+        analysis = (lc['body-rect'] || i18n.en['body-rect']).replace('{r}', ratio);
+        best = lc['best-rect'] || i18n.en['best-rect'];
+        worst = lc['worst-rect'] || i18n.en['worst-rect'];
       }
     } else {
-      analysis = '더 많은 측정값을 입력하면 정확한 분석이 가능합니다.';
-      best = ['레귤러핏 팬츠', '심플한 단색 상의'];
-      worst = ['극단적으로 타이트한 의류'];
+      analysis = lc['body-default'] || i18n.en['body-default'];
+      best = lc['best-def'] || i18n.en['best-def'];
+      worst = lc['worst-def'] || i18n.en['worst-def'];
     }
 
     document.getElementById('analysis-text').textContent = analysis;
@@ -904,15 +1538,15 @@
     document.getElementById('worst-styles').innerHTML = worst.map(s => `<div class="style-item">⚠️ ${s}</div>`).join('');
     document.getElementById('analysis-result').classList.add('visible');
     document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    showToast('분석 완료! 🔥');
+    showToast(t('toast-done'));
   }
 
   function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(() => showToast('링크 복사됨! 🔗'));
+    navigator.clipboard.writeText(window.location.href).then(() => showToast(t('toast-link')));
   }
 
   function resetAll() {
-    if (!confirm('모든 측정값을 초기화할까요?')) return;
+    if (!confirm(t('confirm-reset'))) return;
     Object.keys(measurements).forEach(k => delete measurements[k]);
     filledCount = 0;
     document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('filled', 'active'));
@@ -921,9 +1555,9 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
-    document.getElementById('panel-title').textContent = '신체 정보 입력';
+    document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
-    showToast('초기화 완료');
+    showToast(t('toast-reset'));
   }
 
   function showToast(msg) {
@@ -933,17 +1567,9 @@
     setTimeout(() => t.classList.remove('show'), 2500);
   }
 
-  // LANGUAGE (basic)
-  function setLanguage(lang) {
-    const isEn = lang === 'en';
-    if (isEn) {
-      document.getElementById('panel-subtitle').textContent = 'Enter your measurements for accurate analysis.';
-      document.getElementById('placeholder-text').innerHTML = 'Click a body part<br>to start measuring';
-    } else {
-      document.getElementById('panel-subtitle').textContent = '정확한 분석을 위해 치수를 입력해 주세요.';
-      document.getElementById('placeholder-text').innerHTML = '왼쪽 인체 도형에서<br>부위를 클릭해 주세요';
-    }
-  }
+
+  // Init on load
+  setLanguage(currentLang);
 
 </script>
 <style>
