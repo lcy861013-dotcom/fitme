@@ -4,14 +4,212 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FITME — Global Body Proportion Analysis Platform</title>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="FITME는 신체 치수를 입력하면 나만의 핏을 분석해주는 글로벌 바디 비율 분석 플랫폼입니다.">
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --card: #1a1a1a;
+      --accent: #e8ff47;
+      --accent2: #ff4747;
+      --accent3: #47c8ff;
+      --text: #f0f0f0;
+      --muted: #777;
+      --border: #2a2a2a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', 'DM Sans', sans-serif; }
+
+    /* HEADER */
+    header {
+      padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0;
+      background: rgba(10,10,10,0.97); backdrop-filter: blur(10px); z-index: 200;
+    }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 6px; color: var(--accent); text-decoration: none; text-shadow: 0 0 20px rgba(232,255,71,0.3); }
+    .logo span { color: var(--text); }
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    nav { display: flex; gap: 20px; }
+    nav a { color: var(--muted); font-size: 13px; text-decoration: none; letter-spacing: 1px; cursor: pointer; transition: color 0.2s; font-family: 'DM Sans', sans-serif; }
+    nav a:hover { color: var(--text); }
+    .lang-switcher { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; outline: none; font-family: 'DM Sans', sans-serif; }
+
+    /* PAGE SYSTEM */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 32px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(ellipse at 50% 0%, rgba(232,255,71,0.06) 0%, transparent 70%);
+    }
+    .hero-tag { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 72px; letter-spacing: 8px; line-height: 1; margin-bottom: 20px; }
+    .hero-title span { color: var(--accent); }
+    .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 500px; margin: 0 auto 36px; }
+    .hero-btn { display: inline-block; padding: 14px 40px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .hero-btn:hover { background: #f5ff80; box-shadow: 0 4px 30px rgba(232,255,71,0.4); transform: translateY(-2px); }
+
+    /* GUIDE SECTION */
+    .guide-content { padding: 60px 32px; border-bottom: 1px solid var(--border); }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-tag { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 4px; }
+    .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .guide-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: border-color 0.2s; }
+    .guide-card:hover { border-color: var(--accent); }
+    .guide-card h3 { font-size: 15px; margin-bottom: 14px; letter-spacing: 0.5px; }
+    .guide-card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+
+    /* BLOG SECTION */
+    .blog-section { padding: 60px 32px; border-bottom: 1px solid var(--border); }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .blog-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+    .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .blog-thumb { height: 140px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; font-size: 48px; }
+    .blog-body { padding: 20px; }
+    .blog-tag { font-size: 10px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
+    .blog-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
+    .blog-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    /* MAIN ANALYSIS */
+    .main-container { display: grid; grid-template-columns: 1fr 420px; min-height: 80vh; }
+    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; border-right: 1px solid var(--border); }
+    .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 32px; font-family: 'DM Sans', sans-serif; }
+    .body-container { position: relative; width: 280px; height: 500px; }
+    .body-svg { width: 100%; height: 100%; }
+
+    .hotspot {
+      position: absolute; width: 34px; height: 34px; border-radius: 50%;
+      border: 2px solid var(--accent); background: rgba(232,255,71,0.08);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--accent); transition: all 0.2s;
+      transform: translate(-50%, -50%); z-index: 10;
+    }
+    .hotspot:hover, .hotspot.active { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(232,255,71,0.5); transform: translate(-50%, -50%) scale(1.15); }
+    .hotspot.filled { border-color: #47ff8a; background: rgba(71,255,138,0.12); color: #47ff8a; }
+    .hotspot.filled:hover { background: #47ff8a; color: var(--bg); }
+    .hotspot::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--accent); animation: pulse 2s infinite; opacity: 0; }
+    .hotspot.filled::after { border-color: #47ff8a; }
+    @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
+
+    /* PANEL */
+    .panel { display: flex; flex-direction: column; background: var(--surface); }
+    .panel-header { padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
+    .panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; margin-bottom: 6px; }
+    .panel-subtitle { font-size: 12px; color: var(--muted); line-height: 1.7; }
+    .input-area { flex: 1; padding: 24px; overflow-y: auto; }
+    .input-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 180px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 13px; text-align: center; line-height: 2; }
+    .measurement-form { display: none; }
+    .measurement-form.visible { display: block; animation: fadeIn 0.2s; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+    .form-desc { font-size: 12px; color: var(--muted); margin-bottom: 18px; line-height: 1.7; }
+    .input-group { margin-bottom: 14px; }
+    .input-label { font-size: 11px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block; font-family: 'DM Sans', sans-serif; }
+    .input-field { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+    .input-field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,255,71,0.1); }
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .radio-btn { flex: 1; min-width: 55px; padding: 9px 6px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    .radio-btn:hover { border-color: var(--accent); color: var(--text); }
+    .radio-btn.selected { border-color: var(--accent); background: rgba(232,255,71,0.1); color: var(--accent); font-weight: 700; }
+
+    /* BUTTONS */
+    .btn { display: block; width: 100%; padding: 13px; border: none; border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 12px; }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { background: #f5ff80; box-shadow: 0 4px 20px rgba(232,255,71,0.3); transform: translateY(-1px); }
+    .btn-accent2 { background: var(--accent2); color: white; }
+    .btn-accent2:hover { background: #ff6666; box-shadow: 0 4px 20px rgba(255,71,71,0.3); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--text); background: rgba(255,255,255,0.05); }
+
+    /* PROGRESS */
+    .progress-bar { padding: 16px 24px; border-top: 1px solid var(--border); }
+    .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
+    .progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 2px; transition: width 0.5s ease; }
+
+    /* ANALYSIS RESULT */
+    .analysis-card { background: var(--card); border: 1px solid var(--accent); border-radius: 16px; padding: 24px; margin-top: 16px; display: none; }
+    .analysis-card.visible { display: block; animation: fadeIn 0.3s; }
+    .analysis-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .share-group { display: flex; gap: 8px; }
+    .share-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 8px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+    .share-btn:hover { border-color: var(--accent); }
+    .style-section h4 { font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
+    .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .style-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.6; }
+
+    /* SAVED LIST */
+    .saved-list { padding: 16px 24px; border-top: 1px solid var(--border); max-height: 200px; overflow-y: auto; display: none; }
+    .saved-list-title { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
+    .saved-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+    .saved-item-label { color: var(--muted); font-size: 10px; letter-spacing: 1px; font-family: 'DM Sans', sans-serif; }
+    .saved-item-value { color: var(--accent); font-weight: 700; font-family: 'DM Sans', sans-serif; }
+
+    /* PANEL ACTIONS */
+    .panel-actions { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+
+    /* STATIC PAGES */
+    .static-page { max-width: 800px; margin: 0 auto; padding: 60px 32px; }
+    .static-page h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 4px; color: var(--accent); margin-bottom: 8px; }
+    .static-page .updated { font-size: 12px; color: var(--muted); margin-bottom: 40px; font-family: 'DM Sans', sans-serif; }
+    .static-page h2 { font-size: 18px; font-weight: 700; margin: 32px 0 12px; color: var(--text); letter-spacing: 0.5px; }
+    .static-page p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
+    .static-page ul { padding-left: 20px; margin-bottom: 16px; }
+    .static-page li { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 6px; }
+    .static-page .highlight-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin: 20px 0; }
+    .static-page .highlight-box p { margin: 0; }
+
+    /* ABOUT */
+    .about-hero { text-align: center; padding: 80px 32px 60px; border-bottom: 1px solid var(--border); }
+    .about-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 6px; margin-bottom: 16px; }
+    .about-hero p { font-size: 15px; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+    .about-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 60px auto; padding: 0 32px; }
+    .about-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; text-align: center; }
+    .about-card .icon { font-size: 36px; margin-bottom: 16px; }
+    .about-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .about-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* FOOTER */
+    footer { padding: 40px 32px; border-top: 1px solid var(--border); text-align: center; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); font-size: 12px; text-decoration: none; cursor: pointer; transition: color 0.2s; font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+
+    /* TOAST */
+    .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--accent); color: var(--bg); padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: 1px; transition: transform 0.3s; z-index: 999; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* BLOG POST */
+    .blog-post { max-width: 700px; margin: 0 auto; padding: 60px 32px; }
+    .blog-post h1 { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 3px; margin-bottom: 12px; }
+    .blog-post .meta { font-size: 12px; color: var(--muted); margin-bottom: 40px; font-family: 'DM Sans', sans-serif; }
+    .blog-post h2 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; }
+    .blog-post p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
+    .blog-post .tip { background: rgba(232,255,71,0.06); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 13px; color: var(--text); line-height: 1.8; }
+
+    @media (max-width: 900px) {
+      .main-container { grid-template-columns: 1fr; }
+      .body-section { border-right: none; border-bottom: 1px solid var(--border); }
+      .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
+      .hero-title { font-size: 48px; }
+      nav { display: none; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <a href="#" class="logo">FIT<span>ME</span></a>
-  <div style="display: flex; align-items: center; gap: 15px;">
+  <a href="#" class="logo" onclick="showPage('home')">FIT<span>ME</span></a>
+  <div class="header-right">
     <select id="lang-select" class="lang-switcher" onchange="setLanguage(this.value)">
       <option value="ko">🇰🇷 한국어</option>
       <option value="en">🇺🇸 English</option>
@@ -19,269 +217,705 @@
       <option value="cn">🇨🇳 中文</option>
     </select>
     <nav>
-      <a href="#guide" data-i18n="nav-guide">측정 가이드</a>
-      <a href="#analysis" data-i18n="nav-analysis">비율 분석</a>
-      <a href="#about" data-i18n="nav-about">About</a>
+      <a onclick="showPage('home')" data-i18n="nav-guide">측정 가이드</a>
+      <a onclick="showPage('home'); setTimeout(()=>document.getElementById('analysis').scrollIntoView({behavior:'smooth'}),100)" data-i18n="nav-analysis">비율 분석</a>
+      <a onclick="showPage('about')" data-i18n="nav-about">About</a>
     </nav>
   </div>
 </header>
 
-<!-- Expert & Smartphone Guide Section -->
-<section class="guide-content" id="guide">
-  <h2 class="guide-title" data-i18n="guide-title">올바른 신체 치수 측정 가이드</h2>
-  <div class="guide-grid">
-    <div class="guide-card">
-      <h3 data-i18n="phone-guide-title">📱 스마트폰 활용 측정법 (No Tape?)</h3>
-      <p class="guide-text" data-i18n="phone-guide-desc">
-        줄자가 없으신가요? 여러분의 스마트폰을 사용해 보세요! 최신 스마트폰의 평균 세로 길이는 약 15cm입니다. 
-        무릎에서 골반까지 스마트폰이 약 3번 들어간다면 해당 부위의 길이는 약 45cm로 추정할 수 있습니다.
-      </p>
-    </div>
-    <div class="guide-card">
-      <h3 data-i18n="head-guide-title">🧢 머리 둘레 측정 꿀팁</h3>
-      <p class="guide-text" data-i18n="head-guide-desc">
-        곡선인 머리 둘레는 <b>충전 케이블</b>을 활용하세요! 
-        케이블을 머리에 한 바퀴 두른 뒤, 그 길이를 스마트폰(15cm)으로 재보세요. 
-        약 3.8번이면 57cm(보통), 4번이면 60cm(대형)입니다.
-      </p>
-    </div>
-    <div class="guide-card">
-      <h3 data-i18n="pro-guide-title">📏 전문가 권장 측정 자세</h3>
-      <p class="guide-text" data-i18n="pro-guide-desc">
-        정확한 비율 분석을 위해 거울 앞에서 바른 자세로 서서 측정하세요. 
-        키와 체중은 신체 밸런스를 분석하는 핵심 데이터이므로 가장 먼저 입력하는 것이 좋습니다.
-      </p>
-    </div>
-  </div>
-</section>
+<!-- ===== HOME PAGE ===== -->
+<div id="page-home" class="page active">
 
-<div class="main-container" id="analysis">
-  <!-- LEFT: BODY FIGURE -->
-  <div class="body-section">
-    <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
-
-    <div class="body-container">
-      <svg class="body-svg" viewBox="0 0 280 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Body Parts with IDs for Scaling -->
-        <g id="svg-head">
-          <circle cx="140" cy="52" r="38" stroke="#2a2a2a" stroke-width="2" fill="#1a1a1a"/>
-        </g>
-        <g id="svg-neck">
-          <rect x="130" y="88" width="20" height="20" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/>
-        </g>
-        <g id="svg-torso">
-          <path d="M88 108 L192 108 L200 240 L80 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-arm-l">
-          <path d="M88 112 L52 200 L62 204 L98 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-arm-r">
-          <path d="M192 112 L228 200 L218 204 L182 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-hip">
-          <path d="M80 240 L78 270 L202 270 L200 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-leg-l-upper">
-          <path d="M80 268 L72 370 L108 370 L116 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-leg-l-lower">
-          <path d="M72 374 L68 460 L108 460 L108 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-leg-r-upper">
-          <path d="M200 268 L208 370 L172 370 L164 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-        <g id="svg-leg-r-lower">
-          <path d="M208 374 L212 460 L172 460 L172 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/>
-        </g>
-      </svg>
-
-      <!-- Hotspots -->
-      <button class="hotspot" id="hs-height" style="left:50%; top:-5%;" onclick="selectPart('height')" title="Height">📏</button>
-      <button class="hotspot" id="hs-weight" style="left:50%; top:50%;" onclick="selectPart('weight')" title="Weight">⚖️</button>
-      <button class="hotspot" id="hs-head" style="left:50%; top:10%;" onclick="selectPart('head')" title="Head">👤</button>
-      <button class="hotspot" id="hs-shoulder" style="left:50%; top:25%;" onclick="selectPart('shoulder')" title="Shoulder">↔</button>
-      <button class="hotspot" id="hs-chest" style="left:50%; top:33%;" onclick="selectPart('chest')" title="Chest">◉</button>
-      <button class="hotspot" id="hs-upper-arm" style="left:15%; top:34%;" onclick="selectPart('upper-arm')" title="Upper Arm">💪</button>
-      <button class="hotspot" id="hs-lower-arm" style="left:12%; top:45%;" onclick="selectPart('lower-arm')" title="Lower Arm">✋</button>
-      <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')" title="Waist">○</button>
-      <button class="hotspot" id="hs-hip" style="left:50%; top:57%;" onclick="selectPart('hip')" title="Hip">↕</button>
-      <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')" title="Upper Leg">┃</button>
-      <button class="hotspot" id="hs-lower-leg" style="left:28%; top:85%;" onclick="selectPart('lower-leg')" title="Lower Leg">⊕</button>
-      <button class="hotspot" id="hs-foot" style="left:30%; top:96%;" onclick="selectPart('foot')" title="Foot">👟</button>
-    </div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag" data-i18n="hero-tag">Global Body Analysis Platform</div>
+    <h1 class="hero-title">FIT<span>ME</span></h1>
+    <p class="hero-sub" data-i18n="hero-sub">신체 치수를 입력하면 나만의 핏을 분석해드립니다.<br>패션 스타일 추천부터 비율 분석까지.</p>
+    <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">시작하기 →</a>
   </div>
 
-  <!-- RIGHT: PANEL -->
-  <div class="panel">
-    <div class="panel-header">
-      <div class="panel-title" id="panel-title" data-i18n="panel-title">신체 정보 입력</div>
-      <div class="panel-subtitle" data-i18n="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+  <!-- GUIDE -->
+  <section class="guide-content" id="guide">
+    <div class="section-header">
+      <div class="section-tag">HOW TO MEASURE</div>
+      <h2 class="section-title" data-i18n="guide-title">올바른 신체 치수 측정 가이드</h2>
     </div>
-
-    <div class="input-area">
-      <div class="input-placeholder" id="placeholder">
-        <p data-i18n="placeholder-text">왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3 data-i18n="phone-guide-title">📱 스마트폰 활용 측정법</h3>
+        <p data-i18n="phone-guide-desc">줄자가 없으신가요? 스마트폰을 사용해 보세요! 최신 스마트폰의 평균 세로 길이는 약 15cm입니다. 무릎에서 골반까지 스마트폰이 약 3번 들어간다면 해당 부위는 약 45cm입니다.</p>
       </div>
-
-      <!-- Measurement forms -->
-      <div class="measurement-form" id="form-height">
-        <div class="form-title" data-i18n="form-title-height">TOTAL HEIGHT / 키</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-height">키 (cm)</label>
-          <input class="input-field" type="number" id="input-height" placeholder="180">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('height')" data-i18n="btn-save">저장하기</button>
+      <div class="guide-card">
+        <h3 data-i18n="head-guide-title">🧢 머리 둘레 측정 꿀팁</h3>
+        <p data-i18n="head-guide-desc">곡선인 머리 둘레는 충전 케이블을 활용하세요! 케이블을 머리에 한 바퀴 두른 뒤 스마트폰(15cm)으로 재보세요. 약 3.8번이면 57cm(보통), 4번이면 60cm(대형)입니다.</p>
       </div>
-
-      <div class="measurement-form" id="form-weight">
-        <div class="form-title" data-i18n="form-title-weight">WEIGHT / 체중</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-weight">체중 (kg)</label>
-          <input class="input-field" type="number" id="input-weight" placeholder="75">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('weight')" data-i18n="btn-save">저장하기</button>
+      <div class="guide-card">
+        <h3 data-i18n="pro-guide-title">📏 전문가 권장 측정 자세</h3>
+        <p data-i18n="pro-guide-desc">정확한 비율 분석을 위해 거울 앞에서 바른 자세로 서서 측정하세요. 키와 체중은 신체 밸런스를 분석하는 핵심 데이터이므로 가장 먼저 입력하는 것이 좋습니다.</p>
       </div>
+    </div>
+  </section>
 
-      <div class="measurement-form" id="form-head">
-        <div class="form-title" data-i18n="form-title-head">HEAD / 머리</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
-          <input class="input-field" type="number" id="head-circ" placeholder="57">
+  <!-- BLOG -->
+  <section class="blog-section">
+    <div class="section-header">
+      <div class="section-tag">STYLE GUIDE</div>
+      <h2 class="section-title" data-i18n="blog-title">패션 & 핏 가이드</h2>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card" onclick="showBlogPost('blog1')">
+        <div class="blog-thumb">👖</div>
+        <div class="blog-body">
+          <div class="blog-tag">PANTS FIT</div>
+          <div class="blog-title" data-i18n="blog1-title">나에게 맞는 팬츠 핏 찾기</div>
+          <div class="blog-desc" data-i18n="blog1-desc">슬림핏, 와이드핏, 테이퍼드핏... 체형에 따라 어떤 팬츠가 어울리는지 알아보세요.</div>
         </div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-head-height">세로 길이 (cm)</label>
-          <input class="input-field" type="number" id="head-height" placeholder="22">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('head')" data-i18n="btn-save">저장하기</button>
       </div>
-
-      <div class="measurement-form" id="form-shoulder">
-        <div class="form-title" data-i18n="form-title-shoulder">SHOULDER / 어깨</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-width">너비 (cm)</label>
-          <input class="input-field" type="number" id="shoulder-width" placeholder="44">
+      <div class="blog-card" onclick="showBlogPost('blog2')">
+        <div class="blog-thumb">👟</div>
+        <div class="blog-body">
+          <div class="blog-tag">SHOES</div>
+          <div class="blog-title" data-i18n="blog2-title">발볼 넓은 분들을 위한 신발 가이드</div>
+          <div class="blog-desc" data-i18n="blog2-desc">발볼이 넓어서 신발 고르기 힘드셨나요? 브랜드별 발볼 너비 비교 가이드입니다.</div>
         </div>
-        <button class="btn btn-primary" onclick="savePart('shoulder')" data-i18n="btn-save">저장하기</button>
       </div>
-
-      <div class="measurement-form" id="form-chest">
-        <div class="form-title" data-i18n="form-title-chest">CHEST / 가슴</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
-          <input class="input-field" type="number" id="chest-circ" placeholder="95">
+      <div class="blog-card" onclick="showBlogPost('blog3')">
+        <div class="blog-thumb">📐</div>
+        <div class="blog-body">
+          <div class="blog-title" data-i18n="blog3-title">황금비율 체형 만들기</div>
+          <div class="blog-desc" data-i18n="blog3-desc">어깨 너비, 허리, 골반 비율로 내 체형 타입을 파악하고 최적의 스타일을 찾아보세요.</div>
         </div>
-        <button class="btn btn-primary" onclick="savePart('chest')" data-i18n="btn-save">저장하기</button>
       </div>
+    </div>
+  </section>
 
-      <div class="measurement-form" id="form-upper-arm">
-        <div class="form-title" data-i18n="form-title-upper-arm">UPPER ARM / 상완</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="upper-arm-len" placeholder="30">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('upper-arm')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <div class="measurement-form" id="form-lower-arm">
-        <div class="form-title" data-i18n="form-title-lower-arm">LOWER ARM / 하완</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="lower-arm-len" placeholder="25">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('lower-arm')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <div class="measurement-form" id="form-waist">
-        <div class="form-title" data-i18n="form-title-waist">WAIST / 허리</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
-          <input class="input-field" type="number" id="waist-circ" placeholder="78">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('waist')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <div class="measurement-form" id="form-hip">
-        <div class="form-title" data-i18n="form-title-hip">HIP / 골반</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-circ">둘레 (cm)</label>
-          <input class="input-field" type="number" id="hip-circ" placeholder="92">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('hip')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <div class="measurement-form" id="form-upper-leg">
-        <div class="form-title" data-i18n="form-title-upper-leg">THIGH / 대퇴 (허벅지)</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="upper-leg-len" placeholder="42">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('upper-leg')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <div class="measurement-form" id="form-lower-leg">
-        <div class="form-title" data-i18n="form-title-lower-leg">SHIN / 하퇴 (종아리)</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-len">길이 (cm)</label>
-          <input class="input-field" type="number" id="lower-leg-len" placeholder="38">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('lower-leg')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <div class="measurement-form" id="form-foot">
-        <div class="form-title" data-i18n="form-title-foot">FOOT / 발</div>
-        <div class="input-group">
-          <label class="input-label" data-i18n="label-size">사이즈 (mm)</label>
-          <input class="input-field" type="number" id="foot-size" placeholder="260">
-        </div>
-        <button class="btn btn-primary" onclick="savePart('foot')" data-i18n="btn-save">저장하기</button>
-      </div>
-
-      <!-- Expert Analysis Result -->
-      <div class="analysis-card" id="analysis-result">
-        <div class="analysis-header">
-          <div class="form-title" style="color:var(--text); margin-bottom: 0;" data-i18n="analysis-report-title">전문가 분석 리포트</div>
-          <div class="share-group">
-            <button class="share-btn" onclick="shareResult()" title="Share Link">🔗</button>
-            <button class="share-btn" onclick="saveAsImage()" title="Save as Image">📸</button>
-          </div>
-        </div>
-        <p id="analysis-text" style="font-size:14px; margin: 15px 0; color:var(--accent)"></p>
-        <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom: 20px;"></p>
-        
-        <!-- Style Recommendations -->
-        <div class="style-section">
-          <h4 data-i18n="style-best-title">✨ BEST 스타일 추천</h4>
-          <div class="style-grid" id="best-styles">
-            <!-- Dynamic Cards -->
-          </div>
-          <h4 data-i18n="style-worst-title" style="margin-top:20px;">⚠️ 주의할 스타일</h4>
-          <div class="style-grid" id="worst-styles">
-            <!-- Dynamic Cards -->
-          </div>
-        </div>
-
-        <p style="font-size:12px; color:var(--muted); margin-top: 20px;" data-i18n="analysis-note">*위 분석은 입력된 수치 기반의 통계적 결과입니다.</p>
+  <!-- MAIN ANALYSIS -->
+  <div class="main-container" id="analysis">
+    <div class="body-section">
+      <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
+      <div class="body-container">
+        <svg class="body-svg" viewBox="0 0 280 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="svg-head"><circle cx="140" cy="52" r="38" stroke="#2a2a2a" stroke-width="2" fill="#1a1a1a"/><circle cx="127" cy="48" r="4" fill="#333"/><circle cx="153" cy="48" r="4" fill="#333"/><path d="M132 68 Q140 74 148 68" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/></g>
+          <g id="svg-neck"><rect x="130" y="88" width="20" height="20" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+          <g id="svg-torso"><path d="M88 108 L192 108 L200 240 L80 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><line x1="88" y1="128" x2="192" y2="128" stroke="#333" stroke-width="1" stroke-dasharray="4 4"/><line x1="84" y1="188" x2="196" y2="188" stroke="#333" stroke-width="1" stroke-dasharray="4 4"/></g>
+          <g id="svg-arm-l"><path d="M88 112 L52 200 L62 204 L98 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><circle cx="62" cy="160" r="3" fill="#333"/><ellipse cx="56" cy="210" rx="12" ry="8" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+          <g id="svg-arm-r"><path d="M192 112 L228 200 L218 204 L182 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><circle cx="218" cy="160" r="3" fill="#333"/><ellipse cx="224" cy="210" rx="12" ry="8" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+          <g id="svg-hip"><path d="M80 240 L78 270 L202 270 L200 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/></g>
+          <g id="svg-leg-l-upper"><path d="M80 268 L72 370 L108 370 L116 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="90" cy="370" rx="18" ry="7" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+          <g id="svg-leg-l-lower"><path d="M72 374 L68 470 L108 470 L108 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="86" cy="474" rx="22" ry="9" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+          <g id="svg-leg-r-upper"><path d="M200 268 L208 370 L172 370 L164 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="190" cy="370" rx="18" ry="7" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+          <g id="svg-leg-r-lower"><path d="M208 374 L212 470 L172 470 L172 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="194" cy="474" rx="22" ry="9" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
+        </svg>
+        <button class="hotspot" id="hs-height" style="left:88%; top:5%;" onclick="selectPart('height')">📏</button>
+        <button class="hotspot" id="hs-head" style="left:50%; top:10%;" onclick="selectPart('head')">👤</button>
+        <button class="hotspot" id="hs-shoulder" style="left:50%; top:23%;" onclick="selectPart('shoulder')">↔</button>
+        <button class="hotspot" id="hs-chest" style="left:50%; top:32%;" onclick="selectPart('chest')">◉</button>
+        <button class="hotspot" id="hs-upper-arm" style="left:14%; top:34%;" onclick="selectPart('upper-arm')">💪</button>
+        <button class="hotspot" id="hs-lower-arm" style="left:11%; top:46%;" onclick="selectPart('lower-arm')">✋</button>
+        <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')">○</button>
+        <button class="hotspot" id="hs-hip" style="left:50%; top:56%;" onclick="selectPart('hip')">↕</button>
+        <button class="hotspot" id="hs-weight" style="left:88%; top:50%;" onclick="selectPart('weight')">⚖️</button>
+        <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')">┃</button>
+        <button class="hotspot" id="hs-lower-leg" style="left:28%; top:84%;" onclick="selectPart('lower-leg')">⊕</button>
+        <button class="hotspot" id="hs-foot" style="left:30%; top:97%;" onclick="selectPart('foot')">👟</button>
       </div>
     </div>
 
-    <div style="padding: 20px 32px; border-top: 1px solid var(--border)">
-      <button class="btn btn-accent2" onclick="runExpertAnalysis()" data-i18n="btn-analyze">🔥 전문가 신체 비율 분석하기</button>
-      <button class="btn btn-outline" onclick="resetAll()" data-i18n="btn-reset">초기화</button>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-title" id="panel-title">신체 정보 입력</div>
+        <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+      </div>
+      <div class="input-area">
+        <div class="input-placeholder" id="placeholder">
+          <div style="font-size:32px; margin-bottom:12px; animation: bounce 1.5s infinite;">←</div>
+          <p id="placeholder-text">왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
+        </div>
+
+        <div class="measurement-form" id="form-height">
+          <div class="form-title">HEIGHT / 키</div>
+          <div class="form-desc">전체 신장을 입력하세요.</div>
+          <div class="input-group"><label class="input-label">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174"></div>
+          <button class="btn btn-primary" onclick="savePart('height')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-weight">
+          <div class="form-title">WEIGHT / 체중</div>
+          <div class="form-desc">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
+          <div class="input-group"><label class="input-label">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68"></div>
+          <button class="btn btn-primary" onclick="savePart('weight')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-head">
+          <div class="form-title">HEAD / 머리</div>
+          <div class="form-desc">머리 둘레와 세로 길이를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57"></div>
+          <div class="input-group"><label class="input-label">모자 사이즈</label>
+            <div class="radio-group" id="radio-hat">
+              <div class="radio-btn" onclick="selectRadio('hat','S')">S</div>
+              <div class="radio-btn" onclick="selectRadio('hat','M')">M</div>
+              <div class="radio-btn" onclick="selectRadio('hat','L')">L</div>
+              <div class="radio-btn" onclick="selectRadio('hat','XL')">XL</div>
+              <div class="radio-btn" onclick="selectRadio('hat','FREE')">FREE</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="savePart('head')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-shoulder">
+          <div class="form-title">SHOULDER / 어깨</div>
+          <div class="form-desc">어깨 끝에서 끝까지 너비를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44"></div>
+          <button class="btn btn-primary" onclick="savePart('shoulder')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-chest">
+          <div class="form-title">CHEST / 가슴</div>
+          <div class="form-desc">가슴 둘레와 상의 사이즈를 입력하세요.</div>
+          <div class="input-group"><label class="input-label">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95"></div>
+          <div class="input-group"><label class="input-label">상의 사이즈</label>
+            <div class="radio-group" id="radio-top">
+              <div class="radio-btn" onclick="selectRadio('top','XS')">XS</div>
+              <div class="radio-btn" onclick="selectRadio('top','S')">S</div>
+              <div class="radio-btn" onclick="selectRadio('top','M')">M</div>
+              <div class="radio-btn" onclick="selectRadio('top','L')">L</div>
+              <div class="radio-btn" onclick="selectRadio('top','XL')">XL</div>
+              <div class="radio-btn" onclick="selectRadio('top','2XL')">2XL</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="savePart('chest')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-upper-arm">
+          <div class="form-title">UPPER ARM / 상완</div>
+          <div class="form-desc">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32"></div>
+          <button class="btn btn-primary" onclick="savePart('upper-arm')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-lower-arm">
+          <div class="form-title">LOWER ARM / 하완</div>
+          <div class="form-desc">팔꿈치에서 손목까지 길이를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26"></div>
+          <button class="btn btn-primary" onclick="savePart('lower-arm')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-waist">
+          <div class="form-title">WAIST / 허리</div>
+          <div class="form-desc">가장 얇은 허리 부분의 둘레를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">허리 둘레 (cm)</label><input class="input-field" type="number" id="waist-circ" placeholder="78"></div>
+          <button class="btn btn-primary" onclick="savePart('waist')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-hip">
+          <div class="form-title">HIP / 골반</div>
+          <div class="form-desc">골반의 가장 넓은 부분의 둘레를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="92"></div>
+          <button class="btn btn-primary" onclick="savePart('hip')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-upper-leg">
+          <div class="form-title">THIGH / 허벅지</div>
+          <div class="form-desc">골반에서 무릎까지 길이를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42"></div>
+          <div class="input-group"><label class="input-label">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54"></div>
+          <button class="btn btn-primary" onclick="savePart('upper-leg')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-lower-leg">
+          <div class="form-title">SHIN / 종아리</div>
+          <div class="form-desc">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38"></div>
+          <button class="btn btn-primary" onclick="savePart('lower-leg')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-foot">
+          <div class="form-title">FOOT / 발</div>
+          <div class="form-desc">발 사이즈와 발볼을 입력하세요.</div>
+          <div class="input-row">
+            <div class="input-group"><label class="input-label">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255"></div>
+            <div class="input-group"><label class="input-label">발볼</label>
+              <div class="radio-group" id="radio-footw" style="flex-direction:column;gap:6px;">
+                <div class="radio-btn" onclick="selectRadio('footw','좁음')">좁음</div>
+                <div class="radio-btn" onclick="selectRadio('footw','보통')">보통</div>
+                <div class="radio-btn" onclick="selectRadio('footw','넓음')">넓음</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="savePart('foot')">저장하기</button>
+        </div>
+
+        <div class="analysis-card" id="analysis-result">
+          <div class="analysis-header">
+            <div class="form-title" style="color:var(--text);">분석 리포트</div>
+            <div class="share-group">
+              <button class="share-btn" onclick="copyLink()">🔗</button>
+            </div>
+          </div>
+          <p id="analysis-text" style="font-size:14px; margin:12px 0; color:var(--accent); line-height:1.7;"></p>
+          <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:16px;"></p>
+          <div class="style-section">
+            <h4>✨ BEST 스타일 추천</h4>
+            <div class="style-grid" id="best-styles"></div>
+            <h4 style="margin-top:16px;">⚠️ 주의할 스타일</h4>
+            <div class="style-grid" id="worst-styles"></div>
+          </div>
+          <p style="font-size:11px; color:var(--muted); margin-top:16px;">*입력된 수치 기반의 통계적 분석 결과입니다.</p>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-label"><span>입력 완료</span><span id="progress-text">0 / 12</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      </div>
+
+      <div class="saved-list" id="saved-list">
+        <div class="saved-list-title">저장된 측정값</div>
+        <div id="saved-items"></div>
+      </div>
+
+      <div class="panel-actions">
+        <button class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
+        <button class="btn btn-outline" onclick="resetAll()">초기화</button>
+      </div>
     </div>
   </div>
+
+  <footer>
+    <div class="footer-links">
+      <a onclick="showPage('privacy')">개인정보처리방침</a>
+      <a onclick="showPage('terms')">이용약관</a>
+      <a onclick="showPage('about')">About FITME</a>
+      <a href="mailto:fitme.contact@gmail.com">Contact Us</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
+  </footer>
 </div>
 
-<footer id="about">
-  <div class="footer-links">
-    <a href="#" data-i18n="footer-privacy">Privacy Policy</a>
-    <a href="#" data-i18n="footer-terms">Terms of Service</a>
-    <a href="#" data-i18n="footer-contact">Contact Us</a>
-    <a href="#" data-i18n="footer-about">About FITME</a>
+<!-- ===== PRIVACY POLICY PAGE ===== -->
+<div id="page-privacy" class="page">
+  <div class="static-page">
+    <h1>개인정보처리방침</h1>
+    <p class="updated">최종 업데이트: 2026년 1월 1일 | Privacy Policy (Last updated: January 1, 2026)</p>
+
+    <div class="highlight-box">
+      <p>FITME(이하 "서비스")는 사용자의 개인정보를 소중히 여기며, 관련 법령에 따라 개인정보를 보호합니다.</p>
+    </div>
+
+    <h2>1. 수집하는 정보</h2>
+    <p>FITME는 다음과 같은 정보를 수집합니다:</p>
+    <ul>
+      <li>신체 측정 데이터 (키, 체중, 신체 각 부위 치수) — 사용자가 직접 입력한 정보</li>
+      <li>서비스 이용 기록, 접속 로그, 쿠키, 접속 IP 정보</li>
+      <li>Google Analytics를 통한 익명 방문자 통계</li>
+    </ul>
+
+    <h2>2. 정보 수집 및 이용 목적</h2>
+    <ul>
+      <li>신체 비율 분석 및 패션 스타일 추천 서비스 제공</li>
+      <li>서비스 개선 및 신규 기능 개발</li>
+      <li>서비스 이용 통계 분석</li>
+    </ul>
+
+    <h2>3. 개인정보 보유 및 이용 기간</h2>
+    <p>FITME에 입력된 신체 측정 데이터는 서버에 저장되지 않습니다. 모든 데이터는 사용자의 브라우저 내에서만 처리되며, 페이지를 닫으면 자동으로 삭제됩니다.</p>
+
+    <h2>4. 제3자 서비스</h2>
+    <p>FITME는 다음의 제3자 서비스를 사용합니다:</p>
+    <ul>
+      <li><strong>Google Analytics</strong>: 익명 사용자 통계 수집 (개인 식별 불가)</li>
+      <li><strong>Google AdSense</strong>: 맞춤형 광고 제공. 광고 관련 쿠키가 사용될 수 있습니다.</li>
+      <li><strong>Google Fonts</strong>: 폰트 서비스 제공</li>
+    </ul>
+
+    <h2>5. 쿠키(Cookie) 사용</h2>
+    <p>FITME는 서비스 개선과 광고 제공을 위해 쿠키를 사용합니다. 브라우저 설정을 통해 쿠키 사용을 거부할 수 있으나, 일부 서비스 기능이 제한될 수 있습니다.</p>
+
+    <h2>6. 사용자의 권리</h2>
+    <p>사용자는 언제든지 자신의 개인정보에 대한 열람, 수정, 삭제를 요청할 수 있습니다. 문의사항이 있으시면 아래 연락처로 문의해 주세요.</p>
+
+    <h2>7. 문의처</h2>
+    <div class="highlight-box">
+      <p>이메일: fitme.contact@gmail.com<br>서비스명: FITME — Global Body Proportion Analysis Platform</p>
+    </div>
+
+    <h2>Privacy Policy (English)</h2>
+    <p>FITME does not store any personal body measurement data on its servers. All data entered by users is processed locally in the browser and is not transmitted to any external server. We use Google Analytics for anonymous usage statistics and Google AdSense for advertising. For questions, contact: fitme.contact@gmail.com</p>
   </div>
-  <p class="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
-</footer>
+  <footer>
+    <div class="footer-links">
+      <a onclick="showPage('home')">← 홈으로</a>
+      <a onclick="showPage('terms')">이용약관</a>
+      <a onclick="showPage('about')">About</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 FITME.</p>
+  </footer>
+</div>
+
+<!-- ===== TERMS OF SERVICE PAGE ===== -->
+<div id="page-terms" class="page">
+  <div class="static-page">
+    <h1>이용약관</h1>
+    <p class="updated">최종 업데이트: 2026년 1월 1일 | Terms of Service</p>
+
+    <div class="highlight-box">
+      <p>FITME 서비스를 이용하시기 전에 본 이용약관을 주의 깊게 읽어주세요.</p>
+    </div>
+
+    <h2>제1조 (목적)</h2>
+    <p>본 약관은 FITME(이하 "서비스")가 제공하는 신체 비율 분석 및 패션 추천 서비스의 이용 조건 및 절차, 서비스 이용자와 서비스의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다.</p>
+
+    <h2>제2조 (서비스 이용)</h2>
+    <ul>
+      <li>FITME는 만 14세 이상 누구나 무료로 이용할 수 있습니다.</li>
+      <li>서비스 이용을 위한 별도의 회원 가입은 필요하지 않습니다.</li>
+      <li>사용자가 입력한 신체 측정 데이터는 서버에 저장되지 않습니다.</li>
+    </ul>
+
+    <h2>제3조 (서비스 내용)</h2>
+    <p>FITME는 다음의 서비스를 제공합니다:</p>
+    <ul>
+      <li>신체 치수 입력 및 비율 분석 서비스</li>
+      <li>체형에 맞는 패션 스타일 추천</li>
+      <li>신체 측정 가이드 콘텐츠 제공</li>
+    </ul>
+
+    <h2>제4조 (면책 조항)</h2>
+    <p>FITME가 제공하는 신체 비율 분석 및 스타일 추천은 통계적 데이터를 기반으로 한 참고용 정보입니다. 의학적 진단이나 전문적인 패션 조언을 대체하지 않습니다.</p>
+
+    <h2>제5조 (광고)</h2>
+    <p>FITME는 Google AdSense를 통한 광고를 게재할 수 있습니다. 광고 내용은 Google의 정책에 따라 결정되며, FITME는 광고 내용에 대한 책임을 지지 않습니다.</p>
+
+    <h2>제6조 (저작권)</h2>
+    <p>FITME의 콘텐츠, 디자인, 코드 등 모든 저작물은 FITME에 귀속됩니다. 무단 복제 및 배포를 금지합니다.</p>
+
+    <h2>제7조 (약관 변경)</h2>
+    <p>FITME는 필요에 따라 본 약관을 변경할 수 있으며, 변경 시 서비스 내 공지를 통해 안내합니다.</p>
+
+    <h2>Terms of Service (English Summary)</h2>
+    <p>FITME provides body proportion analysis and fashion recommendation services free of charge. All analysis results are for reference purposes only. FITME does not store personal data on its servers. By using FITME, you agree to these terms.</p>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a onclick="showPage('home')">← 홈으로</a>
+      <a onclick="showPage('privacy')">개인정보처리방침</a>
+      <a onclick="showPage('about')">About</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 FITME.</p>
+  </footer>
+</div>
+
+<!-- ===== ABOUT PAGE ===== -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <h1>ABOUT <span style="color:var(--accent);">FITME</span></h1>
+    <p>FITME는 신체 치수와 비율 분석을 통해 누구나 자신에게 맞는 최적의 패션 스타일을 찾을 수 있도록 도와주는 글로벌 플랫폼입니다.</p>
+  </div>
+  <div class="about-features">
+    <div class="about-card">
+      <div class="icon">📐</div>
+      <h3>정밀 비율 분석</h3>
+      <p>12가지 신체 부위 측정값을 기반으로 황금비율 대비 내 신체 비율을 정밀하게 분석합니다.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">👗</div>
+      <h3>맞춤 스타일 추천</h3>
+      <p>체형 분석 결과를 바탕으로 나에게 어울리는 스타일과 피해야 할 스타일을 추천해드립니다.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">🌍</div>
+      <h3>글로벌 서비스</h3>
+      <p>한국어, 영어, 일본어, 중국어를 지원하여 전 세계 누구나 이용할 수 있는 서비스입니다.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">🔒</div>
+      <h3>개인정보 보호</h3>
+      <p>입력한 모든 신체 측정 데이터는 서버에 저장되지 않습니다. 브라우저 내에서만 처리됩니다.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">📱</div>
+      <h3>줄자 없이 측정</h3>
+      <p>스마트폰과 충전 케이블만으로도 신체 치수를 측정할 수 있는 가이드를 제공합니다.</p>
+    </div>
+    <div class="about-card">
+      <div class="icon">💡</div>
+      <h3>지속적인 업데이트</h3>
+      <p>더 다양한 스타일 추천과 체형 분석 기능을 지속적으로 업데이트하고 있습니다.</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-links">
+      <a onclick="showPage('home')">← 홈으로</a>
+      <a onclick="showPage('privacy')">개인정보처리방침</a>
+      <a onclick="showPage('terms')">이용약관</a>
+      <a href="mailto:fitme.contact@gmail.com">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
+  </footer>
+</div>
+
+<!-- ===== BLOG POST PAGES ===== -->
+<div id="page-blog1" class="page">
+  <div class="blog-post">
+    <div style="font-size:11px; letter-spacing:3px; color:var(--accent); margin-bottom:12px; font-family:'DM Sans',sans-serif;">PANTS FIT GUIDE</div>
+    <h1>나에게 맞는 팬츠 핏 찾기</h1>
+    <div class="meta">2026.01.15 · FITME Style Guide</div>
+    <h2>팬츠 핏의 종류</h2>
+    <p>팬츠는 크게 슬림핏, 레귤러핏, 와이드핏으로 나눌 수 있습니다. 각 핏은 체형에 따라 다르게 어울립니다.</p>
+    <div class="tip">💡 다리가 길고 허벅지가 얇은 체형은 어떤 핏도 잘 소화할 수 있지만, 와이드팬츠를 입을 때 상의를 하프 턱인하면 더욱 비율이 살아납니다.</div>
+    <h2>슬림핏 — 다리 라인을 강조</h2>
+    <p>허벅지에서 발목까지 좁아지는 핏입니다. 하체 근육이 있거나 다리가 굵은 분들은 불편할 수 있습니다. 키가 작은 분들이 입으면 다리가 더 길어 보이는 효과가 있습니다.</p>
+    <h2>와이드핏 — 편안함과 트렌드</h2>
+    <p>2024~2026년 가장 트렌디한 팬츠 핏입니다. 허리부터 발목까지 여유있게 떨어지는 실루엣이 특징입니다. 상의를 타이트하게 입거나 턱인하면 전체적인 밸런스를 맞출 수 있습니다.</p>
+    <h2>기장 선택 가이드</h2>
+    <p>팬츠 기장은 신발과의 조화가 중요합니다. 스니커즈와 매칭할 경우 발목이 살짝 보이는 기장이 가장 깔끔하며, 롤업을 활용하면 스타일에 변화를 줄 수 있습니다.</p>
+    <div class="tip">💡 밀리터리 트라우저처럼 기장이 긴 팬츠는 얇게 1~2번 롤업하면 신발이 잘 보이면서 빈티지 무드도 살아납니다.</div>
+  </div>
+  <footer>
+    <div class="footer-links"><a onclick="showPage('home')">← 홈으로</a></div>
+    <p class="footer-copy">&copy; 2026 FITME.</p>
+  </footer>
+</div>
+
+<div id="page-blog2" class="page">
+  <div class="blog-post">
+    <div style="font-size:11px; letter-spacing:3px; color:var(--accent); margin-bottom:12px; font-family:'DM Sans',sans-serif;">SHOES GUIDE</div>
+    <h1>발볼 넓은 분들을 위한 신발 가이드</h1>
+    <div class="meta">2026.02.01 · FITME Style Guide</div>
+    <h2>발볼이란?</h2>
+    <p>발볼은 발의 너비를 의미합니다. 같은 발 사이즈라도 발볼이 넓으면 신발이 꽉 끼거나 불편할 수 있습니다.</p>
+    <div class="tip">💡 발볼이 넓다면 신발을 고를 때 사이즈를 한 단계 위로 선택하거나, 발볼이 넓은 분들에게 잘 맞는 브랜드를 선택하세요.</div>
+    <h2>발볼 넓은 분들에게 맞는 브랜드</h2>
+    <p><strong>뉴발란스</strong>: 발볼이 넓은 분들이 가장 선호하는 브랜드 중 하나입니다. 와이드 사이즈(2E, 4E)를 별도로 출시하기도 합니다.</p>
+    <p><strong>나이키 덩크/에어포스1</strong>: 박스형 토박스로 발볼이 어느 정도 있어도 편안하게 착용할 수 있습니다.</p>
+    <p><strong>아디다스 삼바/가젤</strong>: 슬림한 실루엣이지만 스웨이드 소재 특성상 늘어나는 경우가 있습니다. 발볼이 넓다면 반 사이즈 업을 권장합니다.</p>
+    <h2>신발 선택 팁</h2>
+    <p>온라인 구매 시 발볼 관련 리뷰를 꼭 확인하세요. "발볼이 좁다", "발볼이 넓은 편" 등의 키워드로 검색하면 도움이 됩니다.</p>
+  </div>
+  <footer>
+    <div class="footer-links"><a onclick="showPage('home')">← 홈으로</a></div>
+    <p class="footer-copy">&copy; 2026 FITME.</p>
+  </footer>
+</div>
+
+<div id="page-blog3" class="page">
+  <div class="blog-post">
+    <div style="font-size:11px; letter-spacing:3px; color:var(--accent); margin-bottom:12px; font-family:'DM Sans',sans-serif;">PROPORTION GUIDE</div>
+    <h1>황금비율 체형 만들기</h1>
+    <div class="meta">2026.02.15 · FITME Style Guide</div>
+    <h2>황금비율이란?</h2>
+    <p>패션에서의 황금비율은 어깨:허리:골반의 비율이 1:0.75:1에 가까울 때를 말합니다. 이 비율에 가까울수록 옷이 잘 어울리는 체형으로 평가됩니다.</p>
+    <div class="tip">💡 황금비율에 맞지 않아도 스타일링으로 충분히 커버할 수 있습니다! FITME 분석을 통해 내 체형에 맞는 스타일을 찾아보세요.</div>
+    <h2>체형 타입 분류</h2>
+    <p><strong>역삼각형 체형</strong>: 어깨가 골반보다 넓은 체형. 하의에 볼륨을 주면 밸런스가 좋아집니다.</p>
+    <p><strong>직사각형 체형</strong>: 어깨, 허리, 골반이 비슷한 너비. 허리 라인을 강조하면 더욱 스타일리시해 보입니다.</p>
+    <p><strong>모래시계 체형</strong>: 어깨와 골반이 비슷하고 허리가 잘록한 체형. 대부분의 스타일이 잘 어울립니다.</p>
+    <h2>스타일링으로 비율 보정하기</h2>
+    <p>어깨가 좁은 경우 패드가 있는 상의나 오버사이즈 탑으로 어깨 라인을 살릴 수 있습니다. 다리가 짧은 경우 하이라이즈 팬츠나 하프 턱인을 활용하면 다리가 길어 보입니다.</p>
+  </div>
+  <footer>
+    <div class="footer-links"><a onclick="showPage('home')">← 홈으로</a></div>
+    <p class="footer-copy">&copy; 2026 FITME.</p>
+  </footer>
+</div>
 
 <div class="toast" id="toast"></div>
 
+<script>
+  // PAGE NAVIGATION
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function showBlogPost(id) {
+    showPage(id);
+  }
+
+  // STATE
+  const measurements = {};
+  const radioSelections = {};
+  let filledCount = 0;
+  const totalParts = 12;
+
+  const partNames = {
+    height:'키', weight:'체중', head:'머리', shoulder:'어깨',
+    chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완',
+    waist:'허리', hip:'골반', 'upper-leg':'허벅지',
+    'lower-leg':'종아리', foot:'발'
+  };
+
+  function selectPart(part) {
+    document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('form-' + part).classList.add('visible');
+    document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
+    document.getElementById('hs-' + part).classList.add('active');
+    const titles = {
+      height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리',
+      shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴',
+      'upper-arm':'UPPER ARM / 상완', 'lower-arm':'LOWER ARM / 하완',
+      waist:'WAIST / 허리', hip:'HIP / 골반',
+      'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발'
+    };
+    document.getElementById('panel-title').textContent = titles[part] || part;
+  }
+
+  function selectRadio(group, value) {
+    radioSelections[group] = value;
+    const container = document.getElementById('radio-' + group);
+    if (container) container.querySelectorAll('.radio-btn').forEach(btn => btn.classList.toggle('selected', btn.textContent.trim() === value));
+  }
+
+  function savePart(part) {
+    const data = {};
+    let hasData = false;
+    if (part === 'height') { data.val = document.getElementById('input-height').value; hasData = data.val; }
+    else if (part === 'weight') { data.val = document.getElementById('input-weight').value; hasData = data.val; }
+    else if (part === 'head') { data.circ = document.getElementById('head-circ').value; data.hat = radioSelections['hat']; hasData = data.circ || data.hat; }
+    else if (part === 'shoulder') { data.width = document.getElementById('shoulder-width').value; hasData = data.width; }
+    else if (part === 'chest') { data.circ = document.getElementById('chest-circ').value; data.size = radioSelections['top']; hasData = data.circ || data.size; }
+    else if (part === 'upper-arm') { data.len = document.getElementById('upper-arm-len').value; hasData = data.len; }
+    else if (part === 'lower-arm') { data.len = document.getElementById('lower-arm-len').value; hasData = data.len; }
+    else if (part === 'waist') { data.circ = document.getElementById('waist-circ').value; hasData = data.circ; }
+    else if (part === 'hip') { data.circ = document.getElementById('hip-circ').value; hasData = data.circ; }
+    else if (part === 'upper-leg') { data.len = document.getElementById('upper-leg-len').value; data.circ = document.getElementById('upper-leg-circ').value; hasData = data.len || data.circ; }
+    else if (part === 'lower-leg') { data.len = document.getElementById('lower-leg-len').value; hasData = data.len; }
+    else if (part === 'foot') { data.size = document.getElementById('foot-size').value; data.width = radioSelections['footw']; hasData = data.size || data.width; }
+
+    if (!hasData) { showToast('값을 입력해주세요!'); return; }
+    const isNew = !measurements[part];
+    measurements[part] = data;
+    if (isNew) { filledCount++; document.getElementById('hs-' + part).classList.add('filled'); }
+    updateProgress();
+    updateSavedList();
+    showToast(partNames[part] + ' 저장 완료! ✓');
+  }
+
+  function updateProgress() {
+    const pct = (filledCount / totalParts) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = filledCount + ' / ' + totalParts;
+  }
+
+  function updateSavedList() {
+    const list = document.getElementById('saved-list');
+    const items = document.getElementById('saved-items');
+    if (!Object.keys(measurements).length) { list.style.display = 'none'; return; }
+    list.style.display = 'block';
+    let html = '';
+    for (const [part, data] of Object.entries(measurements)) {
+      let v = '';
+      if (part === 'height' || part === 'weight') v = data.val + (part === 'height' ? 'cm' : 'kg');
+      else if (part === 'head') v = (data.circ ? data.circ + 'cm' : '') + (data.hat ? ' / ' + data.hat : '');
+      else if (part === 'shoulder') v = data.width + 'cm';
+      else if (part === 'chest') v = (data.circ ? data.circ + 'cm' : '') + (data.size ? ' / ' + data.size : '');
+      else if (part === 'upper-arm' || part === 'lower-arm' || part === 'lower-leg') v = data.len + 'cm';
+      else if (part === 'waist' || part === 'hip') v = data.circ + 'cm';
+      else if (part === 'upper-leg') v = (data.len || '?') + 'cm / ' + (data.circ || '?') + 'cm';
+      else if (part === 'foot') v = (data.size ? data.size + 'mm' : '') + (data.width ? ' / ' + data.width : '');
+      html += `<div class="saved-item"><span class="saved-item-label">${partNames[part].toUpperCase()}</span><span class="saved-item-value">${v}</span></div>`;
+    }
+    items.innerHTML = html;
+  }
+
+  function runExpertAnalysis() {
+    const h = measurements.height?.val;
+    const w = measurements.weight?.val;
+    const shoulder = measurements.shoulder?.width;
+    const waist = measurements.waist?.circ;
+    const hip = measurements.hip?.circ;
+
+    if (!h && !w && !shoulder) { showToast('먼저 키, 체중, 어깨 너비를 입력해주세요!'); return; }
+
+    let analysis = '';
+    let bmi = '';
+    let best = [];
+    let worst = [];
+
+    if (h && w) {
+      const bmiVal = (w / ((h/100) ** 2)).toFixed(1);
+      bmi = `BMI: ${bmiVal} — `;
+      if (bmiVal < 18.5) bmi += '저체중';
+      else if (bmiVal < 23) bmi += '정상 체중 ✓';
+      else if (bmiVal < 25) bmi += '과체중';
+      else bmi += '비만';
+    }
+
+    if (shoulder && waist && hip) {
+      const sw = parseFloat(shoulder), ww = parseFloat(waist), hw = parseFloat(hip);
+      const ratio = (sw / hw).toFixed(2);
+      if (ratio > 1.1) {
+        analysis = `어깨가 골반보다 넓은 역삼각형 체형입니다. (어깨/골반 비율: ${ratio})`;
+        best = ['와이드 팬츠 / 하의 볼륨', '밝은 색상 하의', '스트레이트핏 팬츠'];
+        worst = ['라글란 소매 상의', '패드 어깨 재킷', '넓은 네크라인'];
+      } else if (ratio < 0.9) {
+        analysis = `골반이 어깨보다 넓은 삼각형 체형입니다. (어깨/골반 비율: ${ratio})`;
+        best = ['오버사이즈 상의', '밝은 색상 상의', '어깨 강조 디자인'];
+        worst = ['타이트한 미니스커트', '밝은 색상 하의', '낮은 허리선 팬츠'];
+      } else {
+        analysis = `어깨와 골반이 균형잡힌 직사각형/모래시계 체형입니다. (비율: ${ratio})`;
+        best = ['허리 강조 코디', '벨트 활용', '피티드 상의'];
+        worst = ['루즈핏 올인원', '허리 라인 없는 원피스'];
+      }
+    } else {
+      analysis = '더 많은 측정값을 입력하면 정확한 분석이 가능합니다.';
+      best = ['레귤러핏 팬츠', '심플한 단색 상의'];
+      worst = ['극단적으로 타이트한 의류'];
+    }
+
+    document.getElementById('analysis-text').textContent = analysis;
+    document.getElementById('bmi-text').textContent = bmi;
+    document.getElementById('best-styles').innerHTML = best.map(s => `<div class="style-item">✅ ${s}</div>`).join('');
+    document.getElementById('worst-styles').innerHTML = worst.map(s => `<div class="style-item">⚠️ ${s}</div>`).join('');
+    document.getElementById('analysis-result').classList.add('visible');
+    document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    showToast('분석 완료! 🔥');
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => showToast('링크 복사됨! 🔗'));
+  }
+
+  function resetAll() {
+    if (!confirm('모든 측정값을 초기화할까요?')) return;
+    Object.keys(measurements).forEach(k => delete measurements[k]);
+    filledCount = 0;
+    document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('filled', 'active'));
+    document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
+    document.getElementById('placeholder').style.display = 'flex';
+    document.getElementById('saved-list').style.display = 'none';
+    document.getElementById('saved-items').innerHTML = '';
+    document.getElementById('analysis-result').classList.remove('visible');
+    document.getElementById('panel-title').textContent = '신체 정보 입력';
+    updateProgress();
+    showToast('초기화 완료');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  // LANGUAGE (basic)
+  function setLanguage(lang) {
+    const isEn = lang === 'en';
+    if (isEn) {
+      document.getElementById('panel-subtitle').textContent = 'Enter your measurements for accurate analysis.';
+      document.getElementById('placeholder-text').innerHTML = 'Click a body part<br>to start measuring';
+    } else {
+      document.getElementById('panel-subtitle').textContent = '정확한 분석을 위해 치수를 입력해 주세요.';
+      document.getElementById('placeholder-text').innerHTML = '왼쪽 인체 도형에서<br>부위를 클릭해 주세요';
+    }
+  }
+
+</script>
+<style>
+  @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
+</style>
 </body>
 </html>
