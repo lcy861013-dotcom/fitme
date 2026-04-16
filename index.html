@@ -1867,18 +1867,6 @@
     const best = lc['best-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['best-' + (bodyType === 'default' ? 'def' : bodyType)];
     const worst = lc['worst-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['worst-' + (bodyType === 'default' ? 'def' : bodyType)];
 
-    // === Proportion stats ===
-    const stats = [];
-    if (shoulder && hip) {
-      const pct = Math.min(100, Math.round(ratio * 50));
-      stats.push({ label: lc['prop-shoulder'] || i18n.en['prop-shoulder'], val: `${ratio}`, pct });
-    }
-    if (h && upperLeg && lowerLeg) {
-      const legLen = parseFloat(upperLeg) + parseFloat(lowerLeg);
-      const legRatio = +(legLen / parseFloat(h) * 100).toFixed(1);
-      const legPct = Math.min(100, Math.round(legRatio * 1.6));
-      stats.push({ label: lc['prop-leg'] || i18n.en['prop-leg'], val: `${legRatio}%`, pct: legPct, note: legRatio >= 50 ? '↑' : legRatio >= 46 ? '~' : '↓' });
-    }
     // === Occasion data ===
     const occData = genderOcc[bodyType] || genderOcc.default;
     const occTitle = lc['occasion-title'] || i18n.en['occasion-title'];
