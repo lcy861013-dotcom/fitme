@@ -187,6 +187,67 @@
     .outfit-combo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
     .outfit-why { font-size: 11px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
 
+    /* ===== FITME DNA REPORT — NEW SECTIONS ===== */
+    .fitme-score-banner { background: linear-gradient(135deg, rgba(232,255,71,0.1), rgba(71,200,255,0.06)); border: 1px solid rgba(232,255,71,0.25); border-radius: 14px; padding: 16px 20px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .fitme-score-left { display: flex; flex-direction: column; gap: 1px; }
+    .fitme-score-label { font-size: 9px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+    .fitme-score-value { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--accent); line-height: 1; letter-spacing: 2px; }
+    .fitme-score-right { text-align: right; }
+    .fitme-grade { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 3px; line-height: 1; }
+    .fitme-grade.grade-S { color: #FFD700; text-shadow: 0 0 24px rgba(255,215,0,0.6); }
+    .fitme-grade.grade-A { color: var(--accent); text-shadow: 0 0 20px rgba(232,255,71,0.4); }
+    .fitme-grade.grade-B { color: var(--accent3); }
+    .fitme-grade.grade-C { color: var(--muted); }
+    .fitme-grade-label { font-size: 9px; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    .fitme-score-dims { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+    .fitme-dim { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .fitme-dim-val { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--text); line-height: 1; }
+    .fitme-dim-label { font-size: 9px; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px; white-space: nowrap; }
+    .dna-top-grid { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; margin-bottom: 14px; }
+    .radar-wrap { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+    .radar-wrap canvas { display: block; }
+    .radar-label { font-size: 8px; color: var(--muted); letter-spacing: 2px; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
+    .weight-goal-card { background: rgba(255,71,71,0.06); border: 1px solid rgba(255,71,71,0.18); border-radius: 12px; padding: 14px 16px; margin: 12px 0 6px; display: flex; align-items: center; gap: 12px; }
+    .weight-goal-card.gain { background: rgba(71,200,255,0.06); border-color: rgba(71,200,255,0.18); }
+    .weight-goal-card.ok { background: rgba(232,255,71,0.04); border-color: rgba(232,255,71,0.18); }
+    .weight-goal-icon { font-size: 22px; flex-shrink: 0; }
+    .weight-goal-text { flex: 1; min-width: 0; }
+    .weight-goal-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+    .weight-goal-detail { font-size: 11px; color: var(--muted); line-height: 1.6; }
+    .weight-goal-num { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: var(--accent2); letter-spacing: 1px; white-space: nowrap; flex-shrink: 0; }
+    .weight-goal-card.gain .weight-goal-num { color: var(--accent3); }
+    .weight-goal-card.ok .weight-goal-num { color: var(--accent); font-size: 20px; }
+    .exercise-section { margin: 18px 0; }
+    .section-divider { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 10px; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .exercise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .exercise-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 13px; transition: border-color 0.2s; }
+    .exercise-card:hover { border-color: var(--accent); }
+    .exercise-header { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .exercise-icon { width: 30px; height: 30px; background: rgba(232,255,71,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .exercise-name { font-size: 12px; font-weight: 700; line-height: 1.3; }
+    .exercise-meta { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 6px; }
+    .exercise-badge { background: rgba(232,255,71,0.1); color: var(--accent); font-size: 10px; border-radius: 4px; padding: 2px 6px; font-family: 'DM Sans', sans-serif; font-weight: 700; }
+    .exercise-badge.freq { background: rgba(71,200,255,0.1); color: var(--accent3); }
+    .exercise-badge.cardio { background: rgba(255,71,71,0.1); color: var(--accent2); }
+    .exercise-effect { font-size: 10px; color: var(--muted); line-height: 1.6; }
+    .roadmap-section { margin: 18px 0 4px; }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .roadmap-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 12px; position: relative; overflow: hidden; }
+    .roadmap-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .roadmap-card.month-1::before { background: var(--accent); }
+    .roadmap-card.month-2::before { background: var(--accent3); }
+    .roadmap-card.month-3::before { background: #ff47c8; }
+    .roadmap-month { font-size: 9px; letter-spacing: 2px; color: var(--muted); font-family: 'DM Sans', sans-serif; margin-bottom: 5px; text-transform: uppercase; }
+    .roadmap-theme { font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1px; margin-bottom: 8px; }
+    .roadmap-card.month-1 .roadmap-theme { color: var(--accent); }
+    .roadmap-card.month-2 .roadmap-theme { color: var(--accent3); }
+    .roadmap-card.month-3 .roadmap-theme { color: #ff47c8; }
+    .roadmap-goals { list-style: none; padding: 0; }
+    .roadmap-goals li { font-size: 10px; color: var(--muted); padding: 2px 0; line-height: 1.5; display: flex; gap: 5px; }
+    .roadmap-goals li::before { content: '—'; color: var(--border); flex-shrink: 0; }
+    @media (max-width: 500px) { .dna-top-grid { grid-template-columns: 1fr; } .exercise-grid { grid-template-columns: 1fr; } .roadmap-grid { grid-template-columns: 1fr; } }
+
     /* SAVED LIST */
     .saved-list { padding: 16px 24px; border-top: 1px solid var(--border); max-height: 200px; overflow-y: auto; display: none; }
     .saved-list-title { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
@@ -519,15 +580,28 @@
               <button class="share-btn" onclick="copyLink()">🔗</button>
             </div>
           </div>
-          <!-- body type badge -->
-          <div id="analysis-badge"></div>
-          <!-- summary text -->
-          <p id="analysis-text" class="analysis-summary"></p>
-          <div id="analysis-tip"></div>
+          <!-- FITME DNA Score Banner -->
+          <div id="fitme-score-section"></div>
+          <!-- Top grid: body badge + radar chart -->
+          <div class="dna-top-grid">
+            <div>
+              <div id="analysis-badge"></div>
+              <p id="analysis-text" class="analysis-summary"></p>
+              <div id="analysis-tip"></div>
+            </div>
+            <div class="radar-wrap">
+              <canvas id="radar-chart" width="150" height="150"></canvas>
+              <div class="radar-label">FITME DNA</div>
+            </div>
+          </div>
           <!-- BMI + proportion stats -->
           <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:6px;"></p>
           <div id="analysis-props"></div>
-          <!-- occasion recommendations -->
+          <!-- Weight goal card -->
+          <div id="weight-goal-section"></div>
+          <!-- Exercise prescription -->
+          <div id="exercise-prescription"></div>
+          <!-- Occasion recommendations -->
           <div id="analysis-occasions"></div>
           <!-- best / worst -->
           <div class="style-section" style="margin-top:18px;">
@@ -536,6 +610,8 @@
             <h4 id="analysis-worst-title" style="margin-top:16px;">⚠️ 주의할 스타일</h4>
             <div class="style-grid" id="worst-styles"></div>
           </div>
+          <!-- 90-Day Roadmap -->
+          <div id="roadmap-section"></div>
           <p id="analysis-disclaimer" style="font-size:11px; color:var(--muted); margin-top:16px;">*입력된 수치 기반의 통계적 분석 결과입니다.</p>
         </div>
       </div>
@@ -1574,6 +1650,220 @@
     male:   { inv: '🧥', tri: '🧥→👔', rect: '👔', default: '✨' }
   };
 
+  // ===== FITME DNA: Exercise + Roadmap Data =====
+  const exerciseData = {
+    ko: {
+      inv: [
+        { icon: '🦵', name: '스쿼트', sets: '3세트', reps: '15회', freq: '주 3회', effect: '허벅지·엉덩이 근육을 키워 하체 볼륨 형성' },
+        { icon: '🍑', name: '힙 브릿지', sets: '3세트', reps: '20회', freq: '주 3회', effect: '힙업 & 골반 안정화에 가장 효과적' },
+        { icon: '🏋️', name: '레그 프레스', sets: '3세트', reps: '12회', freq: '주 2회', effect: '대퇴부 전체 근육량 집중 증가' },
+        { icon: '🚶', name: '런지', sets: '3세트', reps: '12회 (양발)', freq: '주 3회', effect: '균형감 향상 & 하체 라인 동시 강화' },
+      ],
+      tri: [
+        { icon: '💪', name: '팔굽혀펴기', sets: '3세트', reps: '15회', freq: '주 3회', effect: '가슴·어깨·삼두근을 한 번에 자극' },
+        { icon: '🏋️', name: '덤벨 숄더프레스', sets: '3세트', reps: '12회', freq: '주 2회', effect: '어깨 전면·측면 근육 볼륨 강화' },
+        { icon: '🤸', name: '사이드 레터럴 레이즈', sets: '3세트', reps: '15회', freq: '주 2회', effect: '삼각근 측면 자극으로 넓어 보이는 어깨' },
+        { icon: '🧗', name: '풀업 / 친업', sets: '3세트', reps: '최대 반복', freq: '주 2회', effect: '등 & 이두근 강화 + 어깨 너비 확장' },
+      ],
+      rect: [
+        { icon: '🎯', name: '플랭크', sets: '3세트', reps: '60초', freq: '주 3회', effect: '코어 전체 강화 & 허리 라인 정돈' },
+        { icon: '🏋️', name: '데드리프트', sets: '3세트', reps: '10회', freq: '주 2회', effect: '전신 근육 활성화 & 체형 교정 효과' },
+        { icon: '🤸', name: '크런치', sets: '3세트', reps: '20회', freq: '주 3회', effect: '복근 강화로 잘록한 허리 라인 완성' },
+        { icon: '⛰️', name: '마운틴 클라이머', sets: '3세트', reps: '30초', freq: '주 3회', effect: '유산소 + 코어를 동시에 자극' },
+      ],
+      default: [
+        { icon: '🚶', name: '파워워킹', sets: '1회', reps: '30분', freq: '주 4회', effect: '기초 체력 향상 & 지방 연소' },
+        { icon: '🧘', name: '전신 스트레칭', sets: '1회', reps: '15분', freq: '매일', effect: '유연성 향상 & 부상 예방' },
+        { icon: '🤸', name: '맨몸 스쿼트', sets: '3세트', reps: '10회', freq: '주 3회', effect: '하체 근력 기초 만들기' },
+        { icon: '💪', name: '팔굽혀펴기', sets: '3세트', reps: '10회', freq: '주 3회', effect: '상체 근력 기초 만들기' },
+      ]
+    },
+    en: {
+      inv: [
+        { icon: '🦵', name: 'Squats', sets: '3 sets', reps: '15 reps', freq: '3×/week', effect: 'Build thigh & glute volume for lower-body balance' },
+        { icon: '🍑', name: 'Hip Bridge', sets: '3 sets', reps: '20 reps', freq: '3×/week', effect: 'Best for hip lift & pelvic stabilization' },
+        { icon: '🏋️', name: 'Leg Press', sets: '3 sets', reps: '12 reps', freq: '2×/week', effect: 'Overall lower body muscle mass increase' },
+        { icon: '🚶', name: 'Lunges', sets: '3 sets', reps: '12/side', freq: '3×/week', effect: 'Balance & lower body line definition' },
+      ],
+      tri: [
+        { icon: '💪', name: 'Push-ups', sets: '3 sets', reps: '15 reps', freq: '3×/week', effect: 'Chest, shoulder & tricep all-in-one' },
+        { icon: '🏋️', name: 'Dumbbell Shoulder Press', sets: '3 sets', reps: '12 reps', freq: '2×/week', effect: 'Front & side deltoid volume build' },
+        { icon: '🤸', name: 'Lateral Raises', sets: '3 sets', reps: '15 reps', freq: '2×/week', effect: 'Side delt growth for broader shoulders' },
+        { icon: '🧗', name: 'Pull-ups / Chin-ups', sets: '3 sets', reps: 'Max reps', freq: '2×/week', effect: 'Back & bicep strength + shoulder width' },
+      ],
+      rect: [
+        { icon: '🎯', name: 'Plank', sets: '3 sets', reps: '60 sec', freq: '3×/week', effect: 'Full core strength & waist line definition' },
+        { icon: '🏋️', name: 'Deadlift', sets: '3 sets', reps: '10 reps', freq: '2×/week', effect: 'Full body activation & posture correction' },
+        { icon: '🤸', name: 'Crunches', sets: '3 sets', reps: '20 reps', freq: '3×/week', effect: 'Ab definition for a slimmer waist' },
+        { icon: '⛰️', name: 'Mountain Climbers', sets: '3 sets', reps: '30 sec', freq: '3×/week', effect: 'Cardio + core simultaneous activation' },
+      ],
+      default: [
+        { icon: '🚶', name: 'Power Walking', sets: '1 session', reps: '30 min', freq: '4×/week', effect: 'Baseline fitness & fat burn' },
+        { icon: '🧘', name: 'Full-body Stretch', sets: '1 session', reps: '15 min', freq: 'Daily', effect: 'Flexibility & injury prevention' },
+        { icon: '🤸', name: 'Bodyweight Squats', sets: '3 sets', reps: '10 reps', freq: '3×/week', effect: 'Lower body strength foundation' },
+        { icon: '💪', name: 'Push-ups', sets: '3 sets', reps: '10 reps', freq: '3×/week', effect: 'Upper body strength foundation' },
+      ]
+    }
+  };
+
+  const roadmapData = {
+    ko: {
+      inv: {
+        m1: { theme: '하체 기초', goals: ['스쿼트·런지 주 3회 실시', '하체 스트레칭 매일 10분', '유산소 주 2회 (조깅 20분)'] },
+        m2: { theme: '볼륨 강화', goals: ['하체 운동 중량 10% 증가', '힙 브릿지·레그프레스 추가', '단백질 섭취 늘리기 (체중×1.5g)'] },
+        m3: { theme: '균형 완성', goals: ['상하체 비율 사진 비교', '힙업 목표 달성 확인', '유지 루틴 최종 설정'] },
+      },
+      tri: {
+        m1: { theme: '상체 기초', goals: ['팔굽혀펴기 주 3회 실시', '어깨 스트레칭 매일 10분', '가벼운 덤벨 운동 시작'] },
+        m2: { theme: '어깨 강화', goals: ['숄더프레스·레터럴 레이즈 추가', '운동 중량 점진적 증가', '단백질 보충제 고려'] },
+        m3: { theme: '균형 완성', goals: ['어깨 너비 변화 재측정', '풀업 5회 이상 목표', '상체 라인 완성 확인'] },
+      },
+      rect: {
+        m1: { theme: '코어 기초', goals: ['플랭크 60초 주 3회 목표', '복근 운동 루틴 구성', '자세 교정 스트레칭 시작'] },
+        m2: { theme: '허리 라인', goals: ['코어 운동 강도 점진적 증가', '데드리프트 폼 완성', '식단 관리 시작 (칼로리 체크)'] },
+        m3: { theme: '체형 완성', goals: ['허리 사이즈 목표 달성', '전·후 체형 사진 비교', '유지 루틴 확정'] },
+      },
+      default: {
+        m1: { theme: '습관 형성', goals: ['하루 30분 걷기 목표', '스트레칭 루틴 만들기', '수면 7~8시간 확보'] },
+        m2: { theme: '강도 업', goals: ['운동 빈도 주 3회로 증가', '근력 운동 입문', '식단 기록 시작'] },
+        m3: { theme: '체형 체크', goals: ['측정값 재입력 후 비교', '목표 체형 재설정', '3개월 루틴 완성'] },
+      }
+    },
+    en: {
+      inv: {
+        m1: { theme: 'LOWER FOUNDATION', goals: ['Squats & lunges 3×/week', 'Lower body stretch 10min daily', 'Light cardio 2×/week (20min run)'] },
+        m2: { theme: 'VOLUME BUILD', goals: ['Increase lower body weight 10%', 'Add hip bridge & leg press', 'Increase protein intake (1.5g × bodyweight)'] },
+        m3: { theme: 'BALANCE CHECK', goals: ['Compare upper/lower ratio photos', 'Confirm hip lift goal achieved', 'Set maintenance routine'] },
+      },
+      tri: {
+        m1: { theme: 'UPPER FOUNDATION', goals: ['Push-ups 3×/week', 'Shoulder stretch 10min daily', 'Start light dumbbell work'] },
+        m2: { theme: 'SHOULDER BUILD', goals: ['Add shoulder press & lateral raise', 'Progressive weight increase', 'Consider protein supplements'] },
+        m3: { theme: 'BALANCE CHECK', goals: ['Re-measure shoulder width', 'Target 5+ pull-ups', 'Confirm upper body progress'] },
+      },
+      rect: {
+        m1: { theme: 'CORE FOUNDATION', goals: ['60-second plank goal 3×/week', 'Build ab exercise routine', 'Start posture correction stretch'] },
+        m2: { theme: 'WAIST DEFINITION', goals: ['Increase core intensity progressively', 'Master deadlift form', 'Start diet tracking (calorie check)'] },
+        m3: { theme: 'BODY CHECK', goals: ['Reach waist size target', 'Compare before/after photos', 'Confirm maintenance routine'] },
+      },
+      default: {
+        m1: { theme: 'HABIT BUILDING', goals: ['30-min walk daily', 'Build stretching routine', 'Get 7–8 hours sleep'] },
+        m2: { theme: 'STEP UP', goals: ['Increase exercise to 3×/week', 'Try beginner strength training', 'Start food journaling'] },
+        m3: { theme: 'BODY CHECK', goals: ['Re-enter measurements & compare', 'Reassess body type goals', 'Complete 3-month routine'] },
+      }
+    }
+  };
+
+  const dnaLabels = {
+    ko: {
+      scoreLabel: 'FITME DNA 점수',
+      gradeLabel: 'GRADE',
+      radarAxes: ['다리', '어깨', '체중', '비율', '조화'],
+      weightLose: '감량 권고',
+      weightLoseDetail: '이상 체중(BMI 22.9)까지 약 {n}kg 감량을 권고합니다.',
+      weightGain: '증량 권고',
+      weightGainDetail: '정상 체중(BMI 18.5)까지 약 {n}kg 증량을 권고합니다.',
+      weightOk: '이상 체중 유지 중',
+      weightOkDetail: '현재 체중이 건강한 정상 범위입니다. 체형 관리에 집중하세요!',
+      exerciseTitle: '맞춤 운동 처방전',
+      cardioName: '유산소 운동 추가 권고',
+      cardioSets: '1회', cardioReps: '30분', cardioFreq: '주 4회',
+      cardioEffect: '지방 연소 및 심폐 기능 강화 (BMI 과체중 필수!)',
+      roadmapTitle: '90일 체형 개선 로드맵',
+      months: ['1개월', '2개월', '3개월']
+    },
+    en: {
+      scoreLabel: 'FITME DNA SCORE',
+      gradeLabel: 'GRADE',
+      radarAxes: ['LEGS', 'SHOULDER', 'WEIGHT', 'BALANCE', 'HARMONY'],
+      weightLose: 'Weight Goal',
+      weightLoseDetail: 'Lose approx. {n}kg to reach ideal weight (target BMI 22.9).',
+      weightGain: 'Weight Goal',
+      weightGainDetail: 'Gain approx. {n}kg to reach healthy weight (target BMI 18.5).',
+      weightOk: 'Healthy Weight',
+      weightOkDetail: 'Your weight is in the healthy range. Focus on body composition!',
+      exerciseTitle: 'Personal Exercise Prescription',
+      cardioName: 'Cardio (Recommended)',
+      cardioSets: '1 session', cardioReps: '30 min', cardioFreq: '4×/week',
+      cardioEffect: 'Fat burn & cardiovascular fitness (essential for overweight BMI!)',
+      roadmapTitle: '90-Day Body Transformation Roadmap',
+      months: ['Month 1', 'Month 2', 'Month 3']
+    }
+  };
+
+  function drawRadarChart(canvas, scores, labels) {
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width, h = canvas.height;
+    const cx = w / 2, cy = h / 2;
+    const r = Math.min(cx, cy) - 22;
+    const n = scores.length;
+    const step = (Math.PI * 2) / n;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Grid rings
+    for (let lv = 1; lv <= 5; lv++) {
+      ctx.beginPath();
+      for (let i = 0; i < n; i++) {
+        const a = -Math.PI / 2 + step * i;
+        const rr = r * lv / 5;
+        const x = cx + rr * Math.cos(a), y = cy + rr * Math.sin(a);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = lv === 5 ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.05)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Axis lines
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + step * i;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+      ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+      ctx.stroke();
+    }
+
+    // Data polygon fill
+    ctx.beginPath();
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + step * i;
+      const val = Math.min(100, scores[i]) / 100;
+      const x = cx + r * val * Math.cos(a), y = cy + r * val * Math.sin(a);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    grad.addColorStop(0, 'rgba(232,255,71,0.4)');
+    grad.addColorStop(1, 'rgba(232,255,71,0.08)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = '#e8ff47';
+    ctx.lineWidth = 1.8;
+    ctx.stroke();
+
+    // Data points
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + step * i;
+      const val = Math.min(100, scores[i]) / 100;
+      ctx.beginPath();
+      ctx.arc(cx + r * val * Math.cos(a), cy + r * val * Math.sin(a), 3, 0, Math.PI * 2);
+      ctx.fillStyle = '#e8ff47';
+      ctx.fill();
+    }
+
+    // Axis labels
+    ctx.font = 'bold 8px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let i = 0; i < n; i++) {
+      const a = -Math.PI / 2 + step * i;
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.fillText(labels[i], cx + (r + 15) * Math.cos(a), cy + (r + 15) * Math.sin(a));
+    }
+  }
+
   const occasionOutfits = {
     ko: {
       female: {
@@ -1825,34 +2115,33 @@
     const h = measurements.height?.val;
     const w = measurements.weight?.val;
     const shoulder = measurements.shoulder?.width;
-    const waist = measurements.waist?.circ;
-    const waistCm = measurements.waist?.circ;   // already converted to cm
+    const waistCm = measurements.waist?.circ;
     const upperLeg = measurements['upper-leg']?.len;
     const lowerLeg = measurements['lower-leg']?.len;
 
     if (!h && !w && !shoulder) { showToast(t('toast-need-data')); return; }
 
     const lc = i18n[currentLang] || i18n.en;
+    const dl = dnaLabels[currentLang] || dnaLabels.en;
     const langOcc = occasionOutfits[currentLang] || occasionOutfits.en;
     const genderOcc = langOcc[currentGender] || langOcc.female;
 
     // === BMI ===
-    let bmiStr = '';
+    let bmiVal = null, bmiStr = '';
     if (h && w) {
-      const bmiVal = +(w / ((h/100) ** 2)).toFixed(1);
+      bmiVal = +(w / ((h / 100) ** 2)).toFixed(1);
       const bmiLabels = lc['bmi'] || i18n.en['bmi'];
       const bmiLabel = bmiVal < 18.5 ? bmiLabels[0] : bmiVal < 23 ? bmiLabels[1] : bmiVal < 25 ? bmiLabels[2] : bmiLabels[3];
       bmiStr = `BMI ${bmiVal} — ${bmiLabel}`;
     }
 
-    // === Body type (shoulder width vs waist cm) ===
-    // shoulder width × 2 ≈ shoulder circumference, compare to waist circumference
+    // === Body type ===
     let bodyType = 'default', ratio = null;
     if (shoulder && waistCm) {
       const sw2 = parseFloat(shoulder) * 2;
       ratio = +(sw2 / parseFloat(waistCm)).toFixed(2);
-      if (ratio > 1.2) bodyType = 'inv';      // broad shoulders vs waist
-      else if (ratio < 0.95) bodyType = 'tri'; // wider waist vs shoulders
+      if (ratio > 1.2) bodyType = 'inv';
+      else if (ratio < 0.95) bodyType = 'tri';
       else bodyType = 'rect';
     }
 
@@ -1862,37 +2151,88 @@
     const typeName = lc[typeKey] || i18n.en[typeKey] || '';
     const strength = lc[strengthKey] || i18n.en[strengthKey] || '';
     const tip = lc[tipKey] || i18n.en[tipKey] || '';
-
-    // === Best / Worst ===
     const best = lc['best-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['best-' + (bodyType === 'default' ? 'def' : bodyType)];
     const worst = lc['worst-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['worst-' + (bodyType === 'default' ? 'def' : bodyType)];
 
-    // === Occasion data ===
-    const occData = genderOcc[bodyType] || genderOcc.default;
-    const occTitle = lc['occasion-title'] || i18n.en['occasion-title'];
-    const occMeeting = lc['occasion-meeting'] || i18n.en['occasion-meeting'];
-    const occBusiness = lc['occasion-business'] || i18n.en['occasion-business'];
-    const occCasual = lc['occasion-casual'] || i18n.en['occasion-casual'];
-    const whyLabel = lc['outfit-why-label'] || i18n.en['outfit-why-label'];
-    const imgs = occData.img || ['👗','👔','👟'];
-    const genderEmoji = currentGender === 'male' ? '👨' : '👩';
+    // ===== FITME DNA SCORES =====
+    const scores = {};
 
-    // === Render badge ===
+    // Leg ratio score (ideal 47-50% of height = golden proportion)
+    if (h && upperLeg && lowerLeg) {
+      const legRatio = (parseFloat(upperLeg) + parseFloat(lowerLeg)) / parseFloat(h) * 100;
+      if (legRatio >= 47 && legRatio <= 50) scores.leg = 95;
+      else scores.leg = Math.min(100, Math.max(20, Math.round(95 - Math.abs(legRatio - 48.5) * 9)));
+    }
+
+    // Shoulder-waist balance score (ideal: female ~1.15, male ~1.35)
+    if (shoulder && waistCm) {
+      const idealR = currentGender === 'male' ? 1.35 : 1.15;
+      const diff = Math.abs(ratio - idealR);
+      scores.shoulder = Math.min(100, Math.max(20, Math.round(100 - diff * 160)));
+    }
+
+    // BMI health score
+    if (bmiVal !== null) {
+      if (bmiVal >= 18.5 && bmiVal < 23) scores.bmi = 95;
+      else if (bmiVal >= 23 && bmiVal < 25) scores.bmi = 75;
+      else if (bmiVal >= 17 && bmiVal < 18.5) scores.bmi = 68;
+      else if (bmiVal >= 25 && bmiVal < 28) scores.bmi = 52;
+      else if (bmiVal >= 28 && bmiVal < 30) scores.bmi = 35;
+      else scores.bmi = 20;
+    }
+
+    // Shin/Thigh balance score (ideal ratio ~0.85-0.90)
+    if (upperLeg && lowerLeg) {
+      const r = parseFloat(lowerLeg) / parseFloat(upperLeg);
+      if (r >= 0.85 && r <= 0.92) scores.balance = 95;
+      else scores.balance = Math.min(100, Math.max(25, Math.round(95 - Math.abs(r - 0.885) * 280)));
+    }
+
+    const scoreVals = Object.values(scores);
+    scores.harmony = scoreVals.length > 0 ? Math.round(scoreVals.reduce((a, b) => a + b, 0) / scoreVals.length) : 50;
+
+    const radarScores = [scores.leg ?? 50, scores.shoulder ?? 50, scores.bmi ?? 50, scores.balance ?? 50, scores.harmony ?? 50];
+    const fitmeTotalScore = Math.round(radarScores.reduce((a, b) => a + b, 0) / radarScores.length);
+    const fitmeGrade = fitmeTotalScore >= 87 ? 'S' : fitmeTotalScore >= 77 ? 'A+' : fitmeTotalScore >= 67 ? 'A' : fitmeTotalScore >= 55 ? 'B+' : fitmeTotalScore >= 45 ? 'B' : 'C';
+    const gradeClass = fitmeGrade === 'S' ? 'grade-S' : fitmeGrade.startsWith('A') ? 'grade-A' : fitmeGrade.startsWith('B') ? 'grade-B' : 'grade-C';
+
+    // ===== RENDER: FITME SCORE BANNER =====
+    const dimLabels = dl.radarAxes;
+    document.getElementById('fitme-score-section').innerHTML = `
+      <div class="fitme-score-banner">
+        <div class="fitme-score-left">
+          <div class="fitme-score-label">${dl.scoreLabel}</div>
+          <div class="fitme-score-value">${fitmeTotalScore}</div>
+          <div class="fitme-score-dims">
+            ${radarScores.map((s, i) => `<div class="fitme-dim"><div class="fitme-dim-val">${s}</div><div class="fitme-dim-label">${dimLabels[i]}</div></div>`).join('')}
+          </div>
+        </div>
+        <div class="fitme-score-right">
+          <div class="fitme-grade ${gradeClass}">${fitmeGrade}</div>
+          <div class="fitme-grade-label">${dl.gradeLabel}</div>
+        </div>
+      </div>`;
+
+    // ===== RENDER: BODY TYPE BADGE =====
     const badgeEmojiMap = { inv: '🔺', tri: '🔻', rect: '⬛', default: '📐' };
+    const genderEmoji = currentGender === 'male' ? '👨' : '👩';
     document.getElementById('analysis-badge').innerHTML = typeName
       ? `<div class="body-type-badge"><span>${genderEmoji}</span><span>${badgeEmojiMap[bodyType] || '📐'}</span><span class="badge-label">${typeName}</span></div>`
       : '';
 
-    // === Render summary ===
     document.getElementById('analysis-text').textContent = strength;
-    document.getElementById('analysis-tip').innerHTML = tip
-      ? `<div class="analysis-tip">💡 ${tip}</div>`
-      : '';
+    document.getElementById('analysis-tip').innerHTML = tip ? `<div class="analysis-tip">💡 ${tip}</div>` : '';
 
-    // === BMI ===
+    // ===== RENDER: RADAR CHART =====
+    requestAnimationFrame(() => {
+      const canvas = document.getElementById('radar-chart');
+      if (canvas) drawRadarChart(canvas, radarScores, dl.radarAxes);
+    });
+
+    // ===== RENDER: BMI =====
     document.getElementById('bmi-text').textContent = bmiStr;
 
-    // === Proportion stats ===
+    // ===== RENDER: PROPORTION STATS =====
     const statItems = [];
     if (shoulder && waistCm) {
       const pct = Math.min(100, Math.round(ratio * 50));
@@ -1904,26 +2244,52 @@
       const legPct = Math.min(100, Math.round(legRatio * 1.6));
       statItems.push({ label: lc['prop-leg'] || i18n.en['prop-leg'], val: `${legRatio}%`, pct: legPct, note: legRatio >= 50 ? '↑' : legRatio >= 46 ? '~' : '↓' });
     }
-    if (statItems.length > 0) {
-      document.getElementById('analysis-props').innerHTML = `<div class="prop-stats">${
-        statItems.map(s => `<div class="prop-row">
-          <div class="prop-label">${s.label}<span>${s.val}${s.note ? ' ' + s.note : ''}</span></div>
-          <div class="prop-track"><div class="prop-fill" style="width:${s.pct}%"></div></div>
-        </div>`).join('')
-      }</div>`;
-    } else {
-      document.getElementById('analysis-props').innerHTML = '';
+    document.getElementById('analysis-props').innerHTML = statItems.length > 0
+      ? `<div class="prop-stats">${statItems.map(s => `<div class="prop-row"><div class="prop-label">${s.label}<span>${s.val}${s.note ? ' ' + s.note : ''}</span></div><div class="prop-track"><div class="prop-fill" style="width:${s.pct}%"></div></div></div>`).join('')}</div>`
+      : '';
+
+    // ===== RENDER: WEIGHT GOAL CARD =====
+    let weightGoalHtml = '';
+    if (bmiVal !== null) {
+      const hh = parseFloat(h) / 100;
+      if (bmiVal >= 23) {
+        const targetW = Math.round(22.9 * hh * hh * 10) / 10;
+        const loseKg = Math.round((parseFloat(w) - targetW) * 10) / 10;
+        if (loseKg > 0) weightGoalHtml = `<div class="weight-goal-card"><div class="weight-goal-icon">⬇️</div><div class="weight-goal-text"><div class="weight-goal-title">${dl.weightLose}</div><div class="weight-goal-detail">${dl.weightLoseDetail.replace('{n}', loseKg)}</div></div><div class="weight-goal-num">-${loseKg}kg</div></div>`;
+      } else if (bmiVal < 18.5) {
+        const targetW = Math.round(18.5 * hh * hh * 10) / 10;
+        const gainKg = Math.round((targetW - parseFloat(w)) * 10) / 10;
+        if (gainKg > 0) weightGoalHtml = `<div class="weight-goal-card gain"><div class="weight-goal-icon">⬆️</div><div class="weight-goal-text"><div class="weight-goal-title">${dl.weightGain}</div><div class="weight-goal-detail">${dl.weightGainDetail.replace('{n}', gainKg)}</div></div><div class="weight-goal-num">+${gainKg}kg</div></div>`;
+      } else {
+        weightGoalHtml = `<div class="weight-goal-card ok"><div class="weight-goal-icon">✅</div><div class="weight-goal-text"><div class="weight-goal-title">${dl.weightOk}</div><div class="weight-goal-detail">${dl.weightOkDetail}</div></div><div class="weight-goal-num">GOOD</div></div>`;
+      }
     }
+    document.getElementById('weight-goal-section').innerHTML = weightGoalHtml;
 
-    // === Occasion recommendations ===
+    // ===== RENDER: EXERCISE PRESCRIPTION =====
+    const exLang = exerciseData[currentLang] || exerciseData.en;
+    const exList = exLang[bodyType] || exLang.default;
+    let exHtml = `<div class="exercise-section"><div class="section-divider">${dl.exerciseTitle}</div><div class="exercise-grid">`;
+    exList.forEach(ex => {
+      exHtml += `<div class="exercise-card"><div class="exercise-header"><div class="exercise-icon">${ex.icon}</div><div class="exercise-name">${ex.name}</div></div><div class="exercise-meta"><span class="exercise-badge">${ex.sets} × ${ex.reps}</span><span class="exercise-badge freq">${ex.freq}</span></div><div class="exercise-effect">${ex.effect}</div></div>`;
+    });
+    if (bmiVal !== null && bmiVal >= 25) {
+      exHtml += `<div class="exercise-card" style="border-color:rgba(255,71,71,0.25);"><div class="exercise-header"><div class="exercise-icon" style="background:rgba(255,71,71,0.1);">🏃</div><div class="exercise-name">${dl.cardioName}</div></div><div class="exercise-meta"><span class="exercise-badge cardio">${dl.cardioSets} × ${dl.cardioReps}</span><span class="exercise-badge freq">${dl.cardioFreq}</span></div><div class="exercise-effect">${dl.cardioEffect}</div></div>`;
+    }
+    exHtml += '</div></div>';
+    document.getElementById('exercise-prescription').innerHTML = exHtml;
+
+    // ===== RENDER: OCCASION RECOMMENDATIONS =====
+    const occData = genderOcc[bodyType] || genderOcc.default;
+    const occTitle = lc['occasion-title'] || i18n.en['occasion-title'];
+    const occMeeting = lc['occasion-meeting'] || i18n.en['occasion-meeting'];
+    const occBusiness = lc['occasion-business'] || i18n.en['occasion-business'];
+    const occCasual = lc['occasion-casual'] || i18n.en['occasion-casual'];
+    const whyLabel = lc['outfit-why-label'] || i18n.en['outfit-why-label'];
+    const imgs = occData.img || ['👗', '👔', '👟'];
     const buildOutfits = (arr, occImg) => arr.map((item, i) =>
-      `<div class="outfit-item">
-        <div class="outfit-visual">${occImg[i % occImg.length] || '✨'}</div>
-        <div class="outfit-combo">${item.combo}</div>
-        <div class="outfit-why"><strong>${whyLabel}:</strong> ${item.why}</div>
-      </div>`
+      `<div class="outfit-item"><div class="outfit-visual">${occImg[i % occImg.length] || '✨'}</div><div class="outfit-combo">${item.combo}</div><div class="outfit-why"><strong>${whyLabel}:</strong> ${item.why}</div></div>`
     ).join('');
-
     document.getElementById('analysis-occasions').innerHTML = `
       <div class="occasion-section">
         <div class="occasion-section-title">${occTitle}</div>
@@ -1937,9 +2303,23 @@
         <div id="occ-casual" class="occ-panel">${buildOutfits(occData.casual, imgs)}</div>
       </div>`;
 
-    // === Best / Worst ===
+    // ===== RENDER: BEST / WORST STYLES =====
     document.getElementById('best-styles').innerHTML = best.map(s => `<div class="style-item">✅ ${s}</div>`).join('');
     document.getElementById('worst-styles').innerHTML = worst.map(s => `<div class="style-item">⚠️ ${s}</div>`).join('');
+
+    // ===== RENDER: 90-DAY ROADMAP =====
+    const rmLang = roadmapData[currentLang] || roadmapData.en;
+    const rm = rmLang[bodyType] || rmLang.default;
+    const months = dl.months;
+    document.getElementById('roadmap-section').innerHTML = `
+      <div class="roadmap-section">
+        <div class="section-divider">${dl.roadmapTitle}</div>
+        <div class="roadmap-grid">
+          <div class="roadmap-card month-1"><div class="roadmap-month">${months[0]}</div><div class="roadmap-theme">${rm.m1.theme}</div><ul class="roadmap-goals">${rm.m1.goals.map(g => `<li>${g}</li>`).join('')}</ul></div>
+          <div class="roadmap-card month-2"><div class="roadmap-month">${months[1]}</div><div class="roadmap-theme">${rm.m2.theme}</div><ul class="roadmap-goals">${rm.m2.goals.map(g => `<li>${g}</li>`).join('')}</ul></div>
+          <div class="roadmap-card month-3"><div class="roadmap-month">${months[2]}</div><div class="roadmap-theme">${rm.m3.theme}</div><ul class="roadmap-goals">${rm.m3.goals.map(g => `<li>${g}</li>`).join('')}</ul></div>
+        </div>
+      </div>`;
 
     document.getElementById('analysis-result').classList.add('visible');
     document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1967,7 +2347,7 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
-    ['analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','analysis-occasions','best-styles','worst-styles'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
     setGender('female');
     document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
