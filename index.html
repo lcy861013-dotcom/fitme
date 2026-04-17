@@ -531,6 +531,7 @@
         <button class="hotspot" id="hs-upper-arm" style="left:14%; top:34%;" onclick="selectPart('upper-arm')">💪</button>
         <button class="hotspot" id="hs-lower-arm" style="left:11%; top:46%;" onclick="selectPart('lower-arm')">✋</button>
         <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')">○</button>
+        <button class="hotspot" id="hs-hip" style="left:50%; top:50%;" onclick="selectPart('hip')">◇</button>
         <button class="hotspot" id="hs-weight" style="left:88%; top:50%;" onclick="selectPart('weight')">⚖️</button>
         <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')">┃</button>
         <button class="hotspot" id="hs-lower-leg" style="left:28%; top:84%;" onclick="selectPart('lower-leg')">⊕</button>
@@ -627,6 +628,13 @@
           <div class="input-group"><label class="input-label">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5"></div>
           <div style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
           <button class="btn btn-primary btn-save" onclick="savePart('waist')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-hip">
+          <div class="form-title">HIP / 골반</div>
+          <div class="form-desc">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
+          <div class="input-group"><label class="input-label">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96"></div>
+          <button class="btn btn-primary btn-save" onclick="savePart('hip')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-leg">
@@ -946,7 +954,7 @@
       'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'About FITME','footer-contact':'Contact Us',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
       'toast-enter-value':'값을 입력해주세요!','toast-saved':' 저장 완료! ✓','toast-link':'링크 복사됨! 🔗',
-      'toast-need-data':'먼저 키, 체중, 어깨 너비를 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
+      'toast-need-data':'먼저 키와 체중을 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
       'confirm-reset':'모든 측정값을 초기화할까요?',
       'parts':{ height:'키', weight:'체중', head:'머리', shoulder:'어깨', chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완', waist:'허리', hip:'골반', 'upper-leg':'허벅지', 'lower-leg':'종아리', foot:'발' },
       'titles':{ height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리', shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴', 'upper-arm':'UPPER ARM / 상완', 'lower-arm':'LOWER ARM / 하완', waist:'WAIST / 허리', hip:'HIP / 골반', 'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발' },
@@ -1946,7 +1954,9 @@
     else if (part === 'upper-arm') { data.len = document.getElementById('upper-arm-len').value; hasData = data.len; }
     else if (part === 'lower-arm') { data.len = document.getElementById('lower-arm-len').value; hasData = data.len; }
     else if (part === 'waist') { data.inch = document.getElementById('waist-circ').value; data.circ = data.inch ? (parseFloat(data.inch) * 2.54).toFixed(1) : ''; hasData = data.inch; }
-    else if (part === 'upper-leg') { data.len = document.getElementById('upper-leg-len').value; data.circ = document.getElementById('upper-leg-circ').value; hasData = data.len || data.circ; }
+    else if (part === 'hip') { data.circ = document.getElementById('hip-circ').value; hasData = data.circ; }
+    else if (part === 'upper-leg') {
+ data.len = document.getElementById('upper-leg-len').value; data.circ = document.getElementById('upper-leg-circ').value; hasData = data.len || data.circ; }
     else if (part === 'lower-leg') { data.len = document.getElementById('lower-leg-len').value; hasData = data.len; }
     else if (part === 'foot') { data.size = document.getElementById('foot-size').value; data.width = radioSelections['footw']; hasData = data.size || data.width; }
 
@@ -2459,16 +2469,16 @@
   };
 
   function runExpertAnalysis() {
-    const h = measurements.height?.val;
-    const w = measurements.weight?.val;
-    const shoulder = measurements.shoulder?.width;
-    const waistCm = measurements.waist?.circ;
-    const chestCm = measurements.chest?.circ;
-    const hipCm = measurements.hip?.circ;
-    const upperLeg = measurements['upper-leg']?.len;
-    const lowerLeg = measurements['lower-leg']?.len;
+    const h = parseFloat(measurements.height?.val);
+    const w = parseFloat(measurements.weight?.val);
+    const shoulder = parseFloat(measurements.shoulder?.width);
+    const waistCm = parseFloat(measurements.waist?.circ);
+    const chestCm = parseFloat(measurements.chest?.circ);
+    const hipCm = parseFloat(measurements.hip?.circ);
+    const upperLeg = parseFloat(measurements['upper-leg']?.len);
+    const lowerLeg = parseFloat(measurements['lower-leg']?.len);
 
-    if (!h && !w && !shoulder) { showToast(t('toast-need-data')); return; }
+    if (!h || !w) { showToast(t('toast-need-data')); return; }
 
     const lc = i18n[currentLang] || i18n.en;
     const dl = dnaLabels[currentLang] || dnaLabels.en;
@@ -2487,12 +2497,12 @@
     // === Body type & WHR ===
     let bodyType = 'default', whr = null;
     if (waistCm && hipCm) {
-      whr = +(parseFloat(waistCm) / parseFloat(hipCm)).toFixed(2);
+      whr = +(waistCm / hipCm).toFixed(2);
       if (shoulder && chestCm) {
-        const s = parseFloat(shoulder) * 2;
-        const c = parseFloat(chestCm);
-        const w = parseFloat(waistCm);
-        const hi = parseFloat(hipCm);
+        const s = shoulder * 2;
+        const c = chestCm;
+        const w = waistCm;
+        const hi = hipCm;
         
         // Expert 5-Way Body Shape Logic
         if (Math.abs(s - hi) < (hi * 0.05) && w < (hi * 0.75)) bodyType = 'hourglass';
