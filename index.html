@@ -2433,18 +2433,30 @@
       btn.style.transform = 'translateX(-50%) translateY(0)';
     }, 1500);
 
-    function onScroll() {
+    function hideBtn() {
       btn.style.opacity = '0';
       btn.style.transform = 'translateX(-50%) translateY(20px)';
+      clearTimeout(scrollTimer);
+    }
+    function showBtn() {
       clearTimeout(scrollTimer);
       scrollTimer = setTimeout(() => {
         btn.style.opacity = '1';
         btn.style.transform = 'translateX(-50%) translateY(0)';
       }, 1200);
     }
-    window.addEventListener('scroll', onScroll);
+    function onScroll() { hideBtn(); showBtn(); }
+    function onTouchStart() { hideBtn(); }
+    function onTouchEnd() { showBtn(); }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('touchstart', onTouchStart, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
+
     window._blogScrollCleanup = () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchend', onTouchEnd);
       clearTimeout(scrollTimer);
       btn.remove();
     };
