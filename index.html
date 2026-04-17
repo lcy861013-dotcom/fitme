@@ -2427,7 +2427,12 @@
     document.body.appendChild(btn);
 
     let scrollTimer;
-    const pageEl = document.getElementById('page-' + id);
+    // 처음 진입시 1.5초 후 버튼 한 번 보여주기
+    scrollTimer = setTimeout(() => {
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateX(-50%) translateY(0)';
+    }, 1500);
+
     function onScroll() {
       btn.style.opacity = '0';
       btn.style.transform = 'translateX(-50%) translateY(20px)';
@@ -2437,9 +2442,9 @@
         btn.style.transform = 'translateX(-50%) translateY(0)';
       }, 1200);
     }
-    pageEl.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll);
     window._blogScrollCleanup = () => {
-      pageEl.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', onScroll);
       clearTimeout(scrollTimer);
       btn.remove();
     };
