@@ -91,9 +91,10 @@
     .guide-step .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
     .guide-step p { font-size: 12px; color: var(--muted); line-height: 1.7; margin: 0; }
     .guide-ad { max-width: 1000px; margin: 24px auto 0; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; min-height: 100px; display: flex; align-items: center; justify-content: center; }
+    .card-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 900px) { .guide-card.featured { grid-column: span 1; } .guide-steps { grid-template-columns: 1fr; } }
     @media (max-width: 600px) {
-      .guide-card4-inner { grid-template-columns: 1fr !important; }
+      .card-inner-grid { grid-template-columns: 1fr !important; }
       .guide-card { padding: 20px; }
       .guide-card h3 { font-size: 14px; }
     }
@@ -378,19 +379,28 @@
     <div class="guide-grid">
       <div class="guide-card featured">
         <h3 id="guide-card-title">📱 줄자 없이 지금 바로 — 스마트폰으로 내 비율 재기</h3>
-        <p id="guide-card-desc">줄자가 없어도 괜찮아요. 지금 손에 든 스마트폰 하나면 충분합니다.<br>최신 스마트폰의 평균 세로 길이는 <strong style="color:var(--accent);">약 15cm</strong>. 이걸 자로 활용하면 됩니다.</p>
-        <div class="guide-steps">
-          <div class="guide-step">
-            <div class="step-num">01</div>
-            <p id="guide-step1-p">스마트폰을 세로로 잡고 측정 부위에 대어 몇 번 들어가는지 세세요</p>
+        <div class="card-inner-grid" style="margin-top:16px;">
+          <div>
+            <p id="guide-card-desc" style="font-size:13px; color:var(--muted); margin-bottom:14px;">줄자가 없어도 괜찮아요. 지금 손에 든 스마트폰 하나면 충분합니다.</p>
+            <div style="background:rgba(232,255,71,0.06); border:1px solid rgba(232,255,71,0.2); border-radius:12px; padding:16px; text-align:center;">
+              <div style="font-size:11px; color:var(--muted); letter-spacing:2px; margin-bottom:8px;">평균 스마트폰 세로 길이</div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1;">약 15 cm</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:6px;">이걸 자로 활용하면 됩니다</div>
+            </div>
           </div>
-          <div class="guide-step">
-            <div class="step-num">02</div>
-            <p id="guide-step2-p">횟수 × 15cm = 해당 부위 길이<br>예) 3번 → 약 45cm</p>
-          </div>
-          <div class="guide-step">
-            <div class="step-num">03</div>
-            <p id="guide-step3-p">측정 결과를 왼쪽 인체 도형에 입력하면 비율 분석 완료!</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="guide-step">
+              <div class="step-num">01</div>
+              <p id="guide-step1-p">스마트폰을 세로로 잡고 측정 부위에 몇 번 들어가는지 세세요</p>
+            </div>
+            <div class="guide-step">
+              <div class="step-num">02</div>
+              <p id="guide-step2-p">횟수 × 15cm = 해당 부위 길이<br>예) 3번 → 약 45cm</p>
+            </div>
+            <div class="guide-step">
+              <div class="step-num">03</div>
+              <p id="guide-step3-p">측정 결과를 인체 도형에 입력하면 분석 완료!</p>
+            </div>
           </div>
         </div>
       </div>
@@ -399,22 +409,26 @@
       <div class="guide-card">
         <h3 id="guide-card2-title" data-i18n="guide-card2-title">📏 집에 있는 물건으로 재기</h3>
         <p id="guide-card2-desc" data-i18n="guide-card2-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">줄자도 스마트폰도 없다면? 주변 물건이 이미 자입니다.</p>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:13px; color:var(--muted);" data-i18n="guide-obj-a4">📄 A4 용지 (세로)</span>
-            <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">29.7 cm</span>
+        <div class="card-inner-grid">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-a4">📄 A4 용지 (세로)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">29.7 cm</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-bill">💴 지폐 (가로)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">14.8 cm</span>
+            </div>
           </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:13px; color:var(--muted);" data-i18n="guide-obj-bill">💴 지폐 (가로)</span>
-            <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">14.8 cm</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:13px; color:var(--muted);" data-i18n="guide-obj-card">💳 신용카드 (가로)</span>
-            <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">8.56 cm</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 16px;">
-            <span style="font-size:13px; color:var(--muted);" data-i18n="guide-obj-pen">🖊 볼펜 (길이)</span>
-            <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">약 14 cm</span>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-card">💳 신용카드 (가로)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">8.56 cm</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-pen">🖊 볼펜 (길이)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">약 14 cm</span>
+            </div>
           </div>
         </div>
         <p id="guide-card2-tip" data-i18n="guide-card2-tip" style="font-size:12px; color:var(--muted); margin-top:14px; line-height:1.7;">💡 예) 어깨 너비를 A4로 재면 → A4가 1.5장 → 약 44.5cm</p>
@@ -424,28 +438,34 @@
       <div class="guide-card">
         <h3 id="guide-card3-title" data-i18n="guide-card3-title">📸 사진 한 장으로 정확히 재기</h3>
         <p id="guide-card3-desc" data-i18n="guide-card3-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">A4 한 장만 있으면 오차 1cm 이내로 잴 수 있습니다.</p>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 01</div>
-            <p id="guide-card3-step1" data-i18n="guide-card3-step1" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">A4 용지를 어깨·허리·허벅지 옆에 붙이고 전신 정면 사진을 찍어요.</p>
+        <div class="card-inner-grid">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 01</div>
+              <p id="guide-card3-step1" data-i18n="guide-card3-step1" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">A4 용지를 어깨·허리 옆에 붙이고 전신 정면 사진을 찍어요.</p>
+            </div>
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 02</div>
+              <p id="guide-card3-step2" data-i18n="guide-card3-step2" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">사진 속 A4(29.7cm) 기준으로 각 부위 비율을 계산합니다.</p>
+            </div>
           </div>
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 02</div>
-            <p id="guide-card3-step2" data-i18n="guide-card3-step2" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">사진 속 A4 세로(29.7cm)를 기준으로 각 부위 비율을 계산합니다.</p>
-          </div>
-          <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
-            <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 03</div>
-            <p id="guide-card3-step3" data-i18n="guide-card3-step3" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">계산한 치수를 FITME에 입력 → 내 비율 분석 완료!</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 03</div>
+              <p id="guide-card3-step3" data-i18n="guide-card3-step3" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">계산한 치수를 FITME에 입력 → 비율 분석 완료!</p>
+            </div>
+            <div style="background:rgba(232,255,71,0.06); border:1px solid rgba(232,255,71,0.2); border-radius:10px; padding:14px;">
+              <p id="guide-card3-tip" data-i18n="guide-card3-tip" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">📱 iPhone 사진 앱 → 편집 → 눈금자 기능으로 더 정확하게!</p>
+            </div>
           </div>
         </div>
-        <p id="guide-card3-tip" data-i18n="guide-card3-tip" style="font-size:12px; color:var(--muted); margin-top:14px; line-height:1.7;">📱 <strong style="color:var(--text);">iPhone 사진 앱 → 편집 → 눈금자</strong> 기능으로 더 정확하게!</p>
       </div>
 
       <!-- CARD 4: 손뼘으로 재기 -->
       <div class="guide-card" style="grid-column: span 2;">
         <h3 id="guide-card4-title">🤚 손뼘으로 재기 — 언제 어디서나 내 손이 자다</h3>
         <p id="guide-card4-desc" style="font-size:13px; color:var(--muted); margin-bottom:20px;">도구가 아무것도 없어도 손 하나면 됩니다. 먼저 내 손뼘 길이를 재면, 그게 평생 들고 다니는 줄자예요.</p>
-        <div class="guide-card4-inner" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+        <div class="card-inner-grid">
           <div>
             <div id="guide-card4-step1-label" style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">STEP 01 — 내 한 뼘 길이 파악하기</div>
             <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:12px;">
