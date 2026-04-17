@@ -2137,6 +2137,7 @@
 
   // PAGE NAVIGATION
   function showPage(name) {
+    if (window._blogScrollCleanup) { window._blogScrollCleanup(); window._blogScrollCleanup = null; }
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
     window.scrollTo(0, 0);
@@ -2397,11 +2398,6 @@
     const data = post[lang];
     const backLabel = currentLang === 'ko' ? '← 홈으로' : currentLang === 'ja' ? '← ホームへ' : currentLang === 'zh' ? '← 返回首页' : '← Back to Home';
     document.getElementById('blog-render-' + id).innerHTML = `
-      <div style="position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px;">
-        <button onclick="showPage('home')" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:50px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-          ← ${backLabel.replace('← ','')}
-        </button>
-      </div>
       <div class="blog-post">
         <div style="font-size:11px;letter-spacing:3px;color:var(--accent);margin-bottom:12px;font-family:'DM Sans',sans-serif;">${post.tag}</div>
         <h1>${data.title}</h1>
@@ -2413,6 +2409,40 @@
         <p class="footer-copy">&copy; 2026 FITME.</p>
       </footer>`;
     showPage(id);
+
+    // 스크롤 멈추면 뒤로가기 버튼 표시
+    const floatBtn = document.getElementById('blog-float-back');
+    if (floatBtn) floatBtn.remove();
+    const btn = document.createElement('button');
+    btn.id = 'blog-float-back';
+    btn.innerHTML = '← ' + backLabel.replace('← ', '');
+    btn.onclick = () => showPage('home');
+    btn.style.cssText = `
+      position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px);
+      background:var(--accent); color:var(--bg); border:none; border-radius:50px;
+      padding:14px 28px; font-family:'Black Han Sans',sans-serif; font-size:15px;
+      cursor:pointer; z-index:9999; opacity:0; transition:opacity 0.3s, transform 0.3s;
+      box-shadow:0 4px 20px rgba(232,255,71,0.4); white-space:nowrap;
+    `;
+    document.body.appendChild(btn);
+
+    let scrollTimer;
+    const pageEl = document.getElementById('page-' + id);
+    function onScroll() {
+      btn.style.opacity = '0';
+      btn.style.transform = 'translateX(-50%) translateY(20px)';
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateX(-50%) translateY(0)';
+      }, 1200);
+    }
+    pageEl.addEventListener('scroll', onScroll);
+    window._blogScrollCleanup = () => {
+      pageEl.removeEventListener('scroll', onScroll);
+      clearTimeout(scrollTimer);
+      btn.remove();
+    };
   }
 
   // STATE
