@@ -2397,6 +2397,11 @@
     const data = post[lang];
     const backLabel = currentLang === 'ko' ? '← 홈으로' : currentLang === 'ja' ? '← ホームへ' : currentLang === 'zh' ? '← 返回首页' : '← Back to Home';
     document.getElementById('blog-render-' + id).innerHTML = `
+      <div style="position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px;">
+        <button onclick="showPage('home')" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:50px;font-size:14px;font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          ← ${backLabel.replace('← ','')}
+        </button>
+      </div>
       <div class="blog-post">
         <div style="font-size:11px;letter-spacing:3px;color:var(--accent);margin-bottom:12px;font-family:'DM Sans',sans-serif;">${post.tag}</div>
         <h1>${data.title}</h1>
