@@ -91,13 +91,9 @@
     .guide-step .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
     .guide-step p { font-size: 12px; color: var(--muted); line-height: 1.7; margin: 0; }
     .guide-ad { max-width: 1000px; margin: 24px auto 0; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; min-height: 100px; display: flex; align-items: center; justify-content: center; }
-    .card-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card-inner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     @media (max-width: 900px) { .guide-card.featured { grid-column: span 1; } .guide-steps { grid-template-columns: 1fr; } }
-    @media (max-width: 768px) {
-      .card-inner-grid { grid-template-columns: 1fr !important; }
-      .guide-card { padding: 20px; }
-      .guide-card h3 { font-size: 14px; }
-    }
+    @media (max-width: 768px) { .guide-card { padding: 20px; } .guide-card h3 { font-size: 14px; } }
 
     /* BLOG SECTION */
     .blog-section { padding: 60px 32px; border-bottom: 1px solid var(--border); }
