@@ -2469,16 +2469,23 @@
   };
 
   function runExpertAnalysis() {
-    const h = parseFloat(measurements.height?.val);
-    const w = parseFloat(measurements.weight?.val);
-    const shoulder = parseFloat(measurements.shoulder?.width);
-    const waistCm = parseFloat(measurements.waist?.circ);
-    const chestCm = parseFloat(measurements.chest?.circ);
-    const hipCm = parseFloat(measurements.hip?.circ);
-    const upperLeg = parseFloat(measurements['upper-leg']?.len);
-    const lowerLeg = parseFloat(measurements['lower-leg']?.len);
+    // Robust data extraction supporting multiple versions
+    const getVal = (p, key) => {
+      if (!measurements[p]) return NaN;
+      if (typeof measurements[p] === 'object') return parseFloat(measurements[p][key] || measurements[p].val);
+      return parseFloat(measurements[p]);
+    };
 
-    if (!h || !w) { showToast(t('toast-need-data')); return; }
+    const h = getVal('height', 'val');
+    const w = getVal('weight', 'val');
+    const shoulder = getVal('shoulder', 'width');
+    const waistCm = getVal('waist', 'circ');
+    const chestCm = getVal('chest', 'circ');
+    const hipCm = getVal('hip', 'circ');
+    const upperLeg = getVal('upper-leg', 'len');
+    const lowerLeg = getVal('lower-leg', 'len');
+
+    if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); return; }
 
     const lc = i18n[currentLang] || i18n.en;
     const dl = dnaLabels[currentLang] || dnaLabels.en;
@@ -2496,9 +2503,9 @@
 
     // === Body type & WHR ===
     let bodyType = 'default', whr = null;
-    if (waistCm && hipCm) {
+    if (!isNaN(waistCm) && !isNaN(hipCm)) {
       whr = +(waistCm / hipCm).toFixed(2);
-      if (shoulder && chestCm) {
+      if (!isNaN(shoulder) && !isNaN(chestCm)) {
         const s = shoulder * 2;
         const c = chestCm;
         const w = waistCm;
@@ -2730,7 +2737,19 @@
 
 
   // Init on load
-  setLanguage(currentLang);
+  window.addEventListener('DOMContentLoaded', () => {
+    setLanguage(currentLang);
+    // Restore saved measurements and update UI
+    if (Object.keys(measurements).length > 0) {
+      filledCount = Object.keys(measurements).length;
+      updateProgress();
+      Object.keys(measurements).forEach(part => {
+        const hs = document.getElementById('hs-' + part);
+        if (hs) hs.classList.add('filled');
+        // If it's the current form, we could pre-fill inputs too if we want
+      });
+    }
+  });
 
 </script>
 <style>
