@@ -2469,21 +2469,17 @@
   };
 
   function runExpertAnalysis() {
-    // Robust data extraction supporting multiple versions
     const getVal = (p, key) => {
       if (!measurements[p]) return NaN;
-      if (typeof measurements[p] === 'object') return parseFloat(measurements[p][key] || measurements[p].val);
-      return parseFloat(measurements[p]);
+      const d = measurements[p];
+      if (typeof d === 'object') return parseFloat(d[key] || d.val || d.width || d.circ || d.len || 0);
+      return parseFloat(d);
     };
 
-    const h = getVal('height', 'val');
-    const w = getVal('weight', 'val');
-    const shoulder = getVal('shoulder', 'width');
-    const waistCm = getVal('waist', 'circ');
-    const chestCm = getVal('chest', 'circ');
-    const hipCm = getVal('hip', 'circ');
-    const upperLeg = getVal('upper-leg', 'len');
-    const lowerLeg = getVal('lower-leg', 'len');
+    const h = getVal('height', 'val'), w = getVal('weight', 'val'), 
+          shoulder = getVal('shoulder', 'width'), waist = getVal('waist', 'circ'),
+          chest = getVal('chest', 'circ'), hip = getVal('hip', 'circ'),
+          uLeg = getVal('upper-leg', 'len'), lLeg = getVal('lower-leg', 'len');
 
     if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); return; }
 
@@ -2501,126 +2497,86 @@
       bmiStr = `BMI ${bmiVal} — ${bmiLabel}`;
     }
 
-    // === Body type & WHR ===
+    // Body Type & WHR
     let bodyType = 'default', whr = null;
-    if (!isNaN(waistCm) && !isNaN(hipCm)) {
-      whr = +(waistCm / hipCm).toFixed(2);
-      if (!isNaN(shoulder) && !isNaN(chestCm)) {
+    if (!isNaN(waist) && !isNaN(hip)) {
+      whr = +(waist / hip).toFixed(2);
+      if (!isNaN(shoulder) && !isNaN(chest)) {
         const s = shoulder * 2;
-        const c = chestCm;
-        const w = waistCm;
-        const hi = hipCm;
-        
-        // Expert 5-Way Body Shape Logic
-        if (Math.abs(s - hi) < (hi * 0.05) && w < (hi * 0.75)) bodyType = 'hourglass';
-        else if (hi > (s * 1.05) && hi > (c * 1.05)) bodyType = 'pear';
-        else if (s > (hi * 1.05) || c > (hi * 1.05)) bodyType = 'inv';
-        else if (w > (hi * 0.85) || w > (s * 0.85)) bodyType = 'apple';
+        if (Math.abs(s - hip) < (hip * 0.05) && waist < (hip * 0.75)) bodyType = 'hourglass';
+        else if (hip > (s * 1.05)) bodyType = 'pear';
+        else if (s > (hip * 1.05)) bodyType = 'inv';
+        else if (waist > (hip * 0.85)) bodyType = 'apple';
         else bodyType = 'rect';
       }
     }
 
     const typeKey = 'body-type-' + (bodyType === 'default' ? 'def' : bodyType);
-    const strengthKey = 'body-strength-' + (bodyType === 'default' ? 'def' : bodyType);
-    const tipKey = 'body-tip-' + (bodyType === 'default' ? 'def' : bodyType);
     const typeName = lc[typeKey] || i18n.en[typeKey] || '';
     const strength = (lc['body-' + bodyType] || i18n.en['body-' + bodyType] || '').replace('{r}', whr || '-');
-    const tip = lc[tipKey] || i18n.en[tipKey] || '';
-    const best = lc['best-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['best-' + (bodyType === 'default' ? 'def' : bodyType)];
-    const worst = lc['worst-' + (bodyType === 'default' ? 'def' : bodyType)] || i18n.en['worst-' + (bodyType === 'default' ? 'def' : bodyType)];
+    const tip = lc['body-tip-' + (bodyType === 'default' ? 'def' : bodyType)] || '';
+    const best = lc['best-' + (bodyType === 'default' ? 'def' : bodyType)] || [];
+    const worst = lc['worst-' + (bodyType === 'default' ? 'def' : bodyType)] || [];
 
-    // ===== FITME DNA SCORES =====
-    const scores = {};
-
-    // 1. Vertical Harmony (Leg ratio)
-    if (h && upperLeg && lowerLeg) {
-      const legRatio = (parseFloat(upperLeg) + parseFloat(lowerLeg)) / parseFloat(h) * 100;
-      if (legRatio >= 47 && legRatio <= 50) scores.vertical = 95;
-      else scores.vertical = Math.min(100, Math.max(20, Math.round(95 - Math.abs(legRatio - 48.5) * 9)));
+    // Scores
+    const sc = { v: 50, h: 50, s: 50, p: 50, ha: 50 };
+    if (!isNaN(h) && !isNaN(uLeg) && !isNaN(lLeg)) {
+      const lr = (uLeg + lLeg) / h * 100;
+      sc.v = Math.min(100, Math.max(20, Math.round(95 - Math.abs(lr - 48.5) * 9)));
     }
-
-    // 2. Horizontal Balance (Shoulder-Hip)
-    if (shoulder && hipCm) {
-      const s2 = parseFloat(shoulder) * 2;
-      const r = s2 / parseFloat(hipCm);
-      const idealR = currentGender === 'male' ? 1.25 : 1.0;
-      const diff = Math.abs(r - idealR);
-      scores.horizontal = Math.min(100, Math.max(20, Math.round(100 - diff * 150)));
+    if (!isNaN(shoulder) && !isNaN(hip)) {
+      const r = (shoulder * 2) / hip;
+      const ideal = currentGender === 'male' ? 1.25 : 1.0;
+      sc.h = Math.min(100, Math.max(20, Math.round(100 - Math.abs(r - ideal) * 150)));
     }
-
-    // 3. Silhouette Definition (WHR)
     if (whr) {
-      const idealWhr = currentGender === 'male' ? 0.9 : 0.75;
-      const whrDiff = Math.abs(whr - idealWhr);
-      scores.silhouette = Math.min(100, Math.max(20, Math.round(100 - whrDiff * 250)));
+      const ideal = currentGender === 'male' ? 0.9 : 0.75;
+      sc.s = Math.min(100, Math.max(20, Math.round(100 - Math.abs(whr - ideal) * 250)));
     }
-
-    // 4. Proportional Integrity (Shin/Thigh)
-    if (upperLeg && lowerLeg) {
-      const r = parseFloat(lowerLeg) / parseFloat(upperLeg);
-      if (r >= 0.85 && r <= 0.92) scores.proportion = 95;
-      else scores.proportion = Math.min(100, Math.max(25, Math.round(95 - Math.abs(r - 0.885) * 280)));
+    if (!isNaN(uLeg) && !isNaN(lLeg)) {
+      const r = lLeg / uLeg;
+      sc.p = Math.min(100, Math.max(25, Math.round(95 - Math.abs(r - 0.885) * 280)));
     }
+    sc.ha = Math.round((sc.v + sc.h + sc.s + sc.p) / 4);
 
-    const scoreVals = Object.values(scores);
-    scores.harmony = scoreVals.length > 0 ? Math.round(scoreVals.reduce((a, b) => a + b, 0) / scoreVals.length) : 50;
-
-    const radarScores = [scores.vertical ?? 50, scores.horizontal ?? 50, scores.silhouette ?? 50, scores.proportion ?? 50, scores.harmony ?? 50];
-    const fitmeTotalScore = Math.round(radarScores.reduce((a, b) => a + b, 0) / radarScores.length);
-    const fitmeGrade = fitmeTotalScore >= 87 ? 'S' : fitmeTotalScore >= 77 ? 'A+' : fitmeTotalScore >= 67 ? 'A' : fitmeTotalScore >= 55 ? 'B+' : fitmeTotalScore >= 45 ? 'B' : 'C';
+    const radarScores = [sc.v, sc.h, sc.s, sc.p, sc.ha];
+    const totalScore = Math.round(radarScores.reduce((a,b)=>a+b, 0) / 5);
+    const fitmeGrade = totalScore >= 87 ? 'S' : totalScore >= 77 ? 'A+' : totalScore >= 67 ? 'A' : totalScore >= 55 ? 'B+' : totalScore >= 45 ? 'B' : 'C';
     const gradeClass = fitmeGrade === 'S' ? 'grade-S' : fitmeGrade.startsWith('A') ? 'grade-A' : fitmeGrade.startsWith('B') ? 'grade-B' : 'grade-C';
 
-    // ===== RENDER: FITME SCORE BANNER =====
-    const dimLabels = dl.radarAxes;
+    // UI RENDER
     document.getElementById('fitme-score-section').innerHTML = `
       <div class="fitme-score-banner">
         <div class="fitme-score-left">
           <div class="fitme-score-label">${dl.scoreLabel}</div>
-          <div class="fitme-score-value">${fitmeTotalScore}</div>
-          <div class="fitme-score-dims">
-            ${radarScores.map((s, i) => `<div class="fitme-dim"><div class="fitme-dim-val">${s}</div><div class="fitme-dim-label">${dimLabels[i]}</div></div>`).join('')}
-          </div>
+          <div class="fitme-score-value">${totalScore}</div>
+          <div class="fitme-score-dims">${radarScores.map((s, i) => `<div class="fitme-dim"><div class="fitme-dim-val">${s}</div><div class="fitme-dim-label">${dl.radarAxes[i]}</div></div>`).join('')}</div>
         </div>
-        <div class="fitme-score-right">
-          <div class="fitme-grade ${gradeClass}">${fitmeGrade}</div>
-          <div class="fitme-grade-label">${dl.gradeLabel}</div>
-        </div>
+        <div class="fitme-score-right"><div class="fitme-grade ${gradeClass}">${fitmeGrade}</div><div class="fitme-grade-label">${dl.gradeLabel}</div></div>
       </div>`;
 
-    // ===== RENDER: BODY TYPE BADGE =====
-    const badgeEmojiMap = { hourglass: '⏳', pear: '🍐', inv: '🔺', rect: '⬛', apple: '🍎', default: '📐' };
-    const genderEmoji = currentGender === 'male' ? '👨' : '👩';
-    document.getElementById('analysis-badge').innerHTML = typeName
-      ? `<div class="body-type-badge"><span>${genderEmoji}</span><span>${badgeEmojiMap[bodyType] || '📐'}</span><span class="badge-label">${typeName}</span></div>`
-      : '';
-
+    const badgeMap = { hourglass: '⏳', pear: '🍐', inv: '🔺', rect: '⬛', apple: '🍎', default: '📐' };
+    document.getElementById('analysis-badge').innerHTML = typeName ? `<div class="body-type-badge"><span>${currentGender==='male'?'👨':'👩'}</span><span>${badgeMap[bodyType]}</span><span class="badge-label">${typeName}</span></div>` : '';
     document.getElementById('analysis-text').innerHTML = strength + (bodyType !== 'default' ? `<br><span style="font-size:13px; color:var(--muted); font-weight:normal;">${lc['body-strength-'+bodyType]}</span>` : '');
     document.getElementById('analysis-tip').innerHTML = tip ? `<div class="analysis-tip">💡 ${tip}</div>` : '';
 
-    // ===== RENDER: RADAR CHART =====
     requestAnimationFrame(() => {
       const canvas = document.getElementById('radar-chart');
       if (canvas) drawRadarChart(canvas, radarScores, dl.radarAxes);
     });
 
-    // ===== RENDER: BMI =====
     document.getElementById('bmi-text').textContent = bmiStr;
 
-    // ===== RENDER: PROPORTION STATS =====
     const statItems = [];
-    if (shoulder && waistCm) {
-      const pct = Math.min(100, Math.round(ratio * 50));
-      statItems.push({ label: lc['prop-shoulder'] || i18n.en['prop-shoulder'], val: `${ratio}`, pct });
+    if (!isNaN(shoulder) && !isNaN(hip)) {
+      const r = (shoulder * 2) / hip;
+      statItems.push({ label: lc['prop-shoulder'], val: r.toFixed(2), pct: Math.min(100, Math.round(r * 50)) });
     }
-    if (h && upperLeg && lowerLeg) {
-      const legLen = parseFloat(upperLeg) + parseFloat(lowerLeg);
-      const legRatio = +(legLen / parseFloat(h) * 100).toFixed(1);
-      const legPct = Math.min(100, Math.round(legRatio * 1.6));
-      statItems.push({ label: lc['prop-leg'] || i18n.en['prop-leg'], val: `${legRatio}%`, pct: legPct, note: legRatio >= 50 ? '↑' : legRatio >= 46 ? '~' : '↓' });
+    if (!isNaN(h) && !isNaN(uLeg) && !isNaN(lLeg)) {
+      const lr = +((uLeg+lLeg)/h*100).toFixed(1);
+      statItems.push({ label: lc['prop-leg'], val: lr+'%', pct: Math.min(100, Math.round(lr*1.6)), note: lr>=50?'↑':lr>=46?'~':'↓' });
     }
-    document.getElementById('analysis-props').innerHTML = statItems.length > 0
-      ? `<div class="prop-stats">${statItems.map(s => `<div class="prop-row"><div class="prop-label">${s.label}<span>${s.val}${s.note ? ' ' + s.note : ''}</span></div><div class="prop-track"><div class="prop-fill" style="width:${s.pct}%"></div></div></div>`).join('')}</div>`
-      : '';
+    document.getElementById('analysis-props').innerHTML = `<div class="prop-stats">${statItems.map(s => `<div class="prop-row"><div class="prop-label">${s.label}<span>${s.val}${s.note?' '+s.note:''}</span></div><div class="prop-track"><div class="prop-fill" style="width:${s.pct}%"></div></div></div>`).join('')}</div>`;
 
     // ===== RENDER: WEIGHT GOAL CARD =====
     let weightGoalHtml = '';
