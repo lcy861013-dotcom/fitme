@@ -135,6 +135,14 @@
     .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 500px; margin: 0 auto 36px; }
     .hero-btn { display: inline-block; padding: 14px 40px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .hero-btn:hover { background: #f5ff80; box-shadow: 0 4px 30px rgba(232,255,71,0.4); transform: translateY(-2px); }
+    .hero-badges { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+    .hero-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .hero-badge span { color: var(--accent); font-weight: 700; }
+    .hero-preview { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+    .hero-preview-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 90px; }
+    .hero-preview-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; }
+    .hero-preview-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
+    .hero-preview-grade { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #47c8ff; line-height: 1; }
 
     /* GUIDE SECTION */
     .guide-content { padding: 60px 32px; border-bottom: 1px solid var(--border); }
@@ -588,6 +596,30 @@
     <h1 class="hero-title">FIT<span>ME</span></h1>
     <p class="hero-sub" data-i18n="hero-sub">옷을 못 입는 게 아니에요. 내 몸을 몰랐던 거예요.<br>같은 키라도 다리 길이, 어깨 너비가 다르면 핏이 완전히 달라져요.</p>
     <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">내 비율 알아보기 →</a>
+    <div class="hero-badges">
+      <div class="hero-badge">✅ <span data-i18n="hero-badge1">무료</span></div>
+      <div class="hero-badge">⚡ <span data-i18n="hero-badge2">즉시 결과</span></div>
+      <div class="hero-badge">🌍 <span data-i18n="hero-badge3">15개국 언어</span></div>
+      <div class="hero-badge">🔒 <span data-i18n="hero-badge4">개인정보 저장 없음</span></div>
+    </div>
+    <div class="hero-preview">
+      <div class="hero-preview-card">
+        <div class="hero-preview-val">78</div>
+        <div class="hero-preview-label" data-i18n="hero-preview-score">DNA 점수</div>
+      </div>
+      <div class="hero-preview-card">
+        <div class="hero-preview-grade">A+</div>
+        <div class="hero-preview-label" data-i18n="hero-preview-grade">등급</div>
+      </div>
+      <div class="hero-preview-card">
+        <div class="hero-preview-val" style="font-size:20px; color:var(--text);">⏳</div>
+        <div class="hero-preview-label" data-i18n="hero-preview-type">체형 유형</div>
+      </div>
+      <div class="hero-preview-card">
+        <div class="hero-preview-val" style="font-size:18px; color:#ff4747;">-3kg</div>
+        <div class="hero-preview-label" data-i18n="hero-preview-goal">목표 체중</div>
+      </div>
+    </div>
   </div>
 
   <!-- GUIDE -->
@@ -1295,6 +1327,8 @@
       'hero-tag':'나만의 핏을 찾다',
       'hero-sub':'옷을 못 입는 게 아니에요. 내 몸을 몰랐던 거예요.<br>같은 키라도 다리 길이, 어깨 너비가 다르면 핏이 완전히 달라져요.',
       'hero-btn':'내 비율 알아보기 →',
+      'hero-badge1':'무료','hero-badge2':'즉시 결과','hero-badge3':'15개국 언어','hero-badge4':'개인정보 저장 없음',
+      'hero-preview-score':'DNA 점수','hero-preview-grade':'등급','hero-preview-type':'체형 유형','hero-preview-goal':'목표 체중',
       'guide-section-title':'키가 같아도, 핏은 다르다',
       'guide-section-sub':'다리 길이, 팔 길이, 어깨 너비 — 진짜 비율은 직접 재야 알 수 있습니다',
       'guide-card-title':'📱 줄자 없이 지금 바로 — 스마트폰으로 내 비율 재기',
@@ -1406,6 +1440,8 @@
       'hero-tag':'Find Your Perfect Fit',
       'hero-sub':'It\'s not that you can\'t dress well. You just didn\'t know your body.<br>Same height — but leg length and shoulder width change everything.',
       'hero-btn':'Discover My Proportions →',
+      'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored',
+      'hero-preview-score':'DNA Score','hero-preview-grade':'Grade','hero-preview-type':'Body Type','hero-preview-goal':'Goal Weight',
       'guide-section-title':'Same Height, Different Fit',
       'guide-section-sub':'Leg length, arm length, shoulder width — true proportions can only be known by measuring',
       'guide-card-title':'📱 Measure Right Now — Using Your Smartphone',
@@ -1504,6 +1540,8 @@
       'hero-tag':'自分だけのフィットを見つける',
       'hero-sub':'おしゃれができないんじゃない。自分の体を知らなかっただけ。<br>同じ身長でも、脚の長さや肩幅が違えば、フィット感はまったく変わります。',
       'hero-btn':'自分の体型を調べる →',
+      'hero-badge1':'無料','hero-badge2':'即座に結果','hero-badge3':'15言語対応','hero-badge4':'個人情報保存なし',
+      'hero-preview-score':'DNAスコア','hero-preview-grade':'グレード','hero-preview-type':'体型タイプ','hero-preview-goal':'目標体重',
       'guide-section-title':'同じ身長でも、フィットは違う',
       'guide-section-sub':'脚の長さ、腕の長さ、肩幅 — 本当の体型は実際に測ってこそわかります',
       'guide-card-title':'📱 今すぐ測れる — スマートフォンで体型を計る',
@@ -1575,6 +1613,8 @@
       'hero-tag':'找到你的完美版型',
       'hero-sub':'不是穿不好衣服，是不了解自己的身体。<br>同样的身高，腿长和肩宽不同，穿出来的效果完全不同。',
       'hero-btn':'了解我的比例 →',
+      'hero-badge1':'免费','hero-badge2':'即时结果','hero-badge3':'15种语言','hero-badge4':'不存储个人信息',
+      'hero-preview-score':'DNA评分','hero-preview-grade':'等级','hero-preview-type':'体型类型','hero-preview-goal':'目标体重',
       'guide-section-title':'身高相同，比例各异',
       'guide-section-sub':'腿长、臂长、肩宽 — 真实的体型比例需要亲自测量',
       'guide-card-title':'📱 现在就能测 — 用智能手机测量体型',
@@ -1646,6 +1686,8 @@
       'hero-tag':'Trouvez votre fit parfait',
       'hero-sub':'Ce n\'est pas que vous ne savez pas vous habiller. Vous ne connaissiez pas votre corps.<br>Même taille, mais longueur des jambes et largeur des épaules changent tout.',
       'hero-btn':'Découvrir mes proportions →',
+      'hero-badge1':'Gratuit','hero-badge2':'Résultats immédiats','hero-badge3':'15 langues','hero-badge4':'Aucune donnée stockée',
+      'hero-preview-score':'Score DNA','hero-preview-grade':'Grade','hero-preview-type':'Type corporel','hero-preview-goal':'Poids cible',
       'guide-section-title':'Même taille, fit différent',
       'guide-section-sub':'Longueur des jambes, des bras, largeur des épaules — vos vraies proportions ne se connaissent qu\'en mesurant',
       'guide-card-title':'📱 Mesurez maintenant — avec votre smartphone',
@@ -1717,6 +1759,8 @@
       'hero-tag':'Encuentra tu fit perfecto',
       'hero-sub':'No es que no sepas vestirte. Solo que no conocías tu cuerpo.<br>Misma altura, pero la longitud de las piernas y el ancho de hombros lo cambian todo.',
       'hero-btn':'Descubrir mis proporciones →',
+      'hero-badge1':'Gratis','hero-badge2':'Resultados al instante','hero-badge3':'15 idiomas','hero-badge4':'Sin almacenamiento de datos',
+      'hero-preview-score':'Puntuación DNA','hero-preview-grade':'Grado','hero-preview-type':'Tipo corporal','hero-preview-goal':'Peso objetivo',
       'guide-section-title':'Misma altura, fit diferente',
       'guide-section-sub':'Largo de piernas, brazos, ancho de hombros — tus proporciones reales solo se conocen midiendo',
       'guide-card-title':'📱 Mide ahora mismo — con tu smartphone',
@@ -1788,6 +1832,8 @@
       'hero-tag':'Encontre o seu fit perfeito',
       'hero-sub':'Não é que você não saiba se vestir. Você só não conhecia seu corpo.<br>Mesma altura, mas comprimento das pernas e largura dos ombros mudam tudo.',
       'hero-btn':'Descobrir minhas proporções →',
+      'hero-badge1':'Grátis','hero-badge2':'Resultados imediatos','hero-badge3':'15 idiomas','hero-badge4':'Sem armazenamento de dados',
+      'hero-preview-score':'Pontuação DNA','hero-preview-grade':'Grau','hero-preview-type':'Tipo corporal','hero-preview-goal':'Peso alvo',
       'guide-section-title':'Mesma altura, fit diferente',
       'guide-section-sub':'Comprimento das pernas, braços, largura dos ombros — suas proporções reais só são conhecidas medindo',
       'guide-card-title':'📱 Meça agora mesmo — com seu smartphone',
@@ -1859,6 +1905,8 @@
       'hero-tag':'Finde deinen perfekten Fit',
       'hero-sub':'Es liegt nicht daran, dass du dich nicht kleiden kannst. Du kennst deinen Körper noch nicht.<br>Gleiche Größe, aber Beinlänge und Schulterbreite verändern alles.',
       'hero-btn':'Meine Proportionen entdecken →',
+      'hero-badge1':'Kostenlos','hero-badge2':'Sofortige Ergebnisse','hero-badge3':'15 Sprachen','hero-badge4':'Keine Datenspeicherung',
+      'hero-preview-score':'DNA-Score','hero-preview-grade':'Note','hero-preview-type':'Körpertyp','hero-preview-goal':'Zielgewicht',
       'guide-section-title':'Gleiche Größe, anderer Fit',
       'guide-section-sub':'Beinlänge, Armlänge, Schulterbreite — wahre Proportionen kennt man nur durch Messen',
       'guide-card-title':'📱 Jetzt messen — mit deinem Smartphone',
@@ -1930,6 +1978,8 @@
       'hero-tag':'Trova il tuo fit perfetto',
       'hero-sub':'Non è che non sai vestirti. Non conoscevi solo il tuo corpo.<br>Stessa altezza, ma lunghezza delle gambe e larghezza delle spalle cambiano tutto.',
       'hero-btn':'Scopri le mie proporzioni →',
+      'hero-badge1':'Gratuito','hero-badge2':'Risultati immediati','hero-badge3':'15 lingue','hero-badge4':'Nessun dato memorizzato',
+      'hero-preview-score':'Punteggio DNA','hero-preview-grade':'Grado','hero-preview-type':'Tipo corporeo','hero-preview-goal':'Peso obiettivo',
       'guide-section-title':'Stessa altezza, fit diverso',
       'guide-section-sub':'Lunghezza gambe, braccia, larghezza spalle — le proporzioni reali si conoscono solo misurandosi',
       'guide-card-title':'📱 Misura adesso — con il tuo smartphone',
@@ -2001,6 +2051,8 @@
       'hero-tag':'Найди свой идеальный фит',
       'hero-sub':'Дело не в том, что ты не умеешь одеваться. Ты просто не знал своё тело.<br>Один рост, но длина ног и ширина плеч меняют всё.',
       'hero-btn':'Узнать мои пропорции →',
+      'hero-badge1':'Бесплатно','hero-badge2':'Мгновенные результаты','hero-badge3':'15 языков','hero-badge4':'Данные не сохраняются',
+      'hero-preview-score':'ДНК-балл','hero-preview-grade':'Оценка','hero-preview-type':'Тип телосложения','hero-preview-goal':'Целевой вес',
       'guide-section-title':'Одинаковый рост, разный фит',
       'guide-section-sub':'Длина ног, рук, ширина плеч — истинные пропорции можно узнать только измерив',
       'guide-card-title':'📱 Измерьте прямо сейчас — с помощью смартфона',
@@ -2072,6 +2124,8 @@
       'hero-tag':'اعثر على مقاسك المثالي',
       'hero-sub':'لست عاجزاً عن ارتداء الملابس. أنت فقط لم تعرف جسدك بعد.<br>نفس الطول، لكن طول الساقين وعرض الكتفين يغيران كل شيء.',
       'hero-btn':'اكتشف نسبي ←',
+      'hero-badge1':'مجاني','hero-badge2':'نتائج فورية','hero-badge3':'15 لغة','hero-badge4':'لا تخزين للبيانات',
+      'hero-preview-score':'نقاط DNA','hero-preview-grade':'الدرجة','hero-preview-type':'نوع الجسم','hero-preview-goal':'الوزن المستهدف',
       'guide-section-title':'نفس الطول، ملاءمة مختلفة',
       'guide-section-sub':'طول الساقين والذراعين وعرض الكتفين — النسب الحقيقية تُعرف بالقياس فقط',
       'guide-card-title':'📱 اقس الآن — باستخدام هاتفك الذكي',
@@ -2140,6 +2194,8 @@
       'hero-tag':'अपना परफेक्ट फिट खोजें',
       'hero-sub':'ये नहीं कि आप कपड़े नहीं पहन सकते। बस अपने शरीर को नहीं जानते थे।<br>एक ही ऊंचाई में, पैर की लंबाई और कंधे की चौड़ाई सब कुछ बदल देते हैं।',
       'hero-btn':'अपने अनुपात जानें →',
+      'hero-badge1':'मुफ़्त','hero-badge2':'तुरंत परिणाम','hero-badge3':'15 भाषाएं','hero-badge4':'कोई डेटा संग्रहीत नहीं',
+      'hero-preview-score':'DNA स्कोर','hero-preview-grade':'ग्रेड','hero-preview-type':'शरीर प्रकार','hero-preview-goal':'लक्ष्य वजन',
       'guide-section-title':'एक ही ऊंचाई, अलग फिट',
       'guide-section-sub':'पैरों की लंबाई, हाथों की लंबाई, कंधे की चौड़ाई — सच्चे अनुपात माप कर ही जाने जाते हैं',
       'guide-card-title':'📱 अभी मापें — अपने स्मार्टफोन से',
@@ -2209,6 +2265,8 @@
       'hero-tag':'ค้นหาฟิตที่ใช่สำหรับคุณ',
       'hero-sub':'ไม่ใช่ว่าคุณแต่งตัวไม่เก่ง แค่ยังไม่รู้จักร่างกายตัวเอง<br>ส่วนสูงเท่ากัน แต่ความยาวขาและความกว้างไหล่ทำให้ทุกอย่างเปลี่ยนไป',
       'hero-btn':'ค้นพบสัดส่วนของฉัน →',
+      'hero-badge1':'ฟรี','hero-badge2':'ผลลัพธ์ทันที','hero-badge3':'15 ภาษา','hero-badge4':'ไม่บันทึกข้อมูลส่วนตัว',
+      'hero-preview-score':'คะแนน DNA','hero-preview-grade':'เกรด','hero-preview-type':'ประเภทร่างกาย','hero-preview-goal':'น้ำหนักเป้าหมาย',
       'guide-section-title':'ส่วนสูงเท่ากัน ฟิตต่างกัน',
       'guide-section-sub':'ความยาวขา ความยาวแขน ความกว้างไหล่ — สัดส่วนจริงรู้ได้จากการวัดเท่านั้น',
       'guide-card-title':'📱 วัดได้เดี๋ยวนี้ — ด้วยสมาร์ทโฟนของคุณ',
@@ -2277,6 +2335,8 @@
       'hero-tag':'Temukan Fit Sempurnamu',
       'hero-sub':'Bukan berarti kamu tidak bisa berpakaian dengan baik. Kamu hanya belum mengenal tubuhmu.<br>Tinggi sama, tapi panjang kaki dan lebar bahu mengubah segalanya.',
       'hero-btn':'Temukan Proporsi Saya →',
+      'hero-badge1':'Gratis','hero-badge2':'Hasil Instan','hero-badge3':'15 Bahasa','hero-badge4':'Tidak Ada Data Tersimpan',
+      'hero-preview-score':'Skor DNA','hero-preview-grade':'Grade','hero-preview-type':'Tipe Tubuh','hero-preview-goal':'Berat Target',
       'guide-section-title':'Tinggi Sama, Fit Berbeda',
       'guide-section-sub':'Panjang kaki, lengan, lebar bahu — proporsi aslimu hanya bisa diketahui dengan mengukur',
       'guide-card-title':'📱 Ukur Sekarang — Dengan Smartphone-mu',
@@ -2345,6 +2405,8 @@
       'hero-tag':'Tìm kiếm phong cách hoàn hảo',
       'hero-sub':'Không phải bạn không biết mặc đẹp. Bạn chỉ chưa hiểu cơ thể mình.<br>Cùng chiều cao, nhưng độ dài chân và độ rộng vai thay đổi tất cả.',
       'hero-btn':'Khám phá tỉ lệ của tôi →',
+      'hero-badge1':'Miễn phí','hero-badge2':'Kết quả ngay','hero-badge3':'15 ngôn ngữ','hero-badge4':'Không lưu dữ liệu',
+      'hero-preview-score':'Điểm DNA','hero-preview-grade':'Hạng','hero-preview-type':'Loại cơ thể','hero-preview-goal':'Cân nặng mục tiêu',
       'guide-section-title':'Chiều cao như nhau, dáng khác nhau',
       'guide-section-sub':'Chiều dài chân, tay, chiều rộng vai — tỷ lệ thực sự chỉ biết khi đo',
       'guide-card-title':'📱 Đo ngay bây giờ — bằng điện thoại thông minh',
