@@ -3894,18 +3894,17 @@
     const encodedUrl = encodeURIComponent(url);
 
     if (platform === 'kakao') {
-      if (window.Kakao && window.Kakao.isInitialized()) {
-        const data = window._fitmeShareData || {};
-        Kakao.Share.sendDefault({
-          objectType: 'text',
-          text: `🔥 내 FITME DNA 점수는 ${data.score || ''}점 (${data.grade || ''}등급)!
-체형 분석 + 스타일 추천 무료로 받기 👇`,
-          link: { mobileWebUrl: url, webUrl: url },
-          buttons: [{ title: '나도 분석받기', link: { mobileWebUrl: url, webUrl: url } }],
-        });
-      } else {
-        window.open(`https://story.kakao.com/share?url=${encodedUrl}`, '_blank', 'width=500,height=400');
-      }
+      const data = window._fitmeShareData || {};
+      const kakaoText = `🔥 내 FITME DNA 점수는 ${data.score || ''}점 (${data.grade || ''}등급)!\n체형 분석 + 스타일 추천 무료로 받기 👇\n${url}`;
+      navigator.clipboard.writeText(kakaoText).catch(() => {
+        const el = document.createElement('textarea');
+        el.value = kakaoText;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      });
+      showToast('📋 복사됐어요! 카카오톡 채팅창에 붙여넣기 하세요 💛');
     } else if (platform === 'twitter') {
       window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank', 'width=550,height=420');
     } else if (platform === 'facebook') {
