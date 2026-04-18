@@ -3897,17 +3897,13 @@
       if (window.Kakao && window.Kakao.isInitialized()) {
         const data = window._fitmeShareData || {};
         Kakao.Share.sendDefault({
-          objectType: 'feed',
-          content: {
-            title: `FITME DNA ${data.score || ''}점 (${data.grade || ''}등급)`,
-            description: '내 체형 분석 결과를 확인해보세요! 무료 체형 분석 + 스타일 추천',
-            imageUrl: 'https://fitme-6d9.pages.dev/og-image.png',
-            link: { mobileWebUrl: url, webUrl: url },
-          },
+          objectType: 'text',
+          text: `🔥 내 FITME DNA 점수는 ${data.score || ''}점 (${data.grade || ''}등급)!
+체형 분석 + 스타일 추천 무료로 받기 👇`,
+          link: { mobileWebUrl: url, webUrl: url },
           buttons: [{ title: '나도 분석받기', link: { mobileWebUrl: url, webUrl: url } }],
         });
       } else {
-        // Fallback: kakaolink without SDK
         window.open(`https://story.kakao.com/share?url=${encodedUrl}`, '_blank', 'width=500,height=400');
       }
     } else if (platform === 'twitter') {
