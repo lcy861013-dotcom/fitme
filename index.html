@@ -385,10 +385,62 @@
 
     @media (max-width: 900px) {
       .main-container { grid-template-columns: 1fr; }
-      .body-section { border-right: none; border-bottom: 1px solid var(--border); }
+      .body-section { border-right: none; border-bottom: none; }
       .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
       .hero-title { font-size: 48px; }
       nav { display: none; }
+
+      /* Bottom sheet */
+      .panel {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 500;
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -8px 40px rgba(0,0,0,0.6);
+        transform: translateY(100%);
+        transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+      }
+      .panel.sheet-open {
+        transform: translateY(0);
+      }
+      .sheet-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 499;
+        background: rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.32s;
+      }
+      .sheet-backdrop.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .sheet-handle {
+        display: block;
+        width: 36px; height: 4px;
+        background: var(--border);
+        border-radius: 2px;
+        margin: 12px auto 0;
+      }
+      .sheet-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 14px; right: 16px;
+        width: 28px; height: 28px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        color: var(--muted);
+        font-size: 14px;
+        cursor: pointer;
+        z-index: 10;
+      }
     }
   </style>
 </head>
@@ -702,7 +754,10 @@
       </div>
     </div>
 
-    <div class="panel">
+    <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet()"></div>
+    <div class="panel" id="main-panel">
+      <span class="sheet-handle"></span>
+      <button class="sheet-close" onclick="closeSheet()">✕</button>
       <div class="panel-header">
         <div class="panel-title" id="panel-title">신체 정보 입력</div>
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
@@ -2598,10 +2653,16 @@
     const titles = (i18n[currentLang] || i18n.en)['titles'] || i18n.en['titles'];
     document.getElementById('panel-title').textContent = titles[part] || part;
     if (window.innerWidth <= 900) {
-      setTimeout(() => {
-        document.querySelector('.panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
+      document.getElementById('main-panel').classList.add('sheet-open');
+      document.getElementById('sheet-backdrop').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
+  }
+
+  function closeSheet() {
+    document.getElementById('main-panel').classList.remove('sheet-open');
+    document.getElementById('sheet-backdrop').classList.remove('active');
+    document.body.style.overflow = '';
   }
 
   function selectRadio(group, value) {
@@ -2638,6 +2699,7 @@
     updateSavedList();
     const partLabel = ((i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'])[part] || part;
     showToast(partLabel + t('toast-saved'));
+    if (window.innerWidth <= 900) { setTimeout(closeSheet, 300); }
   }
 
   function updateProgress() {
