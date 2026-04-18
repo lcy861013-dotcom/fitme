@@ -3849,6 +3849,9 @@
       closeSheet();
       const resultEl = document.getElementById('analysis-result');
       document.getElementById('mobile-result-body').innerHTML = resultEl.innerHTML;
+      // Make share section visible in mobile overlay copy
+      const mobileShareSection = document.getElementById('mobile-result-body').querySelector('#sns-share-section');
+      if (mobileShareSection) mobileShareSection.style.display = 'block';
       const overlay = document.getElementById('mobile-result-overlay');
       overlay.classList.add('active');
       overlay.scrollTop = 0;
