@@ -1008,11 +1008,7 @@
           <!-- BMI + proportion stats -->
           <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:6px;"></p>
           <div id="analysis-props"></div>
-          <!-- Weight goal card -->
-          <div id="weight-goal-section"></div>
-          <!-- Exercise prescription -->
-          <div id="exercise-prescription"></div>
-          <!-- Occasion recommendations -->
+          <!-- Occasion recommendations (FIRST) -->
           <div id="analysis-occasions"></div>
           <!-- best / worst -->
           <div class="style-section" style="margin-top:18px;">
@@ -1023,6 +1019,10 @@
           </div>
           <!-- 체형 세부 분석 -->
           <div id="detail-analysis-section"></div>
+          <!-- Weight goal card -->
+          <div id="weight-goal-section"></div>
+          <!-- Exercise prescription -->
+          <div id="exercise-prescription"></div>
           <!-- 90-Day Roadmap -->
           <div id="roadmap-section"></div>
           <p id="analysis-disclaimer" style="font-size:11px; color:var(--muted); margin-top:16px;">*입력된 수치 기반의 통계적 분석 결과입니다.</p>
@@ -1316,6 +1316,13 @@
       'best-apple':['V넥 및 엠파이어 라인 상의','드레이프가 들어간 부드러운 소재','스트레이트 핏 팬츠','구조적인 재킷 (오픈 스타일)','톤온톤 배색 코디'],
       'worst-apple':['허리를 조이는 굵은 벨트','지나치게 타이트한 상의','가로 스트라이프 패턴','하이넥 및 터틀넥'],
       'best-def':['레귤러핏 팬츠','심플한 단색 상의','클래식 미디 원피스'],'worst-def':['극단적으로 타이트한 의류'],
+      'best-hourglass-male':['피티드 슬림핏 수트','V넥 니트 + 슬림 팬츠','레이어드 셔츠 룩','슬림핏 청바지'],'worst-hourglass-male':['극단적인 오버사이즈','허리선 없는 박시 아우터'],
+      'best-pear-male':['오버사이즈 상의','수평 스트라이프 상의','어깨 패드 블레이저','밝은 색 상의 + 다크 하의'],'worst-pear-male':['타이트 하의','볼드 패턴 하의','밝은 색 와이드 팬츠'],
+      'best-inv-male':['슬림핏 팬츠 & 치노','V넥 상의','피티드 셔츠','레귤러핏 수트','어두운 하의 + 밝은 상의'],'worst-inv-male':['어깨 패드 아우터','퍼프 소매','오버사이즈 상의','보트넥 상의'],
+      'best-tri-male':['오버사이즈 상의','수평 스트라이프 상의','더블 브레스트 블레이저','밝은 색 상의 + 다크 하의'],'worst-tri-male':['타이트 하의','와이드 팬츠','볼드 패턴 하의'],
+      'best-rect-male':['피티드 수트','레이어드 스타일','스트럭처드 블레이저','벨트 활용','크루넥 니트'],'worst-rect-male':['전신 오버사이즈 룩','허리 구조 없는 박시 스타일'],
+      'best-apple-male':['V넥 상의','어두운 색 상의','스트레이트 팬츠','오픈 재킷 (수직 라인)','톤온톤 코디'],'worst-apple-male':['타이트 상의','가로 스트라이프 상의','밝은 색 상의'],
+      'best-def-male':['레귤러핏 팬츠','심플한 단색 상의','클래식 청바지 + 흰 티셔츠'],'worst-def-male':['극단적으로 타이트한 의류'],
       'occasion-title':'전문가 제안 상황별 코디 (TPO Strategy)',
       'occasion-meeting':'💕 프레젠테이션 · 소개팅 (Smart & Trust)',
       'occasion-business':'💼 비즈니스 컨퍼런스 (Professional & Chic)',
@@ -1407,6 +1414,13 @@
       'best-rect':['Waist-defining outfits','Belt styling','Fitted tops','Wrap dresses','High-waist styles'],
       'worst-rect':['Loose all-in-ones','Waistless dresses','Head-to-toe oversized looks'],
       'best-def':['Regular-fit pants','Simple solid-color tops','Classic midi dress'],'worst-def':['Extremely tight clothing'],
+      'best-hourglass-male':['Slim-fit suit','V-neck knit + slim trousers','Layered shirt looks','Slim-fit jeans'],'worst-hourglass-male':['Extreme oversized silhouettes','Unstructured boxy outerwear'],
+      'best-pear-male':['Oversized tops','Horizontal-stripe tops','Shoulder-pad blazers','Bright top + dark bottoms'],'worst-pear-male':['Tight bottoms','Bold-patterned bottoms','Light wide-leg trousers'],
+      'best-inv-male':['Slim-fit trousers & chinos','V-neck tops','Fitted shirts','Regular-fit suits','Dark bottoms + light tops'],'worst-inv-male':['Padded shoulder outerwear','Puff sleeves','Oversized tops','Boat neck tops'],
+      'best-tri-male':['Oversized tops','Horizontal-stripe tops','Double-breasted blazers','Bright top + dark bottoms'],'worst-tri-male':['Tight bottoms','Wide-leg trousers','Bold-patterned bottoms'],
+      'best-rect-male':['Fitted suits','Layered looks','Structured blazers','Belt styling','Crew-neck knits'],'worst-rect-male':['Head-to-toe oversized looks','Unstructured boxy styles'],
+      'best-apple-male':['V-neck tops','Dark-colored tops','Straight-fit trousers','Open jacket (vertical line)','Tone-on-tone outfits'],'worst-apple-male':['Tight tops','Horizontal-stripe tops','Bright-colored tops'],
+      'best-def-male':['Regular-fit trousers','Simple solid-color tops','Classic jeans + white tee'],'worst-def-male':['Extremely tight clothing'],
       'occasion-title':'Occasion-Based Outfit Picks',
       'occasion-meeting':'💕 Date / First Meet',
       'occasion-business':'💼 Business Casual',
@@ -3415,8 +3429,9 @@
     const typeName = lc[typeKey] || i18n.en[typeKey] || '';
     const strength = (lc['body-' + bodyType] || i18n.en['body-' + bodyType] || '').replace('{r}', whr || '-');
     const tip = lc['body-tip-' + (bodyType === 'default' ? 'def' : bodyType)] || '';
-    const best = lc['best-' + (bodyType === 'default' ? 'def' : bodyType)] || [];
-    const worst = lc['worst-' + (bodyType === 'default' ? 'def' : bodyType)] || [];
+    const btKey = bodyType === 'default' ? 'def' : bodyType;
+    const best = (currentGender === 'male' ? (lc['best-' + btKey + '-male'] || lc['best-' + btKey]) : lc['best-' + btKey]) || [];
+    const worst = (currentGender === 'male' ? (lc['worst-' + btKey + '-male'] || lc['worst-' + btKey]) : lc['worst-' + btKey]) || [];
 
     // Scores
     const sc = { v: 50, h: 50, s: 50, p: 50, ha: 50 };
