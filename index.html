@@ -1330,7 +1330,7 @@
       'outfit-why-label':'전문가 스타일링 분석',
       'prop-leg':'다리 길이 비율 (Vertical)','prop-whr':'허리-엉덩이 비율 (WHR)','prop-shoulder':'상-하체 밸런스 (Horizontal)',
       'body-type-hourglass':'모래시계형 체형','body-type-pear':'삼각형(배형) 체형','body-type-inv':'역삼각형 체형','body-type-rect':'일자형 체형','body-type-apple':'타원형(사과형) 체형','body-type-def':'체형 분석 중',
-      'body-strength-hourglass':'여성스러우면서도 균형 잡힌 실루엣이 특징인 이상적인 체형입니다. 자연스러운 곡선을 살리는 것이 핵심입니다.',
+      'body-strength-hourglass':'균형 잡힌 실루엣이 특징인 이상적인 체형입니다. 자연스러운 라인을 살리는 것이 핵심입니다.',
       'body-strength-pear':'안정감 있는 하체 라인과 슬림한 상체가 매력인 체형입니다. 상체에 시각적 포인트를 주어 밸런스를 맞추세요.',
       'body-strength-inv':'세련되고 도회적인 무드의 넓은 어깨가 특징입니다. 하체에 볼륨을 더해 드라마틱한 X라인을 완성할 수 있습니다.',
       'body-strength-rect':'모던하고 시크한 직선 실루엣이 돋보이는 모델형 체형입니다. 곡선을 인위적으로 만들어주면 훨씬 다채로운 연출이 가능합니다.',
@@ -1339,7 +1339,9 @@
       'body-tip-hourglass':'강점인 허리 라인을 절대 숨기지 마세요! 벨트나 랩 스타일을 활용해 곡선을 극대화하는 것이 최고의 전략입니다.',
       'body-tip-pear':'상의는 밝고 화려하게, 하의는 심플하고 차분하게! 어깨선을 넓어 보이게 하는 네크라인 선택이 신의 한 수입니다.',
       'body-tip-inv':'하체에 시선을 머물게 하세요. 화려한 패턴의 팬츠나 볼륨감 있는 스커트가 상체의 무게감을 완벽하게 덜어줍니다.',
+      'body-tip-inv-male':'하체에 시선을 머물게 하세요. 와이드 팬츠나 컬러 대비로 하체에 볼륨을 만들어 V-taper 실루엣을 완성하세요.',
       'body-tip-rect':'곡선을 창조하세요! 페플럼 상의나 셔링 디테일을 활용하고, 하이웨이스트로 허리 위치를 명확히 정의해주는 것이 중요합니다.',
+      'body-tip-rect-male':'구조를 만드세요! 스트럭처드 블레이저나 레이어드로 상체에 입체감을 주고, 슬림핏으로 허리 라인을 살리세요.',
       'body-tip-apple':'수직 실루엣이 정답입니다. 긴 목걸이나 오픈된 재킷, 스카프 등을 활용해 시선을 위아래로 분산시키고 복부를 부드럽게 커버하세요.',
       'body-tip-def':'정확한 측정값은 오차 없는 스타일 가이드의 시작입니다. 가이드에 따라 측정값을 입력해 보세요.',
       'gender-female':'👩 여성','gender-male':'👨 남성',
@@ -1433,6 +1435,7 @@
       'body-strength-rect':'Your balanced shoulder-to-hip ratio means most styles work well. Defining the waist unlocks a perfect hourglass silhouette.',
       'body-strength-def':'Enter height, weight, and shoulder width for a detailed body type analysis. More measurements = more personalized recommendations.',
       'body-tip-inv':'Key: draw attention downward! Bright-colored bottoms, patterned skirts, and wide-leg silhouettes create perfect balance.',
+      'body-tip-inv-male':'Key: draw attention downward! Wide-leg trousers and color contrast on the bottom half complete the V-taper silhouette.',
       'body-tip-tri':'Larger on top, simpler on the bottom! Bold shoulder lines and upper-body statement pieces are your best tools.',
       'body-tip-rect':'The waist is everything! Belts, tuck-ins, and high-waist styles define your middle for a chic silhouette.',
       'body-tip-def':'Enter more measurements for precise, personalized style recommendations tailored to your unique proportions.',
@@ -3428,7 +3431,8 @@
     const typeKey = 'body-type-' + (bodyType === 'default' ? 'def' : bodyType);
     const typeName = lc[typeKey] || i18n.en[typeKey] || '';
     const strength = (lc['body-' + bodyType] || i18n.en['body-' + bodyType] || '').replace('{r}', whr || '-');
-    const tip = lc['body-tip-' + (bodyType === 'default' ? 'def' : bodyType)] || '';
+    const tipKey = bodyType === 'default' ? 'def' : bodyType;
+    const tip = (currentGender === 'male' ? (lc['body-tip-' + tipKey + '-male'] || lc['body-tip-' + tipKey]) : lc['body-tip-' + tipKey]) || '';
     const btKey = bodyType === 'default' ? 'def' : bodyType;
     const best = (currentGender === 'male' ? (lc['best-' + btKey + '-male'] || lc['best-' + btKey]) : lc['best-' + btKey]) || [];
     const worst = (currentGender === 'male' ? (lc['worst-' + btKey + '-male'] || lc['worst-' + btKey]) : lc['worst-' + btKey]) || [];
