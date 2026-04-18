@@ -454,35 +454,7 @@
         -webkit-overflow-scrolling: touch;
       }
       .mobile-result-overlay.active { display: block; }
-      .mobile-result-header {
-        position: sticky;
-        top: 0;
-        background: rgba(10,10,10,0.97);
-        backdrop-filter: blur(10px);
-        padding: 14px 20px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border-bottom: 1px solid var(--border);
-        z-index: 10;
-      }
-      .mobile-result-back {
-        background: var(--card);
-        border: 1px solid var(--border);
-        color: var(--text);
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 13px;
-        cursor: pointer;
-        font-family: 'DM Sans', sans-serif;
-      }
-      .mobile-result-title {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 18px;
-        letter-spacing: 3px;
-        color: var(--accent);
-      }
-      .mobile-result-body { padding: 20px 16px 80px; }
+      .mobile-result-body { padding: 20px 16px 160px; }
     }
   </style>
 </head>
@@ -798,10 +770,6 @@
 
     <!-- Mobile full-screen result overlay -->
     <div class="mobile-result-overlay" id="mobile-result-overlay">
-      <div class="mobile-result-header">
-        <button class="mobile-result-back" onclick="closeMobileResult()">← 돌아가기</button>
-        <span class="mobile-result-title">FITME DNA</span>
-      </div>
       <div class="mobile-result-body" id="mobile-result-body"></div>
     </div>
 
@@ -2719,6 +2687,49 @@
   function closeMobileResult() {
     document.getElementById('mobile-result-overlay').classList.remove('active');
     document.body.style.overflow = '';
+    if (window._resultScrollCleanup) { window._resultScrollCleanup(); window._resultScrollCleanup = null; }
+  }
+
+  function attachResultBackBtn(backLabel) {
+    const existing = document.getElementById('result-float-back');
+    if (existing) existing.remove();
+    const overlay = document.getElementById('mobile-result-overlay');
+    const btn = document.createElement('button');
+    btn.id = 'result-float-back';
+    btn.innerHTML = '← ' + backLabel;
+    btn.onclick = () => closeMobileResult();
+    btn.style.cssText = `
+      position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px);
+      background:var(--accent); color:var(--bg); border:none; border-radius:50px;
+      padding:14px 28px; font-family:'Black Han Sans',sans-serif; font-size:15px;
+      cursor:pointer; z-index:9999; opacity:0; transition:opacity 0.3s, transform 0.3s;
+      box-shadow:0 4px 20px rgba(232,255,71,0.4); white-space:nowrap;
+    `;
+    document.body.appendChild(btn);
+
+    let scrollTimer;
+    scrollTimer = setTimeout(() => {
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateX(-50%) translateY(0)';
+    }, 1500);
+
+    function hideBtn() { btn.style.opacity = '0'; btn.style.transform = 'translateX(-50%) translateY(20px)'; clearTimeout(scrollTimer); }
+    function showBtn() { clearTimeout(scrollTimer); scrollTimer = setTimeout(() => { btn.style.opacity = '1'; btn.style.transform = 'translateX(-50%) translateY(0)'; }, 1200); }
+    function onScroll() { hideBtn(); showBtn(); }
+    function onTouchStart() { hideBtn(); }
+    function onTouchEnd() { showBtn(); }
+
+    overlay.addEventListener('scroll', onScroll, { passive: true });
+    overlay.addEventListener('touchstart', onTouchStart, { passive: true });
+    overlay.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    window._resultScrollCleanup = () => {
+      overlay.removeEventListener('scroll', onScroll);
+      overlay.removeEventListener('touchstart', onTouchStart);
+      overlay.removeEventListener('touchend', onTouchEnd);
+      clearTimeout(scrollTimer);
+      btn.remove();
+    };
   }
 
   function selectRadio(group, value) {
@@ -3450,6 +3461,8 @@
       overlay.classList.add('active');
       overlay.scrollTop = 0;
       document.body.style.overflow = 'hidden';
+      const backLabel = (i18n[currentLang] || i18n.en)['nav-guide'] ? '측정으로 돌아가기' : 'Back to Measure';
+      attachResultBackBtn(backLabel);
     } else {
       document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
