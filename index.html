@@ -3570,14 +3570,15 @@
     const uArm = getVal('upper-arm', 'len'), lArm = getVal('lower-arm', 'len');
     const isKo = currentLang === 'ko';
 
+    const isMale = currentGender === 'male';
     const legTipsDB = {
       longleg: {
         tips: isKo
           ? ["크롭 팬츠·조거 팬츠가 자연스럽게 어울려요", "하이웨이스트 없이도 다리가 길어 보여요", "로우라이즈도 충분히 소화 가능해요", "발목 롤업으로 트렌디하게 연출하세요"]
           : ["Cropped & jogger pants look great on you", "No need for high-waist — your legs already look long", "Low-rise styles work well for you", "Ankle roll-ups add a trendy touch"],
         warns: isKo
-          ? ["하이웨이스트+크롭탑 동시 착용 시 상체가 더 짧아 보일 수 있어요"]
-          : ["High-waist + crop top combo may shorten your torso visually"]
+          ? (isMale ? ["상의를 너무 짧게 입으면 상하체 비율이 무너질 수 있어요"] : ["하이웨이스트+크롭탑 동시 착용 시 상체가 더 짧아 보일 수 있어요"])
+          : (isMale ? ["Very short tops can throw off your overall proportion balance"] : ["High-waist + crop top combo may shorten your torso visually"])
       },
       midleg: {
         tips: isKo
@@ -3587,8 +3588,12 @@
       },
       shortleg: {
         tips: isKo
-          ? ["하이웨이스트 팬츠·스커트를 선택하세요", "9부 팬츠로 발목을 노출하면 다리가 길어 보여요", "세로줄 패턴이 시각적으로 다리를 늘려줘요", "슬림핏·테이퍼드 팬츠를 추천해요"]
-          : ["Always choose high-waist pants/skirts", "Cropped-ankle pants expose the ankle and lengthen legs visually", "Vertical stripe patterns elongate legs", "Slim-fit or tapered pants are your best bet"],
+          ? (isMale
+              ? ["하이웨이스트 팬츠를 선택하세요", "9부 팬츠로 발목을 노출하면 다리가 길어 보여요", "세로줄 패턴이 시각적으로 다리를 늘려줘요", "슬림핏·테이퍼드 팬츠를 추천해요"]
+              : ["하이웨이스트 팬츠·스커트를 선택하세요", "9부 팬츠로 발목을 노출하면 다리가 길어 보여요", "세로줄 패턴이 시각적으로 다리를 늘려줘요", "슬림핏·테이퍼드 팬츠를 추천해요"])
+          : (isMale
+              ? ["Choose high-waist pants", "Cropped-ankle pants expose the ankle and lengthen legs visually", "Vertical stripe patterns elongate legs", "Slim-fit or tapered pants are your best bet"]
+              : ["Always choose high-waist pants/skirts", "Cropped-ankle pants expose the ankle and lengthen legs visually", "Vertical stripe patterns elongate legs", "Slim-fit or tapered pants are your best bet"]),
         warns: isKo
           ? ["와이드 팬츠는 반드시 하이웨이스트와 착용하세요", "발목 스트랩 신발은 다리를 더 짧아 보이게 해요", "롤업·크롭 팬츠는 역효과예요"]
           : ["Wide pants must be paired with high-waist", "Ankle-strap shoes visually cut the leg line", "Roll-ups and cropped pants can backfire"]
@@ -3605,8 +3610,12 @@
       },
       calf: {
         tips: isKo
-          ? ["미디 기장 팬츠·스커트로 종아리 중간을 가리면 균형이 좋아요", "부츠 착용이 다리 전체 라인을 깔끔하게 정돈해줘요", "테이퍼드 팬츠가 자연스럽게 어울려요"]
-          : ["Midi-length pants/skirts that cover the mid-calf create balance", "Boots give the whole leg a clean, unified line", "Tapered pants are a natural fit"],
+          ? (isMale
+              ? ["미디 기장 팬츠로 종아리 중간을 가리면 균형이 좋아요", "부츠 착용이 다리 전체 라인을 깔끔하게 정돈해줘요", "테이퍼드 팬츠가 자연스럽게 어울려요"]
+              : ["미디 기장 팬츠·스커트로 종아리 중간을 가리면 균형이 좋아요", "부츠 착용이 다리 전체 라인을 깔끔하게 정돈해줘요", "테이퍼드 팬츠가 자연스럽게 어울려요"])
+          : (isMale
+              ? ["Midi-length pants that cover the mid-calf create balance", "Boots give the whole leg a clean, unified line", "Tapered pants are a natural fit"]
+              : ["Midi-length pants/skirts that cover the mid-calf create balance", "Boots give the whole leg a clean, unified line", "Tapered pants are a natural fit"]),
         warns: isKo
           ? ["종아리 중간에 딱 걸리는 기장(9부 크롭·크롭 부츠)은 피하세요"]
           : ["Avoid lengths that cut right at the widest point of the calf"]
@@ -3638,8 +3647,12 @@
           ? ["긴 소매로 팔 길이를 보완하세요", "넓은 커프스(소맷부리)가 있는 셔츠가 잘 어울려요", "세로줄 소매 패턴이 팔을 길어 보이게 해요"]
           : ["Full-length sleeves help extend your arm line visually", "Shirts with wide cuffs are flattering", "Vertical stripe sleeve patterns elongate the arm"],
         warns: isKo
-          ? ["칠부 소매·반소매는 팔을 더 짧아 보이게 해요", "퍼프·벌룬 소매는 팔 길이 단점을 강조해요"]
-          : ["3/4 sleeves and short sleeves can make arms look shorter", "Puff or balloon sleeves draw attention to arm length"]
+          ? (isMale
+              ? ["칠부 소매·반소매는 팔을 더 짧아 보이게 해요", "어깨 라인이 강조되는 드롭숄더는 피하세요"]
+              : ["칠부 소매·반소매는 팔을 더 짧아 보이게 해요", "퍼프·벌룬 소매는 팔 길이 단점을 강조해요"])
+          : (isMale
+              ? ["3/4 sleeves and short sleeves can make arms look shorter", "Avoid drop-shoulder styles that highlight arm length"]
+              : ["3/4 sleeves and short sleeves can make arms look shorter", "Puff or balloon sleeves draw attention to arm length"])
       }
     };
     const armBalDB = {
@@ -3660,8 +3673,12 @@
     const torsoTipsDB = {
       longtorso: {
         tips: isKo
-          ? ["크롭탑이 잘 어울려요 — 상체가 길어 크롭이 자연스러워요", "투피스·허리 라인 강조 스타일이 효과적이에요", "상의를 짧게 입으면 하체가 더 길어 보여요"]
-          : ["Crop tops suit you well — your long torso makes crops look natural", "Two-piece and waist-emphasis styles are very effective", "Shorter tops make the lower body appear longer"],
+          ? (isMale
+              ? ["하프 턱인·풀 턱인으로 상하체 구분을 자연스럽게 만드세요", "짧은 기장 상의가 잘 어울려요 — 긴 토르소가 자연스럽게 받쳐줘요", "상의를 짧게 입으면 하체 비율이 더 길어 보여요"]
+              : ["크롭탑이 잘 어울려요 — 상체가 길어 크롭이 자연스러워요", "투피스·허리 라인 강조 스타일이 효과적이에요", "상의를 짧게 입으면 하체가 더 길어 보여요"])
+          : (isMale
+              ? ["Half-tuck or full tuck-in naturally divides upper and lower body", "Shorter tops suit you well — your long torso supports the proportion", "Shorter tops make the lower body appear longer"]
+              : ["Crop tops suit you well — your long torso makes crops look natural", "Two-piece and waist-emphasis styles are very effective", "Shorter tops make the lower body appear longer"]),
         warns: isKo
           ? ["너무 긴 상의는 상체를 더 길어 보이게 해요", "로우라이즈는 상하체 불균형을 강조할 수 있어요"]
           : ["Overly long tops make the torso look even longer", "Low-rise styles can emphasize the proportion imbalance"]
@@ -3677,8 +3694,12 @@
           ? ["하이웨이스트로 상하체 비율을 개선하세요", "상의를 풀 턱인하면 상체가 길어 보여요", "세로 스트라이프 상의가 상체를 시각적으로 늘려줘요", "V넥·딥 넥으로 시선을 아래로 유도하세요"]
           : ["High-waist bottoms correct the short torso proportion", "Full tuck-in makes the torso look longer", "Vertical stripe tops visually lengthen the upper body", "V-neck or deep necklines draw the eye downward"],
         warns: isKo
-          ? ["크롭탑은 상체를 더 짧아 보이게 해요", "허리 벨트를 두르면 짧은 상체 단점이 부각될 수 있어요"]
-          : ["Crop tops make the torso appear even shorter", "Waist belts can highlight a short torso"]
+          ? (isMale
+              ? ["짧은 기장 상의는 상체를 더 짧아 보이게 해요", "허리 벨트를 두르면 짧은 상체 단점이 부각될 수 있어요"]
+              : ["크롭탑은 상체를 더 짧아 보이게 해요", "허리 벨트를 두르면 짧은 상체 단점이 부각될 수 있어요"])
+          : (isMale
+              ? ["Short-length tops make the torso appear even shorter", "Waist belts can highlight a short torso"]
+              : ["Crop tops make the torso appear even shorter", "Waist belts can highlight a short torso"])
       }
     };
 
