@@ -604,9 +604,9 @@
           <div>
             <p id="guide-card-desc" style="font-size:13px; color:var(--muted); margin-bottom:14px;">줄자가 없어도 괜찮아요. 지금 손에 든 스마트폰 하나면 충분합니다.</p>
             <div style="background:rgba(232,255,71,0.06); border:1px solid rgba(232,255,71,0.2); border-radius:12px; padding:16px; text-align:center;">
-              <div style="font-size:11px; color:var(--muted); letter-spacing:2px; margin-bottom:8px;">평균 스마트폰 세로 길이</div>
-              <div style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1;">약 15 cm</div>
-              <div style="font-size:11px; color:var(--muted); margin-top:6px;">이걸 자로 활용하면 됩니다</div>
+              <div id="guide-ruler-label" style="font-size:11px; color:var(--muted); letter-spacing:2px; margin-bottom:8px;">평균 스마트폰 세로 길이</div>
+              <div id="guide-ruler-size" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1;">약 15 cm</div>
+              <div id="guide-ruler-hint" style="font-size:11px; color:var(--muted); margin-top:6px;">이걸 자로 활용하면 됩니다</div>
             </div>
           </div>
           <div style="display:flex; flex-direction:column; gap:8px;">
@@ -1302,6 +1302,9 @@
       'guide-step1':'스마트폰을 세로로 잡고 측정 부위에 대어 몇 번 들어가는지 세세요',
       'guide-step2':'횟수 × 15cm = 해당 부위 길이<br>예) 3번 → 약 45cm',
       'guide-step3':'측정 결과를 왼쪽 인체 도형에 입력하면 비율 분석 완료!',
+      'guide-ruler-label':'평균 스마트폰 세로 길이',
+      'guide-ruler-size':'약 15 CM',
+      'guide-ruler-hint':'이걸 자로 활용하면 됩니다',
       'guide-card2-title':'📏 집에 있는 물건으로 재기',
       'guide-card2-desc':'줄자도 스마트폰도 없다면? 주변 물건이 이미 자입니다.',
       'guide-obj-a4':'📄 A4 용지 (세로)',
@@ -1410,6 +1413,9 @@
       'guide-step1':'Hold your phone vertically and count how many times it fits along the body part',
       'guide-step2':'Count × 15cm = length of that part<br>e.g. 3 times → ~45cm',
       'guide-step3':'Enter the measurements in the body diagram on the left to get your analysis!',
+      'guide-ruler-label':'Avg. Smartphone Length',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Use it as a ruler',
       'guide-card2-title':'📏 Measure with Everyday Objects',
       'guide-card2-desc':'No tape or phone? Everyday objects can be your ruler.',
       'guide-obj-a4':'📄 A4 Paper (Vertical)',
@@ -1505,6 +1511,9 @@
       'guide-step1':'スマートフォンを縦に持ち、測定部位に当てて何回入るか数えます',
       'guide-step2':'回数 × 15cm = その部位の長さ<br>例）3回 → 約45cm',
       'guide-step3':'結果を左の体型図に入力して、体型分析完了！',
+      'guide-ruler-label':'スマートフォン平均縦長',
+      'guide-ruler-size':'約 15 CM',
+      'guide-ruler-hint':'これを定規として活用',
       'guide-card2-title':'📏 身近な物で測る',
       'guide-card2-desc':'メジャーもスマホ도 없다면? 주변 물건이 이미 자입니다.',
       'guide-obj-a4':'📄 A4用紙 (縦)',
@@ -1573,6 +1582,9 @@
       'guide-step1':'竖握手机，贴近测量部位，数一数能量几次',
       'guide-step2':'次数 × 15cm = 该部位长度<br>例）3次 → 约45cm',
       'guide-step3':'将测量结果输入左侧人体图，体型分析完成！',
+      'guide-ruler-label':'智能手机平均长度',
+      'guide-ruler-size':'约 15 CM',
+      'guide-ruler-hint':'将其作为尺子使用',
       'guide-card2-title':'📏 使用日常物品测量',
       'guide-card2-desc':'没有卷尺或手机？日常物品也能当尺子。',
       'guide-obj-a4':'📄 A4 纸 (纵向)',
@@ -1641,6 +1653,9 @@
       'guide-step1':'Tenez votre téléphone verticalement et comptez combien de fois il s\'adapte le long de la partie du corps',
       'guide-step2':'Nombre × 15 cm = longueur de cette partie<br>ex. 3 fois → ~45 cm',
       'guide-step3':'Entrez les résultats dans le schéma corporel à gauche pour obtenir votre analyse !',
+      'guide-ruler-label':'Longueur moy. du smartphone',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Utilisez-le comme règle',
       'guide-card2-title':'📏 Mesurez avec des objets du quotidien',
       'guide-card2-desc':'Pas de mètre ou de téléphone ? Vos objets peuvent servir de règle.',
       'guide-obj-a4':'📄 Feuille A4 (Verticale)',
@@ -1709,6 +1724,9 @@
       'guide-step1':'Sostén tu teléfono verticalmente y cuenta cuántas veces cabe en la parte del cuerpo',
       'guide-step2':'Veces × 15 cm = longitud de esa parte<br>ej. 3 veces → ~45 cm',
       'guide-step3':'¡Ingresa los resultados en el diagrama corporal y obtén tu análisis!',
+      'guide-ruler-label':'Longitud prom. del smartphone',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Úsalo como regla',
       'guide-card2-title':'📏 Mide con Objetos Cotidianos',
       'guide-card2-desc':'¿Sin cinta ni teléfono? Objetos comunes pueden ser tu regla.',
       'guide-obj-a4':'📄 Hoja A4 (Vertical)',
@@ -1777,6 +1795,9 @@
       'guide-step1':'Segure o celular verticalmente e conte quantas vezes ele cabe na parte do corpo',
       'guide-step2':'Vezes × 15 cm = comprimento dessa parte<br>ex. 3 vezes → ~45 cm',
       'guide-step3':'Insira os resultados no diagrama corporal e obtenha sua análise!',
+      'guide-ruler-label':'Comprimento méd. do smartphone',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Use-o como régua',
       'guide-card2-title':'📏 Meça com Objetos do Dia a Dia',
       'guide-card2-desc':'Sem fita ou telefone? Objetos comuns podem ser sua régua.',
       'guide-obj-a4':'📄 Folha A4 (Vertical)',
@@ -1845,6 +1866,9 @@
       'guide-step1':'Halte das Handy senkrecht und zähle, wie oft es auf den Körperteil passt',
       'guide-step2':'Anzahl × 15 cm = Länge des Körperteils<br>z.B. 3 Mal → ~45 cm',
       'guide-step3':'Gib die Ergebnisse in das Körperdiagramm ein und erhalte deine Analyse!',
+      'guide-ruler-label':'Ø Smartphone-Länge',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Nutze es als Lineal',
       'guide-card2-title':'📏 Mit Alltagsgegenständen messen',
       'guide-card2-desc':'Kein Band oder Telefon? Gegenstände können dein Lineal sein.',
       'guide-obj-a4':'📄 A4-Blatt (Vertikal)',
@@ -1913,6 +1937,9 @@
       'guide-step1':'Tieni il telefono in verticale e conta quante volte si adatta lungo la parte del corpo',
       'guide-step2':'Volte × 15 cm = lunghezza di quella parte<br>es. 3 volte → ~45 cm',
       'guide-step3':'Inserisci i risultati nel diagramma corporeo e ottieni la tua analisi!',
+      'guide-ruler-label':'Lungh. media smartphone',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Usalo come righello',
       'guide-card2-title':'📏 Misura con Oggetti Quotidiani',
       'guide-card2-desc':'Niente metro o telefono? Oggetti comuni possono farti da righello.',
       'guide-obj-a4':'📄 Foglio A4 (Verticale)',
@@ -1981,6 +2008,9 @@
       'guide-step1':'Держите телефон вертикально и считайте, сколько раз он помещается вдоль части тела',
       'guide-step2':'Раз × 15 см = длина этой части<br>напр. 3 раза → ~45 см',
       'guide-step3':'Введите результаты в схему тела слева и получите анализ!',
+      'guide-ruler-label':'Средняя длина смартфона',
+      'guide-ruler-size':'~15 СМ',
+      'guide-ruler-hint':'Используй как линейку',
       'guide-card2-title':'📏 Измерение бытовыми предметами',
       'guide-card2-desc':'Нет рулетки или телефона? Обычные предметы могут стать линейкой.',
       'guide-obj-a4':'📄 Лист A4 (Вертикально)',
@@ -2049,6 +2079,9 @@
       'guide-step1':'أمسك الهاتف عموديًا وعد كم مرة يناسب الجزء المراد قياسه',
       'guide-step2':'العدد × 15 سم = طول ذلك الجزء<br>مثال: 3 مرات ← حوالي 45 سم',
       'guide-step3':'أدخل النتائج في مخطط الجسم على اليسار واحصل على تحليلك!',
+      'guide-ruler-label':'متوسط طول الهاتف الذكي',
+      'guide-ruler-size':'~15 سم',
+      'guide-ruler-hint':'استخدمه كمسطرة',
       'guide-card2-title':'📏 القياس بأشياء من الحياة اليومية',
       'guide-card2-desc':'لا يوجد شريط قياس أو هاتف؟ الأشياء العادية يمكن أن تكون مسطرتك.',
       'guide-obj-a4':'📄 ورقة A4 (رأسي)',
@@ -2114,6 +2147,9 @@
       'guide-step1':'फोन को लंबवत पकड़ें और शरीर के हिस्से पर कितनी बार फिट होता है गिनें',
       'guide-step2':'बार × 15 सेमी = उस हिस्से की लंबाई<br>उदा. 3 बार → ~45 सेमी',
       'guide-step3':'परिणाम बाईं ओर के शरीर आरेख में दर्ज करें और अपना विश्लेषण पाएं!',
+      'guide-ruler-label':'औसत स्मार्टफोन लंबाई',
+      'guide-ruler-size':'~15 सेमी',
+      'guide-ruler-hint':'इसे रूलर की तरह उपयोग करें',
       'guide-card2-title':'📏 दैनिक वस्तुओं से मापें',
       'guide-card2-desc':'टेप या फोन नहीं है? साधारण वस्तुएं आपकी रूलर बन सकती हैं।',
       'guide-obj-a4':'📄 A4 कागज (लंबवत)',
@@ -2180,6 +2216,9 @@
       'guide-step1':'ถือโทรศัพท์แนวตั้งแล้วนับว่าวางได้กี่ครั้งตามส่วนของร่างกาย',
       'guide-step2':'จำนวนครั้ง × 15 ซม. = ความยาวของส่วนนั้น<br>เช่น 3 ครั้ง → ประมาณ 45 ซม.',
       'guide-step3':'ป้อนผลลัพธ์ในแผนภาพร่างกายด้านซ้ายแล้วรับการวิเคราะห์!',
+      'guide-ruler-label':'ความยาวเฉลี่ยของสมาร์ทโฟน',
+      'guide-ruler-size':'~15 ซม.',
+      'guide-ruler-hint':'ใช้เป็นไม้บรรทัดได้เลย',
       'guide-card2-title':'📏 วัดด้วยสิ่งของรอบตัว',
       'guide-card2-desc':'ไม่มีสายวัดหรือโทรศัพท์? สิ่งของทั่วไปเป็นไม้บรรทัดให้คุณได้',
       'guide-obj-a4':'📄 กระดาษ A4 (แนวตั้ง)',
@@ -2245,6 +2284,9 @@
       'guide-step1':'Pegang ponsel secara vertikal dan hitung berapa kali muat di bagian tubuh',
       'guide-step2':'Kali × 15 cm = panjang bagian tersebut<br>mis. 3 kali → ~45 cm',
       'guide-step3':'Masukkan hasilnya di diagram tubuh di kiri dan dapatkan analisismu!',
+      'guide-ruler-label':'Panjang rata-rata smartphone',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Gunakan sebagai penggaris',
       'guide-card2-title':'📏 Ukur dengan Benda Sehari-hari',
       'guide-card2-desc':'Tidak punya meteran atau ponsel? Benda biasa bisa menjadi penggaris Anda.',
       'guide-obj-a4':'📄 Kertas A4 (Vertikal)',
@@ -2310,6 +2352,9 @@
       'guide-step1':'Cầm điện thoại theo chiều dọc và đếm xem đặt bao nhiêu lần vào vùng cơ thể',
       'guide-step2':'Số lần × 15 cm = chiều dài vùng đó<br>vd. 3 lần → ~45 cm',
       'guide-step3':'Nhập kết quả vào sơ đồ cơ thể bên trái và nhận phân tích!',
+      'guide-ruler-label':'Chiều dài trung bình điện thoại',
+      'guide-ruler-size':'~15 CM',
+      'guide-ruler-hint':'Dùng làm thước kẻ',
       'guide-card2-title':'📏 Đo bằng đồ vật hàng ngày',
       'guide-card2-desc':'Không có thước dây hay điện thoại? Đồ vật bình thường có thể là thước của bạn.',
       'guide-obj-a4':'📄 Giấy A4 (Chiều dọc)',
@@ -2397,6 +2442,9 @@
     set('guide-step1-p', t('guide-step1'));
     set('guide-step2-p', t('guide-step2'), true);
     set('guide-step3-p', t('guide-step3'));
+    set('guide-ruler-label', t('guide-ruler-label'));
+    set('guide-ruler-size', t('guide-ruler-size'));
+    set('guide-ruler-hint', t('guide-ruler-hint'));
     set('guide-card2-title', t('guide-card2-title'));
     set('guide-card2-desc', t('guide-card2-desc'));
     set('guide-card2-tip', t('guide-card2-tip'));
