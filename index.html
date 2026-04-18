@@ -2860,6 +2860,7 @@
     const list = document.getElementById('saved-list');
     const items = document.getElementById('saved-items');
     if (!Object.keys(measurements).length) { list.style.display = 'none'; return; }
+    if (window.innerWidth <= 900) { list.style.display = 'none'; return; }
     list.style.display = 'block';
     const partNames = (i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'];
     let html = '';
