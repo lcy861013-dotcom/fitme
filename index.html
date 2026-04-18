@@ -423,8 +423,17 @@
       }
       .mobile-analyze-bar.visible { display: flex; }
 
-      /* 패널 안 저장 목록은 모바일에서 숨김 (공간 절약) */
+      /* 패널 안 progress/saved-list 모바일에서 숨김 */
       .saved-list { display: none; }
+      .panel .progress-bar { display: none; }
+      .mobile-progress {
+        padding: 4px 0 8px;
+      }
+      .mobile-progress .progress-label {
+        font-size: 11px; color: var(--muted); letter-spacing: 1px;
+        display: flex; justify-content: space-between; margin-bottom: 6px;
+        font-family: 'DM Sans', sans-serif;
+      }
       .sheet-backdrop {
         display: block;
         position: fixed;
@@ -813,6 +822,10 @@
 
     <!-- 모바일 분석하기/초기화 버튼 -->
     <div class="mobile-analyze-bar" id="mobile-analyze-bar">
+      <div class="mobile-progress">
+        <div class="progress-label"><span id="progress-label-text-m">입력 완료</span><span id="progress-text-m">0 / 12</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill-m" style="width:0%"></div></div>
+      </div>
       <button id="btn-analyze-mobile" class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
       <button class="btn btn-outline" onclick="resetAll()">초기화</button>
     </div>
@@ -2837,6 +2850,10 @@
     const pct = (filledCount / totalParts) * 100;
     document.getElementById('progress-fill').style.width = pct + '%';
     document.getElementById('progress-text').textContent = filledCount + ' / ' + totalParts;
+    const mFill = document.getElementById('progress-fill-m');
+    const mText = document.getElementById('progress-text-m');
+    if (mFill) mFill.style.width = pct + '%';
+    if (mText) mText.textContent = filledCount + ' / ' + totalParts;
   }
 
   function updateSavedList() {
