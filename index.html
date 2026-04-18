@@ -455,6 +455,29 @@
       }
       .mobile-result-overlay.active { display: block; }
       .mobile-result-body { padding: 20px 16px 160px; }
+
+      /* 모바일 고정 저장 버튼 */
+      .mobile-save-bar {
+        display: none;
+        position: sticky;
+        bottom: 0;
+        padding: 12px 20px;
+        background: var(--surface);
+        border-top: 1px solid var(--border);
+      }
+      .mobile-save-bar.visible {
+        display: block;
+      }
+      .mobile-save-bar .btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+      }
+      /* 모바일에서 폼 내 저장 버튼 숨김 */
+      .btn-save { display: block; }
+      @media (max-width: 900px) {
+        .btn-save { display: none !important; }
+      }
     }
   </style>
 </head>
@@ -956,6 +979,11 @@
       <div class="saved-list" id="saved-list">
         <div class="saved-list-title" id="saved-list-title">저장된 측정값</div>
         <div id="saved-items"></div>
+      </div>
+
+      <!-- 모바일 고정 저장 버튼 -->
+      <div class="mobile-save-bar" id="mobile-save-bar">
+        <button class="btn btn-primary" id="mobile-save-btn" onclick="mobileSave()">저장하기</button>
       </div>
 
       <div class="panel-actions">
@@ -2663,7 +2691,10 @@
     document.getElementById('gender-male').classList.toggle('active', g === 'male');
   }
 
+  let currentPart = null;
+
   function selectPart(part) {
+    currentPart = part;
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('form-' + part).classList.add('visible');
@@ -2672,10 +2703,16 @@
     const titles = (i18n[currentLang] || i18n.en)['titles'] || i18n.en['titles'];
     document.getElementById('panel-title').textContent = titles[part] || part;
     if (window.innerWidth <= 900) {
+      document.getElementById('mobile-save-bar').classList.add('visible');
+      document.getElementById('mobile-save-btn').textContent = t('save-btn');
       document.getElementById('main-panel').classList.add('sheet-open');
       document.getElementById('sheet-backdrop').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+  }
+
+  function mobileSave() {
+    if (currentPart) savePart(currentPart);
   }
 
   function closeSheet() {
