@@ -442,6 +442,47 @@
         cursor: pointer;
         z-index: 10;
       }
+
+      /* Mobile full-screen result overlay */
+      .mobile-result-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 600;
+        background: var(--bg);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mobile-result-overlay.active { display: block; }
+      .mobile-result-header {
+        position: sticky;
+        top: 0;
+        background: rgba(10,10,10,0.97);
+        backdrop-filter: blur(10px);
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border-bottom: 1px solid var(--border);
+        z-index: 10;
+      }
+      .mobile-result-back {
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        cursor: pointer;
+        font-family: 'DM Sans', sans-serif;
+      }
+      .mobile-result-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 18px;
+        letter-spacing: 3px;
+        color: var(--accent);
+      }
+      .mobile-result-body { padding: 20px 16px 80px; }
     }
   </style>
 </head>
@@ -753,6 +794,15 @@
         <button class="hotspot" id="hs-lower-leg" style="left:28%; top:84%;" onclick="selectPart('lower-leg')">⊕</button>
         <button class="hotspot" id="hs-foot" style="left:30%; top:97%;" onclick="selectPart('foot')">👟</button>
       </div>
+    </div>
+
+    <!-- Mobile full-screen result overlay -->
+    <div class="mobile-result-overlay" id="mobile-result-overlay">
+      <div class="mobile-result-header">
+        <button class="mobile-result-back" onclick="closeMobileResult()">← 돌아가기</button>
+        <span class="mobile-result-title">FITME DNA</span>
+      </div>
+      <div class="mobile-result-body" id="mobile-result-body"></div>
     </div>
 
     <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet()"></div>
@@ -2666,6 +2716,11 @@
     document.body.style.overflow = '';
   }
 
+  function closeMobileResult() {
+    document.getElementById('mobile-result-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   function selectRadio(group, value) {
     radioSelections[group] = value;
     const container = document.getElementById('radio-' + group);
@@ -3385,8 +3440,19 @@
       </div>`;
 
     document.getElementById('analysis-result').classList.add('visible');
-    document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     showToast(t('toast-done'));
+
+    if (window.innerWidth <= 900) {
+      closeSheet();
+      const resultEl = document.getElementById('analysis-result');
+      document.getElementById('mobile-result-body').innerHTML = resultEl.innerHTML;
+      const overlay = document.getElementById('mobile-result-overlay');
+      overlay.classList.add('active');
+      overlay.scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
   }
 
   function switchOccTab(btn, panelId) {
