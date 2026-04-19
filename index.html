@@ -140,6 +140,9 @@
     .hero-badge span { color: var(--accent); font-weight: 700; }
     .hero-preview { display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
     .hero-preview-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 20px; text-align: center; min-width: 90px; }
+    .hero-scroll-hint { margin-top: 28px; display: flex; align-items: center; gap: 6px; justify-content: center; color: var(--muted); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.5px; animation: bounce-y 2s infinite; }
+    .hero-scroll-hint:hover { color: var(--accent); }
+    @keyframes bounce-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
     .hero-preview-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; }
     .hero-preview-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
     .hero-preview-grade { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #47c8ff; line-height: 1; }
@@ -151,7 +154,7 @@
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 4px; }
     .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
     .guide-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: border-color 0.2s; }
-    .guide-card:hover { border-color: var(--accent); }
+    .guide-card:hover { border-color: var(--border); }
     .guide-card h3 { font-size: 15px; margin-bottom: 14px; letter-spacing: 0.5px; }
     .guide-card p { font-size: 13px; color: var(--muted); line-height: 1.8; }
     .guide-card.featured { border-color: var(--accent); background: rgba(232,255,71,0.04); grid-column: span 2; }
@@ -620,6 +623,10 @@
         <div class="hero-preview-label" data-i18n="hero-preview-goal">목표 체중</div>
       </div>
     </div>
+    <div class="hero-scroll-hint" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})">
+      <span data-i18n="hero-scroll-hint">지금 바로 측정하기</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
   </div>
 
   <!-- GUIDE -->
@@ -1082,8 +1089,9 @@
 
           <!-- SNS Share Section -->
           <div class="sns-share-section" id="sns-share-section" style="display:none;">
-            <div class="sns-share-title">SHARE YOUR RESULTS</div>
+            <div class="sns-share-title">🔥 SHARE YOUR RESULTS</div>
             <div class="sns-share-sub" id="sns-share-tagline">나의 체형 분석 결과를 공유해보세요!</div>
+            <p style="font-size:12px;color:var(--muted);margin:0 0 12px;font-family:'DM Sans',sans-serif;" data-i18n="share-nudge">친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇</p>
             <div class="sns-btn-row">
               <button class="sns-btn kakao" onclick="snsShare('kakao')" title="카카오톡으로 공유">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.8c0 2.747 1.638 5.166 4.133 6.612L5 21l4.735-2.51C10.434 18.679 11.203 18.8 12 18.8c5.523 0 10-3.477 10-7.8S17.523 3 12 3z"/></svg>
@@ -1327,7 +1335,7 @@
       'hero-tag':'나만의 핏을 찾다',
       'hero-sub':'옷을 못 입는 게 아니에요. 내 몸을 몰랐던 거예요.<br>같은 키라도 다리 길이, 어깨 너비가 다르면 핏이 완전히 달라져요.',
       'hero-btn':'내 비율 알아보기 →',
-      'hero-badge1':'무료','hero-badge2':'즉시 결과','hero-badge3':'15개국 언어','hero-badge4':'개인정보 저장 없음',
+      'hero-badge1':'무료','hero-badge2':'즉시 결과','hero-badge3':'15개국 언어','hero-badge4':'개인정보 저장 없음','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'hero-preview-score':'DNA 점수','hero-preview-grade':'등급','hero-preview-type':'체형 유형','hero-preview-goal':'목표 체중',
       'guide-section-title':'키가 같아도, 핏은 다르다',
       'guide-section-sub':'다리 길이, 팔 길이, 어깨 너비 — 진짜 비율은 직접 재야 알 수 있습니다',
@@ -1440,7 +1448,7 @@
       'hero-tag':'Find Your Perfect Fit',
       'hero-sub':'It\'s not that you can\'t dress well. You just didn\'t know your body.<br>Same height — but leg length and shoulder width change everything.',
       'hero-btn':'Discover My Proportions →',
-      'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored',
+      'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'hero-preview-score':'DNA Score','hero-preview-grade':'Grade','hero-preview-type':'Body Type','hero-preview-goal':'Goal Weight',
       'guide-section-title':'Same Height, Different Fit',
       'guide-section-sub':'Leg length, arm length, shoulder width — true proportions can only be known by measuring',
@@ -2476,6 +2484,8 @@
   // LANGUAGE STATE & APPLY
   // ============================================================
   let currentLang = (function() {
+    const saved = localStorage.getItem('fitme_lang');
+    if (saved) return saved;
     const nav = navigator.language || '';
     const map = { ja:'ja', zh:'zh', fr:'fr', es:'es', pt:'pt', de:'de', it:'it', ru:'ru', ar:'ar', hi:'hi', th:'th', id:'id', vi:'vi', ko:'ko' };
     for (const [code, lang] of Object.entries(map)) {
@@ -2583,6 +2593,7 @@
 
   function setLanguage(lang) {
     currentLang = lang;
+    localStorage.setItem('fitme_lang', lang);
     document.getElementById('lang-select').value = lang;
     applyTranslations();
   }
@@ -3547,6 +3558,11 @@
   };
 
   function runExpertAnalysis() {
+    const btnD = document.getElementById('btn-analyze');
+    const btnM = document.getElementById('btn-analyze-mobile');
+    const loadingLabel = currentLang === 'ko' ? '⏳ 분석 중...' : '⏳ Analyzing...';
+    [btnD, btnM].forEach(b => { if (b) { b.disabled = true; b.textContent = loadingLabel; } });
+    const restoreBtn = () => [btnD, btnM].forEach(b => { if (b) { b.disabled = false; b.textContent = t('analyze-btn'); } });
     try {
     const getVal = (p, key) => {
       if (!measurements[p]) return NaN;
@@ -3560,7 +3576,7 @@
           chest = getVal('chest', 'circ'), hip = getVal('hip', 'circ'),
           uLeg = getVal('upper-leg', 'len'), lLeg = getVal('lower-leg', 'len');
 
-    if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); return; }
+    if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); restoreBtn(); return; }
 
     const lc = i18n[currentLang] || i18n.en;
     const dl = dnaLabels[currentLang] || dnaLabels.en;
@@ -3939,6 +3955,7 @@
     }
 
     document.getElementById('analysis-result').classList.add('visible');
+    restoreBtn();
     showToast(t('toast-done'));
 
     // Show SNS share section
@@ -3974,6 +3991,7 @@
     }
     } catch (err) {
       console.error('runExpertAnalysis error:', err);
+      restoreBtn();
       showToast(currentLang === 'ko' ? '분석 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.' : 'An error occurred. Please try again.');
     }
   }
