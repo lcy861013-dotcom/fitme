@@ -18,11 +18,29 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FITME — Global Body Proportion Analysis Platform</title>
-  <meta name="description" content="Enter your body measurements and get your personal FITME DNA score, body proportion analysis, style recommendations, and 90-day transformation roadmap. Free, instant, multilingual.">
-  <meta name="keywords" content="body proportion analysis, body type, style recommendation, FITME, 체형 분석, 스타일 추천, body shape, fit analysis, fashion advisor, free body analysis">
+  <title>FITME — 체형 분석 · 신체 비율 측정 · 스타일 추천 무료</title>
+  <meta name="description" content="키·몸무게·허리 3개만 입력하면 즉시 체형 분석! FITME DNA 점수, 레이더 차트, 체형별 코디 추천, 90일 변신 로드맵까지 무료 제공. 15개국 언어 지원.">
+  <meta name="keywords" content="체형분석, 신체비율, 체형측정, 스타일추천, 체형별코디, 무료체형분석, FITME, body proportion analysis, body type analysis, style recommendation, free body analysis, 몸매분석, 비율측정">
   <meta name="author" content="FITME">
   <link rel="canonical" href="https://fitme-6d9.pages.dev/">
+
+  <!-- hreflang: 15개국 언어 SEO -->
+  <link rel="alternate" hreflang="ko" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="ja" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="zh" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="fr" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="es" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="pt" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="de" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="it" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="ru" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="ar" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="hi" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="th" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="id" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="vi" href="https://fitme-6d9.pages.dev/">
+  <link rel="alternate" hreflang="x-default" href="https://fitme-6d9.pages.dev/">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -30,8 +48,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fitme-6d9.pages.dev/">
-  <meta property="og:title" content="FITME — Free Body Proportion Analysis & Style Advisor">
-  <meta property="og:description" content="Enter your body measurements and instantly get your FITME DNA score, radar chart analysis, personalized outfit recommendations, and 90-day body transformation plan.">
+  <meta property="og:title" content="FITME — 체형 분석 · 신체 비율 · 스타일 추천 무료">
+  <meta property="og:description" content="키·몸무게·허리 3개만 입력하면 즉시 체형 분석! DNA 점수, 레이더 차트, 코디 추천, 90일 변신 로드맵까지 무료. 15개국 언어 지원.">
   <meta property="og:image" content="https://fitme-6d9.pages.dev/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -42,8 +60,8 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://fitme-6d9.pages.dev/">
-  <meta name="twitter:title" content="FITME — Free Body Proportion Analysis & Style Advisor">
-  <meta name="twitter:description" content="Enter your body measurements and instantly get your FITME DNA score, radar chart analysis, personalized outfit recommendations, and 90-day body transformation plan.">
+  <meta name="twitter:title" content="FITME — 체형 분석 · 신체 비율 · 스타일 추천 무료">
+  <meta name="twitter:description" content="키·몸무게·허리 3개만 입력하면 즉시 체형 분석! DNA 점수, 레이더 차트, 코디 추천, 90일 변신 로드맵까지 무료. 15개국 언어 지원.">
   <meta name="twitter:image" content="https://fitme-6d9.pages.dev/og-image.png">
 
   <!-- Schema.org Structured Data -->
@@ -2532,12 +2550,13 @@
   // ============================================================
   let currentLang = (function() {
     const saved = localStorage.getItem('fitme_lang');
-    if (saved) return saved;
+    if (saved) { document.documentElement.lang = saved; return saved; }
     const nav = navigator.language || '';
     const map = { ja:'ja', zh:'zh', fr:'fr', es:'es', pt:'pt', de:'de', it:'it', ru:'ru', ar:'ar', hi:'hi', th:'th', id:'id', vi:'vi', ko:'ko' };
     for (const [code, lang] of Object.entries(map)) {
-      if (nav.toLowerCase().startsWith(code)) return lang;
+      if (nav.toLowerCase().startsWith(code)) { document.documentElement.lang = lang; return lang; }
     }
+    document.documentElement.lang = 'en';
     return 'en';
   })();
 
@@ -2642,6 +2661,7 @@
     currentLang = lang;
     localStorage.setItem('fitme_lang', lang);
     document.getElementById('lang-select').value = lang;
+    document.documentElement.lang = lang;
     applyTranslations();
   }
 
