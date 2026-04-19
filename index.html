@@ -3547,6 +3547,7 @@
   };
 
   function runExpertAnalysis() {
+    try {
     const getVal = (p, key) => {
       if (!measurements[p]) return NaN;
       const d = measurements[p];
@@ -3970,6 +3971,10 @@
       attachResultBackBtn(backLabel);
     } else {
       document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    } catch (err) {
+      console.error('runExpertAnalysis error:', err);
+      showToast(currentLang === 'ko' ? '분석 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.' : 'An error occurred. Please try again.');
     }
   }
 
