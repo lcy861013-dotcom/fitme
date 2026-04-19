@@ -207,6 +207,7 @@
     .hotspot::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--accent); animation: pulse 2s infinite; opacity: 0; }
     .hotspot.filled::after { border-color: #47ff8a; }
     @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
+    .hotspot.req-marker::before { content: '★'; position: absolute; top: -6px; right: -6px; font-size: 8px; color: var(--accent); line-height: 1; }
 
     /* PANEL */
     .panel { display: flex; flex-direction: column; background: var(--surface); }
@@ -225,6 +226,12 @@
     .input-field { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
     .input-field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,255,71,0.1); }
     .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-title-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .form-title-row .form-title { margin-bottom: 0; }
+    .field-badge { font-size: 9px; letter-spacing: 1.5px; padding: 2px 7px; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-weight: 700; flex-shrink: 0; }
+    .field-badge.required { background: rgba(232,255,71,0.15); color: var(--accent); border: 1px solid rgba(232,255,71,0.3); }
+    .field-badge.optional { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
+    .panel-req-hint { font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 0.5px; font-family: 'DM Sans', sans-serif; }
     .radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
     .radio-btn { flex: 1; min-width: 55px; padding: 9px 6px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
     .radio-btn:hover { border-color: var(--accent); color: var(--text); }
@@ -883,15 +890,15 @@
           <g id="svg-leg-r-upper"><path d="M200 268 L208 370 L172 370 L164 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="190" cy="370" rx="18" ry="7" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
           <g id="svg-leg-r-lower"><path d="M208 374 L212 470 L172 470 L172 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="194" cy="474" rx="22" ry="9" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
         </svg>
-        <button class="hotspot" id="hs-height" style="left:88%; top:5%;" onclick="selectPart('height')">📏</button>
+        <button class="hotspot req-marker" id="hs-height" style="left:88%; top:5%;" onclick="selectPart('height')">📏</button>
         <button class="hotspot" id="hs-head" style="left:50%; top:10%;" onclick="selectPart('head')">👤</button>
         <button class="hotspot" id="hs-shoulder" style="left:50%; top:23%;" onclick="selectPart('shoulder')">↔</button>
         <button class="hotspot" id="hs-chest" style="left:50%; top:32%;" onclick="selectPart('chest')">◉</button>
         <button class="hotspot" id="hs-upper-arm" style="left:14%; top:34%;" onclick="selectPart('upper-arm')">💪</button>
         <button class="hotspot" id="hs-lower-arm" style="left:11%; top:46%;" onclick="selectPart('lower-arm')">✋</button>
-        <button class="hotspot" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')">○</button>
+        <button class="hotspot req-marker" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')">○</button>
         <button class="hotspot" id="hs-hip" style="left:50%; top:50%;" onclick="selectPart('hip')">◇</button>
-        <button class="hotspot" id="hs-weight" style="left:88%; top:50%;" onclick="selectPart('weight')">⚖️</button>
+        <button class="hotspot req-marker" id="hs-weight" style="left:88%; top:50%;" onclick="selectPart('weight')">⚖️</button>
         <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')">┃</button>
         <button class="hotspot" id="hs-lower-leg" style="left:28%; top:84%;" onclick="selectPart('lower-leg')">⊕</button>
         <button class="hotspot" id="hs-foot" style="left:30%; top:97%;" onclick="selectPart('foot')">👟</button>
@@ -904,6 +911,7 @@
         <div class="progress-label"><span id="progress-label-text-m">입력 완료</span><span id="progress-text-m">0 / 12</span></div>
         <div class="progress-track"><div class="progress-fill" id="progress-fill-m" style="width:0%"></div></div>
       </div>
+      <p style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
       <button id="btn-analyze-mobile" class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
       <button class="btn btn-outline" onclick="resetAll()">초기화</button>
     </div>
@@ -920,6 +928,7 @@
       <div class="panel-header">
         <div class="panel-title" id="panel-title">신체 정보 입력</div>
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+        <div class="panel-req-hint" id="panel-req-hint">★ Height · Weight · Waist are required &nbsp;·&nbsp; others optional</div>
       </div>
       <div class="gender-toggle">
         <button class="gender-btn active" id="gender-female" onclick="setGender('female')">👩 여성</button>
@@ -932,21 +941,21 @@
         </div>
 
         <div class="measurement-form" id="form-height">
-          <div class="form-title" id="ftitle-height">HEIGHT / 키</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('height')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-weight">
-          <div class="form-title" id="ftitle-weight">WEIGHT / 체중</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-weight">WEIGHT / 체중</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-weight">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
           <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('weight')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-head">
-          <div class="form-title" id="ftitle-head">HEAD / 머리</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-head">HEAD / 머리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-head">머리 둘레와 세로 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-head">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57"></div>
           <div class="input-group"><label class="input-label" id="flabel2-head">모자 사이즈</label>
@@ -962,14 +971,14 @@
         </div>
 
         <div class="measurement-form" id="form-shoulder">
-          <div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('shoulder')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-chest">
-          <div class="form-title" id="ftitle-chest">CHEST / 가슴</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-chest">CHEST / 가슴</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-chest">가슴 둘레와 상의 사이즈를 입력하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-chest">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95"></div>
           <div class="input-group"><label class="input-label" id="flabel2-chest">상의 사이즈</label>
@@ -986,21 +995,21 @@
         </div>
 
         <div class="measurement-form" id="form-upper-arm">
-          <div class="form-title" id="ftitle-upper-arm">UPPER ARM / 상완</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">UPPER ARM / 상완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('upper-arm')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-lower-arm">
-          <div class="form-title" id="ftitle-lower-arm">LOWER ARM / 하완</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">LOWER ARM / 하완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('lower-arm')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-waist">
-          <div class="form-title" id="ftitle-waist">WAIST / 허리</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-waist">WAIST / 허리</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-waist">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
           <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5"></div>
           <div id="fhint-waist" style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
@@ -1008,14 +1017,14 @@
         </div>
 
         <div class="measurement-form" id="form-hip">
-          <div class="form-title" id="ftitle-hip">HIP / 골반</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('hip')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-leg">
-          <div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42"></div>
           <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54"></div>
@@ -1023,14 +1032,14 @@
         </div>
 
         <div class="measurement-form" id="form-lower-leg">
-          <div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38"></div>
           <button class="btn btn-primary btn-save" onclick="savePart('lower-leg')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-foot">
-          <div class="form-title" id="ftitle-foot">FOOT / 발</div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-foot">FOOT / 발</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-foot">발 사이즈와 발볼을 입력하세요.</div>
           <div class="input-row">
             <div class="input-group"><label class="input-label" id="flabel-foot">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255"></div>
@@ -1136,6 +1145,7 @@
       </div>
 
       <div class="panel-actions">
+        <p style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
         <button id="btn-analyze" class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
         <button id="btn-reset" class="btn btn-outline" onclick="resetAll()">초기화</button>
       </div>
