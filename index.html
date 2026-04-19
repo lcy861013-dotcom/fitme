@@ -3712,6 +3712,15 @@
     window._fitmeShareData = { score: totalScore, grade: fitmeGrade };
 
     // UI RENDER
+    const bestPreview = best.slice(0, 2);
+    const stylePreviewHTML = bestPreview.length ? `
+      <div style="margin-top:12px; padding:12px 16px; background:rgba(232,255,71,0.05); border:1px solid rgba(232,255,71,0.2); border-radius:10px;">
+        <div style="font-size:10px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:8px; font-family:'DM Sans',sans-serif;">${isKo ? '👗 추천 스타일' : '👗 Style Picks'}</div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          ${bestPreview.map(s => `<span style="background:rgba(255,255,255,0.06); border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:12px; color:var(--text);">✓ ${s}</span>`).join('')}
+          <span style="border-radius:20px; padding:4px 12px; font-size:12px; color:var(--accent); cursor:pointer;" onclick="document.getElementById('best-styles').scrollIntoView({behavior:'smooth'})">${isKo ? '더 보기 →' : 'See all →'}</span>
+        </div>
+      </div>` : '';
     document.getElementById('fitme-score-section').innerHTML = `
       <div class="fitme-score-banner">
         <div class="fitme-score-left">
@@ -3720,7 +3729,8 @@
           <div class="fitme-score-dims">${radarScores.map((s, i) => `<div class="fitme-dim"><div class="fitme-dim-val">${s}</div><div class="fitme-dim-label">${dl.radarAxes[i]}</div></div>`).join('')}</div>
         </div>
         <div class="fitme-score-right"><div class="fitme-grade ${gradeClass}">${fitmeGrade}</div><div class="fitme-grade-label">${dl.gradeLabel}</div></div>
-      </div>`;
+      </div>
+      ${stylePreviewHTML}`;
 
     const badgeMap = { hourglass: '⏳', pear: '🍐', inv: '🔺', rect: '⬛', apple: '🍎', default: '📐' };
     document.getElementById('analysis-badge').innerHTML = typeName ? `<div class="body-type-badge"><span>${currentGender==='male'?'👨':'👩'}</span><span>${badgeMap[bodyType]}</span><span class="badge-label">${typeName}</span></div>` : '';
