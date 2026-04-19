@@ -929,7 +929,10 @@
       </div>
       <p style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
       <button id="btn-analyze-mobile" class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
-      <button class="btn btn-outline" onclick="resetAll()">초기화</button>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-outline" style="flex:1;font-size:0.8rem;" onclick="editMeasurements()" data-i18n="edit-btn">✏️ 수정하기</button>
+        <button class="btn btn-outline" style="flex:1;font-size:0.8rem;color:#ff6b6b;border-color:#ff6b6b44;" onclick="resetAll()" data-i18n="reset-confirm-btn">🗑️ 전체 초기화</button>
+      </div>
     </div>
 
     <!-- Mobile full-screen result overlay -->
@@ -1163,7 +1166,10 @@
       <div class="panel-actions">
         <p style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
         <button id="btn-analyze" class="btn btn-accent2" onclick="runExpertAnalysis()">🔥 신체 비율 분석하기</button>
-        <button id="btn-reset" class="btn btn-outline" onclick="resetAll()">초기화</button>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-outline" style="flex:1;font-size:0.8rem;" onclick="editMeasurements()" data-i18n="edit-btn">✏️ 수정하기</button>
+          <button id="btn-reset" class="btn btn-outline" style="flex:1;font-size:0.8rem;color:#ff6b6b;border-color:#ff6b6b44;" onclick="resetAll()" data-i18n="reset-confirm-btn">🗑️ 전체 초기화</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1410,7 +1416,7 @@
       'section-label':'부위를 클릭하여 측정값을 입력하세요',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
       'placeholder-text':'왼쪽 인체 도형에서<br>부위를 클릭해 주세요',
-      'save-btn':'저장하기','analyze-btn':'🔥 신체 비율 분석하기','reset-btn':'초기화',
+      'save-btn':'저장하기','analyze-btn':'🔥 신체 비율 분석하기','reset-btn':'초기화','edit-btn':'✏️ 수정하기','reset-confirm-btn':'🗑️ 전체 초기화',
       'progress-label':'입력 완료','saved-list-title':'저장된 측정값',
       'analysis-report-title':'분석 리포트','analysis-best':'✨ BEST 스타일 추천','analysis-worst':'⚠️ 주의할 스타일',
       'analysis-disclaimer':'*입력된 수치 기반의 통계적 분석 결과입니다.',
@@ -1524,7 +1530,7 @@
       'section-label':'Click a body part to enter measurements',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
       'placeholder-text':'Click a body part<br>on the left to start',
-      'save-btn':'Save','analyze-btn':'🔥 Analyze My Proportions','reset-btn':'Reset',
+      'save-btn':'Save','analyze-btn':'🔥 Analyze My Proportions','reset-btn':'Reset','edit-btn':'✏️ Edit','reset-confirm-btn':'🗑️ Reset All',
       'progress-label':'Completed','saved-list-title':'Saved Measurements',
       'analysis-report-title':'Analysis Report','analysis-best':'✨ BEST Style Picks','analysis-worst':'⚠️ Styles to Avoid',
       'analysis-disclaimer':'*Statistical analysis based on entered measurements.',
@@ -1624,7 +1630,7 @@
       'section-label':'部位をクリックして寸法を入力してください',
       'panel-title-default':'体型情報入力','panel-subtitle-default':'正確な分析のために寸法を入力してください。',
       'placeholder-text':'左の体型図から<br>部位をクリックしてください',
-      'save-btn':'保存する','analyze-btn':'🔥 体型比率を分析する','reset-btn':'リセット',
+      'save-btn':'保存する','analyze-btn':'🔥 体型比率を分析する','reset-btn':'リセット','edit-btn':'✏️ 修正する','reset-confirm-btn':'🗑️ 全リセット',
       'progress-label':'入力完了','saved-list-title':'保存された測定値',
       'analysis-report-title':'分析レポート','analysis-best':'✨ おすすめスタイル','analysis-worst':'⚠️ 避けるべきスタイル',
       'analysis-disclaimer':'*入力された数値に基づく統計的な分析結果です。',
@@ -1698,7 +1704,7 @@
       'section-label':'点击身体部位输入测量值',
       'panel-title-default':'身体信息输入','panel-subtitle-default':'请输入尺寸以进行精确分析。',
       'placeholder-text':'请点击左侧<br>人体图上的部位',
-      'save-btn':'保存','analyze-btn':'🔥 分析我的体型比例','reset-btn':'重置',
+      'save-btn':'保存','analyze-btn':'🔥 分析我的体型比例','reset-btn':'重置','edit-btn':'✏️ 修改','reset-confirm-btn':'🗑️ 全部重置',
       'progress-label':'已完成','saved-list-title':'已保存的测量值',
       'analysis-report-title':'分析报告','analysis-best':'✨ 最佳穿搭推荐','analysis-worst':'⚠️ 不建议的穿搭',
       'analysis-disclaimer':'*基于输入数值的统计分析结果。',
@@ -1772,7 +1778,7 @@
       'section-label':'Cliquez sur une partie du corps pour entrer les mesures',
       'panel-title-default':'Informations corporelles','panel-subtitle-default':'Entrez vos mensurations pour une analyse précise.',
       'placeholder-text':'Cliquez sur une partie<br>du corps à gauche',
-      'save-btn':'Enregistrer','analyze-btn':'🔥 Analyser mes proportions','reset-btn':'Réinitialiser',
+      'save-btn':'Enregistrer','analyze-btn':'🔥 Analyser mes proportions','reset-btn':'Réinitialiser','edit-btn':'✏️ Modifier','reset-confirm-btn':'🗑️ Tout réinitialiser',
       'progress-label':'Complété','saved-list-title':'Mesures enregistrées',
       'analysis-report-title':'Rapport d\'analyse','analysis-best':'✨ Meilleurs styles recommandés','analysis-worst':'⚠️ Styles à éviter',
       'analysis-disclaimer':'*Résultats d\'analyse statistique basés sur les mesures saisies.',
@@ -1846,7 +1852,7 @@
       'section-label':'Haz clic en una parte del cuerpo para ingresar medidas',
       'panel-title-default':'Información corporal','panel-subtitle-default':'Ingresa tus medidas para un análisis preciso.',
       'placeholder-text':'Haz clic en una parte<br>del cuerpo a la izquierda',
-      'save-btn':'Guardar','analyze-btn':'🔥 Analizar mis proporciones','reset-btn':'Reiniciar',
+      'save-btn':'Guardar','analyze-btn':'🔥 Analizar mis proporciones','reset-btn':'Reiniciar','edit-btn':'✏️ Editar','reset-confirm-btn':'🗑️ Borrar todo',
       'progress-label':'Completado','saved-list-title':'Medidas guardadas',
       'analysis-report-title':'Informe de análisis','analysis-best':'✨ Mejores estilos recomendados','analysis-worst':'⚠️ Estilos a evitar',
       'analysis-disclaimer':'*Resultados de análisis estadístico basado en las medidas ingresadas.',
@@ -1920,7 +1926,7 @@
       'section-label':'Clique em uma parte do corpo para inserir medidas',
       'panel-title-default':'Informações corporais','panel-subtitle-default':'Insira suas medidas para uma análise precisa.',
       'placeholder-text':'Clique em uma parte<br>do corpo à esquerda',
-      'save-btn':'Salvar','analyze-btn':'🔥 Analisar minhas proporções','reset-btn':'Reiniciar',
+      'save-btn':'Salvar','analyze-btn':'🔥 Analisar minhas proporções','reset-btn':'Reiniciar','edit-btn':'✏️ Editar','reset-confirm-btn':'🗑️ Apagar tudo',
       'progress-label':'Concluído','saved-list-title':'Medidas salvas',
       'analysis-report-title':'Relatório de análise','analysis-best':'✨ Melhores estilos recomendados','analysis-worst':'⚠️ Estilos a evitar',
       'analysis-disclaimer':'*Resultados de análise estatística com base nas medidas inseridas.',
@@ -1994,7 +2000,7 @@
       'section-label':'Klicke auf einen Körperteil, um Maße einzugeben',
       'panel-title-default':'Körperinformationen','panel-subtitle-default':'Bitte Maße für eine genaue Analyse eingeben.',
       'placeholder-text':'Körperteil links<br>anklicken',
-      'save-btn':'Speichern','analyze-btn':'🔥 Meine Proportionen analysieren','reset-btn':'Zurücksetzen',
+      'save-btn':'Speichern','analyze-btn':'🔥 Meine Proportionen analysieren','reset-btn':'Zurücksetzen','edit-btn':'✏️ Bearbeiten','reset-confirm-btn':'🗑️ Alles löschen',
       'progress-label':'Abgeschlossen','saved-list-title':'Gespeicherte Maße',
       'analysis-report-title':'Analysebericht','analysis-best':'✨ Beste Style-Empfehlungen','analysis-worst':'⚠️ Zu vermeidende Styles',
       'analysis-disclaimer':'*Statistische Analyseergebnisse basierend auf eingegebenen Maßen.',
@@ -2068,7 +2074,7 @@
       'section-label':'Clicca su una parte del corpo per inserire le misure',
       'panel-title-default':'Informazioni corporee','panel-subtitle-default':'Inserisci le misure per un\'analisi precisa.',
       'placeholder-text':'Clicca una parte<br>del corpo a sinistra',
-      'save-btn':'Salva','analyze-btn':'🔥 Analizza le mie proporzioni','reset-btn':'Azzera',
+      'save-btn':'Salva','analyze-btn':'🔥 Analizza le mie proporzioni','reset-btn':'Azzera','edit-btn':'✏️ Modifica','reset-confirm-btn':'🗑️ Cancella tutto',
       'progress-label':'Completato','saved-list-title':'Misure salvate',
       'analysis-report-title':'Report di analisi','analysis-best':'✨ Migliori stili consigliati','analysis-worst':'⚠️ Stili da evitare',
       'analysis-disclaimer':'*Risultati di analisi statistica basati sulle misure inserite.',
@@ -2142,7 +2148,7 @@
       'section-label':'Нажмите на часть тела, чтобы ввести мерки',
       'panel-title-default':'Данные о теле','panel-subtitle-default':'Введите мерки для точного анализа.',
       'placeholder-text':'Нажмите на часть тела<br>на схеме слева',
-      'save-btn':'Сохранить','analyze-btn':'🔥 Анализировать пропорции','reset-btn':'Сбросить',
+      'save-btn':'Сохранить','analyze-btn':'🔥 Анализировать пропорции','reset-btn':'Сбросить','edit-btn':'✏️ Изменить','reset-confirm-btn':'🗑️ Сбросить всё',
       'progress-label':'Завершено','saved-list-title':'Сохранённые мерки',
       'analysis-report-title':'Отчёт об анализе','analysis-best':'✨ Лучшие стили','analysis-worst':'⚠️ Стили, которых стоит избегать',
       'analysis-disclaimer':'*Статистический анализ на основе введённых мерок.',
@@ -2213,7 +2219,7 @@
       'section-label':'انقر على جزء من الجسم لإدخال القياسات',
       'panel-title-default':'معلومات الجسم','panel-subtitle-default':'أدخل قياساتك للحصول على تحليل دقيق.',
       'placeholder-text':'انقر على جزء من الجسم<br>في الجانب الأيسر',
-      'save-btn':'حفظ','analyze-btn':'🔥 تحليل نسب جسمي','reset-btn':'إعادة تعيين',
+      'save-btn':'حفظ','analyze-btn':'🔥 تحليل نسب جسمي','reset-btn':'إعادة تعيين','edit-btn':'✏️ تعديل','reset-confirm-btn':'🗑️ حذف الكل',
       'progress-label':'مكتمل','saved-list-title':'القياسات المحفوظة',
       'analysis-report-title':'تقرير التحليل','analysis-best':'✨ أفضل أنماط موصى بها','analysis-worst':'⚠️ أنماط يجب تجنبها',
       'analysis-disclaimer':'*نتائج تحليل إحصائي بناءً على القياسات المدخلة.',
@@ -2285,7 +2291,7 @@
       'section-label':'माप दर्ज करने के लिए शरीर के हिस्से पर क्लिक करें',
       'panel-title-default':'शरीर की जानकारी','panel-subtitle-default':'सटीक विश्लेषण के लिए माप दर्ज करें।',
       'placeholder-text':'बाईं ओर शरीर के<br>किसी हिस्से पर क्लिक करें',
-      'save-btn':'सहेजें','analyze-btn':'🔥 मेरे अनुपात का विश्लेषण करें','reset-btn':'रीसेट करें',
+      'save-btn':'सहेजें','analyze-btn':'🔥 मेरे अनुपात का विश्लेषण करें','reset-btn':'रीसेट करें','edit-btn':'✏️ संपादित करें','reset-confirm-btn':'🗑️ सब हटाएं',
       'progress-label':'पूर्ण','saved-list-title':'सहेजे गए माप',
       'analysis-report-title':'विश्लेषण रिपोर्ट','analysis-best':'✨ सर्वश्रेष्ठ स्टाइल सुझाव','analysis-worst':'⚠️ बचने वाले स्टाइल',
       'analysis-disclaimer':'*दर्ज मापों पर आधारित सांख्यिकीय विश्लेषण परिणाम।',
@@ -2356,7 +2362,7 @@
       'section-label':'คลิกที่ส่วนของร่างกายเพื่อป้อนการวัด',
       'panel-title-default':'ข้อมูลร่างกาย','panel-subtitle-default':'ป้อนการวัดเพื่อการวิเคราะห์ที่แม่นยำ',
       'placeholder-text':'คลิกที่ส่วนของร่างกาย<br>ทางด้านซ้าย',
-      'save-btn':'บันทึก','analyze-btn':'🔥 วิเคราะห์สัดส่วนของฉัน','reset-btn':'รีเซ็ต',
+      'save-btn':'บันทึก','analyze-btn':'🔥 วิเคราะห์สัดส่วนของฉัน','reset-btn':'รีเซ็ต','edit-btn':'✏️ แก้ไข','reset-confirm-btn':'🗑️ ลบทั้งหมด',
       'progress-label':'เสร็จสิ้น','saved-list-title':'การวัดที่บันทึกไว้',
       'analysis-report-title':'รายงานการวิเคราะห์','analysis-best':'✨ สไตล์ที่แนะนำ','analysis-worst':'⚠️ สไตล์ที่ควรหลีกเลี่ยง',
       'analysis-disclaimer':'*ผลการวิเคราะห์ทางสถิติตามการวัดที่ป้อน',
@@ -2427,7 +2433,7 @@
       'section-label':'Klik bagian tubuh untuk memasukkan ukuran',
       'panel-title-default':'Informasi Tubuh','panel-subtitle-default':'Masukkan ukuranmu untuk analisis yang akurat.',
       'placeholder-text':'Klik bagian tubuh<br>di sebelah kiri',
-      'save-btn':'Simpan','analyze-btn':'🔥 Analisis Proporsi Saya','reset-btn':'Reset',
+      'save-btn':'Simpan','analyze-btn':'🔥 Analisis Proporsi Saya','reset-btn':'Reset','edit-btn':'✏️ Edit','reset-confirm-btn':'🗑️ Hapus Semua',
       'progress-label':'Selesai','saved-list-title':'Ukuran Tersimpan',
       'analysis-report-title':'Laporan Analisis','analysis-best':'✨ Rekomendasi Gaya Terbaik','analysis-worst':'⚠️ Gaya yang Harus Dihindari',
       'analysis-disclaimer':'*Hasil analisis statistik berdasarkan ukuran yang dimasukkan.',
@@ -2498,7 +2504,7 @@
       'section-label':'Nhấp vào bộ phận cơ thể để nhập số đo',
       'panel-title-default':'Thông tin cơ thể','panel-subtitle-default':'Nhập số đo để phân tích chính xác.',
       'placeholder-text':'Nhấp vào bộ phận cơ thể<br>ở phía bên trái',
-      'save-btn':'Lưu','analyze-btn':'🔥 Phân tích tỷ lệ của tôi','reset-btn':'Đặt lại',
+      'save-btn':'Lưu','analyze-btn':'🔥 Phân tích tỷ lệ của tôi','reset-btn':'Đặt lại','edit-btn':'✏️ Chỉnh sửa','reset-confirm-btn':'🗑️ Xóa tất cả',
       'progress-label':'Hoàn thành','saved-list-title':'Số đo đã lưu',
       'analysis-report-title':'Báo cáo phân tích','analysis-best':'✨ Phong cách được gợi ý','analysis-worst':'⚠️ Phong cách nên tránh',
       'analysis-disclaimer':'*Kết quả phân tích thống kê dựa trên số đo đã nhập.',
@@ -4098,6 +4104,11 @@
         showToast('✅ 복사 완료!');
       });
     }
+  }
+
+  function editMeasurements() {
+    document.getElementById('analysis').scrollIntoView({ behavior: 'smooth' });
+    showToast(currentLang === 'ko' ? '부위를 클릭해서 값을 수정하세요 ✏️' : 'Click a body part to edit your measurements ✏️');
   }
 
   function resetAll() {
