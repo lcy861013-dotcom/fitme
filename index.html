@@ -208,7 +208,7 @@
     .hotspot.filled::after { border-color: #47ff8a; }
     @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
     .hotspot.req-marker::before { content: '★'; position: absolute; top: -6px; right: -6px; font-size: 8px; color: var(--accent); line-height: 1; }
-    .quick-start-banner { display:flex; align-items:center; justify-content:center; gap:10px; background:linear-gradient(90deg,rgba(232,255,71,0.08),rgba(71,200,255,0.06)); border:1px solid rgba(232,255,71,0.25); border-radius:12px; padding:12px 20px; margin:0 16px 0; flex-wrap:wrap; text-align:center; }
+    .quick-start-banner { grid-column: 1 / -1; display:flex; align-items:center; justify-content:center; gap:10px; background:linear-gradient(90deg,rgba(232,255,71,0.08),rgba(71,200,255,0.06)); border:1px solid rgba(232,255,71,0.25); border-bottom: 1px solid rgba(232,255,71,0.25); border-radius:0; padding:12px 20px; margin:0; flex-wrap:wrap; text-align:center; }
     .quick-start-banner .qs-main { font-size:0.9rem; font-weight:700; color:var(--accent); letter-spacing:0.5px; }
     .quick-start-banner .qs-sub { font-size:0.75rem; color:var(--muted); }
     .quick-start-banner .qs-items { display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
