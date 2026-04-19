@@ -309,7 +309,7 @@
     .sns-btn.copy:hover { border-color: var(--accent); background: rgba(232,255,71,0.08); }
     .sns-btn svg { flex-shrink: 0; }
     .style-section h4 { font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
-    .style-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .style-grid { display: flex; flex-wrap: wrap; gap: 6px; }
     .style-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.6; }
     /* Enhanced analysis styles */
     .body-type-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,255,71,0.1); border: 1px solid var(--accent); border-radius: 100px; padding: 6px 16px; margin-bottom: 12px; }
@@ -323,17 +323,26 @@
     .prop-track { height: 4px; background: var(--border); border-radius: 4px; overflow: hidden; }
     .prop-fill { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.8s ease; }
     .occasion-section { margin: 18px 0; }
-    .occasion-section-title { font-size: 12px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
-    .occasion-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
-    .occ-tab { padding: 6px 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 100px; font-size: 11px; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; color: var(--muted); }
-    .occ-tab.active, .occ-tab:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 700; }
+    .occasion-section-title { font-size: 12px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; }
+    .occ-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    @media (max-width: 600px) { .occ-cards-grid { grid-template-columns: 1fr; } }
+    .occ-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px; }
+    .occ-card-label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-family: 'DM Sans', sans-serif; margin-bottom: 10px; }
+    .occ-card-icon { font-size: 20px; margin-bottom: 6px; }
+    .occ-outfit { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .occ-outfit:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .occ-outfit-items { display: flex; flex-wrap: wrap; gap: 5px; }
+    .occ-item-pill { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--text); font-family: 'DM Sans', sans-serif; }
+    .style-tag { display: inline-block; border-radius: 20px; padding: 4px 12px; font-size: 12px; font-family: 'DM Sans', sans-serif; margin: 3px; }
+    .style-tag-best { background: rgba(71,255,138,0.08); border: 1px solid rgba(71,255,138,0.3); color: #47ff8a; }
+    .style-tag-worst { background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.3); color: #ff6b6b; }
+    /* legacy — hide old elements */
     .occ-panel { display: none; }
-    .occ-panel.active { display: block; animation: fadeIn 0.2s; }
-    .outfit-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; transition: border-color 0.2s; }
-    .outfit-item:hover { border-color: var(--accent); }
-    .outfit-visual { font-size: 28px; text-align: center; margin-bottom: 8px; background: var(--bg); border-radius: 10px; padding: 10px; letter-spacing: 4px; }
-    .outfit-combo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
-    .outfit-why { font-size: 11px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
+    .occ-panel.active { display: block; }
+    .outfit-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+    .outfit-visual { font-size: 28px; text-align: center; margin-bottom: 8px; }
+    .outfit-combo { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .outfit-why { display: none; }
 
     /* ===== FITME DNA REPORT — NEW SECTIONS ===== */
     .fitme-score-banner { background: linear-gradient(135deg, rgba(232,255,71,0.1), rgba(71,200,255,0.06)); border: 1px solid rgba(232,255,71,0.25); border-radius: 14px; padding: 16px 20px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
@@ -3793,27 +3802,31 @@
     const occMeeting = lc['occasion-meeting'] || i18n.en['occasion-meeting'];
     const occBusiness = lc['occasion-business'] || i18n.en['occasion-business'];
     const occCasual = lc['occasion-casual'] || i18n.en['occasion-casual'];
-    const whyLabel = lc['outfit-why-label'] || i18n.en['outfit-why-label'];
-    const imgs = occData.img || ['👗', '👔', '👟'];
-    const buildOutfits = (arr, occImg) => arr.map((item, i) =>
-      `<div class="outfit-item"><div class="outfit-visual">${occImg[i % occImg.length] || '✨'}</div><div class="outfit-combo">${item.combo}</div><div class="outfit-why"><strong>${whyLabel}:</strong> ${item.why}</div></div>`
-    ).join('');
+    const occIcons = { meeting: '💕', business: '💼', casual: '👟' };
+    const buildOccCard = (arr, label, icon) => `
+      <div class="occ-card">
+        <div class="occ-card-icon">${icon}</div>
+        <div class="occ-card-label">${label}</div>
+        ${arr.map(item => `
+          <div class="occ-outfit">
+            <div class="occ-outfit-items">
+              ${item.combo.split(' + ').map(p => `<span class="occ-item-pill">${p.trim()}</span>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>`;
     document.getElementById('analysis-occasions').innerHTML = `
       <div class="occasion-section">
         <div class="occasion-section-title">${occTitle}</div>
-        <div class="occasion-tabs">
-          <button class="occ-tab active" onclick="switchOccTab(this,'occ-meeting')">${occMeeting}</button>
-          <button class="occ-tab" onclick="switchOccTab(this,'occ-business')">${occBusiness}</button>
-          <button class="occ-tab" onclick="switchOccTab(this,'occ-casual')">${occCasual}</button>
+        <div class="occ-cards-grid">
+          ${buildOccCard(occData.meeting, occMeeting, occIcons.meeting)}
+          ${buildOccCard(occData.business, occBusiness, occIcons.business)}
+          ${buildOccCard(occData.casual, occCasual, occIcons.casual)}
         </div>
-        <div id="occ-meeting" class="occ-panel active">${buildOutfits(occData.meeting, imgs)}</div>
-        <div id="occ-business" class="occ-panel">${buildOutfits(occData.business, imgs)}</div>
-        <div id="occ-casual" class="occ-panel">${buildOutfits(occData.casual, imgs)}</div>
       </div>`;
 
     // ===== RENDER: BEST / WORST STYLES =====
-    document.getElementById('best-styles').innerHTML = best.map(s => `<div class="style-item">✅ ${s}</div>`).join('');
-    document.getElementById('worst-styles').innerHTML = worst.map(s => `<div class="style-item">⚠️ ${s}</div>`).join('');
+    document.getElementById('best-styles').innerHTML = best.map(s => `<span class="style-tag style-tag-best">✓ ${s}</span>`).join('');
+    document.getElementById('worst-styles').innerHTML = worst.map(s => `<span class="style-tag style-tag-worst">✕ ${s}</span>`).join('');
 
     // ===== RENDER: 90-DAY ROADMAP =====
     const rmLang = roadmapData[currentLang] || roadmapData.en;
