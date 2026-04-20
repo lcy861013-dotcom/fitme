@@ -172,7 +172,7 @@
     .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 72px; letter-spacing: 8px; line-height: 1; margin-bottom: 20px; }
     .hero-title span { color: var(--accent); }
     .hero-sub { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 500px; margin: 0 auto 36px; }
-    .hero-btn { display: inline-block; padding: 14px 40px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .hero-btn { display: inline-block; padding: 14px 40px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .hero-btn:hover { background: #f5ff80; box-shadow: 0 4px 30px rgba(232,255,71,0.4); transform: translateY(-2px); }
     .hero-badges { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
     .hero-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
@@ -239,6 +239,8 @@
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       font-size: 11px; color: var(--accent); transition: all 0.2s;
       transform: translate(-50%, -50%); z-index: 10;
+      touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+      user-select: none; -webkit-user-select: none;
     }
     .hotspot:hover, .hotspot.active { background: var(--accent); color: var(--bg); box-shadow: 0 0 20px rgba(232,255,71,0.5); transform: translate(-50%, -50%) scale(1.15); }
     .hotspot.filled { border-color: #47ff8a; background: rgba(71,255,138,0.12); color: #47ff8a; }
@@ -277,18 +279,18 @@
     .field-badge.optional { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid var(--border); }
     .panel-req-hint { font-size: 10px; color: var(--muted); margin-top: 6px; letter-spacing: 0.5px; font-family: 'DM Sans', sans-serif; }
     .radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
-    .radio-btn { flex: 1; min-width: 55px; padding: 9px 6px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+    .radio-btn { flex: 1; min-width: 55px; padding: 9px 6px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; text-align: center; cursor: pointer; font-size: 12px; color: var(--muted); transition: all 0.2s; font-family: 'DM Sans', sans-serif; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .radio-btn:hover { border-color: var(--accent); color: var(--text); }
     .radio-btn.selected { border-color: var(--accent); background: rgba(232,255,71,0.1); color: var(--accent); font-weight: 700; }
 
     /* GENDER TOGGLE */
     .gender-toggle { display: flex; gap: 8px; padding: 16px 24px 0; }
-    .gender-btn { flex: 1; padding: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; text-align: center; }
+    .gender-btn { flex: 1; padding: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; text-align: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .gender-btn.active { border-color: var(--accent); background: rgba(232,255,71,0.1); color: var(--accent); }
     .gender-btn:hover:not(.active) { border-color: var(--muted); color: var(--text); }
 
     /* BUTTONS */
-    .btn { display: block; width: 100%; padding: 13px; border: none; border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 12px; }
+    .btn { display: block; width: 100%; padding: 13px; border: none; border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 12px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .btn-primary { background: var(--accent); color: var(--bg); }
     .btn-primary:hover { background: #f5ff80; box-shadow: 0 4px 20px rgba(232,255,71,0.3); transform: translateY(-1px); }
     .btn-accent2 { background: var(--accent2); color: white; }
@@ -316,7 +318,7 @@
     .sns-share-sub { font-size: 13px; color: var(--text); margin-bottom: 16px; font-weight: 500; }
     .sns-share-sub span { color: var(--accent); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
     .sns-btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .sns-btn { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+    .sns-btn { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; white-space: nowrap; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .sns-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     .sns-btn.kakao { background: #FEE500; color: #191919; border-color: #FEE500; }
     .sns-btn.kakao:hover { background: #ffd900; }
@@ -499,6 +501,15 @@
       .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
       .hero-title { font-size: 48px; }
       nav { display: none; }
+
+      /* Hotspot touch targets: 44px (Apple HIG minimum) */
+      .hotspot { width: 44px; height: 44px; font-size: 13px; }
+      /* Prevent waist/hip overlap (gap was -4px at 44px size) */
+      #hs-waist { top: 44% !important; }
+      #hs-hip   { top: 54% !important; }
+      /* Foot hotspot clips at 97% — give room */
+      #hs-foot  { top: 95% !important; }
+      .body-container { overflow: visible; }
 
       /* Bottom sheet */
       .panel {
