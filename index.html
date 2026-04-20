@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- Language flash prevention: hide body until JS applies correct language -->
+  <style id="lang-fouc">body{visibility:hidden!important}</style>
+  <script>
+    (function(){
+      var saved = localStorage.getItem('fitme_lang');
+      var lang = saved;
+      if (!lang) {
+        var nav = (navigator.language || '').toLowerCase();
+        var map = ['ja','zh','fr','es','pt','de','it','ru','ar','hi','th','id','vi','ko'];
+        for (var i = 0; i < map.length; i++) {
+          if (nav.startsWith(map[i])) { lang = map[i]; break; }
+        }
+        if (!lang) lang = 'en';
+      }
+      document.documentElement.lang = lang;
+      document.addEventListener('DOMContentLoaded', function() {
+        var el = document.getElementById('lang-fouc');
+        if (el) el.remove();
+      });
+    })();
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JW0DB4GXG3"></script>
   <script>
