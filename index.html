@@ -1178,12 +1178,12 @@
           <!-- SNS Share Section -->
           <div class="sns-share-section" id="sns-share-section" style="display:none;">
             <div class="sns-share-title">🔥 SHARE YOUR RESULTS</div>
-            <div class="sns-share-sub" id="sns-share-tagline">나의 체형 분석 결과를 공유해보세요!</div>
+            <div class="sns-share-sub" id="sns-share-tagline" data-i18n="sns-tagline">나의 체형 분석 결과를 공유해보세요!</div>
             <p style="font-size:12px;color:var(--muted);margin:0 0 12px;font-family:'DM Sans',sans-serif;" data-i18n="share-nudge">친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇</p>
             <div class="sns-btn-row">
               <button class="sns-btn kakao" onclick="snsShare('kakao')" title="카카오톡으로 공유">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.8c0 2.747 1.638 5.166 4.133 6.612L5 21l4.735-2.51C10.434 18.679 11.203 18.8 12 18.8c5.523 0 10-3.477 10-7.8S17.523 3 12 3z"/></svg>
-                카카오톡
+                <span data-i18n="sns-kakao">카카오톡</span>
               </button>
               <button class="sns-btn twitter" onclick="snsShare('twitter')" title="X(트위터)로 공유">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -1199,7 +1199,7 @@
               </button>
               <button class="sns-btn copy" onclick="snsShare('copy')" title="링크 복사">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                링크 복사
+                <span data-i18n="sns-copy">링크 복사</span>
               </button>
             </div>
           </div>
@@ -1484,7 +1484,9 @@
       'analysis-disclaimer':'*입력된 수치 기반의 통계적 분석 결과입니다.',
       'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'About FITME','footer-contact':'Contact Us',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'sns-kakao':'카카오톡','sns-copy':'링크 복사','sns-tagline':'나의 체형 분석 결과를 공유해보세요!',
       'toast-enter-value':'값을 입력해주세요!','toast-saved':' 저장 완료! ✓','toast-link':'링크 복사됨! 🔗',
+      'toast-kakao-copy':'📋 복사됐어요! 카카오톡 채팅창에 붙여넣기 하세요 💛',
       'toast-need-data':'먼저 키와 체중을 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
       'confirm-reset':'모든 측정값을 초기화할까요?',
       'parts':{ height:'키', weight:'체중', head:'머리', shoulder:'어깨', chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완', waist:'허리', hip:'골반', 'upper-leg':'허벅지', 'lower-leg':'종아리', foot:'발' },
@@ -1600,7 +1602,9 @@
       'analysis-disclaimer':'*Statistical analysis based on entered measurements.',
       'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service','footer-about':'About FITME','footer-contact':'Contact Us',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Copy Link','sns-tagline':'Share your body analysis results!',
       'toast-enter-value':'Please enter a value!','toast-saved':' saved! ✓','toast-link':'Link copied! 🔗',
+      'toast-kakao-copy':'📋 Copied! Paste it in your KakaoTalk chat 💛',
       'toast-need-data':'Please enter height, weight & shoulder width first!','toast-done':'Analysis complete! 🔥','toast-reset':'Reset complete',
       'confirm-reset':'Reset all measurements?',
       'parts':{ height:'Height', weight:'Weight', head:'Head', shoulder:'Shoulder', chest:'Chest', 'upper-arm':'Upper Arm', 'lower-arm':'Lower Arm', waist:'Waist', hip:'Hip', 'upper-leg':'Thigh', 'lower-leg':'Shin', foot:'Foot' },
@@ -1702,7 +1706,9 @@
       'analysis-disclaimer':'*入力された数値に基づく統計的な分析結果です。',
       'footer-privacy':'プライバシーポリシー','footer-terms':'利用規約','footer-about':'About FITME','footer-contact':'お問い合わせ',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'sns-kakao':'カカオトーク','sns-copy':'リンクをコピー','sns-tagline':'体型分析の結果をシェアしよう！',
       'toast-enter-value':'値を入力してください！','toast-saved':'を保存しました ✓','toast-link':'リンクをコピーしました 🔗',
+      'toast-kakao-copy':'📋 コピーしました！カカオトークのチャットに貼り付けてください 💛',
       'toast-need-data':'まず身長・体重・肩幅を入力してください！','toast-done':'分析完了！ 🔥','toast-reset':'リセット完了',
       'confirm-reset':'すべての測定値をリセットしますか？',
       'parts':{ height:'身長', weight:'体重', head:'頭', shoulder:'肩', chest:'胸', 'upper-arm':'上腕', 'lower-arm':'前腕', waist:'ウエスト', hip:'ヒップ', 'upper-leg':'太もも', 'lower-leg':'ふくらはぎ', foot:'足' },
@@ -1778,7 +1784,9 @@
       'analysis-disclaimer':'*基于输入数值的统计分析结果。',
       'footer-privacy':'隐私政策','footer-terms':'服务条款','footer-about':'关于 FITME','footer-contact':'联系我们',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'sns-kakao':'KakaoTalk','sns-copy':'复制链接','sns-tagline':'分享你的体型分析结果！',
       'toast-enter-value':'请输入数值！','toast-saved':'已保存 ✓','toast-link':'链接已复制 🔗',
+      'toast-kakao-copy':'📋 已复制！请粘贴到 KakaoTalk 聊天框 💛',
       'toast-need-data':'请先输入身高、体重和肩宽！','toast-done':'分析完成！ 🔥','toast-reset':'已重置',
       'confirm-reset':'确定重置所有测量值吗？',
       'parts':{ height:'身高', weight:'体重', head:'头部', shoulder:'肩宽', chest:'胸围', 'upper-arm':'上臂', 'lower-arm':'前臂', waist:'腰围', hip:'臀围', 'upper-leg':'大腿', 'lower-leg':'小腿', foot:'脚' },
@@ -1854,7 +1862,9 @@
       'analysis-disclaimer':'*Résultats d\'analyse statistique basés sur les mesures saisies.',
       'footer-privacy':'Politique de confidentialité','footer-terms':'Conditions d\'utilisation','footer-about':'À propos de FITME','footer-contact':'Nous contacter',
       'footer-copy':'© 2026 FITME. Service mondial d\'analyse corporelle.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Copier le lien','sns-tagline':'Partagez vos résultats d\'analyse !',
       'toast-enter-value':'Veuillez entrer une valeur !','toast-saved':' enregistré ✓','toast-link':'Lien copié ! 🔗',
+      'toast-kakao-copy':'📋 Copié ! Collez-le dans votre chat KakaoTalk 💛',
       'toast-need-data':'Entrez d\'abord taille, poids et largeur des épaules !','toast-done':'Analyse terminée ! 🔥','toast-reset':'Réinitialisation effectuée',
       'confirm-reset':'Réinitialiser toutes les mesures ?',
       'parts':{ height:'Taille', weight:'Poids', head:'Tête', shoulder:'Épaules', chest:'Poitrine', 'upper-arm':'Haut du bras', 'lower-arm':'Avant-bras', waist:'Taille', hip:'Hanches', 'upper-leg':'Cuisse', 'lower-leg':'Mollet', foot:'Pied' },
@@ -1930,7 +1940,9 @@
       'analysis-disclaimer':'*Resultados de análisis estadístico basado en las medidas ingresadas.',
       'footer-privacy':'Política de privacidad','footer-terms':'Términos de servicio','footer-about':'Acerca de FITME','footer-contact':'Contáctanos',
       'footer-copy':'© 2026 FITME. Servicio global de análisis corporal.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Copiar enlace','sns-tagline':'¡Comparte tus resultados de análisis!',
       'toast-enter-value':'¡Por favor ingresa un valor!','toast-saved':' guardado ✓','toast-link':'¡Enlace copiado! 🔗',
+      'toast-kakao-copy':'📋 ¡Copiado! Pégalo en tu chat de KakaoTalk 💛',
       'toast-need-data':'¡Ingresa primero altura, peso y ancho de hombros!','toast-done':'¡Análisis completo! 🔥','toast-reset':'Reinicio completado',
       'confirm-reset':'¿Reiniciar todas las medidas?',
       'parts':{ height:'Altura', weight:'Peso', head:'Cabeza', shoulder:'Hombros', chest:'Pecho', 'upper-arm':'Brazo sup.', 'lower-arm':'Antebrazo', waist:'Cintura', hip:'Caderas', 'upper-leg':'Muslo', 'lower-leg':'Pantorrilla', foot:'Pie' },
@@ -2006,7 +2018,9 @@
       'analysis-disclaimer':'*Resultados de análise estatística com base nas medidas inseridas.',
       'footer-privacy':'Política de privacidade','footer-terms':'Termos de serviço','footer-about':'Sobre o FITME','footer-contact':'Fale conosco',
       'footer-copy':'© 2026 FITME. Serviço global de análise corporal.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Copiar link','sns-tagline':'Compartilhe seus resultados de análise!',
       'toast-enter-value':'Por favor, insira um valor!','toast-saved':' salvo ✓','toast-link':'Link copiado! 🔗',
+      'toast-kakao-copy':'📋 Copiado! Cole no seu chat do KakaoTalk 💛',
       'toast-need-data':'Insira primeiro altura, peso e largura dos ombros!','toast-done':'Análise concluída! 🔥','toast-reset':'Reinicialização concluída',
       'confirm-reset':'Reiniciar todas as medidas?',
       'parts':{ height:'Altura', weight:'Peso', head:'Cabeça', shoulder:'Ombros', chest:'Peito', 'upper-arm':'Braço sup.', 'lower-arm':'Antebraço', waist:'Cintura', hip:'Quadril', 'upper-leg':'Coxa', 'lower-leg':'Panturrilha', foot:'Pé' },
@@ -2082,7 +2096,9 @@
       'analysis-disclaimer':'*Statistische Analyseergebnisse basierend auf eingegebenen Maßen.',
       'footer-privacy':'Datenschutz','footer-terms':'Nutzungsbedingungen','footer-about':'Über FITME','footer-contact':'Kontakt',
       'footer-copy':'© 2026 FITME. Globaler Körperanalyse-Service.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Link kopieren','sns-tagline':'Teile deine Analyseergebnisse!',
       'toast-enter-value':'Bitte Wert eingeben!','toast-saved':' gespeichert ✓','toast-link':'Link kopiert! 🔗',
+      'toast-kakao-copy':'📋 Kopiert! Füge es in deinen KakaoTalk-Chat ein 💛',
       'toast-need-data':'Bitte zuerst Größe, Gewicht und Schulterbreite eingeben!','toast-done':'Analyse abgeschlossen! 🔥','toast-reset':'Zurückgesetzt',
       'confirm-reset':'Alle Maße zurücksetzen?',
       'parts':{ height:'Größe', weight:'Gewicht', head:'Kopf', shoulder:'Schultern', chest:'Brust', 'upper-arm':'Oberarm', 'lower-arm':'Unterarm', waist:'Taille', hip:'Hüfte', 'upper-leg':'Oberschenkel', 'lower-leg':'Wade', foot:'Fuß' },
@@ -2158,7 +2174,9 @@
       'analysis-disclaimer':'*Risultati di analisi statistica basati sulle misure inserite.',
       'footer-privacy':'Privacy','footer-terms':'Termini di servizio','footer-about':'Chi è FITME','footer-contact':'Contattaci',
       'footer-copy':'© 2026 FITME. Servizio globale di analisi corporea.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Copia link','sns-tagline':'Condividi i tuoi risultati di analisi!',
       'toast-enter-value':'Inserisci un valore!','toast-saved':' salvato ✓','toast-link':'Link copiato! 🔗',
+      'toast-kakao-copy':'📋 Copiato! Incollalo nella tua chat KakaoTalk 💛',
       'toast-need-data':'Inserisci prima altezza, peso e larghezza spalle!','toast-done':'Analisi completata! 🔥','toast-reset':'Azzeramento completato',
       'confirm-reset':'Azzerare tutte le misure?',
       'parts':{ height:'Altezza', weight:'Peso', head:'Testa', shoulder:'Spalle', chest:'Petto', 'upper-arm':'Braccio sup.', 'lower-arm':'Avambraccio', waist:'Vita', hip:'Fianchi', 'upper-leg':'Coscia', 'lower-leg':'Polpaccio', foot:'Piede' },
@@ -2234,7 +2252,9 @@
       'analysis-disclaimer':'*Статистический анализ на основе введённых мерок.',
       'footer-privacy':'Политика конфиденциальности','footer-terms':'Условия использования','footer-about':'О FITME','footer-contact':'Связаться с нами',
       'footer-copy':'© 2026 FITME. Глобальный сервис анализа телосложения.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Копировать ссылку','sns-tagline':'Поделитесь результатами анализа!',
       'toast-enter-value':'Пожалуйста, введите значение!','toast-saved':' сохранено ✓','toast-link':'Ссылка скопирована! 🔗',
+      'toast-kakao-copy':'📋 Скопировано! Вставьте в чат KakaoTalk 💛',
       'toast-need-data':'Сначала введите рост, вес и ширину плеч!','toast-done':'Анализ завершён! 🔥','toast-reset':'Сброс выполнен',
       'confirm-reset':'Сбросить все мерки?',
       'parts':{ height:'Рост', weight:'Вес', head:'Голова', shoulder:'Плечи', chest:'Грудь', 'upper-arm':'Плечо', 'lower-arm':'Предплечье', waist:'Талия', hip:'Бёдра', 'upper-leg':'Бедро', 'lower-leg':'Голень', foot:'Стопа' },
@@ -2307,7 +2327,9 @@
       'analysis-disclaimer':'*نتائج تحليل إحصائي بناءً على القياسات المدخلة.',
       'footer-privacy':'سياسة الخصوصية','footer-terms':'شروط الخدمة','footer-about':'حول FITME','footer-contact':'اتصل بنا',
       'footer-copy':'© 2026 FITME. خدمة تحليل الجسم العالمية.',
+      'sns-kakao':'KakaoTalk','sns-copy':'نسخ الرابط','sns-tagline':'شارك نتائج تحليل جسمك!',
       'toast-enter-value':'الرجاء إدخال قيمة!','toast-saved':' محفوظ ✓','toast-link':'تم نسخ الرابط! 🔗',
+      'toast-kakao-copy':'📋 تم النسخ! الصقه في محادثة KakaoTalk 💛',
       'toast-need-data':'أدخل الطول والوزن وعرض الكتفين أولاً!','toast-done':'اكتمل التحليل! 🔥','toast-reset':'تمت إعادة التعيين',
       'confirm-reset':'إعادة تعيين جميع القياسات؟',
       'parts':{ height:'الطول', weight:'الوزن', head:'الرأس', shoulder:'الكتفان', chest:'الصدر', 'upper-arm':'العضد', 'lower-arm':'الساعد', waist:'الخصر', hip:'الوركان', 'upper-leg':'الفخذ', 'lower-leg':'الساق', foot:'القدم' },
@@ -2381,7 +2403,9 @@
       'analysis-disclaimer':'*दर्ज मापों पर आधारित सांख्यिकीय विश्लेषण परिणाम।',
       'footer-privacy':'गोपनीयता नीति','footer-terms':'सेवा की शर्तें','footer-about':'FITME के बारे में','footer-contact':'संपर्क करें',
       'footer-copy':'© 2026 FITME. वैश्विक शरीर विश्लेषण सेवा।',
+      'sns-kakao':'KakaoTalk','sns-copy':'लिंक कॉपी करें','sns-tagline':'अपने विश्लेषण परिणाम साझा करें!',
       'toast-enter-value':'कृपया एक मान दर्ज करें!','toast-saved':' सहेजा गया ✓','toast-link':'लिंक कॉपी हुआ! 🔗',
+      'toast-kakao-copy':'📋 कॉपी हो गया! KakaoTalk चैट में पेस्ट करें 💛',
       'toast-need-data':'पहले ऊंचाई, वजन और कंधे की चौड़ाई दर्ज करें!','toast-done':'विश्लेषण पूर्ण! 🔥','toast-reset':'रीसेट पूर्ण',
       'confirm-reset':'सभी माप रीसेट करें?',
       'parts':{ height:'ऊंचाई', weight:'वजन', head:'सिर', shoulder:'कंधे', chest:'छाती', 'upper-arm':'ऊपरी बांह', 'lower-arm':'अग्रबाहु', waist:'कमर', hip:'कूल्हे', 'upper-leg':'जांघ', 'lower-leg':'पिंडली', foot:'पैर' },
@@ -2454,7 +2478,9 @@
       'analysis-disclaimer':'*ผลการวิเคราะห์ทางสถิติตามการวัดที่ป้อน',
       'footer-privacy':'นโยบายความเป็นส่วนตัว','footer-terms':'ข้อกำหนดการใช้บริการ','footer-about':'เกี่ยวกับ FITME','footer-contact':'ติดต่อเรา',
       'footer-copy':'© 2026 FITME. บริการวิเคราะห์ร่างกายระดับโลก',
+      'sns-kakao':'KakaoTalk','sns-copy':'คัดลอกลิงก์','sns-tagline':'แชร์ผลการวิเคราะห์ของคุณ!',
       'toast-enter-value':'กรุณากรอกค่า!','toast-saved':' บันทึกแล้ว ✓','toast-link':'คัดลอกลิงก์แล้ว! 🔗',
+      'toast-kakao-copy':'📋 คัดลอกแล้ว! วางในแชท KakaoTalk ของคุณ 💛',
       'toast-need-data':'กรุณากรอกส่วนสูง น้ำหนัก และความกว้างไหล่ก่อน!','toast-done':'วิเคราะห์เสร็จสิ้น! 🔥','toast-reset':'รีเซ็ตแล้ว',
       'confirm-reset':'รีเซ็ตการวัดทั้งหมดหรือไม่?',
       'parts':{ height:'ส่วนสูง', weight:'น้ำหนัก', head:'หัว', shoulder:'ไหล่', chest:'หน้าอก', 'upper-arm':'ต้นแขน', 'lower-arm':'แขนท่อนล่าง', waist:'เอว', hip:'สะโพก', 'upper-leg':'ต้นขา', 'lower-leg':'น่อง', foot:'เท้า' },
@@ -2527,7 +2553,9 @@
       'analysis-disclaimer':'*Hasil analisis statistik berdasarkan ukuran yang dimasukkan.',
       'footer-privacy':'Kebijakan Privasi','footer-terms':'Syarat Layanan','footer-about':'Tentang FITME','footer-contact':'Hubungi Kami',
       'footer-copy':'© 2026 FITME. Layanan Analisis Tubuh Global.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Salin tautan','sns-tagline':'Bagikan hasil analisis tubuhmu!',
       'toast-enter-value':'Masukkan nilai terlebih dahulu!','toast-saved':' tersimpan ✓','toast-link':'Tautan disalin! 🔗',
+      'toast-kakao-copy':'📋 Disalin! Tempel di obrolan KakaoTalk kamu 💛',
       'toast-need-data':'Masukkan tinggi, berat, dan lebar bahu terlebih dahulu!','toast-done':'Analisis selesai! 🔥','toast-reset':'Reset selesai',
       'confirm-reset':'Reset semua ukuran?',
       'parts':{ height:'Tinggi', weight:'Berat', head:'Kepala', shoulder:'Bahu', chest:'Dada', 'upper-arm':'Lengan Atas', 'lower-arm':'Lengan Bawah', waist:'Pinggang', hip:'Pinggul', 'upper-leg':'Paha', 'lower-leg':'Betis', foot:'Kaki' },
@@ -2600,7 +2628,9 @@
       'analysis-disclaimer':'*Kết quả phân tích thống kê dựa trên số đo đã nhập.',
       'footer-privacy':'Chính sách bảo mật','footer-terms':'Điều khoản dịch vụ','footer-about':'Về FITME','footer-contact':'Liên hệ',
       'footer-copy':'© 2026 FITME. Dịch vụ phân tích cơ thể toàn cầu.',
+      'sns-kakao':'KakaoTalk','sns-copy':'Sao chép liên kết','sns-tagline':'Chia sẻ kết quả phân tích của bạn!',
       'toast-enter-value':'Vui lòng nhập giá trị!','toast-saved':' đã lưu ✓','toast-link':'Đã sao chép liên kết! 🔗',
+      'toast-kakao-copy':'📋 Đã sao chép! Dán vào chat KakaoTalk của bạn 💛',
       'toast-need-data':'Vui lòng nhập chiều cao, cân nặng và chiều rộng vai trước!','toast-done':'Phân tích hoàn tất! 🔥','toast-reset':'Đã đặt lại',
       'confirm-reset':'Đặt lại tất cả số đo?',
       'parts':{ height:'Chiều cao', weight:'Cân nặng', head:'Đầu', shoulder:'Vai', chest:'Ngực', 'upper-arm':'Cánh tay trên', 'lower-arm':'Cẳng tay', waist:'Eo', hip:'Hông', 'upper-leg':'Đùi', 'lower-leg':'Bắp chân', foot:'Bàn chân' },
@@ -4199,7 +4229,7 @@
         document.execCommand('copy');
         document.body.removeChild(el);
       });
-      showToast('📋 복사됐어요! 카카오톡 채팅창에 붙여넣기 하세요 💛');
+      showToast(t('toast-kakao-copy'));
     } else if (platform === 'twitter') {
       window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank', 'width=550,height=420');
     } else if (platform === 'facebook') {
