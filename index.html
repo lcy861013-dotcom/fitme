@@ -293,6 +293,7 @@
     .btn { display: block; width: 100%; padding: 13px; border: none; border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 12px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .btn-primary { background: var(--accent); color: var(--bg); }
     .btn-primary:hover { background: #f5ff80; box-shadow: 0 4px 20px rgba(232,255,71,0.3); transform: translateY(-1px); }
+    .btn-save.saved { background: #47ff8a !important; color: #0a0a0a !important; pointer-events: none; transform: none !important; }
     .btn-accent2 { background: var(--accent2); color: white; }
     .btn-accent2:hover { background: #ff6666; box-shadow: 0 4px 20px rgba(255,71,71,0.3); }
     .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
@@ -1022,14 +1023,14 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('height')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-weight">
           <div class="form-title-row"><div class="form-title" id="ftitle-weight">WEIGHT / 체중</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-weight">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
           <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('weight')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('weight')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-head">
@@ -1045,14 +1046,14 @@
               <div class="radio-btn" onclick="selectRadio('hat','FREE')">FREE</div>
             </div>
           </div>
-          <button class="btn btn-primary btn-save" onclick="savePart('head')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('head')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-shoulder">
           <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('shoulder')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-chest">
@@ -1069,21 +1070,21 @@
               <div class="radio-btn" onclick="selectRadio('top','2XL')">2XL</div>
             </div>
           </div>
-          <button class="btn btn-primary btn-save" onclick="savePart('chest')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('chest')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-arm">
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">UPPER ARM / 상완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('upper-arm')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-lower-arm">
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">LOWER ARM / 하완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('lower-arm')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-waist">
@@ -1091,14 +1092,14 @@
           <div class="form-desc" id="fdesc-waist">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
           <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5"></div>
           <div id="fhint-waist" style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
-          <button class="btn btn-primary btn-save" onclick="savePart('waist')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('waist')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-hip">
           <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('hip')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-upper-leg">
@@ -1106,14 +1107,14 @@
           <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42"></div>
           <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('upper-leg')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-lower-leg">
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
           <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38"></div>
-          <button class="btn btn-primary btn-save" onclick="savePart('lower-leg')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
         </div>
 
         <div class="measurement-form" id="form-foot">
@@ -1129,7 +1130,7 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary btn-save" onclick="savePart('foot')">저장하기</button>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('foot')">저장하기</button>
         </div>
 
         <div class="analysis-card" id="analysis-result">
@@ -1537,9 +1538,9 @@
     },
     en: {
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
-      'hero-tag':'Find Your Perfect Fit',
-      'hero-sub':'It\'s not that you can\'t dress well. You just didn\'t know your body.<br>Same height — but leg length and shoulder width change everything.',
-      'hero-btn':'Discover My Proportions →',
+      'hero-tag':'Know Your Body. Dress Better.',
+      'hero-sub':'Enter your measurements → get your FITME DNA score, body type, style picks & 90-day plan.<br>Free · Under 3 minutes · No signup needed.',
+      'hero-btn':'Analyze My Body →',
       'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'qs-main':'⚡ ★ Just 3 inputs to get your analysis!','qs-sub':'Rest is optional — more inputs = more accurate results','qs-height':'★ Height','qs-weight':'★ Weight','qs-waist':'★ Waist',
       'hero-preview-score':'DNA Score','hero-preview-grade':'Grade','hero-preview-type':'Body Type','hero-preview-goal':'Goal Weight',
@@ -3159,6 +3160,14 @@
     updateSavedList();
     const partLabel = ((i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'])[part] || part;
     showToast(partLabel + t('toast-saved'));
+    const activeForm = document.querySelector('.measurement-form.visible');
+    const saveBtn = activeForm && activeForm.querySelector('.btn-save');
+    if (saveBtn) {
+      const origText = saveBtn.textContent;
+      saveBtn.textContent = '✓ ' + origText;
+      saveBtn.classList.add('saved');
+      setTimeout(() => { saveBtn.textContent = origText; saveBtn.classList.remove('saved'); }, 1500);
+    }
     if (window.innerWidth <= 900) { setTimeout(closeSheet, 300); }
   }
 
