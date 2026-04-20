@@ -3038,7 +3038,7 @@
   const measurements = {};
   const radioSelections = {};
   let filledCount = 0;
-  const totalParts = 11;
+  const totalParts = 12;
   let currentGender = 'female';
 
   function setGender(g) {
@@ -3713,7 +3713,7 @@
     let bodyType = 'default', whr = null;
     if (!isNaN(waist) && !isNaN(hip)) {
       whr = +(waist / hip).toFixed(2);
-      if (!isNaN(shoulder) && !isNaN(chest)) {
+      if (!isNaN(shoulder)) {
         const s = shoulder * 2;
         if (Math.abs(s - hip) < (hip * 0.05) && waist < (hip * 0.75)) bodyType = 'hourglass';
         else if (hip > (s * 1.05)) bodyType = 'pear';
