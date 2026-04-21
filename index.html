@@ -270,6 +270,7 @@
     .measure-tip-item .tip-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
     .measure-tip-btn { display: inline-block; padding: 8px 20px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; border: none; border-radius: 100px; cursor: pointer; transition: background 0.2s; }
     .measure-tip-btn:hover { background: #f5ff80; }
+    .part-howto-box { background: rgba(232,255,71,0.04); border-left: 3px solid var(--accent); padding: 9px 12px; border-radius: 0 8px 8px 0; font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
     .measurement-form { display: none; }
     .measurement-form.visible { display: block; animation: fadeIn 0.2s; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -1014,6 +1015,7 @@
         <div class="measurement-form" id="form-height">
           <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-height"></div>
           <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
         </div>
@@ -1021,6 +1023,7 @@
         <div class="measurement-form" id="form-weight">
           <div class="form-title-row"><div class="form-title" id="ftitle-weight">WEIGHT / 체중</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-weight">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
+          <div class="part-howto-box" data-i18n="howto-weight"></div>
           <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('weight')">저장하기</button>
         </div>
@@ -1028,6 +1031,7 @@
         <div class="measurement-form" id="form-head">
           <div class="form-title-row"><div class="form-title" id="ftitle-head">HEAD / 머리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-head">머리 둘레와 세로 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-head"></div>
           <div class="input-group"><label class="input-label" id="flabel-head">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57"></div>
           <div class="input-group"><label class="input-label" id="flabel2-head">모자 사이즈</label>
             <div class="radio-group" id="radio-hat">
@@ -1044,6 +1048,7 @@
         <div class="measurement-form" id="form-shoulder">
           <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-shoulder"></div>
           <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
         </div>
@@ -1051,6 +1056,7 @@
         <div class="measurement-form" id="form-chest">
           <div class="form-title-row"><div class="form-title" id="ftitle-chest">CHEST / 가슴</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-chest">가슴 둘레와 상의 사이즈를 입력하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-chest"></div>
           <div class="input-group"><label class="input-label" id="flabel-chest">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95"></div>
           <div class="input-group"><label class="input-label" id="flabel2-chest">상의 사이즈</label>
             <div class="radio-group" id="radio-top">
@@ -1068,6 +1074,7 @@
         <div class="measurement-form" id="form-upper-arm">
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">UPPER ARM / 상완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
           <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
         </div>
@@ -1075,6 +1082,7 @@
         <div class="measurement-form" id="form-lower-arm">
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">LOWER ARM / 하완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
           <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
         </div>
@@ -1082,6 +1090,7 @@
         <div class="measurement-form" id="form-waist">
           <div class="form-title-row"><div class="form-title" id="ftitle-waist">WAIST / 허리</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-waist">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
+          <div class="part-howto-box" data-i18n="howto-waist"></div>
           <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5"></div>
           <div id="fhint-waist" style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('waist')">저장하기</button>
@@ -1090,6 +1099,7 @@
         <div class="measurement-form" id="form-hip">
           <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-hip"></div>
           <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
         </div>
@@ -1097,6 +1107,7 @@
         <div class="measurement-form" id="form-upper-leg">
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-upper-leg"></div>
           <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42"></div>
           <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
@@ -1105,6 +1116,7 @@
         <div class="measurement-form" id="form-lower-leg">
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-lower-leg"></div>
           <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
         </div>
@@ -1112,6 +1124,7 @@
         <div class="measurement-form" id="form-foot">
           <div class="form-title-row"><div class="form-title" id="ftitle-foot">FOOT / 발</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-foot">발 사이즈와 발볼을 입력하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-foot"></div>
           <div class="input-row">
             <div class="input-group"><label class="input-label" id="flabel-foot">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255"></div>
             <div class="input-group"><label class="input-label" id="flabel2-foot">발볼</label>
@@ -1421,6 +1434,18 @@
       'hero-btn':'내 비율 알아보기 →',
       'hero-badge1':'무료','hero-badge2':'즉시 결과','hero-badge3':'15개국 언어','hero-badge4':'개인정보 저장 없음','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
+      'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
+      'howto-weight':'⚖️ 아침 공복·화장실 후가 가장 정확해요. 체중계 위에서 움직이지 말고 측정하세요',
+      'howto-head':'📏 이마 중앙에서 귀 위를 지나 뒷머리까지 한 바퀴. 줄자가 수평인지 확인하세요',
+      'howto-shoulder':'📱 양 어깨 끝(견봉)에서 끝까지 직선 거리. 스마트폰(약 15cm)을 자로 써도 돼요',
+      'howto-chest':'📏 겨드랑이 바로 아래 가장 넓은 부위를 수평으로 한 바퀴. 줄자가 처지지 않게 주의하세요',
+      'howto-upper-arm':'✋ 팔을 자연스럽게 내린 상태에서 어깨 끝(견봉)→팔꿈치 뼈까지 바깥쪽 길이를 재세요',
+      'howto-lower-arm':'✋ 팔을 뻗은 상태에서 팔꿈치 뼈→손목 뼈까지 바깥쪽 길이를 재세요',
+      'howto-waist':'👖 배꼽 위 가장 잘록한 부분을 숨을 내쉰 후 재세요. cm로 재면 ÷ 2.54 = 인치',
+      'howto-hip':'📏 엉덩이 가장 튀어나온 부분을 수평으로 한 바퀴. 줄자가 처지지 않게 수평을 유지하세요',
+      'howto-upper-leg':'📏 사타구니 옆에서 무릎 위까지 다리 바깥쪽을 곧게 재세요',
+      'howto-lower-leg':'📏 무릎 아래에서 복숭아뼈(발목 위 튀어나온 뼈)까지 다리 바깥쪽을 재세요',
+      'howto-foot':'👟 발을 바닥에 붙이고 서서, 발뒤꿈치부터 가장 긴 발가락 끝까지 재세요',
       'qs-main':'⚡ ★ 3개만 입력해도 바로 분석!','qs-sub':'나머지는 선택 — 더 채울수록 결과가 정확해져요','qs-height':'★ 키','qs-weight':'★ 몸무게','qs-waist':'★ 허리',
       'hero-preview-score':'DNA 점수','hero-preview-grade':'등급','hero-preview-type':'체형 유형','hero-preview-goal':'목표 체중',
       'guide-section-title':'키가 같아도, 핏은 다르다',
@@ -1541,6 +1566,18 @@
       'hero-btn':'Analyze My Body →',
       'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
+      'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
+      'howto-weight':'⚖️ Best measured in the morning before eating. Stand still on the scale and wait for a stable reading',
+      'howto-head':'📏 Wrap a tape around your head — from forehead, above the ears, to the widest part at the back',
+      'howto-shoulder':'📱 Straight-line distance between both shoulder tips (acromion to acromion). Your phone (~15cm) works as a ruler',
+      'howto-chest':'📏 Wrap the tape around the widest part of your chest, just under the armpits, keeping it horizontal',
+      'howto-upper-arm':'✋ Arm relaxed at your side — measure from shoulder tip (acromion) down to elbow bone along the outer arm',
+      'howto-lower-arm':'✋ Arm extended — measure from elbow bone to wrist bone along the outer forearm',
+      'howto-waist':'👖 This is your pants waist size in inches. Don\'t know it? Measure the narrowest part of your waist (cm) ÷ 2.54',
+      'howto-hip':'📏 Measure around the widest part of your hips/buttocks, keeping the tape perfectly horizontal',
+      'howto-upper-leg':'📏 Measure along the outer leg from the hip joint down to just above the knee',
+      'howto-lower-leg':'📏 Measure along the outer leg from just below the knee to the ankle bone',
+      'howto-foot':'👟 Stand flat on the floor and measure from your heel to the tip of your longest toe',
       'qs-main':'⚡ ★ Just 3 inputs to get your analysis!','qs-sub':'Rest is optional — more inputs = more accurate results','qs-height':'★ Height','qs-weight':'★ Weight','qs-waist':'★ Waist',
       'hero-preview-score':'DNA Score','hero-preview-grade':'Grade','hero-preview-type':'Body Type','hero-preview-goal':'Goal Weight',
       'guide-section-title':'Same Height, Different Fit',
@@ -1648,6 +1685,18 @@
       'hero-btn':'自分の体型を調べる →',
       'hero-badge1':'無料','hero-badge2':'即座に結果','hero-badge3':'15言語対応','hero-badge4':'個人情報保存なし',
       'tip-card-title':'📏 測定前に30秒だけ！','tip-card-1':'メジャーなし？OK — スマホの縦幅（約15cm）を定規代わりに使えます','tip-card-2':'ひとつまみ（親指〜小指の端）のcmを先に測ると、肩や脚も簡単に計算できます','tip-card-3':'身長・体重・ウエストの3つだけで分析スタート！残りは任意です','tip-card-btn':'わかった、測定へ →',
+      'howto-height':'📐 壁に背中をつけて立ち、頭の上に本を水平に置いてマークし、床からの距離を測ってください',
+      'howto-weight':'⚖️ 朝食前・トイレ後が最も正確です。体重計の上でじっとして安定した数値を確認してください',
+      'howto-head':'📏 額の中央から耳の上を通って後頭部の最も広い部分まで一周巻いて測ってください',
+      'howto-shoulder':'📱 両肩先端（肩峰）間の直線距離。スマホ（約15cm）を定規代わりに使うと便利です',
+      'howto-chest':'📏 脇の下すぐ下の最も広い胸囲を水平に一周巻いて測ってください',
+      'howto-upper-arm':'✋ 腕を自然に下ろした状態で、肩先端（肩峰）から肘の骨まで外側の長さを測ってください',
+      'howto-lower-arm':'✋ 腕を伸ばした状態で、肘の骨から手首の骨まで外側の長さを測ってください',
+      'howto-waist':'👖 ズボンのウエストサイズ（インチ）です。わからない場合はウエスト周囲（cm）÷ 2.54',
+      'howto-hip':'📏 お尻の最も出っ張った部分を水平に一周。テープが垂れないよう水平を保ってください',
+      'howto-upper-leg':'📏 股関節の横から膝の上まで、脚の外側を真っすぐ測ってください',
+      'howto-lower-leg':'📏 膝の下からくるぶし（足首の出っ張った骨）まで、脚の外側を測ってください',
+      'howto-foot':'👟 床にしっかり足をつけて立ち、かかとから最も長い足指の先まで測ってください',
       'qs-main':'⚡ ★ 3項目だけで分析スタート！','qs-sub':'残りは任意 — 入力が多いほど精度UP','qs-height':'★ 身長','qs-weight':'★ 体重','qs-waist':'★ ウエスト',
       'hero-preview-score':'DNAスコア','hero-preview-grade':'グレード','hero-preview-type':'体型タイプ','hero-preview-goal':'目標体重',
       'guide-section-title':'同じ身長でも、フィットは違う',
@@ -1728,6 +1777,18 @@
       'hero-btn':'了解我的比例 →',
       'hero-badge1':'免费','hero-badge2':'即时结果','hero-badge3':'15种语言','hero-badge4':'不存储个人信息',
       'tip-card-title':'📏 测量前只需30秒！','tip-card-1':'没有卷尺？没关系 — 用手机竖向长度（约15cm）当尺子','tip-card-2':'先量一拃（拇指到小指）的cm，肩宽·腿长也能轻松换算','tip-card-3':'只需身高·体重·腰围3项即可开始分析！其余为选填','tip-card-btn':'明白了，去测量 →',
+      'howto-height':'📐 背靠墙站立，头顶放一本水平的书做标记，然后量地面到标记的距离',
+      'howto-weight':'⚖️ 早晨空腹如厕后测量最准确。站在体重秤上保持静止，等待数值稳定',
+      'howto-head':'📏 从额头中央绕过耳朵上方到后脑最宽处围一圈，保持皮尺水平',
+      'howto-shoulder':'📱 两肩端点（肩峰）之间的直线距离。用手机（约15cm）当尺子很方便',
+      'howto-chest':'📏 在腋下最宽的胸围处水平围一圈，保持皮尺不下垂',
+      'howto-upper-arm':'✋ 手臂自然下垂，从肩端（肩峰）到肘骨沿外侧量取长度',
+      'howto-lower-arm':'✋ 手臂伸直，从肘骨到腕骨沿外侧量取长度',
+      'howto-waist':'👖 这是裤子的腰围尺寸（英寸）。不知道？量腰最细处（cm）÷ 2.54',
+      'howto-hip':'📏 在臀部最突出处水平围一圈，保持皮尺完全水平',
+      'howto-upper-leg':'📏 从髋关节侧面向下到膝盖上方，沿腿外侧直线测量',
+      'howto-lower-leg':'📏 从膝盖下方到踝骨，沿腿外侧直线测量',
+      'howto-foot':'👟 平踩地面站立，从脚后跟到最长脚趾尖端测量',
       'qs-main':'⚡ ★ 只需3项即可开始分析！','qs-sub':'其余为选填 — 填得越多结果越准确','qs-height':'★ 身高','qs-weight':'★ 体重','qs-waist':'★ 腰围',
       'hero-preview-score':'DNA评分','hero-preview-grade':'等级','hero-preview-type':'体型类型','hero-preview-goal':'目标体重',
       'guide-section-title':'身高相同，比例各异',
@@ -1808,6 +1869,18 @@
       'hero-btn':'Découvrir mes proportions →',
       'hero-badge1':'Gratuit','hero-badge2':'Résultats immédiats','hero-badge3':'15 langues','hero-badge4':'Aucune donnée stockée',
       'tip-card-title':'📏 30 secondes avant de commencer !','tip-card-1':'Pas de mètre ? Pas de problème — utilisez votre téléphone (~15cm) comme règle','tip-card-2':'Mesurez une empan (pouce à auriculaire) en cm — utile pour épaules et jambes','tip-card-3':'Taille, poids et tour de taille = analyse immédiate ! Le reste est optionnel','tip-card-btn':'Compris, on mesure →',
+      'howto-height':'📐 Adossez-vous au mur, posez un livre à plat sur la tête, marquez et mesurez du sol à la marque',
+      'howto-weight':'⚖️ Mesurez le matin à jeun après les toilettes. Restez immobile sur la balance',
+      'howto-head':'📏 Enroulez le mètre autour de la tête — du front, au-dessus des oreilles, jusqu\'à la nuque',
+      'howto-shoulder':'📱 Distance droite entre les deux pointes des épaules (acromion). Votre téléphone (~15cm) fait office de règle',
+      'howto-chest':'📏 Enroulez le mètre autour de la partie la plus large de la poitrine, juste sous les aisselles',
+      'howto-upper-arm':'✋ Bras le long du corps — mesurez de la pointe de l\'épaule (acromion) au coude, côté externe',
+      'howto-lower-arm':'✋ Bras tendu — mesurez de l\'os du coude à l\'os du poignet, côté externe',
+      'howto-waist':'👖 C\'est la taille de votre pantalon en pouces. Inconnu ? Mesurez votre taille (cm) ÷ 2,54',
+      'howto-hip':'📏 Mesurez autour de la partie la plus large des hanches/fesses, le mètre bien horizontal',
+      'howto-upper-leg':'📏 Mesurez le long de la cuisse externe depuis la hanche jusqu\'au-dessus du genou',
+      'howto-lower-leg':'📏 Mesurez le long du mollet externe depuis sous le genou jusqu\'à la malléole',
+      'howto-foot':'👟 Debout à plat, mesurez du talon à l\'extrémité du doigt de pied le plus long',
       'qs-main':'⚡ ★ Seulement 3 mesures pour analyser !','qs-sub':'Le reste est optionnel — plus c\'est précis, meilleur le résultat','qs-height':'★ Taille','qs-weight':'★ Poids','qs-waist':'★ Tour de taille',
       'hero-preview-score':'Score DNA','hero-preview-grade':'Grade','hero-preview-type':'Type corporel','hero-preview-goal':'Poids cible',
       'guide-section-title':'Même taille, fit différent',
@@ -1888,6 +1961,18 @@
       'hero-btn':'Descubrir mis proporciones →',
       'hero-badge1':'Gratis','hero-badge2':'Resultados al instante','hero-badge3':'15 idiomas','hero-badge4':'Sin almacenamiento de datos',
       'tip-card-title':'📏 ¡30 segundos antes de empezar!','tip-card-1':'¿Sin cinta métrica? Sin problema — usa tu móvil (~15cm) como regla','tip-card-2':'Mide un palmo (pulgar a meñique) en cm — útil para hombros y piernas también','tip-card-3':'Altura, peso y cintura = ¡análisis inmediato! El resto es opcional','tip-card-btn':'Entendido, a medir →',
+      'howto-height':'📐 Párate contra la pared, coloca un libro plano sobre la cabeza, marca el punto y mide desde el suelo',
+      'howto-weight':'⚖️ Lo más exacto: mañana en ayunas después del baño. Quédate quieto sobre la báscula',
+      'howto-head':'📏 Rodea la cabeza con la cinta — desde la frente, sobre las orejas, hasta la parte más ancha de la nuca',
+      'howto-shoulder':'📱 Distancia recta entre los extremos de ambos hombros (acromion). Tu móvil (~15cm) sirve de regla',
+      'howto-chest':'📏 Rodea el pecho por su parte más ancha, justo bajo las axilas, manteniendo la cinta horizontal',
+      'howto-upper-arm':'✋ Brazo relajado — mide desde la punta del hombro (acromion) hasta el codo por el lado externo',
+      'howto-lower-arm':'✋ Brazo extendido — mide desde el hueso del codo hasta el hueso de la muñeca por el lado externo',
+      'howto-waist':'👖 Es la talla de pantalón en pulgadas. ¿No la sabes? Mide la cintura (cm) ÷ 2,54',
+      'howto-hip':'📏 Rodea la parte más ancha de las caderas/glúteos con la cinta perfectamente horizontal',
+      'howto-upper-leg':'📏 Mide el exterior del muslo desde la cadera hasta justo encima de la rodilla',
+      'howto-lower-leg':'📏 Mide el exterior de la pierna desde debajo de la rodilla hasta el tobillo',
+      'howto-foot':'👟 De pie con el pie plano, mide desde el talón hasta la punta del dedo más largo',
       'qs-main':'⚡ ★ ¡Solo 3 datos para analizar!','qs-sub':'El resto es opcional — más datos = resultados más precisos','qs-height':'★ Altura','qs-weight':'★ Peso','qs-waist':'★ Cintura',
       'hero-preview-score':'Puntuación DNA','hero-preview-grade':'Grado','hero-preview-type':'Tipo corporal','hero-preview-goal':'Peso objetivo',
       'guide-section-title':'Misma altura, fit diferente',
@@ -1968,6 +2053,18 @@
       'hero-btn':'Descobrir minhas proporções →',
       'hero-badge1':'Grátis','hero-badge2':'Resultados imediatos','hero-badge3':'15 idiomas','hero-badge4':'Sem armazenamento de dados',
       'tip-card-title':'📏 30 segundos antes de começar!','tip-card-1':'Sem fita métrica? Sem problema — use seu celular (~15cm) como régua','tip-card-2':'Meça um palmo (polegar ao dedo mínimo) em cm — útil para ombros e pernas','tip-card-3':'Altura, peso e cintura = análise imediata! O resto é opcional','tip-card-btn':'Entendi, vamos medir →',
+      'howto-height':'📐 Fique de costas para a parede, coloque um livro plano na cabeça, marque e meça do chão à marca',
+      'howto-weight':'⚖️ Mais preciso de manhã em jejum após o banheiro. Fique imóvel na balança até estabilizar',
+      'howto-head':'📏 Enrole a fita ao redor da cabeça — da testa, acima das orelhas, até a parte mais larga da nuca',
+      'howto-shoulder':'📱 Distância em linha reta entre as pontas dos dois ombros (acrômio). Seu celular (~15cm) serve de régua',
+      'howto-chest':'📏 Enrole a fita na parte mais larga do peito, logo abaixo das axilas, mantendo-a horizontal',
+      'howto-upper-arm':'✋ Braço relaxado — meça da ponta do ombro (acrômio) ao cotovelo pelo lado externo',
+      'howto-lower-arm':'✋ Braço estendido — meça do osso do cotovelo ao osso do pulso pelo lado externo',
+      'howto-waist':'👖 É o tamanho da calça em polegadas. Não sabe? Meça a cintura (cm) ÷ 2,54',
+      'howto-hip':'📏 Meça ao redor da parte mais larga dos quadris/glúteos mantendo a fita perfeitamente horizontal',
+      'howto-upper-leg':'📏 Meça pelo exterior da coxa desde o quadril até acima do joelho',
+      'howto-lower-leg':'📏 Meça pelo exterior da perna desde abaixo do joelho até o tornozelo',
+      'howto-foot':'👟 De pé com o pé no chão, meça do calcanhar até a ponta do dedo mais longo',
       'qs-main':'⚡ ★ Apenas 3 medidas para analisar!','qs-sub':'O resto é opcional — mais dados = resultados mais precisos','qs-height':'★ Altura','qs-weight':'★ Peso','qs-waist':'★ Cintura',
       'hero-preview-score':'Pontuação DNA','hero-preview-grade':'Grau','hero-preview-type':'Tipo corporal','hero-preview-goal':'Peso alvo',
       'guide-section-title':'Mesma altura, fit diferente',
@@ -2048,6 +2145,18 @@
       'hero-btn':'Meine Proportionen entdecken →',
       'hero-badge1':'Kostenlos','hero-badge2':'Sofortige Ergebnisse','hero-badge3':'15 Sprachen','hero-badge4':'Keine Datenspeicherung',
       'tip-card-title':'📏 30 Sekunden vor dem Start!','tip-card-1':'Kein Maßband? Kein Problem — nutze dein Handy (~15cm) als Lineal','tip-card-2':'Miss eine Handspanne (Daumen bis kleiner Finger) in cm — nützlich für Schultern & Beine','tip-card-3':'Größe, Gewicht & Taille = sofortige Analyse! Alles andere ist optional','tip-card-btn':'Verstanden, jetzt messen →',
+      'howto-height':'📐 Steh mit dem Rücken zur Wand, leg ein Buch flach auf den Kopf, markiere und miss vom Boden zur Markierung',
+      'howto-weight':'⚖️ Morgens nüchtern nach dem Toilettengang am genauesten. Ruhig auf der Waage stehen bis der Wert stabil ist',
+      'howto-head':'📏 Das Maßband um den Kopf legen — von der Stirn, über den Ohren, bis zum breitesten Teil des Hinterkopfs',
+      'howto-shoulder':'📱 Gerader Abstand zwischen den Schulterenden (Akromion). Dein Handy (~15cm) eignet sich als Lineal',
+      'howto-chest':'📏 Das Maßband um die breiteste Stelle der Brust, direkt unter den Achseln, waagerecht anlegen',
+      'howto-upper-arm':'✋ Arm locker hängen lassen — von der Schultersspitze (Akromion) zum Ellbogenknochen außen messen',
+      'howto-lower-arm':'✋ Arm ausstrecken — vom Ellbogenknochen zum Handgelenkknochen außen messen',
+      'howto-waist':'👖 Das ist deine Hosengröße in Zoll. Unbekannt? Taillenumfang (cm) ÷ 2,54',
+      'howto-hip':'📏 Um die breiteste Stelle der Hüften/des Gesäßes messen, Maßband waagerecht halten',
+      'howto-upper-leg':'📏 Außenseite des Oberschenkels von der Hüfte bis oberhalb des Knies messen',
+      'howto-lower-leg':'📏 Außenseite des Unterschenkels von unterhalb des Knies bis zum Knöchel messen',
+      'howto-foot':'👟 Flach auf dem Boden stehen und von der Ferse bis zur Spitze des längsten Zehs messen',
       'qs-main':'⚡ ★ Nur 3 Eingaben für die Analyse!','qs-sub':'Rest ist optional — mehr Angaben = genauere Ergebnisse','qs-height':'★ Größe','qs-weight':'★ Gewicht','qs-waist':'★ Taille',
       'hero-preview-score':'DNA-Score','hero-preview-grade':'Note','hero-preview-type':'Körpertyp','hero-preview-goal':'Zielgewicht',
       'guide-section-title':'Gleiche Größe, anderer Fit',
@@ -2128,6 +2237,18 @@
       'hero-btn':'Scopri le mie proporzioni →',
       'hero-badge1':'Gratuito','hero-badge2':'Risultati immediati','hero-badge3':'15 lingue','hero-badge4':'Nessun dato memorizzato',
       'tip-card-title':'📏 30 secondi prima di iniziare!','tip-card-1':'Senza metro? Nessun problema — usa lo smartphone (~15cm) come righello','tip-card-2':'Misura una spanna (pollice al mignolo) in cm — utile per spalle e gambe','tip-card-3':'Altezza, peso e vita = analisi immediata! Il resto è opzionale','tip-card-btn':'Capito, si misura →',
+      'howto-height':'📐 Schiena al muro, appoggia un libro in testa, segna il punto e misura dal pavimento al segno',
+      'howto-weight':'⚖️ Più preciso al mattino a digiuno dopo il bagno. Stai fermo sulla bilancia fino a quando il valore si stabilizza',
+      'howto-head':'📏 Avvolgi il metro attorno alla testa — dalla fronte, sopra le orecchie, fino alla parte più larga della nuca',
+      'howto-shoulder':'📱 Distanza in linea retta tra le punte delle spalle (acromion). Il tuo smartphone (~15cm) funge da righello',
+      'howto-chest':'📏 Avvolgi il metro attorno alla parte più larga del petto, sotto le ascelle, mantenendolo orizzontale',
+      'howto-upper-arm':'✋ Braccio rilassato — misura dalla punta della spalla (acromion) al gomito lungo il lato esterno',
+      'howto-lower-arm':'✋ Braccio teso — misura dall\'osso del gomito all\'osso del polso lungo il lato esterno',
+      'howto-waist':'👖 È la taglia dei pantaloni in pollici. Non la conosci? Misura la vita (cm) ÷ 2,54',
+      'howto-hip':'📏 Misura attorno alla parte più larga dei fianchi/glutei, mantenendo il metro perfettamente orizzontale',
+      'howto-upper-leg':'📏 Misura l\'esterno della coscia dall\'anca fino a sopra il ginocchio',
+      'howto-lower-leg':'📏 Misura l\'esterno della gamba da sotto il ginocchio fino alla caviglia',
+      'howto-foot':'👟 In piedi con il piede a terra, misura dal tallone alla punta del dito più lungo',
       'qs-main':'⚡ ★ Solo 3 misure per l\'analisi!','qs-sub':'Il resto è opzionale — più dati = risultati più precisi','qs-height':'★ Altezza','qs-weight':'★ Peso','qs-waist':'★ Vita',
       'hero-preview-score':'Punteggio DNA','hero-preview-grade':'Grado','hero-preview-type':'Tipo corporeo','hero-preview-goal':'Peso obiettivo',
       'guide-section-title':'Stessa altezza, fit diverso',
@@ -2208,6 +2329,18 @@
       'hero-btn':'Узнать мои пропорции →',
       'hero-badge1':'Бесплатно','hero-badge2':'Мгновенные результаты','hero-badge3':'15 языков','hero-badge4':'Данные не сохраняются',
       'tip-card-title':'📏 30 секунд перед началом!','tip-card-1':'Нет рулетки? Не беда — используй телефон (~15см) как линейку','tip-card-2':'Измерь пядь (большой до мизинца) в см — пригодится для плеч и ног','tip-card-3':'Рост, вес и талия = мгновенный анализ! Остальное необязательно','tip-card-btn':'Понял, начинаем →',
+      'howto-height':'📐 Встань спиной к стене, положи книгу на голову горизонтально, сделай отметку и измерь от пола',
+      'howto-weight':'⚖️ Точнее всего утром натощак после туалета. Стой неподвижно на весах до стабильного показания',
+      'howto-head':'📏 Оберни сантиметровую ленту вокруг головы — со лба, над ушами, до самой широкой части затылка',
+      'howto-shoulder':'📱 Прямое расстояние между концами обоих плеч (акромион). Телефон (~15см) подойдёт как линейка',
+      'howto-chest':'📏 Оберни ленту вокруг самой широкой части груди прямо под подмышками, держи горизонтально',
+      'howto-upper-arm':'✋ Рука расслаблена вдоль тела — измерь от кончика плеча (акромион) до локтя по внешней стороне',
+      'howto-lower-arm':'✋ Рука вытянута — измерь от локтевой кости до лучезапястной по внешней стороне',
+      'howto-waist':'👖 Это размер брюк в дюймах. Не знаешь? Измерь талию (см) ÷ 2,54',
+      'howto-hip':'📏 Измерь окружность в самом широком месте бёдер/ягодиц, держи ленту строго горизонтально',
+      'howto-upper-leg':'📏 Измерь внешнюю сторону бедра от тазобедренного сустава до выше колена',
+      'howto-lower-leg':'📏 Измерь внешнюю сторону голени от ниже колена до лодыжки',
+      'howto-foot':'👟 Встань ровно на пол и измерь от пятки до кончика самого длинного пальца',
       'qs-main':'⚡ ★ Всего 3 параметра для анализа!','qs-sub':'Остальное необязательно — больше данных = точнее результат','qs-height':'★ Рост','qs-weight':'★ Вес','qs-waist':'★ Талия',
       'hero-preview-score':'ДНК-балл','hero-preview-grade':'Оценка','hero-preview-type':'Тип телосложения','hero-preview-goal':'Целевой вес',
       'guide-section-title':'Одинаковый рост, разный фит',
@@ -2288,6 +2421,18 @@
       'hero-btn':'اكتشف نسبي ←',
       'hero-badge1':'مجاني','hero-badge2':'نتائج فورية','hero-badge3':'15 لغة','hero-badge4':'لا تخزين للبيانات',
       'tip-card-title':'📏 30 ثانية قبل البدء!','tip-card-1':'بدون شريط قياس؟ لا مشكلة — استخدم هاتفك (~15سم) كمسطرة','tip-card-2':'قس شبرًا (من الإبهام إلى الخنصر) بالسم — مفيد للكتفين والساقين أيضًا','tip-card-3':'الطول والوزن والخصر = تحليل فوري! الباقي اختياري','tip-card-btn':'فهمت، نبدأ القياس →',
+      'howto-height':'📐 قف مستنداً للحائط، ضع كتاباً أفقياً على رأسك وعلّم المكان ثم قس من الأرض للعلامة',
+      'howto-weight':'⚖️ الأدق: صباحاً على الريق بعد الحمام. قف ثابتاً على الميزان حتى يستقر الرقم',
+      'howto-head':'📏 لفّ الشريط حول الرأس — من الجبهة فوق الأذنين حتى أوسع جزء في مؤخرة الرأس',
+      'howto-shoulder':'📱 المسافة المستقيمة بين طرفي الكتفين (الأخرم). هاتفك (~15سم) يصلح مسطرة',
+      'howto-chest':'📏 لفّ الشريط حول أوسع جزء في الصدر أسفل الإبطين مع الحفاظ على الاستواء',
+      'howto-upper-arm':'✋ الذراع مسترخية — قس من طرف الكتف (الأخرم) حتى عظمة الكوع على الجانب الخارجي',
+      'howto-lower-arm':'✋ الذراع ممدودة — قس من عظمة الكوع حتى عظمة الرسغ على الجانب الخارجي',
+      'howto-waist':'👖 هذا مقاس الخصر للبنطلون بالإنش. لا تعرفه؟ قس محيط الخصر (سم) ÷ 2.54',
+      'howto-hip':'📏 قس حول أوسع جزء في الأرداف مع الحفاظ على الشريط أفقياً تماماً',
+      'howto-upper-leg':'📏 قس الجانب الخارجي للفخذ من مفصل الورك حتى فوق الركبة',
+      'howto-lower-leg':'📏 قس الجانب الخارجي للساق من أسفل الركبة حتى عظمة الكاحل',
+      'howto-foot':'👟 قف على الأرض وقس من الكعب حتى طرف أطول إصبع',
       'qs-main':'⚡ ★ 3 مدخلات فقط للتحليل!','qs-sub':'الباقي اختياري — كلما زادت البيانات زادت الدقة','qs-height':'★ الطول','qs-weight':'★ الوزن','qs-waist':'★ الخصر',
       'hero-preview-score':'نقاط DNA','hero-preview-grade':'الدرجة','hero-preview-type':'نوع الجسم','hero-preview-goal':'الوزن المستهدف',
       'guide-section-title':'نفس الطول، ملاءمة مختلفة',
@@ -2365,6 +2510,18 @@
       'hero-btn':'अपने अनुपात जानें →',
       'hero-badge1':'मुफ़्त','hero-badge2':'तुरंत परिणाम','hero-badge3':'15 भाषाएं','hero-badge4':'कोई डेटा संग्रहीत नहीं',
       'tip-card-title':'📏 शुरू करने से पहले 30 सेकंड!','tip-card-1':'टेप नहीं है? कोई बात नहीं — फोन की लंबाई (~15cm) को रूलर की तरह इस्तेमाल करें','tip-card-2':'एक बालिश्त (अंगूठे से छोटी उंगली तक) cm में मापें — कंधों और पैरों के लिए भी उपयोगी','tip-card-3':'ऊंचाई, वजन और कमर = तुरंत विश्लेषण! बाकी सब वैकल्पिक है','tip-card-btn':'समझ गया, मापने चलें →',
+      'howto-height':'📐 दीवार से पीठ लगाकर खड़े हों, सिर पर किताब रखें, निशान लगाएं और फर्श से निशान तक मापें',
+      'howto-weight':'⚖️ सुबह खाली पेट शौच के बाद सबसे सटीक। तराजू पर स्थिर खड़े रहें',
+      'howto-head':'📏 माथे से कानों के ऊपर से होते हुए सिर के पिछले हिस्से तक टेप लपेटें',
+      'howto-shoulder':'📱 दोनों कंधों के सिरों (एक्रोमियन) के बीच की सीधी दूरी। फोन (~15cm) रूलर की तरह काम करता है',
+      'howto-chest':'📏 बगल के ठीक नीचे सीने के सबसे चौड़े हिस्से पर टेप क्षैतिज रूप से लपेटें',
+      'howto-upper-arm':'✋ हाथ को ढीला लटकाएं — कंधे की नोक (एक्रोमियन) से कोहनी की हड्डी तक बाहरी तरफ से मापें',
+      'howto-lower-arm':'✋ हाथ फैलाएं — कोहनी की हड्डी से कलाई की हड्डी तक बाहरी तरफ से मापें',
+      'howto-waist':'👖 यह पैंट का कमर साइज इंच में है। नहीं पता? कमर (cm) ÷ 2.54',
+      'howto-hip':'📏 कूल्हे/नितंब के सबसे चौड़े हिस्से पर टेप बिल्कुल क्षैतिज रखकर मापें',
+      'howto-upper-leg':'📏 कूल्हे के जोड़ से घुटने के ऊपर तक जांघ के बाहरी हिस्से को सीधे मापें',
+      'howto-lower-leg':'📏 घुटने के नीचे से टखने की हड्डी तक पिंडली के बाहरी हिस्से को मापें',
+      'howto-foot':'👟 फर्श पर सीधे खड़े हों और एड़ी से सबसे लंबी उंगली की नोक तक मापें',
       'qs-main':'⚡ ★ सिर्फ 3 माप से विश्लेषण करें!','qs-sub':'बाकी वैकल्पिक — अधिक डेटा = अधिक सटीक परिणाम','qs-height':'★ ऊंचाई','qs-weight':'★ वजन','qs-waist':'★ कमर',
       'hero-preview-score':'DNA स्कोर','hero-preview-grade':'ग्रेड','hero-preview-type':'शरीर प्रकार','hero-preview-goal':'लक्ष्य वजन',
       'guide-section-title':'एक ही ऊंचाई, अलग फिट',
@@ -2443,6 +2600,18 @@
       'hero-btn':'ค้นพบสัดส่วนของฉัน →',
       'hero-badge1':'ฟรี','hero-badge2':'ผลลัพธ์ทันที','hero-badge3':'15 ภาษา','hero-badge4':'ไม่บันทึกข้อมูลส่วนตัว',
       'tip-card-title':'📏 30 วินาทีก่อนเริ่ม!','tip-card-1':'ไม่มีตลับเมตร? ไม่เป็นไร — ใช้โทรศัพท์ (~15cm) แทนไม้บรรทัดได้เลย','tip-card-2':'วัดหนึ่งคืบ (นิ้วโป้งถึงนิ้วก้อย) เป็น cm ไว้ก่อน — ใช้คำนวณไหล่และขาได้ง่าย','tip-card-3':'แค่ส่วนสูง น้ำหนัก และรอบเอว = วิเคราะห์ได้ทันที! ที่เหลือเป็นตัวเลือก','tip-card-btn':'เข้าใจแล้ว ไปวัดเลย →',
+      'howto-height':'📐 ยืนพิงกำแพง วางหนังสือแนบศีรษะให้ระนาบ ทำเครื่องหมาย แล้ววัดจากพื้นถึงจุดนั้น',
+      'howto-weight':'⚖️ แม่นยำที่สุดตอนเช้าก่อนกินข้าวหลังเข้าห้องน้ำ ยืนนิ่งบนตาชั่งจนตัวเลขคงที่',
+      'howto-head':'📏 พันสายวัดรอบศีรษะ — จากหน้าผาก ผ่านเหนือหู ไปถึงส่วนที่กว้างที่สุดของท้ายทอย',
+      'howto-shoulder':'📱 ระยะตรงระหว่างปลายไหล่สองข้าง (acromion) โทรศัพท์ (~15cm) ใช้แทนไม้บรรทัดได้',
+      'howto-chest':'📏 พันสายวัดรอบหน้าอกส่วนที่กว้างที่สุด ใต้รักแร้ทันที วางให้แนวนอน',
+      'howto-upper-arm':'✋ แขนห้อยตามธรรมชาติ วัดจากปลายไหล่ (acromion) ถึงกระดูกข้อศอกด้านนอก',
+      'howto-lower-arm':'✋ เหยียดแขน วัดจากกระดูกข้อศอกถึงกระดูกข้อมือด้านนอก',
+      'howto-waist':'👖 คือขนาดเอวกางเกงเป็นนิ้ว ไม่รู้? วัดรอบเอวตรงที่คอดสุด (cm) ÷ 2.54',
+      'howto-hip':'📏 พันสายวัดรอบสะโพกส่วนที่กว้างที่สุด รักษาแนวนอนตลอด',
+      'howto-upper-leg':'📏 วัดด้านนอกต้นขาจากข้อสะโพกลงมาถึงเหนือเข่า',
+      'howto-lower-leg':'📏 วัดด้านนอกน่องจากใต้เข่าลงมาถึงกระดูกข้อเท้า',
+      'howto-foot':'👟 ยืนเหยียบพื้นราบ วัดจากส้นเท้าถึงปลายนิ้วเท้าที่ยาวที่สุด',
       'qs-main':'⚡ ★ แค่ 3 ค่าก็วิเคราะห์ได้!','qs-sub':'ที่เหลือเป็นตัวเลือก — ยิ่งใส่มากยิ่งแม่นยำ','qs-height':'★ ส่วนสูง','qs-weight':'★ น้ำหนัก','qs-waist':'★ รอบเอว',
       'hero-preview-score':'คะแนน DNA','hero-preview-grade':'เกรด','hero-preview-type':'ประเภทร่างกาย','hero-preview-goal':'น้ำหนักเป้าหมาย',
       'guide-section-title':'ส่วนสูงเท่ากัน ฟิตต่างกัน',
@@ -2520,6 +2689,18 @@
       'hero-btn':'Temukan Proporsi Saya →',
       'hero-badge1':'Gratis','hero-badge2':'Hasil Instan','hero-badge3':'15 Bahasa','hero-badge4':'Tidak Ada Data Tersimpan',
       'tip-card-title':'📏 30 detik sebelum mulai!','tip-card-1':'Tidak punya meteran? Tidak apa-apa — pakai panjang ponsel (~15cm) sebagai penggaris','tip-card-2':'Ukur satu jengkal (ibu jari ke kelingking) dalam cm — berguna untuk bahu dan kaki','tip-card-3':'Tinggi, berat, dan pinggang = analisis langsung! Sisanya opsional','tip-card-btn':'Mengerti, mulai ukur →',
+      'howto-height':'📐 Berdiri dengan punggung ke dinding, letakkan buku datar di kepala, tandai lalu ukur dari lantai ke tanda',
+      'howto-weight':'⚖️ Paling akurat pagi hari sebelum makan setelah ke toilet. Berdiri diam di timbangan sampai angka stabil',
+      'howto-head':'📏 Lilitkan meteran di kepala — dari dahi, di atas telinga, hingga bagian paling lebar di belakang kepala',
+      'howto-shoulder':'📱 Jarak lurus antara kedua ujung bahu (akromion). Ponsel (~15cm) bisa dipakai sebagai penggaris',
+      'howto-chest':'📏 Lilitkan meteran di bagian dada terlebar tepat di bawah ketiak, jaga agar horizontal',
+      'howto-upper-arm':'✋ Lengan rileks di sisi tubuh — ukur dari ujung bahu (akromion) ke tulang siku sisi luar',
+      'howto-lower-arm':'✋ Lengan direntangkan — ukur dari tulang siku ke tulang pergelangan tangan sisi luar',
+      'howto-waist':'👖 Ini ukuran pinggang celana dalam inci. Tidak tahu? Ukur pinggang (cm) ÷ 2,54',
+      'howto-hip':'📏 Ukur keliling bagian pinggul/bokong terlebar dengan meteran tepat horizontal',
+      'howto-upper-leg':'📏 Ukur sisi luar paha dari sendi pinggul hingga di atas lutut',
+      'howto-lower-leg':'📏 Ukur sisi luar betis dari bawah lutut hingga tulang pergelangan kaki',
+      'howto-foot':'👟 Berdiri rata di lantai, ukur dari tumit hingga ujung jari kaki terpanjang',
       'qs-main':'⚡ ★ Cukup 3 data untuk analisis!','qs-sub':'Sisanya opsional — lebih banyak data = hasil lebih akurat','qs-height':'★ Tinggi','qs-weight':'★ Berat','qs-waist':'★ Pinggang',
       'hero-preview-score':'Skor DNA','hero-preview-grade':'Grade','hero-preview-type':'Tipe Tubuh','hero-preview-goal':'Berat Target',
       'guide-section-title':'Tinggi Sama, Fit Berbeda',
@@ -2597,6 +2778,18 @@
       'hero-btn':'Khám phá tỉ lệ của tôi →',
       'hero-badge1':'Miễn phí','hero-badge2':'Kết quả ngay','hero-badge3':'15 ngôn ngữ','hero-badge4':'Không lưu dữ liệu',
       'tip-card-title':'📏 30 giây trước khi bắt đầu!','tip-card-1':'Không có thước dây? Không sao — dùng điện thoại (~15cm) làm thước kẻ','tip-card-2':'Đo một gang tay (ngón cái đến ngón út) bằng cm — hữu ích cho vai và chân','tip-card-3':'Chiều cao, cân nặng và vòng eo = phân tích ngay! Phần còn lại là tùy chọn','tip-card-btn':'Hiểu rồi, đo thôi →',
+      'howto-height':'📐 Đứng sát tường, đặt sách nằm ngang lên đầu, đánh dấu rồi đo từ sàn đến vạch',
+      'howto-weight':'⚖️ Chính xác nhất vào buổi sáng trước khi ăn sau khi vệ sinh. Đứng yên trên cân đến khi số ổn định',
+      'howto-head':'📏 Quấn thước quanh đầu — từ trán, qua trên tai, đến phần rộng nhất phía sau đầu',
+      'howto-shoulder':'📱 Khoảng cách thẳng giữa hai đầu vai (mỏm vai). Điện thoại (~15cm) dùng được như thước',
+      'howto-chest':'📏 Quấn thước quanh phần ngực rộng nhất ngay dưới nách, giữ nằm ngang',
+      'howto-upper-arm':'✋ Tay thả tự nhiên — đo từ đầu vai (mỏm vai) đến xương khuỷu tay phía ngoài',
+      'howto-lower-arm':'✋ Duỗi thẳng tay — đo từ xương khuỷu đến xương cổ tay phía ngoài',
+      'howto-waist':'👖 Đây là số đo lưng quần tính bằng inch. Chưa biết? Đo vòng eo (cm) ÷ 2,54',
+      'howto-hip':'📏 Đo quanh phần rộng nhất của hông/mông, giữ thước nằm ngang hoàn toàn',
+      'howto-upper-leg':'📏 Đo phía ngoài đùi từ khớp hông xuống đến trên đầu gối',
+      'howto-lower-leg':'📏 Đo phía ngoài bắp chân từ dưới đầu gối xuống đến mắt cá chân',
+      'howto-foot':'👟 Đứng thẳng trên sàn, đo từ gót chân đến đầu ngón dài nhất',
       'qs-main':'⚡ ★ Chỉ cần 3 số liệu để phân tích!','qs-sub':'Phần còn lại là tùy chọn — càng nhiều dữ liệu càng chính xác','qs-height':'★ Chiều cao','qs-weight':'★ Cân nặng','qs-waist':'★ Vòng eo',
       'hero-preview-score':'Điểm DNA','hero-preview-grade':'Hạng','hero-preview-type':'Loại cơ thể','hero-preview-goal':'Cân nặng mục tiêu',
       'guide-section-title':'Chiều cao như nhau, dáng khác nhau',
