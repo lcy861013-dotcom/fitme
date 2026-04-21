@@ -262,6 +262,14 @@
     .panel-subtitle { font-size: 12px; color: var(--muted); line-height: 1.7; }
     .input-area { flex: 1; padding: 24px; overflow-y: auto; }
     .input-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 180px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 13px; text-align: center; line-height: 2; }
+    .measure-tip-card { background: rgba(232,255,71,0.05); border: 1px solid rgba(232,255,71,0.25); border-radius: 16px; padding: 20px 24px; margin-bottom: 20px; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease; max-height: 300px; opacity: 1; }
+    .measure-tip-card.collapsed { max-height: 0; opacity: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; }
+    .measure-tip-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
+    .measure-tip-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .measure-tip-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .measure-tip-item .tip-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+    .measure-tip-btn { display: inline-block; padding: 8px 20px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; border: none; border-radius: 100px; cursor: pointer; transition: background 0.2s; }
+    .measure-tip-btn:hover { background: #f5ff80; }
     .measurement-form { display: none; }
     .measurement-form.visible { display: block; animation: fadeIn 0.2s; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -915,6 +923,15 @@
 
   <!-- MAIN ANALYSIS -->
   <div class="main-container" id="analysis">
+    <div class="measure-tip-card" id="measure-tip-card">
+      <div class="measure-tip-title" data-i18n="tip-card-title">📏 측정 전 30초만요!</div>
+      <div class="measure-tip-list">
+        <div class="measure-tip-item"><span class="tip-icon">📱</span><span data-i18n="tip-card-1">줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요</span></div>
+        <div class="measure-tip-item"><span class="tip-icon">✋</span><span data-i18n="tip-card-2">한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요</span></div>
+        <div class="measure-tip-item"><span class="tip-icon">⭐</span><span data-i18n="tip-card-3">키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요</span></div>
+      </div>
+      <button class="measure-tip-btn" onclick="dismissTipCard()" data-i18n="tip-card-btn">알겠어요, 재러 가기 →</button>
+    </div>
     <div class="quick-start-banner">
       <div>
         <div class="qs-main" data-i18n="qs-main">⚡ ★ 3개만 입력해도 바로 분석!</div>
@@ -1403,6 +1420,7 @@
       'hero-sub':'옷을 못 입는 게 아니에요. 내 몸을 몰랐던 거예요.<br>같은 키라도 다리 길이, 어깨 너비가 다르면 핏이 완전히 달라져요.',
       'hero-btn':'내 비율 알아보기 →',
       'hero-badge1':'무료','hero-badge2':'즉시 결과','hero-badge3':'15개국 언어','hero-badge4':'개인정보 저장 없음','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
+      'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
       'qs-main':'⚡ ★ 3개만 입력해도 바로 분석!','qs-sub':'나머지는 선택 — 더 채울수록 결과가 정확해져요','qs-height':'★ 키','qs-weight':'★ 몸무게','qs-waist':'★ 허리',
       'hero-preview-score':'DNA 점수','hero-preview-grade':'등급','hero-preview-type':'체형 유형','hero-preview-goal':'목표 체중',
       'guide-section-title':'키가 같아도, 핏은 다르다',
@@ -1522,6 +1540,7 @@
       'hero-sub':'Enter your measurements → get your FITME DNA score, body type, style picks & 90-day plan.<br>Free · Under 3 minutes · No signup needed.',
       'hero-btn':'Analyze My Body →',
       'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
+      'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
       'qs-main':'⚡ ★ Just 3 inputs to get your analysis!','qs-sub':'Rest is optional — more inputs = more accurate results','qs-height':'★ Height','qs-weight':'★ Weight','qs-waist':'★ Waist',
       'hero-preview-score':'DNA Score','hero-preview-grade':'Grade','hero-preview-type':'Body Type','hero-preview-goal':'Goal Weight',
       'guide-section-title':'Same Height, Different Fit',
@@ -1628,6 +1647,7 @@
       'hero-sub':'おしゃれができないんじゃない。自分の体を知らなかっただけ。<br>同じ身長でも、脚の長さや肩幅が違えば、フィット感はまったく変わります。',
       'hero-btn':'自分の体型を調べる →',
       'hero-badge1':'無料','hero-badge2':'即座に結果','hero-badge3':'15言語対応','hero-badge4':'個人情報保存なし',
+      'tip-card-title':'📏 測定前に30秒だけ！','tip-card-1':'メジャーなし？OK — スマホの縦幅（約15cm）を定規代わりに使えます','tip-card-2':'ひとつまみ（親指〜小指の端）のcmを先に測ると、肩や脚も簡単に計算できます','tip-card-3':'身長・体重・ウエストの3つだけで分析スタート！残りは任意です','tip-card-btn':'わかった、測定へ →',
       'qs-main':'⚡ ★ 3項目だけで分析スタート！','qs-sub':'残りは任意 — 入力が多いほど精度UP','qs-height':'★ 身長','qs-weight':'★ 体重','qs-waist':'★ ウエスト',
       'hero-preview-score':'DNAスコア','hero-preview-grade':'グレード','hero-preview-type':'体型タイプ','hero-preview-goal':'目標体重',
       'guide-section-title':'同じ身長でも、フィットは違う',
@@ -1707,6 +1727,7 @@
       'hero-sub':'不是穿不好衣服，是不了解自己的身体。<br>同样的身高，腿长和肩宽不同，穿出来的效果完全不同。',
       'hero-btn':'了解我的比例 →',
       'hero-badge1':'免费','hero-badge2':'即时结果','hero-badge3':'15种语言','hero-badge4':'不存储个人信息',
+      'tip-card-title':'📏 测量前只需30秒！','tip-card-1':'没有卷尺？没关系 — 用手机竖向长度（约15cm）当尺子','tip-card-2':'先量一拃（拇指到小指）的cm，肩宽·腿长也能轻松换算','tip-card-3':'只需身高·体重·腰围3项即可开始分析！其余为选填','tip-card-btn':'明白了，去测量 →',
       'qs-main':'⚡ ★ 只需3项即可开始分析！','qs-sub':'其余为选填 — 填得越多结果越准确','qs-height':'★ 身高','qs-weight':'★ 体重','qs-waist':'★ 腰围',
       'hero-preview-score':'DNA评分','hero-preview-grade':'等级','hero-preview-type':'体型类型','hero-preview-goal':'目标体重',
       'guide-section-title':'身高相同，比例各异',
@@ -1786,6 +1807,7 @@
       'hero-sub':'Ce n\'est pas que vous ne savez pas vous habiller. Vous ne connaissiez pas votre corps.<br>Même taille, mais longueur des jambes et largeur des épaules changent tout.',
       'hero-btn':'Découvrir mes proportions →',
       'hero-badge1':'Gratuit','hero-badge2':'Résultats immédiats','hero-badge3':'15 langues','hero-badge4':'Aucune donnée stockée',
+      'tip-card-title':'📏 30 secondes avant de commencer !','tip-card-1':'Pas de mètre ? Pas de problème — utilisez votre téléphone (~15cm) comme règle','tip-card-2':'Mesurez une empan (pouce à auriculaire) en cm — utile pour épaules et jambes','tip-card-3':'Taille, poids et tour de taille = analyse immédiate ! Le reste est optionnel','tip-card-btn':'Compris, on mesure →',
       'qs-main':'⚡ ★ Seulement 3 mesures pour analyser !','qs-sub':'Le reste est optionnel — plus c\'est précis, meilleur le résultat','qs-height':'★ Taille','qs-weight':'★ Poids','qs-waist':'★ Tour de taille',
       'hero-preview-score':'Score DNA','hero-preview-grade':'Grade','hero-preview-type':'Type corporel','hero-preview-goal':'Poids cible',
       'guide-section-title':'Même taille, fit différent',
@@ -1865,6 +1887,7 @@
       'hero-sub':'No es que no sepas vestirte. Solo que no conocías tu cuerpo.<br>Misma altura, pero la longitud de las piernas y el ancho de hombros lo cambian todo.',
       'hero-btn':'Descubrir mis proporciones →',
       'hero-badge1':'Gratis','hero-badge2':'Resultados al instante','hero-badge3':'15 idiomas','hero-badge4':'Sin almacenamiento de datos',
+      'tip-card-title':'📏 ¡30 segundos antes de empezar!','tip-card-1':'¿Sin cinta métrica? Sin problema — usa tu móvil (~15cm) como regla','tip-card-2':'Mide un palmo (pulgar a meñique) en cm — útil para hombros y piernas también','tip-card-3':'Altura, peso y cintura = ¡análisis inmediato! El resto es opcional','tip-card-btn':'Entendido, a medir →',
       'qs-main':'⚡ ★ ¡Solo 3 datos para analizar!','qs-sub':'El resto es opcional — más datos = resultados más precisos','qs-height':'★ Altura','qs-weight':'★ Peso','qs-waist':'★ Cintura',
       'hero-preview-score':'Puntuación DNA','hero-preview-grade':'Grado','hero-preview-type':'Tipo corporal','hero-preview-goal':'Peso objetivo',
       'guide-section-title':'Misma altura, fit diferente',
@@ -1944,6 +1967,7 @@
       'hero-sub':'Não é que você não saiba se vestir. Você só não conhecia seu corpo.<br>Mesma altura, mas comprimento das pernas e largura dos ombros mudam tudo.',
       'hero-btn':'Descobrir minhas proporções →',
       'hero-badge1':'Grátis','hero-badge2':'Resultados imediatos','hero-badge3':'15 idiomas','hero-badge4':'Sem armazenamento de dados',
+      'tip-card-title':'📏 30 segundos antes de começar!','tip-card-1':'Sem fita métrica? Sem problema — use seu celular (~15cm) como régua','tip-card-2':'Meça um palmo (polegar ao dedo mínimo) em cm — útil para ombros e pernas','tip-card-3':'Altura, peso e cintura = análise imediata! O resto é opcional','tip-card-btn':'Entendi, vamos medir →',
       'qs-main':'⚡ ★ Apenas 3 medidas para analisar!','qs-sub':'O resto é opcional — mais dados = resultados mais precisos','qs-height':'★ Altura','qs-weight':'★ Peso','qs-waist':'★ Cintura',
       'hero-preview-score':'Pontuação DNA','hero-preview-grade':'Grau','hero-preview-type':'Tipo corporal','hero-preview-goal':'Peso alvo',
       'guide-section-title':'Mesma altura, fit diferente',
@@ -2023,6 +2047,7 @@
       'hero-sub':'Es liegt nicht daran, dass du dich nicht kleiden kannst. Du kennst deinen Körper noch nicht.<br>Gleiche Größe, aber Beinlänge und Schulterbreite verändern alles.',
       'hero-btn':'Meine Proportionen entdecken →',
       'hero-badge1':'Kostenlos','hero-badge2':'Sofortige Ergebnisse','hero-badge3':'15 Sprachen','hero-badge4':'Keine Datenspeicherung',
+      'tip-card-title':'📏 30 Sekunden vor dem Start!','tip-card-1':'Kein Maßband? Kein Problem — nutze dein Handy (~15cm) als Lineal','tip-card-2':'Miss eine Handspanne (Daumen bis kleiner Finger) in cm — nützlich für Schultern & Beine','tip-card-3':'Größe, Gewicht & Taille = sofortige Analyse! Alles andere ist optional','tip-card-btn':'Verstanden, jetzt messen →',
       'qs-main':'⚡ ★ Nur 3 Eingaben für die Analyse!','qs-sub':'Rest ist optional — mehr Angaben = genauere Ergebnisse','qs-height':'★ Größe','qs-weight':'★ Gewicht','qs-waist':'★ Taille',
       'hero-preview-score':'DNA-Score','hero-preview-grade':'Note','hero-preview-type':'Körpertyp','hero-preview-goal':'Zielgewicht',
       'guide-section-title':'Gleiche Größe, anderer Fit',
@@ -2102,6 +2127,7 @@
       'hero-sub':'Non è che non sai vestirti. Non conoscevi solo il tuo corpo.<br>Stessa altezza, ma lunghezza delle gambe e larghezza delle spalle cambiano tutto.',
       'hero-btn':'Scopri le mie proporzioni →',
       'hero-badge1':'Gratuito','hero-badge2':'Risultati immediati','hero-badge3':'15 lingue','hero-badge4':'Nessun dato memorizzato',
+      'tip-card-title':'📏 30 secondi prima di iniziare!','tip-card-1':'Senza metro? Nessun problema — usa lo smartphone (~15cm) come righello','tip-card-2':'Misura una spanna (pollice al mignolo) in cm — utile per spalle e gambe','tip-card-3':'Altezza, peso e vita = analisi immediata! Il resto è opzionale','tip-card-btn':'Capito, si misura →',
       'qs-main':'⚡ ★ Solo 3 misure per l\'analisi!','qs-sub':'Il resto è opzionale — più dati = risultati più precisi','qs-height':'★ Altezza','qs-weight':'★ Peso','qs-waist':'★ Vita',
       'hero-preview-score':'Punteggio DNA','hero-preview-grade':'Grado','hero-preview-type':'Tipo corporeo','hero-preview-goal':'Peso obiettivo',
       'guide-section-title':'Stessa altezza, fit diverso',
@@ -2181,6 +2207,7 @@
       'hero-sub':'Дело не в том, что ты не умеешь одеваться. Ты просто не знал своё тело.<br>Один рост, но длина ног и ширина плеч меняют всё.',
       'hero-btn':'Узнать мои пропорции →',
       'hero-badge1':'Бесплатно','hero-badge2':'Мгновенные результаты','hero-badge3':'15 языков','hero-badge4':'Данные не сохраняются',
+      'tip-card-title':'📏 30 секунд перед началом!','tip-card-1':'Нет рулетки? Не беда — используй телефон (~15см) как линейку','tip-card-2':'Измерь пядь (большой до мизинца) в см — пригодится для плеч и ног','tip-card-3':'Рост, вес и талия = мгновенный анализ! Остальное необязательно','tip-card-btn':'Понял, начинаем →',
       'qs-main':'⚡ ★ Всего 3 параметра для анализа!','qs-sub':'Остальное необязательно — больше данных = точнее результат','qs-height':'★ Рост','qs-weight':'★ Вес','qs-waist':'★ Талия',
       'hero-preview-score':'ДНК-балл','hero-preview-grade':'Оценка','hero-preview-type':'Тип телосложения','hero-preview-goal':'Целевой вес',
       'guide-section-title':'Одинаковый рост, разный фит',
@@ -2260,6 +2287,7 @@
       'hero-sub':'لست عاجزاً عن ارتداء الملابس. أنت فقط لم تعرف جسدك بعد.<br>نفس الطول، لكن طول الساقين وعرض الكتفين يغيران كل شيء.',
       'hero-btn':'اكتشف نسبي ←',
       'hero-badge1':'مجاني','hero-badge2':'نتائج فورية','hero-badge3':'15 لغة','hero-badge4':'لا تخزين للبيانات',
+      'tip-card-title':'📏 30 ثانية قبل البدء!','tip-card-1':'بدون شريط قياس؟ لا مشكلة — استخدم هاتفك (~15سم) كمسطرة','tip-card-2':'قس شبرًا (من الإبهام إلى الخنصر) بالسم — مفيد للكتفين والساقين أيضًا','tip-card-3':'الطول والوزن والخصر = تحليل فوري! الباقي اختياري','tip-card-btn':'فهمت، نبدأ القياس →',
       'qs-main':'⚡ ★ 3 مدخلات فقط للتحليل!','qs-sub':'الباقي اختياري — كلما زادت البيانات زادت الدقة','qs-height':'★ الطول','qs-weight':'★ الوزن','qs-waist':'★ الخصر',
       'hero-preview-score':'نقاط DNA','hero-preview-grade':'الدرجة','hero-preview-type':'نوع الجسم','hero-preview-goal':'الوزن المستهدف',
       'guide-section-title':'نفس الطول، ملاءمة مختلفة',
@@ -2336,6 +2364,7 @@
       'hero-sub':'ये नहीं कि आप कपड़े नहीं पहन सकते। बस अपने शरीर को नहीं जानते थे।<br>एक ही ऊंचाई में, पैर की लंबाई और कंधे की चौड़ाई सब कुछ बदल देते हैं।',
       'hero-btn':'अपने अनुपात जानें →',
       'hero-badge1':'मुफ़्त','hero-badge2':'तुरंत परिणाम','hero-badge3':'15 भाषाएं','hero-badge4':'कोई डेटा संग्रहीत नहीं',
+      'tip-card-title':'📏 शुरू करने से पहले 30 सेकंड!','tip-card-1':'टेप नहीं है? कोई बात नहीं — फोन की लंबाई (~15cm) को रूलर की तरह इस्तेमाल करें','tip-card-2':'एक बालिश्त (अंगूठे से छोटी उंगली तक) cm में मापें — कंधों और पैरों के लिए भी उपयोगी','tip-card-3':'ऊंचाई, वजन और कमर = तुरंत विश्लेषण! बाकी सब वैकल्पिक है','tip-card-btn':'समझ गया, मापने चलें →',
       'qs-main':'⚡ ★ सिर्फ 3 माप से विश्लेषण करें!','qs-sub':'बाकी वैकल्पिक — अधिक डेटा = अधिक सटीक परिणाम','qs-height':'★ ऊंचाई','qs-weight':'★ वजन','qs-waist':'★ कमर',
       'hero-preview-score':'DNA स्कोर','hero-preview-grade':'ग्रेड','hero-preview-type':'शरीर प्रकार','hero-preview-goal':'लक्ष्य वजन',
       'guide-section-title':'एक ही ऊंचाई, अलग फिट',
@@ -2413,6 +2442,7 @@
       'hero-sub':'ไม่ใช่ว่าคุณแต่งตัวไม่เก่ง แค่ยังไม่รู้จักร่างกายตัวเอง<br>ส่วนสูงเท่ากัน แต่ความยาวขาและความกว้างไหล่ทำให้ทุกอย่างเปลี่ยนไป',
       'hero-btn':'ค้นพบสัดส่วนของฉัน →',
       'hero-badge1':'ฟรี','hero-badge2':'ผลลัพธ์ทันที','hero-badge3':'15 ภาษา','hero-badge4':'ไม่บันทึกข้อมูลส่วนตัว',
+      'tip-card-title':'📏 30 วินาทีก่อนเริ่ม!','tip-card-1':'ไม่มีตลับเมตร? ไม่เป็นไร — ใช้โทรศัพท์ (~15cm) แทนไม้บรรทัดได้เลย','tip-card-2':'วัดหนึ่งคืบ (นิ้วโป้งถึงนิ้วก้อย) เป็น cm ไว้ก่อน — ใช้คำนวณไหล่และขาได้ง่าย','tip-card-3':'แค่ส่วนสูง น้ำหนัก และรอบเอว = วิเคราะห์ได้ทันที! ที่เหลือเป็นตัวเลือก','tip-card-btn':'เข้าใจแล้ว ไปวัดเลย →',
       'qs-main':'⚡ ★ แค่ 3 ค่าก็วิเคราะห์ได้!','qs-sub':'ที่เหลือเป็นตัวเลือก — ยิ่งใส่มากยิ่งแม่นยำ','qs-height':'★ ส่วนสูง','qs-weight':'★ น้ำหนัก','qs-waist':'★ รอบเอว',
       'hero-preview-score':'คะแนน DNA','hero-preview-grade':'เกรด','hero-preview-type':'ประเภทร่างกาย','hero-preview-goal':'น้ำหนักเป้าหมาย',
       'guide-section-title':'ส่วนสูงเท่ากัน ฟิตต่างกัน',
@@ -2489,6 +2519,7 @@
       'hero-sub':'Bukan berarti kamu tidak bisa berpakaian dengan baik. Kamu hanya belum mengenal tubuhmu.<br>Tinggi sama, tapi panjang kaki dan lebar bahu mengubah segalanya.',
       'hero-btn':'Temukan Proporsi Saya →',
       'hero-badge1':'Gratis','hero-badge2':'Hasil Instan','hero-badge3':'15 Bahasa','hero-badge4':'Tidak Ada Data Tersimpan',
+      'tip-card-title':'📏 30 detik sebelum mulai!','tip-card-1':'Tidak punya meteran? Tidak apa-apa — pakai panjang ponsel (~15cm) sebagai penggaris','tip-card-2':'Ukur satu jengkal (ibu jari ke kelingking) dalam cm — berguna untuk bahu dan kaki','tip-card-3':'Tinggi, berat, dan pinggang = analisis langsung! Sisanya opsional','tip-card-btn':'Mengerti, mulai ukur →',
       'qs-main':'⚡ ★ Cukup 3 data untuk analisis!','qs-sub':'Sisanya opsional — lebih banyak data = hasil lebih akurat','qs-height':'★ Tinggi','qs-weight':'★ Berat','qs-waist':'★ Pinggang',
       'hero-preview-score':'Skor DNA','hero-preview-grade':'Grade','hero-preview-type':'Tipe Tubuh','hero-preview-goal':'Berat Target',
       'guide-section-title':'Tinggi Sama, Fit Berbeda',
@@ -2565,6 +2596,7 @@
       'hero-sub':'Không phải bạn không biết mặc đẹp. Bạn chỉ chưa hiểu cơ thể mình.<br>Cùng chiều cao, nhưng độ dài chân và độ rộng vai thay đổi tất cả.',
       'hero-btn':'Khám phá tỉ lệ của tôi →',
       'hero-badge1':'Miễn phí','hero-badge2':'Kết quả ngay','hero-badge3':'15 ngôn ngữ','hero-badge4':'Không lưu dữ liệu',
+      'tip-card-title':'📏 30 giây trước khi bắt đầu!','tip-card-1':'Không có thước dây? Không sao — dùng điện thoại (~15cm) làm thước kẻ','tip-card-2':'Đo một gang tay (ngón cái đến ngón út) bằng cm — hữu ích cho vai và chân','tip-card-3':'Chiều cao, cân nặng và vòng eo = phân tích ngay! Phần còn lại là tùy chọn','tip-card-btn':'Hiểu rồi, đo thôi →',
       'qs-main':'⚡ ★ Chỉ cần 3 số liệu để phân tích!','qs-sub':'Phần còn lại là tùy chọn — càng nhiều dữ liệu càng chính xác','qs-height':'★ Chiều cao','qs-weight':'★ Cân nặng','qs-waist':'★ Vòng eo',
       'hero-preview-score':'Điểm DNA','hero-preview-grade':'Hạng','hero-preview-type':'Loại cơ thể','hero-preview-goal':'Cân nặng mục tiêu',
       'guide-section-title':'Chiều cao như nhau, dáng khác nhau',
@@ -4253,6 +4285,21 @@
     document.getElementById('analysis').scrollIntoView({ behavior: 'smooth' });
     showToast(currentLang === 'ko' ? '부위를 클릭해서 값을 수정하세요 ✏️' : 'Click a body part to edit your measurements ✏️');
   }
+
+  function dismissTipCard() {
+    var card = document.getElementById('measure-tip-card');
+    if (card) card.classList.add('collapsed');
+    try { localStorage.setItem('fitme_tip_dismissed', '1'); } catch(e) {}
+  }
+
+  (function() {
+    try {
+      if (localStorage.getItem('fitme_tip_dismissed') === '1') {
+        var card = document.getElementById('measure-tip-card');
+        if (card) { card.style.transition = 'none'; card.classList.add('collapsed'); }
+      }
+    } catch(e) {}
+  })();
 
   function resetAll() {
     if (!confirm(t('confirm-reset'))) return;
