@@ -3999,6 +3999,7 @@
     }
 
     const typeKey = 'body-type-' + (bodyType === 'default' ? 'def' : bodyType);
+    const ratio = whr || '-';
     const typeName = lc[typeKey] || i18n.en[typeKey] || '';
     const strength = (lc['body-' + bodyType] || i18n.en['body-' + bodyType] || '').replace('{r}', whr || '-');
     const tipKey = bodyType === 'default' ? 'def' : bodyType;
