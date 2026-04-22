@@ -46,11 +46,11 @@ const translations = {
     "form-title-upper-leg": "HIP TO KNEE / 골반~무릎",
     "form-title-lower-leg": "KNEE TO ANKLE / 무릎~복숭아뼈",
     "form-title-foot": "FOOT / 발",
-    "label-circ": "둘레 (cm)",
-    "label-width": "너비 (cm)",
-    "label-len": "길이 (cm)",
+    "label-circ": "둘레",
+    "label-width": "너비",
+    "label-len": "길이",
     "label-size": "사이즈 (mm)",
-    "label-head-height": "세로 길이 (cm)",
+    "label-head-height": "세로 길이",
     "form-desc-upper-arm": "어깨뼈에서 팔꿈치 중간까지의 길이입니다.",
     "form-desc-lower-arm": "팔꿈치 중간에서 손목뼈까지의 길이입니다.",
     "form-desc-upper-leg": "골반뼈 끝에서 무릎 중간까지의 길이입니다.",
@@ -92,8 +92,8 @@ const translations = {
     "placeholder-text": "Click a body part<br>on the left figure",
     "form-title-height": "TOTAL HEIGHT",
     "form-title-weight": "WEIGHT",
-    "label-height": "Height (cm)",
-    "label-weight": "Weight (kg)",
+    "label-height": "Height",
+    "label-weight": "Weight",
     "btn-save": "Save",
     "btn-analyze": "🔥 Run Expert Analysis",
     "btn-reset": "Reset",
@@ -120,11 +120,11 @@ const translations = {
     "form-title-upper-leg": "THIGH",
     "form-title-lower-leg": "SHIN",
     "form-title-foot": "FOOT",
-    "label-circ": "Circumference (cm)",
-    "label-width": "Width (cm)",
-    "label-len": "Length (cm)",
+    "label-circ": "Circumference",
+    "label-width": "Width",
+    "label-len": "Length",
     "label-size": "Size (mm)",
-    "label-head-height": "Vertical Height (cm)",
+    "label-head-height": "Vertical Height",
     "style-best-title": "✨ BEST Style Picks",
     "style-worst-title": "⚠️ Styles to Avoid",
     "toast-share-success": "Link copied to clipboard!",
@@ -241,41 +241,58 @@ let currentUnit = 'metric'; // 'metric' or 'imperial'
 let measurements = JSON.parse(localStorage.getItem('fitme_measurements')) || {};
 
 /**
+ * Auto-detect user's locale and units (v1.5)
+ */
+function initLocale() {
+  const navLang = navigator.language || 'en-US';
+  
+  // Set Language
+  if (navLang.startsWith('ko')) currentLang = 'ko';
+  else currentLang = 'en';
+
+  // Set Unit: USA defaults to Imperial
+  if (navLang === 'en-US') {
+    currentUnit = 'imperial';
+  } else {
+    currentUnit = 'metric';
+  }
+
+  // Update UI (isInit = true to prevent double conversion)
+  toggleUnit(currentUnit, true);
+  setLanguage(currentLang);
+}
+
+/**
  * Unit conversion helper
  */
-function toggleUnit(unit) {
-  if (currentUnit === unit) return;
-  
+function toggleUnit(unit, isInit = false) {
   const oldUnit = currentUnit;
   currentUnit = unit;
   
-  // Convert existing values in inputs
-  document.querySelectorAll('.input-field').forEach(input => {
-    const val = parseFloat(input.value);
-    if (!isNaN(val)) {
-      if (unit === 'imperial') { // cm -> in, kg -> lb
-        if (input.id.includes('weight')) input.value = (val * 2.20462).toFixed(1);
-        else if (input.id.includes('foot')) return; // foot size usually mm
-        else input.value = (val / 2.54).toFixed(1);
-      } else { // in -> cm, lb -> kg
-        if (input.id.includes('weight')) input.value = (val / 2.20462).toFixed(1);
-        else if (input.id.includes('foot')) return;
-        else input.value = (val * 2.54).toFixed(1);
+  // Convert existing values in inputs (Skip if initial load)
+  if (!isInit && oldUnit !== unit) {
+    document.querySelectorAll('.input-field').forEach(input => {
+      const val = parseFloat(input.value);
+      if (!isNaN(val)) {
+        if (unit === 'imperial') { // cm -> in, kg -> lb
+          if (input.id.includes('weight')) input.value = (val * 2.20462).toFixed(1);
+          else if (input.id.includes('foot')) return;
+          else input.value = (val / 2.54).toFixed(1);
+        } else { // in -> cm, lb -> kg
+          if (input.id.includes('weight')) input.value = (val / 2.20462).toFixed(1);
+          else if (input.id.includes('foot')) return;
+          else input.value = (val * 2.54).toFixed(1);
+        }
       }
-    }
-  });
+    });
+  }
 
-  // Update labels
+  // Update Toggle Buttons
   document.querySelectorAll('.unit-toggle-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.unit === unit);
   });
   
-  const labels = {
-    metric: { h: 'cm', w: 'kg', l: 'cm' },
-    imperial: { h: 'in', w: 'lb', l: 'in' }
-  };
-  
-  // Update UI unit labels if any (e.g. "Height (cm)")
+  // Refresh UI labels to show correct unit suffixes (e.g. "Height (in)")
   setLanguage(currentLang); 
 }
 
@@ -292,11 +309,24 @@ const worstStyles = document.getElementById('worst-styles');
  */
 function setLanguage(lang) {
   currentLang = lang;
+  const hUnit = currentUnit === 'metric' ? 'cm' : 'in';
+  const wUnit = currentUnit === 'metric' ? 'kg' : 'lb';
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (translations[lang] && translations[lang][key]) {
-      if (el.tagName === 'INPUT') el.placeholder = translations[lang][key];
-      else el.innerHTML = translations[lang][key];
+      let text = translations[lang][key];
+      
+      // Dynamically append unit suffix to specific labels
+      if (key.startsWith('label-')) {
+        if (key === 'label-height') text += ` (${hUnit})`;
+        else if (key === 'label-weight') text += ` (${wUnit})`;
+        else if (key === 'label-size') { /* Foot size stays mm */ }
+        else if (key !== 'label-size') text += ` (${hUnit})`;
+      }
+
+      if (el.tagName === 'INPUT') el.placeholder = text;
+      else el.innerHTML = text;
     }
   });
   document.documentElement.lang = lang;
@@ -598,12 +628,21 @@ function showToast(msg) {
 
 // Initialization: Restore data if exists
 window.onload = () => {
+  initLocale();
   if (Object.keys(measurements).length > 0) {
     Object.keys(measurements).forEach(key => {
       const el = document.getElementById(key);
-      if (el) el.value = measurements[key];
+      if (el) {
+        let val = measurements[key];
+        // If we are in Imperial mode on load, convert the stored metric values to imperial for the inputs
+        if (currentUnit === 'imperial') {
+          if (key.includes('weight')) val = (val * 2.20462).toFixed(1);
+          else if (key.includes('foot')) { /* skip */ }
+          else val = (val / 2.54).toFixed(1);
+        }
+        el.value = val;
+      }
     });
     updateVisuals();
   }
-  setLanguage('ko');
 };
