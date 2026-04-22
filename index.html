@@ -1647,7 +1647,29 @@
       'toast-kakao-copy':'📋 Copied! Paste it in your KakaoTalk chat 💛',
       'toast-copy-done':'✅ Share text + link copied!',
       'toast-need-data':'Please enter height, weight & shoulder width first!','toast-done':'Analysis complete! 🔥','toast-reset':'Reset complete',
+      'adv-report-title': '💎 FITME Premium Analysis (v1.4)',
+      'adv-head-label': 'Figure Ratio',
+      'adv-leg-label': 'Leg Golden Ratio',
+      'adv-balance-label': 'Upper/Lower Balance',
+      'adv-ranking-label': 'Global Percentile',
+      'adv-recommend-title': '👗 Data-Driven Style Guide',
+      'adv-shop-now': 'Shop Now',
+      'adv-ranking-suffix': 'tier proportions!',
+      'adv-identity-hourglass': 'Pelvis-Emphasized Hourglass',
+      'adv-identity-pear': 'Soft Curve Pear Shape',
+      'adv-identity-inv': 'Athletic Inverted Triangle',
+      'adv-identity-rect': 'Urban Slim Rectangle',
+      'adv-identity-apple': 'Healthy Rounded Apple',
+      'adv-identity-default': 'Charming Unique Shape',
+      'emblem-label': 'Body Identity Rank',
+      'emblem-s': '👑 Royal Frame',
+      'emblem-ap': '✨ Elite Muse',
+      'emblem-a': '💎 Classic Alpha',
+      'emblem-bp': '🌟 Trendy Icon',
+      'emblem-b': '🌿 Natural Fit',
+      'emblem-c': '🎨 Unique Origin',
       'confirm-reset':'Reset all measurements?',
+
       'parts':{ height:'Height', weight:'Weight', head:'Head', shoulder:'Shoulder', chest:'Chest', 'upper-arm':'Upper Arm', 'lower-arm':'Lower Arm', waist:'Waist', hip:'Hip', 'upper-leg':'Thigh', 'lower-leg':'Shin', foot:'Foot' },
       'titles':{ height:'HEIGHT', weight:'WEIGHT', head:'HEAD', shoulder:'SHOULDER', chest:'CHEST', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST', hip:'HIP', 'upper-leg':'THIGH', 'lower-leg':'SHIN', foot:'FOOT' },
       'bmi':['Underweight','Normal weight ✓','Overweight','Obese'],
@@ -2855,6 +2877,27 @@
       'toast-kakao-copy':'📋 Đã sao chép! Dán vào chat KakaoTalk của bạn 💛',
       'toast-copy-done':'✅ Đã sao chép văn bản + liên kết!',
       'toast-need-data':'Vui lòng nhập chiều cao, cân nặng và chiều rộng vai trước!','toast-done':'Phân tích hoàn tất! 🔥','toast-reset':'Đã đặt lại',
+      'adv-report-title': '💎 FITME 프리미엄 분석 (v1.4)',
+      'adv-head-label': '8등신 지수',
+      'adv-leg-label': '다리 황금비율',
+      'adv-balance-label': '상하체 밸런스',
+      'adv-ranking-label': '글로벌 상위 비율',
+      'adv-recommend-title': '👗 데이터 기반 추천 코디',
+      'adv-shop-now': 'Shop Now',
+      'adv-ranking-suffix': '등급의 비율입니다!',
+      'adv-identity-hourglass': '골반이 강조된 모래시계형',
+      'adv-identity-pear': '부드러운 곡선의 하체 강조형',
+      'adv-identity-inv': '활동적인 느낌의 상체 발달형',
+      'adv-identity-rect': '도시적인 슬림 일자형',
+      'adv-identity-apple': '건강미 넘치는 원형 체형',
+      'adv-identity-default': '매력적인 유니크 체형',
+      'emblem-label': '신체 아이덴티티 등급',
+      'emblem-s': '👑 Royal Frame',
+      'emblem-ap': '✨ Elite Muse',
+      'emblem-a': '💎 Classic Alpha',
+      'emblem-bp': '🌟 Trendy Icon',
+      'emblem-b': '🌿 Natural Fit',
+      'emblem-c': '🎨 Unique Origin',
       'confirm-reset':'Đặt lại tất cả số đo?',
       'parts':{ height:'Chiều cao', weight:'Cân nặng', head:'Đầu', shoulder:'Vai', chest:'Ngực', 'upper-arm':'Cánh tay trên', 'lower-arm':'Cẳng tay', waist:'Eo', hip:'Hông', 'upper-leg':'Đùi', 'lower-leg':'Bắp chân', foot:'Bàn chân' },
       'titles':{ height:'HEIGHT / Chiều cao', weight:'WEIGHT / Cân nặng', head:'HEAD / Đầu', shoulder:'SHOULDER / Vai', chest:'CHEST / Ngực', 'upper-arm':'UPPER ARM / Cánh tay', 'lower-arm':'LOWER ARM / Cẳng tay', waist:'WAIST / Eo', hip:'HIP / Hông', 'upper-leg':'THIGH / Đùi', 'lower-leg':'SHIN / Bắp chân', foot:'FOOT / Bàn chân' },
@@ -2871,8 +2914,16 @@
   };
 
   // ============================================================
-  // LANGUAGE STATE & APPLY
+  // LANGUAGE & UNIT STATE
   // ============================================================
+  let currentUnit = (function() {
+    const saved = localStorage.getItem('fitme_unit');
+    if (saved) return saved;
+    const nav = navigator.language || '';
+    if (nav === 'en-US') return 'imperial';
+    return 'metric';
+  })();
+
   let currentLang = (function() {
     const saved = localStorage.getItem('fitme_lang');
     if (saved) { document.documentElement.lang = saved; return saved; }
@@ -2889,6 +2940,8 @@
 
   function applyTranslations() {
     const lang = currentLang;
+    const hUnit = currentUnit === 'metric' ? 'cm' : 'in';
+    const wUnit = currentUnit === 'metric' ? 'kg' : 'lb';
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
     const htmlKeys = new Set(['hero-sub','guide-card-desc','guide-step2']);
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -2964,7 +3017,18 @@
       const f = _forms[p]; if (!f) return;
       set('ftitle-' + p, _titles[p] || p);
       set('fdesc-' + p, f.desc);
-      set('flabel-' + p, f.label);
+      
+      // Dynamic Unit Suffix (v1.5)
+      let label = f.label;
+      if (p === 'height' || p === 'shoulder' || p === 'upper-arm' || p === 'lower-arm' || p === 'waist' || p === 'hip' || p === 'upper-leg' || p === 'lower-leg') {
+        label = label.split(' (')[0] + ` (${hUnit})`;
+      } else if (p === 'weight') {
+        label = label.split(' (')[0] + ` (${wUnit})`;
+      } else if (p === 'head') {
+        label = label.split(' (')[0] + ` (${hUnit})`;
+      }
+      set('flabel-' + p, label);
+
       if (f.label2) set('flabel2-' + p, f.label2);
       if (f.hint) set('fhint-' + p, f.hint);
     });
@@ -2973,10 +3037,10 @@
       set('footw-normal', _forms.foot.normal);
       set('footw-wide', _forms.foot.wide);
     }
-    // waist unit (inch vs cm)
-    const _waistUnit = (_forms.waist||{}).unit || 'inch';
-    const _waistInput = document.getElementById('waist-circ');
-    if (_waistInput) { _waistInput.placeholder = _waistUnit==='cm' ? '76' : '30'; _waistInput.step = _waistUnit==='cm' ? '1' : '0.5'; }
+    // Update Unit Toggle Buttons State
+    document.querySelectorAll('.unit-toggle-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.unit === currentUnit);
+    });
     // RTL
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
@@ -2984,8 +3048,10 @@
 
   function setLanguage(lang) {
     currentLang = lang;
+    window.currentLang = lang;
     localStorage.setItem('fitme_lang', lang);
-    document.getElementById('lang-select').value = lang;
+    const select = document.getElementById('lang-select');
+    if (select) select.value = lang;
     document.documentElement.lang = lang;
     applyTranslations();
   }
@@ -4543,7 +4609,20 @@
       Kakao.init('35545588bedacb9b5a80dd250aadd17a');
     }
 
-    setLanguage(currentLang);
+    // Expose helpers for main.js (v1.5)
+    window.t = t;
+    window.setLanguage = setLanguage;
+    window.applyTranslations = applyTranslations;
+    window.currentUnit = currentUnit;
+    window.currentLang = currentLang;
+
+    // Use initLocale from main.js (handles lang/unit auto-detect)
+    if (typeof initLocale === 'function') {
+      initLocale();
+    } else {
+      setLanguage(currentLang);
+    }
+
     // Restore saved measurements and update UI
     if (Object.keys(measurements).length > 0) {
       filledCount = Object.keys(measurements).length;
@@ -4551,7 +4630,9 @@
       Object.keys(measurements).forEach(part => {
         const hs = document.getElementById('hs-' + part);
         if (hs) hs.classList.add('filled');
-        // If it's the current form, we could pre-fill inputs too if we want
+
+        // Restore input values if currently open or based on measurements
+        // (Note: actual input restoration is handled in main.js window.onload)
       });
     }
   });

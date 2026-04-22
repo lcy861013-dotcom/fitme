@@ -1,244 +1,26 @@
-// Translations Dictionary
-const translations = {
-  ko: {
-    "nav-guide": "측정 가이드",
-    "nav-analysis": "비율 분석",
-    "nav-about": "About",
-    "guide-title": "올바른 신체 치수 측정 가이드",
-    "phone-guide-title": "📱 스마트폰 활용 측정법 (No Tape?)",
-    "phone-guide-desc": "줄자가 없으신가요? 여러분의 스마트폰을 사용해 보세요! 최신 스마트폰의 평균 세로 길이는 약 15cm입니다. 무릎에서 골반까지 스마트폰이 약 3번 들어간다면 해당 부위의 길이는 약 45cm로 추정할 수 있습니다.",
-    "head-guide-title": "🧢 머리 둘레 측정 꿀팁",
-    "head-guide-desc": "곡선인 머리 둘레는 <b>충전 케이블</b>을 활용하세요! 케이블을 머리에 한 바퀴 두른 뒤, 그 길이를 스마트폰(15cm)으로 재보세요. 약 3.8번이면 57cm(보통), 4번이면 60cm(대형)입니다.",
-    "pro-guide-title": "📏 전문가 권장 측정 자세",
-    "pro-guide-desc": "정확한 비율 분석을 위해 거울 앞에서 바른 자세로 서서 측정하세요. 특히 키(Height)와 체중(Weight)은 신체 밸런스를 분석하는 핵심 데이터입니다.",
-    "section-label": "부위를 클릭하여 측정값을 입력하세요",
-    "panel-title": "신체 정보 입력",
-    "panel-subtitle": "정확한 분석을 위해 치수를 입력해 주세요.",
-    "placeholder-text": "왼쪽 인체 도형에서<br>부위를 클릭해 주세요",
-    "form-title-height": "TOTAL HEIGHT / 키",
-    "form-desc-height": "전체 키는 비율 분석의 핵심 데이터입니다.",
-    "form-title-weight": "WEIGHT / 체중",
-    "form-desc-weight": "정밀한 체형 및 BMI 분석을 위해 필요합니다.",
-    "label-height": "키 (cm)",
-    "label-weight": "체중 (kg)",
-    "btn-save": "저장하기",
-    "btn-analyze": "🔥 전문가 신체 비율 분석하기",
-    "btn-reset": "초기화",
-    "analysis-report-title": "전문가 분석 리포트",
-    "analysis-note": "*위 분석은 입력된 수치 기반의 통계적 결과입니다.",
-    "toast-save-suffix": " 저장 완료 ✓",
-    "toast-input-req": "값을 입력해주세요!",
-    "toast-analysis-req": "분석을 위해 [키, 체중, 대퇴, 하퇴] 값을 먼저 입력해주세요.",
-    "analysis-long-legs": "전체 키 대비 다리가 매우 긴 **'서구형 롱다리 체형'**입니다. 어떤 옷을 입어도 비율이 돋보이는 모델 체형입니다.",
-    "analysis-balanced": "키 대비 다리 비율이 매우 **'균형 잡힌 황금 비율'**을 가지고 계십니다. 훌륭한 비율입니다.",
-    "analysis-classic": "전체 키 대비 상체가 발달한 **'안정적인 클래식 체형'**입니다. 하이웨이스트 스타일링을 추천합니다.",
-    "bmi-under": "저체중 (BMI: ",
-    "bmi-normal": "정상 (BMI: ",
-    "bmi-over": "과체중 (BMI: ",
-    "bmi-obese": "비만 (BMI: ",
-    "form-title-head": "HEAD / 머리",
-    "form-title-shoulder": "SHOULDER / 어깨",
-    "form-title-chest": "CHEST / 가슴",
-    "form-title-upper-arm": "SHOULDER TO ELBOW / 어깨~팔꿈치",
-    "form-title-lower-arm": "ELBOW TO WRIST / 팔꿈치~손목",
-    "form-title-waist": "WAIST / 허리",
-    "form-title-hip": "HIP / 골반",
-    "form-title-upper-leg": "HIP TO KNEE / 골반~무릎",
-    "form-title-lower-leg": "KNEE TO ANKLE / 무릎~복숭아뼈",
-    "form-title-foot": "FOOT / 발",
-    "label-circ": "둘레",
-    "label-width": "너비",
-    "label-len": "길이",
-    "label-size": "사이즈 (mm)",
-    "label-head-height": "세로 길이",
-    "form-desc-upper-arm": "어깨뼈에서 팔꿈치 중간까지의 길이입니다.",
-    "form-desc-lower-arm": "팔꿈치 중간에서 손목뼈까지의 길이입니다.",
-    "form-desc-upper-leg": "골반뼈 끝에서 무릎 중간까지의 길이입니다.",
-    "form-desc-lower-leg": "무릎 중간에서 복숭아뼈까지의 길이입니다.",
-    "style-best-title": "✨ BEST 스타일 추천",
-    "style-worst-title": "⚠️ 주의할 스타일",
-    "toast-share-success": "분석 결과 링크가 복사되었습니다!",
-    "toast-image-save": "이미지 저장 기능을 준비 중입니다. (브라우저 스크린샷 권장)",
-    "adv-report-title": "💎 FITME 프리미엄 분석 (v1.4)",
-    "adv-identity-label": "체형 아이덴티티",
-    "adv-head-label": "8등신 지수",
-    "adv-leg-label": "다리 황금비율",
-    "adv-balance-label": "상하체 밸런스",
-    "adv-ranking-label": "글로벌 상위 비율",
-    "adv-recommend-title": "👗 데이터 기반 추천 코디",
-    "adv-shop-now": "Shop Now",
-    "adv-ranking-suffix": "등급의 비율입니다!",
-    "adv-identity-hourglass": "골반이 강조된 모래시계형",
-    "adv-identity-pear": "부드러운 곡선의 하체 강조형",
-    "adv-identity-inv": "활동적인 느낌의 상체 발달형",
-    "adv-identity-rect": "도시적인 슬림 일자형",
-    "adv-identity-apple": "건강미 넘치는 원형 체형",
-    "adv-identity-default": "매력적인 유니크 체형"
-  },
-  en: {
-    "nav-guide": "Guide",
-    "nav-analysis": "Analysis",
-    "nav-about": "About",
-    "guide-title": "Body Measurement Guide",
-    "phone-guide-title": "📱 Phone Scale Method",
-    "phone-guide-desc": "No measuring tape? Use your smartphone!",
-    "head-guide-title": "🧢 Head Size Tips",
-    "head-guide-desc": "Use a <b>charging cable</b> for curves!",
-    "pro-guide-title": "📏 Professional Posture",
-    "pro-guide-desc": "Stand straight before a mirror.",
-    "section-label": "Click a body part to enter measurements",
-    "panel-title": "Body Measurements",
-    "panel-subtitle": "Please enter your data for analysis.",
-    "placeholder-text": "Click a body part<br>on the left figure",
-    "form-title-height": "TOTAL HEIGHT",
-    "form-title-weight": "WEIGHT",
-    "label-height": "Height",
-    "label-weight": "Weight",
-    "btn-save": "Save",
-    "btn-analyze": "🔥 Run Expert Analysis",
-    "btn-reset": "Reset",
-    "analysis-report-title": "Expert Analysis Report",
-    "analysis-note": "*Results are statistical based on provided data.",
-    "toast-save-suffix": " Saved ✓",
-    "toast-input-req": "Please enter a value!",
-    "toast-analysis-req": "Please enter [Height, Weight, Thigh, Shin] first.",
-    "analysis-long-legs": "You have **'Model proportions'** with very long legs.",
-    "analysis-balanced": "Your body has a **'Golden Ratio'**.",
-    "analysis-classic": "You have an **'Stable Classic'** build.",
-    "bmi-under": "Underweight (BMI: ",
-    "bmi-normal": "Normal (BMI: ",
-    "bmi-over": "Overweight (BMI: ",
-    "bmi-obese": "Obese (BMI: ",
-    "form-title-head": "HEAD",
-    "form-title-neck": "NECK",
-    "form-title-shoulder": "SHOULDER",
-    "form-title-chest": "CHEST",
-    "form-title-upper-arm": "UPPER ARM",
-    "form-title-lower-arm": "LOWER ARM",
-    "form-title-waist": "WAIST",
-    "form-title-hip": "HIP",
-    "form-title-upper-leg": "THIGH",
-    "form-title-lower-leg": "SHIN",
-    "form-title-foot": "FOOT",
-    "label-circ": "Circumference",
-    "label-width": "Width",
-    "label-len": "Length",
-    "label-size": "Size (mm)",
-    "label-head-height": "Vertical Height",
-    "style-best-title": "✨ BEST Style Picks",
-    "style-worst-title": "⚠️ Styles to Avoid",
-    "toast-share-success": "Link copied to clipboard!",
-    "toast-image-save": "Preparing image save... (Use screenshot for now)",
-    "adv-report-title": "💎 FITME Premium Analysis (v1.4)",
-    "adv-identity-label": "Body Identity",
-    "adv-head-label": "Figure Ratio",
-    "adv-leg-label": "Leg Golden Ratio",
-    "adv-balance-label": "Upper/Lower Balance",
-    "adv-ranking-label": "Global Percentile",
-    "adv-recommend-title": "👗 Data-Driven Style Guide",
-    "adv-shop-now": "Shop Now",
-    "adv-ranking-suffix": "tier proportions!",
-    "adv-identity-hourglass": "Pelvis-Emphasized Hourglass",
-    "adv-identity-pear": "Soft Curve Pear Shape",
-    "adv-identity-inv": "Athletic Inverted Triangle",
-    "adv-identity-rect": "Urban Slim Rectangle",
-    "adv-identity-apple": "Healthy Rounded Apple",
-    "adv-identity-default": "매력적인 유니크 체형",
-    "unit-metric": "Metric (cm/kg)",
-    "unit-imperial": "Imperial (in/lb)",
-    "emblem-label": "신체 아이덴티티 등급",
-    "emblem-s": "👑 Royal Frame",
-    "emblem-ap": "✨ Elite Muse",
-    "emblem-a": "💎 Classic Alpha",
-    "emblem-bp": "🌟 Trendy Icon",
-    "emblem-b": "🌿 Natural Fit",
-    "emblem-c": "🎨 Unique Origin"
-  },
-  en: {
-    "nav-guide": "Guide",
-    "nav-analysis": "Analysis",
-    "nav-about": "About",
-    "guide-title": "Body Measurement Guide",
-    "phone-guide-title": "📱 Phone Scale Method",
-    "phone-guide-desc": "No measuring tape? Use your smartphone!",
-    "head-guide-title": "🧢 Head Size Tips",
-    "head-guide-desc": "Use a <b>charging cable</b> for curves!",
-    "pro-guide-title": "📏 Professional Posture",
-    "pro-guide-desc": "Stand straight before a mirror.",
-    "section-label": "Click a body part to enter measurements",
-    "panel-title": "Body Measurements",
-    "panel-subtitle": "Please enter your data for analysis.",
-    "placeholder-text": "Click a body part<br>on the left figure",
-    "form-title-height": "TOTAL HEIGHT",
-    "form-title-weight": "WEIGHT",
-    "label-height": "Height",
-    "label-weight": "Weight",
-    "btn-save": "Save",
-    "btn-analyze": "🔥 Run Expert Analysis",
-    "btn-reset": "Reset",
-    "analysis-report-title": "Expert Analysis Report",
-    "analysis-note": "*Results are statistical based on provided data.",
-    "toast-save-suffix": " Saved ✓",
-    "toast-input-req": "Please enter a value!",
-    "toast-analysis-req": "Please enter [Height, Weight, Thigh, Shin] first.",
-    "analysis-long-legs": "You have **'Model proportions'** with very long legs.",
-    "analysis-balanced": "Your body has a **'Golden Ratio'**.",
-    "analysis-classic": "You have an **'Stable Classic'** build.",
-    "bmi-under": "Underweight (BMI: ",
-    "bmi-normal": "Normal (BMI: ",
-    "bmi-over": "Overweight (BMI: ",
-    "bmi-obese": "Obese (BMI: ",
-    "form-title-head": "HEAD",
-    "form-title-neck": "NECK",
-    "form-title-shoulder": "SHOULDER",
-    "form-title-chest": "CHEST",
-    "form-title-upper-arm": "UPPER ARM",
-    "form-title-lower-arm": "LOWER ARM",
-    "form-title-waist": "WAIST",
-    "form-title-hip": "HIP",
-    "form-title-upper-leg": "THIGH",
-    "form-title-lower-leg": "SHIN",
-    "form-title-foot": "FOOT",
-    "label-circ": "Circumference",
-    "label-width": "Width",
-    "label-len": "Length",
-    "label-size": "Size (mm)",
-    "label-head-height": "Vertical Height",
-    "style-best-title": "✨ BEST Style Picks",
-    "style-worst-title": "⚠️ Styles to Avoid",
-    "toast-share-success": "Link copied to clipboard!",
-    "toast-image-save": "Preparing image save... (Use screenshot for now)",
-    "adv-report-title": "💎 FITME Premium Analysis (v1.4)",
-    "adv-identity-label": "Body Identity",
-    "adv-head-label": "Figure Ratio",
-    "adv-leg-label": "Leg Golden Ratio",
-    "adv-balance-label": "Upper/Lower Balance",
-    "adv-ranking-label": "Global Percentile",
-    "adv-recommend-title": "👗 Data-Driven Style Guide",
-    "adv-shop-now": "Shop Now",
-    "adv-ranking-suffix": "tier proportions!",
-    "adv-identity-hourglass": "Pelvis-Emphasized Hourglass",
-    "adv-identity-pear": "Soft Curve Pear Shape",
-    "adv-identity-inv": "Athletic Inverted Triangle",
-    "adv-identity-rect": "Urban Slim Rectangle",
-    "adv-identity-apple": "Healthy Rounded Apple",
-    "adv-identity-default": "Charming Unique Shape",
-    "unit-metric": "Metric (cm/kg)",
-    "unit-imperial": "Imperial (in/lb)",
-    "emblem-label": "Body Identity Rank",
-    "emblem-s": "👑 Royal Frame",
-    "emblem-ap": "✨ Elite Muse",
-    "emblem-a": "💎 Classic Alpha",
-    "emblem-bp": "🌟 Trendy Icon",
-    "emblem-b": "🌿 Natural Fit",
-    "emblem-c": "🎨 Unique Origin"
-  }
-};
+/**
+ * FITME Global Master Script (v1.5)
+ * Handles measurements, unit conversion, and advanced analysis.
+ */
 
-// State
-let currentLang = 'ko';
-let currentUnit = 'metric'; // 'metric' or 'imperial'
+// State - Use index.html's global state if available, or initialize
+let currentLang = window.currentLang || 'en';
+let currentUnit = (function() {
+  const saved = localStorage.getItem('fitme_unit');
+  if (saved) return saved;
+  const nav = navigator.language || '';
+  return (nav === 'en-US') ? 'imperial' : 'metric';
+})();
 let measurements = JSON.parse(localStorage.getItem('fitme_measurements')) || {};
+
+/**
+ * Helper to get translation from index.html's i18n object
+ */
+function t(key) {
+  if (window.t) return window.t(key); // Use index.html's helper if available
+  // Fallback
+  return key;
+}
 
 /**
  * Auto-detect user's locale and units (v1.5)
@@ -246,20 +28,25 @@ let measurements = JSON.parse(localStorage.getItem('fitme_measurements')) || {};
 function initLocale() {
   const navLang = navigator.language || 'en-US';
   
-  // Set Language
-  if (navLang.startsWith('ko')) currentLang = 'ko';
-  else currentLang = 'en';
+  // Set Language (Only if not already set by index.html)
+  if (!localStorage.getItem('fitme_lang')) {
+    if (navLang.startsWith('ko')) currentLang = 'ko';
+    else currentLang = 'en';
+  } else {
+    currentLang = localStorage.getItem('fitme_lang');
+  }
 
   // Set Unit: USA defaults to Imperial
-  if (navLang === 'en-US') {
-    currentUnit = 'imperial';
+  if (!localStorage.getItem('fitme_unit')) {
+    if (navLang === 'en-US') currentUnit = 'imperial';
+    else currentUnit = 'metric';
   } else {
-    currentUnit = 'metric';
+    currentUnit = localStorage.getItem('fitme_unit');
   }
 
   // Update UI (isInit = true to prevent double conversion)
   toggleUnit(currentUnit, true);
-  setLanguage(currentLang);
+  if (window.setLanguage) window.setLanguage(currentLang);
 }
 
 /**
@@ -268,6 +55,7 @@ function initLocale() {
 function toggleUnit(unit, isInit = false) {
   const oldUnit = currentUnit;
   currentUnit = unit;
+  localStorage.setItem('fitme_unit', unit);
   
   // Convert existing values in inputs (Skip if initial load)
   if (!isInit && oldUnit !== unit) {
@@ -292,8 +80,9 @@ function toggleUnit(unit, isInit = false) {
     btn.classList.toggle('active', btn.dataset.unit === unit);
   });
   
-  // Refresh UI labels to show correct unit suffixes (e.g. "Height (in)")
-  setLanguage(currentLang); 
+  // Refresh UI labels via index.html's applyTranslations
+  if (window.currentUnit !== undefined) window.currentUnit = unit;
+  if (window.applyTranslations) window.applyTranslations();
 }
 
 // UI Elements
@@ -303,34 +92,6 @@ const analysisText = document.getElementById('analysis-text');
 const bmiText = document.getElementById('bmi-text');
 const bestStyles = document.getElementById('best-styles');
 const worstStyles = document.getElementById('worst-styles');
-
-/**
- * Set Language and update UI
- */
-function setLanguage(lang) {
-  currentLang = lang;
-  const hUnit = currentUnit === 'metric' ? 'cm' : 'in';
-  const wUnit = currentUnit === 'metric' ? 'kg' : 'lb';
-
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (translations[lang] && translations[lang][key]) {
-      let text = translations[lang][key];
-      
-      // Dynamically append unit suffix to specific labels
-      if (key.startsWith('label-')) {
-        if (key === 'label-height') text += ` (${hUnit})`;
-        else if (key === 'label-weight') text += ` (${wUnit})`;
-        else if (key === 'label-size') { /* Foot size stays mm */ }
-        else if (key !== 'label-size') text += ` (${hUnit})`;
-      }
-
-      if (el.tagName === 'INPUT') el.placeholder = text;
-      else el.innerHTML = text;
-    }
-  });
-  document.documentElement.lang = lang;
-}
 
 /**
  * Select a body part to show its input form
@@ -360,7 +121,6 @@ function savePart(part) {
     height: ['input-height'],
     weight: ['input-weight'],
     head: ['head-circ', 'head-height'],
-    neck: ['neck-circ'],
     shoulder: ['shoulder-width'],
     chest: ['chest-circ'],
     'upper-arm': ['upper-arm-len'],
@@ -377,16 +137,22 @@ function savePart(part) {
 
   fields.forEach(fId => {
     const el = document.getElementById(fId);
-    const val = el ? el.value : null;
-    if (!val) {
+    let val = el ? parseFloat(el.value) : null;
+    if (isNaN(val)) {
       allValid = false;
     } else {
-      measurements[fId] = parseFloat(val);
+      // Internal storage always in METRIC
+      if (currentUnit === 'imperial') {
+        if (fId.includes('weight')) val = val / 2.20462;
+        else if (fId.includes('foot')) { /* skip foot mm */ }
+        else val = val * 2.54;
+      }
+      measurements[fId] = val;
     }
   });
 
   if (!allValid) {
-    showToast(translations[currentLang]["toast-input-req"]);
+    showToast(t('toast-enter-value'));
     return;
   }
 
@@ -396,20 +162,22 @@ function savePart(part) {
   const hs = document.getElementById('hs-' + part);
   if (hs) hs.classList.add('filled');
   
-  showToast(partTitle + translations[currentLang]["toast-save-suffix"]);
+  updateVisuals();
+  
+  const parts = t('parts') || {};
+  const partTitle = parts[part] || part;
+  showToast(partTitle + t('toast-saved'));
 }
 
 /**
  * Advanced Analysis Upgrade (v1.4)
- * Calculates high-precision metrics and generates detailed styling report.
  */
 function runAdvancedAnalysis() {
-  const t = (key) => translations[currentLang][key] || key;
-  const getVal = (p, key) => {
-    if (!measurements[p]) return NaN;
-    const d = measurements[p];
-    if (typeof d === 'object') return parseFloat(d[key] || d.val || d.width || d.circ || d.len || 0);
-    return parseFloat(d);
+  // Use index.html's t() if possible
+  const _t = (key) => t(key);
+  
+  const getVal = (p) => {
+    return parseFloat(measurements[p] || 0);
   };
 
   const h = getVal('input-height'), 
@@ -420,11 +188,11 @@ function runAdvancedAnalysis() {
         lLeg = getVal('lower-leg-len'),
         waist = getVal('waist-circ');
 
-  if (isNaN(h)) return;
+  if (h <= 0) return;
 
   // 1. Identity & Metrics
   let bodyType = 'default';
-  if (!isNaN(waist) && !isNaN(hip) && !isNaN(shoulder)) {
+  if (waist > 0 && hip > 0 && shoulder > 0) {
     const s = shoulder * 2;
     if (Math.abs(s - hip) < (hip * 0.05) && waist < (hip * 0.75)) bodyType = 'hourglass';
     else if (hip > (s * 1.05)) bodyType = 'pear';
@@ -434,30 +202,27 @@ function runAdvancedAnalysis() {
   }
 
   // 8-head figure ratio
-  const headRatio = !isNaN(headH) ? (h / headH).toFixed(1) : '-';
+  const headRatio = headH > 0 ? (h / headH).toFixed(1) : '-';
   const headDesc = headRatio >= 8 ? (currentLang === 'ko' ? '환상적인 모델 비율' : 'Perfect Model Ratio') : 
                    headRatio >= 7 ? (currentLang === 'ko' ? '이상적인 비율' : 'Ideal Ratio') : (currentLang === 'ko' ? '안정적인 비율' : 'Stable Ratio');
 
   // Leg golden ratio
   const legTotal = uLeg + lLeg;
-  const legRatio = !isNaN(legTotal) ? (legTotal / h).toFixed(2) : '-';
+  const legRatio = legTotal > 0 ? (legTotal / h).toFixed(2) : '-';
   const legDesc = legRatio >= 0.5 ? (currentLang === 'ko' ? '서구형 롱다리' : 'Long Leg Type') : (currentLang === 'ko' ? '균형 잡힌 다리' : 'Balanced Leg');
 
   // Upper/Lower Balance
-  const balance = (!isNaN(shoulder) && !isNaN(hip)) ? (shoulder * 2 / hip).toFixed(2) : '-';
+  const balance = (shoulder > 0 && hip > 0) ? (shoulder * 2 / hip).toFixed(2) : '-';
   const balanceDesc = balance >= 1.1 ? (currentLang === 'ko' ? '상체 강조형' : 'Upper Emphasis') : 
                       balance <= 0.9 ? (currentLang === 'ko' ? '하체 강조형' : 'Lower Emphasis') : (currentLang === 'ko' ? '황금 밸런스' : 'Golden Balance');
 
-  // Global Ranking (Simulated)
-  const score = window._fitmeShareData ? window._fitmeShareData.score : 70;
+  // Global Ranking
+  const shareData = window._fitmeShareData || { score: 70, grade: 'A' };
+  const score = shareData.score;
   const percentile = Math.min(99, Math.round(score * 0.9 + 10));
-  const grade = window._fitmeShareData ? window._fitmeShareData.grade : 'A';
+  const grade = shareData.grade;
 
-  const emblemMap = {
-    'S': t('emblem-s'), 'A+': t('emblem-ap'), 'A': t('emblem-a'),
-    'B+': t('emblem-bp'), 'B': t('emblem-b'), 'C': t('emblem-c')
-  };
-  const emblem = emblemMap[grade] || emblemMap['B'];
+  const emblem = _t('emblem-' + (grade === 'A+' ? 'ap' : grade.toLowerCase())) || grade;
 
   // Detailed Recommendations
   const itemsDB = {
@@ -497,25 +262,25 @@ function runAdvancedAnalysis() {
     <div class="adv-card">
       <div class="adv-header">
         <div class="adv-title">
-          <span>${t('adv-report-title')}</span>
+          <span>${_t('adv-report-title')}</span>
           <span class="adv-emblem-badge">${emblem}</span>
         </div>
-        <div class="adv-identity">${t('adv-identity-' + bodyType)}</div>
+        <div class="adv-identity">${_t('adv-identity-' + bodyType)}</div>
       </div>
 
       <div class="adv-metrics-grid">
         <div class="adv-metric-item">
-          <div class="adv-metric-label">${t('adv-head-label')}</div>
+          <div class="adv-metric-label">${_t('adv-head-label')}</div>
           <div class="adv-metric-val">${headRatio}</div>
           <div class="adv-metric-desc">${headDesc}</div>
         </div>
         <div class="adv-metric-item">
-          <div class="adv-metric-label">${t('adv-leg-label')}</div>
+          <div class="adv-metric-label">${_t('adv-leg-label')}</div>
           <div class="adv-metric-val">${legRatio}</div>
           <div class="adv-metric-desc">${legDesc}</div>
         </div>
         <div class="adv-metric-item">
-          <div class="adv-metric-label">${t('adv-balance-label')}</div>
+          <div class="adv-metric-label">${_t('adv-balance-label')}</div>
           <div class="adv-metric-val">${balance}</div>
           <div class="adv-metric-desc">${balanceDesc}</div>
         </div>
@@ -523,16 +288,16 @@ function runAdvancedAnalysis() {
 
       <div class="adv-ranking-box">
         <div class="adv-ranking-info">
-          <div class="adv-ranking-label">${t('adv-ranking-label')}</div>
+          <div class="adv-ranking-label">${_t('adv-ranking-label')}</div>
           <div class="adv-ranking-pct">TOP ${100 - percentile}%</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-size: 11px; color: var(--muted);">${t('emblem-label')}</div>
+          <div style="font-size: 11px; color: var(--muted);">${_t('emblem-label')}</div>
           <div style="font-size: 16px; color: var(--accent); font-weight: 700;">${emblem}</div>
         </div>
       </div>
 
-      <div class="adv-recommend-title"><span>${t('adv-recommend-title')}</span></div>
+      <div class="adv-recommend-title"><span>${_t('adv-recommend-title')}</span></div>
       <div class="adv-item-list">
         ${recommendedItems.map(item => `
           <div class="adv-item-card">
@@ -540,7 +305,7 @@ function runAdvancedAnalysis() {
               <div class="adv-item-name">${item.name}</div>
               <div class="adv-item-reason">${item.reason}</div>
             </div>
-            <a href="https://www.amazon.com/s?k=${encodeURIComponent(item.name)}" target="_blank" class="adv-shop-btn">${t('adv-shop-now')}</a>
+            <a href="https://www.amazon.com/s?k=${encodeURIComponent(item.name)}" target="_blank" class="adv-shop-btn">${_t('adv-shop-now')}</a>
           </div>
         `).join('')}
       </div>
@@ -554,7 +319,7 @@ function runAdvancedAnalysis() {
 function updateVisuals() {
   const h = measurements['input-height'] || 180;
   
-  // Head scaling (based on 8-head ratio standard)
+  // Head scaling
   if (measurements['head-height']) {
     const headScale = (measurements['head-height'] / (h / 8));
     const headGroup = document.getElementById('svg-head');
@@ -575,7 +340,7 @@ function updateVisuals() {
     const uLeg = measurements['upper-leg-len'] || 42;
     const lLeg = measurements['lower-leg-len'] || 38;
     const totalLeg = uLeg + lLeg;
-    const legScale = totalLeg / 80; // 80cm as base standard for 180cm height
+    const legScale = totalLeg / 80;
     
     ['svg-leg-l-upper', 'svg-leg-l-lower', 'svg-leg-r-upper', 'svg-leg-r-lower'].forEach(id => {
       const el = document.getElementById(id);
@@ -584,29 +349,19 @@ function updateVisuals() {
   }
 }
 
-
 /**
- * Share/Save Functions
+ * Toast and Reset
  */
-function shareResult() {
-  const dummy = document.createElement('input');
-  document.body.appendChild(dummy);
-  dummy.value = window.location.href;
-  dummy.select();
-  document.execCommand('copy');
-  document.body.removeChild(dummy);
-  showToast(translations[currentLang]["toast-share-success"]);
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-function saveAsImage() {
-  showToast(translations[currentLang]["toast-image-save"]);
-}
-
-/**
- * Reset All
- */
 function resetAll() {
-  if (!confirm('모든 데이터를 초기화하시겠습니까?')) return;
+  if (!confirm(t('confirm-reset'))) return;
   measurements = {};
   localStorage.removeItem('fitme_measurements');
   document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('filled', 'active'));
@@ -614,16 +369,15 @@ function resetAll() {
   document.querySelectorAll('.input-field').forEach(i => i.value = '');
   placeholder.style.display = 'flex';
   analysisCard.classList.remove('visible');
-  
-  // Reset SVG scaling
   document.querySelectorAll('g[id^="svg-"]').forEach(g => g.style.transform = "none");
+  showToast(t('toast-reset'));
 }
 
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+/**
+ * SNS Functions
+ */
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => showToast(t('toast-link')));
 }
 
 // Initialization: Restore data if exists
@@ -634,7 +388,7 @@ window.onload = () => {
       const el = document.getElementById(key);
       if (el) {
         let val = measurements[key];
-        // If we are in Imperial mode on load, convert the stored metric values to imperial for the inputs
+        // Display conversion if imperial
         if (currentUnit === 'imperial') {
           if (key.includes('weight')) val = (val * 2.20462).toFixed(1);
           else if (key.includes('foot')) { /* skip */ }
