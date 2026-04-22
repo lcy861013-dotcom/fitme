@@ -27,7 +27,21 @@ FITME은 단순한 키와 몸무게를 넘어, 신체의 세부 비율을 분석
 - **Persistence:** 페이지 새로고침 시 데이터 복구 기능.
 - **Sharing:** 결과 리포트 공유 및 저장 기능.
 
-### v1.3: 세부 측정 로직 및 용어 고도화 (현재 버전)
+### v1.3: 세부 측정 로직 및 용어 고도화
 - **Neck Removal:** 불필요한 목 둘레 측정 필드 및 핫스팟 제거.
 - **Descriptive Segmenting:** 상/하완 및 대/하퇴를 '어깨~팔꿈치', '골반~무릎' 등 직관적인 용어로 변경.
 - **Measurement Precision:** 사용자가 측정 지점을 더 정확하게 인지하도록 가이드 문구 보완.
+
+### v1.4: 프리미엄 분석 결과 고도화 (현재 버전)
+- **Advanced Metrics:** 8등신 지수, 다리 황금비율, 상하체 밸런스 수치 계산 및 시각화.
+- **Body Identity:** 수치 기반의 세부 체형 명칭 부여 (예: 골반이 강조된 모래시계형).
+- **Global Ranking:** 사용자 데이터 기반의 등급(Tier) 및 상위 백분위(Percentile) 표시.
+- **Data-Driven Styling:** 실제 옷 이름(Oversized Blazer 등)을 포함한 구체적인 코디 추천 및 근거 제시.
+- **Global Shopping Integration:** 추천 아이템에 대한 아마존 글로벌 쇼핑몰 연동 [Shop Now] 버튼 추가.
+- **Parallel Integration:** 기존 분석 로직을 보존하며 리포트 하단에 정밀 분석 섹션을 확장하여 안정성 확보.
+
+### v1.5: 글로벌 마스터 고도화 (현재 버전)
+- **Unit Switcher:** Metric(cm/kg)과 Imperial(in/lb) 단위 전환 시스템 구축. 미국 및 유럽 사용자 편의성 극대화.
+- **Auto-Conversion:** 단위 전환 시 기존 입력값을 실시간으로 자동 변환하는 로직 적용.
+- **Body Identity Emblem:** 분석 결과에 따라 "Royal Frame", "Elite Muse" 등 프리미엄 엠블럼 부여로 공유 가치 상승.
+- **Enhanced A11Y:** 글로벌 표준에 맞춘 텍스트 가독성 및 UI 접근성 개선.

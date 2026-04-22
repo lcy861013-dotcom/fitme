@@ -432,3 +432,173 @@ footer {
   .main-container { grid-template-columns: 1fr; }
   .body-section { border-right: none; border-bottom: 1px solid var(--border); }
 }
+
+/* ADVANCED ANALYSIS UPGRADE (v1.4) */
+#advanced-analysis-section { margin-top: 24px; }
+
+.adv-card {
+  background: linear-gradient(145deg, #1e1e1e, #141414);
+  border: 1px solid rgba(232,255,71,0.15);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.adv-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 4px;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.adv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.adv-title {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 18px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adv-identity {
+  font-size: 14px;
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+}
+
+.adv-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.adv-metric-item {
+  background: rgba(0,0,0,0.2);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.adv-metric-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; }
+.adv-metric-val { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+.adv-metric-desc { font-size: 10px; color: var(--accent); margin-top: 4px; }
+
+.adv-ranking-box {
+  background: rgba(232,255,71,0.05);
+  border: 1px dashed var(--accent);
+  border-radius: 15px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.adv-ranking-info { display: flex; flex-direction: column; }
+.adv-ranking-label { font-size: 12px; color: var(--text); font-weight: 700; }
+.adv-ranking-pct { font-size: 20px; font-family: 'Black Han Sans', sans-serif; color: var(--accent); }
+
+.adv-recommend-title {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.adv-item-list { display: flex; flex-direction: column; gap: 10px; }
+
+.adv-item-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.adv-item-card:hover { border-color: var(--accent); transform: translateX(5px); }
+
+.adv-item-info { flex: 1; }
+.adv-item-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.adv-item-reason { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+.adv-shop-btn {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  margin-left: 12px;
+  transition: all 0.2s;
+}
+
+.adv-shop-btn:hover { filter: brightness(1.1); transform: scale(1.05); }
+
+@media (max-width: 600px) {
+  .adv-metrics-grid { grid-template-columns: 1fr; }
+  .adv-item-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .adv-shop-btn { margin-left: 0; width: 100%; text-align: center; }
+}
+
+/* GLOBAL UPGRADE (v1.5) - Unit Toggle */
+.unit-toggle-container {
+  display: flex;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+  margin: 12px 0;
+  gap: 4px;
+}
+
+.unit-toggle-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.unit-toggle-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Emblem Badge */
+.adv-emblem-badge {
+  background: linear-gradient(135deg, var(--accent), #fff);
+  color: var(--bg);
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 900;
+  margin-left: 8px;
+  box-shadow: 0 0 15px var(--shadow-glow);
+}

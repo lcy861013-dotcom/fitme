@@ -1000,6 +1000,13 @@
       <div class="panel-header">
         <div class="panel-title" id="panel-title">신체 정보 입력</div>
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+        
+        <!-- Unit Toggle (v1.5) -->
+        <div class="unit-toggle-container">
+          <button class="unit-toggle-btn active" data-unit="metric" onclick="toggleUnit('metric')">Metric (cm/kg)</button>
+          <button class="unit-toggle-btn" data-unit="imperial" onclick="toggleUnit('imperial')">Imperial (in/lb)</button>
+        </div>
+        
         <div class="panel-req-hint" id="panel-req-hint">★ Height · Weight · Waist are required &nbsp;·&nbsp; others optional</div>
       </div>
       <div class="gender-toggle">
@@ -1173,8 +1180,9 @@
           </div>
           <!-- 체형 세부 분석 -->
           <div id="detail-analysis-section"></div>
-          <!-- Weight goal card -->
-          <div id="weight-goal-section"></div>
+          <!-- FITME Advanced Analysis (v1.4) -->
+          <div id="advanced-analysis-section"></div>
+          <!-- Weight goal card -->          <div id="weight-goal-section"></div>
           <!-- Exercise prescription -->
           <div id="exercise-prescription"></div>
           <!-- 90-Day Roadmap -->
@@ -4360,6 +4368,11 @@
         </div>`;
     } else {
       document.getElementById('detail-analysis-section').innerHTML = '';
+    }
+
+    // Call advanced analysis upgrade (v1.4)
+    if (typeof runAdvancedAnalysis === 'function') {
+      runAdvancedAnalysis();
     }
 
     document.getElementById('analysis-result').classList.add('visible');
