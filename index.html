@@ -457,6 +457,28 @@
     .detail-tips, .detail-warns { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
     .detail-tip { font-size: 12.5px; line-height: 1.5; color: var(--text); font-family: 'DM Sans', sans-serif; }
     .detail-warn { font-size: 12.5px; line-height: 1.5; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    /* ASSET HERO CARD */
+    .asset-hero-card { background: linear-gradient(135deg, rgba(232,255,71,0.08) 0%, rgba(71,200,255,0.05) 100%); border: 1.5px solid rgba(232,255,71,0.35); border-radius: 18px; padding: 20px 22px; margin-bottom: 14px; position: relative; overflow: hidden; }
+    .asset-hero-card::before { content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px; background:radial-gradient(circle, rgba(232,255,71,0.08) 0%, transparent 70%); }
+    .asset-hero-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .asset-hero-label { font-size: 9px; letter-spacing: 3px; color: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 700; text-transform: uppercase; }
+    .asset-tier-badge { font-size: 10px; letter-spacing: 1px; color: var(--accent); font-family: 'DM Sans', sans-serif; font-weight: 700; background: rgba(232,255,71,0.12); padding: 2px 10px; border-radius: 20px; border: 1px solid rgba(232,255,71,0.3); }
+    .asset-hero-name { font-size: 22px; font-family: 'Black Han Sans', sans-serif; color: var(--text); letter-spacing: 1px; margin-bottom: 6px; }
+    .asset-hero-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; font-family: 'DM Sans', sans-serif; margin-bottom: 12px; }
+    .asset-hero-pride { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .asset-pride-bar { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+    .asset-pride-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 4px; transition: width 0.8s ease; }
+    .asset-pride-num { font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--accent); min-width: 28px; text-align: right; }
+    .asset-detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px; }
+    .asset-detail-block {}
+    .asset-detail-label { font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; font-family: 'DM Sans', sans-serif; font-weight: 700; margin-bottom: 6px; }
+    .asset-detail-item { font-size: 11.5px; color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.8; }
+    .elite-id-banner { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid; border-radius: 10px; padding: 10px 14px; flex-wrap: wrap; }
+    .elite-id-label { font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+    .elite-id-name { font-size: 13px; font-weight: 700; font-family: 'DM Sans', sans-serif; }
+    .elite-id-pct { font-size: 11px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    @media (max-width: 480px) { .asset-detail-row { grid-template-columns: 1fr; } }
+
     .combo-section { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
     .combo-card { background: linear-gradient(135deg, rgba(232,255,71,0.06), rgba(71,200,255,0.04)); border: 1px solid rgba(232,255,71,0.22); border-radius: 16px; padding: 18px 20px; }
     .combo-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
@@ -4128,6 +4150,136 @@
     // Store for SNS sharing
     window._fitmeShareData = { score: totalScore, grade: fitmeGrade };
 
+    // ===== ELITE IDENTITY ENGINE =====
+    // Compute per-feature "pride scores" and pick #1 asset
+    const featureScores = [];
+
+    // Legs
+    if (!isNaN(uLeg) && !isNaN(lLeg) && !isNaN(h) && h > 0) {
+      const lr = (uLeg + lLeg) / h * 100;
+      const legPride = Math.min(100, Math.round(60 + (lr - 46) * 5));
+      if (lr >= 48) featureScores.push({ key:'legs', pride: legPride, tier: lr >= 52 ? 'elite' : lr >= 50 ? 'high' : 'good',
+        en: lr >= 52 ? 'Legendary Legs' : lr >= 50 ? 'Golden Legs' : 'Long Legs',
+        ko: lr >= 52 ? '전설급 다리 비율' : lr >= 50 ? '황금 다리 비율' : '롱레그',
+        icon:'🦵', desc_en: lr >= 52 ? 'Top 5% leg-to-height ratio. Every silhouette looks elevated.' : 'Your leg proportion places you in the top 15%.',
+        desc_ko: lr >= 52 ? '상위 5% 다리/키 비율. 어떤 실루엣도 자동으로 격이 올라가요.' : '상위 15% 다리 비율을 가지고 있어요.',
+        fabrics_en:['Tailored wool trousers','Silk wide-leg pants','Stretch crepe skirts'],
+        fabrics_ko:['테일러드 울 슬랙스','실크 와이드 팬츠','스트레치 크레이프 스커트'],
+        accessories_en:['Pointed-toe heels','Ankle strap sandals','Knee-high boots'],
+        accessories_ko:['포인티드 토 힐','앵클 스트랩 샌들','니하이 부츠'] });
+    }
+
+    // Shoulders
+    if (!isNaN(shoulder) && !isNaN(h) && h > 0) {
+      const sr = shoulder / h * 100;
+      const idealS = isMale ? 25.5 : 23.5;
+      const sOff = Math.abs(sr - idealS);
+      const sPride = Math.min(100, Math.round(100 - sOff * 12));
+      if (sPride >= 70) featureScores.push({ key:'shoulder', pride: sPride, tier: sPride >= 88 ? 'elite' : sPride >= 78 ? 'high' : 'good',
+        en: sr >= idealS + 2 ? 'Power Shoulders' : sPride >= 85 ? 'Golden Shoulders' : 'Sculpted Shoulders',
+        ko: sr >= idealS + 2 ? '파워 숄더' : sPride >= 85 ? '황금 어깨 비율' : '균형 어깨',
+        icon:'🏋️', desc_en: sPride >= 88 ? 'Your shoulder ratio is in the top 10%. Structured clothing looks effortless.' : 'Near-ideal shoulder width ratio for your height.',
+        desc_ko: sPride >= 88 ? '상위 10% 어깨 비율. 구조적인 옷이 완벽하게 맞아요.' : '키에 비해 이상적인 어깨 너비예요.',
+        fabrics_en:['Structured wool blend','Rigid cotton Oxford','Tweed jackets'],
+        fabrics_ko:['구조적인 울 블렌드','옥스퍼드 셔츠','트위드 재킷'],
+        accessories_en:['Statement necklaces','Suspenders','Epaulette details'],
+        accessories_ko:['스테이트먼트 목걸이','서스펜더','에폴렛 디테일'] });
+    }
+
+    // Waist (Power Curve)
+    if (!isNaN(waist) && !isNaN(hip) && hip > 0 && !isNaN(shoulder)) {
+      const whr = waist / hip;
+      const idealWHR = isMale ? 0.88 : 0.73;
+      const wPride = Math.min(100, Math.round(100 - Math.abs(whr - idealWHR) * 400));
+      if (wPride >= 72) {
+        const isHourglass = !isNaN(shoulder) && Math.abs((shoulder*2) - hip) < hip * 0.08 && whr < idealWHR + 0.05;
+        featureScores.push({ key:'waist', pride: isHourglass ? Math.min(100, wPride + 8) : wPride,
+          tier: wPride >= 88 ? 'elite' : wPride >= 78 ? 'high' : 'good',
+          en: isHourglass ? 'Power Curve' : whr <= idealWHR - 0.08 ? 'Sculpted Waist' : 'Defined Waist',
+          ko: isHourglass ? '파워 커브 (모래시계)' : whr <= idealWHR - 0.08 ? '조각 같은 허리' : '잘록한 허리',
+          icon:'⚡', desc_en: isHourglass ? 'The elite hourglass silhouette. Coveted in every culture. Top 8% globally.' : 'Your waist definition is exceptionally well-proportioned.',
+          desc_ko: isHourglass ? '전 세계가 동경하는 모래시계 실루엣. 상위 8% 체형이에요.' : '허리 굴곡이 매우 이상적인 비율이에요.',
+          fabrics_en:['Stretch jersey','Bias-cut silk','Form-fitting ponte'],
+          fabrics_ko:['스트레치 저지','바이어스 컷 실크','폼피팅 폰테'],
+          accessories_en:['Thin leather belt','Corset details','Chain waistband'],
+          accessories_ko:['씬 레더 벨트','코르셋 디테일','체인 웨이스트밴드'] });
+      }
+    }
+
+    // Hip (long legs + wide hips = Amazon)
+    if (!isNaN(hip) && !isNaN(h) && h > 0) {
+      const hr = hip / h * 100;
+      const idealH = isMale ? 53 : 57;
+      const hPride = Math.min(100, Math.round(60 + (hr - idealH) * 4));
+      const legRatioHip = (!isNaN(uLeg)&&!isNaN(lLeg)) ? (uLeg+lLeg)/h*100 : 0;
+      if (hr >= idealH + 2 && hPride >= 68) {
+        const isAmazon = legRatioHip >= 50 && hr >= idealH + 4;
+        featureScores.push({ key:'hip', pride: isAmazon ? Math.min(100, hPride + 10) : hPride,
+          tier: isAmazon ? 'elite' : hPride >= 80 ? 'high' : 'good',
+          en: isAmazon ? 'Amazonian Curves' : 'Elite Silhouette',
+          ko: isAmazon ? '아마조니안 커브' : '엘리트 실루엣',
+          icon:'🍑', desc_en: isAmazon ? 'Long legs + full hips = the "Power Curve" — top 5% globally. Every curve is an asset.' : 'Full hip-to-height ratio adds natural presence to any outfit.',
+          desc_ko: isAmazon ? '긴 다리 + 풍성한 힙 = "파워 커브" — 전 세계 상위 5%. 모든 곡선이 무기예요.' : '힙/키 비율이 자연스러운 존재감을 만들어요.',
+          fabrics_en:['High-stretch denim','Pencil skirt fabric','Liquid satin'],
+          fabrics_ko:['하이스트레치 데님','펜슬 스커트 소재','리퀴드 새틴'],
+          accessories_en:['Pointed-toe pumps','Wide statement belt','Ankle boots'],
+          accessories_ko:['포인티드 토 펌프스','와이드 벨트','앵클 부츠'] });
+      }
+    }
+
+    // Head ratio (등신)
+    if (!isNaN(headH) && headH > 0 && !isNaN(h)) {
+      const hc = h / headH;
+      if (hc >= 7.5) featureScores.push({ key:'head', pride: Math.min(100, Math.round(55 + (hc - 7) * 40)),
+        tier: hc >= 8 ? 'elite' : 'high',
+        en: hc >= 8 ? 'Eight-Head Figure' : 'Classic Proportions',
+        ko: hc >= 8 ? '8등신 피규어' : '클래식 비율',
+        icon:'👤', desc_en: hc >= 8 ? 'Runway-standard proportions. Your small head elevates every look dramatically.' : '7.5-head figure — the ideal for editorial and catalogue modelling.',
+        desc_ko: hc >= 8 ? '런웨이 기준 비율. 작은 머리가 모든 룩을 극적으로 끌어올려요.' : '7.5등신 — 화보·카탈로그 촬영 기준 비율이에요.',
+        fabrics_en:['Any — your proportions carry everything','Statement prints','Bold textures'],
+        fabrics_ko:['모든 소재 소화 가능','스테이트먼트 프린트','볼드한 텍스처'],
+        accessories_en:['Wide-brim hat','Oversized sunglasses','Bold earrings'],
+        accessories_ko:['챙 넓은 햇','오버사이즈 선글라스','볼드 귀걸이'] });
+    }
+
+    // Arms
+    if (!isNaN(uArm) && !isNaN(lArm) && !isNaN(h) && h > 0) {
+      const ar = (uArm + lArm) / h * 100;
+      const idealAr = isMale ? 43 : 41;
+      const ulr = uArm / lArm;
+      const aPride = Math.min(100, Math.round(100 - Math.abs(ar - idealAr) * 8 - Math.abs(ulr - 1.0) * 40));
+      if (aPride >= 78) featureScores.push({ key:'arm', pride: aPride,
+        tier: aPride >= 90 ? 'elite' : aPride >= 82 ? 'high' : 'good',
+        en: aPride >= 90 ? 'Athletic Arms' : 'Balanced Arms',
+        ko: aPride >= 90 ? '애슬레틱 암' : '균형 팔 비율',
+        icon:'💪', desc_en: 'Your arm-to-height ratio and upper/lower arm balance are near-perfect.',
+        desc_ko: '팔/키 비율과 상완/하완 밸런스가 거의 완벽해요.',
+        fabrics_en:['3/4 sleeve knits','Raglan jerseys','Roll-up linen shirts'],
+        fabrics_ko:['칠부 소매 니트','래글런 저지','롤업 린넨 셔츠'],
+        accessories_en:['Minimalist watches','Simple bracelets','Cuffs'],
+        accessories_ko:['미니멀 시계','심플 브레이슬릿','커프스'] });
+    }
+
+    // Sort by pride score, pick #1
+    featureScores.sort((a, b) => b.pride - a.pride);
+    const topAsset = featureScores[0] || null;
+
+    // Elite Identity from combination
+    let eliteId = null;
+    const legRatioE = (!isNaN(uLeg)&&!isNaN(lLeg)&&!isNaN(h)&&h>0) ? (uLeg+lLeg)/h*100 : NaN;
+    const whrE = (!isNaN(waist)&&!isNaN(hip)&&hip>0) ? waist/hip : NaN;
+    const shrE = (!isNaN(shoulder)&&!isNaN(hip)&&hip>0) ? (shoulder*2)/hip : NaN;
+    if (!isNaN(legRatioE) && legRatioE >= 50 && !isNaN(whrE) && whrE <= (isMale?0.82:0.68) && !isNaN(shrE) && shrE >= 1.0)
+      eliteId = { en:'The Perfect Blueprint', ko:'퍼펙트 블루프린트', pct:'Top 3%', color:'#e8ff47' };
+    else if (!isNaN(legRatioE) && legRatioE >= 50 && !isNaN(whrE) && whrE <= (isMale?0.86:0.73))
+      eliteId = { en:'The Amazonian Curve', ko:'아마조니안 커브', pct:'Top 8%', color:'#ff9547' };
+    else if (!isNaN(shrE) && shrE >= 1.08 && !isNaN(whrE) && whrE <= (isMale?0.86:0.75))
+      eliteId = { en:'The Sculptor', ko:'더 스컬프터', pct:'Top 10%', color:'#e8ff47' };
+    else if (!isNaN(legRatioE) && legRatioE >= 50 && !isNaN(shrE) && shrE >= 1.03)
+      eliteId = { en:'The Athletic Classic', ko:'애슬레틱 클래식', pct:'Top 12%', color:'#47c8ff' };
+    else if (!isNaN(whrE) && !isNaN(shrE) && Math.abs((shoulder*2)-hip) < hip*0.08 && whrE <= (isMale?0.86:0.76))
+      eliteId = { en:'The Hourglass Elite', ko:'아워글래스 엘리트', pct:'Top 6%', color:'#ff9547' };
+
     // UI RENDER
     const isKoScore = currentLang === 'ko';
     const bestPreview = best.slice(0, 2);
@@ -4139,7 +4291,41 @@
           <span style="border-radius:20px; padding:4px 12px; font-size:12px; color:var(--accent); cursor:pointer;" onclick="document.getElementById('best-styles').scrollIntoView({behavior:'smooth'})">${isKoScore ? '더 보기 →' : 'See all →'}</span>
         </div>
       </div>` : '';
+    // Best Asset hero card
+    const assetHtml = topAsset ? (() => {
+      const tierBadge = topAsset.tier === 'elite' ? (isKoScore?'🏆 ELITE':'🏆 ELITE') : topAsset.tier === 'high' ? (isKoScore?'⭐ TOP':'⭐ TOP') : '';
+      const name = isKoScore ? topAsset.ko : topAsset.en;
+      const desc = isKoScore ? topAsset.desc_ko : topAsset.desc_en;
+      const fabrics = isKoScore ? topAsset.fabrics_ko : topAsset.fabrics_en;
+      const accs = isKoScore ? topAsset.accessories_ko : topAsset.accessories_en;
+      return `<div class="asset-hero-card">
+        <div class="asset-hero-top">
+          <div class="asset-hero-label">${isKoScore?'✦ YOUR #1 ASSET':'✦ YOUR #1 ASSET'}</div>
+          ${tierBadge?`<div class="asset-tier-badge">${tierBadge}</div>`:''}
+        </div>
+        <div class="asset-hero-name">${topAsset.icon} ${name}</div>
+        <div class="asset-hero-desc">${desc}</div>
+        <div class="asset-hero-pride"><div class="asset-pride-bar"><div class="asset-pride-fill" style="width:${topAsset.pride}%"></div></div><span class="asset-pride-num">${topAsset.pride}</span></div>
+        <div class="asset-detail-row">
+          <div class="asset-detail-block">
+            <div class="asset-detail-label">${isKoScore?'추천 소재':'FABRICS'}</div>
+            ${fabrics.map(f=>`<div class="asset-detail-item">▸ ${f}</div>`).join('')}
+          </div>
+          <div class="asset-detail-block">
+            <div class="asset-detail-label">${isKoScore?'추천 액세서리':'ACCESSORIES'}</div>
+            ${accs.map(a=>`<div class="asset-detail-item">▸ ${a}</div>`).join('')}
+          </div>
+        </div>
+        ${eliteId ? `<div class="elite-id-banner" style="border-color:${eliteId.color}22;background:${eliteId.color}09">
+          <span class="elite-id-label">${isKoScore?'체형 아이덴티티':'BODY IDENTITY'}</span>
+          <span class="elite-id-name" style="color:${eliteId.color}">${isKoScore?eliteId.ko:eliteId.en}</span>
+          <span class="elite-id-pct">${eliteId.pct}</span>
+        </div>` : ''}
+      </div>`;
+    })() : '';
+
     document.getElementById('fitme-score-section').innerHTML = `
+      ${assetHtml}
       <div class="fitme-score-banner">
         <div class="fitme-score-left">
           <div class="fitme-score-label">${dl.scoreLabel}</div>
