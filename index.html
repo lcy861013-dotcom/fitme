@@ -4141,7 +4141,8 @@
           shoulder = getVal('shoulder', 'width'), waist = getVal('waist', 'circ'),
           chest = getVal('chest', 'circ'), hip = getVal('hip', 'circ'),
           uLeg = getVal('upper-leg', 'len'), lLeg = getVal('lower-leg', 'len'),
-          headH = getVal('head', 'height'), thighCirc = getVal('upper-leg', 'circ');
+          headH = getVal('head', 'height'), thighCirc = getVal('upper-leg', 'circ'),
+          uArm = getVal('upper-arm', 'len'), lArm = getVal('lower-arm', 'len');
 
     if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); restoreBtn(); return; }
 
@@ -4529,7 +4530,6 @@
       </div>`;
 
     // ===== 체형 세부 분석 =====
-    const uArm = getVal('upper-arm', 'len'), lArm = getVal('lower-arm', 'len');
     const legTipsDB = {
       longleg: {
         tips: isKo
