@@ -731,7 +731,7 @@
   <div class="hero">
     <div class="hero-social-proof">
       <span class="sp-dot"></span>
-      <span id="hero-live-count">9,247</span>&nbsp;<span data-i18n="hero-live-suffix">women analyzed today</span>
+      <span data-i18n="hero-live-suffix">Free · No sign-up · Private</span>
     </div>
     <div class="hero-tag" data-i18n="hero-tag">BODY RATIO ANALYSIS</div>
     <h1 class="hero-headline" id="hero-headline-text">"You've been dressing<br><em>someone else's body.</em>"</h1>
@@ -1509,7 +1509,7 @@
     ko: {
       'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-about':'About',
       'hero-tag':'신체 비율 정밀 분석',
-      'hero-live-suffix':'명이 오늘 분석했어요',
+      'hero-live-suffix':'무료 · 가입불필요 · 완전 비공개',
       'hero-headline':'지금까지<br><em>남의 체형에 맞는 옷</em>을 입었을 수도 있어요.',
       'hero-locked-tag1':'상위 ??% 비율','hero-locked-tag2':'엘리트 실루엣',
       'hero-lock-title':'내 결과가 기다리고 있어요','hero-lock-sub':'2분이면 확인 가능해요',
@@ -1647,7 +1647,7 @@
     en: {
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
       'hero-tag':'BODY RATIO ANALYSIS',
-      'hero-live-suffix':'women analyzed today',
+      'hero-live-suffix':'Free · No sign-up · Private',
       'hero-headline':'"You\'ve been dressing<br><em>someone else\'s body.</em>"',
       'hero-locked-tag1':'Top ??% globally','hero-locked-tag2':'Elite Silhouette',
       'hero-lock-title':'Your result is inside','hero-lock-sub':'Takes 2 min to reveal',
@@ -3030,9 +3030,6 @@
     // Dynamic hero headline (uses <br> and <em>)
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) heroHl.innerHTML = t('hero-headline');
-    // Social proof counter (base + time-based drift for freshness feel)
-    const spEl = document.getElementById('hero-live-count');
-    if (spEl) { const base = 9247; const drift = Math.floor((Date.now() / 1000 / 60) % 60); spEl.textContent = (base + drift).toLocaleString(); }
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const val = t(key);
