@@ -457,6 +457,15 @@
     .detail-tips, .detail-warns { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
     .detail-tip { font-size: 12.5px; line-height: 1.5; color: var(--text); font-family: 'DM Sans', sans-serif; }
     .detail-warn { font-size: 12.5px; line-height: 1.5; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .combo-section { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .combo-card { background: linear-gradient(135deg, rgba(232,255,71,0.06), rgba(71,200,255,0.04)); border: 1px solid rgba(232,255,71,0.22); border-radius: 16px; padding: 18px 20px; }
+    .combo-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .combo-card-icon { font-size: 22px; }
+    .combo-card-label { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 14px; color: var(--accent); letter-spacing: 0.3px; }
+    .combo-outfits { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
+    .combo-outfit-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--text); line-height: 1.5; font-family: 'DM Sans', sans-serif; }
+    .combo-outfit-dot { color: var(--accent); font-size: 10px; margin-top: 4px; flex-shrink: 0; }
+    .combo-why { font-size: 11.5px; color: var(--muted); line-height: 1.6; padding-top: 10px; border-top: 1px solid var(--border); font-family: 'DM Sans', sans-serif; }
 
     /* PANEL ACTIONS */
     .panel-actions { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
@@ -1181,6 +1190,8 @@
           </div>
           <!-- 체형 세부 분석 -->
           <div id="detail-analysis-section"></div>
+          <!-- 복합 코디 진단 -->
+          <div id="combo-style-section"></div>
           <!-- FITME Advanced Analysis (v1.4) -->
           <div id="advanced-analysis-section"></div>
           <!-- Weight goal card -->          <div id="weight-goal-section"></div>
@@ -3494,7 +3505,7 @@
     let hasData = false;
     if (part === 'height') { data.val = document.getElementById('input-height').value; hasData = data.val; }
     else if (part === 'weight') { data.val = document.getElementById('input-weight').value; hasData = data.val; }
-    else if (part === 'head') { data.circ = document.getElementById('head-circ').value; data.hat = radioSelections['hat']; hasData = data.circ || data.hat; }
+    else if (part === 'head') { data.circ = document.getElementById('head-circ').value; data.height = document.getElementById('head-height').value; data.hat = radioSelections['hat']; hasData = data.circ || data.height || data.hat; }
     else if (part === 'shoulder') { data.width = document.getElementById('shoulder-width').value; hasData = data.width; }
     else if (part === 'chest') { data.circ = document.getElementById('chest-circ').value; data.size = radioSelections['top']; hasData = data.circ || data.size; }
     else if (part === 'upper-arm') { data.len = document.getElementById('upper-arm-len').value; hasData = data.len; }
@@ -4042,10 +4053,11 @@
       return parseFloat(d);
     };
 
-    const h = getVal('height', 'val'), w = getVal('weight', 'val'), 
+    const h = getVal('height', 'val'), w = getVal('weight', 'val'),
           shoulder = getVal('shoulder', 'width'), waist = getVal('waist', 'circ'),
           chest = getVal('chest', 'circ'), hip = getVal('hip', 'circ'),
-          uLeg = getVal('upper-leg', 'len'), lLeg = getVal('lower-leg', 'len');
+          uLeg = getVal('upper-leg', 'len'), lLeg = getVal('lower-leg', 'len'),
+          headH = getVal('head', 'height'), thighCirc = getVal('upper-leg', 'circ');
 
     if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); restoreBtn(); return; }
 
@@ -4421,6 +4433,151 @@
       detailSections.push({ icon:'📏', title: isKo?'상하체 비율 분석':'Upper/Lower Body Ratio', tags:[{label:tLabel,color:tColor}], stat: isKo?`토르소 비율 ${torsoRatio.toFixed(1)}% · 추정 상체 길이 ${Math.round(torsoLen)}cm`:`Torso ratio ${torsoRatio.toFixed(1)}% · Est. torso length ${Math.round(torsoLen)}cm`, tips, warns });
     }
 
+    // ===== 4. 어깨 비율 분석 =====
+    if (!isNaN(shoulder) && !isNaN(h) && shoulder > 0) {
+      const shoulderRatio = shoulder / h * 100;
+      const idealBase = isMale ? 25.5 : 23.5;
+      const sLenType = shoulderRatio >= idealBase + 1.5 ? 'wide' : shoulderRatio <= idealBase - 1.5 ? 'narrow' : 'balanced';
+      const sLabel = isKo
+        ? { wide:'넓은 어깨', balanced:'균형 어깨', narrow:'좁은 어깨' }[sLenType]
+        : { wide:'Wide Shoulders', balanced:'Balanced', narrow:'Narrow Shoulders' }[sLenType];
+      const sColor = { wide:'var(--accent)', balanced:'var(--accent3)', narrow:'#ff9547' }[sLenType];
+      let sHipLabel = '', sHipColor = 'var(--muted)';
+      if (!isNaN(hip) && hip > 0) {
+        const sHipR = (shoulder * 2) / hip;
+        const sHipType = sHipR > 1.05 ? 'dominant' : sHipR < 0.95 ? 'hip' : 'balanced';
+        sHipLabel = isKo
+          ? { dominant:'어깨 우세형', balanced:'상하 균형형', hip:'힙 우세형' }[sHipType]
+          : { dominant:'Shoulder-dominant', balanced:'Upper-Lower Balanced', hip:'Hip-dominant' }[sHipType];
+        sHipColor = { dominant:'var(--accent)', balanced:'var(--accent3)', hip:'#ff9547' }[sHipType];
+      }
+      const shoulderTipsDB = {
+        wide: {
+          tips: isKo
+            ? (isMale ? ["수트·블레이저가 압도적으로 잘 어울려요 — 넓은 어깨가 빛납니다","V넥·U넥으로 시선을 아래로 유도하세요","세로 스트라이프로 어깨 너비를 정돈하세요","래글런보다 셋인 슬리브가 더 깔끔해요"]
+                      : ["오프숄더·홀터넥이 어깨 라인을 아름답게 강조해요","보트넥·스퀘어넥이 잘 어울려요","어깨 패드 없는 심플한 상의를 선택하세요"])
+            : (isMale ? ["Suits & blazers look incredible — wide shoulders are your asset","V-neck & U-neck draw the eye downward","Vertical stripes refine shoulder width","Set-in sleeves look cleaner than raglan"]
+                      : ["Off-shoulder & halter neck beautifully frame your shoulder line","Boat neck & square neck work great","Choose simple tops without shoulder pads"]),
+          warns: isKo
+            ? (isMale ? ["어깨 패드 재킷은 과해 보일 수 있어요","가로줄 상의는 어깨를 더 넓어 보이게 해요"]
+                      : ["과도한 러플·퍼프 소매는 어깨를 더 강조해요","가로줄 상의는 어깨를 더 넓어 보이게 해요"])
+            : (isMale ? ["Shoulder-padded jackets may look too wide","Horizontal stripe tops emphasize width further"]
+                      : ["Oversized ruffles or puff sleeves over-emphasize shoulders","Horizontal stripe tops emphasize width further"])
+        },
+        balanced: {
+          tips: isKo ? ["어깨 비율이 이상적이에요 — 대부분의 상의가 잘 어울려요","구조적인 상의부터 드레이피한 소재까지 모두 소화 가능해요"] : ["Your shoulder ratio is ideal — almost any top works","From structured to drapey fabrics — you can wear it all"],
+          warns: []
+        },
+        narrow: {
+          tips: isKo
+            ? (isMale ? ["어깨 패드 있는 재킷·블레이저로 어깨 라인을 만드세요","가로줄 패턴이 어깨를 넓어 보이게 해요","드롭숄더 스타일이 잘 어울려요","넓은 넥라인이 어깨를 넓어 보이게 해요"]
+                      : ["어깨 패드 있는 재킷·블레이저로 어깨 라인을 만드세요","퍼프·캡 소매가 어깨에 볼륨을 만들어줘요","스퀘어넥·보트넥이 잘 어울려요","가로줄 패턴이 어깨를 넓어 보이게 해요"])
+            : (isMale ? ["Jackets & blazers with shoulder pads build a strong shoulder line","Horizontal patterns visually widen shoulders","Drop-shoulder styles suit you well","Wide necklines make shoulders appear broader"]
+                      : ["Jackets & blazers with shoulder pads create a strong shoulder line","Puff & cap sleeves add shoulder volume","Square neck & boat neck work great","Horizontal patterns widen shoulders visually"]),
+          warns: isKo ? ["좁은 넥라인은 어깨를 더 좁아 보이게 해요"] : ["Narrow necklines make shoulders look even narrower"]
+        }
+      };
+      const sTags = [{ label:sLabel, color:sColor }];
+      if (sHipLabel) sTags.push({ label:sHipLabel, color:sHipColor });
+      detailSections.push({ icon:'🏋️', title: isKo?'어깨 비율 분석':'Shoulder Proportion', tags:sTags,
+        stat: isKo?`어깨 너비 ${shoulder}cm · 어깨/키 비율 ${shoulderRatio.toFixed(1)}%`:`Shoulder ${shoulder}cm · Shoulder/Height ${shoulderRatio.toFixed(1)}%`,
+        tips: shoulderTipsDB[sLenType]?.tips||[], warns: shoulderTipsDB[sLenType]?.warns||[] });
+    }
+
+    // ===== 5. 허리 굴곡 분석 =====
+    if (!isNaN(waist) && waist > 0) {
+      let wCurveType = 'normal', wCurveLabel = '', wCurveColor = 'var(--accent3)', wCurveStat = '';
+      if (!isNaN(hip) && hip > 0) {
+        const whr = waist / hip;
+        const idealWHR = isMale ? 0.88 : 0.73;
+        wCurveType = whr <= idealWHR - 0.07 ? 'defined' : whr >= idealWHR + 0.10 ? 'straight' : 'normal';
+        wCurveLabel = isKo ? { defined:'잘록한 허리', normal:'적당한 굴곡', straight:'일자 허리' }[wCurveType] : { defined:'Well-Defined', normal:'Moderate Curve', straight:'Straight Waist' }[wCurveType];
+        wCurveColor = { defined:'var(--accent)', normal:'var(--accent3)', straight:'#ff9547' }[wCurveType];
+        wCurveStat = isKo ? `WHR ${(waist/hip).toFixed(2)} · 허리 ${waist}cm, 골반 ${hip}cm` : `WHR ${(waist/hip).toFixed(2)} · Waist ${waist}cm, Hip ${hip}cm`;
+      } else {
+        wCurveLabel = isKo ? '허리 정보' : 'Waist Info';
+        wCurveStat = isKo ? `허리 ${waist}cm` : `Waist ${waist}cm`;
+      }
+      const waistTipsDB = {
+        defined: {
+          tips: isKo
+            ? (isMale ? ["허리 라인이 뚜렷해요 — 피티드 셔츠 꼭 턱인하세요","허리 벨트가 잘 어울려요","타이트한 재킷·코트가 실루엣을 살려줘요"]
+                      : ["잘록한 허리가 최대 강점 — 허리를 드러내는 스타일을 적극 활용하세요","랩 드레스·피티드 원피스가 완벽하게 어울려요","벨트·웨이스트밴드로 포인트를 주세요","크롭탑+하이웨이스트 조합이 가장 효과적이에요"])
+            : (isMale ? ["Your defined waist is an asset — tuck in fitted shirts","Belts suit you well","Fitted jackets & coats enhance your silhouette"]
+                      : ["Your defined waist is your biggest strength — show it off","Wrap dresses & fitted dresses are a perfect match","Belts & waistbands add the perfect accent","Crop top + high-waist combo is your most powerful look"]),
+          warns: []
+        },
+        normal: {
+          tips: isKo ? ["균형 잡힌 허리 라인이에요","허리를 강조하거나 자연스럽게 두는 스타일 모두 가능해요"] : ["Your waist line is well-balanced","Both waist-emphasis and natural-fit styles work for you"],
+          warns: []
+        },
+        straight: {
+          tips: isKo
+            ? (isMale ? ["허리 벨트·구조적인 셔츠로 허리 라인을 만드세요","상하 색상 대비로 허리를 강조하세요","풀 턱인이 가장 효과적이에요"]
+                      : ["하이웨이스트 팬츠·스커트가 허리 라인을 만들어줘요","벨트를 꼭 활용하세요 — 시각적으로 허리를 만들어줘요","A라인 스커트·플레어 원피스가 슬림해 보이게 해요","페플럼 스타일이 허리 굴곡을 만들어줘요"])
+            : (isMale ? ["Use belts & structured shirts to define your waist","Color contrast between top and bottom emphasizes the waist","Full tuck-in is most effective"]
+                      : ["High-waist pants & skirts visually create a waist","Always use a belt — it creates a waist line","A-line skirts & flare dresses slim the waist visually","Peplum styles add waist definition"]),
+          warns: isKo ? ["H라인 드레스는 굴곡 없는 실루엣을 강조해요"] : ["H-line dresses emphasize a silhouette without waist definition"]
+        }
+      };
+      detailSections.push({ icon:'⬛', title: isKo?'허리 굴곡 분석':'Waist Definition', tags:[{ label:wCurveLabel, color:wCurveColor }],
+        stat: wCurveStat, tips: waistTipsDB[wCurveType]?.tips||[], warns: waistTipsDB[wCurveType]?.warns||[] });
+    }
+
+    // ===== 6. 골반 비율 분석 =====
+    if (!isNaN(hip) && !isNaN(h) && hip > 0) {
+      const hipRatio = hip / h * 100;
+      const idealHip = isMale ? 53 : 57;
+      const hType = hipRatio >= idealHip + 3 ? 'wide' : hipRatio <= idealHip - 3 ? 'narrow' : 'balanced';
+      const hLabel = isKo ? { wide:'넓은 힙', balanced:'균형 힙', narrow:'슬림 힙' }[hType] : { wide:'Wide Hip', balanced:'Balanced Hip', narrow:'Slim Hip' }[hType];
+      const hColor = { wide:'var(--accent)', balanced:'var(--accent3)', narrow:'#ff9547' }[hType];
+      const thighStat = (!isNaN(thighCirc) && thighCirc > 0) ? (isKo ? ` · 허벅지 둘레 ${thighCirc}cm` : ` · Thigh circ. ${thighCirc}cm`) : '';
+      const hipTipsDB = {
+        wide: {
+          tips: isKo
+            ? (isMale ? ["와이드 팬츠가 자연스럽게 잘 어울려요","상의에 볼륨을 주면 상하체 균형이 맞아요","A라인 실루엣이 잘 맞아요"]
+                      : ["A라인 스커트·플레어 원피스가 완벽하게 어울려요","와이드 팬츠가 자연스럽게 흘러내려요","허리를 강조해 힙과 대비를 만드세요 — 모래시계 실루엣","부츠컷·트럼펫 라인이 힙을 아름답게 받쳐줘요"])
+            : (isMale ? ["Wide-leg pants look naturally great on you","Add volume to tops to balance upper/lower body","A-line silhouettes suit you well"]
+                      : ["A-line skirts & flare dresses are perfect for you","Wide-leg pants flow naturally on wide hips","Define the waist to contrast hips — hourglass silhouette","Bootcut & trumpet lines beautifully support your hips"]),
+          warns: isKo
+            ? (isMale ? ["슬림핏 팬츠는 힙이 끼어 보일 수 있어요"] : ["타이트한 스키니진은 힙이 부각될 수 있어요","힙 부근 큰 포켓 디테일은 피하세요"])
+            : (isMale ? ["Slim-fit pants may feel tight at the hips"] : ["Tight skinny jeans can over-emphasize wide hips","Avoid large pocket details near the hips"])
+        },
+        balanced: {
+          tips: isKo ? ["이상적인 힙 비율이에요","스키니부터 와이드까지 모든 팬츠 실루엣이 잘 어울려요"] : ["Ideal hip proportion","Everything from skinny to wide-leg pants suits you"],
+          warns: []
+        },
+        narrow: {
+          tips: isKo
+            ? (isMale ? ["카고·와이드 팬츠로 힙 볼륨을 만드세요","뒷주머니 디테일이 있는 팬츠가 힙감을 줘요","레이어드 룩으로 볼륨을 만드세요"]
+                      : ["볼드한 뒷주머니 디테일 팬츠로 힙 볼륨을 만드세요","힙 부근 포켓·프릴 디테일 스커트가 잘 어울려요","와이드·배기 팬츠가 힙을 풍성해 보이게 해요"])
+            : (isMale ? ["Cargo or wide-leg pants create volume at hips","Back-pocket detail pants add visual hip volume","Layered looks add overall volume"]
+                      : ["Bold back-pocket detail pants create hip volume","Skirts with pocket/frill details near hips suit you","Wide or baggy pants make hips look fuller"]),
+          warns: isKo ? ["슬림핏·스키니는 힙을 더 빈약해 보이게 해요"] : ["Slim-fit & skinny pants make hips look even slimmer"]
+        }
+      };
+      detailSections.push({ icon:'🍑', title: isKo?'골반 비율 분석':'Hip Proportion', tags:[{ label:hLabel, color:hColor }],
+        stat: isKo ? `골반 둘레 ${hip}cm · 힙/키 비율 ${hipRatio.toFixed(1)}%${thighStat}` : `Hip circ. ${hip}cm · Hip/Height ${hipRatio.toFixed(1)}%${thighStat}`,
+        tips: hipTipsDB[hType]?.tips||[], warns: hipTipsDB[hType]?.warns||[] });
+    }
+
+    // ===== 7. 두상 등신 분석 =====
+    if (!isNaN(headH) && headH > 0 && !isNaN(h)) {
+      const headCount = h / headH;
+      const headRankStr = headCount >= 8 ? (isKo?'8등신+':'8-head+') : headCount >= 7.5 ? (isKo?'7.5등신':'7.5-head') : headCount >= 7 ? (isKo?'7등신':'7-head') : (isKo?'7등신 미만':'Under 7-head');
+      const headColor = headCount >= 7.5 ? 'var(--accent)' : headCount >= 7 ? 'var(--accent3)' : '#ff9547';
+      const headTips = headCount >= 7 ? (isKo
+        ? ["작은 머리가 전체 비율을 극적으로 살려줘요","볼류밍 헤어(업도·웨이브)로 포인트를 주세요","챙 넓은 햇·큰 모자가 잘 어울려요","귀걸이·목걸이 주얼리가 자연스럽게 돋보여요"]
+        : ["A small head dramatically enhances your overall proportions","Voluminous hair (updos, waves) makes a great accent","Wide-brim hats look great on you","Jewelry like earrings & necklaces stand out naturally"])
+        : (isKo
+        ? ["헤어 볼륨을 줄이고 심플하게 연출하세요","V넥·딥넥으로 시선을 아래로 유도하세요","버킷햇·캡처럼 작은 모자가 잘 어울려요"]
+        : ["Keep hair simple with reduced volume","V-neck & deep necklines draw eyes downward","Smaller hats (bucket hat, cap) suit you well"]);
+      const headWarns = headCount < 7 ? (isKo ? ["큰 챙 모자·볼드한 업도는 머리를 더 커 보이게 해요"] : ["Large-brim hats or bold updos can make the head look larger"]) : [];
+      detailSections.push({ icon:'👤', title: isKo?'두상 비율 (등신)':'Head Ratio (등신)', tags:[{ label:headRankStr, color:headColor }],
+        stat: isKo ? `${headCount.toFixed(1)}등신 · 머리 세로 ${headH}cm, 키 ${h}cm` : `${headCount.toFixed(1)}-head figure · Head ${headH}cm, Height ${h}cm`,
+        tips: headTips, warns: headWarns });
+    }
+
     if (detailSections.length > 0) {
       document.getElementById('detail-analysis-section').innerHTML = `
         <div class="section-divider">📐 ${isKo?'체형 세부 분석':'Detailed Body Analysis'}</div>
@@ -4439,6 +4596,62 @@
         </div>`;
     } else {
       document.getElementById('detail-analysis-section').innerHTML = '';
+    }
+
+    // ===== 복합 코디 진단 =====
+    {
+      const legRatioC = (!isNaN(uLeg)&&!isNaN(lLeg)&&!isNaN(h)) ? (uLeg+lLeg)/h*100 : NaN;
+      const isLongLeg = !isNaN(legRatioC) && legRatioC >= 50;
+      const isShortLeg = !isNaN(legRatioC) && legRatioC < 46;
+      const isWideHip = !isNaN(hip) && !isNaN(h) && (hip/h*100) >= (isMale ? 56 : 60);
+      const isSlimWaist = !isNaN(waist) && !isNaN(hip) && (waist/hip) <= (isMale ? 0.81 : 0.70);
+      const isWideShoulder = !isNaN(shoulder) && !isNaN(h) && (shoulder/h*100) >= (isMale ? 27 : 25);
+      const torsoLenC = (!isNaN(h)&&!isNaN(uLeg)&&!isNaN(lLeg)) ? h-(uLeg+lLeg)-h/7.5 : NaN;
+      const isLongTorso = !isNaN(torsoLenC) && (torsoLenC/h*100) >= 35;
+      const isLongArm = (!isNaN(uArm)&&!isNaN(lArm)&&!isNaN(h)) && ((uArm+lArm)/h*100) >= (isMale ? 46 : 44);
+
+      const combos = [];
+      if (isLongLeg && isWideHip)
+        combos.push(isKo
+          ? { label:'롱레그 × 힙업형', icon:'🦵🍑', outfits:['와이드 팬츠 + 크롭 상의','A라인 미니스커트 + 앵클부츠','하이웨이스트 와이드진 + 오버핏 니트'], why:'긴 다리가 와이드 실루엣을 우아하게 받쳐주고, 풍성한 힙이 하의에 자연스러운 입체감을 만들어줘요' }
+          : { label:'Long Leg × Full Hip', icon:'🦵🍑', outfits:['Wide pants + Crop top','A-line mini skirt + Ankle boots','High-waist wide jeans + Oversized knit'], why:'Long legs gracefully support wide silhouettes; full hips add natural dimension to bottoms' });
+      if (isLongLeg && isSlimWaist && !isWideHip)
+        combos.push(isKo
+          ? { label:'롱레그 × 슬림웨이스트형', icon:'🦵⬛', outfits:['스트레이트 진 + 풀 턱인 셔츠','하이웨이스트 슬랙스 + 블레이저','크롭 니트 + 미디 스커트'], why:'긴 다리와 잘록한 허리 조합 — 어떤 실루엣도 자연스럽게 비율이 살아나요' }
+          : { label:'Long Leg × Slim Waist', icon:'🦵⬛', outfits:['Straight jeans + Full tuck-in shirt','High-waist slacks + Blazer','Crop knit + Midi skirt'], why:'Long legs + slim waist — any silhouette looks naturally proportioned on you' });
+      if (isWideShoulder && isSlimWaist)
+        combos.push(isKo
+          ? { label:'넓은어깨 × 잘록허리형', icon:'🏋️⬛', outfits:['테일러드 수트 (원버튼·투버튼)','구조적인 블레이저 + 슬림 팬츠','핏 셔츠 + 네로우 타이'], why:'넓은 어깨와 잘록한 허리 — 수트핏의 교과서적인 체형이에요. 정장 스타일이 가장 압도적으로 어울려요' }
+          : { label:'Wide Shoulder × Slim Waist', icon:'🏋️⬛', outfits:['Tailored suit (one/two button)','Structured blazer + Slim pants','Fitted shirt + Narrow tie'], why:'Wide shoulders + slim waist — the textbook suit-fit body type. Formal styles look most powerful on you' });
+      if (isShortLeg && isLongTorso)
+        combos.push(isKo
+          ? { label:'숏레그 × 롱토르소형', icon:'📏', outfits:['하이웨이스트 팬츠 + 크롭 상의 (필수 조합)','9부 팬츠로 발목 노출','상하 동색 모노톤 룩'], why:'하이웨이스트로 다리 시작점을 올리고, 크롭으로 상체 길이를 시각적으로 줄이는 것이 핵심이에요' }
+          : { label:'Short Leg × Long Torso', icon:'📏', outfits:['High-waist pants + Crop top (essential combo)','7/8 ankle pants to expose ankle','Same-color monotone top & bottom'], why:'Raise the visual leg start with high-waist; reduce perceived torso length with crop tops' });
+      if (isLongArm && isWideShoulder)
+        combos.push(isKo
+          ? { label:'롱암 × 넓은어깨형', icon:'💪🏋️', outfits:['칠부(3/4) 소매 재킷','소매 롤업 옥스퍼드 셔츠','래글런 소매 스웨트셔츠'], why:'긴 팔과 넓은 어깨 조합 — 칠부 소매로 팔 비율을 딱 맞춰줘요' }
+          : { label:'Long Arm × Wide Shoulder', icon:'💪🏋️', outfits:['3/4 sleeve jacket','Sleeve roll-up oxford shirt','Raglan sleeve sweatshirt'], why:'Long arms + wide shoulders — 3/4 sleeves perfectly calibrate the arm proportion' });
+      if (isLongLeg && isWideShoulder && !isWideHip)
+        combos.push(isKo
+          ? { label:'롱레그 × 역삼각형', icon:'🦵🔺', outfits:['슬림 팬츠 + V넥 셔츠 (상하 균형)','조거 팬츠 + 심플한 상의','스트레이트 컷 데님'], why:'긴 다리 덕에 넓은 어깨가 더 압도적으로 보여요. 하의는 심플하게, 상의로 포인트를 줄 필요가 없어요' }
+          : { label:'Long Leg × Inverted Triangle', icon:'🦵🔺', outfits:['Slim pants + V-neck shirt (upper/lower balance)','Jogger pants + Simple top','Straight-cut denim'], why:'Long legs amplify the wide shoulder look. Keep bottoms simple — your upper body already makes the statement' });
+
+      const comboHtml = combos.length > 0 ? `
+        <div class="section-divider">✨ ${isKo?'복합 코디 진단':'Style Combo Analysis'}</div>
+        <div class="combo-section">
+          ${combos.map(c => `
+            <div class="combo-card">
+              <div class="combo-card-header">
+                <span class="combo-card-icon">${c.icon}</span>
+                <span class="combo-card-label">${c.label}</span>
+              </div>
+              <div class="combo-outfits">
+                ${c.outfits.map(o=>`<div class="combo-outfit-item"><span class="combo-outfit-dot">▸</span><span>${o}</span></div>`).join('')}
+              </div>
+              <div class="combo-why">💡 ${c.why}</div>
+            </div>`).join('')}
+        </div>` : '';
+      document.getElementById('combo-style-section').innerHTML = comboHtml;
     }
 
     // Call advanced analysis upgrade (v1.4)
@@ -4574,7 +4787,7 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
-    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
     window._fitmeShareData = null;
