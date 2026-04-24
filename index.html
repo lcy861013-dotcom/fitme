@@ -502,7 +502,7 @@
     .asset-pride-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 4px; transition: width 0.8s ease; }
     .asset-pride-num { font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 700; color: var(--accent); min-width: 28px; text-align: right; }
     .asset-detail-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px; }
-    .asset-detail-block {}
+    .asset-detail-block { display: flex; flex-direction: column; }
     .asset-detail-label { font-size: 9px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; font-family: 'DM Sans', sans-serif; font-weight: 700; margin-bottom: 6px; }
     .asset-detail-item { font-size: 11.5px; color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.8; }
     .elite-id-banner { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid; border-radius: 10px; padding: 10px 14px; flex-wrap: wrap; }
@@ -5933,14 +5933,16 @@
       Kakao.init('35545588bedacb9b5a80dd250aadd17a');
     }
 
-    // Expose helpers for main.js (v1.5)
+    // Expose helpers for external scripts
     window.t = t;
     window.setLanguage = setLanguage;
     window.applyTranslations = applyTranslations;
-    window.currentUnit = currentUnit;
+    window.getUnitCfg = getUnitCfg;
     window.currentLang = currentLang;
+    // currentUnit is deprecated — unit state lives in unitOverride / getUnitCfg()
+    window.currentUnit = getUnitCfg().length === 'in' ? 'imperial' : 'metric';
 
-    // Use initLocale from main.js (handles lang/unit auto-detect)
+    // initLocale from external main.js (legacy hook — index.html handles units natively)
     if (typeof initLocale === 'function') {
       initLocale();
     } else {
@@ -5961,6 +5963,19 @@
         // (Note: actual input restoration is handled in main.js window.onload)
       });
     }
+
+    // Legacy toggleUnit compat shim — bridges old main.js API to new unit system
+    window.toggleUnit = function(unit, isInit) {
+      if (isInit) return;
+      const isImperial = (unit === 'imperial');
+      const cfg = {
+        length: isImperial ? 'in' : 'cm',
+        weight: isImperial ? 'lb' : 'kg',
+        waist:  isImperial ? 'inch' : 'cm',
+        foot:   isImperial ? 'US size' : 'mm'
+      };
+      _applyUnitSettings(cfg, true);
+    };
   });
 
 </script>
