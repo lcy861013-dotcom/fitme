@@ -479,6 +479,16 @@
     .detail-tips, .detail-warns { margin-top: 8px; display: flex; flex-direction: column; gap: 5px; }
     .detail-tip { font-size: 12.5px; line-height: 1.5; color: var(--text); font-family: 'DM Sans', sans-serif; }
     .detail-warn { font-size: 12.5px; line-height: 1.5; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    /* UNLOCK NUDGE */
+    .unlock-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .unlock-title { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; font-weight: 700; }
+    .unlock-grid { display: flex; flex-direction: column; gap: 7px; }
+    .unlock-card { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.12); border-radius: 10px; padding: 10px 14px; }
+    .unlock-card-icon { font-size: 18px; opacity: 0.4; }
+    .unlock-card-content { flex: 1; }
+    .unlock-card-name { font-size: 12.5px; color: var(--muted); font-weight: 600; font-family: 'DM Sans', sans-serif; }
+    .unlock-card-need { font-size: 10.5px; color: rgba(232,255,71,0.45); margin-top: 2px; letter-spacing: 0.3px; font-family: 'DM Sans', sans-serif; }
+    .unlock-lock { font-size: 15px; opacity: 0.35; }
     /* ASSET HERO CARD */
     .asset-hero-card { background: linear-gradient(135deg, rgba(232,255,71,0.08) 0%, rgba(71,200,255,0.05) 100%); border: 1.5px solid rgba(232,255,71,0.35); border-radius: 18px; padding: 20px 22px; margin-bottom: 14px; position: relative; overflow: hidden; }
     .asset-hero-card::before { content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px; background:radial-gradient(circle, rgba(232,255,71,0.08) 0%, transparent 70%); }
@@ -4135,6 +4145,9 @@
 
     if (isNaN(h) || isNaN(w)) { showToast(t('toast-need-data')); restoreBtn(); return; }
 
+    const isMale = currentGender === 'male';
+    const isKo = currentLang === 'ko';
+
     const lc = i18n[currentLang] || i18n.en;
     const dl = dnaLabels[currentLang] || dnaLabels.en;
     const langOcc = occasionOutfits[currentLang] || occasionOutfits.en;
@@ -4162,6 +4175,8 @@
         else bodyType = 'rect';
       }
     }
+    // Waist-Height ratio — meaningful even without hip data
+    const whtr = (!isNaN(waist) && !isNaN(h) && h > 0) ? +(waist / h).toFixed(3) : NaN;
 
     const typeKey = 'body-type-' + (bodyType === 'default' ? 'def' : bodyType);
     const ratio = whr || '-';
@@ -4187,6 +4202,10 @@
     if (whr) {
       const ideal = currentGender === 'male' ? 0.9 : 0.75;
       sc.s = Math.min(100, Math.max(20, Math.round(100 - Math.abs(whr - ideal) * 250)));
+    } else if (!isNaN(whtr)) {
+      // Waist-to-height ratio: ideal ≤ 0.50; top 15% female ≤ 0.43, male ≤ 0.46
+      const idealWH = isMale ? 0.46 : 0.43;
+      sc.s = Math.min(100, Math.max(20, Math.round(100 - Math.abs(whtr - idealWH) * 500)));
     }
     if (!isNaN(uLeg) && !isNaN(lLeg)) {
       const r = lLeg / uLeg;
@@ -4256,6 +4275,25 @@
           fabrics_ko:['스트레치 저지','바이어스 컷 실크','폼피팅 폰테'],
           accessories_en:['Thin leather belt','Corset details','Chain waistband'],
           accessories_ko:['씬 레더 벨트','코르셋 디테일','체인 웨이스트밴드'] });
+      }
+    }
+
+    // Waist from WHtR when hip data is missing
+    if (isNaN(hip) && !isNaN(whtr) && !isNaN(h)) {
+      const idealWH = isMale ? 0.46 : 0.43;
+      const wPride2 = Math.min(100, Math.round(100 - Math.abs(whtr - idealWH) * 600));
+      if (wPride2 >= 62) {
+        featureScores.push({ key:'waist', pride: wPride2,
+          tier: wPride2 >= 85 ? 'elite' : wPride2 >= 72 ? 'high' : 'good',
+          en: wPride2 >= 85 ? 'Sculpted Waist' : 'Defined Waist',
+          ko: wPride2 >= 85 ? '조각 같은 허리' : '잘록한 허리',
+          icon:'⚡',
+          desc_en: `Your waist-to-height ratio (${whtr}) is in the ideal range — a natural asset.`,
+          desc_ko: `허리/키 비율 ${whtr}가 이상적인 범위에 있어요 — 타고난 강점이에요.`,
+          fabrics_en:['Stretch jersey','Wrap-style dresses','Fitted knits'],
+          fabrics_ko:['스트레치 저지','랩 원피스','피티드 니트'],
+          accessories_en:['Thin leather belt','Corset details','Waist chains'],
+          accessories_ko:['씬 레더 벨트','코르셋 디테일','웨이스트 체인'] });
       }
     }
 
@@ -4492,9 +4530,6 @@
 
     // ===== 체형 세부 분석 =====
     const uArm = getVal('upper-arm', 'len'), lArm = getVal('lower-arm', 'len');
-    const isKo = currentLang === 'ko';
-
-    const isMale = currentGender === 'male';
     const legTipsDB = {
       longleg: {
         tips: isKo
@@ -4735,8 +4770,17 @@
         wCurveColor = { defined:'var(--accent)', normal:'var(--accent3)', straight:'#ff9547' }[wCurveType];
         wCurveStat = isKo ? `WHR ${(waist/hip).toFixed(2)} · 허리 ${waist}cm, 골반 ${hip}cm` : `WHR ${(waist/hip).toFixed(2)} · Waist ${waist}cm, Hip ${hip}cm`;
       } else {
-        wCurveLabel = isKo ? '허리 정보' : 'Waist Info';
-        wCurveStat = isKo ? `허리 ${waist}cm` : `Waist ${waist}cm`;
+        // No hip data — use waist-height ratio (WHtR)
+        const whtR = waist / h;
+        const whtIdeal = isMale ? 0.46 : 0.43;
+        wCurveType = whtR <= whtIdeal ? 'defined' : whtR <= 0.50 ? 'normal' : 'straight';
+        wCurveLabel = isKo
+          ? ({ defined:'잘록한 허리', normal:'표준 허리', straight:'허리 관리 필요' })[wCurveType]
+          : ({ defined:'Sculpted Waist', normal:'Standard Waist', straight:'Waist Needs Work' })[wCurveType];
+        wCurveColor = { defined:'var(--accent)', normal:'var(--accent3)', straight:'#ff9547' }[wCurveType];
+        wCurveStat = isKo
+          ? `허리/키 비율 ${whtR.toFixed(2)} · 허리 ${waist}cm (이상적 기준: 0.50 이하)`
+          : `Waist-Height ratio ${whtR.toFixed(2)} · Waist ${waist}cm (ideal: ≤0.50)`;
       }
       const waistTipsDB = {
         defined: {
@@ -4818,6 +4862,36 @@
         tips: headTips, warns: headWarns });
     }
 
+    // Build unlock nudge for missing measurements
+    const unlockItems = [];
+    if (isNaN(shoulder) || isNaN(hip)) {
+      unlockItems.push({ icon:'🔺', en:'Body Shape Type (Hourglass / V-Shape / Pear…)', ko:'체형 진단 (모래시계 / V라인 / 서양배형…)', need_en:'Add: shoulder width + hip circumference', need_ko:'추가: 어깨 너비 + 골반 둘레' });
+    }
+    if (isNaN(uLeg) || isNaN(lLeg)) {
+      unlockItems.push({ icon:'🦵', en:'Leg Proportion + Torso Ratio', ko:'다리 비율 + 상하체 비율 분석', need_en:'Add: upper leg + lower leg length', need_ko:'추가: 허벅지 길이 + 종아리 길이' });
+    }
+    if (isNaN(headH)) {
+      unlockItems.push({ icon:'👤', en:'Head Ratio (등신) Analysis', ko:'두상 등신 분석', need_en:'Add: head height', need_ko:'추가: 머리 세로 길이' });
+    }
+    if (isNaN(uArm) || isNaN(lArm)) {
+      unlockItems.push({ icon:'💪', en:'Arm Proportion Analysis', ko:'팔 비율 분석', need_en:'Add: upper arm + forearm length', need_ko:'추가: 상완 + 하완 길이' });
+    }
+    const unlockHtml = unlockItems.length > 0 ? `
+      <div class="unlock-section">
+        <div class="unlock-title">${isKo ? '🔓 이 측정값을 추가하면 분석이 열려요' : '🔓 Add these to unlock more analysis'}</div>
+        <div class="unlock-grid">
+          ${unlockItems.map(u => `
+            <div class="unlock-card">
+              <div class="unlock-card-icon">${u.icon}</div>
+              <div class="unlock-card-content">
+                <div class="unlock-card-name">${isKo ? u.ko : u.en}</div>
+                <div class="unlock-card-need">${isKo ? u.need_ko : u.need_en}</div>
+              </div>
+              <div class="unlock-lock">🔒</div>
+            </div>`).join('')}
+        </div>
+      </div>` : '';
+
     if (detailSections.length > 0) {
       document.getElementById('detail-analysis-section').innerHTML = `
         <div class="section-divider">📐 ${isKo?'체형 세부 분석':'Detailed Body Analysis'}</div>
@@ -4833,9 +4907,10 @@
               ${s.tips.length?`<div class="detail-tips">${s.tips.map(tip=>`<div class="detail-tip">✅ ${tip}</div>`).join('')}</div>`:''}
               ${s.warns.length?`<div class="detail-warns" style="margin-top:8px">${s.warns.map(w=>`<div class="detail-warn">⚠️ ${w}</div>`).join('')}</div>`:''}
             </div>`).join('')}
-        </div>`;
+        </div>
+        ${unlockHtml}`;
     } else {
-      document.getElementById('detail-analysis-section').innerHTML = '';
+      document.getElementById('detail-analysis-section').innerHTML = unlockHtml;
     }
 
     // ===== 복합 코디 진단 =====
