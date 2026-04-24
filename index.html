@@ -135,7 +135,7 @@
       --accent2: #ff4747;
       --accent3: #47c8ff;
       --text: #f0f0f0;
-      --muted: #777;
+      --muted: #888;
       --border: #2a2a2a;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1023,7 +1023,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
           <div class="part-howto-box" data-i18n="howto-height"></div>
-          <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174"></div>
+          <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
         </div>
 
@@ -1031,7 +1031,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-weight">WEIGHT / 체중</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-weight">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
           <div class="part-howto-box" data-i18n="howto-weight"></div>
-          <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68"></div>
+          <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('weight')">저장하기</button>
         </div>
 
@@ -1039,7 +1039,8 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-head">HEAD / 머리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-head">머리 둘레와 세로 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-head"></div>
-          <div class="input-group"><label class="input-label" id="flabel-head">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57"></div>
+          <div class="input-group"><label class="input-label" id="flabel-head">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel3-head">머리 세로 길이 (cm)</label><input class="input-field" type="number" id="head-height" placeholder="23" min="0"></div>
           <div class="input-group"><label class="input-label" id="flabel2-head">모자 사이즈</label>
             <div class="radio-group" id="radio-hat">
               <div class="radio-btn" onclick="selectRadio('hat','S')">S</div>
@@ -1056,7 +1057,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-shoulder"></div>
-          <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44"></div>
+          <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
         </div>
 
@@ -1064,7 +1065,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-chest">CHEST / 가슴</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-chest">가슴 둘레와 상의 사이즈를 입력하세요.</div>
           <div class="part-howto-box" data-i18n="howto-chest"></div>
-          <div class="input-group"><label class="input-label" id="flabel-chest">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95"></div>
+          <div class="input-group"><label class="input-label" id="flabel-chest">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95" min="0"></div>
           <div class="input-group"><label class="input-label" id="flabel2-chest">상의 사이즈</label>
             <div class="radio-group" id="radio-top">
               <div class="radio-btn" onclick="selectRadio('top','XS')">XS</div>
@@ -1082,7 +1083,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">UPPER ARM / 상완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
-          <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32"></div>
+          <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
         </div>
 
@@ -1090,7 +1091,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">LOWER ARM / 하완</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
-          <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26"></div>
+          <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
         </div>
 
@@ -1098,7 +1099,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-waist">WAIST / 허리</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-waist">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
           <div class="part-howto-box" data-i18n="howto-waist"></div>
-          <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5"></div>
+          <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5" min="0"></div>
           <div id="fhint-waist" style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('waist')">저장하기</button>
         </div>
@@ -1107,7 +1108,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-hip"></div>
-          <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96"></div>
+          <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
         </div>
 
@@ -1115,8 +1116,8 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-leg"></div>
-          <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42"></div>
-          <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54"></div>
+          <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
         </div>
 
@@ -1124,7 +1125,7 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-leg"></div>
-          <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38"></div>
+          <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
         </div>
 
@@ -1133,7 +1134,7 @@
           <div class="form-desc" id="fdesc-foot">발 사이즈와 발볼을 입력하세요.</div>
           <div class="part-howto-box" data-i18n="howto-foot"></div>
           <div class="input-row">
-            <div class="input-group"><label class="input-label" id="flabel-foot">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255"></div>
+            <div class="input-group"><label class="input-label" id="flabel-foot">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255" min="0"></div>
             <div class="input-group"><label class="input-label" id="flabel2-foot">발볼</label>
               <div class="radio-group" id="radio-footw" style="flex-direction:column;gap:6px;">
                 <div class="radio-btn" id="footw-narrow" data-value="narrow" onclick="selectRadio('footw','narrow')">좁음</div>
@@ -1565,7 +1566,7 @@
       'body-tip-apple':'수직 실루엣이 정답입니다. 긴 목걸이나 오픈된 재킷, 스카프 등을 활용해 시선을 위아래로 분산시키고 복부를 부드럽게 커버하세요.',
       'body-tip-def':'정확한 측정값은 오차 없는 스타일 가이드의 시작입니다. 가이드에 따라 측정값을 입력해 보세요.',
       'gender-female':'👩 여성','gender-male':'👨 남성',
-      'forms':{ height:{desc:'전체 신장을 입력하세요.',label:'키 (cm)'}, weight:{desc:'체중을 입력하세요. BMI 분석에 활용됩니다.',label:'체중 (kg)'}, head:{desc:'머리 둘레와 세로 길이를 측정하세요.',label:'머리 둘레 (cm)',label2:'모자 사이즈'}, shoulder:{desc:'어깨 끝에서 끝까지 너비를 측정하세요.',label:'어깨 너비 (cm)'}, chest:{desc:'가슴 둘레와 상의 사이즈를 입력하세요.',label:'가슴 둘레 (cm)',label2:'상의 사이즈'}, 'upper-arm':{desc:'어깨에서 팔꿈치까지 길이를 측정하세요.',label:'어깨→팔꿈치 (cm)'}, 'lower-arm':{desc:'팔꿈치에서 손목까지 길이를 측정하세요.',label:'팔꿈치→손목 (cm)'}, waist:{desc:'청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)',label:'허리 사이즈 (inch)',hint:'※ 모르면 허리 둘레(cm) ÷ 2.54'}, hip:{desc:'엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.',label:'골반 둘레 (cm)'}, 'upper-leg':{desc:'골반에서 무릎까지 길이를 측정하세요.',label:'골반→무릎 (cm)',label2:'허벅지 둘레 (cm)'}, 'lower-leg':{desc:'무릎에서 복숭아뼈까지 길이를 측정하세요.',label:'무릎→복숭아뼈 (cm)'}, foot:{desc:'발 사이즈와 발볼을 입력하세요.',label:'발 사이즈 (mm)',label2:'발볼',narrow:'좁음',normal:'보통',wide:'넓음'} }
+      'forms':{ height:{desc:'전체 신장을 입력하세요.',label:'키 (cm)'}, weight:{desc:'체중을 입력하세요. BMI 분석에 활용됩니다.',label:'체중 (kg)'}, head:{desc:'머리 둘레와 세로 길이를 측정하세요.',label:'머리 둘레 (cm)',label2:'모자 사이즈',label3:'머리 세로 길이 (cm)'}, shoulder:{desc:'어깨 끝에서 끝까지 너비를 측정하세요.',label:'어깨 너비 (cm)'}, chest:{desc:'가슴 둘레와 상의 사이즈를 입력하세요.',label:'가슴 둘레 (cm)',label2:'상의 사이즈'}, 'upper-arm':{desc:'어깨에서 팔꿈치까지 길이를 측정하세요.',label:'어깨→팔꿈치 (cm)'}, 'lower-arm':{desc:'팔꿈치에서 손목까지 길이를 측정하세요.',label:'팔꿈치→손목 (cm)'}, waist:{desc:'청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)',label:'허리 사이즈 (inch)',hint:'※ 모르면 허리 둘레(cm) ÷ 2.54'}, hip:{desc:'엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.',label:'골반 둘레 (cm)'}, 'upper-leg':{desc:'골반에서 무릎까지 길이를 측정하세요.',label:'골반→무릎 (cm)',label2:'허벅지 둘레 (cm)'}, 'lower-leg':{desc:'무릎에서 복숭아뼈까지 길이를 측정하세요.',label:'무릎→복숭아뼈 (cm)'}, foot:{desc:'발 사이즈와 발볼을 입력하세요.',label:'발 사이즈 (mm)',label2:'발볼',narrow:'좁음',normal:'보통',wide:'넓음'} }
     },
     en: {
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
@@ -1706,7 +1707,7 @@
       'body-tip-rect':'The waist is everything! Belts, tuck-ins, and high-waist styles define your middle for a chic silhouette.',
       'body-tip-def':'Enter more measurements for precise, personalized style recommendations tailored to your unique proportions.',
       'gender-female':'👩 Female','gender-male':'👨 Male',
-      'forms':{ height:{desc:'Enter your full height.',label:'Height (cm)'}, weight:{desc:'Enter your weight. Used for BMI analysis.',label:'Weight (kg)'}, head:{desc:'Measure head circumference and length.',label:'Head Circumference (cm)',label2:'Hat Size'}, shoulder:{desc:'Measure width from shoulder end to shoulder end.',label:'Shoulder Width (cm)'}, chest:{desc:'Enter chest circumference and top size.',label:'Chest Circumference (cm)',label2:'Top Size'}, 'upper-arm':{desc:'Measure from shoulder to elbow.',label:'Shoulder → Elbow (cm)'}, 'lower-arm':{desc:'Measure from elbow to wrist.',label:'Elbow → Wrist (cm)'}, waist:{desc:'Enter your waist size in inches (e.g. 28, 30, 32).',label:'Waist Size (inch)',hint:'※ If unsure: waist circumference (cm) ÷ 2.54'}, hip:{desc:'Measure the widest part of your hips.',label:'Hip Circumference (cm)'}, 'upper-leg':{desc:'Measure from hip to knee.',label:'Hip → Knee (cm)',label2:'Thigh Circumference (cm)'}, 'lower-leg':{desc:'Measure from knee to ankle.',label:'Knee → Ankle (cm)'}, foot:{desc:'Enter foot size and width.',label:'Foot Size (mm)',label2:'Foot Width',narrow:'Narrow',normal:'Normal',wide:'Wide'} }
+      'forms':{ height:{desc:'Enter your full height.',label:'Height (cm)'}, weight:{desc:'Enter your weight. Used for BMI analysis.',label:'Weight (kg)'}, head:{desc:'Measure head circumference and length.',label:'Head Circumference (cm)',label2:'Hat Size',label3:'Head Length (cm)'}, shoulder:{desc:'Measure width from shoulder end to shoulder end.',label:'Shoulder Width (cm)'}, chest:{desc:'Enter chest circumference and top size.',label:'Chest Circumference (cm)',label2:'Top Size'}, 'upper-arm':{desc:'Measure from shoulder to elbow.',label:'Shoulder → Elbow (cm)'}, 'lower-arm':{desc:'Measure from elbow to wrist.',label:'Elbow → Wrist (cm)'}, waist:{desc:'Enter your waist size in inches (e.g. 28, 30, 32).',label:'Waist Size (inch)',hint:'※ If unsure: waist circumference (cm) ÷ 2.54'}, hip:{desc:'Measure the widest part of your hips.',label:'Hip Circumference (cm)'}, 'upper-leg':{desc:'Measure from hip to knee.',label:'Hip → Knee (cm)',label2:'Thigh Circumference (cm)'}, 'lower-leg':{desc:'Measure from knee to ankle.',label:'Knee → Ankle (cm)'}, foot:{desc:'Enter foot size and width.',label:'Foot Size (mm)',label2:'Foot Width',narrow:'Narrow',normal:'Normal',wide:'Wide'} }
     },
     ja: {
       'nav-guide':'測定ガイド','nav-analysis':'体型分析','nav-about':'About',
@@ -1798,7 +1799,7 @@
       'best-rect':['ウエストを強調するコーデ','ベルト活用','フィットしたトップス'],'worst-rect':['ルーズオールインワン','ウエストラインのないワンピース'],
       'best-def':['レギュラーフィットパンツ','シンプルな無地トップス'],'worst-def':['極端にタイトな服'],
       'gender-female':'👩 女性','gender-male':'👨 男性',
-      'forms':{ height:{desc:'全身の身長を入力してください。',label:'身長 (cm)'}, weight:{desc:'体重を入力してください。BMI分析に使用します。',label:'体重 (kg)'}, head:{desc:'頭囲と縦の長さを測定してください。',label:'頭囲 (cm)',label2:'帽子サイズ'}, shoulder:{desc:'肩端から肩端までの幅を測定してください。',label:'肩幅 (cm)'}, chest:{desc:'胸囲とトップスサイズを入力してください。',label:'胸囲 (cm)',label2:'トップスサイズ'}, 'upper-arm':{desc:'肩からひじまでの長さを測定してください。',label:'肩→ひじ (cm)'}, 'lower-arm':{desc:'ひじから手首までの長さを測定してください。',label:'ひじ→手首 (cm)'}, waist:{desc:'ジーンズ購入時のウエストサイズ（インチ）を入力してください。',label:'ウエストサイズ (inch)',hint:'※ 不明な場合: ウエスト周囲(cm) ÷ 2.54'}, hip:{desc:'臀部の最も広い部分の周囲を測定してください。',label:'ヒップ周囲 (cm)'}, 'upper-leg':{desc:'臀部からひざまでの長さを測定してください。',label:'臀部→ひざ (cm)',label2:'太もも周囲 (cm)'}, 'lower-leg':{desc:'ひざからくるぶしまでの長さを測定してください。',label:'ひざ→くるぶし (cm)'}, foot:{desc:'足のサイズと幅を入力してください。',label:'足のサイズ (mm)',label2:'足幅',narrow:'細め',normal:'普通',wide:'広め'} }
+      'forms':{ height:{desc:'全身の身長を入力してください。',label:'身長 (cm)'}, weight:{desc:'体重を入力してください。BMI分析に使用します。',label:'体重 (kg)'}, head:{desc:'頭囲と縦の長さを測定してください。',label:'頭囲 (cm)',label2:'帽子サイズ',label3:'頭部の縦長 (cm)'}, shoulder:{desc:'肩端から肩端までの幅を測定してください。',label:'肩幅 (cm)'}, chest:{desc:'胸囲とトップスサイズを入力してください。',label:'胸囲 (cm)',label2:'トップスサイズ'}, 'upper-arm':{desc:'肩からひじまでの長さを測定してください。',label:'肩→ひじ (cm)'}, 'lower-arm':{desc:'ひじから手首までの長さを測定してください。',label:'ひじ→手首 (cm)'}, waist:{desc:'ジーンズ購入時のウエストサイズ（インチ）を入力してください。',label:'ウエストサイズ (inch)',hint:'※ 不明な場合: ウエスト周囲(cm) ÷ 2.54'}, hip:{desc:'臀部の最も広い部分の周囲を測定してください。',label:'ヒップ周囲 (cm)'}, 'upper-leg':{desc:'臀部からひざまでの長さを測定してください。',label:'臀部→ひざ (cm)',label2:'太もも周囲 (cm)'}, 'lower-leg':{desc:'ひざからくるぶしまでの長さを測定してください。',label:'ひざ→くるぶし (cm)'}, foot:{desc:'足のサイズと幅を入力してください。',label:'足のサイズ (mm)',label2:'足幅',narrow:'細め',normal:'普通',wide:'広め'} }
     },
     zh: {
       'nav-guide':'测量指南','nav-analysis':'比例分析','nav-about':'关于',
@@ -1890,7 +1891,7 @@
       'best-rect':['突出腰线的搭配','腰带造型','修身上衣'],'worst-rect':['宽松连体衣','无腰线连衣裙'],
       'best-def':['直筒裤','简约纯色上衣'],'worst-def':['极度紧身的服装'],
       'gender-female':'👩 女性','gender-male':'👨 男性',
-      'forms':{ height:{desc:'请输入您的身高。',label:'身高 (cm)'}, weight:{desc:'请输入体重，用于BMI分析。',label:'体重 (kg)'}, head:{desc:'测量头围和头部长度。',label:'头围 (cm)',label2:'帽子尺寸'}, shoulder:{desc:'测量两肩端之间的宽度。',label:'肩宽 (cm)'}, chest:{desc:'输入胸围和上衣尺码。',label:'胸围 (cm)',label2:'上衣尺码'}, 'upper-arm':{desc:'测量肩部到肘部的长度。',label:'肩→肘 (cm)'}, 'lower-arm':{desc:'测量肘部到手腕的长度。',label:'肘→腕 (cm)'}, waist:{desc:'输入腰围（厘米）。',label:'腰围 (cm)',hint:'※ 如只知道英寸：英寸 × 2.54',unit:'cm'}, hip:{desc:'测量臀部最宽处的周长。',label:'臀围 (cm)'}, 'upper-leg':{desc:'测量臀部到膝盖的长度。',label:'臀→膝 (cm)',label2:'大腿围 (cm)'}, 'lower-leg':{desc:'测量膝盖到脚踝的长度。',label:'膝→踝 (cm)'}, foot:{desc:'输入脚的尺寸和宽度。',label:'脚码 (mm)',label2:'脚宽',narrow:'窄',normal:'普通',wide:'宽'} }
+      'forms':{ height:{desc:'请输入您的身高。',label:'身高 (cm)'}, weight:{desc:'请输入体重，用于BMI分析。',label:'体重 (kg)'}, head:{desc:'测量头围和头部长度。',label:'头围 (cm)',label2:'帽子尺寸',label3:'头部长度 (cm)'}, shoulder:{desc:'测量两肩端之间的宽度。',label:'肩宽 (cm)'}, chest:{desc:'输入胸围和上衣尺码。',label:'胸围 (cm)',label2:'上衣尺码'}, 'upper-arm':{desc:'测量肩部到肘部的长度。',label:'肩→肘 (cm)'}, 'lower-arm':{desc:'测量肘部到手腕的长度。',label:'肘→腕 (cm)'}, waist:{desc:'输入腰围（厘米）。',label:'腰围 (cm)',hint:'※ 如只知道英寸：英寸 × 2.54',unit:'cm'}, hip:{desc:'测量臀部最宽处的周长。',label:'臀围 (cm)'}, 'upper-leg':{desc:'测量臀部到膝盖的长度。',label:'臀→膝 (cm)',label2:'大腿围 (cm)'}, 'lower-leg':{desc:'测量膝盖到脚踝的长度。',label:'膝→踝 (cm)'}, foot:{desc:'输入脚的尺寸和宽度。',label:'脚码 (mm)',label2:'脚宽',narrow:'窄',normal:'普通',wide:'宽'} }
     },
     fr: {
       'nav-guide':'Guide de mesure','nav-analysis':'Analyse corporelle','nav-about':'À propos',
@@ -1982,7 +1983,7 @@
       'best-rect':['Tenues marquant la taille','Ceintures','Hauts ajustés'],'worst-rect':['Combinaisons amples','Robes sans taille'],
       'best-def':['Pantalons coupe droite','Hauts unis simples'],'worst-def':['Vêtements extrêmement serrés'],
       'gender-female':'👩 Femme','gender-male':'👨 Homme',
-      'forms':{ height:{desc:'Entrez votre taille complète.',label:'Taille (cm)'}, weight:{desc:"Entrez votre poids. Utilisé pour l'analyse IMC.",label:'Poids (kg)'}, head:{desc:'Mesurez le tour de tête et la longueur.',label:'Tour de tête (cm)',label2:'Taille du chapeau'}, shoulder:{desc:"Mesurez la largeur d'épaule à épaule.",label:"Largeur d'épaules (cm)"}, chest:{desc:'Entrez le tour de poitrine et la taille du haut.',label:'Tour de poitrine (cm)',label2:'Taille du haut'}, 'upper-arm':{desc:"Mesurez de l'épaule au coude.",label:'Épaule → Coude (cm)'}, 'lower-arm':{desc:'Mesurez du coude au poignet.',label:'Coude → Poignet (cm)'}, waist:{desc:'Entrez votre tour de taille en centimètres.',label:'Tour de taille (cm)',hint:'※ Si vous connaissez les pouces : pouces × 2.54',unit:'cm'}, hip:{desc:'Mesurez le tour de hanches à la partie la plus large.',label:'Tour de hanches (cm)'}, 'upper-leg':{desc:'Mesurez de la hanche au genou.',label:'Hanche → Genou (cm)',label2:'Tour de cuisse (cm)'}, 'lower-leg':{desc:'Mesurez du genou à la cheville.',label:'Genou → Cheville (cm)'}, foot:{desc:'Entrez la pointure et la largeur du pied.',label:'Pointure (mm)',label2:'Largeur du pied',narrow:'Étroit',normal:'Normal',wide:'Large'} }
+      'forms':{ height:{desc:'Entrez votre taille complète.',label:'Taille (cm)'}, weight:{desc:"Entrez votre poids. Utilisé pour l'analyse IMC.",label:'Poids (kg)'}, head:{desc:'Mesurez le tour de tête et la longueur.',label:'Tour de tête (cm)',label2:'Taille du chapeau',label3:'Longueur de la tête (cm)'}, shoulder:{desc:"Mesurez la largeur d'épaule à épaule.",label:"Largeur d'épaules (cm)"}, chest:{desc:'Entrez le tour de poitrine et la taille du haut.',label:'Tour de poitrine (cm)',label2:'Taille du haut'}, 'upper-arm':{desc:"Mesurez de l'épaule au coude.",label:'Épaule → Coude (cm)'}, 'lower-arm':{desc:'Mesurez du coude au poignet.',label:'Coude → Poignet (cm)'}, waist:{desc:'Entrez votre tour de taille en centimètres.',label:'Tour de taille (cm)',hint:'※ Si vous connaissez les pouces : pouces × 2.54',unit:'cm'}, hip:{desc:'Mesurez le tour de hanches à la partie la plus large.',label:'Tour de hanches (cm)'}, 'upper-leg':{desc:'Mesurez de la hanche au genou.',label:'Hanche → Genou (cm)',label2:'Tour de cuisse (cm)'}, 'lower-leg':{desc:'Mesurez du genou à la cheville.',label:'Genou → Cheville (cm)'}, foot:{desc:'Entrez la pointure et la largeur du pied.',label:'Pointure (mm)',label2:'Largeur du pied',narrow:'Étroit',normal:'Normal',wide:'Large'} }
     },
     es: {
       'nav-guide':'Guía de medición','nav-analysis':'Análisis corporal','nav-about':'Acerca de',
@@ -2074,7 +2075,7 @@
       'best-rect':['Outfits que marcan la cintura','Uso de cinturones','Tops entallados'],'worst-rect':['Monos sueltos','Vestidos sin cintura'],
       'best-def':['Pantalones corte recto','Tops lisos simples'],'worst-def':['Ropa extremadamente ajustada'],
       'gender-female':'👩 Mujer','gender-male':'👨 Hombre',
-      'forms':{ height:{desc:'Ingresa tu estatura completa.',label:'Estatura (cm)'}, weight:{desc:'Ingresa tu peso. Se usa para análisis de IMC.',label:'Peso (kg)'}, head:{desc:'Mide el perímetro y largo de la cabeza.',label:'Perímetro de cabeza (cm)',label2:'Talla de sombrero'}, shoulder:{desc:'Mide el ancho de hombro a hombro.',label:'Ancho de hombros (cm)'}, chest:{desc:'Ingresa el perímetro de pecho y talla de top.',label:'Perímetro de pecho (cm)',label2:'Talla de top'}, 'upper-arm':{desc:'Mide desde el hombro hasta el codo.',label:'Hombro → Codo (cm)'}, 'lower-arm':{desc:'Mide desde el codo hasta la muñeca.',label:'Codo → Muñeca (cm)'}, waist:{desc:'Ingresa el perímetro de cintura en centímetros.',label:'Cintura (cm)',hint:'※ Si solo conoces pulgadas: pulgadas × 2.54',unit:'cm'}, hip:{desc:'Mide el perímetro de la parte más ancha de la cadera.',label:'Perímetro de cadera (cm)'}, 'upper-leg':{desc:'Mide desde la cadera hasta la rodilla.',label:'Cadera → Rodilla (cm)',label2:'Perímetro de muslo (cm)'}, 'lower-leg':{desc:'Mide desde la rodilla hasta el tobillo.',label:'Rodilla → Tobillo (cm)'}, foot:{desc:'Ingresa la talla y ancho del pie.',label:'Talla de pie (mm)',label2:'Ancho del pie',narrow:'Estrecho',normal:'Normal',wide:'Ancho'} }
+      'forms':{ height:{desc:'Ingresa tu estatura completa.',label:'Estatura (cm)'}, weight:{desc:'Ingresa tu peso. Se usa para análisis de IMC.',label:'Peso (kg)'}, head:{desc:'Mide el perímetro y largo de la cabeza.',label:'Perímetro de cabeza (cm)',label2:'Talla de sombrero',label3:'Largo de la cabeza (cm)'}, shoulder:{desc:'Mide el ancho de hombro a hombro.',label:'Ancho de hombros (cm)'}, chest:{desc:'Ingresa el perímetro de pecho y talla de top.',label:'Perímetro de pecho (cm)',label2:'Talla de top'}, 'upper-arm':{desc:'Mide desde el hombro hasta el codo.',label:'Hombro → Codo (cm)'}, 'lower-arm':{desc:'Mide desde el codo hasta la muñeca.',label:'Codo → Muñeca (cm)'}, waist:{desc:'Ingresa el perímetro de cintura en centímetros.',label:'Cintura (cm)',hint:'※ Si solo conoces pulgadas: pulgadas × 2.54',unit:'cm'}, hip:{desc:'Mide el perímetro de la parte más ancha de la cadera.',label:'Perímetro de cadera (cm)'}, 'upper-leg':{desc:'Mide desde la cadera hasta la rodilla.',label:'Cadera → Rodilla (cm)',label2:'Perímetro de muslo (cm)'}, 'lower-leg':{desc:'Mide desde la rodilla hasta el tobillo.',label:'Rodilla → Tobillo (cm)'}, foot:{desc:'Ingresa la talla y ancho del pie.',label:'Talla de pie (mm)',label2:'Ancho del pie',narrow:'Estrecho',normal:'Normal',wide:'Ancho'} }
     },
     pt: {
       'nav-guide':'Guia de medição','nav-analysis':'Análise corporal','nav-about':'Sobre',
@@ -2166,7 +2167,7 @@
       'best-rect':['Looks que marcam a cintura','Uso de cintos','Tops justos'],'worst-rect':['Macacões soltos','Vestidos sem cintura'],
       'best-def':['Calças corte reto','Tops lisos simples'],'worst-def':['Roupas extremamente justas'],
       'gender-female':'👩 Feminino','gender-male':'👨 Masculino',
-      'forms':{ height:{desc:'Insira sua altura completa.',label:'Altura (cm)'}, weight:{desc:'Insira seu peso. Usado para análise de IMC.',label:'Peso (kg)'}, head:{desc:'Meça a circunferência e o comprimento da cabeça.',label:'Circunferência da cabeça (cm)',label2:'Tamanho do chapéu'}, shoulder:{desc:'Meça a largura de ombro a ombro.',label:'Largura dos ombros (cm)'}, chest:{desc:'Insira a circunferência do peito e tamanho da blusa.',label:'Circunferência do peito (cm)',label2:'Tamanho da blusa'}, 'upper-arm':{desc:'Meça do ombro ao cotovelo.',label:'Ombro → Cotovelo (cm)'}, 'lower-arm':{desc:'Meça do cotovelo ao pulso.',label:'Cotovelo → Pulso (cm)'}, waist:{desc:'Insira a circunferência da cintura em centímetros.',label:'Cintura (cm)',hint:'※ Se só souber polegadas: polegadas × 2.54',unit:'cm'}, hip:{desc:'Meça a parte mais larga do quadril.',label:'Circunferência do quadril (cm)'}, 'upper-leg':{desc:'Meça do quadril ao joelho.',label:'Quadril → Joelho (cm)',label2:'Circunferência da coxa (cm)'}, 'lower-leg':{desc:'Meça do joelho ao tornozelo.',label:'Joelho → Tornozelo (cm)'}, foot:{desc:'Insira o tamanho e largura do pé.',label:'Tamanho do pé (mm)',label2:'Largura do pé',narrow:'Estreito',normal:'Normal',wide:'Largo'} }
+      'forms':{ height:{desc:'Insira sua altura completa.',label:'Altura (cm)'}, weight:{desc:'Insira seu peso. Usado para análise de IMC.',label:'Peso (kg)'}, head:{desc:'Meça a circunferência e o comprimento da cabeça.',label:'Circunferência da cabeça (cm)',label2:'Tamanho do chapéu',label3:'Comprimento da cabeça (cm)'}, shoulder:{desc:'Meça a largura de ombro a ombro.',label:'Largura dos ombros (cm)'}, chest:{desc:'Insira a circunferência do peito e tamanho da blusa.',label:'Circunferência do peito (cm)',label2:'Tamanho da blusa'}, 'upper-arm':{desc:'Meça do ombro ao cotovelo.',label:'Ombro → Cotovelo (cm)'}, 'lower-arm':{desc:'Meça do cotovelo ao pulso.',label:'Cotovelo → Pulso (cm)'}, waist:{desc:'Insira a circunferência da cintura em centímetros.',label:'Cintura (cm)',hint:'※ Se só souber polegadas: polegadas × 2.54',unit:'cm'}, hip:{desc:'Meça a parte mais larga do quadril.',label:'Circunferência do quadril (cm)'}, 'upper-leg':{desc:'Meça do quadril ao joelho.',label:'Quadril → Joelho (cm)',label2:'Circunferência da coxa (cm)'}, 'lower-leg':{desc:'Meça do joelho ao tornozelo.',label:'Joelho → Tornozelo (cm)'}, foot:{desc:'Insira o tamanho e largura do pé.',label:'Tamanho do pé (mm)',label2:'Largura do pé',narrow:'Estreito',normal:'Normal',wide:'Largo'} }
     },
     de: {
       'nav-guide':'Messanleitung','nav-analysis':'Körperanalyse','nav-about':'Über uns',
@@ -2258,7 +2259,7 @@
       'best-rect':['Taille-betonende Outfits','Gürtel-Styling','Anliegende Tops'],'worst-rect':['Weite Overalls','Taillenlose Kleider'],
       'best-def':['Regular-Fit Hosen','Schlichte Einfarbige Tops'],'worst-def':['Extrem enge Kleidung'],
       'gender-female':'👩 Weiblich','gender-male':'👨 Männlich',
-      'forms':{ height:{desc:'Bitte gib deine Körpergröße ein.',label:'Größe (cm)'}, weight:{desc:'Bitte gib dein Gewicht ein. Wird für BMI-Analyse verwendet.',label:'Gewicht (kg)'}, head:{desc:'Miss den Kopfumfang und die Länge.',label:'Kopfumfang (cm)',label2:'Hutgröße'}, shoulder:{desc:'Miss die Breite von Schulter zu Schulter.',label:'Schulterbreite (cm)'}, chest:{desc:'Gib Brustumfang und Oberteilgröße ein.',label:'Brustumfang (cm)',label2:'Oberteilgröße'}, 'upper-arm':{desc:'Miss von der Schulter bis zum Ellbogen.',label:'Schulter → Ellbogen (cm)'}, 'lower-arm':{desc:'Miss vom Ellbogen bis zum Handgelenk.',label:'Ellbogen → Handgelenk (cm)'}, waist:{desc:'Gib deinen Taillenumfang in Zentimetern ein.',label:'Taillenumfang (cm)',hint:'※ Falls nur Zollgröße bekannt: Zoll × 2.54',unit:'cm'}, hip:{desc:'Miss den Umfang an der breitesten Stelle der Hüfte.',label:'Hüftumfang (cm)'}, 'upper-leg':{desc:'Miss von der Hüfte bis zum Knie.',label:'Hüfte → Knie (cm)',label2:'Oberschenkelumfang (cm)'}, 'lower-leg':{desc:'Miss vom Knie bis zum Knöchel.',label:'Knie → Knöchel (cm)'}, foot:{desc:'Gib Schuhgröße und Breite ein.',label:'Schuhgröße (mm)',label2:'Fußbreite',narrow:'Schmal',normal:'Normal',wide:'Breit'} }
+      'forms':{ height:{desc:'Bitte gib deine Körpergröße ein.',label:'Größe (cm)'}, weight:{desc:'Bitte gib dein Gewicht ein. Wird für BMI-Analyse verwendet.',label:'Gewicht (kg)'}, head:{desc:'Miss den Kopfumfang und die Länge.',label:'Kopfumfang (cm)',label2:'Hutgröße',label3:'Kopflänge (cm)'}, shoulder:{desc:'Miss die Breite von Schulter zu Schulter.',label:'Schulterbreite (cm)'}, chest:{desc:'Gib Brustumfang und Oberteilgröße ein.',label:'Brustumfang (cm)',label2:'Oberteilgröße'}, 'upper-arm':{desc:'Miss von der Schulter bis zum Ellbogen.',label:'Schulter → Ellbogen (cm)'}, 'lower-arm':{desc:'Miss vom Ellbogen bis zum Handgelenk.',label:'Ellbogen → Handgelenk (cm)'}, waist:{desc:'Gib deinen Taillenumfang in Zentimetern ein.',label:'Taillenumfang (cm)',hint:'※ Falls nur Zollgröße bekannt: Zoll × 2.54',unit:'cm'}, hip:{desc:'Miss den Umfang an der breitesten Stelle der Hüfte.',label:'Hüftumfang (cm)'}, 'upper-leg':{desc:'Miss von der Hüfte bis zum Knie.',label:'Hüfte → Knie (cm)',label2:'Oberschenkelumfang (cm)'}, 'lower-leg':{desc:'Miss vom Knie bis zum Knöchel.',label:'Knie → Knöchel (cm)'}, foot:{desc:'Gib Schuhgröße und Breite ein.',label:'Schuhgröße (mm)',label2:'Fußbreite',narrow:'Schmal',normal:'Normal',wide:'Breit'} }
     },
     it: {
       'nav-guide':'Guida alle misure','nav-analysis':'Analisi corporea','nav-about':'Chi siamo',
@@ -2350,7 +2351,7 @@
       'best-rect':['Look che valorizzano la vita','Uso di cinture','Top aderenti'],'worst-rect':['Tute morbide','Abiti senza vita'],
       'best-def':['Pantaloni taglio dritto','Top tinta unita semplici'],'worst-def':['Abiti estremamente attillati'],
       'gender-female':'👩 Donna','gender-male':'👨 Uomo',
-      'forms':{ height:{desc:'Inserisci la tua altezza completa.',label:'Altezza (cm)'}, weight:{desc:"Inserisci il tuo peso. Utilizzato per l'analisi BMI.",label:'Peso (kg)'}, head:{desc:'Misura la circonferenza e la lunghezza della testa.',label:'Circonferenza testa (cm)',label2:'Taglia cappello'}, shoulder:{desc:'Misura la larghezza da spalla a spalla.',label:'Larghezza spalle (cm)'}, chest:{desc:'Inserisci la circonferenza del torace e la taglia top.',label:'Circonferenza torace (cm)',label2:'Taglia top'}, 'upper-arm':{desc:'Misura dalla spalla al gomito.',label:'Spalla → Gomito (cm)'}, 'lower-arm':{desc:'Misura dal gomito al polso.',label:'Gomito → Polso (cm)'}, waist:{desc:'Inserisci la circonferenza della vita in centimetri.',label:'Circonferenza vita (cm)',hint:'※ Se conosci solo i pollici: pollici × 2.54',unit:'cm'}, hip:{desc:'Misura il punto più largo dei fianchi.',label:'Circonferenza fianchi (cm)'}, 'upper-leg':{desc:"Misura dall'anca al ginocchio.",label:'Anca → Ginocchio (cm)',label2:'Circonferenza coscia (cm)'}, 'lower-leg':{desc:'Misura dal ginocchio alla caviglia.',label:'Ginocchio → Caviglia (cm)'}, foot:{desc:'Inserisci la misura e la larghezza del piede.',label:'Misura piede (mm)',label2:'Larghezza piede',narrow:'Stretto',normal:'Normale',wide:'Largo'} }
+      'forms':{ height:{desc:'Inserisci la tua altezza completa.',label:'Altezza (cm)'}, weight:{desc:"Inserisci il tuo peso. Utilizzato per l'analisi BMI.",label:'Peso (kg)'}, head:{desc:'Misura la circonferenza e la lunghezza della testa.',label:'Circonferenza testa (cm)',label2:'Taglia cappello',label3:'Lunghezza della testa (cm)'}, shoulder:{desc:'Misura la larghezza da spalla a spalla.',label:'Larghezza spalle (cm)'}, chest:{desc:'Inserisci la circonferenza del torace e la taglia top.',label:'Circonferenza torace (cm)',label2:'Taglia top'}, 'upper-arm':{desc:'Misura dalla spalla al gomito.',label:'Spalla → Gomito (cm)'}, 'lower-arm':{desc:'Misura dal gomito al polso.',label:'Gomito → Polso (cm)'}, waist:{desc:'Inserisci la circonferenza della vita in centimetri.',label:'Circonferenza vita (cm)',hint:'※ Se conosci solo i pollici: pollici × 2.54',unit:'cm'}, hip:{desc:'Misura il punto più largo dei fianchi.',label:'Circonferenza fianchi (cm)'}, 'upper-leg':{desc:"Misura dall'anca al ginocchio.",label:'Anca → Ginocchio (cm)',label2:'Circonferenza coscia (cm)'}, 'lower-leg':{desc:'Misura dal ginocchio alla caviglia.',label:'Ginocchio → Caviglia (cm)'}, foot:{desc:'Inserisci la misura e la larghezza del piede.',label:'Misura piede (mm)',label2:'Larghezza piede',narrow:'Stretto',normal:'Normale',wide:'Largo'} }
     },
     ru: {
       'nav-guide':'Руководство по измерениям','nav-analysis':'Анализ телосложения','nav-about':'О нас',
@@ -2442,7 +2443,7 @@
       'best-rect':['Наряды, подчёркивающие талию','Пояса','Облегающие топы'],'worst-rect':['Свободные комбинезоны','Платья без талии'],
       'best-def':['Брюки прямого кроя','Простые однотонные топы'],'worst-def':['Чрезмерно облегающая одежда'],
       'gender-female':'👩 Женщина','gender-male':'👨 Мужчина',
-      'forms':{ height:{desc:'Введите ваш рост.',label:'Рост (cm)'}, weight:{desc:'Введите ваш вес. Используется для анализа ИМТ.',label:'Вес (kg)'}, head:{desc:'Измерьте обхват и длину головы.',label:'Обхват головы (cm)',label2:'Размер головного убора'}, shoulder:{desc:'Измерьте ширину от плеча до плеча.',label:'Ширина плеч (cm)'}, chest:{desc:'Введите обхват груди и размер верха.',label:'Обхват груди (cm)',label2:'Размер верха'}, 'upper-arm':{desc:'Измерьте от плеча до локтя.',label:'Плечо → Локоть (cm)'}, 'lower-arm':{desc:'Измерьте от локтя до запястья.',label:'Локоть → Запястье (cm)'}, waist:{desc:'Введите обхват талии в сантиметрах.',label:'Обхват талии (cm)',hint:'※ Если знаете только дюймы: дюймы × 2.54',unit:'cm'}, hip:{desc:'Измерьте обхват бёдер в самом широком месте.',label:'Обхват бёдер (cm)'}, 'upper-leg':{desc:'Измерьте от бедра до колена.',label:'Бедро → Колено (cm)',label2:'Обхват бедра (cm)'}, 'lower-leg':{desc:'Измерьте от колена до лодыжки.',label:'Колено → Лодыжка (cm)'}, foot:{desc:'Введите размер и ширину стопы.',label:'Размер стопы (mm)',label2:'Ширина стопы',narrow:'Узкая',normal:'Нормальная',wide:'Широкая'} }
+      'forms':{ height:{desc:'Введите ваш рост.',label:'Рост (cm)'}, weight:{desc:'Введите ваш вес. Используется для анализа ИМТ.',label:'Вес (kg)'}, head:{desc:'Измерьте обхват и длину головы.',label:'Обхват головы (cm)',label2:'Размер головного убора',label3:'Длина головы (cm)'}, shoulder:{desc:'Измерьте ширину от плеча до плеча.',label:'Ширина плеч (cm)'}, chest:{desc:'Введите обхват груди и размер верха.',label:'Обхват груди (cm)',label2:'Размер верха'}, 'upper-arm':{desc:'Измерьте от плеча до локтя.',label:'Плечо → Локоть (cm)'}, 'lower-arm':{desc:'Измерьте от локтя до запястья.',label:'Локоть → Запястье (cm)'}, waist:{desc:'Введите обхват талии в сантиметрах.',label:'Обхват талии (cm)',hint:'※ Если знаете только дюймы: дюймы × 2.54',unit:'cm'}, hip:{desc:'Измерьте обхват бёдер в самом широком месте.',label:'Обхват бёдер (cm)'}, 'upper-leg':{desc:'Измерьте от бедра до колена.',label:'Бедро → Колено (cm)',label2:'Обхват бедра (cm)'}, 'lower-leg':{desc:'Измерьте от колена до лодыжки.',label:'Колено → Лодыжка (cm)'}, foot:{desc:'Введите размер и ширину стопы.',label:'Размер стопы (mm)',label2:'Ширина стопы',narrow:'Узкая',normal:'Нормальная',wide:'Широкая'} }
     },
     ar: {
       'nav-guide':'دليل القياس','nav-analysis':'تحليل الجسم','nav-about':'حولنا',
@@ -2531,7 +2532,7 @@
       'best-rect':['ملابس تبرز الخصر','استخدام الأحزمة','قمم مناسبة'],'worst-rect':['أوفرول فضفاض','فساتين بدون خصر'],
       'best-def':['بنطلونات قصة مستقيمة','قمم بسيطة أحادية اللون'],'worst-def':['ملابس ضيقة للغاية'],
       'gender-female':'👩 أنثى','gender-male':'👨 ذكر',
-      'forms':{ height:{desc:'أدخل طولك الكامل.',label:'الطول (cm)'}, weight:{desc:'أدخل وزنك. يُستخدم لتحليل مؤشر كتلة الجسم.',label:'الوزن (kg)'}, head:{desc:'قس محيط الرأس والطول.',label:'محيط الرأس (cm)',label2:'مقاس القبعة'}, shoulder:{desc:'قس العرض من كتف إلى كتف.',label:'عرض الكتفين (cm)'}, chest:{desc:'أدخل محيط الصدر ومقاس الجزء العلوي.',label:'محيط الصدر (cm)',label2:'مقاس الجزء العلوي'}, 'upper-arm':{desc:'قس من الكتف إلى الكوع.',label:'الكتف → الكوع (cm)'}, 'lower-arm':{desc:'قس من الكوع إلى الرسغ.',label:'الكوع → الرسغ (cm)'}, waist:{desc:'أدخل محيط الخصر بالسنتيمتر.',label:'محيط الخصر (cm)',hint:'※ إذا كنت تعرف فقط البوصات: البوصات × 2.54',unit:'cm'}, hip:{desc:'قس الجزء الأعرض من الوركين.',label:'محيط الوركين (cm)'}, 'upper-leg':{desc:'قس من الورك إلى الركبة.',label:'الورك → الركبة (cm)',label2:'محيط الفخذ (cm)'}, 'lower-leg':{desc:'قس من الركبة إلى الكاحل.',label:'الركبة → الكاحل (cm)'}, foot:{desc:'أدخل مقاس وعرض القدم.',label:'مقاس القدم (mm)',label2:'عرض القدم',narrow:'ضيق',normal:'عادي',wide:'عريض'} }
+      'forms':{ height:{desc:'أدخل طولك الكامل.',label:'الطول (cm)'}, weight:{desc:'أدخل وزنك. يُستخدم لتحليل مؤشر كتلة الجسم.',label:'الوزن (kg)'}, head:{desc:'قس محيط الرأس والطول.',label:'محيط الرأس (cm)',label2:'مقاس القبعة',label3:'طول الرأس (cm)'}, shoulder:{desc:'قس العرض من كتف إلى كتف.',label:'عرض الكتفين (cm)'}, chest:{desc:'أدخل محيط الصدر ومقاس الجزء العلوي.',label:'محيط الصدر (cm)',label2:'مقاس الجزء العلوي'}, 'upper-arm':{desc:'قس من الكتف إلى الكوع.',label:'الكتف → الكوع (cm)'}, 'lower-arm':{desc:'قس من الكوع إلى الرسغ.',label:'الكوع → الرسغ (cm)'}, waist:{desc:'أدخل محيط الخصر بالسنتيمتر.',label:'محيط الخصر (cm)',hint:'※ إذا كنت تعرف فقط البوصات: البوصات × 2.54',unit:'cm'}, hip:{desc:'قس الجزء الأعرض من الوركين.',label:'محيط الوركين (cm)'}, 'upper-leg':{desc:'قس من الورك إلى الركبة.',label:'الورك → الركبة (cm)',label2:'محيط الفخذ (cm)'}, 'lower-leg':{desc:'قس من الركبة إلى الكاحل.',label:'الركبة → الكاحل (cm)'}, foot:{desc:'أدخل مقاس وعرض القدم.',label:'مقاس القدم (mm)',label2:'عرض القدم',narrow:'ضيق',normal:'عادي',wide:'عريض'} }
     },
     hi: {
       'nav-guide':'माप गाइड','nav-analysis':'शरीर विश्लेषण','nav-about':'हमारे बारे में',
@@ -2621,7 +2622,7 @@
       'best-rect':['कमर उभारने वाले आउटफिट','बेल्ट का उपयोग','फिटेड टॉप'],'worst-rect':['ढीले ऑल-इन-वन','कमर-रेखा रहित पोशाक'],
       'best-def':['रेगुलर फिट पैंट','सादे एकरंगी टॉप'],'worst-def':['अत्यधिक तंग कपड़े'],
       'gender-female':'👩 महिला','gender-male':'👨 पुरुष',
-      'forms':{ height:{desc:'अपनी पूरी ऊंचाई दर्ज करें।',label:'ऊंचाई (cm)'}, weight:{desc:'अपना वजन दर्ज करें। BMI विश्लेषण के लिए उपयोग किया जाता है।',label:'वजन (kg)'}, head:{desc:'सिर की परिधि और लंबाई मापें।',label:'सिर की परिधि (cm)',label2:'टोपी का आकार'}, shoulder:{desc:'कंधे से कंधे तक की चौड़ाई मापें।',label:'कंधे की चौड़ाई (cm)'}, chest:{desc:'छाती की परिधि और टॉप साइज़ दर्ज करें।',label:'छाती की परिधि (cm)',label2:'टॉप साइज़'}, 'upper-arm':{desc:'कंधे से कोहनी तक मापें।',label:'कंधा → कोहनी (cm)'}, 'lower-arm':{desc:'कोहनी से कलाई तक मापें।',label:'कोहनी → कलाई (cm)'}, waist:{desc:'सेंटीमीटर में कमर की परिधि दर्ज करें।',label:'कमर की परिधि (cm)',hint:'※ यदि केवल इंच पता है: इंच × 2.54',unit:'cm'}, hip:{desc:'कूल्हों के सबसे चौड़े हिस्से की परिधि मापें।',label:'कूल्हों की परिधि (cm)'}, 'upper-leg':{desc:'कूल्हे से घुटने तक मापें।',label:'कूल्हा → घुटना (cm)',label2:'जांघ की परिधि (cm)'}, 'lower-leg':{desc:'घुटने से टखने तक मापें।',label:'घुटना → टखना (cm)'}, foot:{desc:'पैर का साइज़ और चौड़ाई दर्ज करें।',label:'पैर का साइज़ (mm)',label2:'पैर की चौड़ाई',narrow:'संकरा',normal:'सामान्य',wide:'चौड़ा'} }
+      'forms':{ height:{desc:'अपनी पूरी ऊंचाई दर्ज करें।',label:'ऊंचाई (cm)'}, weight:{desc:'अपना वजन दर्ज करें। BMI विश्लेषण के लिए उपयोग किया जाता है।',label:'वजन (kg)'}, head:{desc:'सिर की परिधि और लंबाई मापें।',label:'सिर की परिधि (cm)',label2:'टोपी का आकार',label3:'सिर की लंबाई (cm)'}, shoulder:{desc:'कंधे से कंधे तक की चौड़ाई मापें।',label:'कंधे की चौड़ाई (cm)'}, chest:{desc:'छाती की परिधि और टॉप साइज़ दर्ज करें।',label:'छाती की परिधि (cm)',label2:'टॉप साइज़'}, 'upper-arm':{desc:'कंधे से कोहनी तक मापें।',label:'कंधा → कोहनी (cm)'}, 'lower-arm':{desc:'कोहनी से कलाई तक मापें।',label:'कोहनी → कलाई (cm)'}, waist:{desc:'सेंटीमीटर में कमर की परिधि दर्ज करें।',label:'कमर की परिधि (cm)',hint:'※ यदि केवल इंच पता है: इंच × 2.54',unit:'cm'}, hip:{desc:'कूल्हों के सबसे चौड़े हिस्से की परिधि मापें।',label:'कूल्हों की परिधि (cm)'}, 'upper-leg':{desc:'कूल्हे से घुटने तक मापें।',label:'कूल्हा → घुटना (cm)',label2:'जांघ की परिधि (cm)'}, 'lower-leg':{desc:'घुटने से टखने तक मापें।',label:'घुटना → टखना (cm)'}, foot:{desc:'पैर का साइज़ और चौड़ाई दर्ज करें।',label:'पैर का साइज़ (mm)',label2:'पैर की चौड़ाई',narrow:'संकरा',normal:'सामान्य',wide:'चौड़ा'} }
     },
     th: {
       'nav-guide':'คู่มือการวัด','nav-analysis':'วิเคราะห์สัดส่วน','nav-about':'เกี่ยวกับเรา',
@@ -2710,7 +2711,7 @@
       'best-rect':['ชุดเน้นเอว','ใช้เข็มขัด','เสื้อฟิต'],'worst-rect':['ชุดจัมพ์สูทหลวม','ชุดเดรสไม่มีเอว'],
       'best-def':['กางเกงตัดตรง','เสื้อสีพื้นเรียบ'],'worst-def':['เสื้อผ้าคับเกินไป'],
       'gender-female':'👩 หญิง','gender-male':'👨 ชาย',
-      'forms':{ height:{desc:'กรอกส่วนสูงทั้งหมดของคุณ',label:'ส่วนสูง (cm)'}, weight:{desc:'กรอกน้ำหนักของคุณ ใช้สำหรับวิเคราะห์ BMI',label:'น้ำหนัก (kg)'}, head:{desc:'วัดเส้นรอบวงและความยาวของศีรษะ',label:'เส้นรอบวงศีรษะ (cm)',label2:'ขนาดหมวก'}, shoulder:{desc:'วัดความกว้างจากไหล่ถึงไหล่',label:'ความกว้างไหล่ (cm)'}, chest:{desc:'กรอกเส้นรอบวงอกและขนาดเสื้อ',label:'เส้นรอบวงอก (cm)',label2:'ขนาดเสื้อ'}, 'upper-arm':{desc:'วัดจากไหล่ถึงข้อศอก',label:'ไหล่ → ข้อศอก (cm)'}, 'lower-arm':{desc:'วัดจากข้อศอกถึงข้อมือ',label:'ข้อศอก → ข้อมือ (cm)'}, waist:{desc:'กรอกรอบเอวเป็นเซนติเมตร',label:'รอบเอว (cm)',hint:'※ หากรู้เฉพาะนิ้ว: นิ้ว × 2.54',unit:'cm'}, hip:{desc:'วัดส่วนที่กว้างที่สุดของสะโพก',label:'เส้นรอบวงสะโพก (cm)'}, 'upper-leg':{desc:'วัดจากสะโพกถึงเข่า',label:'สะโพก → เข่า (cm)',label2:'เส้นรอบวงต้นขา (cm)'}, 'lower-leg':{desc:'วัดจากเข่าถึงข้อเท้า',label:'เข่า → ข้อเท้า (cm)'}, foot:{desc:'กรอกขนาดและความกว้างของเท้า',label:'ขนาดเท้า (mm)',label2:'ความกว้างเท้า',narrow:'แคบ',normal:'ปกติ',wide:'กว้าง'} }
+      'forms':{ height:{desc:'กรอกส่วนสูงทั้งหมดของคุณ',label:'ส่วนสูง (cm)'}, weight:{desc:'กรอกน้ำหนักของคุณ ใช้สำหรับวิเคราะห์ BMI',label:'น้ำหนัก (kg)'}, head:{desc:'วัดเส้นรอบวงและความยาวของศีรษะ',label:'เส้นรอบวงศีรษะ (cm)',label2:'ขนาดหมวก',label3:'ความยาวศีรษะ (cm)'}, shoulder:{desc:'วัดความกว้างจากไหล่ถึงไหล่',label:'ความกว้างไหล่ (cm)'}, chest:{desc:'กรอกเส้นรอบวงอกและขนาดเสื้อ',label:'เส้นรอบวงอก (cm)',label2:'ขนาดเสื้อ'}, 'upper-arm':{desc:'วัดจากไหล่ถึงข้อศอก',label:'ไหล่ → ข้อศอก (cm)'}, 'lower-arm':{desc:'วัดจากข้อศอกถึงข้อมือ',label:'ข้อศอก → ข้อมือ (cm)'}, waist:{desc:'กรอกรอบเอวเป็นเซนติเมตร',label:'รอบเอว (cm)',hint:'※ หากรู้เฉพาะนิ้ว: นิ้ว × 2.54',unit:'cm'}, hip:{desc:'วัดส่วนที่กว้างที่สุดของสะโพก',label:'เส้นรอบวงสะโพก (cm)'}, 'upper-leg':{desc:'วัดจากสะโพกถึงเข่า',label:'สะโพก → เข่า (cm)',label2:'เส้นรอบวงต้นขา (cm)'}, 'lower-leg':{desc:'วัดจากเข่าถึงข้อเท้า',label:'เข่า → ข้อเท้า (cm)'}, foot:{desc:'กรอกขนาดและความกว้างของเท้า',label:'ขนาดเท้า (mm)',label2:'ความกว้างเท้า',narrow:'แคบ',normal:'ปกติ',wide:'กว้าง'} }
     },
     id: {
       'nav-guide':'Panduan Pengukuran','nav-analysis':'Analisis Tubuh','nav-about':'Tentang Kami',
@@ -2799,7 +2800,7 @@
       'best-rect':['Outfit yang menonjolkan pinggang','Pakai ikat pinggang','Atasan pas badan'],'worst-rect':['Overall longgar','Gaun tanpa pinggang'],
       'best-def':['Celana regular fit','Atasan polos sederhana'],'worst-def':['Pakaian yang terlalu ketat'],
       'gender-female':'👩 Wanita','gender-male':'👨 Pria',
-      'forms':{ height:{desc:'Masukkan tinggi badan lengkapmu.',label:'Tinggi (cm)'}, weight:{desc:'Masukkan berat badanmu. Digunakan untuk analisis BMI.',label:'Berat (kg)'}, head:{desc:'Ukur lingkar dan panjang kepala.',label:'Lingkar kepala (cm)',label2:'Ukuran topi'}, shoulder:{desc:'Ukur lebar dari bahu ke bahu.',label:'Lebar bahu (cm)'}, chest:{desc:'Masukkan lingkar dada dan ukuran atasan.',label:'Lingkar dada (cm)',label2:'Ukuran atasan'}, 'upper-arm':{desc:'Ukur dari bahu hingga siku.',label:'Bahu → Siku (cm)'}, 'lower-arm':{desc:'Ukur dari siku hingga pergelangan tangan.',label:'Siku → Pergelangan (cm)'}, waist:{desc:'Masukkan lingkar pinggang dalam sentimeter.',label:'Lingkar pinggang (cm)',hint:'※ Jika hanya tahu inci: inci × 2.54',unit:'cm'}, hip:{desc:'Ukur bagian terlebar dari pinggul.',label:'Lingkar pinggul (cm)'}, 'upper-leg':{desc:'Ukur dari pinggul hingga lutut.',label:'Pinggul → Lutut (cm)',label2:'Lingkar paha (cm)'}, 'lower-leg':{desc:'Ukur dari lutut hingga pergelangan kaki.',label:'Lutut → Pergelangan kaki (cm)'}, foot:{desc:'Masukkan ukuran dan lebar kaki.',label:'Ukuran kaki (mm)',label2:'Lebar kaki',narrow:'Sempit',normal:'Normal',wide:'Lebar'} }
+      'forms':{ height:{desc:'Masukkan tinggi badan lengkapmu.',label:'Tinggi (cm)'}, weight:{desc:'Masukkan berat badanmu. Digunakan untuk analisis BMI.',label:'Berat (kg)'}, head:{desc:'Ukur lingkar dan panjang kepala.',label:'Lingkar kepala (cm)',label2:'Ukuran topi',label3:'Panjang kepala (cm)'}, shoulder:{desc:'Ukur lebar dari bahu ke bahu.',label:'Lebar bahu (cm)'}, chest:{desc:'Masukkan lingkar dada dan ukuran atasan.',label:'Lingkar dada (cm)',label2:'Ukuran atasan'}, 'upper-arm':{desc:'Ukur dari bahu hingga siku.',label:'Bahu → Siku (cm)'}, 'lower-arm':{desc:'Ukur dari siku hingga pergelangan tangan.',label:'Siku → Pergelangan (cm)'}, waist:{desc:'Masukkan lingkar pinggang dalam sentimeter.',label:'Lingkar pinggang (cm)',hint:'※ Jika hanya tahu inci: inci × 2.54',unit:'cm'}, hip:{desc:'Ukur bagian terlebar dari pinggul.',label:'Lingkar pinggul (cm)'}, 'upper-leg':{desc:'Ukur dari pinggul hingga lutut.',label:'Pinggul → Lutut (cm)',label2:'Lingkar paha (cm)'}, 'lower-leg':{desc:'Ukur dari lutut hingga pergelangan kaki.',label:'Lutut → Pergelangan kaki (cm)'}, foot:{desc:'Masukkan ukuran dan lebar kaki.',label:'Ukuran kaki (mm)',label2:'Lebar kaki',narrow:'Sempit',normal:'Normal',wide:'Lebar'} }
     },
     vi: {
       'nav-guide':'Hướng dẫn đo','nav-analysis':'Phân tích cơ thể','nav-about':'Về chúng tôi',
@@ -2909,7 +2910,7 @@
       'best-rect':['Trang phục nhấn eo','Dùng thắt lưng','Áo bó sát'],'worst-rect':['Jumpsuit rộng','Đầm không có eo'],
       'best-def':['Quần cắt thẳng','Áo trơn đơn giản'],'worst-def':['Quần áo quá bó'],
       'gender-female':'👩 Nữ','gender-male':'👨 Nam',
-      'forms':{ height:{desc:'Nhập chiều cao đầy đủ của bạn.',label:'Chiều cao (cm)'}, weight:{desc:'Nhập cân nặng của bạn. Dùng để phân tích BMI.',label:'Cân nặng (kg)'}, head:{desc:'Đo vòng đầu và chiều dài đầu.',label:'Vòng đầu (cm)',label2:'Cỡ mũ'}, shoulder:{desc:'Đo chiều rộng từ vai đến vai.',label:'Chiều rộng vai (cm)'}, chest:{desc:'Nhập vòng ngực và size áo.',label:'Vòng ngực (cm)',label2:'Size áo'}, 'upper-arm':{desc:'Đo từ vai đến khuỷu tay.',label:'Vai → Khuỷu tay (cm)'}, 'lower-arm':{desc:'Đo từ khuỷu tay đến cổ tay.',label:'Khuỷu tay → Cổ tay (cm)'}, waist:{desc:'Nhập vòng eo bằng centimét.',label:'Vòng eo (cm)',hint:'※ Nếu chỉ biết inch: inch × 2.54',unit:'cm'}, hip:{desc:'Đo phần rộng nhất của hông.',label:'Vòng mông (cm)'}, 'upper-leg':{desc:'Đo từ hông đến đầu gối.',label:'Hông → Đầu gối (cm)',label2:'Vòng đùi (cm)'}, 'lower-leg':{desc:'Đo từ đầu gối đến mắt cá chân.',label:'Đầu gối → Mắt cá (cm)'}, foot:{desc:'Nhập cỡ giày và chiều rộng bàn chân.',label:'Cỡ giày (mm)',label2:'Chiều rộng bàn chân',narrow:'Hẹp',normal:'Bình thường',wide:'Rộng'} }
+      'forms':{ height:{desc:'Nhập chiều cao đầy đủ của bạn.',label:'Chiều cao (cm)'}, weight:{desc:'Nhập cân nặng của bạn. Dùng để phân tích BMI.',label:'Cân nặng (kg)'}, head:{desc:'Đo vòng đầu và chiều dài đầu.',label:'Vòng đầu (cm)',label2:'Cỡ mũ',label3:'Chiều dài đầu (cm)'}, shoulder:{desc:'Đo chiều rộng từ vai đến vai.',label:'Chiều rộng vai (cm)'}, chest:{desc:'Nhập vòng ngực và size áo.',label:'Vòng ngực (cm)',label2:'Size áo'}, 'upper-arm':{desc:'Đo từ vai đến khuỷu tay.',label:'Vai → Khuỷu tay (cm)'}, 'lower-arm':{desc:'Đo từ khuỷu tay đến cổ tay.',label:'Khuỷu tay → Cổ tay (cm)'}, waist:{desc:'Nhập vòng eo bằng centimét.',label:'Vòng eo (cm)',hint:'※ Nếu chỉ biết inch: inch × 2.54',unit:'cm'}, hip:{desc:'Đo phần rộng nhất của hông.',label:'Vòng mông (cm)'}, 'upper-leg':{desc:'Đo từ hông đến đầu gối.',label:'Hông → Đầu gối (cm)',label2:'Vòng đùi (cm)'}, 'lower-leg':{desc:'Đo từ đầu gối đến mắt cá chân.',label:'Đầu gối → Mắt cá (cm)'}, foot:{desc:'Nhập cỡ giày và chiều rộng bàn chân.',label:'Cỡ giày (mm)',label2:'Chiều rộng bàn chân',narrow:'Hẹp',normal:'Bình thường',wide:'Rộng'} }
     }
   };
 
@@ -3030,6 +3031,10 @@
       set('flabel-' + p, label);
 
       if (f.label2) set('flabel2-' + p, f.label2);
+      if (f.label3) {
+        const label3 = p === 'head' ? f.label3.split(' (')[0] + ` (${hUnit})` : f.label3;
+        set('flabel3-' + p, label3);
+      }
       if (f.hint) set('fhint-' + p, f.hint);
     });
     if (_forms.foot) {
@@ -4526,14 +4531,7 @@
 
     if (platform === 'kakao') {
       const kakaoText = text;
-      navigator.clipboard.writeText(kakaoText).catch(() => {
-        const el = document.createElement('textarea');
-        el.value = kakaoText;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-      });
+      navigator.clipboard.writeText(kakaoText).catch(() => {});
       showToast(t('toast-kakao-copy'));
     } else if (platform === 'twitter') {
       window.open(`https://twitter.com/intent/tweet?text=${encodedText}`, '_blank', 'width=550,height=420');
@@ -4542,15 +4540,7 @@
     } else if (platform === 'line') {
       window.open(`https://social-plugins.line.me/lineit/share?url=${encodedUrl}&text=${encodedText}`, '_blank', 'width=500,height=500');
     } else if (platform === 'copy') {
-      navigator.clipboard.writeText(text).then(() => showToast(t('toast-copy-done'))).catch(() => {
-        const el = document.createElement('textarea');
-        el.value = text;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        showToast(t('toast-copy-done'));
-      });
+      navigator.clipboard.writeText(text).then(() => showToast(t('toast-copy-done'))).catch(() => showToast(t('toast-copy-done')));
     }
   }
 

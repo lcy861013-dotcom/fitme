@@ -127,7 +127,7 @@ function savePart(part) {
     'lower-arm': ['lower-arm-len'],
     waist: ['waist-circ'],
     hip: ['hip-circ'],
-    'upper-leg': ['upper-leg-len'],
+    'upper-leg': ['upper-leg-len', 'upper-leg-circ'],
     'lower-leg': ['lower-leg-len'],
     foot: ['foot-size']
   };
