@@ -6361,8 +6361,14 @@
 
   function resetAll() {
     if (!confirm(t('confirm-reset'))) return;
+    // 1. 측정값 객체 초기화
     Object.keys(measurements).forEach(k => delete measurements[k]);
+    Object.keys(radioSelections).forEach(k => delete radioSelections[k]);
     filledCount = 0;
+    // 2. 모든 입력 필드 값 초기화 (핵심: 이전 값이 남아있지 않도록)
+    document.querySelectorAll('.input-field').forEach(i => { i.value = ''; });
+    document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('selected'));
+    // 3. UI 상태 초기화
     document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('filled', 'active'));
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
     document.getElementById('placeholder').style.display = 'flex';
@@ -6373,6 +6379,11 @@
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
     window._fitmeShareData = null;
+    window._topAssetForShare = null;
+    // 4. 모바일 결과 오버레이 닫기
+    const overlay = document.getElementById('mobile-result-overlay');
+    if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+    // 5. 성별 초기화 (female 기본값)
     setGender('female');
     document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
