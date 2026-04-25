@@ -766,7 +766,7 @@
     <div class="hero-demo-wrap">
       <div class="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
       <div class="hero-demo-frame">
-        <video autoplay muted loop playsinline preload="metadata">
+        <video id="hero-demo-video" autoplay muted loop playsinline preload="metadata">
           <source src="demo.mp4" type="video/mp4">
         </video>
       </div>
@@ -3673,6 +3673,15 @@
     if (select) select.value = lang;
     document.documentElement.lang = lang;
     applyTranslations();
+    const demoVideo = document.getElementById('hero-demo-video');
+    if (demoVideo) {
+      const src = lang === 'ko' ? 'demo-ko.mp4' : 'demo.mp4';
+      if (!demoVideo.src.endsWith(src)) {
+        demoVideo.src = src;
+        demoVideo.load();
+        demoVideo.play().catch(() => {});
+      }
+    }
   }
 
   // ============================================================
