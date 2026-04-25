@@ -339,6 +339,8 @@
     .gender-btn { flex: 1; padding: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; text-align: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .gender-btn.active { border-color: var(--accent); background: rgba(232,255,71,0.1); color: var(--accent); }
     .gender-btn:hover:not(.active) { border-color: var(--muted); color: var(--text); }
+    @keyframes gender-pulse { 0%,100%{box-shadow:none;} 25%{box-shadow:0 0 0 3px rgba(232,255,71,0.5);} 75%{box-shadow:0 0 0 3px rgba(232,255,71,0.2);} }
+    .gender-btn.pulse { animation: gender-pulse 0.7s ease 3; }
 
     /* BUTTONS */
     .btn { display: block; width: 100%; padding: 13px; border: none; border-radius: 10px; font-family: 'Bebas Neue', sans-serif; font-size: 17px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; margin-top: 12px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
@@ -6383,8 +6385,13 @@
     // 4. 모바일 결과 오버레이 닫기
     const overlay = document.getElementById('mobile-result-overlay');
     if (overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
-    // 5. 성별 초기화 (female 기본값)
-    setGender('female');
+    // 5. 성별 유지 + 버튼 강조로 확인 유도
+    document.querySelectorAll('.gender-btn').forEach(b => {
+      b.classList.remove('pulse');
+      void b.offsetWidth; // reflow로 애니메이션 재시작
+      b.classList.add('pulse');
+      setTimeout(() => b.classList.remove('pulse'), 2200);
+    });
     document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
     showToast(t('toast-reset'));
