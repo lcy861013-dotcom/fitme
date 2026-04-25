@@ -177,18 +177,12 @@
     .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 64px; letter-spacing: 8px; line-height: 1; margin-bottom: 12px; }
     .hero-title span { color: var(--accent); }
     .hero-sub { font-size: 14.5px; color: var(--muted); line-height: 1.85; max-width: 460px; margin: 0 auto 28px; }
-    /* LOCKED RESULT TEASER */
-    .hero-locked-wrap { position: relative; max-width: 340px; margin: 0 auto 32px; }
-    .hero-locked-inner { background: linear-gradient(135deg, rgba(232,255,71,0.07), rgba(71,200,255,0.04)); border: 1.5px solid rgba(232,255,71,0.25); border-radius: 18px; padding: 20px 22px; filter: blur(4px); user-select: none; pointer-events: none; }
-    .hero-locked-inner .hli-top { font-size: 9px; letter-spacing: 2px; color: var(--accent); font-family: 'DM Sans', sans-serif; margin-bottom: 8px; }
-    .hero-locked-inner .hli-name { font-size: 20px; font-family: 'Black Han Sans', sans-serif; color: var(--text); margin-bottom: 10px; }
-    .hero-locked-inner .hli-bar { height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 4px; margin-bottom: 10px; }
-    .hero-locked-inner .hli-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .hero-locked-inner .hli-tag { background: rgba(232,255,71,0.1); border: 1px solid rgba(232,255,71,0.3); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--accent); font-family: 'DM Sans', sans-serif; }
-    .hero-locked-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border-radius: 18px; background: rgba(10,10,10,0.55); backdrop-filter: blur(2px); }
-    .hero-lock-icon { font-size: 28px; }
-    .hero-lock-title { font-size: 14px; font-weight: 700; color: var(--text); font-family: 'DM Sans', sans-serif; }
-    .hero-lock-sub { font-size: 11px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    /* DEMO VIDEO PREVIEW */
+    .hero-demo-wrap { max-width: 340px; margin: 0 auto 32px; }
+    .hero-demo-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-family: 'DM Sans', sans-serif; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .hero-demo-label::before, .hero-demo-label::after { content: ''; flex: 1; height: 1px; background: rgba(232,255,71,0.2); }
+    .hero-demo-frame { border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(232,255,71,0.35); box-shadow: 0 0 40px rgba(232,255,71,0.12), 0 8px 32px rgba(0,0,0,0.4); background: #0a0a0a; }
+    .hero-demo-frame video { width: 100%; display: block; }
     .hero-btn { display: inline-block; padding: 16px 44px; background: var(--accent); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.5px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .hero-btn:hover { background: #f5ff80; box-shadow: 0 4px 30px rgba(232,255,71,0.45); transform: translateY(-2px); }
     .hero-btn-sub { font-size: 11px; color: var(--muted); margin-top: 10px; font-family: 'DM Sans', sans-serif; }
@@ -768,21 +762,13 @@
     <h1 class="hero-headline" id="hero-headline-text">"You've been dressing<br><em>someone else's body.</em>"</h1>
     <p class="hero-sub" data-i18n="hero-sub">Your proportions tell a story your mirror never shows.<br>Find your #1 body asset in 2 minutes.</p>
 
-    <!-- LOCKED RESULT TEASER -->
-    <div class="hero-locked-wrap">
-      <div class="hero-locked-inner">
-        <div class="hli-top">✦ YOUR #1 ASSET &nbsp;·&nbsp; 🏆 ELITE</div>
-        <div class="hli-name" id="hero-locked-name">🦵 ██████ ████</div>
-        <div class="hli-bar"></div>
-        <div class="hli-tags">
-          <span class="hli-tag" data-i18n="hero-locked-tag1">Top ??% globally</span>
-          <span class="hli-tag" data-i18n="hero-locked-tag2">Elite Silhouette</span>
-        </div>
-      </div>
-      <div class="hero-locked-overlay">
-        <div class="hero-lock-icon">🔍</div>
-        <div class="hero-lock-title" data-i18n="hero-lock-title">Your result is inside</div>
-        <div class="hero-lock-sub" data-i18n="hero-lock-sub">Takes 2 min to reveal</div>
+    <!-- DEMO VIDEO PREVIEW -->
+    <div class="hero-demo-wrap">
+      <div class="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
+      <div class="hero-demo-frame">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="demo.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
 
@@ -1821,8 +1807,7 @@
       'hero-tag':'신체 비율 정밀 분석',
       'hero-live-suffix':'무료 · 가입불필요 · 완전 비공개',
       'hero-headline':'지금까지<br><em>남의 체형에 맞는 옷</em>을 입었을 수도 있어요.',
-      'hero-locked-tag1':'상위 ??% 비율','hero-locked-tag2':'엘리트 실루엣',
-      'hero-lock-title':'내 결과가 기다리고 있어요','hero-lock-sub':'2분이면 확인 가능해요',
+      'hero-demo-label':'실제 결과 미리보기',
       'hero-btn-sub':'무료 · 가입 불필요 · 즉시 결과',
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'내 몸의 비율은 거울이 절대 보여주지 않아요.<br>2분만에 내 #1 강점 부위와 진짜 어울리는 스타일을 찾아보세요.',
@@ -1969,8 +1954,7 @@
       'hero-tag':'BODY RATIO ANALYSIS',
       'hero-live-suffix':'Free · No sign-up · Private',
       'hero-headline':'"You\'ve been dressing<br><em>someone else\'s body.</em>"',
-      'hero-locked-tag1':'Top ??% globally','hero-locked-tag2':'Elite Silhouette',
-      'hero-lock-title':'Your result is inside','hero-lock-sub':'Takes 2 min to reveal',
+      'hero-demo-label':'SAMPLE RESULT',
       'hero-btn-sub':'Free · No sign-up · Instant results',
       'hero-tag-old':'Know Your Body. Dress Better.',
       'hero-sub':'Your proportions tell a story your mirror never shows.<br>Find your #1 body asset in 2 minutes.',
