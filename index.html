@@ -191,6 +191,12 @@
     .hero-scroll-hint { margin-top: 28px; display: flex; align-items: center; gap: 6px; justify-content: center; color: var(--muted); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.5px; animation: bounce-y 2s infinite; }
     .hero-scroll-hint:hover { color: var(--accent); }
     @keyframes bounce-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    /* PRIVACY HOW-IT-WORKS STRIP */
+    .hero-privacy-strip { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 auto 10px; flex-wrap: wrap; max-width: 500px; }
+    .privacy-step { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .ps-num { width: 20px; height: 20px; border-radius: 50%; background: rgba(232,255,71,0.12); border: 1px solid rgba(232,255,71,0.35); color: var(--accent); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+    .ps-arrow { color: rgba(232,255,71,0.45); font-size: 14px; margin: 0 2px; }
+    .hero-privacy-note { font-size: 11px; color: var(--muted); margin-bottom: 24px; letter-spacing: 0.3px; font-family: 'DM Sans', sans-serif; opacity: 0.7; }
     .hero-preview-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; }
     .hero-preview-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
     .hero-preview-grade { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #47c8ff; line-height: 1; }
@@ -756,11 +762,30 @@
   <div class="hero">
     <div class="hero-social-proof">
       <span class="sp-dot"></span>
-      <span data-i18n="hero-live-suffix">Free · No sign-up · Private</span>
+      <span data-i18n="hero-live-suffix">📷 No Photos · Measurements Only · 100% Private</span>
     </div>
-    <div class="hero-tag" data-i18n="hero-tag">BODY RATIO ANALYSIS</div>
-    <h1 class="hero-headline" id="hero-headline-text">"You've been dressing<br><em>someone else's body.</em>"</h1>
-    <p class="hero-sub" data-i18n="hero-sub">Your proportions tell a story your mirror never shows.<br>Find your #1 body asset in 2 minutes.</p>
+    <div class="hero-tag" data-i18n="hero-tag">KNOW YOUR BODY. DRESS YOUR BEST.</div>
+    <h1 class="hero-headline" id="hero-headline-text">"Highlight your strengths.<br><em>Minimize what you don't love.</em>"</h1>
+    <p class="hero-sub" data-i18n="hero-sub">No selfies. No cameras. Just 3 measurements — we reveal your body's unique strengths so you can highlight what you love and minimize what you don't.</p>
+
+    <!-- PRIVACY HOW IT WORKS STRIP -->
+    <div class="hero-privacy-strip">
+      <div class="privacy-step">
+        <span class="ps-num">1</span>
+        <span data-i18n="privacy-step1">Enter 3 Measurements</span>
+      </div>
+      <span class="ps-arrow">→</span>
+      <div class="privacy-step">
+        <span class="ps-num">2</span>
+        <span data-i18n="privacy-step2">Analyze Proportions</span>
+      </div>
+      <span class="ps-arrow">→</span>
+      <div class="privacy-step">
+        <span class="ps-num">3</span>
+        <span data-i18n="privacy-step3">Get Style Blueprint</span>
+      </div>
+    </div>
+    <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
 
     <!-- DEMO VIDEO PREVIEW -->
     <div class="hero-demo-wrap">
@@ -772,14 +797,14 @@
       </div>
     </div>
 
-    <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Reveal My Body Identity →</a>
-    <div class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No sign-up · Instant results</div>
+    <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Analyze My Body (No Photos) →</a>
+    <div class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Zero data stored</div>
 
     <div class="hero-badges" style="margin-top:20px;">
-      <div class="hero-badge">✅ <span data-i18n="hero-badge1">Free</span></div>
-      <div class="hero-badge">⚡ <span data-i18n="hero-badge2">Instant</span></div>
-      <div class="hero-badge">🌍 <span data-i18n="hero-badge3">15 Languages</span></div>
-      <div class="hero-badge">🔒 <span data-i18n="hero-badge4">No Data Stored</span></div>
+      <div class="hero-badge"><span data-i18n="hero-badge1">📷 No Photos Required</span></div>
+      <div class="hero-badge"><span data-i18n="hero-badge2">📏 3 Measurements Only</span></div>
+      <div class="hero-badge"><span data-i18n="hero-badge3">🌍 15 Languages</span></div>
+      <div class="hero-badge"><span data-i18n="hero-badge4">🔒 Zero Data Stored</span></div>
     </div>
     <div class="hero-scroll-hint" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})">
       <span data-i18n="hero-scroll-hint">Start Measuring Now</span>
@@ -1812,7 +1837,9 @@
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'내 몸의 비율은 거울이 절대 보여주지 않아요.<br>2분만에 내 #1 강점 부위와 진짜 어울리는 스타일을 찾아보세요.',
       'hero-btn':'내 체형 정체성 알아보기 →',
-      'hero-badge1':'무료','hero-badge2':'즉시 결과','hero-badge3':'15개국 언어','hero-badge4':'개인정보 저장 없음','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
+      'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보 저장 없음','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
+      'privacy-step1':'측정값 3개 입력','privacy-step2':'비율 분석','privacy-step3':'스타일 청사진 획득',
+      'hero-privacy-note':'셀카 없음 · 업로드 없음 · 내 정보는 이 페이지를 절대 벗어나지 않아요',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
       'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
       'howto-weight':'⚖️ 아침 공복·화장실 후가 가장 정확해요. 체중계 위에서 움직이지 말고 측정하세요',
@@ -1951,15 +1978,17 @@
     },
     en: {
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
-      'hero-tag':'BODY RATIO ANALYSIS',
-      'hero-live-suffix':'Free · No sign-up · Private',
-      'hero-headline':'"You\'ve been dressing<br><em>someone else\'s body.</em>"',
+      'hero-tag':'KNOW YOUR BODY. DRESS YOUR BEST.',
+      'hero-live-suffix':'📷 No Photos · Measurements Only · 100% Private',
+      'hero-headline':'"Highlight your strengths.<br><em>Minimize what you don\'t love.</em>"',
       'hero-demo-label':'SAMPLE RESULT',
-      'hero-btn-sub':'Free · No sign-up · Instant results',
+      'hero-btn-sub':'Free · No account · Zero data stored',
       'hero-tag-old':'Know Your Body. Dress Better.',
-      'hero-sub':'Your proportions tell a story your mirror never shows.<br>Find your #1 body asset in 2 minutes.',
-      'hero-btn':'Reveal My Body Identity →',
-      'hero-badge1':'Free','hero-badge2':'Instant Results','hero-badge3':'15 Languages','hero-badge4':'No Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
+      'hero-sub':'No selfies. No cameras. Just 3 measurements — we reveal your body\'s unique strengths so you can highlight what you love and minimize what you don\'t.',
+      'hero-btn':'Analyze My Body (No Photos) →',
+      'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Zero Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
+      'privacy-step1':'Enter 3 Measurements','privacy-step2':'Analyze Proportions','privacy-step3':'Get Style Blueprint',
+      'hero-privacy-note':'No selfies · No uploads · Your data never leaves this page',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
       'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
       'howto-weight':'⚖️ Best measured in the morning before eating. Stand still on the scale and wait for a stable reading',
@@ -2110,7 +2139,9 @@
       'hero-tag':'自分だけのフィットを見つける',
       'hero-sub':'おしゃれができないんじゃない。自分の体を知らなかっただけ。<br>同じ身長でも、脚の長さや肩幅が違えば、フィット感はまったく変わります。',
       'hero-btn':'自分の体型を調べる →',
-      'hero-badge1':'無料','hero-badge2':'即座に結果','hero-badge3':'15言語対応','hero-badge4':'個人情報保存なし',
+      'hero-badge1':'✅ 無料','hero-badge2':'⚡ 即座に結果','hero-badge3':'🌍 15言語対応','hero-badge4':'🔒 個人情報保存なし',
+      'privacy-step1':'3つの測定値を入力','privacy-step2':'プロポーションを分析','privacy-step3':'スタイルプランを取得',
+      'hero-privacy-note':'セルフィーなし · アップロードなし · データはこのページに留まります',
       'tip-card-title':'📏 測定前に30秒だけ！','tip-card-1':'メジャーなし？OK — スマホの縦幅（約15cm）を定規代わりに使えます','tip-card-2':'ひとつまみ（親指〜小指の端）のcmを先に測ると、肩や脚も簡単に計算できます','tip-card-3':'身長・体重・ウエストの3つだけで分析スタート！残りは任意です','tip-card-btn':'わかった、測定へ →',
       'howto-height':'📐 壁に背中をつけて立ち、頭の上に本を水平に置いてマークし、床からの距離を測ってください',
       'howto-weight':'⚖️ 朝食前・トイレ後が最も正確です。体重計の上でじっとして安定した数値を確認してください',
@@ -2212,7 +2243,9 @@
       'hero-tag':'找到你的完美版型',
       'hero-sub':'不是穿不好衣服，是不了解自己的身体。<br>同样的身高，腿长和肩宽不同，穿出来的效果完全不同。',
       'hero-btn':'了解我的比例 →',
-      'hero-badge1':'免费','hero-badge2':'即时结果','hero-badge3':'15种语言','hero-badge4':'不存储个人信息',
+      'hero-badge1':'✅ 免费','hero-badge2':'⚡ 即时结果','hero-badge3':'🌍 15种语言','hero-badge4':'🔒 不存储个人信息',
+      'privacy-step1':'输入3个测量值','privacy-step2':'分析身体比例','privacy-step3':'获取搭配方案',
+      'hero-privacy-note':'无需自拍 · 无需上传 · 您的数据不会离开此页面',
       'tip-card-title':'📏 测量前只需30秒！','tip-card-1':'没有卷尺？没关系 — 用手机竖向长度（约15cm）当尺子','tip-card-2':'先量一拃（拇指到小指）的cm，肩宽·腿长也能轻松换算','tip-card-3':'只需身高·体重·腰围3项即可开始分析！其余为选填','tip-card-btn':'明白了，去测量 →',
       'howto-height':'📐 背靠墙站立，头顶放一本水平的书做标记，然后量地面到标记的距离',
       'howto-weight':'⚖️ 早晨空腹如厕后测量最准确。站在体重秤上保持静止，等待数值稳定',
@@ -2311,10 +2344,15 @@
     },
     fr: {
       'nav-guide':'Guide de mesure','nav-analysis':'Analyse corporelle','nav-about':'À propos',
-      'hero-tag':'Trouvez votre fit parfait',
-      'hero-sub':'Ce n\'est pas que vous ne savez pas vous habiller. Vous ne connaissiez pas votre corps.<br>Même taille, mais longueur des jambes et largeur des épaules changent tout.',
-      'hero-btn':'Découvrir mes proportions →',
-      'hero-badge1':'Gratuit','hero-badge2':'Résultats immédiats','hero-badge3':'15 langues','hero-badge4':'Aucune donnée stockée',
+      'hero-tag':'ANALYSE SANS PHOTOS',
+      'hero-live-suffix':'📷 Sans photos · Mesures seulement · 100% privé',
+      'hero-headline':'Valorisez vos atouts.<br><em>Minimisez vos imperfections.</em>',
+      'hero-sub':'Pas de selfies. Pas de caméra. Juste 3 mesures — nous révélons les atouts uniques de votre corps pour que vous puissiez mettre en valeur ce que vous aimez et minimiser ce que vous n\'aimez pas.',
+      'hero-btn':'Analyser mon corps (sans photo) →',
+      'hero-btn-sub':'Gratuit · Sans compte · Zéro donnée stockée',
+      'hero-badge1':'📷 Sans photos requises','hero-badge2':'📏 Seulement 3 mesures','hero-badge3':'🌍 15 langues','hero-badge4':'🔒 Zéro donnée stockée',
+      'privacy-step1':'Entrez 3 mesures','privacy-step2':'Analyse des proportions','privacy-step3':'Votre profil de style',
+      'hero-privacy-note':'Pas de selfies · Pas de téléchargement · Vos données ne quittent jamais cette page',
       'tip-card-title':'📏 30 secondes avant de commencer !','tip-card-1':'Pas de mètre ? Pas de problème — utilisez votre téléphone (~15cm) comme règle','tip-card-2':'Mesurez une empan (pouce à auriculaire) en cm — utile pour épaules et jambes','tip-card-3':'Taille, poids et tour de taille = analyse immédiate ! Le reste est optionnel','tip-card-btn':'Compris, on mesure →',
       'howto-height':'📐 Adossez-vous au mur, posez un livre à plat sur la tête, marquez et mesurez du sol à la marque',
       'howto-weight':'⚖️ Mesurez le matin à jeun après les toilettes. Restez immobile sur la balance',
@@ -2413,10 +2451,15 @@
     },
     es: {
       'nav-guide':'Guía de medición','nav-analysis':'Análisis corporal','nav-about':'Acerca de',
-      'hero-tag':'Encuentra tu fit perfecto',
-      'hero-sub':'No es que no sepas vestirte. Solo que no conocías tu cuerpo.<br>Misma altura, pero la longitud de las piernas y el ancho de hombros lo cambian todo.',
-      'hero-btn':'Descubrir mis proporciones →',
-      'hero-badge1':'Gratis','hero-badge2':'Resultados al instante','hero-badge3':'15 idiomas','hero-badge4':'Sin almacenamiento de datos',
+      'hero-tag':'ANÁLISIS CORPORAL SIN FOTOS',
+      'hero-live-suffix':'📷 Sin fotos · Solo medidas · 100% privado',
+      'hero-headline':'Destaca tus fortalezas.<br><em>Minimiza lo que no te gusta.</em>',
+      'hero-sub':'Sin selfies. Sin cámaras. Solo 3 medidas — revelamos los puntos fuertes únicos de tu cuerpo para que puedas destacar lo que amas y minimizar lo que no.',
+      'hero-btn':'Analizar mi cuerpo (sin fotos) →',
+      'hero-btn-sub':'Gratis · Sin cuenta · Cero datos almacenados',
+      'hero-badge1':'📷 Sin fotos requeridas','hero-badge2':'📏 Solo 3 medidas','hero-badge3':'🌍 15 idiomas','hero-badge4':'🔒 Cero datos almacenados',
+      'privacy-step1':'Introduce 3 medidas','privacy-step2':'Analizamos proporciones','privacy-step3':'Tu plan de estilo',
+      'hero-privacy-note':'Sin selfies · Sin subidas · Tus datos nunca abandonan esta página',
       'tip-card-title':'📏 ¡30 segundos antes de empezar!','tip-card-1':'¿Sin cinta métrica? Sin problema — usa tu móvil (~15cm) como regla','tip-card-2':'Mide un palmo (pulgar a meñique) en cm — útil para hombros y piernas también','tip-card-3':'Altura, peso y cintura = ¡análisis inmediato! El resto es opcional','tip-card-btn':'Entendido, a medir →',
       'howto-height':'📐 Párate contra la pared, coloca un libro plano sobre la cabeza, marca el punto y mide desde el suelo',
       'howto-weight':'⚖️ Lo más exacto: mañana en ayunas después del baño. Quédate quieto sobre la báscula',
@@ -2515,10 +2558,15 @@
     },
     pt: {
       'nav-guide':'Guia de medição','nav-analysis':'Análise corporal','nav-about':'Sobre',
-      'hero-tag':'Encontre o seu fit perfeito',
-      'hero-sub':'Não é que você não saiba se vestir. Você só não conhecia seu corpo.<br>Mesma altura, mas comprimento das pernas e largura dos ombros mudam tudo.',
-      'hero-btn':'Descobrir minhas proporções →',
-      'hero-badge1':'Grátis','hero-badge2':'Resultados imediatos','hero-badge3':'15 idiomas','hero-badge4':'Sem armazenamento de dados',
+      'hero-tag':'ANÁLISE CORPORAL SEM FOTOS',
+      'hero-live-suffix':'📷 Sem fotos · Apenas medidas · 100% privado',
+      'hero-headline':'Destaque seus pontos fortes.<br><em>Minimize o que você não ama.</em>',
+      'hero-sub':'Sem selfies. Sem câmeras. Apenas 3 medidas — revelamos os pontos fortes únicos do seu corpo para que você possa destacar o que ama e minimizar o que não ama.',
+      'hero-btn':'Analisar meu corpo (sem fotos) →',
+      'hero-btn-sub':'Grátis · Sem conta · Zero dados armazenados',
+      'hero-badge1':'📷 Sem fotos necessárias','hero-badge2':'📏 Apenas 3 medidas','hero-badge3':'🌍 15 idiomas','hero-badge4':'🔒 Zero dados armazenados',
+      'privacy-step1':'Insira 3 medidas','privacy-step2':'Analise proporções','privacy-step3':'Seu plano de estilo',
+      'hero-privacy-note':'Sem selfies · Sem uploads · Seus dados nunca saem desta página',
       'tip-card-title':'📏 30 segundos antes de começar!','tip-card-1':'Sem fita métrica? Sem problema — use seu celular (~15cm) como régua','tip-card-2':'Meça um palmo (polegar ao dedo mínimo) em cm — útil para ombros e pernas','tip-card-3':'Altura, peso e cintura = análise imediata! O resto é opcional','tip-card-btn':'Entendi, vamos medir →',
       'howto-height':'📐 Fique de costas para a parede, coloque um livro plano na cabeça, marque e meça do chão à marca',
       'howto-weight':'⚖️ Mais preciso de manhã em jejum após o banheiro. Fique imóvel na balança até estabilizar',
@@ -2617,10 +2665,15 @@
     },
     de: {
       'nav-guide':'Messanleitung','nav-analysis':'Körperanalyse','nav-about':'Über uns',
-      'hero-tag':'Finde deinen perfekten Fit',
-      'hero-sub':'Es liegt nicht daran, dass du dich nicht kleiden kannst. Du kennst deinen Körper noch nicht.<br>Gleiche Größe, aber Beinlänge und Schulterbreite verändern alles.',
-      'hero-btn':'Meine Proportionen entdecken →',
-      'hero-badge1':'Kostenlos','hero-badge2':'Sofortige Ergebnisse','hero-badge3':'15 Sprachen','hero-badge4':'Keine Datenspeicherung',
+      'hero-tag':'KÖRPERANALYSE OHNE FOTOS',
+      'hero-live-suffix':'📷 Keine Fotos · Nur Maße · 100% privat',
+      'hero-headline':'Betone deine Stärken.<br><em>Minimiere, was du nicht magst.</em>',
+      'hero-sub':'Keine Selfies. Keine Kamera. Nur 3 Maße — wir enthüllen die einzigartigen Stärken deines Körpers, damit du hervorheben kannst, was du liebst, und minimieren, was du nicht liebst.',
+      'hero-btn':'Meinen Körper analysieren (ohne Fotos) →',
+      'hero-btn-sub':'Kostenlos · Kein Konto · Null Datenspeicherung',
+      'hero-badge1':'📷 Keine Fotos nötig','hero-badge2':'📏 Nur 3 Maße','hero-badge3':'🌍 15 Sprachen','hero-badge4':'🔒 Keinerlei Datenspeicherung',
+      'privacy-step1':'3 Maße eingeben','privacy-step2':'Proportionen analysieren','privacy-step3':'Stil-Blueprint erhalten',
+      'hero-privacy-note':'Keine Selfies · Kein Upload · Deine Daten verlassen diese Seite nicht',
       'tip-card-title':'📏 30 Sekunden vor dem Start!','tip-card-1':'Kein Maßband? Kein Problem — nutze dein Handy (~15cm) als Lineal','tip-card-2':'Miss eine Handspanne (Daumen bis kleiner Finger) in cm — nützlich für Schultern & Beine','tip-card-3':'Größe, Gewicht & Taille = sofortige Analyse! Alles andere ist optional','tip-card-btn':'Verstanden, jetzt messen →',
       'howto-height':'📐 Steh mit dem Rücken zur Wand, leg ein Buch flach auf den Kopf, markiere und miss vom Boden zur Markierung',
       'howto-weight':'⚖️ Morgens nüchtern nach dem Toilettengang am genauesten. Ruhig auf der Waage stehen bis der Wert stabil ist',
@@ -2719,10 +2772,15 @@
     },
     it: {
       'nav-guide':'Guida alle misure','nav-analysis':'Analisi corporea','nav-about':'Chi siamo',
-      'hero-tag':'Trova il tuo fit perfetto',
-      'hero-sub':'Non è che non sai vestirti. Non conoscevi solo il tuo corpo.<br>Stessa altezza, ma lunghezza delle gambe e larghezza delle spalle cambiano tutto.',
-      'hero-btn':'Scopri le mie proporzioni →',
-      'hero-badge1':'Gratuito','hero-badge2':'Risultati immediati','hero-badge3':'15 lingue','hero-badge4':'Nessun dato memorizzato',
+      'hero-tag':'ANALISI CORPOREA SENZA FOTO',
+      'hero-live-suffix':'📷 Nessuna foto · Solo misure · 100% privato',
+      'hero-headline':'Valorizza i tuoi punti di forza.<br><em>Minimizza ciò che non ami.</em>',
+      'hero-sub':'Nessun selfie. Nessuna fotocamera. Solo 3 misure — riveliamo i punti di forza unici del tuo corpo così puoi valorizzare ciò che ami e minimizzare ciò che non ami.',
+      'hero-btn':'Analizza il mio corpo (senza foto) →',
+      'hero-btn-sub':'Gratuito · Nessun account · Zero dati salvati',
+      'hero-badge1':'📷 Nessuna foto richiesta','hero-badge2':'📏 Solo 3 misure','hero-badge3':'🌍 15 lingue','hero-badge4':'🔒 Zero dati salvati',
+      'privacy-step1':'Inserisci 3 misure','privacy-step2':'Analisi delle proporzioni','privacy-step3':'Il tuo stile personalizzato',
+      'hero-privacy-note':'Nessun selfie · Nessun caricamento · I tuoi dati non lasciano mai questa pagina',
       'tip-card-title':'📏 30 secondi prima di iniziare!','tip-card-1':'Senza metro? Nessun problema — usa lo smartphone (~15cm) come righello','tip-card-2':'Misura una spanna (pollice al mignolo) in cm — utile per spalle e gambe','tip-card-3':'Altezza, peso e vita = analisi immediata! Il resto è opzionale','tip-card-btn':'Capito, si misura →',
       'howto-height':'📐 Schiena al muro, appoggia un libro in testa, segna il punto e misura dal pavimento al segno',
       'howto-weight':'⚖️ Più preciso al mattino a digiuno dopo il bagno. Stai fermo sulla bilancia fino a quando il valore si stabilizza',
@@ -2824,7 +2882,9 @@
       'hero-tag':'Найди свой идеальный фит',
       'hero-sub':'Дело не в том, что ты не умеешь одеваться. Ты просто не знал своё тело.<br>Один рост, но длина ног и ширина плеч меняют всё.',
       'hero-btn':'Узнать мои пропорции →',
-      'hero-badge1':'Бесплатно','hero-badge2':'Мгновенные результаты','hero-badge3':'15 языков','hero-badge4':'Данные не сохраняются',
+      'hero-badge1':'✅ Бесплатно','hero-badge2':'⚡ Мгновенные результаты','hero-badge3':'🌍 15 языков','hero-badge4':'🔒 Данные не сохраняются',
+      'privacy-step1':'Введите 3 измерения','privacy-step2':'Анализ пропорций','privacy-step3':'Ваш стиль-план',
+      'hero-privacy-note':'Без селфи · Без загрузок · Ваши данные не покидают эту страницу',
       'tip-card-title':'📏 30 секунд перед началом!','tip-card-1':'Нет рулетки? Не беда — используй телефон (~15см) как линейку','tip-card-2':'Измерь пядь (большой до мизинца) в см — пригодится для плеч и ног','tip-card-3':'Рост, вес и талия = мгновенный анализ! Остальное необязательно','tip-card-btn':'Понял, начинаем →',
       'howto-height':'📐 Встань спиной к стене, положи книгу на голову горизонтально, сделай отметку и измерь от пола',
       'howto-weight':'⚖️ Точнее всего утром натощак после туалета. Стой неподвижно на весах до стабильного показания',
@@ -2926,7 +2986,9 @@
       'hero-tag':'اعثر على مقاسك المثالي',
       'hero-sub':'لست عاجزاً عن ارتداء الملابس. أنت فقط لم تعرف جسدك بعد.<br>نفس الطول، لكن طول الساقين وعرض الكتفين يغيران كل شيء.',
       'hero-btn':'اكتشف نسبي ←',
-      'hero-badge1':'مجاني','hero-badge2':'نتائج فورية','hero-badge3':'15 لغة','hero-badge4':'لا تخزين للبيانات',
+      'hero-badge1':'✅ مجاني','hero-badge2':'⚡ نتائج فورية','hero-badge3':'🌍 15 لغة','hero-badge4':'🔒 لا تخزين للبيانات',
+      'privacy-step1':'أدخل 3 قياسات','privacy-step2':'تحليل النسب','privacy-step3':'احصل على خطة الأسلوب',
+      'hero-privacy-note':'بدون صور شخصية · بدون تحميل · بياناتك لا تغادر هذه الصفحة أبداً',
       'tip-card-title':'📏 30 ثانية قبل البدء!','tip-card-1':'بدون شريط قياس؟ لا مشكلة — استخدم هاتفك (~15سم) كمسطرة','tip-card-2':'قس شبرًا (من الإبهام إلى الخنصر) بالسم — مفيد للكتفين والساقين أيضًا','tip-card-3':'الطول والوزن والخصر = تحليل فوري! الباقي اختياري','tip-card-btn':'فهمت، نبدأ القياس →',
       'howto-height':'📐 قف مستنداً للحائط، ضع كتاباً أفقياً على رأسك وعلّم المكان ثم قس من الأرض للعلامة',
       'howto-weight':'⚖️ الأدق: صباحاً على الريق بعد الحمام. قف ثابتاً على الميزان حتى يستقر الرقم',
@@ -3028,7 +3090,9 @@
       'hero-tag':'अपना परफेक्ट फिट खोजें',
       'hero-sub':'ये नहीं कि आप कपड़े नहीं पहन सकते। बस अपने शरीर को नहीं जानते थे।<br>एक ही ऊंचाई में, पैर की लंबाई और कंधे की चौड़ाई सब कुछ बदल देते हैं।',
       'hero-btn':'अपने अनुपात जानें →',
-      'hero-badge1':'मुफ़्त','hero-badge2':'तुरंत परिणाम','hero-badge3':'15 भाषाएं','hero-badge4':'कोई डेटा संग्रहीत नहीं',
+      'hero-badge1':'✅ मुफ़्त','hero-badge2':'⚡ तुरंत परिणाम','hero-badge3':'🌍 15 भाषाएं','hero-badge4':'🔒 कोई डेटा संग्रहीत नहीं',
+      'privacy-step1':'3 माप दर्ज करें','privacy-step2':'अनुपात विश्लेषण','privacy-step3':'स्टाइल प्लान पाएं',
+      'hero-privacy-note':'सेल्फी नहीं · अपलोड नहीं · आपका डेटा इस पेज से बाहर नहीं जाता',
       'tip-card-title':'📏 शुरू करने से पहले 30 सेकंड!','tip-card-1':'टेप नहीं है? कोई बात नहीं — फोन की लंबाई (~15cm) को रूलर की तरह इस्तेमाल करें','tip-card-2':'एक बालिश्त (अंगूठे से छोटी उंगली तक) cm में मापें — कंधों और पैरों के लिए भी उपयोगी','tip-card-3':'ऊंचाई, वजन और कमर = तुरंत विश्लेषण! बाकी सब वैकल्पिक है','tip-card-btn':'समझ गया, मापने चलें →',
       'howto-height':'📐 दीवार से पीठ लगाकर खड़े हों, सिर पर किताब रखें, निशान लगाएं और फर्श से निशान तक मापें',
       'howto-weight':'⚖️ सुबह खाली पेट शौच के बाद सबसे सटीक। तराजू पर स्थिर खड़े रहें',
@@ -3131,7 +3195,9 @@
       'hero-tag':'ค้นหาฟิตที่ใช่สำหรับคุณ',
       'hero-sub':'ไม่ใช่ว่าคุณแต่งตัวไม่เก่ง แค่ยังไม่รู้จักร่างกายตัวเอง<br>ส่วนสูงเท่ากัน แต่ความยาวขาและความกว้างไหล่ทำให้ทุกอย่างเปลี่ยนไป',
       'hero-btn':'ค้นพบสัดส่วนของฉัน →',
-      'hero-badge1':'ฟรี','hero-badge2':'ผลลัพธ์ทันที','hero-badge3':'15 ภาษา','hero-badge4':'ไม่บันทึกข้อมูลส่วนตัว',
+      'hero-badge1':'✅ ฟรี','hero-badge2':'⚡ ผลลัพธ์ทันที','hero-badge3':'🌍 15 ภาษา','hero-badge4':'🔒 ไม่บันทึกข้อมูลส่วนตัว',
+      'privacy-step1':'ป้อน 3 ค่า','privacy-step2':'วิเคราะห์สัดส่วน','privacy-step3':'รับแผนสไตล์ของคุณ',
+      'hero-privacy-note':'ไม่ต้องถ่ายเซลฟี่ · ไม่ต้องอัปโหลด · ข้อมูลของคุณไม่ออกจากหน้านี้',
       'tip-card-title':'📏 30 วินาทีก่อนเริ่ม!','tip-card-1':'ไม่มีตลับเมตร? ไม่เป็นไร — ใช้โทรศัพท์ (~15cm) แทนไม้บรรทัดได้เลย','tip-card-2':'วัดหนึ่งคืบ (นิ้วโป้งถึงนิ้วก้อย) เป็น cm ไว้ก่อน — ใช้คำนวณไหล่และขาได้ง่าย','tip-card-3':'แค่ส่วนสูง น้ำหนัก และรอบเอว = วิเคราะห์ได้ทันที! ที่เหลือเป็นตัวเลือก','tip-card-btn':'เข้าใจแล้ว ไปวัดเลย →',
       'howto-height':'📐 ยืนพิงกำแพง วางหนังสือแนบศีรษะให้ระนาบ ทำเครื่องหมาย แล้ววัดจากพื้นถึงจุดนั้น',
       'howto-weight':'⚖️ แม่นยำที่สุดตอนเช้าก่อนกินข้าวหลังเข้าห้องน้ำ ยืนนิ่งบนตาชั่งจนตัวเลขคงที่',
@@ -3233,7 +3299,9 @@
       'hero-tag':'Temukan Fit Sempurnamu',
       'hero-sub':'Bukan berarti kamu tidak bisa berpakaian dengan baik. Kamu hanya belum mengenal tubuhmu.<br>Tinggi sama, tapi panjang kaki dan lebar bahu mengubah segalanya.',
       'hero-btn':'Temukan Proporsi Saya →',
-      'hero-badge1':'Gratis','hero-badge2':'Hasil Instan','hero-badge3':'15 Bahasa','hero-badge4':'Tidak Ada Data Tersimpan',
+      'hero-badge1':'✅ Gratis','hero-badge2':'⚡ Hasil Instan','hero-badge3':'🌍 15 Bahasa','hero-badge4':'🔒 Tidak Ada Data Tersimpan',
+      'privacy-step1':'Masukkan 3 ukuran','privacy-step2':'Analisis proporsi','privacy-step3':'Dapatkan rencana gaya',
+      'hero-privacy-note':'Tanpa selfie · Tanpa unggahan · Data Anda tidak meninggalkan halaman ini',
       'tip-card-title':'📏 30 detik sebelum mulai!','tip-card-1':'Tidak punya meteran? Tidak apa-apa — pakai panjang ponsel (~15cm) sebagai penggaris','tip-card-2':'Ukur satu jengkal (ibu jari ke kelingking) dalam cm — berguna untuk bahu dan kaki','tip-card-3':'Tinggi, berat, dan pinggang = analisis langsung! Sisanya opsional','tip-card-btn':'Mengerti, mulai ukur →',
       'howto-height':'📐 Berdiri dengan punggung ke dinding, letakkan buku datar di kepala, tandai lalu ukur dari lantai ke tanda',
       'howto-weight':'⚖️ Paling akurat pagi hari sebelum makan setelah ke toilet. Berdiri diam di timbangan sampai angka stabil',
@@ -3335,7 +3403,9 @@
       'hero-tag':'Tìm kiếm phong cách hoàn hảo',
       'hero-sub':'Không phải bạn không biết mặc đẹp. Bạn chỉ chưa hiểu cơ thể mình.<br>Cùng chiều cao, nhưng độ dài chân và độ rộng vai thay đổi tất cả.',
       'hero-btn':'Khám phá tỉ lệ của tôi →',
-      'hero-badge1':'Miễn phí','hero-badge2':'Kết quả ngay','hero-badge3':'15 ngôn ngữ','hero-badge4':'Không lưu dữ liệu',
+      'hero-badge1':'✅ Miễn phí','hero-badge2':'⚡ Kết quả ngay','hero-badge3':'🌍 15 ngôn ngữ','hero-badge4':'🔒 Không lưu dữ liệu',
+      'privacy-step1':'Nhập 3 số đo','privacy-step2':'Phân tích tỷ lệ','privacy-step3':'Nhận kế hoạch phong cách',
+      'hero-privacy-note':'Không selfie · Không tải lên · Dữ liệu của bạn không rời khỏi trang này',
       'tip-card-title':'📏 30 giây trước khi bắt đầu!','tip-card-1':'Không có thước dây? Không sao — dùng điện thoại (~15cm) làm thước kẻ','tip-card-2':'Đo một gang tay (ngón cái đến ngón út) bằng cm — hữu ích cho vai và chân','tip-card-3':'Chiều cao, cân nặng và vòng eo = phân tích ngay! Phần còn lại là tùy chọn','tip-card-btn':'Hiểu rồi, đo thôi →',
       'howto-height':'📐 Đứng sát tường, đặt sách nằm ngang lên đầu, đánh dấu rồi đo từ sàn đến vạch',
       'howto-weight':'⚖️ Chính xác nhất vào buổi sáng trước khi ăn sau khi vệ sinh. Đứng yên trên cân đến khi số ổn định',
