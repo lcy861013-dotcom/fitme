@@ -956,7 +956,7 @@
   </section>
 
   <!-- BLOG -->
-  <section class="blog-section">
+  <section class="blog-section" id="blog-section">
     <div class="section-header">
       <div class="section-tag">STYLE GUIDE</div>
       <h2 class="section-title" data-i18n="blog-title">패션 & 핏 가이드</h2>
@@ -3839,6 +3839,16 @@
     window.scrollTo(0, 0);
   }
 
+  function showBlogList() {
+    const floatBtn = document.getElementById('blog-float-back');
+    if (floatBtn) floatBtn.remove();
+    showPage('home');
+    setTimeout(() => {
+      const section = document.getElementById('blog-section');
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  }
+
   // ===== BLOG CONTENT DATA =====
   const blogContent = {
     blog1: {
@@ -4472,7 +4482,7 @@
     if (!post) { showPage(id); return; }
     const lang = (blogContent[id][currentLang]) ? currentLang : 'en';
     const data = post[lang];
-    const backLabel = currentLang === 'ko' ? '← 홈으로' : currentLang === 'ja' ? '← ホームへ' : currentLang === 'zh' ? '← 返回首页' : '← Back to Home';
+    const backLabel = currentLang === 'ko' ? '← 블로그 목록' : currentLang === 'ja' ? '← ブログ一覧へ' : currentLang === 'zh' ? '← 返回博客列表' : '← Back to Blog';
     document.getElementById('blog-render-' + id).innerHTML = `
       <div class="blog-post">
         <div style="font-size:11px;letter-spacing:3px;color:var(--accent);margin-bottom:12px;font-family:'DM Sans',sans-serif;">${post.tag}</div>
@@ -4481,7 +4491,7 @@
         ${data.body}
       </div>
       <footer>
-        <div class="footer-links"><a onclick="showPage('home')" style="cursor:pointer;">${backLabel}</a></div>
+        <div class="footer-links"><a onclick="showBlogList()" style="cursor:pointer;">${backLabel}</a></div>
         <p class="footer-copy">&copy; 2026 FITME.</p>
       </footer>`;
     showPage(id);
@@ -4492,7 +4502,7 @@
     const btn = document.createElement('button');
     btn.id = 'blog-float-back';
     btn.innerHTML = '← ' + backLabel.replace('← ', '');
-    btn.onclick = () => showPage('home');
+    btn.onclick = () => showBlogList();
     btn.style.cssText = `
       position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px);
       background:var(--accent); color:var(--bg); border:none; border-radius:50px;
