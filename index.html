@@ -3836,6 +3836,7 @@
     const floatBtn = document.getElementById('blog-float-back');
     if (floatBtn) floatBtn.remove();
     showPage('home');
+    history.pushState(null, '', '/');
     setTimeout(() => {
       const section = document.getElementById('blog-section');
       if (section) section.scrollIntoView({ behavior: 'smooth' });
@@ -4488,6 +4489,7 @@
         <p class="footer-copy">&copy; 2026 FITME.</p>
       </footer>`;
     showPage(id);
+    history.pushState(null, '', '/blog/' + id);
 
     // 스크롤 멈추면 뒤로가기 버튼 표시
     const floatBtn = document.getElementById('blog-float-back');
@@ -6278,6 +6280,28 @@
       };
       _applyUnitSettings(cfg, true);
     };
+
+    // URL 기반 라우팅 — /blog/blog1 형태로 직접 접근 시 해당 포스트 표시
+    (function() {
+      const blogMatch = location.pathname.match(/^\/blog\/(blog\d+)$/);
+      if (blogMatch) showBlogPost(blogMatch[1]);
+    })();
+
+    // 브라우저 뒤로가기/앞으로가기 처리
+    window.addEventListener('popstate', function() {
+      const blogMatch = location.pathname.match(/^\/blog\/(blog\d+)$/);
+      if (blogMatch) {
+        showBlogPost(blogMatch[1]);
+      } else {
+        const floatBtn = document.getElementById('blog-float-back');
+        if (floatBtn) floatBtn.remove();
+        showPage('home');
+        setTimeout(() => {
+          const section = document.getElementById('blog-section');
+          if (section) section.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      }
+    });
   });
 
 </script>
