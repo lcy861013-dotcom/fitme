@@ -208,6 +208,26 @@
     .challenge-btn { display: inline-block; padding: 10px 26px; background: var(--accent); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 800; border-radius: 100px; cursor: pointer; border: none; transition: all 0.2s; }
     .challenge-btn:hover { background: #f5ff80; transform: translateY(-1px); }
 
+    /* WHY FITME SECTION */
+    .why-fitme-section { padding: 64px 32px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, transparent 0%, rgba(232,255,71,0.02) 50%, transparent 100%); }
+    .why-fitme-intro { font-size: 15px; color: var(--muted); max-width: 620px; margin: 0 auto 48px; line-height: 1.85; font-family: 'DM Sans', sans-serif; }
+    .why-fitme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto 32px; }
+    .why-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: border-color 0.2s; }
+    .why-card:hover { border-color: rgba(232,255,71,0.25); }
+    .why-card-icon { font-size: 30px; margin-bottom: 14px; }
+    .why-card-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; color: var(--text); letter-spacing: 0.3px; line-height: 1.4; }
+    .why-card-desc { font-size: 13px; color: var(--muted); line-height: 1.85; font-family: 'DM Sans', sans-serif; }
+    .why-card.featured { border-color: rgba(232,255,71,0.3); background: rgba(232,255,71,0.03); }
+    .why-card.featured .why-card-title { color: var(--accent); }
+    .privacy-dna-banner { max-width: 1000px; margin: 0 auto; background: linear-gradient(135deg, rgba(232,255,71,0.08), rgba(71,200,255,0.05)); border: 1.5px solid rgba(232,255,71,0.35); border-radius: 16px; padding: 24px 32px; display: flex; align-items: center; gap: 20px; }
+    .dna-icon { font-size: 36px; flex-shrink: 0; }
+    .dna-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; color: var(--accent); margin-bottom: 4px; }
+    .dna-sub { font-size: 13px; color: var(--muted); line-height: 1.6; font-family: 'DM Sans', sans-serif; }
+    @media (max-width: 768px) {
+      .why-fitme-grid { grid-template-columns: 1fr !important; }
+      .privacy-dna-banner { flex-direction: column; text-align: center; gap: 12px; padding: 20px; }
+    }
+
     /* GUIDE SECTION */
     .guide-content { padding: 60px 32px; border-bottom: 1px solid var(--border); }
     .section-header { text-align: center; margin-bottom: 48px; }
@@ -811,6 +831,39 @@
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </div>
+
+  <!-- WHY FITME -->
+  <section class="why-fitme-section" id="why-fitme">
+    <div class="section-header">
+      <div class="section-tag" data-i18n="why-section-tag">WHY FITME?</div>
+      <h2 class="section-title" data-i18n="why-section-title" style="font-size:clamp(22px,4vw,34px);letter-spacing:2px;">Precision Data, Not Your Privacy</h2>
+      <p class="why-fitme-intro" data-i18n="why-section-intro">Most body analysis apps ask for photos. FITME doesn't. Here's why that matters — and why our measurement-based approach delivers better results than any photo-based AI.</p>
+    </div>
+    <div class="why-fitme-grid">
+      <div class="why-card">
+        <div class="why-card-icon">📷</div>
+        <h3 class="why-card-title" data-i18n="why-card1-title">100% Photo-Free Analysis</h3>
+        <p class="why-card-desc" data-i18n="why-card1-desc">Unlike AI photo tools, FITME never stores a single image of your body. Uploading photos to unknown servers carries real risks: data breaches and unauthorized use of your most intimate images. FITME eliminates this entirely. Enter just 3 measurements — height, weight, and waist — and receive a complete body proportion analysis powered by the same mathematical models used by professional stylists worldwide. No camera. No cloud uploads. No privacy concerns. Just precise, actionable insights about your unique body proportions.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">📐</div>
+        <h3 class="why-card-title" data-i18n="why-card2-title">Mathematical Precision</h3>
+        <p class="why-card-desc" data-i18n="why-card2-desc">FITME applies the Golden Ratio (φ = 1.618) — the mathematical principle behind classical art and natural beauty — alongside Waist-to-Hip Ratio (WHR), shoulder-to-waist differential, and vertical proportion indices to generate your personalized FITME DNA Score™ (0–100). Unlike photo assessments that vary by lighting, angle, and camera quality, our measurement-based algorithm delivers consistent, reproducible results every time. Your body's true proportions don't change based on camera angle — and neither does your FITME score.</p>
+      </div>
+      <div class="why-card featured">
+        <div class="why-card-icon">✨</div>
+        <h3 class="why-card-title" data-i18n="why-card3-title">Enhance Strengths, Conceal Weaknesses</h3>
+        <p class="why-card-desc" data-i18n="why-card3-desc">Every body has natural strengths — proportions that, when dressed correctly, create a visually powerful silhouette. The challenge is knowing what your strengths actually are. FITME provides objective data about your unique proportions: leg-to-torso ratio, shoulder-to-hip width, and waistline definition. Armed with this data, you make intentional styling choices: A-line skirts to balance wider hips, structured shoulders to create breadth, high-waist cuts to elongate the leg line, vertical patterns to add height. These are data-driven strategies from your specific measurements — not generic body-type advice.</p>
+      </div>
+    </div>
+    <div class="privacy-dna-banner">
+      <div class="dna-icon">🔒</div>
+      <div>
+        <div class="dna-title" data-i18n="dna-title">YOUR PRIVACY IS OUR DNA</div>
+        <div class="dna-sub" data-i18n="dna-sub">Zero photos stored. Zero data sold. Zero compromise. Your measurements are processed locally and never leave your device.</div>
+      </div>
+    </div>
+  </section>
 
   <!-- GUIDE -->
   <section class="guide-content" id="guide">
@@ -1829,7 +1882,7 @@
   const i18n = {
     ko: {
       'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-about':'About',
-      'hero-tag':'신체 비율 정밀 분석',
+      'hero-tag':'사진 없이, 정밀하게',
       'hero-live-suffix':'무료 · 가입불필요 · 완전 비공개',
       'hero-headline':'지금까지<br><em>남의 체형에 맞는 옷</em>을 입었을 수도 있어요.',
       'hero-demo-label':'실제 결과 미리보기',
@@ -1837,9 +1890,16 @@
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'내 몸의 비율은 거울이 절대 보여주지 않아요.<br>2분만에 내 #1 강점 부위와 진짜 어울리는 스타일을 찾아보세요.',
       'hero-btn':'내 체형 정체성 알아보기 →',
-      'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보 저장 없음','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
+      'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'privacy-step1':'측정값 3개 입력','privacy-step2':'비율 분석','privacy-step3':'스타일 청사진 획득',
       'hero-privacy-note':'셀카 없음 · 업로드 없음 · 내 정보는 이 페이지를 절대 벗어나지 않아요',
+      'why-section-tag':'WHY FITME?','why-section-title':'정밀한 데이터, 당신의 사생활이 아닌',
+      'why-section-intro':'대부분의 체형 분석 앱은 사진을 요구합니다. FITME는 다릅니다. 측정 기반 분석이 왜 더 나은 결과를 제공하는지 알아보세요.',
+      'why-card1-title':'100% 사진 없는 분석','why-card2-title':'수학적 정밀도','why-card3-title':'장점 극대화, 단점 완벽 보완',
+      'why-card1-desc':'AI 사진 분석 도구와 달리, FITME는 신체 이미지를 단 하나도 저장하지 않습니다. 사진을 알 수 없는 서버에 업로드하는 것은 데이터 유출과 무단 사용의 실질적인 위험을 수반합니다. FITME는 이 위험을 완전히 제거합니다. 키, 몸무게, 허리 3가지 측정값만 입력하면 전 세계 전문 스타일리스트가 사용하는 동일한 수학적 모델로 완전한 체형 분석을 받을 수 있습니다. 카메라 없음. 클라우드 업로드 없음. 개인정보 우려 없음.',
+      'why-card2-desc':'FITME의 분석 엔진은 황금 비율(φ = 1.618) — 고전 예술과 자연의 아름다움 뒤에 있는 수학적 원리 — 을 허리-엉덩이 비율(WHR), 어깨-허리 차이, 수직 비율 지수와 함께 적용하여 개인화된 FITME DNA 점수™(0~100)를 생성합니다. 조명, 각도, 카메라 품질에 따라 달라지는 사진 평가와 달리, 측정 기반 알고리즘은 매번 일관되고 재현 가능한 결과를 제공합니다.',
+      'why-card3-desc':'모든 몸에는 자연스러운 강점이 있습니다. 올바르게 스타일링하면 시각적으로 강력한 실루엣을 만들 수 있는 비율입니다. 문제는 자신의 강점이 무엇인지 아는 것입니다. FITME는 다리-상체 비율, 어깨-골반 너비, 허리 라인에 대한 객관적인 데이터를 제공합니다. 이 데이터로 의도적인 스타일링이 가능합니다: A라인 스커트, 구조적 어깨, 하이웨이스트 컷, 수직 패턴. 이것은 일반적인 조언이 아닌, 당신만의 측정값에서 도출된 데이터 기반 전략입니다.',
+      'dna-title':'당신의 개인정보가 우리의 DNA입니다','dna-sub':'저장된 사진 없음. 판매된 데이터 없음. 타협 없음. 측정값은 로컬에서 처리되며 절대 기기를 떠나지 않습니다.',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
       'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
       'howto-weight':'⚖️ 아침 공복·화장실 후가 가장 정확해요. 체중계 위에서 움직이지 말고 측정하세요',
@@ -1978,7 +2038,7 @@
     },
     en: {
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-about':'About',
-      'hero-tag':'KNOW YOUR BODY. DRESS YOUR BEST.',
+      'hero-tag':'NO PHOTOS. JUST PRECISION.',
       'hero-live-suffix':'📷 No Photos · Measurements Only · 100% Private',
       'hero-headline':'"Highlight your strengths.<br><em>Minimize what you don\'t love.</em>"',
       'hero-demo-label':'SAMPLE RESULT',
@@ -1986,9 +2046,16 @@
       'hero-tag-old':'Know Your Body. Dress Better.',
       'hero-sub':'No selfies. No cameras. Just 3 measurements — we reveal your body\'s unique strengths so you can highlight what you love and minimize what you don\'t.',
       'hero-btn':'Analyze My Body (No Photos) →',
-      'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Zero Data Stored','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
+      'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Your Privacy Is Our DNA','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'privacy-step1':'Enter 3 Measurements','privacy-step2':'Analyze Proportions','privacy-step3':'Get Style Blueprint',
       'hero-privacy-note':'No selfies · No uploads · Your data never leaves this page',
+      'why-section-tag':'WHY FITME?','why-section-title':'Precision Data, Not Your Privacy',
+      'why-section-intro':'Most body analysis apps ask for photos. FITME doesn\'t. Here\'s why that matters — and why our measurement-based approach delivers better results than any photo-based AI.',
+      'why-card1-title':'100% Photo-Free Analysis','why-card2-title':'Mathematical Precision','why-card3-title':'Enhance Strengths, Conceal Weaknesses',
+      'why-card1-desc':'Unlike AI photo tools, FITME never stores a single image of your body. Uploading photos to unknown servers carries real risks: data breaches and unauthorized use of your most intimate images. FITME eliminates this entirely. Enter just 3 measurements — height, weight, and waist — and receive a complete body proportion analysis powered by the same mathematical models used by professional stylists worldwide. No camera. No cloud uploads. No privacy concerns. Just precise, actionable insights about your unique body proportions.',
+      'why-card2-desc':'FITME applies the Golden Ratio (φ = 1.618) — the mathematical principle behind classical art and natural beauty — alongside Waist-to-Hip Ratio (WHR), shoulder-to-waist differential, and vertical proportion indices to generate your personalized FITME DNA Score™ (0–100). Unlike photo assessments that vary by lighting, angle, and camera quality, our measurement-based algorithm delivers consistent, reproducible results every time. Your body\'s true proportions don\'t change based on camera angle — and neither does your FITME score.',
+      'why-card3-desc':'Every body has natural strengths — proportions that, when dressed correctly, create a visually powerful silhouette. The challenge is knowing what your strengths actually are. FITME provides objective data about your unique proportions: leg-to-torso ratio, shoulder-to-hip width, and waistline definition. Armed with this data, you make intentional styling choices: A-line skirts to balance wider hips, structured shoulders to create breadth, high-waist cuts to elongate the leg line, vertical patterns to add height. These are data-driven strategies from your specific measurements — not generic body-type advice.',
+      'dna-title':'YOUR PRIVACY IS OUR DNA','dna-sub':'Zero photos stored. Zero data sold. Zero compromise. Your measurements are processed locally and never leave your device.',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
       'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
       'howto-weight':'⚖️ Best measured in the morning before eating. Stand still on the scale and wait for a stable reading',
@@ -2344,15 +2411,19 @@
     },
     fr: {
       'nav-guide':'Guide de mesure','nav-analysis':'Analyse corporelle','nav-about':'À propos',
-      'hero-tag':'ANALYSE SANS PHOTOS',
+      'hero-tag':'SANS PHOTOS. JUSTE PRÉCISION.',
       'hero-live-suffix':'📷 Sans photos · Mesures seulement · 100% privé',
       'hero-headline':'Valorisez vos atouts.<br><em>Minimisez vos imperfections.</em>',
       'hero-sub':'Pas de selfies. Pas de caméra. Juste 3 mesures — nous révélons les atouts uniques de votre corps pour que vous puissiez mettre en valeur ce que vous aimez et minimiser ce que vous n\'aimez pas.',
       'hero-btn':'Analyser mon corps (sans photo) →',
       'hero-btn-sub':'Gratuit · Sans compte · Zéro donnée stockée',
-      'hero-badge1':'📷 Sans photos requises','hero-badge2':'📏 Seulement 3 mesures','hero-badge3':'🌍 15 langues','hero-badge4':'🔒 Zéro donnée stockée',
+      'hero-badge1':'📷 Sans photos requises','hero-badge2':'📏 Seulement 3 mesures','hero-badge3':'🌍 15 langues','hero-badge4':'🔒 Votre vie privée est notre ADN',
       'privacy-step1':'Entrez 3 mesures','privacy-step2':'Analyse des proportions','privacy-step3':'Votre profil de style',
       'hero-privacy-note':'Pas de selfies · Pas de téléchargement · Vos données ne quittent jamais cette page',
+      'why-section-tag':'POURQUOI FITME?','why-section-title':'Données précises, pas votre vie privée',
+      'why-section-intro':'La plupart des apps d\'analyse corporelle demandent des photos. FITME non. Voici pourquoi — et pourquoi notre approche basée sur les mesures donne de meilleurs résultats qu\'une IA photo.',
+      'why-card1-title':'Analyse 100% sans photos','why-card2-title':'Précision mathématique','why-card3-title':'Valoriser les atouts, dissimuler les imperfections',
+      'dna-title':'VOTRE VIE PRIVÉE EST NOTRE ADN','dna-sub':'Zéro photo stockée. Zéro donnée vendue. Zéro compromis. Vos mesures sont traitées localement et ne quittent jamais votre appareil.',
       'tip-card-title':'📏 30 secondes avant de commencer !','tip-card-1':'Pas de mètre ? Pas de problème — utilisez votre téléphone (~15cm) comme règle','tip-card-2':'Mesurez une empan (pouce à auriculaire) en cm — utile pour épaules et jambes','tip-card-3':'Taille, poids et tour de taille = analyse immédiate ! Le reste est optionnel','tip-card-btn':'Compris, on mesure →',
       'howto-height':'📐 Adossez-vous au mur, posez un livre à plat sur la tête, marquez et mesurez du sol à la marque',
       'howto-weight':'⚖️ Mesurez le matin à jeun après les toilettes. Restez immobile sur la balance',
@@ -2451,15 +2522,19 @@
     },
     es: {
       'nav-guide':'Guía de medición','nav-analysis':'Análisis corporal','nav-about':'Acerca de',
-      'hero-tag':'ANÁLISIS CORPORAL SIN FOTOS',
+      'hero-tag':'SIN FOTOS. SOLO PRECISIÓN.',
       'hero-live-suffix':'📷 Sin fotos · Solo medidas · 100% privado',
       'hero-headline':'Destaca tus fortalezas.<br><em>Minimiza lo que no te gusta.</em>',
       'hero-sub':'Sin selfies. Sin cámaras. Solo 3 medidas — revelamos los puntos fuertes únicos de tu cuerpo para que puedas destacar lo que amas y minimizar lo que no.',
       'hero-btn':'Analizar mi cuerpo (sin fotos) →',
       'hero-btn-sub':'Gratis · Sin cuenta · Cero datos almacenados',
-      'hero-badge1':'📷 Sin fotos requeridas','hero-badge2':'📏 Solo 3 medidas','hero-badge3':'🌍 15 idiomas','hero-badge4':'🔒 Cero datos almacenados',
+      'hero-badge1':'📷 Sin fotos requeridas','hero-badge2':'📏 Solo 3 medidas','hero-badge3':'🌍 15 idiomas','hero-badge4':'🔒 Tu privacidad es nuestro ADN',
       'privacy-step1':'Introduce 3 medidas','privacy-step2':'Analizamos proporciones','privacy-step3':'Tu plan de estilo',
       'hero-privacy-note':'Sin selfies · Sin subidas · Tus datos nunca abandonan esta página',
+      'why-section-tag':'¿POR QUÉ FITME?','why-section-title':'Datos precisos, no tu privacidad',
+      'why-section-intro':'La mayoría de las apps de análisis corporal piden fotos. FITME no. Descubre por qué — y por qué nuestro enfoque basado en medidas ofrece mejores resultados que cualquier IA fotográfica.',
+      'why-card1-title':'Análisis 100% sin fotos','why-card2-title':'Precisión matemática','why-card3-title':'Destaca fortalezas, disimula imperfecciones',
+      'dna-title':'TU PRIVACIDAD ES NUESTRO ADN','dna-sub':'Cero fotos almacenadas. Cero datos vendidos. Cero compromisos. Tus medidas se procesan localmente y nunca salen de tu dispositivo.',
       'tip-card-title':'📏 ¡30 segundos antes de empezar!','tip-card-1':'¿Sin cinta métrica? Sin problema — usa tu móvil (~15cm) como regla','tip-card-2':'Mide un palmo (pulgar a meñique) en cm — útil para hombros y piernas también','tip-card-3':'Altura, peso y cintura = ¡análisis inmediato! El resto es opcional','tip-card-btn':'Entendido, a medir →',
       'howto-height':'📐 Párate contra la pared, coloca un libro plano sobre la cabeza, marca el punto y mide desde el suelo',
       'howto-weight':'⚖️ Lo más exacto: mañana en ayunas después del baño. Quédate quieto sobre la báscula',
@@ -2558,15 +2633,19 @@
     },
     pt: {
       'nav-guide':'Guia de medição','nav-analysis':'Análise corporal','nav-about':'Sobre',
-      'hero-tag':'ANÁLISE CORPORAL SEM FOTOS',
+      'hero-tag':'SEM FOTOS. SÓ PRECISÃO.',
       'hero-live-suffix':'📷 Sem fotos · Apenas medidas · 100% privado',
       'hero-headline':'Destaque seus pontos fortes.<br><em>Minimize o que você não ama.</em>',
       'hero-sub':'Sem selfies. Sem câmeras. Apenas 3 medidas — revelamos os pontos fortes únicos do seu corpo para que você possa destacar o que ama e minimizar o que não ama.',
       'hero-btn':'Analisar meu corpo (sem fotos) →',
       'hero-btn-sub':'Grátis · Sem conta · Zero dados armazenados',
-      'hero-badge1':'📷 Sem fotos necessárias','hero-badge2':'📏 Apenas 3 medidas','hero-badge3':'🌍 15 idiomas','hero-badge4':'🔒 Zero dados armazenados',
+      'hero-badge1':'📷 Sem fotos necessárias','hero-badge2':'📏 Apenas 3 medidas','hero-badge3':'🌍 15 idiomas','hero-badge4':'🔒 Sua privacidade é nosso DNA',
       'privacy-step1':'Insira 3 medidas','privacy-step2':'Analise proporções','privacy-step3':'Seu plano de estilo',
       'hero-privacy-note':'Sem selfies · Sem uploads · Seus dados nunca saem desta página',
+      'why-section-tag':'POR QUE FITME?','why-section-title':'Dados precisos, não sua privacidade',
+      'why-section-intro':'A maioria dos apps de análise corporal pede fotos. O FITME não. Descubra por que — e por que nossa abordagem baseada em medidas entrega resultados melhores do que qualquer IA fotográfica.',
+      'why-card1-title':'Análise 100% sem fotos','why-card2-title':'Precisão matemática','why-card3-title':'Realce pontos fortes, oculte imperfeições',
+      'dna-title':'SUA PRIVACIDADE É NOSSO DNA','dna-sub':'Zero fotos armazenadas. Zero dados vendidos. Zero concessões. Suas medidas são processadas localmente e nunca saem do seu dispositivo.',
       'tip-card-title':'📏 30 segundos antes de começar!','tip-card-1':'Sem fita métrica? Sem problema — use seu celular (~15cm) como régua','tip-card-2':'Meça um palmo (polegar ao dedo mínimo) em cm — útil para ombros e pernas','tip-card-3':'Altura, peso e cintura = análise imediata! O resto é opcional','tip-card-btn':'Entendi, vamos medir →',
       'howto-height':'📐 Fique de costas para a parede, coloque um livro plano na cabeça, marque e meça do chão à marca',
       'howto-weight':'⚖️ Mais preciso de manhã em jejum após o banheiro. Fique imóvel na balança até estabilizar',
@@ -2665,15 +2744,19 @@
     },
     de: {
       'nav-guide':'Messanleitung','nav-analysis':'Körperanalyse','nav-about':'Über uns',
-      'hero-tag':'KÖRPERANALYSE OHNE FOTOS',
+      'hero-tag':'KEINE FOTOS. NUR PRÄZISION.',
       'hero-live-suffix':'📷 Keine Fotos · Nur Maße · 100% privat',
       'hero-headline':'Betone deine Stärken.<br><em>Minimiere, was du nicht magst.</em>',
       'hero-sub':'Keine Selfies. Keine Kamera. Nur 3 Maße — wir enthüllen die einzigartigen Stärken deines Körpers, damit du hervorheben kannst, was du liebst, und minimieren, was du nicht liebst.',
       'hero-btn':'Meinen Körper analysieren (ohne Fotos) →',
       'hero-btn-sub':'Kostenlos · Kein Konto · Null Datenspeicherung',
-      'hero-badge1':'📷 Keine Fotos nötig','hero-badge2':'📏 Nur 3 Maße','hero-badge3':'🌍 15 Sprachen','hero-badge4':'🔒 Keinerlei Datenspeicherung',
+      'hero-badge1':'📷 Keine Fotos nötig','hero-badge2':'📏 Nur 3 Maße','hero-badge3':'🌍 15 Sprachen','hero-badge4':'🔒 Ihre Privatsphäre ist unsere DNA',
       'privacy-step1':'3 Maße eingeben','privacy-step2':'Proportionen analysieren','privacy-step3':'Stil-Blueprint erhalten',
       'hero-privacy-note':'Keine Selfies · Kein Upload · Deine Daten verlassen diese Seite nicht',
+      'why-section-tag':'WARUM FITME?','why-section-title':'Präzise Daten, nicht deine Privatsphäre',
+      'why-section-intro':'Die meisten Körperanalyse-Apps fragen nach Fotos. FITME nicht. Hier erfährst du, warum das wichtig ist — und warum unser messungsbasierter Ansatz bessere Ergebnisse liefert als jede Foto-KI.',
+      'why-card1-title':'100% fotofreie Analyse','why-card2-title':'Mathematische Präzision','why-card3-title':'Stärken betonen, Schwächen kaschieren',
+      'dna-title':'IHRE PRIVATSPHÄRE IST UNSERE DNA','dna-sub':'Null Fotos gespeichert. Null Daten verkauft. Kein Kompromiss. Deine Maße werden lokal verarbeitet und verlassen nie dein Gerät.',
       'tip-card-title':'📏 30 Sekunden vor dem Start!','tip-card-1':'Kein Maßband? Kein Problem — nutze dein Handy (~15cm) als Lineal','tip-card-2':'Miss eine Handspanne (Daumen bis kleiner Finger) in cm — nützlich für Schultern & Beine','tip-card-3':'Größe, Gewicht & Taille = sofortige Analyse! Alles andere ist optional','tip-card-btn':'Verstanden, jetzt messen →',
       'howto-height':'📐 Steh mit dem Rücken zur Wand, leg ein Buch flach auf den Kopf, markiere und miss vom Boden zur Markierung',
       'howto-weight':'⚖️ Morgens nüchtern nach dem Toilettengang am genauesten. Ruhig auf der Waage stehen bis der Wert stabil ist',
@@ -2772,15 +2855,19 @@
     },
     it: {
       'nav-guide':'Guida alle misure','nav-analysis':'Analisi corporea','nav-about':'Chi siamo',
-      'hero-tag':'ANALISI CORPOREA SENZA FOTO',
+      'hero-tag':'SENZA FOTO. SOLO PRECISIONE.',
       'hero-live-suffix':'📷 Nessuna foto · Solo misure · 100% privato',
       'hero-headline':'Valorizza i tuoi punti di forza.<br><em>Minimizza ciò che non ami.</em>',
       'hero-sub':'Nessun selfie. Nessuna fotocamera. Solo 3 misure — riveliamo i punti di forza unici del tuo corpo così puoi valorizzare ciò che ami e minimizzare ciò che non ami.',
       'hero-btn':'Analizza il mio corpo (senza foto) →',
       'hero-btn-sub':'Gratuito · Nessun account · Zero dati salvati',
-      'hero-badge1':'📷 Nessuna foto richiesta','hero-badge2':'📏 Solo 3 misure','hero-badge3':'🌍 15 lingue','hero-badge4':'🔒 Zero dati salvati',
+      'hero-badge1':'📷 Nessuna foto richiesta','hero-badge2':'📏 Solo 3 misure','hero-badge3':'🌍 15 lingue','hero-badge4':'🔒 La tua privacy è il nostro DNA',
       'privacy-step1':'Inserisci 3 misure','privacy-step2':'Analisi delle proporzioni','privacy-step3':'Il tuo stile personalizzato',
       'hero-privacy-note':'Nessun selfie · Nessun caricamento · I tuoi dati non lasciano mai questa pagina',
+      'why-section-tag':'PERCHÉ FITME?','why-section-title':'Dati precisi, non la tua privacy',
+      'why-section-intro':'La maggior parte delle app di analisi corporea chiede foto. FITME no. Scopri perché — e perché il nostro approccio basato sulle misure dà risultati migliori di qualsiasi IA fotografica.',
+      'why-card1-title':'Analisi 100% senza foto','why-card2-title':'Precisione matematica','why-card3-title':'Valorizza i punti di forza, nascondi le imperfezioni',
+      'dna-title':'LA TUA PRIVACY È IL NOSTRO DNA','dna-sub':'Zero foto salvate. Zero dati venduti. Zero compromessi. Le tue misure vengono elaborate localmente e non lasciano mai il tuo dispositivo.',
       'tip-card-title':'📏 30 secondi prima di iniziare!','tip-card-1':'Senza metro? Nessun problema — usa lo smartphone (~15cm) come righello','tip-card-2':'Misura una spanna (pollice al mignolo) in cm — utile per spalle e gambe','tip-card-3':'Altezza, peso e vita = analisi immediata! Il resto è opzionale','tip-card-btn':'Capito, si misura →',
       'howto-height':'📐 Schiena al muro, appoggia un libro in testa, segna il punto e misura dal pavimento al segno',
       'howto-weight':'⚖️ Più preciso al mattino a digiuno dopo il bagno. Stai fermo sulla bilancia fino a quando il valore si stabilizza',
