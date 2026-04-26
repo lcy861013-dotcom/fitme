@@ -3,16 +3,31 @@
   <url>
     <loc>https://fitme-6d9.pages.dev/</loc>
     <lastmod>2026-04-25</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://fitme-6d9.pages.dev/blog/blog1</loc>
+    <loc>https://fitme-6d9.pages.dev/about.html</loc>
     <lastmod>2026-04-25</lastmod>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://fitme-6d9.pages.dev/blog/blog2</loc>
+    <loc>https://fitme-6d9.pages.dev/privacy.html</loc>
     <lastmod>2026-04-25</lastmod>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://fitme-6d9.pages.dev/terms.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://fitme-6d9.pages.dev/contact.html</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
