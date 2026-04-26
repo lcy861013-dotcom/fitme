@@ -170,89 +170,229 @@ function savePart(part) {
 }
 
 /**
- * Advanced Analysis Upgrade (v1.4)
+ * Personalized recommendations: body type × leg ratio × shoulder balance × arm ratio (v2.0)
  */
-function runAdvancedAnalysis() {
-  // Use index.html's t() if possible
-  const _t = (key) => t(key);
-  
-  const getVal = (p) => {
-    return parseFloat(measurements[p] || 0);
+function getPersonalizedItems(bodyType, legRatio, balance, armRatio, headRatio, ko) {
+  const items = [];
+  const fmt2 = (n) => n !== null ? n.toFixed(2) : '?';
+  const fmt1 = (n) => n !== null ? n.toFixed(1) : '?';
+
+  // ── BOTTOMS: body type × leg ratio ──────────────────────────────────
+  const legLong  = legRatio !== null && legRatio >= 0.50;
+  const legShort = legRatio !== null && legRatio < 0.46;
+
+  const bottomMap = {
+    inv: {
+      long:  { name: ko ? '와이드 카고 팬츠'             : 'Wide Leg Cargo Pants',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)} 롱다리를 살리면서 하체 볼륨을 채워 넓은 어깨와 균형을 맞춥니다.`
+                          : `Leg ratio ${fmt2(legRatio)} (long legs) — wide legs fill lower body to balance broad shoulders.` },
+      short: { name: ko ? '하이웨이스트 플리츠 스커트'   : 'High-Waist Pleated Skirt',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)}에서 하이웨이스트가 시각적으로 다리를 늘리고 하체에 볼륨을 더합니다.`
+                          : `Leg ratio ${fmt2(legRatio)} — high waist visually lengthens legs and adds needed lower body volume.` },
+      mid:   { name: ko ? '로우라이즈 와이드 팬츠'        : 'Low-Rise Wide Leg Pants',
+               reason: ko ? `하체 실루엣을 풍성하게 만들어 넓은 어깨와의 비율을 자연스럽게 맞춥니다.`
+                          : `Fuller lower silhouette naturally counterbalances broad shoulders.` }
+    },
+    pear: {
+      long:  { name: ko ? '스트레이트 컷 데님'            : 'Straight Cut Denim',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)} 긴 다리를 스트레이트 핏으로 깔끔하게 살려줍니다.`
+                          : `Leg ratio ${fmt2(legRatio)} (long legs) — straight cut lets your length shine.` },
+      short: { name: ko ? '하이웨이스트 미디 팬츠'        : 'High-Waist Midi Pants',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)}에서 허리선을 올려 다리를 길어 보이게 합니다.`
+                          : `Leg ratio ${fmt2(legRatio)} — raised waist line visually elongates your legs.` },
+      mid:   { name: ko ? 'A라인 미디 스커트'             : 'A-Line Midi Skirt',
+               reason: ko ? `하체 곡선을 부드럽게 감싸 자연스러운 실루엣을 만들어줍니다.`
+                          : `Softly wraps lower body curves for a natural silhouette.` }
+    },
+    hourglass: {
+      long:  { name: ko ? '하이라이즈 플레어 진'          : 'High-Rise Flare Jeans',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)} 롱다리에 플레어 라인이 더해져 모래시계 실루엣이 완성됩니다.`
+                          : `Leg ratio ${fmt2(legRatio)} (long legs) + flare = perfect hourglass silhouette.` },
+      short: { name: ko ? '벨티드 미디 랩 스커트'         : 'Belted Midi Wrap Skirt',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)}에서 미디 기장이 균형을 잡고 벨트가 허리를 강조합니다.`
+                          : `Leg ratio ${fmt2(legRatio)} — midi length balances proportions while the belt highlights your waist.` },
+      mid:   { name: ko ? '테일러드 와이드 슬랙스'        : 'Tailored Wide Slacks',
+               reason: ko ? `균형 잡힌 비율을 살려주는 클래식한 선택입니다.`
+                          : `A classic choice that honors your balanced silhouette.` }
+    },
+    rect: {
+      long:  { name: ko ? '벨트 와이드 트라우저'          : 'Wide Leg Trousers + Belt',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)} 긴 다리와 벨트 조합으로 허리 라인을 만들어 직선 체형을 보완합니다.`
+                          : `Leg ratio ${fmt2(legRatio)} (long legs) + belt creates the waist definition your frame needs.` },
+      short: { name: ko ? '주름 미니스커트'               : 'Pleated Mini Skirt',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)}에서 미니 기장이 다리를 길어 보이게 하며 하체에 볼륨감을 줍니다.`
+                          : `Leg ratio ${fmt2(legRatio)} — mini length creates a longer-leg illusion and adds lower body volume.` },
+      mid:   { name: ko ? '크롭 재킷 + 하이웨이스트 팬츠' : 'Cropped Jacket + High-Waist Pants',
+               reason: ko ? `허리 라인을 강조해 직선 체형에 곡선미를 더합니다.`
+                          : `Emphasizes the waist to bring curves to a straight frame.` }
+    },
+    apple: {
+      long:  { name: ko ? '스트레이트 컷 트라우저'        : 'Straight Cut Trousers',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)} 다리를 수직으로 뻗게 해 복부에서 시선을 분산시킵니다.`
+                          : `Leg ratio ${fmt2(legRatio)} — vertical leg line draws attention away from the midsection.` },
+      short: { name: ko ? '하이웨이스트 스트레이트 팬츠'  : 'High-Waist Straight Pants',
+               reason: ko ? `다리 비율 ${fmt2(legRatio)}에서 하이웨이스트가 다리를 시각적으로 늘리고 복부 라인을 정리합니다.`
+                          : `Leg ratio ${fmt2(legRatio)} — high waist visually lengthens legs and smooths the midsection.` },
+      mid:   { name: ko ? '플로우 미디 스커트'            : 'Flowy Midi Skirt',
+               reason: ko ? `자연스럽게 흘러내리는 실루엣이 복부 라인을 부드럽게 감춰줍니다.`
+                          : `Flowing silhouette gently skims the midsection.` }
+    },
+    default: {
+      long:  { name: ko ? '스트레이트 데님'               : 'Straight Denim',
+               reason: ko ? `롱다리를 살리는 깔끔한 기본 아이템입니다.`
+                          : `A clean basic that lets long legs shine.` },
+      short: { name: ko ? '하이웨이스트 스키니'           : 'High-Waist Skinny Jeans',
+               reason: ko ? `하이웨이스트로 다리 라인을 최대한 활용합니다.`
+                          : `High waist maximizes the leg line.` },
+      mid:   { name: ko ? '클래식 스트레이트 진'          : 'Classic Straight Jeans',
+               reason: ko ? `어떤 체형에도 안정적인 실루엣을 제공합니다.`
+                          : `Provides a reliable silhouette for any body type.` }
+    }
   };
 
-  const h = getVal('input-height'), 
-        headH = getVal('head-height'),
+  const bt = bottomMap[bodyType] || bottomMap.default;
+  items.push(legLong ? bt.long : legShort ? bt.short : bt.mid);
+
+  // ── TOPS: shoulder-hip balance × body type ───────────────────────────
+  const shoulderWide   = balance !== null && balance >= 1.1;
+  const shoulderNarrow = balance !== null && balance <= 0.9;
+
+  if (shoulderWide) {
+    if (bodyType === 'inv') {
+      items.push({
+        name: ko ? 'V넥 드롭숄더 니트' : 'V-Neck Drop Shoulder Knit',
+        reason: ko ? `어깨-골반 비율 ${fmt2(balance)}로 어깨가 넓습니다. V넥이 시선을 아래로 유도하고 드롭숄더가 어깨 너비를 부드럽게 줄여줍니다.`
+                   : `Shoulder-hip ratio ${fmt2(balance)} — broad shoulders. V-neck draws eye down; drop shoulder softens the width.`
+      });
+    } else {
+      items.push({
+        name: ko ? '오프숄더 탑' : 'Off-Shoulder Top',
+        reason: ko ? `어깨-골반 비율 ${fmt2(balance)}의 넓은 어깨를 당당하게 활용해 자신감 있는 실루엣을 만듭니다.`
+                   : `Shoulder-hip ratio ${fmt2(balance)} — turn wide shoulders into a confident statement.`
+      });
+    }
+  } else if (shoulderNarrow) {
+    items.push({
+      name: ko ? '보트넥 퍼프슬리브 탑' : 'Boat Neck Puff Sleeve Top',
+      reason: ko ? `어깨-골반 비율 ${fmt2(balance)}로 어깨가 좁은 편입니다. 보트넥과 퍼프 슬리브가 어깨에 볼륨을 더해 비율을 균형 있게 만듭니다.`
+                 : `Shoulder-hip ratio ${fmt2(balance)} — narrower shoulders. Boat neck + puff sleeve adds volume and improves balance.`
+    });
+  } else {
+    const topByType = {
+      hourglass: { name: ko ? '오버사이즈 블레이저'      : 'Oversized Blazer',
+                   reason: ko ? `어깨-골반 비율 ${fmt2(balance)} 황금 밸런스. 블레이저가 허리 라인을 자연스럽게 드러냅니다.`
+                              : `Golden shoulder-hip ratio ${fmt2(balance)} — an oversized blazer naturally reveals your waist.` },
+      pear:      { name: ko ? '크롭 바이커 재킷'         : 'Crop Biker Jacket',
+                   reason: ko ? `어깨-골반 비율 ${fmt2(balance)}에서 크롭 재킷이 상체에 포인트를 주어 상하체 균형을 맞춥니다.`
+                              : `At ratio ${fmt2(balance)}, a crop jacket puts focus on the upper body for better balance.` },
+      inv:       { name: ko ? 'V넥 와이드레그 점프수트'  : 'V-Neck Wide Leg Jumpsuit',
+                   reason: ko ? `V넥으로 시선을 분산시키고 와이드 하의로 하체 볼륨을 채워 비율을 완성합니다.`
+                              : `V-neck distributes attention while wide legs fill lower body volume.` },
+      rect:      { name: ko ? '벨티드 트렌치코트'        : 'Belted Trench Coat',
+                   reason: ko ? `허리 벨트로 인위적인 곡선을 만들어 직선 체형에 페미닌한 무드를 더합니다.`
+                              : `Waist belt creates curves, adding feminine mood to a straight frame.` },
+      apple:     { name: ko ? '엠파이어 웨이스트 드레스' : 'Empire Waist Dress',
+                   reason: ko ? `가슴 아래 가장 슬림한 라인을 강조하여 자연스럽게 날씬해 보이게 합니다.`
+                              : `Highlights the slimmest point below the chest for a naturally slimming look.` },
+      default:   { name: ko ? '리브드 바디수트'          : 'Ribbed Bodysuit',
+                   reason: ko ? `신체 실루엣을 그대로 드러내어 장점을 강조합니다.`
+                              : `Reveals your natural silhouette to highlight your strengths.` }
+    };
+    items.push(topByType[bodyType] || topByType.default);
+  }
+
+  // ── BONUS: arm length tip ─────────────────────────────────────────────
+  if (armRatio !== null) {
+    if (armRatio < 0.30) {
+      items.push({
+        name: ko ? '7부 소매 재킷' : '3/4 Sleeve Jacket',
+        reason: ko ? `팔 비율 ${fmt2(armRatio)}로 팔이 짧은 편입니다. 7부 소매가 손목을 노출시켜 팔을 시각적으로 길어 보이게 합니다.`
+                   : `Arm ratio ${fmt2(armRatio)} (shorter arms) — a 3/4 sleeve exposes the wrist and visually lengthens the arm.`
+      });
+    } else if (armRatio > 0.36) {
+      items.push({
+        name: ko ? '오버사이즈 롤업 셔츠' : 'Oversized Roll-Up Shirt',
+        reason: ko ? `팔 비율 ${fmt2(armRatio)}로 팔이 긴 편입니다. 소매를 롤업하면 긴 팔의 장점을 자연스럽게 살릴 수 있습니다.`
+                   : `Arm ratio ${fmt2(armRatio)} (longer arms) — rolling up sleeves leans into the length effortlessly.`
+      });
+    }
+  }
+
+  // ── BONUS: model proportions tip ────────────────────────────────────
+  if (headRatio !== null && headRatio >= 8) {
+    items.push({
+      name: ko ? '심플 골드 체인 목걸이' : 'Minimal Gold Chain Necklace',
+      reason: ko ? `두신비율 ${fmt1(headRatio)}등신의 모델 비율입니다. 심플한 액세서리 하나로도 완성도 높은 룩이 연출됩니다.`
+                 : `Head ratio ${fmt1(headRatio)} — model-level proportions. A single minimal accessory completes the look effortlessly.`
+    });
+  }
+
+  return items;
+}
+
+/**
+ * Advanced Analysis (v2.0)
+ */
+function runAdvancedAnalysis() {
+  const _t = (key) => t(key);
+  const ko = currentLang === 'ko';
+
+  const getVal = (p) => parseFloat(measurements[p] || 0);
+
+  const h        = getVal('input-height'),
+        headH    = getVal('head-height'),
         shoulder = getVal('shoulder-width'),
-        hip = getVal('hip-circ'),
-        uLeg = getVal('upper-leg-len'),
-        lLeg = getVal('lower-leg-len'),
-        waist = getVal('waist-circ');
+        hip      = getVal('hip-circ'),
+        uLeg     = getVal('upper-leg-len'),
+        lLeg     = getVal('lower-leg-len'),
+        waist    = getVal('waist-circ'),
+        uArm     = getVal('upper-arm-len'),
+        lArm     = getVal('lower-arm-len');
 
   if (h <= 0) return;
 
-  // 1. Identity & Metrics
+  // Body Type
   let bodyType = 'default';
   if (waist > 0 && hip > 0 && shoulder > 0) {
     const s = shoulder * 2;
     if (Math.abs(s - hip) < (hip * 0.05) && waist < (hip * 0.75)) bodyType = 'hourglass';
-    else if (hip > (s * 1.05)) bodyType = 'pear';
-    else if (s > (hip * 1.05)) bodyType = 'inv';
+    else if (hip > (s * 1.05))     bodyType = 'pear';
+    else if (s > (hip * 1.05))     bodyType = 'inv';
     else if (waist > (hip * 0.85)) bodyType = 'apple';
     else bodyType = 'rect';
   }
 
-  // 8-head figure ratio
-  const headRatio = headH > 0 ? (h / headH).toFixed(1) : '-';
-  const headDesc = headRatio >= 8 ? (currentLang === 'ko' ? '환상적인 모델 비율' : 'Perfect Model Ratio') : 
-                   headRatio >= 7 ? (currentLang === 'ko' ? '이상적인 비율' : 'Ideal Ratio') : (currentLang === 'ko' ? '안정적인 비율' : 'Stable Ratio');
+  // Metrics (number for logic, string for display)
+  const headRatioNum = headH > 0 ? h / headH : null;
+  const headRatio    = headRatioNum !== null ? headRatioNum.toFixed(1) : '-';
+  const headDesc     = headRatioNum >= 8 ? (ko ? '환상적인 모델 비율' : 'Perfect Model Ratio')
+                     : headRatioNum >= 7 ? (ko ? '이상적인 비율'      : 'Ideal Ratio')
+                     :                     (ko ? '안정적인 비율'      : 'Stable Ratio');
 
-  // Leg golden ratio
-  const legTotal = uLeg + lLeg;
-  const legRatio = legTotal > 0 ? (legTotal / h).toFixed(2) : '-';
-  const legDesc = legRatio >= 0.5 ? (currentLang === 'ko' ? '서구형 롱다리' : 'Long Leg Type') : (currentLang === 'ko' ? '균형 잡힌 다리' : 'Balanced Leg');
+  const legTotal    = uLeg + lLeg;
+  const legRatioNum = legTotal > 0 ? legTotal / h : null;
+  const legRatio    = legRatioNum !== null ? legRatioNum.toFixed(2) : '-';
+  const legDesc     = legRatioNum >= 0.5 ? (ko ? '서구형 롱다리' : 'Long Leg Type')
+                                         : (ko ? '균형 잡힌 다리' : 'Balanced Leg');
 
-  // Upper/Lower Balance
-  const balance = (shoulder > 0 && hip > 0) ? (shoulder * 2 / hip).toFixed(2) : '-';
-  const balanceDesc = balance >= 1.1 ? (currentLang === 'ko' ? '상체 강조형' : 'Upper Emphasis') : 
-                      balance <= 0.9 ? (currentLang === 'ko' ? '하체 강조형' : 'Lower Emphasis') : (currentLang === 'ko' ? '황금 밸런스' : 'Golden Balance');
+  const balanceNum  = (shoulder > 0 && hip > 0) ? shoulder * 2 / hip : null;
+  const balance     = balanceNum !== null ? balanceNum.toFixed(2) : '-';
+  const balanceDesc = balanceNum >= 1.1 ? (ko ? '상체 강조형' : 'Upper Emphasis')
+                    : balanceNum <= 0.9  ? (ko ? '하체 강조형' : 'Lower Emphasis')
+                    :                      (ko ? '황금 밸런스' : 'Golden Balance');
 
-  // Global Ranking
-  const shareData = window._fitmeShareData || { score: 70, grade: 'A' };
-  const score = shareData.score;
+  const armTotal    = uArm + lArm;
+  const armRatioNum = armTotal > 0 ? armTotal / h : null;
+
+  // Grade
+  const shareData  = window._fitmeShareData || { score: 70, grade: 'A' };
+  const score      = shareData.score;
   const percentile = Math.min(99, Math.round(score * 0.9 + 10));
-  const grade = shareData.grade;
+  const grade      = shareData.grade;
+  const emblem     = _t('emblem-' + (grade === 'A+' ? 'ap' : grade.toLowerCase())) || grade;
 
-  const emblem = _t('emblem-' + (grade === 'A+' ? 'ap' : grade.toLowerCase())) || grade;
-
-  // Detailed Recommendations
-  const itemsDB = {
-    hourglass: [
-      { name: 'Oversized Blazer', reason: currentLang === 'ko' ? '어깨와 골반의 조화를 강조하면서 허리 라인을 자연스럽게 살려줍니다.' : 'Emphasizes the harmony of shoulders and hips while naturally defining the waist.' },
-      { name: 'High-Rise Flare Jeans', reason: currentLang === 'ko' ? '다리가 길어 보이고 모래시계형 실루엣을 극대화합니다.' : 'Makes legs look longer and maximizes the hourglass silhouette.' }
-    ],
-    pear: [
-      { name: 'Crop Biker Jacket', reason: currentLang === 'ko' ? '상체에 볼륨을 더해 하체와의 균형을 맞춰줍니다.' : 'Adds volume to the upper body to balance with the lower body.' },
-      { name: 'A-Line Midi Skirt', reason: currentLang === 'ko' ? '하체의 곡선을 부드럽게 감싸주어 체형을 보완합니다.' : 'Softly wraps around lower body curves to complement the shape.' }
-    ],
-    inv: [
-      { name: 'V-Neck Wide Leg Jumpsuit', reason: currentLang === 'ko' ? 'V넥으로 시선을 분산시키고 와이드 하의로 하체 볼륨을 채워줍니다.' : 'Distracts attention with a V-neck and fills lower body volume with wide legs.' },
-      { name: 'Low-Rise Cargo Pants', reason: currentLang === 'ko' ? '골반 라인을 확장시켜 상하체 비율을 맞춥니다.' : 'Expands the hip line to balance upper and lower body proportions.' }
-    ],
-    rect: [
-      { name: 'Belted Trench Coat', reason: currentLang === 'ko' ? '허리 벨트로 인위적인 곡선을 만들어 페미닌한 무드를 더합니다.' : 'Creates artificial curves with a waist belt for a feminine mood.' },
-      { name: 'Pleated Mini Skirt', reason: currentLang === 'ko' ? '하체에 볼륨감을 주어 직선적인 체형을 보완합니다.' : 'Adds volume to the lower body to complement a straight build.' }
-    ],
-    apple: [
-      { name: 'Empire Waist Dress', reason: currentLang === 'ko' ? '가장 슬림한 가슴 아래 라인을 강조하여 날씬해 보이게 합니다.' : 'Highlights the slim line below the chest to look thinner.' },
-      { name: 'Straight Cut Trousers', reason: currentLang === 'ko' ? '다리 라인을 수직으로 뻗게 하여 전체적인 슬림 효과를 줍니다.' : 'Makes the leg line extend vertically for an overall slimming effect.' }
-    ],
-    default: [
-      { name: 'Classic Leather Jacket', reason: currentLang === 'ko' ? '어떤 체형에도 안정적인 실루엣을 제공합니다.' : 'Provides a stable silhouette for any body type.' },
-      { name: 'Ribbed Bodysuit', reason: currentLang === 'ko' ? '신체 실루엣을 그대로 드러내어 장점을 강조합니다.' : 'Reveals the body silhouette to highlight your strengths.' }
-    ]
-  };
-
-  const recommendedItems = itemsDB[bodyType] || itemsDB.default;
+  // Personalized Recommendations
+  const recommendedItems = getPersonalizedItems(bodyType, legRatioNum, balanceNum, armRatioNum, headRatioNum, ko);
 
   // HTML Rendering
   const container = document.getElementById('advanced-analysis-section');
