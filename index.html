@@ -188,6 +188,8 @@
     .hero-btn { display: inline-block; padding: 16px 44px; background: var(--accent); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.5px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .hero-btn:hover { background: #f5ff80; box-shadow: 0 4px 30px rgba(232,255,71,0.45); transform: translateY(-2px); }
     .hero-btn-sub { font-size: 11px; color: var(--muted); margin-top: 10px; font-family: 'DM Sans', sans-serif; }
+    .hero-sample-btn { display: inline-block; margin-top: 14px; padding: 12px 32px; background: transparent; color: var(--accent); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; border: 1.5px solid rgba(232,255,71,0.5); border-radius: 100px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px; }
+    .hero-sample-btn:hover { background: rgba(232,255,71,0.08); border-color: var(--accent); transform: translateY(-1px); }
     .hero-badges { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
     .hero-badge { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
     .hero-scroll-hint { margin-top: 28px; display: flex; align-items: center; gap: 6px; justify-content: center; color: var(--muted); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.5px; animation: bounce-y 2s infinite; }
@@ -823,6 +825,9 @@
 
     <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Analyze My Body (No Photos) →</a>
     <div class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Zero data stored</div>
+    <div style="margin-top:6px;">
+      <button class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 샘플 결과 먼저 보기</button>
+    </div>
 
     <div class="hero-badges" style="margin-top:20px;">
       <div class="hero-badge"><span data-i18n="hero-badge1">📷 No Photos Required</span></div>
@@ -1891,6 +1896,7 @@
       'hero-headline':'지금까지<br><em>남의 체형에 맞는 옷</em>을 입었을 수도 있어요.',
       'hero-demo-label':'실제 결과 미리보기',
       'hero-btn-sub':'무료 · 가입 불필요 · 즉시 결과',
+      'sample-btn':'👀 샘플 결과 먼저 보기',
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'내 몸의 비율은 거울이 절대 보여주지 않아요.<br>2분만에 내 #1 강점 부위와 진짜 어울리는 스타일을 찾아보세요.',
       'hero-btn':'내 체형 정체성 알아보기 →',
@@ -2047,6 +2053,7 @@
       'hero-headline':'"Highlight your strengths.<br><em>Minimize what you don\'t love.</em>"',
       'hero-demo-label':'SAMPLE RESULT',
       'hero-btn-sub':'Free · No account · Zero data stored',
+      'sample-btn':'👀 Try Sample Results First',
       'hero-tag-old':'Know Your Body. Dress Better.',
       'hero-sub':'No selfies. No cameras. Just 3 measurements — we reveal your body\'s unique strengths so you can highlight what you love and minimize what you don\'t.',
       'hero-btn':'Analyze My Body (No Photos) →',
@@ -5362,6 +5369,58 @@
       }
     }
   };
+
+  function trySampleValues() {
+    const isMale = currentGender === 'male';
+    const cfg = getUnitCfg();
+
+    // Sample data: male 175cm/72kg/shoulder44/waist78cm/hip94 | female 163cm/54kg/shoulder37/waist68cm/hip91
+    const s = isMale
+      ? { h: 175, w: 72, shoulder: 44, waistCm: 78, hip: 94, uLeg: 48, lLeg: 40 }
+      : { h: 163, w: 54, shoulder: 37, waistCm: 68, hip: 91, uLeg: 44, lLeg: 37 };
+
+    // Convert to display units
+    const dispH   = cfg.length === 'in' ? (s.h / 2.54).toFixed(1) : s.h;
+    const dispW   = cfg.weight === 'lb' ? (s.w / 0.4536).toFixed(0) : s.w;
+    const dispSh  = cfg.length === 'in' ? (s.shoulder / 2.54).toFixed(1) : s.shoulder;
+    const dispWaist = cfg.waist === 'cm' ? s.waistCm : (s.waistCm / 2.54).toFixed(1);
+    const dispHip = cfg.length === 'in' ? (s.hip / 2.54).toFixed(1) : s.hip;
+    const dispUL  = cfg.length === 'in' ? (s.uLeg / 2.54).toFixed(1) : s.uLeg;
+    const dispLL  = cfg.length === 'in' ? (s.lLeg / 2.54).toFixed(1) : s.lLeg;
+
+    // Fill input fields
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    set('input-height', dispH);
+    set('input-weight', dispW);
+    set('shoulder-width', dispSh);
+    set('waist-circ', dispWaist);
+    set('hip-circ', dispHip);
+    set('upper-leg-len', dispUL);
+    set('lower-leg-len', dispLL);
+
+    // Inject directly into measurements object (internal cm/kg)
+    measurements['height']    = { val: String(s.h) };
+    measurements['weight']    = { val: String(s.w) };
+    measurements['shoulder']  = { width: String(s.shoulder) };
+    measurements['waist']     = { circ: String(s.waistCm), inch: (s.waistCm / 2.54).toFixed(1) };
+    measurements['hip']       = { circ: String(s.hip) };
+    measurements['upper-leg'] = { len: String(s.uLeg), circ: '' };
+    measurements['lower-leg'] = { len: String(s.lLeg) };
+
+    // Update progress UI
+    ['height','weight','shoulder','waist','hip','upper-leg','lower-leg'].forEach(p => {
+      const el = document.getElementById('hs-' + p);
+      if (el && !el.classList.contains('filled')) { el.classList.add('filled'); filledCount++; }
+    });
+    updateProgress();
+    updateSavedList();
+
+    // Show toast and scroll to analysis, then auto-run
+    const msg = currentLang === 'ko' ? '👀 샘플 값으로 분석합니다!' : '👀 Running sample analysis!';
+    showToast(msg);
+    document.getElementById('analysis').scrollIntoView({ behavior: 'smooth' });
+    setTimeout(runExpertAnalysis, 600);
+  }
 
   function runExpertAnalysis() {
     const btnD = document.getElementById('btn-analyze');
