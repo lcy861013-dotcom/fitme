@@ -4775,7 +4775,34 @@
   function attachResultBackBtn(backLabel) {
     const existing = document.getElementById('result-float-back');
     if (existing) existing.remove();
+    const existingMy = document.getElementById('result-float-mine');
+    if (existingMy) existingMy.remove();
     const overlay = document.getElementById('mobile-result-overlay');
+
+    // "내 치수로 해보기" button — only shown after sample analysis
+    if (_isSampleResult) {
+      const myBtn = document.createElement('button');
+      myBtn.id = 'result-float-mine';
+      const myLabel = currentLang === 'ko' ? '✏️ 내 치수로 직접 해보기' : '✏️ Try With My Measurements';
+      myBtn.innerHTML = myLabel;
+      myBtn.onclick = () => {
+        _isSampleResult = false;
+        closeMobileResult();
+        resetAll(true);
+        setTimeout(() => document.getElementById('analysis').scrollIntoView({ behavior: 'smooth' }), 200);
+      };
+      myBtn.style.cssText = `
+        position:fixed; bottom:136px; left:50%; transform:translateX(-50%) translateY(20px);
+        background:var(--card); color:var(--accent); border:1.5px solid var(--accent); border-radius:50px;
+        padding:12px 24px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:14px;
+        cursor:pointer; z-index:9999; opacity:0; transition:opacity 0.3s, transform 0.3s;
+        white-space:nowrap;
+      `;
+      document.body.appendChild(myBtn);
+      setTimeout(() => { myBtn.style.opacity = '1'; myBtn.style.transform = 'translateX(-50%) translateY(0)'; }, 1600);
+      window._myBtnCleanup = () => myBtn.remove();
+    }
+
     const btn = document.createElement('button');
     btn.id = 'result-float-back';
     btn.innerHTML = '← ' + backLabel;
@@ -4811,6 +4838,7 @@
       overlay.removeEventListener('touchend', onTouchEnd);
       clearTimeout(scrollTimer);
       btn.remove();
+      if (window._myBtnCleanup) { window._myBtnCleanup(); window._myBtnCleanup = null; }
     };
   }
 
@@ -5396,6 +5424,7 @@
   };
   let _hlIdx = 0;
   let _hlTimer = null;
+  let _isSampleResult = false;
 
   function _setHeadlineDots(idx) {
     document.querySelectorAll('.headline-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
@@ -5474,6 +5503,7 @@
     updateProgress();
     updateSavedList();
 
+    _isSampleResult = true;
     // Show toast and scroll to analysis, then auto-run
     const msg = currentLang === 'ko' ? '👀 샘플 값으로 분석합니다!' : '👀 Running sample analysis!';
     showToast(msg);
@@ -6481,8 +6511,8 @@
     } catch(e) {}
   })();
 
-  function resetAll() {
-    if (!confirm(t('confirm-reset'))) return;
+  function resetAll(silent) {
+    if (!silent && !confirm(t('confirm-reset'))) return;
     // 1. 측정값 객체 초기화
     Object.keys(measurements).forEach(k => delete measurements[k]);
     Object.keys(radioSelections).forEach(k => delete radioSelections[k]);
