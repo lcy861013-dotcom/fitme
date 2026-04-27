@@ -1,5 +1,25 @@
 /sitemap.xml
   Content-Type: application/xml; charset=UTF-8
+  Cache-Control: public, max-age=3600
 
 /robots.txt
   Content-Type: text/plain; charset=UTF-8
+  Cache-Control: public, max-age=86400
+
+/*.html
+  Cache-Control: public, max-age=3600
+
+/blog/*.html
+  Cache-Control: public, max-age=3600
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.mp4
+  Cache-Control: public, max-age=86400
