@@ -174,8 +174,13 @@
     .hero-social-proof .sp-dot { width: 7px; height: 7px; background: #4cff91; border-radius: 50%; animation: pulse-dot 2s infinite; }
     @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
     .hero-tag { font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; }
-    .hero-headline { font-family: 'DM Sans', sans-serif; font-size: clamp(28px, 6vw, 46px); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; color: var(--text); max-width: 540px; margin: 0 auto 16px; }
+    .hero-headline { font-family: 'DM Sans', sans-serif; font-size: clamp(28px, 6vw, 46px); font-weight: 800; line-height: 1.15; letter-spacing: -0.5px; color: var(--text); max-width: 540px; margin: 0 auto 16px; min-height: 3.5em; display: flex; align-items: center; justify-content: center; }
     .hero-headline em { color: var(--accent); font-style: normal; }
+    .hero-headline.fade-out { opacity: 0; transform: translateY(-6px); transition: opacity 0.3s ease, transform 0.3s ease; }
+    .hero-headline.fade-in  { opacity: 1; transform: translateY(0);  transition: opacity 0.4s ease, transform 0.4s ease; }
+    .headline-dots { display: flex; gap: 6px; justify-content: center; margin-bottom: 12px; }
+    .headline-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: background 0.3s; cursor: pointer; }
+    .headline-dot.active { background: var(--accent); }
     .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 64px; letter-spacing: 8px; line-height: 1; margin-bottom: 12px; }
     .hero-title span { color: var(--accent); }
     .hero-sub { font-size: 14.5px; color: var(--muted); line-height: 1.85; max-width: 460px; margin: 0 auto 28px; }
@@ -791,6 +796,11 @@
       <span data-i18n="hero-live-suffix">📷 No Photos · Measurements Only · 100% Private</span>
     </div>
     <div class="hero-tag" data-i18n="hero-tag">KNOW YOUR BODY. DRESS YOUR BEST.</div>
+    <div class="headline-dots" id="headline-dots">
+      <div class="headline-dot active" onclick="goHeadline(0)"></div>
+      <div class="headline-dot" onclick="goHeadline(1)"></div>
+      <div class="headline-dot" onclick="goHeadline(2)"></div>
+    </div>
     <h1 class="hero-headline" id="hero-headline-text">"Highlight your strengths.<br><em>Minimize what you don't love.</em>"</h1>
     <p class="hero-sub" data-i18n="hero-sub">No selfies. No cameras. Just 3 measurements — we reveal your body's unique strengths so you can highlight what you love and minimize what you don't.</p>
 
@@ -1898,7 +1908,7 @@
       'hero-btn-sub':'무료 · 가입 불필요 · 즉시 결과',
       'sample-btn':'👀 샘플 결과 먼저 보기',
       'hero-tag-old':'나만의 핏을 찾다',
-      'hero-sub':'내 몸의 비율은 거울이 절대 보여주지 않아요.<br>2분만에 내 #1 강점 부위와 진짜 어울리는 스타일을 찾아보세요.',
+      'hero-sub':'코디 하나로 실제보다 5cm 더 커 보이는 사람이 있습니다.<br>차이는 체형이 아니라 <em style="color:var(--accent);font-style:normal;">비율</em>입니다. 2분이면 내 비율을 숫자로 확인할 수 있어요.',
       'hero-btn':'내 체형 정체성 알아보기 →',
       'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'privacy-step1':'측정값 3개 입력','privacy-step2':'비율 분석','privacy-step3':'스타일 청사진 획득',
@@ -2055,7 +2065,7 @@
       'hero-btn-sub':'Free · No account · Zero data stored',
       'sample-btn':'👀 Try Sample Results First',
       'hero-tag-old':'Know Your Body. Dress Better.',
-      'hero-sub':'No selfies. No cameras. Just 3 measurements — we reveal your body\'s unique strengths so you can highlight what you love and minimize what you don\'t.',
+      'hero-sub':'One outfit change can make you look 2 inches taller. The difference isn\'t body type — it\'s <em style="color:var(--accent);font-style:normal;">proportion</em>. Find yours in 2 minutes.',
       'hero-btn':'Analyze My Body (No Photos) →',
       'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Your Privacy Is Our DNA','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'privacy-step1':'Enter 3 Measurements','privacy-step2':'Analyze Proportions','privacy-step3':'Get Style Blueprint',
@@ -3841,6 +3851,7 @@
     if (select) select.value = lang;
     document.documentElement.lang = lang;
     applyTranslations();
+    _applyHeadline(_hlIdx, lang);
     const demoVideo = document.getElementById('hero-demo-video');
     if (demoVideo) {
       const src = lang === 'ko' ? 'demo-ko.mp4' : 'demo.mp4';
@@ -5370,6 +5381,54 @@
     }
   };
 
+  // Hero headline rotation
+  const heroHeadlines = {
+    ko: [
+      '쇼핑 실패의 90%는<br><em>같은 이유에서 옵니다</em>',
+      '옷장엔 옷이 넘치는데<br><em>입을 게 없는 진짜 이유</em>',
+      '입어보고 샀는데 집에서 어색한 이유,<br><em>드디어 알았습니다</em>'
+    ],
+    en: [
+      '90% of shopping mistakes<br><em>come from the same reason</em>',
+      'A closet full of clothes<br><em>but nothing to wear — here\'s why</em>',
+      'Tried it on, bought it, wore it home.<br><em>Still felt off. Here\'s why.</em>'
+    ]
+  };
+  let _hlIdx = 0;
+  let _hlTimer = null;
+
+  function _setHeadlineDots(idx) {
+    document.querySelectorAll('.headline-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  function _applyHeadline(idx, lang) {
+    const lines = heroHeadlines[lang] || heroHeadlines.en;
+    const el = document.getElementById('hero-headline-text');
+    if (!el) return;
+    el.innerHTML = lines[idx % lines.length];
+    _setHeadlineDots(idx % lines.length);
+  }
+
+  function goHeadline(idx) {
+    clearInterval(_hlTimer);
+    const el = document.getElementById('hero-headline-text');
+    if (!el) return;
+    el.classList.add('fade-out');
+    setTimeout(() => {
+      _hlIdx = idx;
+      _applyHeadline(_hlIdx, currentLang);
+      el.classList.remove('fade-out');
+      el.classList.add('fade-in');
+      setTimeout(() => el.classList.remove('fade-in'), 400);
+    }, 300);
+    _hlTimer = setInterval(() => goHeadline((_hlIdx + 1) % 3), 4000);
+  }
+
+  function startHeadlineRotation() {
+    _applyHeadline(0, currentLang);
+    _hlTimer = setInterval(() => goHeadline((_hlIdx + 1) % 3), 4000);
+  }
+
   function trySampleValues() {
     const isMale = currentGender === 'male';
     const cfg = getUnitCfg();
@@ -6490,6 +6549,8 @@
     }
     // IP-based country unit detection (silent, once per day)
     detectCountryAndSetUnits();
+    // Hero headline rotation
+    startHeadlineRotation();
 
     // Restore saved measurements and update UI
     if (Object.keys(measurements).length > 0) {
