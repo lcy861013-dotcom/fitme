@@ -5,7 +5,7 @@
   --accent: #e8ff47;
   --accent2: #ff4747;
   --text: #f0f0f0;
-  --muted: #888;
+  --muted: #aaaaaa;
   --border: #2a2a2a;
   --shadow-glow: rgba(232,255,71,0.2);
 }
@@ -18,7 +18,7 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.75;
 }
 
 /* HEADER */
