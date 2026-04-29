@@ -780,6 +780,34 @@
     .hero-demo-label { color: #8B7E74 !important; }
     .hero-demo-label::before, .hero-demo-label::after { background: rgba(0,0,0,0.15) !important; }
     .hero-badges .hero-badge { color: #6B6058; }
+
+    /* ===== BRAND SIZE FINDER ===== */
+    .size-finder-card { margin: 20px 0 4px; background: linear-gradient(135deg, rgba(232,169,60,0.07), rgba(71,200,255,0.04)); border: 1.5px solid rgba(232,169,60,0.3); border-radius: 18px; padding: 20px 22px; }
+    .sf-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .sf-icon { font-size: 26px; }
+    .sf-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 2px; color: var(--accent); }
+    .sf-sub { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; margin-top: 2px; }
+    .sf-search-wrap { position: relative; margin-bottom: 10px; }
+    .sf-brand-input { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+    .sf-brand-input:focus { border-color: var(--accent); }
+    .sf-dropdown { position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--card); border: 1px solid var(--border); border-radius: 10px; z-index: 50; display: none; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .sf-dropdown-item { padding: 10px 14px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text); cursor: pointer; transition: background 0.15s; }
+    .sf-dropdown-item:hover { background: rgba(232,169,60,0.1); color: var(--accent); }
+    .sf-chips { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 12px; }
+    .sf-chip { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .sf-chip:hover { border-color: var(--accent); color: var(--accent); }
+    .sf-result-area { border-top: 1px solid var(--border); padding-top: 14px; }
+    .sf-cat-row { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .sf-cat-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+    .sf-cat-btn:hover, .sf-cat-btn.sf-active { border-color: var(--accent); background: rgba(232,169,60,0.1); color: var(--accent); }
+    .sf-size-box { background: rgba(0,0,0,0.2); border-radius: 14px; padding: 20px; text-align: center; }
+    .sf-size-lbl { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-family: 'DM Sans', sans-serif; margin-bottom: 4px; }
+    .sf-size-big { font-family: 'Bebas Neue', sans-serif; font-size: 54px; color: var(--accent); line-height: 1; letter-spacing: 2px; margin-bottom: 8px; }
+    .sf-size-basis { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .sf-size-range { font-size: 11px; color: rgba(232,169,60,0.7); font-family: 'DM Sans', sans-serif; margin-top: 3px; }
+    .sf-boundary { background: rgba(232,169,60,0.08); border: 1px solid rgba(232,169,60,0.25); border-radius: 8px; padding: 8px 12px; font-size: 12px; color: var(--text); font-family: 'DM Sans', sans-serif; margin-top: 10px; }
+    .sf-foot-note { font-size: 11.5px; color: var(--muted); font-family: 'DM Sans', sans-serif; margin-top: 10px; line-height: 1.6; }
+    .sf-missing { background: rgba(255,255,255,0.03); border: 1px dashed var(--border); border-radius: 10px; padding: 14px; font-size: 13px; color: var(--muted); font-family: 'DM Sans', sans-serif; text-align: center; line-height: 1.7; }
   </style>
 </head>
 <body>
@@ -1466,6 +1494,8 @@
           <div id="exercise-prescription"></div>
           <!-- 90-Day Roadmap -->
           <div id="roadmap-section"></div>
+          <!-- Brand Size Finder -->
+          <div id="size-finder-section"></div>
 
           <!-- SNS Share Section -->
           <div class="sns-share-section" id="sns-share-section" style="display:none;">
@@ -6389,6 +6419,7 @@
       runAdvancedAnalysis();
     }
 
+    renderSizeFinder();
     document.getElementById('analysis-result').classList.add('visible');
     restoreBtn();
     showToast(t('toast-done'));
@@ -6554,7 +6585,7 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
-    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
     window._fitmeShareData = null;
@@ -6642,6 +6673,157 @@
     })();
 
     // 브라우저 뒤로가기/앞으로가기 처리
+    // ===== BRAND SIZE FINDER =====
+    const BRAND_DB = {
+      levis:       { name:"Levi's",           flag:'🇺🇸', hot:true,
+        cats:{ bottom:{ label:'청바지 / 팬츠', mKey:'waist', mField:'circ', note:'허리 기준 · 인심(Inseam)은 매장에서 조절',
+          sizes:[{l:'W24',min:57,max:62},{l:'W25',min:62,max:65},{l:'W26',min:65,max:68},{l:'W27',min:68,max:71},{l:'W28',min:71,max:74},{l:'W29',min:74,max:77},{l:'W30',min:77,max:80},{l:'W31',min:80,max:83},{l:'W32',min:83,max:86},{l:'W33',min:86,max:89},{l:'W34',min:89,max:93}] }}},
+      zara:        { name:'Zara',             flag:'🇪🇸', hot:true,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:77,max:83},{l:'S',min:83,max:87},{l:'M',min:87,max:91},{l:'L',min:91,max:97},{l:'XL',min:97,max:103},{l:'XXL',min:103,max:110}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:57,max:64},{l:'S',min:64,max:68},{l:'M',min:68,max:72},{l:'L',min:72,max:78},{l:'XL',min:78,max:84},{l:'XXL',min:84,max:90}] }}},
+      hm:          { name:'H&M',              flag:'🇸🇪', hot:true,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:76,max:82},{l:'S',min:82,max:86},{l:'M',min:86,max:90},{l:'L',min:90,max:96},{l:'XL',min:96,max:102},{l:'XXL',min:102,max:108}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:57,max:64},{l:'S',min:64,max:68},{l:'M',min:68,max:72},{l:'L',min:72,max:78},{l:'XL',min:78,max:84},{l:'XXL',min:84,max:90}] }}},
+      uniqlo:      { name:'Uniqlo',           flag:'🇯🇵', hot:true,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:74,max:80},{l:'S',min:80,max:84},{l:'M',min:84,max:88},{l:'L',min:88,max:92},{l:'XL',min:92,max:96},{l:'XXL',min:96,max:100}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:57,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:71},{l:'L',min:71,max:75},{l:'XL',min:75,max:79},{l:'XXL',min:79,max:83}] }}},
+      mango:       { name:'Mango',            flag:'🇪🇸', hot:false,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:78,max:84},{l:'S',min:84,max:88},{l:'M',min:88,max:92},{l:'L',min:92,max:98},{l:'XL',min:98,max:104}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:58,max:64},{l:'S',min:64,max:68},{l:'M',min:68,max:72},{l:'L',min:72,max:78},{l:'XL',min:78,max:84}] }}},
+      cos:         { name:'COS',              flag:'🇸🇪', hot:false,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:78,max:84},{l:'S',min:84,max:88},{l:'M',min:88,max:92},{l:'L',min:92,max:96},{l:'XL',min:96,max:100}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:58,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:71},{l:'L',min:71,max:75},{l:'XL',min:75,max:79}] }}},
+      nike:        { name:'Nike',             flag:'🇺🇸', hot:true,
+        cats:{ top:{ label:'스포츠 상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:78,max:83},{l:'S',min:83,max:87},{l:'M',min:87,max:91},{l:'L',min:91,max:96},{l:'XL',min:96,max:101},{l:'XXL',min:101,max:107}] },
+               bottom:{ label:'스포츠 하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:58,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:72},{l:'L',min:72,max:77},{l:'XL',min:77,max:82},{l:'XXL',min:82,max:88}] }}},
+      adidas:      { name:'Adidas',           flag:'🇩🇪', hot:false,
+        cats:{ top:{ label:'스포츠 상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:76,max:82},{l:'S',min:82,max:86},{l:'M',min:86,max:90},{l:'L',min:90,max:94},{l:'XL',min:94,max:98},{l:'XXL',min:98,max:104}] },
+               bottom:{ label:'스포츠 하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:57,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:71},{l:'L',min:71,max:75},{l:'XL',min:75,max:79},{l:'XXL',min:79,max:83}] }}},
+      asos:        { name:'ASOS',             flag:'🇬🇧', hot:false,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS / UK 6',min:77,max:82},{l:'S / UK 8',min:82,max:86},{l:'M / UK 10',min:86,max:90},{l:'L / UK 12',min:90,max:96},{l:'XL / UK 14',min:96,max:102},{l:'XXL / UK 16',min:102,max:108}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS / UK 6',min:57,max:63},{l:'S / UK 8',min:63,max:67},{l:'M / UK 10',min:67,max:71},{l:'L / UK 12',min:71,max:77},{l:'XL / UK 14',min:77,max:83},{l:'XXL / UK 16',min:83,max:89}] }}},
+      abercrombie: { name:'Abercrombie',      flag:'🇺🇸', hot:false,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XXS',min:75,max:80},{l:'XS',min:80,max:84},{l:'S',min:84,max:88},{l:'M',min:88,max:92},{l:'L',min:92,max:97},{l:'XL',min:97,max:103}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XXS (23)',min:57,max:61},{l:'XS (24)',min:61,max:65},{l:'S (26)',min:65,max:68},{l:'M (28)',min:68,max:72},{l:'L (30)',min:72,max:77},{l:'XL (32)',min:77,max:82}] }}},
+      musinsa:     { name:'무신사 스탠다드', flag:'🇰🇷', hot:true,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:77,max:83},{l:'S',min:83,max:87},{l:'M',min:87,max:91},{l:'L',min:91,max:95},{l:'XL',min:95,max:99},{l:'XXL',min:99,max:105}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:58,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:71},{l:'L',min:71,max:75},{l:'XL',min:75,max:79},{l:'XXL',min:79,max:83}] }}},
+      spao:        { name:'SPAO',             flag:'🇰🇷', hot:false,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:77,max:82},{l:'S',min:82,max:86},{l:'M',min:86,max:90},{l:'L',min:90,max:94},{l:'XL',min:94,max:98},{l:'XXL',min:98,max:104}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:58,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:71},{l:'L',min:71,max:75},{l:'XL',min:75,max:79},{l:'XXL',min:79,max:83}] }}},
+      eights:      { name:'에잇세컨즈',       flag:'🇰🇷', hot:false,
+        cats:{ top:{ label:'상의', mKey:'chest', mField:'circ', sizes:[{l:'XS',min:78,max:83},{l:'S',min:83,max:87},{l:'M',min:87,max:91},{l:'L',min:91,max:95},{l:'XL',min:95,max:99}] },
+               bottom:{ label:'하의', mKey:'waist', mField:'circ', sizes:[{l:'XS',min:59,max:63},{l:'S',min:63,max:67},{l:'M',min:67,max:71},{l:'L',min:71,max:75},{l:'XL',min:75,max:79}] }}}
+    };
+
+    let _sfBrand = null;
+
+    function sfGetMeasure(mKey, mField) {
+      const d = measurements[mKey];
+      if (!d) return NaN;
+      const val = parseFloat(typeof d === 'object' ? (d[mField] || d.circ || d.val || 0) : d);
+      return isNaN(val) || val === 0 ? NaN : val;
+    }
+
+    function sfMatchSize(sizes, val) {
+      for (let i = 0; i < sizes.length; i++) {
+        if (val >= sizes[i].min && val < sizes[i].max) {
+          return { idx: i, size: sizes[i], near: val >= sizes[i].max - 2 };
+        }
+      }
+      if (val < sizes[0].min) return { idx: 0, size: sizes[0], below: true };
+      return { idx: sizes.length - 1, size: sizes[sizes.length - 1], above: true };
+    }
+
+    function renderSizeFinder() {
+      const el = document.getElementById('size-finder-section');
+      if (!el) return;
+      const hotBrands = Object.entries(BRAND_DB).filter(([, b]) => b.hot);
+      el.innerHTML = `
+        <div class="size-finder-card">
+          <div class="sf-header">
+            <div class="sf-icon">👗</div>
+            <div>
+              <div class="sf-title">브랜드 사이즈 찾기</div>
+              <div class="sf-sub">내 치수로 브랜드별 정확한 사이즈 바로 확인</div>
+            </div>
+          </div>
+          <div class="sf-search-wrap">
+            <input type="text" id="sf-input" class="sf-brand-input"
+              placeholder="브랜드 검색 (예: Levi's, Zara, Nike...)"
+              oninput="sfFilter(this.value)" onfocus="sfFilter(this.value)" autocomplete="off">
+            <div id="sf-drop" class="sf-dropdown"></div>
+          </div>
+          <div class="sf-chips">
+            ${hotBrands.map(([k, b]) => `<button class="sf-chip" onclick="sfPick('${k}')">${b.flag} ${b.name}</button>`).join('')}
+          </div>
+          <div id="sf-area"></div>
+        </div>`;
+      document.addEventListener('click', function sfOutside(e) {
+        if (!e.target.closest('.sf-search-wrap')) {
+          const d = document.getElementById('sf-drop');
+          if (d) d.style.display = 'none';
+        }
+      });
+    }
+
+    function sfFilter(q) {
+      const drop = document.getElementById('sf-drop');
+      if (!drop) return;
+      const matches = Object.entries(BRAND_DB).filter(([, b]) => b.name.toLowerCase().includes(q.toLowerCase()));
+      if (!q.trim() || !matches.length) { drop.style.display = 'none'; return; }
+      drop.innerHTML = matches.map(([k, b]) => `<div class="sf-dropdown-item" onclick="sfPick('${k}')">${b.flag} ${b.name}</div>`).join('');
+      drop.style.display = 'block';
+    }
+
+    function sfPick(key) {
+      _sfBrand = key;
+      const b = BRAND_DB[key];
+      const inp = document.getElementById('sf-input');
+      if (inp) inp.value = b.flag + ' ' + b.name;
+      const drop = document.getElementById('sf-drop');
+      if (drop) drop.style.display = 'none';
+      const area = document.getElementById('sf-area');
+      if (!area) return;
+      const cats = Object.entries(b.cats);
+      area.innerHTML = `
+        <div class="sf-result-area">
+          <div class="sf-cat-row">
+            ${cats.map(([ck, cat]) => `<button class="sf-cat-btn" onclick="sfCat(this,'${ck}')">${cat.label}</button>`).join('')}
+          </div>
+          <div id="sf-size-out"></div>
+        </div>`;
+      if (cats.length === 1) sfCat(area.querySelector('.sf-cat-btn'), cats[0][0]);
+    }
+
+    function sfCat(btn, catKey) {
+      document.querySelectorAll('.sf-cat-btn').forEach(b => b.classList.remove('sf-active'));
+      btn.classList.add('sf-active');
+      const b = BRAND_DB[_sfBrand];
+      const cat = b.cats[catKey];
+      const out = document.getElementById('sf-size-out');
+      if (!out) return;
+      const val = sfGetMeasure(cat.mKey, cat.mField);
+      const mLabel = cat.mKey === 'chest' ? '가슴' : cat.mKey === 'waist' ? '허리' : '엉덩이';
+      if (isNaN(val)) {
+        out.innerHTML = `<div class="sf-missing">📏 정확한 추천을 위해 <strong>${mLabel}둘레</strong>를 먼저 입력해주세요</div>`;
+        return;
+      }
+      const match = sfMatchSize(cat.sizes, val);
+      const next = (!match.below && !match.above && match.near) ? cat.sizes[match.idx + 1] : null;
+      out.innerHTML = `
+        <div class="sf-size-box">
+          <div class="sf-size-lbl">추천 사이즈</div>
+          <div class="sf-size-big">${match.size.l}</div>
+          <div class="sf-size-basis">${b.flag} ${b.name} · ${cat.label}</div>
+          <div class="sf-size-range">${mLabel} ${Math.round(val)}cm 기준 · ${match.size.min}–${match.size.max}cm 구간</div>
+          ${next ? `<div class="sf-boundary">⚡ 경계 사이즈예요 — 여유 핏 선호라면 <strong>${next.l}</strong>도 고려해보세요</div>` : ''}
+          ${match.above ? `<div class="sf-boundary">측정값이 브랜드 최대 사이즈보다 커요 — 매장 문의를 추천해요</div>` : ''}
+          ${match.below ? `<div class="sf-boundary">측정값이 브랜드 최소 사이즈보다 작아요</div>` : ''}
+          ${cat.note ? `<div class="sf-foot-note">💡 ${cat.note}</div>` : ''}
+        </div>`;
+    }
+
     window.addEventListener('popstate', function() {
       const blogMatch = location.pathname.match(/^\/blog\/(blog\d+)$/);
       if (blogMatch) {
