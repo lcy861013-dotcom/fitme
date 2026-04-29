@@ -5662,7 +5662,6 @@
     const radarScores = [sc.v, sc.h, sc.s, sc.p, sc.ha];
     const totalScore = Math.round(radarScores.reduce((a,b)=>a+b, 0) / 5);
     const fitmeGrade = totalScore >= 87 ? 'S' : totalScore >= 77 ? 'A+' : totalScore >= 67 ? 'A' : totalScore >= 55 ? 'B+' : totalScore >= 45 ? 'B' : 'C';
-    const gradeClass = fitmeGrade === 'S' ? 'grade-S' : fitmeGrade.startsWith('A') ? 'grade-A' : fitmeGrade.startsWith('B') ? 'grade-B' : 'grade-C';
 
     // Store for SNS sharing
     window._fitmeShareData = { score: totalScore, grade: fitmeGrade };
@@ -5864,14 +5863,6 @@
 
     document.getElementById('fitme-score-section').innerHTML = `
       ${assetHtml}
-      <div class="fitme-score-banner">
-        <div class="fitme-score-left">
-          <div class="fitme-score-label">${dl.scoreLabel}</div>
-          <div class="fitme-score-value">${totalScore}</div>
-          <div class="fitme-score-dims">${radarScores.map((s, i) => `<div class="fitme-dim"><div class="fitme-dim-val">${s}</div><div class="fitme-dim-label">${dl.radarAxes[i]}</div></div>`).join('')}</div>
-        </div>
-        <div class="fitme-score-right"><div class="fitme-grade ${gradeClass}">${fitmeGrade}</div><div class="fitme-grade-label">${dl.gradeLabel}</div></div>
-      </div>
       ${stylePreviewHTML}`;
 
     const badgeMap = { hourglass: '⏳', pear: '🍐', inv: '🔺', rect: '⬛', apple: '🍎', default: '📐' };
