@@ -5574,6 +5574,7 @@
     const loadingLabel = currentLang === 'ko' ? '⏳ 분석 중...' : '⏳ Analyzing...';
     [btnD, btnM].forEach(b => { if (b) { b.disabled = true; b.textContent = loadingLabel; } });
     const restoreBtn = () => [btnD, btnM].forEach(b => { if (b) { b.disabled = false; b.textContent = t('analyze-btn'); } });
+    if (typeof gtag === 'function') gtag('event', 'analysis_start', { language: currentLang });
     try {
     const getVal = (p, key) => {
       if (!measurements[p]) return NaN;
@@ -6414,6 +6415,10 @@
     if (typeof window.renderSizeFinder === 'function') window.renderSizeFinder();
     restoreBtn();
     showToast(t('toast-done'));
+    if (typeof gtag === 'function') {
+      const sd = window._fitmeShareData || {};
+      gtag('event', 'analysis_complete', { body_type: sd.bodyType || '', language: currentLang });
+    }
 
     // Show SNS share section
     const shareSection = document.getElementById('sns-share-section');
@@ -6523,6 +6528,7 @@
     const { text, url } = _buildShareText();
     const encodedText = encodeURIComponent(text);
     const encodedUrl = encodeURIComponent(url);
+    if (typeof gtag === 'function') gtag('event', 'share', { method: platform, language: currentLang });
 
     if (platform === 'kakao') {
       const kakaoText = text;
