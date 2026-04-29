@@ -2,12 +2,12 @@
   --bg: #0a0a0a;
   --surface: #111111;
   --card: #1a1a1a;
-  --accent: #e8ff47;
+  --accent: #E8A93C;
   --accent2: #ff4747;
   --text: #f0f0f0;
   --muted: #aaaaaa;
   --border: #2a2a2a;
-  --shadow-glow: rgba(232,255,71,0.2);
+  --shadow-glow: rgba(232,169,60,0.2);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -157,7 +157,7 @@ nav a:hover { color: var(--accent); }
   height: 40px;
   border-radius: 50%;
   border: 2px solid var(--accent);
-  background: rgba(232,255,71,0.05);
+  background: rgba(232,169,60,0.05);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -231,7 +231,7 @@ nav a:hover { color: var(--accent); }
   outline: none;
   transition: all 0.2s;
 }
-.input-field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,255,71,0.1); }
+.input-field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,169,60,0.1); }
 
 /* BUTTONS */
 .btn {
@@ -248,7 +248,7 @@ nav a:hover { color: var(--accent); }
 }
 
 .btn-primary { background: var(--accent); color: var(--bg); }
-.btn-primary:hover { background: #f5ff80; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(232,255,71,0.3); }
+.btn-primary:hover { background: #f5ff80; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(232,169,60,0.3); }
 
 .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
 .btn-outline:hover { border-color: var(--text); background: rgba(255,255,255,0.05); }
@@ -318,7 +318,7 @@ nav a:hover { color: var(--accent); }
   text-align: center;
   transition: all 0.3s;
 }
-.style-item:hover { border-color: var(--accent); background: rgba(232,255,71,0.05); }
+.style-item:hover { border-color: var(--accent); background: rgba(232,169,60,0.05); }
 
 .style-icon { font-size: 24px; margin-bottom: 8px; display: block; }
 .style-label { font-size: 13px; font-weight: 500; color: var(--text); }
@@ -438,7 +438,7 @@ footer {
 
 .adv-card {
   background: linear-gradient(145deg, #1e1e1e, #141414);
-  border: 1px solid rgba(232,255,71,0.15);
+  border: 1px solid rgba(232,169,60,0.15);
   border-radius: 20px;
   padding: 24px;
   margin-bottom: 20px;
@@ -499,7 +499,7 @@ footer {
 .adv-metric-desc { font-size: 10px; color: var(--accent); margin-top: 4px; }
 
 .adv-ranking-box {
-  background: rgba(232,255,71,0.05);
+  background: rgba(232,169,60,0.05);
   border: 1px dashed var(--accent);
   border-radius: 15px;
   padding: 16px;
