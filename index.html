@@ -5664,7 +5664,7 @@
     const fitmeGrade = totalScore >= 87 ? 'S' : totalScore >= 77 ? 'A+' : totalScore >= 67 ? 'A' : totalScore >= 55 ? 'B+' : totalScore >= 45 ? 'B' : 'C';
 
     // Store for SNS sharing
-    window._fitmeShareData = { score: totalScore, grade: fitmeGrade };
+    window._fitmeShareData = { score: totalScore, grade: fitmeGrade, typeName: typeName, bodyType: bodyType };
     window._topAssetForShare = null;
 
     // ===== ELITE IDENTITY ENGINE =====
@@ -6418,13 +6418,13 @@
     // Show SNS share section
     const shareSection = document.getElementById('sns-share-section');
     if (shareSection && window._fitmeShareData) {
-      const { score, grade } = window._fitmeShareData;
+      const { typeName: shareTypeName } = window._fitmeShareData;
       const lc2 = i18n[currentLang] || i18n.en;
       const taglines = {
-        ko: `내 FITME DNA 점수는 <span>${score}점 (${grade}등급)</span> 🔥 너도 해봐!`,
-        en: `My FITME DNA score: <span>${score} pts (Grade ${grade})</span> 🔥 Try yours!`,
-        ja: `私のFITME DNAスコアは<span>${score}点 (${grade})</span> 🔥 あなたも試して！`,
-        zh: `我的FITME DNA评分：<span>${score}分 (${grade}级)</span> 🔥 快来试试！`,
+        ko: `내 체형 분석 결과가 나왔어 — <span>${shareTypeName || '나만의 체형'}</span> 🔥 너도 해봐!`,
+        en: `I got my body analysis — <span>${shareTypeName || 'my body type'}</span> 🔥 Try yours!`,
+        ja: `体型診断結果が出た — <span>${shareTypeName || 'マイボディタイプ'}</span> 🔥 あなたも試して！`,
+        zh: `我的体型分析结果出来了 — <span>${shareTypeName || '我的体型'}</span> 🔥 快来试试！`,
       };
       document.getElementById('sns-share-tagline').innerHTML = taglines[currentLang] || taglines.en;
       shareSection.style.display = 'block';
@@ -6486,8 +6486,8 @@
     const assetName = asset ? (isKo ? asset.ko : asset.en) : '';
     const url = window.location.href;
     const text = isKo
-      ? `내 #1 체형 강점은 "${assetName}" 🏆 (${data.grade || ''}등급)\n너는 뭐야? 2분이면 알 수 있어 👇\n${url}`
-      : `My #1 body asset is "${assetName}" 🏆 (Grade ${data.grade || ''})\nWhat's yours? Find out in 2 min 👇\n${url}`;
+      ? `내 #1 체형 강점은 "${assetName}" 🏆\n너는 뭐야? 2분이면 알 수 있어 👇\n${url}`
+      : `My #1 body asset is "${assetName}" 🏆\nWhat's yours? Find out in 2 min 👇\n${url}`;
     if (navigator.share) {
       navigator.share({ title: 'FITME Body Identity Challenge', text, url }).catch(()=>{});
     } else {
@@ -6497,25 +6497,24 @@
 
   function _buildShareText() {
     const data = window._fitmeShareData || {};
-    const score = data.score || '';
-    const grade = data.grade || '';
+    const typeName = data.typeName || '';
     const url = 'https://fitme-6d9.pages.dev/';
     const msgs = {
-      ko: `나의 FITME DNA 점수는 ${score}점 (${grade}등급)! 🔥\n체형 분석 + 스타일 추천을 무료로 받아보세요 → ${url}`,
-      en: `My FITME DNA score: ${score} pts (Grade ${grade})! 🔥\nGet your free body analysis & style tips → ${url}`,
-      ja: `私のFITME DNAスコアは${score}点(${grade}級)！🔥\n体型分析＆スタイル診断を無料で → ${url}`,
-      zh: `我的FITME DNA评分：${score}分(${grade}级)！🔥\n免费获取你的体型分析 → ${url}`,
-      fr: `Mon score FITME DNA : ${score} pts (Grade ${grade}) ! 🔥\nObtenez votre analyse corporelle gratuite → ${url}`,
-      es: `Mi puntuación FITME DNA: ${score} pts (Grado ${grade}) ! 🔥\nObtén tu análisis corporal gratis → ${url}`,
-      pt: `Minha pontuação FITME DNA: ${score} pts (Grau ${grade})! 🔥\nObtenha sua análise corporal gratuita → ${url}`,
-      de: `Mein FITME DNA-Score: ${score} Pkt. (Grad ${grade})! 🔥\nKostenlose Körperanalyse & Styling-Tipps → ${url}`,
-      it: `Il mio punteggio FITME DNA: ${score} pt (Grado ${grade})! 🔥\nOttieni la tua analisi corporea gratuita → ${url}`,
-      ru: `Мой FITME DNA балл: ${score} (Класс ${grade})! 🔥\nПолучите бесплатный анализ телосложения → ${url}`,
-      ar: `نتيجتي في FITME DNA: ${score} نقطة (الدرجة ${grade})! 🔥\nاحصل على تحليل جسمك مجاناً → ${url}`,
-      hi: `मेरा FITME DNA स्कोर: ${score} अंक (ग्रेड ${grade})! 🔥\nअपना मुफ्त शरीर विश्लेषण पाएं → ${url}`,
-      th: `คะแนน FITME DNA ของฉัน: ${score} คะแนน (เกรด ${grade})! 🔥\nรับการวิเคราะห์ร่างกายฟรี → ${url}`,
-      id: `Skor FITME DNA saya: ${score} pts (Grade ${grade})! 🔥\nDapatkan analisis tubuh gratis → ${url}`,
-      vi: `Điểm FITME DNA của tôi: ${score} điểm (Hạng ${grade})! 🔥\nNhận phân tích cơ thể miễn phí → ${url}`,
+      ko: `내 체형 분석 결과: ${typeName} 🔥\n체형 분석 + 스타일 추천을 무료로 받아보세요 → ${url}`,
+      en: `My body analysis result: ${typeName} 🔥\nGet your free body analysis & style tips → ${url}`,
+      ja: `体型診断結果: ${typeName} 🔥\n体型分析＆スタイル診断を無料で → ${url}`,
+      zh: `我的体型分析结果: ${typeName} 🔥\n免费获取你的体型分析 → ${url}`,
+      fr: `Mon résultat d'analyse corporelle: ${typeName} 🔥\nObtenez votre analyse corporelle gratuite → ${url}`,
+      es: `Mi resultado de análisis corporal: ${typeName} 🔥\nObtén tu análisis corporal gratis → ${url}`,
+      pt: `Meu resultado de análise corporal: ${typeName} 🔥\nObtenha sua análise corporal gratuita → ${url}`,
+      de: `Mein Körperanalyse-Ergebnis: ${typeName} 🔥\nKostenlose Körperanalyse & Styling-Tipps → ${url}`,
+      it: `Il mio risultato di analisi corporea: ${typeName} 🔥\nOttieni la tua analisi corporea gratuita → ${url}`,
+      ru: `Результат анализа тела: ${typeName} 🔥\nПолучите бесплатный анализ телосложения → ${url}`,
+      ar: `نتيجة تحليل جسمي: ${typeName} 🔥\nاحصل على تحليل جسمك مجاناً → ${url}`,
+      hi: `मेरे शरीर के विश्लेषण का परिणाम: ${typeName} 🔥\nअपना मुफ्त शरीर विश्लेषण पाएं → ${url}`,
+      th: `ผลการวิเคราะห์ร่างกายของฉัน: ${typeName} 🔥\nรับการวิเคราะห์ร่างกายฟรี → ${url}`,
+      id: `Hasil analisis tubuh saya: ${typeName} 🔥\nDapatkan analisis tubuh gratis → ${url}`,
+      vi: `Kết quả phân tích cơ thể của tôi: ${typeName} 🔥\nNhận phân tích cơ thể miễn phí → ${url}`,
     };
     return { text: msgs[currentLang] || msgs.en, url: 'https://fitme-6d9.pages.dev/' };
   }
