@@ -6419,8 +6419,8 @@
       runAdvancedAnalysis();
     }
 
-    renderSizeFinder();
     document.getElementById('analysis-result').classList.add('visible');
+    if (typeof window.renderSizeFinder === 'function') window.renderSizeFinder();
     restoreBtn();
     showToast(t('toast-done'));
 
@@ -6823,6 +6823,12 @@
           ${cat.note ? `<div class="sf-foot-note">💡 ${cat.note}</div>` : ''}
         </div>`;
     }
+
+    // Expose size-finder functions to global scope (called from onclick attrs and runExpertAnalysis)
+    window.renderSizeFinder = renderSizeFinder;
+    window.sfFilter = sfFilter;
+    window.sfPick = sfPick;
+    window.sfCat = sfCat;
 
     window.addEventListener('popstate', function() {
       const blogMatch = location.pathname.match(/^\/blog\/(blog\d+)$/);
