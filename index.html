@@ -6294,7 +6294,7 @@
         ? ["헤어 볼륨을 줄이고 심플하게 연출하세요","V넥·딥넥으로 시선을 아래로 유도하세요","버킷햇·캡처럼 작은 모자가 잘 어울려요"]
         : ["Keep hair simple with reduced volume","V-neck & deep necklines draw eyes downward","Smaller hats (bucket hat, cap) suit you well"]);
       const headWarns = headCount < 7 ? (isKo ? ["큰 챙 모자·볼드한 업도는 머리를 더 커 보이게 해요"] : ["Large-brim hats or bold updos can make the head look larger"]) : [];
-      detailSections.push({ icon:'👤', title: isKo?'두상 비율 (등신)':'Head Ratio (등신)', tags:[{ label:headRankStr, color:headColor }],
+      detailSections.push({ icon:'👤', title: isKo?'두상 비율 (등신)':'Head Ratio', tags:[{ label:headRankStr, color:headColor }],
         stat: isKo ? `${headCount.toFixed(1)}등신 · 머리 세로 ${headH}cm, 키 ${h}cm` : `${headCount.toFixed(1)}-head figure · Head ${headH}cm, Height ${h}cm`,
         tips: headTips, warns: headWarns });
     }
@@ -6308,7 +6308,7 @@
       unlockItems.push({ icon:'🦵', en:'Leg Proportion + Torso Ratio', ko:'다리 비율 + 상하체 비율 분석', need_en:'Add: upper leg + lower leg length', need_ko:'추가: 허벅지 길이 + 종아리 길이' });
     }
     if (isNaN(headH)) {
-      unlockItems.push({ icon:'👤', en:'Head Ratio (등신) Analysis', ko:'두상 등신 분석', need_en:'Add: head height', need_ko:'추가: 머리 세로 길이' });
+      unlockItems.push({ icon:'👤', en:'Head Ratio Analysis', ko:'두상 등신 분석', need_en:'Add: head height', need_ko:'추가: 머리 세로 길이' });
     }
     if (isNaN(uArm) || isNaN(lArm)) {
       unlockItems.push({ icon:'💪', en:'Arm Proportion Analysis', ko:'팔 비율 분석', need_en:'Add: upper arm + forearm length', need_ko:'추가: 상완 + 하완 길이' });
@@ -6953,19 +6953,23 @@
     function renderSizeFinder() {
       const el = document.getElementById('size-finder-section');
       if (!el) return;
-      const hotBrands = Object.entries(BRAND_DB).filter(([, b]) => b.hot);
+      const isKoLang = currentLang === 'ko';
+      const hotBrands = Object.entries(BRAND_DB).filter(([k, b]) => b.hot && (isKoLang || k !== 'musinsa'));
+      const sfTitle = isKoLang ? '브랜드 사이즈 찾기' : 'Find Your Brand Size';
+      const sfSub = isKoLang ? '내 치수로 브랜드별 정확한 사이즈 바로 확인' : 'Check your exact size across top brands instantly';
+      const sfPlaceholder = isKoLang ? "브랜드 검색 (예: Levi's, Zara, Nike...)" : "Search brand (e.g. Levi's, Zara, Nike...)";
       el.innerHTML = `
         <div class="size-finder-card">
           <div class="sf-header">
             <div class="sf-icon">👗</div>
             <div>
-              <div class="sf-title">브랜드 사이즈 찾기</div>
-              <div class="sf-sub">내 치수로 브랜드별 정확한 사이즈 바로 확인</div>
+              <div class="sf-title">${sfTitle}</div>
+              <div class="sf-sub">${sfSub}</div>
             </div>
           </div>
           <div class="sf-search-wrap">
             <input type="text" id="sf-input" class="sf-brand-input"
-              placeholder="브랜드 검색 (예: Levi's, Zara, Nike...)"
+              placeholder="${sfPlaceholder}"
               oninput="sfFilter(this.value)" onfocus="sfFilter(this.value)" autocomplete="off">
             <div id="sf-drop" class="sf-dropdown"></div>
           </div>
