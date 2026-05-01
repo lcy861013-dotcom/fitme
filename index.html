@@ -271,7 +271,6 @@
     .guide-step { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
     .guide-step .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
     .guide-step p { font-size: 12px; color: var(--muted); line-height: 1.7; margin: 0; }
-    .guide-ad { max-width: 1000px; margin: 24px auto 0; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; min-height: 100px; display: flex; align-items: center; justify-content: center; }
     .card-inner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     @media (max-width: 768px) {
       .guide-grid { grid-template-columns: 1fr !important; }
@@ -447,19 +446,6 @@
     .outfit-why { display: none; }
 
     /* ===== FITME DNA REPORT — NEW SECTIONS ===== */
-    .fitme-score-banner { background: linear-gradient(135deg, rgba(232,169,60,0.1), rgba(71,200,255,0.06)); border: 1px solid rgba(232,169,60,0.25); border-radius: 14px; padding: 16px 20px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
-    .fitme-score-left { display: flex; flex-direction: column; gap: 1px; }
-    .fitme-score-label { font-size: 9px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
-    .fitme-score-value { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--accent); line-height: 1; letter-spacing: 2px; }
-    .fitme-score-right { text-align: right; }
-    .fitme-grade { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 3px; line-height: 1; }
-    .fitme-grade.grade-S { color: #FFD700; text-shadow: 0 0 24px rgba(255,215,0,0.6); }
-    .fitme-grade.grade-A { color: var(--accent); text-shadow: 0 0 20px rgba(232,169,60,0.4); }
-    .fitme-grade.grade-B { color: var(--accent3); }
-    .fitme-grade.grade-C { color: var(--muted); }
-    .fitme-grade-label { font-size: 9px; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
-    .fitme-score-dims { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
-    .fitme-dim { display: flex; flex-direction: column; align-items: center; gap: 2px; }
     .fitme-dim-val { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--text); line-height: 1; }
     .fitme-dim-label { font-size: 9px; color: var(--muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px; white-space: nowrap; }
     .dna-top-grid { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start; margin-bottom: 14px; }
@@ -607,13 +593,7 @@
     .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--accent); color: var(--bg); padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: 1px; transition: transform 0.3s; z-index: 999; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
     .toast.show { transform: translateX(-50%) translateY(0); }
 
-    /* BLOG POST */
-    .blog-post { max-width: 700px; margin: 0 auto; padding: 60px 32px; }
-    .blog-post h1 { font-family: 'Bebas Neue', sans-serif; font-size: 44px; letter-spacing: 3px; margin-bottom: 12px; }
-    .blog-post .meta { font-size: 12px; color: var(--muted); margin-bottom: 40px; font-family: 'DM Sans', sans-serif; }
-    .blog-post h2 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; }
-    .blog-post p { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 16px; }
-    .blog-post .tip { background: rgba(232,169,60,0.06); border-left: 3px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-size: 13px; color: var(--text); line-height: 1.8; }
+
 
     @media (max-width: 900px) {
       .main-container { grid-template-columns: 1fr; }
