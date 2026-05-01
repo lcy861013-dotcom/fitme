@@ -241,6 +241,15 @@
       .privacy-dna-banner { flex-direction: column; text-align: center; gap: 12px; padding: 20px; }
     }
 
+    /* STORY SECTION */
+    .story-section { padding: 64px 32px; border-bottom: 1px solid var(--border); }
+    .story-inner { max-width: 720px; margin: 0 auto; }
+    .story-label { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; }
+    .story-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 42px); letter-spacing: 2px; line-height: 1.1; margin-bottom: 20px; }
+    .story-body { font-size: 15px; color: #c8c8c8; line-height: 1.95; font-family: 'DM Sans', sans-serif; }
+    .story-body p { margin-bottom: 14px; }
+    .story-body p:last-child { margin-bottom: 0; }
+
     /* GUIDE SECTION */
     .guide-content { padding: 60px 32px; border-bottom: 1px solid var(--border); }
     .section-header { text-align: center; margin-bottom: 48px; }
@@ -914,14 +923,14 @@
   <section class="why-fitme-section" id="why-fitme">
     <div class="section-header">
       <div class="section-tag" data-i18n="why-section-tag">WHY FITME?</div>
-      <h2 class="section-title" data-i18n="why-section-title" style="font-size:clamp(22px,4vw,34px);letter-spacing:2px;">Precision Data, Not Your Privacy</h2>
-      <p class="why-fitme-intro" data-i18n="why-section-intro">Most body analysis apps ask for photos. FITME doesn't. Here's why that matters — and why our measurement-based approach delivers better results than any photo-based AI.</p>
+      <h2 class="section-title" data-i18n="why-section-title" style="font-size:clamp(22px,4vw,34px);letter-spacing:2px;">Why Proportions Matter More Than Size</h2>
+      <p class="why-fitme-intro" data-i18n="why-section-intro">Two people can wear the same size and look completely different. The reason isn't the clothes — it's body proportions. Shoulder width, leg-to-torso ratio, waistline definition: these are what actually control how clothing looks on you. FITME measures yours precisely, without photos.</p>
     </div>
     <div class="why-fitme-grid">
       <div class="why-card">
-        <div class="why-card-icon">📷</div>
-        <h3 class="why-card-title" data-i18n="why-card1-title">100% Photo-Free Analysis</h3>
-        <p class="why-card-desc" data-i18n="why-card1-desc">Unlike AI photo tools, FITME never stores a single image of your body. Uploading photos to unknown servers carries real risks: data breaches and unauthorized use of your most intimate images. FITME eliminates this entirely. Enter just 3 measurements — height, weight, and waist — and receive a complete body proportion analysis powered by the same mathematical models used by professional stylists worldwide. No camera. No cloud uploads. No privacy concerns. Just precise, actionable insights about your unique body proportions.</p>
+        <div class="why-card-icon">📐</div>
+        <h3 class="why-card-title" data-i18n="why-card1-title">Proportions, Not Size Labels</h3>
+        <p class="why-card-desc" data-i18n="why-card1-desc">S, M, L sizes tell you almost nothing about fit. Two people wearing the same size can have completely different shoulder widths, different leg-to-torso ratios, different waist-to-hip curves. That gap — between label and proportion — is exactly why clothes that technically fit often look wrong. FITME bypasses size labels entirely. Enter 3 measurements and get a precise breakdown of your actual body ratios, so you can dress for your proportions instead of a tag.</p>
       </div>
       <div class="why-card">
         <div class="why-card-icon">📐</div>
@@ -939,6 +948,24 @@
       <div>
         <div class="dna-title" data-i18n="dna-title">YOUR PRIVACY IS OUR DNA</div>
         <div class="dna-sub" data-i18n="dna-sub">Zero photos stored. Zero data sold. Zero compromise. Your measurements are processed locally and never leave your device.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story-section" id="story">
+    <div class="story-inner">
+      <div class="story-label lang-en">WHY WE BUILT THIS</div>
+      <div class="story-label lang-ko">왜 만들었나요</div>
+      <h2 class="story-title lang-en">Most people shop by size.<br>Size tells you almost nothing.</h2>
+      <h2 class="story-title lang-ko">대부분의 사람은 사이즈로 옷을 삽니다.<br>하지만 사이즈는 핏을 보장하지 않습니다.</h2>
+      <div class="story-body lang-en">
+        <p>Two people can wear the same size and have completely different proportions: different shoulder-to-waist ratios, different leg-to-torso lengths, different hip widths. The result? Clothes that technically fit but never look quite right.</p>
+        <p>FITME was built to solve this. By understanding your actual body proportions — not just your size — you can make smarter decisions about what styles will work for your shape, which cuts to avoid, and how to build outfits that consistently look intentional and proportional.</p>
+      </div>
+      <div class="story-body lang-ko">
+        <p>같은 사이즈를 입는 두 사람도 어깨-허리 비율, 다리-상체 길이, 힙 너비가 완전히 다를 수 있습니다. 결과는? 기술적으로는 맞지만 어딘가 어색한 옷이 됩니다.</p>
+        <p>FITME는 이 문제를 해결하기 위해 만들어졌습니다. 사이즈가 아닌 실제 신체 비율을 이해하면 — 어떤 스타일이 내 체형에 맞는지, 어떤 컷을 피해야 하는지, 어떻게 해야 코디가 의도적이고 균형 잡혀 보이는지 — 더 나은 선택을 할 수 있습니다.</p>
       </div>
     </div>
   </section>
@@ -1539,6 +1566,37 @@
           </div>
 
           <p id="analysis-disclaimer" style="font-size:11px; color:var(--muted); margin-top:16px;">*입력된 수치 기반의 통계적 분석 결과입니다.</p>
+
+          <!-- RELATED ARTICLES -->
+          <div id="related-articles" style="margin-top:28px; display:none;">
+            <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:14px; font-family:'DM Sans',sans-serif;" data-i18n="related-title">RELATED ARTICLES</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <a class="lang-en" href="/blog/blog3-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(232,169,60,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">Golden Ratio Body Shape: How to Dress for Your Proportions</div>
+                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
+              </a>
+              <a class="lang-en" href="/blog/blog4-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(232,169,60,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">How to Dress for Your Body Type: Complete Tops Guide</div>
+                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
+              </a>
+              <a class="lang-en" href="/blog/blog5-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(232,169,60,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">Color Coordination Rules: How to Use Color to Flatter Your Body Shape</div>
+                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
+              </a>
+              <a class="lang-ko" href="/blog/blog3" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(232,169,60,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">황금비율 체형 만들기 — 시각 보정의 원리</div>
+                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
+              </a>
+              <a class="lang-ko" href="/blog/blog4" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(232,169,60,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">체형별 상의 완전 가이드 — 네크라인·소매·기장</div>
+                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
+              </a>
+              <a class="lang-ko" href="/blog/blog11" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(232,169,60,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">왜 어떤 옷은 나에게 절대 안 맞을까?</div>
+                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2123,13 +2181,17 @@
       'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'privacy-step1':'측정값 3개 입력','privacy-step2':'비율 분석','privacy-step3':'스타일 청사진 획득',
       'hero-privacy-note':'셀카 없음 · 업로드 없음 · 내 정보는 이 페이지를 절대 벗어나지 않아요',
-      'why-section-tag':'WHY FITME?','why-section-title':'정밀한 데이터, 당신의 사생활이 아닌',
-      'why-section-intro':'대부분의 체형 분석 앱은 사진을 요구합니다. FITME는 다릅니다. 측정 기반 분석이 왜 더 나은 결과를 제공하는지 알아보세요.',
-      'why-card1-title':'100% 사진 없는 분석','why-card2-title':'수학적 정밀도','why-card3-title':'장점 극대화, 단점 완벽 보완',
-      'why-card1-desc':'AI 사진 분석 도구와 달리, FITME는 신체 이미지를 단 하나도 저장하지 않습니다. 사진을 알 수 없는 서버에 업로드하는 것은 데이터 유출과 무단 사용의 실질적인 위험을 수반합니다. FITME는 이 위험을 완전히 제거합니다. 키, 몸무게, 허리 3가지 측정값만 입력하면 전 세계 전문 스타일리스트가 사용하는 동일한 수학적 모델로 완전한 체형 분석을 받을 수 있습니다. 카메라 없음. 클라우드 업로드 없음. 개인정보 우려 없음.',
+      'why-section-tag':'WHY FITME?','why-section-title':'사이즈가 아닌, 비율이 핵심입니다',
+      'why-section-intro':'키가 같아도 어떤 사람은 더 날씬해 보이고, 같은 옷을 입어도 누군가는 훨씬 잘 어울립니다. 그 차이는 사이즈가 아니라 어깨 너비, 다리-상체 비율, 허리 굴곡입니다. FITME는 사진 없이 측정값 3개만으로 당신의 진짜 비율을 분석합니다.',
+      'why-card1-title':'비율이 핵심, 사이즈 태그가 아닌','why-card2-title':'수학적 정밀도','why-card3-title':'장점 극대화, 단점 완벽 보완',
+      'why-card1-desc':'S, M, L 사이즈 태그는 핏에 대해 거의 아무것도 말해주지 않습니다. 같은 사이즈를 입는 두 사람도 어깨 너비, 다리-상체 비율, 허리-골반 곡선이 완전히 다를 수 있습니다. 바로 그 간극 — 사이즈와 비율 사이 — 이 기술적으로 맞는 옷이 어딘가 어색해 보이는 이유입니다. FITME는 사이즈 태그를 완전히 우회합니다. 측정값 3개를 입력하면 실제 신체 비율을 정밀하게 분석해 태그가 아닌 당신만의 비율에 맞는 스타일을 제안합니다.',
       'why-card2-desc':'FITME의 분석 엔진은 황금 비율(φ = 1.618) — 고전 예술과 자연의 아름다움 뒤에 있는 수학적 원리 — 을 허리-엉덩이 비율(WHR), 어깨-허리 차이, 수직 비율 지수와 함께 적용하여 개인화된 FITME DNA 점수™(0~100)를 생성합니다. 조명, 각도, 카메라 품질에 따라 달라지는 사진 평가와 달리, 측정 기반 알고리즘은 매번 일관되고 재현 가능한 결과를 제공합니다.',
       'why-card3-desc':'모든 몸에는 자연스러운 강점이 있습니다. 올바르게 스타일링하면 시각적으로 강력한 실루엣을 만들 수 있는 비율입니다. 문제는 자신의 강점이 무엇인지 아는 것입니다. FITME는 다리-상체 비율, 어깨-골반 너비, 허리 라인에 대한 객관적인 데이터를 제공합니다. 이 데이터로 의도적인 스타일링이 가능합니다: A라인 스커트, 구조적 어깨, 하이웨이스트 컷, 수직 패턴. 이것은 일반적인 조언이 아닌, 당신만의 측정값에서 도출된 데이터 기반 전략입니다.',
       'dna-title':'당신의 개인정보가 우리의 DNA입니다','dna-sub':'저장된 사진 없음. 판매된 데이터 없음. 타협 없음. 측정값은 로컬에서 처리되며 절대 기기를 떠나지 않습니다.',
+      'related-title':'관련 아티클',
+      'story-label':'왜 만들었나요','story-title':'대부분의 사람은 사이즈로 옷을 삽니다.<br>하지만 사이즈는 핏을 보장하지 않습니다.',
+      'story-p1':'같은 사이즈를 입는 두 사람도 어깨-허리 비율, 다리-상체 길이, 힙 너비가 완전히 다를 수 있습니다. 결과는? 기술적으로는 맞지만 어딘가 어색한 옷이 됩니다.',
+      'story-p2':'FITME는 이 문제를 해결하기 위해 만들어졌습니다. 사이즈가 아닌 실제 신체 비율을 이해하면 — 어떤 스타일이 내 체형에 맞는지, 어떤 컷을 피해야 하는지 — 더 나은 선택을 할 수 있습니다.',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
       'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
       'howto-weight':'⚖️ 아침 공복·화장실 후가 가장 정확해요. 체중계 위에서 움직이지 말고 측정하세요',
@@ -2280,13 +2342,17 @@
       'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Your Privacy Is Our DNA','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'privacy-step1':'Enter 3 Measurements','privacy-step2':'Analyze Proportions','privacy-step3':'Get Style Blueprint',
       'hero-privacy-note':'No selfies · No uploads · Your data never leaves this page',
-      'why-section-tag':'WHY FITME?','why-section-title':'Precision Data, Not Your Privacy',
-      'why-section-intro':'Most body analysis apps ask for photos. FITME doesn\'t. Here\'s why that matters — and why our measurement-based approach delivers better results than any photo-based AI.',
-      'why-card1-title':'100% Photo-Free Analysis','why-card2-title':'Mathematical Precision','why-card3-title':'Enhance Strengths, Conceal Weaknesses',
-      'why-card1-desc':'Unlike AI photo tools, FITME never stores a single image of your body. Uploading photos to unknown servers carries real risks: data breaches and unauthorized use of your most intimate images. FITME eliminates this entirely. Enter just 3 measurements — height, weight, and waist — and receive a complete body proportion analysis powered by the same mathematical models used by professional stylists worldwide. No camera. No cloud uploads. No privacy concerns. Just precise, actionable insights about your unique body proportions.',
+      'why-section-tag':'WHY FITME?','why-section-title':'Why Proportions Matter More Than Size',
+      'why-section-intro':'Two people can wear the same size and look completely different. The reason isn\'t the clothes — it\'s body proportions. Shoulder width, leg-to-torso ratio, waistline definition: these are what actually control how clothing looks on you. FITME measures yours precisely, without photos.',
+      'why-card1-title':'Proportions, Not Size Labels','why-card2-title':'Mathematical Precision','why-card3-title':'Enhance Strengths, Conceal Weaknesses',
+      'why-card1-desc':'S, M, L sizes tell you almost nothing about fit. Two people wearing the same size can have completely different shoulder widths, different leg-to-torso ratios, different waist-to-hip curves. That gap — between label and proportion — is exactly why clothes that technically fit often look wrong. FITME bypasses size labels entirely. Enter 3 measurements and get a precise breakdown of your actual body ratios, so you can dress for your proportions instead of a tag.',
       'why-card2-desc':'FITME applies the Golden Ratio (φ = 1.618) — the mathematical principle behind classical art and natural beauty — alongside Waist-to-Hip Ratio (WHR), shoulder-to-waist differential, and vertical proportion indices to generate your personalized FITME DNA Score™ (0–100). Unlike photo assessments that vary by lighting, angle, and camera quality, our measurement-based algorithm delivers consistent, reproducible results every time. Your body\'s true proportions don\'t change based on camera angle — and neither does your FITME score.',
       'why-card3-desc':'Every body has natural strengths — proportions that, when dressed correctly, create a visually powerful silhouette. The challenge is knowing what your strengths actually are. FITME provides objective data about your unique proportions: leg-to-torso ratio, shoulder-to-hip width, and waistline definition. Armed with this data, you make intentional styling choices: A-line skirts to balance wider hips, structured shoulders to create breadth, high-waist cuts to elongate the leg line, vertical patterns to add height. These are data-driven strategies from your specific measurements — not generic body-type advice.',
       'dna-title':'YOUR PRIVACY IS OUR DNA','dna-sub':'Zero photos stored. Zero data sold. Zero compromise. Your measurements are processed locally and never leave your device.',
+      'related-title':'RELATED ARTICLES',
+      'story-label':'WHY WE BUILT THIS','story-title':'Most people shop by size.<br>Size tells you almost nothing.',
+      'story-p1':'Two people can wear the same size and have completely different proportions: different shoulder-to-waist ratios, different leg-to-torso lengths, different hip widths. The result? Clothes that technically fit but never look quite right.',
+      'story-p2':'FITME was built to solve this. By understanding your actual body proportions — not just your size — you can make smarter decisions about what styles will work for your shape, which cuts to avoid, and how to build outfits that consistently look intentional.',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
       'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
       'howto-weight':'⚖️ Best measured in the morning before eating. Stand still on the scale and wait for a stable reading',
@@ -4921,7 +4987,7 @@
       '어딘가 어색한 옷을<br><em>계속 사고 있진 않나요?</em>'
     ],
     en: [
-      'You\'ve been dressing<br><em>for someone else\'s body.</em>',
+      'Same height.<br><em>Different proportions.</em>',
       'It\'s not your body.<br><em>It\'s your proportions.</em>',
       'Stop buying clothes<br><em>that almost fit.</em>'
     ]
@@ -5895,6 +5961,10 @@
         document.getElementById('challenge-btn').textContent = isKoC ? '→ 챌린지 보내기' : '→ Send the Challenge';
         challengeCard.style.display = 'block';
       }
+
+      // Show related articles
+      const relatedArticles = document.getElementById('related-articles');
+      if (relatedArticles) relatedArticles.style.display = 'block';
     }
 
     if (window.innerWidth <= 900) {
