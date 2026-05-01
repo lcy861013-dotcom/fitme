@@ -273,7 +273,7 @@
     /* BLOG SECTION */
     .blog-section { padding: 60px 32px; border-bottom: 1px solid var(--border); }
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-    .blog-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.2s; }
+    .blog-card { display: block; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; }
     .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); }
     .blog-thumb { height: 140px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; font-size: 48px; }
     .blog-body { padding: 20px; }
@@ -1104,134 +1104,134 @@
       <h2 class="section-title" data-i18n="blog-title">패션 & 핏 가이드</h2>
     </div>
     <div class="blog-grid">
-      <div class="blog-card" onclick="showBlogPost('blog1')">
+      <a class="blog-card" href="/blog/blog1">
         <div class="blog-thumb">👖</div>
         <div class="blog-body">
           <div class="blog-tag">PANTS FIT</div>
           <div class="blog-title" data-i18n="blog1-title">나에게 맞는 팬츠 핏 찾기</div>
           <div class="blog-desc" data-i18n="blog1-desc">슬림핏, 와이드핏, 테이퍼드핏... 체형에 따라 어떤 팬츠가 어울리는지 알아보세요.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog2')">
+      </a>
+      <a class="blog-card" href="/blog/blog2">
         <div class="blog-thumb">👟</div>
         <div class="blog-body">
           <div class="blog-tag">SHOES</div>
           <div class="blog-title" data-i18n="blog2-title">발볼 넓은 분들을 위한 신발 가이드</div>
           <div class="blog-desc" data-i18n="blog2-desc">발볼이 넓어서 신발 고르기 힘드셨나요? 브랜드별 발볼 너비 비교 가이드입니다.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog3')">
+      </a>
+      <a class="blog-card" href="/blog/blog3">
         <div class="blog-thumb">📐</div>
         <div class="blog-body">
           <div class="blog-tag">PROPORTION</div>
           <div class="blog-title" data-i18n="blog3-title">황금비율 체형 만들기</div>
           <div class="blog-desc" data-i18n="blog3-desc">어깨 너비, 허리, 골반 비율로 내 체형 타입을 파악하고 최적의 스타일을 찾아보세요.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog4')">
+      </a>
+      <a class="blog-card" href="/blog/blog4">
         <div class="blog-thumb">👕</div>
         <div class="blog-body">
           <div class="blog-tag">TOPS GUIDE</div>
           <div class="blog-title" data-i18n="blog4-title">체형별 상의 완전 가이드</div>
           <div class="blog-desc" data-i18n="blog4-desc">네크라인, 소매, 기장... 상의 하나로 체형을 완전히 바꾸는 선택법을 알아보세요.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog5')">
+      </a>
+      <a class="blog-card" href="/blog/blog5">
         <div class="blog-thumb">🎨</div>
         <div class="blog-body">
           <div class="blog-tag">COLOR</div>
           <div class="blog-title" data-i18n="blog5-title">컬러 코디의 법칙</div>
           <div class="blog-desc" data-i18n="blog5-desc">색상 배치 하나로 어깨가 넓어 보이고 다리가 길어 보입니다. 체형 보정 컬러 전략.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog6')">
+      </a>
+      <a class="blog-card" href="/blog/blog6">
         <div class="blog-thumb">📦</div>
         <div class="blog-body">
           <div class="blog-tag">BASICS</div>
           <div class="blog-title" data-i18n="blog6-title">기본템 5가지로 1주일 완성 코디</div>
           <div class="blog-desc" data-i18n="blog6-desc">흰 티, 블랙 팬츠, 데님... 5가지 기본 아이템으로 7일 코디를 완성하는 실전 가이드.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog7')">
+      </a>
+      <a class="blog-card" href="/blog/blog7">
         <div class="blog-thumb">⚖️</div>
         <div class="blog-body">
           <div class="blog-tag">PROPORTION SCIENCE</div>
           <div class="blog-title" data-i18n="blog7-title">몸무게보다 비율이 중요한 이유</div>
           <div class="blog-desc" data-i18n="blog7-desc">체중 숫자에 속지 마세요. 같은 70kg도 비율에 따라 완전히 다른 실루엣이 나옵니다.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog8')">
+      </a>
+      <a class="blog-card" href="/blog/blog8">
         <div class="blog-thumb">📊</div>
         <div class="blog-body">
           <div class="blog-tag">WHR GUIDE</div>
           <div class="blog-title" data-i18n="blog8-title">완벽한 허리-골반 비율(WHR)의 과학</div>
           <div class="blog-desc" data-i18n="blog8-desc">WHR 0.7 vs 0.85 — 이 숫자 하나가 옷태와 인상을 결정합니다. 내 WHR 계산법.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog9')">
+      </a>
+      <a class="blog-card" href="/blog/blog9">
         <div class="blog-thumb">🦴</div>
         <div class="blog-body">
           <div class="blog-tag">SHOULDER FIT</div>
           <div class="blog-title" data-i18n="blog9-title">어깨 너비가 옷태를 바꾸는 방법</div>
           <div class="blog-desc" data-i18n="blog9-desc">어깨 각도와 너비가 자켓·상의 핏을 완전히 좌우합니다. 내 어깨에 맞는 선택법.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog10')">
+      </a>
+      <a class="blog-card" href="/blog/blog10">
         <div class="blog-thumb">🦵</div>
         <div class="blog-body">
           <div class="blog-tag">LEG RATIO</div>
           <div class="blog-title" data-i18n="blog10-title">다리 길이 비율 — 키 커 보이는 비밀</div>
           <div class="blog-desc" data-i18n="blog10-desc">다리 비율을 이해하면 5cm 더 커 보이는 코디가 가능합니다. 착시 효과 완전 분석.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog11')">
+      </a>
+      <a class="blog-card" href="/blog/blog11">
         <div class="blog-thumb">🤔</div>
         <div class="blog-body">
           <div class="blog-tag">FIT PROBLEM</div>
           <div class="blog-title" data-i18n="blog11-title">왜 어떤 옷은 나에게 절대 안 맞을까?</div>
           <div class="blog-desc" data-i18n="blog11-desc">사이즈 문제가 아닙니다. 비율 문제입니다. 옷이 나를 거부하는 진짜 이유.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog12')">
+      </a>
+      <a class="blog-card" href="/blog/blog12">
         <div class="blog-thumb">🔬</div>
         <div class="blog-body">
           <div class="blog-tag">DATA BODY TYPE</div>
           <div class="blog-title" data-i18n="blog12-title">실제 데이터로 내 체형 찾기</div>
           <div class="blog-desc" data-i18n="blog12-desc">모래시계·역삼각형·직사각형... 기존 체형 분류를 뛰어넘는 데이터 기반 체형 분석법.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog13')">
+      </a>
+      <a class="blog-card" href="/blog/blog13">
         <div class="blog-thumb">👗</div>
         <div class="blog-body">
           <div class="blog-tag">DRESSING GUIDE</div>
           <div class="blog-title" data-i18n="blog13-title">체형별 옷 입는 법 완전 가이드</div>
           <div class="blog-desc" data-i18n="blog13-desc">체형에 따른 실전 코디 공식. 강조할 것과 보완할 것을 과학적으로 구분합니다.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog14')">
+      </a>
+      <a class="blog-card" href="/blog/blog14">
         <div class="blog-thumb">🧬</div>
         <div class="blog-body">
           <div class="blog-tag">SCIENCE</div>
           <div class="blog-title" data-i18n="blog14-title">대칭성과 매력 — 과학이 말하는 것</div>
           <div class="blog-desc" data-i18n="blog14-desc">대칭적인 체형이 더 매력적으로 보이는 과학적 근거. 그리고 패션으로 대칭을 만드는 법.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog15')">
+      </a>
+      <a class="blog-card" href="/blog/blog15">
         <div class="blog-thumb">📉</div>
         <div class="blog-body">
           <div class="blog-tag">STYLE MINDSET</div>
           <div class="blog-title" data-i18n="blog15-title">감으로 고르던 스타일, 데이터로 바꿔라</div>
           <div class="blog-desc" data-i18n="blog15-desc">쇼핑 실패의 90%는 비율을 모르기 때문입니다. 데이터 기반 스타일링이 바꾸는 것들.</div>
         </div>
-      </div>
-      <div class="blog-card" onclick="showBlogPost('blog16')">
+      </a>
+      <a class="blog-card" href="/blog/blog16">
         <div class="blog-thumb">🤖</div>
         <div class="blog-body">
           <div class="blog-tag">FUTURE OF STYLE</div>
           <div class="blog-title" data-i18n="blog16-title">퍼스널 스타일링의 미래</div>
           <div class="blog-desc" data-i18n="blog16-desc">AI와 신체 데이터가 만나면? 패션 산업이 완전히 바뀌는 방식을 미리 살펴봅니다.</div>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
