@@ -412,6 +412,15 @@
     .style-section h4 { font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
     .style-grid { display: flex; flex-wrap: wrap; gap: 6px; }
     .style-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.6; }
+
+    /* SIGNATURE OUTFIT CARDS */
+    .sig-section { margin-top: 22px; }
+    .sig-section-title { font-size: 11px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; }
+    .sig-strategy { background: rgba(232,169,60,0.06); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 12px 14px; margin-bottom: 14px; font-size: 13px; color: var(--text); line-height: 1.7; font-family: 'DM Sans', sans-serif; }
+    .sig-combo { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+    .sig-combo-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; font-family: 'DM Sans', sans-serif; }
+    .sig-combo-why { font-size: 12px; color: var(--muted); line-height: 1.7; font-family: 'DM Sans', sans-serif; }
+    .sig-avoid { margin-top: 12px; padding: 10px 14px; background: rgba(255,71,71,0.05); border: 1px solid rgba(255,71,71,0.15); border-radius: 10px; font-size: 12px; color: #ff8080; font-family: 'DM Sans', sans-serif; line-height: 1.7; }
     /* Enhanced analysis styles */
     .body-type-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,169,60,0.1); border: 1px solid var(--accent); border-radius: 100px; padding: 6px 16px; margin-bottom: 12px; }
     .body-type-badge .badge-label { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 2px; color: var(--accent); }
@@ -1499,6 +1508,8 @@
             <h4 id="analysis-worst-title" style="margin-top:16px;">⚠️ 주의할 스타일</h4>
             <div class="style-grid" id="worst-styles"></div>
           </div>
+          <!-- 시그니처 코디 -->
+          <div id="signature-outfit-section"></div>
           <!-- 체형 세부 분석 -->
           <div id="detail-analysis-section"></div>
           <!-- 복합 코디 진단 -->
@@ -2289,6 +2300,45 @@
       'best-rect-male':['피티드 수트','레이어드 스타일','스트럭처드 블레이저','벨트 활용','크루넥 니트'],'worst-rect-male':['전신 오버사이즈 룩','허리 구조 없는 박시 스타일'],
       'best-apple-male':['V넥 상의','어두운 색 상의','스트레이트 팬츠','오픈 재킷 (수직 라인)','톤온톤 코디'],'worst-apple-male':['타이트 상의','가로 스트라이프 상의','밝은 색 상의'],
       'best-def-male':['레귤러핏 팬츠','심플한 단색 상의','클래식 청바지 + 흰 티셔츠'],'worst-def-male':['극단적으로 타이트한 의류'],
+      'sig-section-title':'시그니처 코디 전략',
+      'sig-avoid-label':'피해야 할 것',
+      'sig-combos':{
+        hourglass:{
+          strategy:'이미 균형 잡힌 비율입니다. 전략은 단순해요 — 라인을 숨기지 말고 살리는 것.',
+          combos:[
+            {name:'랩 원피스 + 힐',why:'허리를 자연스럽게 조여 모래시계 라인을 극대화합니다.'},
+            {name:'하이웨이스트 팬츠 + 피티드 탑',why:'허리 위치를 시각적으로 강조해 비율을 그대로 드러냅니다.'}
+          ],avoid:'허리선 없는 박시 원피스 · 전신 오버사이즈 룩 · 두꺼운 레이어드'
+        },
+        inv:{
+          strategy:'어깨가 강점이지만 동시에 관리 포인트입니다. 하체에 볼륨을 주면 자연스러운 균형이 만들어집니다.',
+          combos:[
+            {name:'다크 피티드 상의 + 하이웨이스트 플레어 팬츠',why:'하체 볼륨으로 넓은 어깨를 상쇄하고, 전체 실루엣이 균형 잡혀 보입니다.'},
+            {name:'V넥 + 와이드 팬츠',why:'V넥은 시선을 아래로 유도하고 와이드 팬츠는 하체에 무게를 더해줍니다.'}
+          ],avoid:'보트넥 · 퍼프 슬리브 · 어깨 패드 아우터 · 오프숄더'
+        },
+        pear:{
+          strategy:'하체보다 상체에 시선을 집중시키는 것이 핵심입니다. 상체를 밝게, 하체는 심플하게.',
+          combos:[
+            {name:'밝은 색/패턴 상의 + 다크 스트레이트 팬츠',why:'시선이 자동으로 상체에 머물고, 하체는 자연스럽게 날씬해 보입니다.'},
+            {name:'스퀘어넥 블라우스 + A라인 스커트',why:'어깨를 넓어 보이게 하고 A라인이 힙 라인을 부드럽게 감춰줍니다.'}
+          ],avoid:'밝은 색 하의 · 볼드 패턴 하의 · 타이트 미니스커트 · 로우라이즈 팬츠'
+        },
+        rect:{
+          strategy:'자연적인 허리 굴곡이 적기 때문에 스타일링으로 허리 라인을 인위적으로 만드는 게 핵심입니다.',
+          combos:[
+            {name:'벨티드 코트 + 테이퍼드 팬츠',why:'허리에 포인트를 주면 굴곡이 생기고 전체 실루엣이 정돈됩니다.'},
+            {name:'크롭 탑 + 하이웨이스트 와이드 팬츠',why:'허리 위치를 높여 다리가 길어 보이고 상하체 경계선이 생깁니다.'}
+          ],avoid:'허리선 없는 직선 원피스 · 전신 박시 룩 · 드롭숄더 오버사이즈'
+        },
+        apple:{
+          strategy:'수직 라인을 강조해 전체를 슬림하게 보이게 하고, 복부 쪽 시선을 분산시키는 것이 핵심입니다.',
+          combos:[
+            {name:'V넥 + 스트레이트 팬츠 + 오픈 재킷',why:'재킷의 수직 라인이 시선을 위아래로 길게 끌어 전체가 날씬해 보입니다.'},
+            {name:'톤온톤 코디 + 구조적 재킷',why:'같은 톤으로 시각적 분리를 없애고 재킷이 복부 라인을 자연스럽게 정돈합니다.'}
+          ],avoid:'가로 스트라이프 · 허리 조이는 굵은 벨트 · 타이트 상의 · 하이넥'
+        }
+      },
       'occasion-title':'전문가 제안 상황별 코디 (TPO Strategy)',
       'occasion-meeting':'💕 프레젠테이션 · 소개팅 (Smart & Trust)',
       'occasion-business':'💼 비즈니스 컨퍼런스 (Professional & Chic)',
@@ -2464,6 +2514,45 @@
       'best-rect-male':['Fitted suits','Layered looks','Structured blazers','Belt styling','Crew-neck knits'],'worst-rect-male':['Head-to-toe oversized looks','Unstructured boxy styles'],
       'best-apple-male':['V-neck tops','Dark-colored tops','Straight-fit trousers','Open jacket (vertical line)','Tone-on-tone outfits'],'worst-apple-male':['Tight tops','Horizontal-stripe tops','Bright-colored tops'],
       'best-def-male':['Regular-fit trousers','Simple solid-color tops','Classic jeans + white tee'],'worst-def-male':['Extremely tight clothing'],
+      'sig-section-title':'Signature Style Strategy',
+      'sig-avoid-label':'Avoid',
+      'sig-combos':{
+        hourglass:{
+          strategy:'Your proportions are already balanced. The strategy is simple — don\'t hide the lines, show them.',
+          combos:[
+            {name:'Wrap dress + heels',why:'Naturally cinches the waist and maximizes your hourglass silhouette.'},
+            {name:'High-waist trousers + fitted top',why:'Visually anchors the waist and puts your proportions on full display.'}
+          ],avoid:'Boxy shift dresses · Head-to-toe oversized looks · Heavy layering'
+        },
+        inv:{
+          strategy:'Wide shoulders are your strength — and your styling focus. Adding volume to the lower half creates natural balance.',
+          combos:[
+            {name:'Dark fitted top + high-waist flare pants',why:'Lower-body volume counterbalances the shoulders, creating a balanced full silhouette.'},
+            {name:'V-neck + wide-leg trousers',why:'The V-neck draws the eye downward while wide trousers add visual weight to the hips.'}
+          ],avoid:'Boat necks · Puff sleeves · Padded shoulder jackets · Off-shoulder tops'
+        },
+        pear:{
+          strategy:'Keep the focus on your upper half. Bright or detailed on top, simple and clean on the bottom.',
+          combos:[
+            {name:'Bright/patterned top + dark straight trousers',why:'Eyes naturally go to the top half while the dark bottom slims visually.'},
+            {name:'Square-neck blouse + A-line skirt',why:'Broadens the shoulder line and the A-line gently skims the hip area.'}
+          ],avoid:'Bright-colored bottoms · Bold-patterned bottoms · Tight miniskirts · Low-rise pants'
+        },
+        rect:{
+          strategy:'You have minimal natural waist curve, so the goal is to create one through styling choices.',
+          combos:[
+            {name:'Belted coat + tapered trousers',why:'A belt at the waist creates a defined curve and pulls the whole look together.'},
+            {name:'Crop top + high-waist wide-leg pants',why:'Raises the visual waist point, making legs look longer and creating a clear upper/lower divide.'}
+          ],avoid:'Straight shift dresses · All-over boxy looks · Drop-shoulder oversized pieces'
+        },
+        apple:{
+          strategy:'Emphasize vertical lines to lengthen the silhouette and draw attention away from the midsection.',
+          combos:[
+            {name:'V-neck + straight pants + open jacket',why:'The jacket\'s vertical line pulls the eye up and down, making the whole body look longer and leaner.'},
+            {name:'Tone-on-tone outfit + structured jacket',why:'Eliminating color breaks keeps the silhouette continuous; the jacket quietly defines the torso.'}
+          ],avoid:'Horizontal stripes · Wide cinching belts · Tight tops · High necklines'
+        }
+      },
       'occasion-title':'Occasion-Based Outfit Picks',
       'occasion-meeting':'💕 Date / First Meet',
       'occasion-business':'💼 Business Casual',
@@ -5450,6 +5539,26 @@
     document.getElementById('best-styles').innerHTML = best.map(s => `<span class="style-tag style-tag-best">✓ ${s}</span>`).join('');
     document.getElementById('worst-styles').innerHTML = worst.map(s => `<span class="style-tag style-tag-worst">✕ ${s}</span>`).join('');
 
+    // ===== RENDER: SIGNATURE OUTFIT SECTION =====
+    const sigEl = document.getElementById('signature-outfit-section');
+    if (sigEl) {
+      const sigCombos = (lc['sig-combos'] || {})[bodyType];
+      if (sigCombos) {
+        const comboHTML = sigCombos.combos.map(c => `
+          <div class="sig-combo">
+            <div class="sig-combo-name">👗 ${c.name}</div>
+            <div class="sig-combo-why">${c.why}</div>
+          </div>`).join('');
+        sigEl.innerHTML = `
+          <div class="sig-section">
+            <div class="sig-section-title">${lc['sig-section-title'] || 'Signature Style Strategy'}</div>
+            <div class="sig-strategy">${sigCombos.strategy}</div>
+            ${comboHTML}
+            <div class="sig-avoid">✕ ${lc['sig-avoid-label'] || 'Avoid'}: ${sigCombos.avoid}</div>
+          </div>`;
+      }
+    }
+
     // ===== RENDER: 90-DAY ROADMAP =====
     const rmLang = roadmapData[currentLang] || roadmapData.en;
     const rm = rmLang[bodyType] || rmLang.default;
@@ -6083,7 +6192,7 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
-    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section','signature-outfit-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
     window._fitmeShareData = null;
