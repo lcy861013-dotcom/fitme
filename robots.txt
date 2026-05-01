@@ -24,4 +24,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://fitme-6d9.pages.dev/sitemap.xml
+Sitemap: https://perfectfitme.com/sitemap.xml
