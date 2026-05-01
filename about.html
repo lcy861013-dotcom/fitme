@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELL3QDF9PN"></script>
@@ -18,51 +18,98 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About FITME — 프리미엄 신체 분석 서비스</title>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <title>About FITME — Free Body Proportion Analysis Tool</title>
+  <meta name="description" content="FITME is a free body proportion analysis platform that helps you understand your body ratios and find the clothing styles that actually work for your shape.">
+  <meta property="og:title" content="About FITME — Free Body Proportion Analysis Tool">
+  <meta property="og:description" content="FITME helps you understand your body proportions and find styles that actually fit. Free, instant, data-driven.">
+  <meta property="og:image" content="https://perfectfitme.com/og-image.png">
+  <meta property="og:url" content="https://perfectfitme.com/about.html">
+  <link rel="canonical" href="https://perfectfitme.com/about.html">
+  <link rel="icon" href="/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="google-adsense-account" content="ca-pub-6377720400458954">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
   <style>
-    .sub-page-content { padding: 100px 32px; max-width: 800px; margin: 0 auto; min-height: 70vh; }
-    .sub-page-title { font-family: 'Black Han Sans', sans-serif; font-size: 36px; color: var(--accent); margin-bottom: 40px; border-bottom: 2px solid var(--border); padding-bottom: 20px; }
-    .sub-page-body h2 { font-family: 'Black Han Sans', sans-serif; font-size: 22px; margin: 30px 0 15px; color: var(--text); }
-    .sub-page-body p { margin-bottom: 20px; color: var(--muted); font-size: 16px; line-height: 1.8; }
+    :root{--bg:#0a0a0a;--surface:#111;--card:#1a1a1a;--accent:#e8ff47;--text:#f0f0f0;--muted:#888;--border:#2a2a2a;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;}
+    header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(15px);z-index:100;}
+    .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);text-decoration:none;letter-spacing:2px;}
+    .back-btn{font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:20px;}
+    .back-btn:hover{color:var(--accent);border-color:var(--accent);}
+    main{max-width:720px;margin:0 auto;padding:60px 20px 80px;}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,52px);line-height:1.1;margin-bottom:16px;letter-spacing:1px;color:var(--accent);}
+    h2{font-family:'DM Sans',sans-serif;font-size:19px;font-weight:700;margin:36px 0 12px;color:var(--text);}
+    p{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:18px;}
+    .divider{border:none;border-top:1px solid var(--border);margin:40px 0;}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+    .feature-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;}
+    .feature-card h3{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:1px;}
+    .feature-card p{font-size:14px;color:var(--muted);margin:0;}
+    .cta{margin-top:56px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}
+    .cta-btn{display:inline-block;background:var(--accent);color:#0a0a0a;padding:14px 36px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}
+    footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+    @media(max-width:600px){.feature-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
 <header>
-  <a href="index.html" class="logo">FIT<span>ME</span></a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#analysis">비율 분석</a>
-  </nav>
+  <a href="/" class="logo">FITME</a>
+  <a href="/" class="back-btn">← Home</a>
 </header>
+<main>
+  <h1>About FITME</h1>
+  <p style="font-size:17px;color:var(--text);margin-bottom:32px;">FITME is a free body proportion analysis platform. Enter three measurements — height, weight, and waist — and get an instant breakdown of your body ratios, body type classification, and personalized style recommendations.</p>
 
-<section class="sub-page-content">
-  <h1 class="sub-page-title">About FITME</h1>
-  <div class="sub-page-body">
-    <p>FITME는 사용자가 자신의 신체 비율을 과학적으로 이해하고, 그에 맞는 최적의 스타일을 찾을 수 있도록 돕는 프리미엄 신체 분석 플랫폼입니다.</p>
-    
-    <h2>우리의 미션</h2>
-    <p>우리는 누구나 자신의 체형에 자신감을 가질 수 있도록 돕습니다. 옷에 몸을 맞추는 것이 아니라, 몸에 맞는 옷을 고를 수 있는 심미안을 제공하는 것이 FITME의 목표입니다.</p>
-    
-    <h2>기술적 접근</h2>
-    <p>FITME는 축적된 인체 치수 데이터와 황금 비율 알고리즘을 결합하여 실시간 시각적 피드백을 제공합니다. 사용자가 입력한 수치는 단순한 기록이 아니라, 개인화된 스타일 리포트를 생성하는 핵심 엔진이 됩니다.</p>
-    
-    <h2>주요 특징</h2>
-    <p>• 정밀한 12개 부위 측정 시스템<br>• 실시간 SVG 인체 모델링 피드백<br>• 체형별 베스트/워스트 스타일 추천<br>• 모바일 환경에 최적화된 UX</p>
+  <hr class="divider">
+
+  <h2>Why We Built This</h2>
+  <p>Most people shop for clothes by size — S, M, L, XL. But size tells you almost nothing about fit. Two people can wear the same size and have completely different proportions: different shoulder-to-waist ratios, different leg-to-torso ratios, different hip widths. The result? Clothes that technically fit but never look quite right.</p>
+  <p>FITME was built to solve this. By understanding your actual body proportions — not just your size — you can make smarter decisions about what styles will work for your shape, which cuts to avoid, and how to build outfits that consistently look intentional and proportional.</p>
+
+  <h2>How It Works</h2>
+  <p>You enter three numbers: height, weight, and waist circumference. From these, FITME calculates your key body ratios — including your waist-to-height ratio, estimated shoulder and hip proportions, and leg-to-torso balance. The result is a body type profile with specific style guidance tailored to your proportions.</p>
+  <p>The analysis is instant, completely free, and requires no account or registration. Your data is not stored.</p>
+
+  <h2>What You Get</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>BODY TYPE</h3>
+      <p>Understand your proportional shape — whether you're closer to inverted triangle, hourglass, rectangle, or pear — based on actual ratios, not guesswork.</p>
+    </div>
+    <div class="feature-card">
+      <h3>STYLE GUIDE</h3>
+      <p>Specific recommendations for what fits, what cuts to prioritize, and what silhouettes to avoid for your body type.</p>
+    </div>
+    <div class="feature-card">
+      <h3>PROPORTION SCORE</h3>
+      <p>A numerical breakdown of your key ratios so you understand exactly where you stand and what direction to go.</p>
+    </div>
+    <div class="feature-card">
+      <h3>FREE & INSTANT</h3>
+      <p>No signup, no payment, no waiting. Enter your numbers and get your results immediately.</p>
+    </div>
   </div>
-</section>
 
-<footer>
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="terms.html">Terms of Service</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="about.html">About FITME</a>
+  <hr class="divider">
+
+  <h2>Our Approach</h2>
+  <p>FITME is built around one principle: data over guesswork. The fashion industry has conditioned people to rely on "does this look good?" as the primary filter for clothing decisions. But that question is distorted by lighting, mirrors, mood, and marketing. The better question is "does this match my proportions?" — and that question has a factual answer.</p>
+  <p>By grounding style decisions in actual measurements, FITME helps you build a consistent, reliable foundation for how you dress. The goal isn't to make everyone look the same — it's to help each person understand what works specifically for them.</p>
+
+  <h2>Our Blog</h2>
+  <p>Alongside the analysis tool, FITME publishes in-depth guides on body proportions, fit, styling, and the science behind what makes clothing work. Topics include pants fit guides, color coordination by body type, seasonal styling strategies, and more. All content is free and written to be practically useful — not generic advice, but specific guidance you can apply immediately.</p>
+
+  <h2>Contact</h2>
+  <p>Questions, feedback, or partnership inquiries: <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
+
+  <div class="cta">
+    <div style="font-weight:700;font-size:18px;margin-bottom:8px;">Ready to understand your proportions?</div>
+    <div style="font-size:14px;color:var(--muted);">Free body analysis — takes under 2 minutes</div>
+    <a href="/" class="cta-btn">Analyze My Body Type Free →</a>
   </div>
-  <p class="footer-copy">&copy; 2026 FITME. Global Body Analysis Service.</p>
-</footer>
-
+</main>
+<footer><p>© 2026 FITME. All rights reserved. · <a href="/privacy.html" style="color:var(--muted);">Privacy Policy</a> · <a href="/terms.html" style="color:var(--muted);">Terms</a> · <a href="/contact.html" style="color:var(--muted);">Contact</a></p></footer>
 </body>
 </html>
