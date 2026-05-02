@@ -887,7 +887,7 @@
       <div class="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
       <div class="hero-demo-frame">
         <video id="hero-demo-video" autoplay muted loop playsinline preload="none">
-          <source src="demo.mp4" type="video/mp4">
+          <source src="demo-v2.mp4" type="video/mp4">
         </video>
       </div>
     </div>
@@ -4338,7 +4338,7 @@
     _applyHeadline(_hlIdx, lang);
     const demoVideo = document.getElementById('hero-demo-video');
     if (demoVideo) {
-      const src = lang === 'ko' ? 'demo-ko.mp4' : 'demo.mp4';
+      const src = lang === 'ko' ? 'demo-ko-v2.mp4' : 'demo-v2.mp4';
       if (!demoVideo.src.endsWith(src)) {
         demoVideo.src = src;
         demoVideo.load();
