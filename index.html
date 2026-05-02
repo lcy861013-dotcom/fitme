@@ -185,6 +185,9 @@
     .hero-sample-btn:hover { background: rgba(232,169,60,0.08); border-color: var(--accent); transform: translateY(-1px); }
     .hero-badges { display: flex; gap: 16px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
     .hero-badge { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .hero-trust { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin: 0 0 20px; }
+    .hero-trust span { font-size: 12.5px; color: var(--muted); font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 5px; }
+    .hero-trust span::before { content: '✔'; color: #4cff91; font-size: 11px; }
     .hero-scroll-hint { margin-top: 28px; display: flex; align-items: center; gap: 6px; justify-content: center; color: var(--muted); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.5px; animation: bounce-y 2s infinite; }
     .hero-scroll-hint:hover { color: var(--accent); }
     @keyframes bounce-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
@@ -846,7 +849,7 @@
       <div class="headline-dot" onclick="goHeadline(2)"></div>
     </div>
     <h1 class="hero-headline" id="hero-headline-text">"Highlight your strengths.<br><em>Minimize what you don't love.</em>"</h1>
-    <p class="hero-sub" data-i18n="hero-sub">No selfies. No cameras. Just 3 measurements — we reveal your body's unique strengths so you can highlight what you love and minimize what you don't.</p>
+    <p class="hero-sub" data-i18n="hero-sub">Find what actually fits your body — not someone else's.<br>Enter 3 measurements and instantly discover your body ratio, style fit, and what clothes work best for you.</p>
 
     <!-- PRIVACY HOW IT WORKS STRIP -->
     <div class="hero-privacy-strip">
@@ -877,8 +880,13 @@
       </div>
     </div>
 
-    <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Analyze My Body (No Photos) →</a>
-    <div class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Zero data stored</div>
+    <div class="hero-trust" data-i18n-trust>
+      <span data-i18n="hero-trust1">No photos required</span>
+      <span data-i18n="hero-trust2">No signup</span>
+      <span data-i18n="hero-trust3">100% private</span>
+    </div>
+    <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Start Free Analysis →</a>
+    <div class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Instant results</div>
     <div style="margin-top:6px;">
       <button class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 샘플 결과 먼저 보기</button>
     </div>
@@ -2156,8 +2164,9 @@
       'hero-btn-sub':'무료 · 가입 불필요 · 즉시 결과',
       'sample-btn':'👀 샘플 결과 먼저 보기',
       'hero-tag-old':'나만의 핏을 찾다',
-      'hero-sub':'당신 몸이 틀린 게 아닙니다. 그 옷이 다른 사람 비율로 만들어진 것뿐입니다.<br>2분이면 내 비율을 숫자로 확인할 수 있어요.',
-      'hero-btn':'내 체형 정체성 알아보기 →',
+      'hero-sub':'당신 몸이 틀린 게 아닙니다. 그 옷이 다른 사람 비율로 만들어진 것뿐입니다.<br>키·몸무게·허리 3가지만 입력하면 내 비율과 딱 맞는 옷을 바로 알 수 있어요.',
+      'hero-btn':'무료 체형 분석 시작 →',
+      'hero-trust1':'사진 불필요','hero-trust2':'가입 불필요','hero-trust3':'100% 비공개',
       'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'privacy-step1':'측정값 3개 입력','privacy-step2':'비율 분석','privacy-step3':'스타일 청사진 획득',
       'hero-privacy-note':'셀카 없음 · 업로드 없음 · 내 정보는 이 페이지를 절대 벗어나지 않아요',
@@ -2402,11 +2411,12 @@
       'hero-live-suffix':'📷 No Photos · Measurements Only · 100% Private',
       'hero-headline':'"Highlight your strengths.<br><em>Minimize what you don\'t love.</em>"',
       'hero-demo-label':'SAMPLE RESULT',
-      'hero-btn-sub':'Free · No account · Zero data stored',
+      'hero-btn-sub':'Free · No account · Instant results',
       'sample-btn':'👀 Try Sample Results First',
       'hero-tag-old':'Know Your Body. Dress Better.',
-      'hero-sub':'Your body isn\'t wrong. The clothes were designed for someone else\'s proportions.<br>Find yours in 2 minutes — no photos, no guessing.',
-      'hero-btn':'Analyze My Body (No Photos) →',
+      'hero-sub':'Find what actually fits your body — not someone else\'s.<br>Enter 3 measurements and instantly discover your body ratio, style fit, and what clothes work best for you.',
+      'hero-btn':'Start Free Analysis →',
+      'hero-trust1':'No photos required','hero-trust2':'No signup','hero-trust3':'100% private',
       'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Your Privacy Is Our DNA','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
       'privacy-step1':'Enter 3 Measurements','privacy-step2':'Analyze Proportions','privacy-step3':'Get Style Blueprint',
       'hero-privacy-note':'No selfies · No uploads · Your data never leaves this page',
