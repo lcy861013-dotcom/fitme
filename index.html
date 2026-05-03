@@ -316,7 +316,7 @@
     .panel-subtitle { font-size: 12px; color: var(--muted); line-height: 1.7; }
     .input-area { flex: 1; padding: 24px; overflow-y: auto; }
     .input-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 180px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 13px; text-align: center; line-height: 2; }
-    .measure-tip-card { background: rgba(232,169,60,0.05); border: 1px solid rgba(232,169,60,0.25); border-radius: 16px; padding: 20px 24px; margin-bottom: 20px; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease; max-height: 300px; opacity: 1; }
+    .measure-tip-card { background: rgba(232,169,60,0.05); border: 1px solid rgba(232,169,60,0.25); border-radius: 16px; padding: 20px 24px; margin-bottom: 20px; overflow: hidden; transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease; max-height: 560px; opacity: 1; }
     .measure-tip-card.collapsed { max-height: 0; opacity: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; }
     .measure-tip-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
     .measure-tip-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
@@ -324,6 +324,25 @@
     .measure-tip-item .tip-icon { flex-shrink: 0; font-size: 15px; margin-top: 1px; }
     .measure-tip-btn { display: inline-block; padding: 8px 20px; background: var(--accent); color: var(--bg); font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px; border: none; border-radius: 100px; cursor: pointer; transition: background 0.2s; }
     .measure-tip-btn:hover { background: #f5ff80; }
+    .hanspan-spotlight { position: relative; background: linear-gradient(135deg, rgba(232,169,60,0.18) 0%, rgba(232,169,60,0.06) 100%); border: 1.5px solid rgba(232,169,60,0.5); border-radius: 12px; padding: 16px 18px 18px; margin-bottom: 16px; overflow: hidden; }
+    .hanspan-spotlight::after { content: '✋'; position: absolute; right: 12px; top: 8px; font-size: 40px; opacity: 0.18; pointer-events: none; }
+    .hanspan-tag { font-size: 9px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; font-family: 'DM Sans', sans-serif; margin-bottom: 6px; opacity: 0.8; }
+    .hanspan-headline { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 1.5px; color: var(--accent); line-height: 1.15; margin-bottom: 7px; }
+    .hanspan-desc { font-size: 12px; color: var(--muted); line-height: 1.75; margin-bottom: 13px; }
+    .hanspan-input-row { display: flex; gap: 8px; align-items: stretch; }
+    .hanspan-input-wrap { display: flex; align-items: center; background: rgba(0,0,0,0.35); border: 1px solid rgba(232,169,60,0.45); border-radius: 8px; padding: 0 10px; gap: 4px; transition: border-color 0.2s, box-shadow 0.2s; }
+    .hanspan-input-wrap:focus-within { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(232,169,60,0.18); }
+    .hanspan-input { background: transparent; border: none; color: var(--text); font-size: 16px; font-family: 'DM Sans', sans-serif; font-weight: 700; width: 62px; outline: none; padding: 9px 0; -moz-appearance: textfield; appearance: textfield; }
+    .hanspan-input::-webkit-inner-spin-button, .hanspan-input::-webkit-outer-spin-button { -webkit-appearance: none; appearance: none; }
+    .hanspan-unit { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .hanspan-save-btn { flex: 1; padding: 9px 14px; background: var(--accent); color: var(--bg); border: none; border-radius: 8px; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 1.5px; cursor: pointer; transition: background 0.2s, transform 0.1s; }
+    .hanspan-save-btn:hover { background: #f5ff80; }
+    .hanspan-save-btn:active { transform: scale(0.97); }
+    .hanspan-saved-badge { display: none; align-items: center; gap: 8px; margin-top: 10px; padding: 8px 12px; background: rgba(232,169,60,0.12); border-radius: 8px; border: 1px solid rgba(232,169,60,0.25); }
+    .hanspan-saved-badge.visible { display: flex; animation: fadeIn 0.25s; }
+    .hanspan-saved-check { font-size: 16px; }
+    .hanspan-saved-text { font-size: 12.5px; color: var(--accent); line-height: 1.4; }
+    .hanspan-saved-text strong { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }
     .part-howto-box { background: rgba(232,169,60,0.04); border-left: 3px solid var(--accent); padding: 9px 12px; border-radius: 0 8px 8px 0; font-size: 12px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
     .measurement-form { display: none; }
     .measurement-form.visible { display: block; animation: fadeIn 0.2s; }
@@ -1288,9 +1307,27 @@
   <div class="main-container" id="analysis">
     <div class="measure-tip-card" id="measure-tip-card">
       <div class="measure-tip-title" data-i18n="tip-card-title">📏 측정 전 30초만요!</div>
+
+      <!-- 한뼘 스포트라이트 -->
+      <div class="hanspan-spotlight">
+        <div class="hanspan-tag" data-i18n="hanspan-tag">✦ 가장 쉬운 방법</div>
+        <div class="hanspan-headline" data-i18n="hanspan-headline">지금 딱 한 번만 — 내 한 뼘 재기</div>
+        <div class="hanspan-desc" data-i18n="hanspan-desc">손 펼쳐서 엄지↔새끼손가락 끝 거리를 재세요. 이 하나면 줄자 없이도 어깨·허리·다리 모두 계산할 수 있어요.</div>
+        <div class="hanspan-input-row">
+          <div class="hanspan-input-wrap">
+            <input type="number" class="hanspan-input" id="hanspan-cm-input" placeholder="18" min="10" max="35" step="0.5" inputmode="decimal">
+            <span class="hanspan-unit">cm</span>
+          </div>
+          <button class="hanspan-save-btn" onclick="saveHanspan()" data-i18n="hanspan-save">저장하기</button>
+        </div>
+        <div class="hanspan-saved-badge" id="hanspan-saved-badge">
+          <span class="hanspan-saved-check">✓</span>
+          <span class="hanspan-saved-text" id="hanspan-saved-text">내 한 뼘 <strong>18cm</strong> 저장됨 — 이제 어디서나 쓸 수 있어요!</span>
+        </div>
+      </div>
+
       <div class="measure-tip-list">
         <div class="measure-tip-item"><span class="tip-icon">📱</span><span data-i18n="tip-card-1">줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요</span></div>
-        <div class="measure-tip-item"><span class="tip-icon">✋</span><span data-i18n="tip-card-2">한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요</span></div>
         <div class="measure-tip-item"><span class="tip-icon">⭐</span><span data-i18n="tip-card-3">키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요</span></div>
       </div>
       <button class="measure-tip-btn" onclick="dismissTipCard()" data-i18n="tip-card-btn">알겠어요, 재러 가기 →</button>
@@ -2218,6 +2255,7 @@
       'story-p1':'같은 사이즈를 입는 두 사람도 어깨-허리 비율, 다리-상체 길이, 힙 너비가 완전히 다를 수 있습니다. 결과는? 기술적으로는 맞지만 어딘가 어색한 옷이 됩니다.',
       'story-p2':'FITME는 이 문제를 해결하기 위해 만들어졌습니다. 사이즈가 아닌 실제 신체 비율을 이해하면 — 어떤 스타일이 내 체형에 맞는지, 어떤 컷을 피해야 하는지 — 더 나은 선택을 할 수 있습니다.',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
+      'hanspan-tag':'✦ 가장 쉬운 방법','hanspan-headline':'지금 딱 한 번만 — 내 한 뼘 재기','hanspan-desc':'손 펼쳐서 엄지↔새끼손가락 끝 거리를 재세요. 이 하나면 줄자 없이도 어깨·허리·다리 모두 계산할 수 있어요.','hanspan-save':'저장하기',
       'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
       'howto-weight':'⚖️ 아침 공복·화장실 후가 가장 정확해요. 체중계 위에서 움직이지 말고 측정하세요',
       'howto-head':'📏 이마 중앙에서 귀 위를 지나 뒷머리까지 한 바퀴. 줄자가 수평인지 확인하세요',
@@ -2471,6 +2509,7 @@
       'story-p1':'Two people can wear the same size and have completely different proportions: different shoulder-to-waist ratios, different leg-to-torso lengths, different hip widths. The result? Clothes that technically fit but never look quite right.',
       'story-p2':'FITME was built to solve this. By understanding your actual body proportions — not just your size — you can make smarter decisions about what styles will work for your shape, which cuts to avoid, and how to build outfits that consistently look intentional.',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
+      'hanspan-tag':'✦ Easiest Method','hanspan-headline':'Just once — measure your hand span','hanspan-desc':'Spread your hand wide: thumb tip to pinky tip. One measurement lets you estimate shoulders, waist & legs without any tools.','hanspan-save':'Save',
       'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
       'howto-weight':'⚖️ Best measured in the morning before eating. Stand still on the scale and wait for a stable reading',
       'howto-head':'📏 Wrap a tape around your head — from forehead, above the ears, to the widest part at the back',
@@ -2715,6 +2754,7 @@
       'privacy-step1':'3つの測定値を入力','privacy-step2':'プロポーションを分析','privacy-step3':'スタイルプランを取得',
       'hero-privacy-note':'セルフィーなし · アップロードなし · データはこのページに留まります',
       'tip-card-title':'📏 測定前に30秒だけ！','tip-card-1':'メジャーなし？OK — スマホの縦幅（約15cm）を定規代わりに使えます','tip-card-2':'ひとつまみ（親指〜小指の端）のcmを先に測ると、肩や脚も簡単に計算できます','tip-card-3':'身長・体重・ウエストの3つだけで分析スタート！残りは任意です','tip-card-btn':'わかった、測定へ →',
+      'hanspan-tag':'✦ 一番かんたんな方法','hanspan-headline':'一回だけ — 自分の一拃を測る','hanspan-desc':'手を広げて親指の先から小指の先までの距離を測るだけ。これ一つでメジャーなしに肩・腰・脚を全部計算できます。','hanspan-save':'保存する',
       'howto-height':'📐 壁に背中をつけて立ち、頭の上に本を水平に置いてマークし、床からの距離を測ってください',
       'howto-weight':'⚖️ 朝食前・トイレ後が最も正確です。体重計の上でじっとして安定した数値を確認してください',
       'howto-head':'📏 額の中央から耳の上を通って後頭部の最も広い部分まで一周巻いて測ってください',
@@ -2819,6 +2859,7 @@
       'privacy-step1':'输入3个测量值','privacy-step2':'分析身体比例','privacy-step3':'获取搭配方案',
       'hero-privacy-note':'无需自拍 · 无需上传 · 您的数据不会离开此页面',
       'tip-card-title':'📏 测量前只需30秒！','tip-card-1':'没有卷尺？没关系 — 用手机竖向长度（约15cm）当尺子','tip-card-2':'先量一拃（拇指到小指）的cm，肩宽·腿长也能轻松换算','tip-card-3':'只需身高·体重·腰围3项即可开始分析！其余为选填','tip-card-btn':'明白了，去测量 →',
+      'hanspan-tag':'✦ 最简单的方法','hanspan-headline':'只需一次 — 量出自己的一拃','hanspan-desc':'张开手，量拇指尖到小指尖的距离。只需这一个数值，不用卷尺也能计算肩宽、腰围和腿长。','hanspan-save':'保存',
       'howto-height':'📐 背靠墙站立，头顶放一本水平的书做标记，然后量地面到标记的距离',
       'howto-weight':'⚖️ 早晨空腹如厕后测量最准确。站在体重秤上保持静止，等待数值稳定',
       'howto-head':'📏 从额头中央绕过耳朵上方到后脑最宽处围一圈，保持皮尺水平',
@@ -6302,11 +6343,40 @@
     try { localStorage.setItem('fitme_tip_dismissed', '1'); } catch(e) {}
   }
 
+  function saveHanspan() {
+    var input = document.getElementById('hanspan-cm-input');
+    var val = parseFloat(input.value);
+    if (!val || val < 10 || val > 35) { input.focus(); return; }
+    try { localStorage.setItem('fitme_hanspan', val); } catch(e) {}
+    _showHanspanBadge(val);
+  }
+
+  function _showHanspanBadge(val) {
+    var badge = document.getElementById('hanspan-saved-badge');
+    var text = document.getElementById('hanspan-saved-text');
+    if (!badge || !text) return;
+    var cm = parseFloat(val).toFixed(1).replace(/\.0$/, '');
+    var lang = (typeof currentLang !== 'undefined') ? currentLang : 'ko';
+    var msg;
+    if (lang === 'ko') msg = '내 한 뼘 <strong>' + cm + 'cm</strong> 저장됨 — 이제 어디서나 쓸 수 있어요!';
+    else if (lang === 'ja') msg = '私の一拃 <strong>' + cm + 'cm</strong> 保存済み — どこでも使えます！';
+    else if (lang === 'zh') msg = '我的一拃 <strong>' + cm + 'cm</strong> 已保存 — 随时可用！';
+    else msg = 'Hand span <strong>' + cm + 'cm</strong> saved — use it anytime!';
+    text.innerHTML = msg;
+    badge.classList.add('visible');
+  }
+
   (function() {
     try {
       if (localStorage.getItem('fitme_tip_dismissed') === '1') {
         var card = document.getElementById('measure-tip-card');
         if (card) { card.style.transition = 'none'; card.classList.add('collapsed'); }
+      }
+      var saved = localStorage.getItem('fitme_hanspan');
+      if (saved) {
+        var inp = document.getElementById('hanspan-cm-input');
+        if (inp) inp.value = saved;
+        _showHanspanBadge(saved);
       }
     } catch(e) {}
   })();
