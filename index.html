@@ -1061,22 +1061,22 @@
 
         <!-- 부위별 측정 가이드 링크 -->
         <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-          <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">📸 부위별 시각 측정 가이드</div>
+          <div id="guide-links-title" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">📸 부위별 시각 측정 가이드</div>
           <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
             <a href="/blog/blog20" onclick="goBlog(event,'blog20')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">✋</span><div><div style="font-size:13px;font-weight:600;">한 뼘 기준 재기</div><div style="font-size:11px;color:var(--muted);">측정 전 필수 첫 단계</div></div>
+              <span style="font-size:20px;">✋</span><div><div id="guide-link1-title" style="font-size:13px;font-weight:600;">한 뼘 기준 재기</div><div id="guide-link1-sub" style="font-size:11px;color:var(--muted);">측정 전 필수 첫 단계</div></div>
             </a>
             <a href="/blog/blog21" onclick="goBlog(event,'blog21')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">🦴</span><div><div style="font-size:13px;font-weight:600;">어깨 너비 재기</div><div style="font-size:11px;color:var(--muted);">견봉 위치 + 자가 측정법</div></div>
+              <span style="font-size:20px;">🦴</span><div><div id="guide-link2-title" style="font-size:13px;font-weight:600;">어깨 너비 재기</div><div id="guide-link2-sub" style="font-size:11px;color:var(--muted);">견봉 위치 + 자가 측정법</div></div>
             </a>
             <a href="/blog/blog22" onclick="goBlog(event,'blog22')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">💪</span><div><div style="font-size:13px;font-weight:600;">팔 길이 재기</div><div style="font-size:11px;color:var(--muted);">상완 + 하완 2단계</div></div>
+              <span style="font-size:20px;">💪</span><div><div id="guide-link3-title" style="font-size:13px;font-weight:600;">팔 길이 재기</div><div id="guide-link3-sub" style="font-size:11px;color:var(--muted);">상완 + 하완 2단계</div></div>
             </a>
             <a href="/blog/blog23" onclick="goBlog(event,'blog23')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">🦵</span><div><div style="font-size:13px;font-weight:600;">다리 길이 재기</div><div style="font-size:11px;color:var(--muted);">골반뼈 → 발목 2단계</div></div>
+              <span style="font-size:20px;">🦵</span><div><div id="guide-link4-title" style="font-size:13px;font-weight:600;">다리 길이 재기</div><div id="guide-link4-sub" style="font-size:11px;color:var(--muted);">골반뼈 → 발목 2단계</div></div>
             </a>
             <a href="/blog/blog24" onclick="goBlog(event,'blog24')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;grid-column:span 2;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">🍑</span><div><div style="font-size:13px;font-weight:600;">엉덩이 둘레 재기</div><div style="font-size:11px;color:var(--muted);">두 손뼘으로 혼자서 한 바퀴</div></div>
+              <span style="font-size:20px;">🍑</span><div><div id="guide-link5-title" style="font-size:13px;font-weight:600;">엉덩이 둘레 재기</div><div id="guide-link5-sub" style="font-size:11px;color:var(--muted);">두 손뼘으로 혼자서 한 바퀴</div></div>
             </a>
           </div>
         </div>
@@ -2420,6 +2420,12 @@
       'guide-card4-leg-label':'다리 길이 (아웃사이드)','guide-card4-leg':'골반뼈(대전자) → 발목','guide-card4-leg-span':'약 3.5–5 뼘',
       'guide-card4-arm-label':'팔 길이','guide-card4-arm':'어깨 끝 → 손목','guide-card4-arm-span':'약 3–3.5 뼘',
       'guide-card4-tip':'💡 뼘 × 내 한 뼘 cm = 실제 길이 — 예) 어깨가 2.3뼘이고 내 한 뼘이 18cm면 → 약 41.4cm',
+      'guide-links-title':'📸 부위별 시각 측정 가이드',
+      'guide-link1-title':'한 뼘 기준 재기','guide-link1-sub':'측정 전 필수 첫 단계',
+      'guide-link2-title':'어깨 너비 재기','guide-link2-sub':'견봉 위치 + 자가 측정법',
+      'guide-link3-title':'팔 길이 재기','guide-link3-sub':'상완 + 하완 2단계',
+      'guide-link4-title':'다리 길이 재기','guide-link4-sub':'골반뼈 → 발목 2단계',
+      'guide-link5-title':'엉덩이 둘레 재기','guide-link5-sub':'두 손뼘으로 혼자서 한 바퀴',
       'blog-title':'패션 & 핏 가이드',
       'blog1-title':'나에게 맞는 팬츠 핏 완전 가이드','blog1-desc':'슬림핏부터 와이드핏까지 — 체형·키·신발에 따른 팬츠 선택법과 기장·롤업 활용 실전 팁.',
       'blog2-title':'발볼 넓은 분들을 위한 신발 브랜드 가이드','blog2-desc':'브랜드별 발볼 실측 비교 + 온라인 구매 시 실패 없는 선택 방법.',
@@ -2679,6 +2685,12 @@
       'guide-card4-leg-label':'Leg Length (outer)','guide-card4-leg':'Hip bone → ankle','guide-card4-leg-span':'~3.5–5 spans',
       'guide-card4-arm-label':'Arm Length','guide-card4-arm':'Shoulder end → wrist','guide-card4-arm-span':'~3–3.5 spans',
       'guide-card4-tip':'💡 Spans × your span cm = actual length — e.g. shoulder = 2.3 spans, span = 18cm → ~41.4cm',
+      'guide-links-title':'📸 Visual Measurement Guides',
+      'guide-link1-title':'Hand Span Baseline','guide-link1-sub':'Essential first step',
+      'guide-link2-title':'Shoulder Width','guide-link2-sub':'Acromion + self-measuring method',
+      'guide-link3-title':'Arm Length','guide-link3-sub':'Upper + forearm in 2 steps',
+      'guide-link4-title':'Leg Length','guide-link4-sub':'Hip bone → ankle in 2 steps',
+      'guide-link5-title':'Hip Circumference','guide-link5-sub':'Two hands, solo measurement',
       'guide-card5-title':'🧬 Hidden Body Proportion Laws','guide-card5-desc':'Ancient formulas da Vinci also discovered — useful for estimating body parts without a tape measure.',
       'guide-card5-law1-title':'Forearm length = Foot length','guide-card5-law1-desc':'Your elbow-to-wrist length matches your foot size with surprising accuracy — usually within 1cm.',
       'guide-card5-law2-title':'Neck × 2 ≈ Waist circumference','guide-card5-law2-desc':'Measure your neck and double it to estimate your waist. More accurate for average body types.',
@@ -2935,6 +2947,12 @@
       'guide-card4-leg-label':'脚の長さ（外側）','guide-card4-leg':'大転子 → 足首','guide-card4-leg-span':'約3.5〜5拳',
       'guide-card4-arm-label':'腕の長さ','guide-card4-arm':'肩先 → 手首','guide-card4-arm-span':'約3〜3.5拳',
       'guide-card4-tip':'💡 拳数 × 自分の一拳cm = 実際の長さ — 例）肩幅2.3拳、一拳18cmなら → 約41.4cm',
+      'guide-links-title':'📸 部位別ビジュアル測定ガイド',
+      'guide-link1-title':'一拳の基準を測る','guide-link1-sub':'測定前の必須ステップ',
+      'guide-link2-title':'肩幅を測る','guide-link2-sub':'肩峰の位置＋自己測定法',
+      'guide-link3-title':'腕の長さを測る','guide-link3-sub':'上腕＋前腕の2ステップ',
+      'guide-link4-title':'脚の長さを測る','guide-link4-sub':'大転子→足首 2ステップ',
+      'guide-link5-title':'ヒップ周囲を測る','guide-link5-sub':'両手で一人でぐるっと測る',
       'guide-card5-title':'🧬 体に隠れた比率の法則','guide-card5-desc':'ダ・ヴィンチも発見した人体の公式 — メジャーなしで他の部位を推定できます。',
       'guide-card5-law1-title':'前腕の長さ = 足の長さ','guide-card5-law1-desc':'肘から手首までの長さと足のサイズが驚くほど一致します。誤差1cm以内のことがほとんど。',
       'guide-card5-law2-title':'首周り × 2 ≈ ウエスト周り','guide-card5-law2-desc':'首だけ測ってもウエストサイズを大体推定できます。標準体型に近いほど誤差が小さくなります。',
@@ -3047,6 +3065,12 @@
       'guide-card4-leg-label':'腿长（外侧）','guide-card4-leg':'髋骨(大转子) → 脚踝','guide-card4-leg-span':'约3.5〜5拃',
       'guide-card4-arm-label':'手臂长度','guide-card4-arm':'肩端 → 手腕','guide-card4-arm-span':'约3〜3.5拃',
       'guide-card4-tip':'💡 拃数 × 自己一拃cm = 实际长度 — 例）肩宽2.3拃，一拃18cm → 约41.4cm',
+      'guide-links-title':'📸 各部位视觉测量指南',
+      'guide-link1-title':'测量手拃基准','guide-link1-sub':'测量前必要的第一步',
+      'guide-link2-title':'测量肩宽','guide-link2-sub':'肩峰位置＋自测方法',
+      'guide-link3-title':'测量手臂长度','guide-link3-sub':'上臂＋前臂两步法',
+      'guide-link4-title':'测量腿长','guide-link4-sub':'髋骨→脚踝 两步法',
+      'guide-link5-title':'测量臀围','guide-link5-sub':'双手独自绕一圈',
       'guide-card5-title':'🧬 身体中隐藏的比例法则','guide-card5-desc':'达芬奇也发现的人体公式 — 不用卷尺也能推算其他部位。',
       'guide-card5-law1-title':'前臂长度 = 脚长','guide-card5-law1-desc':'肘到手腕的长度与脚的尺寸惊人地一致。大多数情况下误差在1cm以内。',
       'guide-card5-law2-title':'颈围 × 2 ≈ 腰围','guide-card5-law2-desc':'只量颈围就能大致推算腰围。越接近标准体型误差越小。',
@@ -3166,6 +3190,12 @@
       'guide-card4-leg-label':'Longueur de jambe','guide-card4-leg':'Grand trochanter → cheville','guide-card4-leg-span':'~3,5–5 empans',
       'guide-card4-arm-label':'Longueur du bras','guide-card4-arm':'Épaule → poignet','guide-card4-arm-span':'~3–3,5 empans',
       'guide-card4-tip':'💡 Empans × votre empan cm = longueur réelle — ex. 2,3 empans × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Guides de mesure visuels par partie',
+      'guide-link1-title':'Référence empan','guide-link1-sub':'Première étape essentielle',
+      'guide-link2-title':'Largeur des épaules','guide-link2-sub':'Position acromion + auto-mesure',
+      'guide-link3-title':'Longueur des bras','guide-link3-sub':'Bras supérieur + avant-bras en 2 étapes',
+      'guide-link4-title':'Longueur des jambes','guide-link4-sub':'Grand trochanter → cheville en 2 étapes',
+      'guide-link5-title':'Tour de hanches','guide-link5-sub':'Tour complet seul avec les deux mains',
       'guide-card5-title':'🧬 Les lois des proportions cachées du corps','guide-card5-desc':'Des formules que Léonard de Vinci a aussi découvertes — utiles pour estimer d\'autres mesures sans ruban.',
       'guide-card5-law1-title':'Avant-bras = longueur du pied','guide-card5-law1-desc':'La distance coude-poignet correspond presque exactement à la pointure. Erreur inférieure à 1cm dans la plupart des cas.',
       'guide-card5-law2-title':'Tour de cou × 2 ≈ tour de taille','guide-card5-law2-desc':'Mesurez votre cou et doublez pour estimer votre taille. Plus précis pour les morphologies standard.',
@@ -3285,6 +3315,12 @@
       'guide-card4-leg-label':'Largo de pierna','guide-card4-leg':'Hueso cadera → tobillo','guide-card4-leg-span':'~3,5–5 palmos',
       'guide-card4-arm-label':'Largo de brazo','guide-card4-arm':'Hombro → muñeca','guide-card4-arm-span':'~3–3,5 palmos',
       'guide-card4-tip':'💡 Palmos × tu palmo cm = longitud real — ej. 2,3 palmos × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Guías de medición visual por zona',
+      'guide-link1-title':'Referencia del palmo','guide-link1-sub':'Primer paso esencial',
+      'guide-link2-title':'Anchura de hombros','guide-link2-sub':'Posición del acromion + automedición',
+      'guide-link3-title':'Longitud del brazo','guide-link3-sub':'Brazo superior + antebrazo en 2 pasos',
+      'guide-link4-title':'Longitud de piernas','guide-link4-sub':'Cadera → tobillo en 2 pasos',
+      'guide-link5-title':'Contorno de caderas','guide-link5-sub':'Vuelta completa solo con dos manos',
       'guide-card5-title':'🧬 Las leyes ocultas de las proporciones del cuerpo','guide-card5-desc':'Fórmulas que también descubrió Da Vinci — útiles para estimar otras medidas sin cinta métrica.',
       'guide-card5-law1-title':'Antebrazo = longitud del pie','guide-card5-law1-desc':'La distancia codo-muñeca coincide sorprendentemente con el tamaño del pie. Error menor de 1cm en la mayoría de casos.',
       'guide-card5-law2-title':'Cuello × 2 ≈ cintura','guide-card5-law2-desc':'Mide tu cuello y duplícalo para estimar tu cintura. Más preciso en cuerpos de proporciones estándar.',
@@ -3404,6 +3440,12 @@
       'guide-card4-leg-label':'Comprimento da perna','guide-card4-leg':'Trocânter maior → tornozelo','guide-card4-leg-span':'~3,5–5 palmas',
       'guide-card4-arm-label':'Comprimento do braço','guide-card4-arm':'Ombro → pulso','guide-card4-arm-span':'~3–3,5 palmas',
       'guide-card4-tip':'💡 Palmas × sua palma cm = comprimento real — ex. 2,3 palmas × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Guias de medição visual por parte',
+      'guide-link1-title':'Referência de palmo','guide-link1-sub':'Primeiro passo essencial',
+      'guide-link2-title':'Largura dos ombros','guide-link2-sub':'Posição do acrômio + automedição',
+      'guide-link3-title':'Comprimento do braço','guide-link3-sub':'Braço superior + antebraço em 2 passos',
+      'guide-link4-title':'Comprimento das pernas','guide-link4-sub':'Trocânter → tornozelo em 2 passos',
+      'guide-link5-title':'Circunferência do quadril','guide-link5-sub':'Volta completa sozinho com as duas mãos',
       'guide-card5-title':'🧬 As leis ocultas das proporções do corpo','guide-card5-desc':'Fórmulas que Da Vinci também descobriu — úteis para estimar outras medidas sem fita métrica.',
       'guide-card5-law1-title':'Antebraço = comprimento do pé','guide-card5-law1-desc':'A distância cotovelo-pulso corresponde surpreendentemente ao tamanho do pé. Erro menor que 1cm na maioria dos casos.',
       'guide-card5-law2-title':'Pescoço × 2 ≈ cintura','guide-card5-law2-desc':'Meça seu pescoço e duplique para estimar a cintura. Mais preciso para corpos de proporções padrão.',
@@ -3523,6 +3565,12 @@
       'guide-card4-leg-label':'Beinlänge (Außenseite)','guide-card4-leg':'Großer Trochanter → Knöchel','guide-card4-leg-span':'~3,5–5 Spannen',
       'guide-card4-arm-label':'Armlänge','guide-card4-arm':'Schulter → Handgelenk','guide-card4-arm-span':'~3–3,5 Spannen',
       'guide-card4-tip':'💡 Spannen × deine Spanne cm = tatsächliche Länge — z.B. 2,3 Spannen × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Visuelle Messanleitungen nach Körperteil',
+      'guide-link1-title':'Spanne Basismaß','guide-link1-sub':'Essenzieller erster Schritt',
+      'guide-link2-title':'Schulterbreite messen','guide-link2-sub':'Akromion-Position + Selbstmessung',
+      'guide-link3-title':'Armlänge messen','guide-link3-sub':'Oberarm + Unterarm in 2 Schritten',
+      'guide-link4-title':'Beinlänge messen','guide-link4-sub':'Großer Trochanter → Knöchel in 2 Schritten',
+      'guide-link5-title':'Hüftumfang messen','guide-link5-sub':'Allein mit zwei Händen rundherum messen',
       'guide-card5-title':'🧬 Die verborgenen Proportionsgesetze des Körpers','guide-card5-desc':'Formeln, die auch Da Vinci entdeckte — nützlich zum Schätzen anderer Maße ohne Maßband.',
       'guide-card5-law1-title':'Unterarmlänge = Fußlänge','guide-card5-law1-desc':'Die Strecke Ellenbogen-Handgelenk stimmt erstaunlich genau mit der Schuhgröße überein. Meist unter 1cm Abweichung.',
       'guide-card5-law2-title':'Halsumfang × 2 ≈ Taillenumfang','guide-card5-law2-desc':'Miss deinen Hals und verdopple ihn, um deinen Taillenumfang zu schätzen. Genauer bei Standardproportionen.',
@@ -3642,6 +3690,12 @@
       'guide-card4-leg-label':'Lunghezza gamba','guide-card4-leg':'Grande trocantere → caviglia','guide-card4-leg-span':'~3,5–5 spanne',
       'guide-card4-arm-label':'Lunghezza braccio','guide-card4-arm':'Spalla → polso','guide-card4-arm-span':'~3–3,5 spanne',
       'guide-card4-tip':'💡 Spanne × la tua spanna cm = lunghezza reale — es. 2,3 spanne × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Guide di misurazione visiva per parte',
+      'guide-link1-title':'Spanna di riferimento','guide-link1-sub':'Primo passo essenziale',
+      'guide-link2-title':'Larghezza delle spalle','guide-link2-sub':'Posizione acromion + auto-misurazione',
+      'guide-link3-title':'Lunghezza del braccio','guide-link3-sub':'Braccio superiore + avambraccio in 2 passi',
+      'guide-link4-title':'Lunghezza delle gambe','guide-link4-sub':'Grande trocantere → caviglia in 2 passi',
+      'guide-link5-title':'Circonferenza dell\'anca','guide-link5-sub':'Giro completo da soli con due mani',
       'guide-card5-title':'🧬 Le leggi nascoste delle proporzioni del corpo','guide-card5-desc':'Formule che anche Da Vinci scoprì — utili per stimare altre misure senza metro.',
       'guide-card5-law1-title':'Avambraccio = lunghezza del piede','guide-card5-law1-desc':'La distanza gomito-polso corrisponde sorprendentemente alla misura del piede. Errore inferiore a 1cm nella maggior parte dei casi.',
       'guide-card5-law2-title':'Collo × 2 ≈ vita','guide-card5-law2-desc':'Misura il collo e raddoppia per stimare la vita. Più preciso per corporature standard.',
@@ -3754,6 +3808,12 @@
       'guide-card4-leg-label':'Длина ноги (внешняя)','guide-card4-leg':'Большой вертел → лодыжка','guide-card4-leg-span':'~3,5–5 пядей',
       'guide-card4-arm-label':'Длина руки','guide-card4-arm':'Плечо → запястье','guide-card4-arm-span':'~3–3,5 пяди',
       'guide-card4-tip':'💡 Пядей × ваша пядь см = реальная длина — напр. 2,3 пяди × 18см → ~41,4см',
+      'guide-links-title':'📸 Визуальные руководства по измерению',
+      'guide-link1-title':'Базовая пядь','guide-link1-sub':'Первый обязательный шаг',
+      'guide-link2-title':'Ширина плеч','guide-link2-sub':'Положение акромиона + самоизмерение',
+      'guide-link3-title':'Длина рук','guide-link3-sub':'Плечо + предплечье в 2 шага',
+      'guide-link4-title':'Длина ног','guide-link4-sub':'Большой вертел → лодыжка в 2 шага',
+      'guide-link5-title':'Обхват бёдер','guide-link5-sub':'Полный круг двумя руками в одиночку',
       'guide-card5-title':'🧬 Скрытые законы пропорций тела','guide-card5-desc':'Формулы, которые открыл и Да Винчи — помогают оценить размеры без сантиметровой ленты.',
       'guide-card5-law1-title':'Предплечье = длина стопы','guide-card5-law1-desc':'Расстояние локоть-запястье удивительно точно совпадает с размером ноги. Погрешность обычно в пределах 1 см.',
       'guide-card5-law2-title':'Шея × 2 ≈ обхват талии','guide-card5-law2-desc':'Измерив шею и умножив на два, можно оценить размер талии. Точнее для стандартных пропорций.',
@@ -3866,6 +3926,12 @@
       'guide-card4-leg-label':'طول الساق','guide-card4-leg':'المدور الكبير ← الكاحل','guide-card4-leg-span':'~3.5–5 أشبار',
       'guide-card4-arm-label':'طول الذراع','guide-card4-arm':'الكتف إلى المعصم','guide-card4-arm-span':'~3–3.5 أشبار',
       'guide-card4-tip':'💡 أشبار × شبرك سم = الطول الحقيقي — مثال: 2.3 شبر × 18سم → ~41.4سم',
+      'guide-links-title':'📸 أدلة القياس المرئي لكل منطقة',
+      'guide-link1-title':'مقياس الشبر الأساسي','guide-link1-sub':'الخطوة الأولى الأساسية',
+      'guide-link2-title':'عرض الكتفين','guide-link2-sub':'موضع الأخرم + طريقة القياس الذاتي',
+      'guide-link3-title':'طول الذراع','guide-link3-sub':'العضد + الساعد في خطوتين',
+      'guide-link4-title':'طول الساق','guide-link4-sub':'المدور الكبير ← الكاحل في خطوتين',
+      'guide-link5-title':'محيط الورك','guide-link5-sub':'دورة كاملة بمفردك بكلتا اليدين',
       'guide-card5-title':'🧬 قوانين النسب المخفية في الجسم','guide-card5-desc':'صيغ اكتشفها دا فينشي أيضاً — مفيدة لتقدير أجزاء أخرى دون شريط قياس.',
       'guide-card5-law1-title':'الساعد = طول القدم','guide-card5-law1-desc':'المسافة من الكوع إلى الرسغ تتطابق بشكل مذهل مع مقاس القدم. الفرق أقل من 1سم في معظم الحالات.',
       'guide-card5-law2-title':'محيط الرقبة × 2 ≈ محيط الخصر','guide-card5-law2-desc':'قس رقبتك وضاعفها لتقدير الخصر. أكثر دقة للأجسام ذات النسب المعيارية.',
@@ -3978,6 +4044,12 @@
       'guide-card4-leg-label':'पैर की लंबाई','guide-card4-leg':'कूल्हे की हड्डी → टखना','guide-card4-leg-span':'~3.5–5 बित्ता',
       'guide-card4-arm-label':'बांह की लंबाई','guide-card4-arm':'कंधा → कलाई','guide-card4-arm-span':'~3–3.5 बित्ता',
       'guide-card4-tip':'💡 बित्ता × आपकी बित्ता सेमी = असली लंबाई — उदा. 2.3 बित्ता × 18सेमी → ~41.4सेमी',
+      'guide-links-title':'📸 भाग-वार दृश्य माप गाइड',
+      'guide-link1-title':'बित्ता आधार रेखा','guide-link1-sub':'मापने से पहले आवश्यक पहला कदम',
+      'guide-link2-title':'कंधे की चौड़ाई','guide-link2-sub':'एक्रोमियन + स्व-माप विधि',
+      'guide-link3-title':'बांह की लंबाई','guide-link3-sub':'ऊपरी बांह + अग्रभाग 2 चरणों में',
+      'guide-link4-title':'पैर की लंबाई','guide-link4-sub':'कूल्हे की हड्डी → टखना 2 चरणों में',
+      'guide-link5-title':'कूल्हे का घेरा','guide-link5-sub':'दोनों हाथों से अकेले पूरा चक्कर',
       'guide-card5-title':'🧬 शरीर के छिपे अनुपात के नियम','guide-card5-desc':'वो फॉर्मूले जो Da Vinci ने भी खोजे — टेप के बिना दूसरे अंगों का अनुमान लगाने के लिए उपयोगी।',
       'guide-card5-law1-title':'अग्र-भुजा = पैर की लंबाई','guide-card5-law1-desc':'कोहनी से कलाई तक की दूरी पैर के साइज़ से हैरान करने वाली सटीकता से मेल खाती है। ज़्यादातर 1cm से कम फ़र्क।',
       'guide-card5-law2-title':'गर्दन × 2 ≈ कमर','guide-card5-law2-desc':'गर्दन मापें और दोगुना करें — कमर का अनुमान लग जाएगा। मानक शरीर के लिए अधिक सटीक।',
@@ -4091,6 +4163,12 @@
       'guide-card4-leg-label':'ความยาวขา','guide-card4-leg':'กระดูกสะโพก → ข้อเท้า','guide-card4-leg-span':'~3.5–5 คืบ',
       'guide-card4-arm-label':'ความยาวแขน','guide-card4-arm':'ไหล่ → ข้อมือ','guide-card4-arm-span':'~3–3.5 คืบ',
       'guide-card4-tip':'💡 คืบ × คืบของคุณ ซม. = ความยาวจริง — เช่น 2.3 คืบ × 18ซม. → ~41.4ซม.',
+      'guide-links-title':'📸 คู่มือวัดขนาดแบบภาพแต่ละส่วน',
+      'guide-link1-title':'วัดคืบพื้นฐาน','guide-link1-sub':'ขั้นตอนแรกที่จำเป็น',
+      'guide-link2-title':'ความกว้างไหล่','guide-link2-sub':'ตำแหน่ง acromion + วิธีวัดเอง',
+      'guide-link3-title':'ความยาวแขน','guide-link3-sub':'ต้นแขน + ปลายแขน 2 ขั้นตอน',
+      'guide-link4-title':'ความยาวขา','guide-link4-sub':'กระดูกสะโพก → ข้อเท้า 2 ขั้นตอน',
+      'guide-link5-title':'รอบสะโพก','guide-link5-sub':'วัดรอบคนเดียวด้วยสองมือ',
       'guide-card5-title':'🧬 กฎสัดส่วนที่ซ่อนอยู่ในร่างกาย','guide-card5-desc':'สูตรที่ดา วินชี ก็ค้นพบ — ใช้ประมาณการส่วนอื่นของร่างกายโดยไม่ต้องใช้ตลับเมตร',
       'guide-card5-law1-title':'แขนท่อนล่าง = ความยาวเท้า','guide-card5-law1-desc':'ระยะจากข้อศอกถึงข้อมือตรงกับขนาดเท้าอย่างน่าประหลาดใจ ส่วนใหญ่ผิดพลาดไม่เกิน 1 ซม.',
       'guide-card5-law2-title':'เส้นรอบคอ × 2 ≈ เส้นรอบเอว','guide-card5-law2-desc':'วัดคอแล้วคูณ 2 เพื่อประมาณเอว แม่นยำกว่าสำหรับคนที่มีสัดส่วนมาตรฐาน',
@@ -4203,6 +4281,12 @@
       'guide-card4-leg-label':'Panjang Kaki','guide-card4-leg':'Trokanter mayor → pergelangan kaki','guide-card4-leg-span':'~3,5–5 jengkal',
       'guide-card4-arm-label':'Panjang Lengan','guide-card4-arm':'Bahu → pergelangan tangan','guide-card4-arm-span':'~3–3,5 jengkal',
       'guide-card4-tip':'💡 Jengkal × jengkalmu cm = panjang sebenarnya — mis. 2,3 jengkal × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Panduan Pengukuran Visual per Bagian',
+      'guide-link1-title':'Referensi Jengkal','guide-link1-sub':'Langkah pertama yang wajib',
+      'guide-link2-title':'Lebar Bahu','guide-link2-sub':'Posisi akromion + cara ukur sendiri',
+      'guide-link3-title':'Panjang Lengan','guide-link3-sub':'Lengan atas + bawah 2 langkah',
+      'guide-link4-title':'Panjang Kaki','guide-link4-sub':'Trokanter mayor → pergelangan kaki 2 langkah',
+      'guide-link5-title':'Lingkar Pinggul','guide-link5-sub':'Keliling penuh sendirian dengan dua tangan',
       'guide-card5-title':'🧬 Hukum Proporsi Tersembunyi Tubuh','guide-card5-desc':'Rumus yang juga ditemukan Da Vinci — berguna untuk memperkirakan bagian tubuh lain tanpa pita ukur.',
       'guide-card5-law1-title':'Panjang lengan bawah = panjang kaki','guide-card5-law1-desc':'Jarak siku ke pergelangan tangan cocok mengagumkan dengan ukuran kaki. Biasanya selisihnya kurang dari 1 cm.',
       'guide-card5-law2-title':'Lingkar leher × 2 ≈ lingkar pinggang','guide-card5-law2-desc':'Ukur leher dan kalikan dua untuk memperkirakan pinggang. Lebih akurat untuk proporsi tubuh standar.',
@@ -4315,6 +4399,12 @@
       'guide-card4-leg-label':'Chiều dài chân','guide-card4-leg':'Xương hông → mắt cá chân','guide-card4-leg-span':'~3,5–5 gang',
       'guide-card4-arm-label':'Chiều dài tay','guide-card4-arm':'Vai → cổ tay','guide-card4-arm-span':'~3–3,5 gang',
       'guide-card4-tip':'💡 Số gang × gang của bạn cm = chiều dài thực — vd. 2,3 gang × 18cm → ~41,4cm',
+      'guide-links-title':'📸 Hướng dẫn đo lường trực quan từng vùng',
+      'guide-link1-title':'Cơ sở gang tay','guide-link1-sub':'Bước đầu tiên bắt buộc',
+      'guide-link2-title':'Chiều rộng vai','guide-link2-sub':'Vị trí mỏm cùng vai + cách tự đo',
+      'guide-link3-title':'Chiều dài tay','guide-link3-sub':'Cánh tay + cẳng tay 2 bước',
+      'guide-link4-title':'Chiều dài chân','guide-link4-sub':'Xương hông → mắt cá chân 2 bước',
+      'guide-link5-title':'Chu vi hông','guide-link5-sub':'Một vòng hoàn chỉnh một mình với hai tay',
       'guide-card5-title':'🧬 Những định luật tỉ lệ ẩn của cơ thể','guide-card5-desc':'Những công thức Da Vinci cũng khám phá — hữu ích để ước tính các bộ phận khác mà không cần thước dây.',
       'guide-card5-law1-title':'Cẳng tay = độ dài bàn chân','guide-card5-law1-desc':'Khoảng cách từ khuỷu tay đến cổ tay khớp đáng kinh ngạc với cỡ giày. Sai số thường dưới 1cm.',
       'guide-card5-law2-title':'Vòng cổ × 2 ≈ vòng eo','guide-card5-law2-desc':'Đo vòng cổ rồi nhân đôi để ước tính vòng eo. Chính xác hơn với cơ thể có tỉ lệ tiêu chuẩn.',
@@ -4531,6 +4621,12 @@
     set('guide-card4-arm', t('guide-card4-arm'));
     set('guide-card4-arm-span', t('guide-card4-arm-span'));
     set('guide-card4-tip', t('guide-card4-tip'));
+    set('guide-links-title', t('guide-links-title'));
+    set('guide-link1-title', t('guide-link1-title')); set('guide-link1-sub', t('guide-link1-sub'));
+    set('guide-link2-title', t('guide-link2-title')); set('guide-link2-sub', t('guide-link2-sub'));
+    set('guide-link3-title', t('guide-link3-title')); set('guide-link3-sub', t('guide-link3-sub'));
+    set('guide-link4-title', t('guide-link4-title')); set('guide-link4-sub', t('guide-link4-sub'));
+    set('guide-link5-title', t('guide-link5-title')); set('guide-link5-sub', t('guide-link5-sub'));
     set('guide-card5-title', t('guide-card5-title'));
     set('guide-card5-desc', t('guide-card5-desc'));
     set('guide-card5-law1-title', t('guide-card5-law1-title'));
