@@ -1059,17 +1059,25 @@
         </div>
         <p id="guide-card4-tip" style="font-size:12px; color:var(--muted); margin-top:16px; line-height:1.7; padding-top:14px; border-top:1px solid var(--border);">💡 뼘 × 내 한 뼘 cm = 실제 길이 — 예) 어깨가 2.3뼘이고 내 한 뼘이 18cm면 → 약 41.4cm</p>
 
-        <!-- 부위별 손뼘 측정 시각 가이드 -->
+        <!-- 부위별 측정 가이드 링크 -->
         <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-          <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">📸 Visual Measurement Guide — tap to zoom</div>
-          <div style="overflow:hidden;border-radius:6px;">
-          <div style="display:flex;gap:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x mandatory;padding-bottom:4px;">
-            <img src="/KakaoTalk_20260504_155553807.png" alt="Hand span baseline" loading="lazy" onclick="document.getElementById('span-lb-img').src=this.src;document.getElementById('span-lb').style.display='flex';" style="flex:0 0 auto;height:130px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;scroll-snap-align:start;">
-            <img src="/KakaoTalk_20260504_155553807_03.png" alt="Shoulder width" loading="lazy" onclick="document.getElementById('span-lb-img').src=this.src;document.getElementById('span-lb').style.display='flex';" style="flex:0 0 auto;height:130px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;scroll-snap-align:start;">
-            <img src="/KakaoTalk_20260504_155553807_02.png" alt="Arm length" loading="lazy" onclick="document.getElementById('span-lb-img').src=this.src;document.getElementById('span-lb').style.display='flex';" style="flex:0 0 auto;height:130px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;scroll-snap-align:start;">
-            <img src="/KakaoTalk_20260504_155553807_01.png" alt="Leg length" loading="lazy" onclick="document.getElementById('span-lb-img').src=this.src;document.getElementById('span-lb').style.display='flex';" style="flex:0 0 auto;height:130px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;scroll-snap-align:start;">
-            <img src="/KakaoTalk_20260504_155553807_04.png" alt="Hip circumference" loading="lazy" onclick="document.getElementById('span-lb-img').src=this.src;document.getElementById('span-lb').style.display='flex';" style="flex:0 0 auto;height:130px;border-radius:8px;border:1px solid var(--border);cursor:zoom-in;scroll-snap-align:start;">
-          </div>
+          <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">📸 부위별 시각 측정 가이드</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+            <a href="/blog/blog20" onclick="goBlog(event,'blog20')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">✋</span><div><div style="font-size:13px;font-weight:600;">한 뼘 기준 재기</div><div style="font-size:11px;color:var(--muted);">측정 전 필수 첫 단계</div></div>
+            </a>
+            <a href="/blog/blog21" onclick="goBlog(event,'blog21')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">🦴</span><div><div style="font-size:13px;font-weight:600;">어깨 너비 재기</div><div style="font-size:11px;color:var(--muted);">견봉 위치 + 자가 측정법</div></div>
+            </a>
+            <a href="/blog/blog22" onclick="goBlog(event,'blog22')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">💪</span><div><div style="font-size:13px;font-weight:600;">팔 길이 재기</div><div style="font-size:11px;color:var(--muted);">상완 + 하완 2단계</div></div>
+            </a>
+            <a href="/blog/blog23" onclick="goBlog(event,'blog23')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">🦵</span><div><div style="font-size:13px;font-weight:600;">다리 길이 재기</div><div style="font-size:11px;color:var(--muted);">골반뼈 → 발목 2단계</div></div>
+            </a>
+            <a href="/blog/blog24" onclick="goBlog(event,'blog24')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;grid-column:span 2;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">🍑</span><div><div style="font-size:13px;font-weight:600;">엉덩이 둘레 재기</div><div style="font-size:11px;color:var(--muted);">두 손뼘으로 혼자서 한 바퀴</div></div>
+            </a>
           </div>
         </div>
       </div>
@@ -1357,6 +1365,46 @@
           <div class="blog-tag">FABRIC</div>
           <div class="blog-title" data-i18n="blog19-title">체형별 소재 가이드</div>
           <div class="blog-desc" data-i18n="blog19-desc">드레이프 소재 vs 달라붙는 소재 — 체형별로 어떤 소재가 유리한지 완전 정리.</div>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/blog20" onclick="goBlog(event,'blog20')">
+        <div class="blog-thumb">✋</div>
+        <div class="blog-body">
+          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-title" data-i18n="blog20-title">손뼘으로 모든 부위 재기</div>
+          <div class="blog-desc" data-i18n="blog20-desc">내 한 뼘 = 평생 줄자. 한 번 재두면 어깨·허리·다리·팔 모두 계산 가능.</div>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/blog21" onclick="goBlog(event,'blog21')">
+        <div class="blog-thumb">🦴</div>
+        <div class="blog-body">
+          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-title" data-i18n="blog21-title">혼자서 어깨 너비 재기</div>
+          <div class="blog-desc" data-i18n="blog21-desc">견봉(어깨 끝뼈) 찾는 법부터 손뼘으로 자가 측정하는 2단계 방법.</div>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/blog22" onclick="goBlog(event,'blog22')">
+        <div class="blog-thumb">💪</div>
+        <div class="blog-body">
+          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-title" data-i18n="blog22-title">팔 길이 재기 — 상완·하완 2단계</div>
+          <div class="blog-desc" data-i18n="blog22-desc">소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.</div>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/blog23" onclick="goBlog(event,'blog23')">
+        <div class="blog-thumb">🦵</div>
+        <div class="blog-body">
+          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-title" data-i18n="blog23-title">다리 길이 재기 — 골반뼈에서 발목까지</div>
+          <div class="blog-desc" data-i18n="blog23-desc">대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.</div>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/blog24" onclick="goBlog(event,'blog24')">
+        <div class="blog-thumb">🍑</div>
+        <div class="blog-body">
+          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-title" data-i18n="blog24-title">엉덩이 둘레 혼자 재기</div>
+          <div class="blog-desc" data-i18n="blog24-desc">두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.</div>
         </div>
       </a>
     </div>
@@ -2392,6 +2440,11 @@
       'blog17-title':'체형별 캡슐 워드로브 — 진짜 필요한 기본템 10가지','blog17-desc':'체형에 맞는 기본템 10가지와 우선순위를 완전 정리했습니다.',
       'blog18-title':'서양배형 체형 코디 완전 가이드','blog18-desc':'하체가 발달한 서양배형. 상의·하의·원피스별 코디 공식과 비율 균형 잡는 법.',
       'blog19-title':'체형별 소재 가이드','blog19-desc':'드레이프 소재 vs 달라붙는 소재 — 체형별로 어떤 소재가 유리한지 완전 정리.',
+      'blog20-title':'손뼘으로 모든 부위 재기','blog20-desc':'내 한 뼘 = 평생 줄자. 한 번 재두면 어깨·허리·다리·팔 모두 계산 가능.',
+      'blog21-title':'혼자서 어깨 너비 재기','blog21-desc':'견봉(어깨 끝뼈) 찾는 법부터 손뼘으로 자가 측정하는 2단계 방법.',
+      'blog22-title':'팔 길이 재기 — 상완·하완 2단계','blog22-desc':'소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.',
+      'blog23-title':'다리 길이 재기 — 골반뼈에서 발목까지','blog23-desc':'대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.',
+      'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
       'section-label':'부위를 클릭하여 측정값을 입력하세요',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
       'placeholder-text':'왼쪽 인체 도형에서<br>부위를 클릭해 주세요',
@@ -2653,6 +2706,11 @@
       'blog17-title':'Capsule Wardrobe for Your Body Type','blog17-desc':'Exactly which 10 pieces to invest in based on your body type. No more guessing what basics to buy.',
       'blog18-title':'Pear Body Shape Dressing Guide','blog18-desc':'Narrower shoulders, wider hips — the exact styling formula to create perfect visual balance.',
       'blog19-title':'Fabric Guide by Body Type','blog19-desc':'The same outfit in different fabrics tells a completely different story. Find what flatters your shape.',
+      'blog20-title':'Measure Anything with Your Hand Span','blog20-desc':'One measurement = a lifelong ruler. Estimate shoulders, waist, legs & arms anywhere, no tape needed.',
+      'blog21-title':'How to Measure Shoulder Width Alone','blog21-desc':'Locate your acromion and count hand spans. Two-step self-measurement guide with visual reference.',
+      'blog22-title':'Arm Length — Upper & Lower in 2 Steps','blog22-desc':'Measure upper arm (shoulder→elbow) and lower arm (elbow→wrist) to calculate sleeve length and arm ratio.',
+      'blog23-title':'Leg Length — Greater Trochanter to Ankle','blog23-desc':'Measure thigh + calf from the lateral hip bone. Includes leg-to-height ratio calculation.',
+      'blog24-title':'How to Measure Hip Circumference Alone','blog24-desc':'Two hand spans from the tailbone — complete a full circuit solo. Calculate your WHR instantly.',
       'section-label':'Click a body part to enter measurements',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
       'placeholder-text':'Click a body part<br>on the left to start',
