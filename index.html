@@ -278,13 +278,23 @@
     /* BLOG SECTION */
     .blog-section { padding: 60px 32px; border-bottom: 1px solid var(--border); }
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-    .blog-card { display: block; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; }
-    .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .blog-card { display: block; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; position: relative; }
+    .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(232,169,60,0.12); }
+    .blog-card.hot { border-color: rgba(232,169,60,0.4); }
     .blog-thumb { height: 140px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; font-size: 48px; }
     .blog-body { padding: 20px; }
     .blog-tag { font-size: 10px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
     .blog-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
     .blog-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .blog-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+    .blog-read-time { font-size: 11px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .blog-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px; }
+    .blog-badge.hot { background: rgba(255,80,80,0.15); color: #ff5050; }
+    .blog-badge.new { background: rgba(76,255,145,0.15); color: #4cff91; }
+    .blog-section-sub { font-size: 14px; color: var(--muted); margin-top: 10px; font-family: 'DM Sans', sans-serif; }
+    .blog-view-all-wrap { text-align: center; margin-top: 40px; }
+    .blog-view-all { display: inline-flex; align-items: center; gap: 8px; padding: 13px 36px; border: 1.5px solid rgba(232,169,60,0.5); border-radius: 100px; color: var(--accent); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; letter-spacing: 0.3px; }
+    .blog-view-all:hover { background: rgba(232,169,60,0.08); border-color: var(--accent); transform: translateY(-1px); }
 
     /* MAIN ANALYSIS */
     .main-container { display: grid; grid-template-columns: 1fr 420px; min-height: 80vh; }
@@ -1213,6 +1223,7 @@
     <div class="section-header">
       <div class="section-tag">STYLE GUIDE</div>
       <h2 class="section-title" data-i18n="blog-title">패션 & 핏 가이드</h2>
+      <p class="blog-section-sub" data-i18n="blog-subtitle">체형 데이터로 완성하는 실전 스타일링 가이드 — 지금 바로 읽어보세요</p>
     </div>
     <div class="blog-grid">
       <a class="blog-card" href="/blog/blog1" onclick="goBlog(event,'blog1')">
@@ -1221,6 +1232,7 @@
           <div class="blog-tag">PANTS FIT</div>
           <div class="blog-title" data-i18n="blog1-title">나에게 맞는 팬츠 핏 완전 가이드</div>
           <div class="blog-desc" data-i18n="blog1-desc">슬림핏, 와이드핏, 테이퍼드핏... 체형에 따라 어떤 팬츠가 어울리는지 알아보세요.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog2" onclick="goBlog(event,'blog2')">
@@ -1229,6 +1241,7 @@
           <div class="blog-tag">SHOES</div>
           <div class="blog-title" data-i18n="blog2-title">발볼 넓은 분들을 위한 신발 브랜드 가이드</div>
           <div class="blog-desc" data-i18n="blog2-desc">발볼이 넓어서 신발 고르기 힘드셨나요? 브랜드별 발볼 너비 비교 가이드입니다.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog3" onclick="goBlog(event,'blog3')">
@@ -1237,6 +1250,7 @@
           <div class="blog-tag">PROPORTION</div>
           <div class="blog-title" data-i18n="blog3-title">황금비율 체형 만들기</div>
           <div class="blog-desc" data-i18n="blog3-desc">어깨 너비, 허리, 골반 비율로 내 체형 타입을 파악하고 최적의 스타일을 찾아보세요.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog4" onclick="goBlog(event,'blog4')">
@@ -1245,6 +1259,7 @@
           <div class="blog-tag">TOPS GUIDE</div>
           <div class="blog-title" data-i18n="blog4-title">체형별 상의 완전 가이드</div>
           <div class="blog-desc" data-i18n="blog4-desc">네크라인, 소매, 기장... 상의 하나로 체형을 완전히 바꾸는 선택법을 알아보세요.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog5" onclick="goBlog(event,'blog5')">
@@ -1253,6 +1268,7 @@
           <div class="blog-tag">COLOR</div>
           <div class="blog-title" data-i18n="blog5-title">컬러 코디의 법칙</div>
           <div class="blog-desc" data-i18n="blog5-desc">색상 배치 하나로 어깨가 넓어 보이고 다리가 길어 보입니다. 체형 보정 컬러 전략.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog6" onclick="goBlog(event,'blog6')">
@@ -1261,6 +1277,7 @@
           <div class="blog-tag">BASICS</div>
           <div class="blog-title" data-i18n="blog6-title">기본템 5가지로 1주일 완성 코디</div>
           <div class="blog-desc" data-i18n="blog6-desc">흰 티, 블랙 팬츠, 데님... 5가지 기본 아이템으로 7일 코디를 완성하는 실전 가이드.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-6min">6 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog7" onclick="goBlog(event,'blog7')">
@@ -1269,6 +1286,7 @@
           <div class="blog-tag">PROPORTION SCIENCE</div>
           <div class="blog-title" data-i18n="blog7-title">몸무게보다 비율이 중요한 이유</div>
           <div class="blog-desc" data-i18n="blog7-desc">체중 숫자에 속지 마세요. 같은 70kg도 비율에 따라 완전히 다른 실루엣이 나옵니다.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-4min">4 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog8" onclick="goBlog(event,'blog8')">
@@ -1277,6 +1295,7 @@
           <div class="blog-tag">WHR GUIDE</div>
           <div class="blog-title" data-i18n="blog8-title">완벽한 허리-골반 비율(WHR)의 과학</div>
           <div class="blog-desc" data-i18n="blog8-desc">WHR 0.7 vs 0.85 — 이 숫자 하나가 옷태와 인상을 결정합니다. 내 WHR 계산법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog9" onclick="goBlog(event,'blog9')">
@@ -1285,6 +1304,7 @@
           <div class="blog-tag">SHOULDER FIT</div>
           <div class="blog-title" data-i18n="blog9-title">어깨 너비가 옷태를 완전히 바꾸는 방법</div>
           <div class="blog-desc" data-i18n="blog9-desc">어깨 각도와 너비가 자켓·상의 핏을 완전히 좌우합니다. 내 어깨에 맞는 선택법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog10" onclick="goBlog(event,'blog10')">
@@ -1293,6 +1313,7 @@
           <div class="blog-tag">LEG RATIO</div>
           <div class="blog-title" data-i18n="blog10-title">다리 길이 비율 — 5cm 더 커 보이는 비밀</div>
           <div class="blog-desc" data-i18n="blog10-desc">다리 비율을 이해하면 5cm 더 커 보이는 코디가 가능합니다. 착시 효과 완전 분석.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog11" onclick="goBlog(event,'blog11')">
@@ -1301,6 +1322,7 @@
           <div class="blog-tag">FIT PROBLEM</div>
           <div class="blog-title" data-i18n="blog11-title">왜 어떤 옷은 나에게 절대 안 맞을까?</div>
           <div class="blog-desc" data-i18n="blog11-desc">사이즈 문제가 아닙니다. 비율 문제입니다. 옷이 나를 거부하는 진짜 이유.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog12" onclick="goBlog(event,'blog12')">
@@ -1309,6 +1331,7 @@
           <div class="blog-tag">DATA BODY TYPE</div>
           <div class="blog-title" data-i18n="blog12-title">실제 데이터로 내 체형 찾기</div>
           <div class="blog-desc" data-i18n="blog12-desc">모래시계·역삼각형·직사각형... 기존 체형 분류를 뛰어넘는 데이터 기반 체형 분석법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-6min">6 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog13" onclick="goBlog(event,'blog13')">
@@ -1317,6 +1340,7 @@
           <div class="blog-tag">DRESSING GUIDE</div>
           <div class="blog-title" data-i18n="blog13-title">체형별 옷 입는 법 완전 실전 가이드</div>
           <div class="blog-desc" data-i18n="blog13-desc">체형에 따른 실전 코디 공식. 강조할 것과 보완할 것을 과학적으로 구분합니다.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-7min">7 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog14" onclick="goBlog(event,'blog14')">
@@ -1325,6 +1349,7 @@
           <div class="blog-tag">SCIENCE</div>
           <div class="blog-title" data-i18n="blog14-title">대칭성과 매력 — 과학이 말하는 것</div>
           <div class="blog-desc" data-i18n="blog14-desc">대칭적인 체형이 더 매력적으로 보이는 과학적 근거. 그리고 패션으로 대칭을 만드는 법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog15" onclick="goBlog(event,'blog15')">
@@ -1333,6 +1358,7 @@
           <div class="blog-tag">STYLE MINDSET</div>
           <div class="blog-title" data-i18n="blog15-title">감으로 고르던 스타일, 데이터로 완전히 바꿔라</div>
           <div class="blog-desc" data-i18n="blog15-desc">쇼핑 실패의 90%는 비율을 모르기 때문입니다. 데이터 기반 스타일링이 바꾸는 것들.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog16" onclick="goBlog(event,'blog16')">
@@ -1341,6 +1367,7 @@
           <div class="blog-tag">FUTURE OF STYLE</div>
           <div class="blog-title" data-i18n="blog16-title">퍼스널 스타일링의 미래</div>
           <div class="blog-desc" data-i18n="blog16-desc">AI와 신체 데이터가 만나면? 패션 산업이 완전히 바뀌는 방식을 미리 살펴봅니다.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog17" onclick="goBlog(event,'blog17')">
@@ -1349,6 +1376,7 @@
           <div class="blog-tag">WARDROBE</div>
           <div class="blog-title" data-i18n="blog17-title">체형별 캡슐 워드로브 — 진짜 필요한 기본템 10가지</div>
           <div class="blog-desc" data-i18n="blog17-desc">체형에 맞는 기본템 10가지와 우선순위를 완전 정리했습니다.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-6min">6 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog18" onclick="goBlog(event,'blog18')">
@@ -1357,6 +1385,7 @@
           <div class="blog-tag">BODY TYPE</div>
           <div class="blog-title" data-i18n="blog18-title">서양배형 체형 코디 완전 가이드</div>
           <div class="blog-desc" data-i18n="blog18-desc">하체가 발달한 서양배형. 상의·하의·원피스별 코디 공식과 비율 균형 잡는 법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-6min">6 min read</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog19" onclick="goBlog(event,'blog19')">
@@ -1365,14 +1394,16 @@
           <div class="blog-tag">FABRIC</div>
           <div class="blog-title" data-i18n="blog19-title">체형별 소재 가이드</div>
           <div class="blog-desc" data-i18n="blog19-desc">드레이프 소재 vs 달라붙는 소재 — 체형별로 어떤 소재가 유리한지 완전 정리.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span></div>
         </div>
       </a>
-      <a class="blog-card" href="/blog/blog20" onclick="goBlog(event,'blog20')">
+      <a class="blog-card hot" href="/blog/blog20" onclick="goBlog(event,'blog20')">
         <div class="blog-thumb">✋</div>
         <div class="blog-body">
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog20-title">손뼘으로 모든 부위 재기</div>
           <div class="blog-desc" data-i18n="blog20-desc">내 한 뼘 = 평생 줄자. 한 번 재두면 어깨·허리·다리·팔 모두 계산 가능.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge hot">🔥 HOT</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog21" onclick="goBlog(event,'blog21')">
@@ -1381,6 +1412,7 @@
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog21-title">혼자서 어깨 너비 재기</div>
           <div class="blog-desc" data-i18n="blog21-desc">견봉(어깨 끝뼈) 찾는 법부터 손뼘으로 자가 측정하는 2단계 방법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog22" onclick="goBlog(event,'blog22')">
@@ -1389,6 +1421,7 @@
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog22-title">팔 길이 재기 — 상완·하완 2단계</div>
           <div class="blog-desc" data-i18n="blog22-desc">소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog23" onclick="goBlog(event,'blog23')">
@@ -1397,6 +1430,7 @@
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog23-title">다리 길이 재기 — 골반뼈에서 발목까지</div>
           <div class="blog-desc" data-i18n="blog23-desc">대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog24" onclick="goBlog(event,'blog24')">
@@ -1405,8 +1439,12 @@
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog24-title">엉덩이 둘레 혼자 재기</div>
           <div class="blog-desc" data-i18n="blog24-desc">두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.</div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
         </div>
       </a>
+    </div>
+    <div class="blog-view-all-wrap">
+      <a href="/blog/" class="blog-view-all" data-i18n="blog-view-all">전체 가이드 보기 →</a>
     </div>
   </section>
 
@@ -2427,6 +2465,9 @@
       'guide-link4-title':'다리 길이 재기','guide-link4-sub':'골반뼈 → 발목 2단계',
       'guide-link5-title':'엉덩이 둘레 재기','guide-link5-sub':'두 손뼘으로 혼자서 한 바퀴',
       'blog-title':'패션 & 핏 가이드',
+      'blog-subtitle':'체형 데이터로 완성하는 실전 스타일링 가이드 — 지금 바로 읽어보세요',
+      'blog-view-all':'전체 가이드 보기 →',
+      'read-4min':'4분 읽기','read-5min':'5분 읽기','read-6min':'6분 읽기','read-7min':'7분 읽기',
       'blog1-title':'나에게 맞는 팬츠 핏 완전 가이드','blog1-desc':'슬림핏부터 와이드핏까지 — 체형·키·신발에 따른 팬츠 선택법과 기장·롤업 활용 실전 팁.',
       'blog2-title':'발볼 넓은 분들을 위한 신발 브랜드 가이드','blog2-desc':'브랜드별 발볼 실측 비교 + 온라인 구매 시 실패 없는 선택 방법.',
       'blog3-title':'황금비율 체형 만들기 — 시각 보정의 원리','blog3-desc':'어깨·허리·골반 비율로 내 체형을 파악하고 스타일링으로 비율을 바꾸는 실전 법칙.',
@@ -2699,6 +2740,9 @@
       'guide-card5-law5-title':'Wrist × 2 ≈ Ankle circumference','guide-card5-law5-desc':'Upper and lower body joints are proportional. Knowing your wrist lets you estimate your ankle size.',
       'guide-card5-law6-title':'Thumb length ≈ Nose length','guide-card5-law6-desc':'An old folk fact — hold your thumb next to your nose and they\'re almost exactly the same length.',
       'blog-title':'Fashion & Fit Guide',
+      'blog-subtitle':'Data-driven styling guides for every body type — start reading now',
+      'blog-view-all':'View All Guides →',
+      'read-4min':'4 min read','read-5min':'5 min read','read-6min':'6 min read','read-7min':'7 min read',
       'blog1-title':'The Complete Pants Fit Guide','blog1-desc':'From slim to wide — how to choose pants by body type, height, and shoes. Inseam & roll-up tips included.',
       'blog2-title':'Shoe Guide for Wide Feet','blog2-desc':'Brand-by-brand toe-box comparison + how to never fail an online shoe purchase.',
       'blog3-title':'Achieving the Golden Ratio Body','blog3-desc':'Understand your body type from shoulder/waist/hip ratios and use styling to visually correct proportions.',
@@ -2961,6 +3005,9 @@
       'guide-card5-law5-title':'手首周り × 2 ≈ 足首周り','guide-card5-law5-desc':'上体と下体の関節が連動しています。手首周りを知れば足首周りを大体見当つけられます。',
       'guide-card5-law6-title':'親指の長さ ≈ 鼻の長さ','guide-card5-law6-desc':'昔から伝わる民間知識。親指を鼻の横に当ててみると、不思議なほど長さがほぼ同じです。',
       'blog-title':'ファッション & フィットガイド',
+      'blog-subtitle':'あなたの体型データで完成するスタイリングガイド — 今すぐ読む',
+      'blog-view-all':'すべてのガイドを見る →',
+      'read-4min':'4分で読む','read-5min':'5分で読む','read-6min':'6分で読む','read-7min':'7分で読む',
       'blog1-title':'自分に合うパンツを見つける','blog1-desc':'スリム、ワイド、テーパード…体型別に似合うパンツを探しましょう。',
       'blog2-title':'幅広足の人のための靴ガイド','blog2-desc':'靴選びに困っていませんか？ブランド別の幅比較ガイドです。',
       'blog3-title':'黄金比率の体型を作る','blog3-desc':'肩・ウエスト・ヒップの比率から体型タイプを把握し、最適なスタイルを探しましょう。',
@@ -3087,6 +3134,9 @@
       'guide-card5-law5-title':'腕围 × 2 ≈ 踝围','guide-card5-law5-desc':'上下肢关节相互联动。知道腕围就能大致估算踝围。',
       'guide-card5-law6-title':'拇指长度 ≈ 鼻子长度','guide-card5-law6-desc':'流传已久的民间说法。把拇指放在鼻子旁边，惊奇地发现长度几乎相同。',
       'blog-title':'时尚 & 穿搭指南',
+      'blog-subtitle':'基于体型数据的实用造型指南 — 立即阅读',
+      'blog-view-all':'查看全部指南 →',
+      'read-4min':'4分钟阅读','read-5min':'5分钟阅读','read-6min':'6分钟阅读','read-7min':'7分钟阅读',
       'blog1-title':'找到适合你的裤型','blog1-desc':'修身、阔腿、锥形裤……了解哪种裤型最适合你的体型。',
       'blog2-title':'宽脚型选鞋指南','blog2-desc':'宽脚型选鞋困难？各品牌宽度对比指南来了。',
       'blog3-title':'打造黄金比例体型','blog3-desc':'通过肩宽、腰围、臀围比例了解自己的体型，找到最佳穿搭风格。',
@@ -3220,6 +3270,9 @@
       'guide-card5-law5-title':'Tour de poignet × 2 ≈ tour de cheville','guide-card5-law5-desc':'Les articulations du haut et du bas du corps sont proportionnelles. Le poignet permet d\'estimer la cheville.',
       'guide-card5-law6-title':'Longueur du pouce ≈ longueur du nez','guide-card5-law6-desc':'Un vieux savoir populaire. Tenez votre pouce à côté de votre nez — ils font presque exactement la même longueur.',
       'blog-title':'Guide mode & fit',
+      'blog-subtitle':'Guides de style basés sur vos données corporelles — lisez maintenant',
+      'blog-view-all':'Voir tous les guides →',
+      'read-4min':'4 min de lecture','read-5min':'5 min de lecture','read-6min':'6 min de lecture','read-7min':'7 min de lecture',
       'blog1-title':'Trouver le pantalon parfait','blog1-desc':'Slim, large, fuselé... Découvrez quel pantalon correspond à votre morphologie.',
       'blog2-title':'Guide chaussures pour pieds larges','blog2-desc':'Vous avez du mal à trouver des chaussures ? Voici un guide comparatif par marque.',
       'blog3-title':'Atteindre le ratio corporel idéal','blog3-desc':'Identifiez votre morphologie avec les ratios épaules/taille/hanches.',
@@ -3353,6 +3406,9 @@
       'guide-card5-law5-title':'Muñeca × 2 ≈ tobillo','guide-card5-law5-desc':'Las articulaciones superior e inferior son proporcionales. Saber tu muñeca permite estimar el tobillo.',
       'guide-card5-law6-title':'Largo del pulgar ≈ largo de la nariz','guide-card5-law6-desc':'Un viejo saber popular. Pon tu pulgar junto a tu nariz — casi exactamente la misma longitud.',
       'blog-title':'Guía de moda & fit',
+      'blog-subtitle':'Guías de estilo basadas en tus datos corporales — lee ahora',
+      'blog-view-all':'Ver todas las guías →',
+      'read-4min':'4 min de lectura','read-5min':'5 min de lectura','read-6min':'6 min de lectura','read-7min':'7 min de lectura',
       'blog1-title':'Encuentra tu pantalón perfecto','blog1-desc':'Slim, ancho, recto... Descubre qué pantalón va con tu tipo de cuerpo.',
       'blog2-title':'Guía de calzado para pies anchos','blog2-desc':'¿Dificultades para encontrar zapatos? Guía comparativa por marca.',
       'blog3-title':'Alcanzar la proporción áurea corporal','blog3-desc':'Identifica tu tipo de cuerpo con las proporciones de hombros, cintura y caderas.',
@@ -3486,6 +3542,9 @@
       'guide-card5-law5-title':'Pulso × 2 ≈ tornozelo','guide-card5-law5-desc':'As articulações superior e inferior são proporcionais. Saber o pulso permite estimar o tornozelo.',
       'guide-card5-law6-title':'Comprimento do polegar ≈ comprimento do nariz','guide-card5-law6-desc':'Um velho saber popular. Coloque seu polegar ao lado do nariz — quase exatamente o mesmo comprimento.',
       'blog-title':'Guia de moda & fit',
+      'blog-subtitle':'Guias de estilo baseados nos seus dados corporais — leia agora',
+      'blog-view-all':'Ver todos os guias →',
+      'read-4min':'4 min de leitura','read-5min':'5 min de leitura','read-6min':'6 min de leitura','read-7min':'7 min de leitura',
       'blog1-title':'Encontre a calça perfeita','blog1-desc':'Slim, wide, tapered... Descubra qual calça combina com seu tipo de corpo.',
       'blog2-title':'Guia de sapatos para pés largos','blog2-desc':'Dificuldade em encontrar sapatos? Guia comparativo por marca.',
       'blog3-title':'Alcançando a proporção áurea','blog3-desc':'Identifique seu tipo de corpo com as proporções de ombros, cintura e quadris.',
@@ -3619,6 +3678,9 @@
       'guide-card5-law5-title':'Handgelenkumfang × 2 ≈ Knöchelumfang','guide-card5-law5-desc':'Ober- und Unterkörpergelenke sind proportional. Mit dem Handgelenk lässt sich der Knöchel schätzen.',
       'guide-card5-law6-title':'Daumen­länge ≈ Nasenlänge','guide-card5-law6-desc':'Altes Volkswissen: Halte deinen Daumen neben deine Nase — sie sind fast exakt gleich lang.',
       'blog-title':'Mode & Fit Guide',
+      'blog-subtitle':'Datenbasierte Styling-Guides für jeden Körpertyp — jetzt lesen',
+      'blog-view-all':'Alle Guides ansehen →',
+      'read-4min':'4 Min. Lesen','read-5min':'5 Min. Lesen','read-6min':'6 Min. Lesen','read-7min':'7 Min. Lesen',
       'blog1-title':'Die perfekte Hose finden','blog1-desc':'Slim, Weite, Tapered... Finde heraus, welche Hose zu deinem Körpertyp passt.',
       'blog2-title':'Schuhguide für breite Füße','blog2-desc':'Probleme beim Schuhe finden? Ein Markenvergleich nach Breite.',
       'blog3-title':'Den goldenen Ratio-Körper erreichen','blog3-desc':'Ermittle deinen Körpertyp anhand von Schulter-, Taille- und Hüftproportionen.',
@@ -3752,6 +3814,9 @@
       'guide-card5-law5-title':'Polso × 2 ≈ caviglia','guide-card5-law5-desc':'Le articolazioni superiori e inferiori sono proporzionali. Conoscere il polso permette di stimare la caviglia.',
       'guide-card5-law6-title':'Lunghezza del pollice ≈ lunghezza del naso','guide-card5-law6-desc':'Un antico sapere popolare. Metti il pollice accanto al naso — quasi esattamente la stessa lunghezza.',
       'blog-title':'Guida moda & fit',
+      'blog-subtitle':'Guide di stile basate sui tuoi dati corporei — leggi ora',
+      'blog-view-all':'Vedi tutte le guide →',
+      'read-4min':'4 min di lettura','read-5min':'5 min di lettura','read-6min':'6 min di lettura','read-7min':'7 min di lettura',
       'blog1-title':'Trova il pantalone perfetto','blog1-desc':'Slim, largo, affusolato... Scopri quale pantalone si adatta alla tua corporatura.',
       'blog2-title':'Guida scarpe per piedi larghi','blog2-desc':'Difficoltà a trovare scarpe? Una guida comparativa per marchio.',
       'blog3-title':'Raggiungere le proporzioni auree','blog3-desc':'Identifica il tuo tipo di corpo con le proporzioni di spalle, vita e fianchi.',
@@ -3878,6 +3943,9 @@
       'guide-card5-law5-title':'Запястье × 2 ≈ лодыжка','guide-card5-law5-desc':'Суставы верхней и нижней части тела пропорциональны. Зная запястье, можно прикинуть лодыжку.',
       'guide-card5-law6-title':'Длина большого пальца ≈ длина носа','guide-card5-law6-desc':'Старое народное знание. Приложите большой палец к носу — они почти одинаковой длины.',
       'blog-title':'Гид по моде и фиту',
+      'blog-subtitle':'Руководства по стилю на основе данных о вашем теле — читайте сейчас',
+      'blog-view-all':'Смотреть все руководства →',
+      'read-4min':'4 мин чтения','read-5min':'5 мин чтения','read-6min':'6 мин чтения','read-7min':'7 мин чтения',
       'blog1-title':'Найдите идеальные брюки','blog1-desc':'Слим, широкие, зауженные... Узнайте, какие брюки подходят вашему типу фигуры.',
       'blog2-title':'Гид по обуви для широкой стопы','blog2-desc':'Трудно найти обувь? Сравнительный гид по брендам.',
       'blog3-title':'Достижение золотых пропорций тела','blog3-desc':'Определите свой тип фигуры по соотношению плеч, талии и бёдер.',
@@ -4004,6 +4072,9 @@
       'guide-card5-law5-title':'محيط الرسغ × 2 ≈ محيط الكاحل','guide-card5-law5-desc':'مفاصل الجسم العلوي والسفلي متناسبة. معرفة الرسغ تتيح تقدير الكاحل.',
       'guide-card5-law6-title':'طول الإبهام ≈ طول الأنف','guide-card5-law6-desc':'معرفة شعبية قديمة. ضع إبهامك بجانب أنفك — ستندهش من تشابه الطول.',
       'blog-title':'دليل الموضة والملاءمة',
+      'blog-subtitle':'أدلة التنسيق المبنية على بيانات جسمك — اقرأ الآن',
+      'blog-view-all':'عرض جميع الأدلة →',
+      'read-4min':'قراءة 4 دقائق','read-5min':'قراءة 5 دقائق','read-6min':'قراءة 6 دقائق','read-7min':'قراءة 7 دقائق',
       'blog1-title':'اعثر على البنطال المثالي','blog1-desc':'ضيق، واسع، متدرج... اكتشف أي بنطال يناسب نوع جسمك.',
       'blog2-title':'دليل الأحذية للقدم العريضة','blog2-desc':'صعوبة في إيجاد أحذية؟ دليل مقارنة بالعلامات التجارية.',
       'blog3-title':'تحقيق نسبة الجسم الذهبية','blog3-desc':'حدد نوع جسمك من خلال نسب الكتفين والخصر والوركين.',
@@ -4130,6 +4201,9 @@
       'guide-card5-law5-title':'कलाई × 2 ≈ टखने की परिधि','guide-card5-law5-desc':'ऊपरी और निचले जोड़ आनुपातिक हैं। कलाई जानकर टखने का अनुमान लगाया जा सकता है।',
       'guide-card5-law6-title':'अंगूठे की लंबाई ≈ नाक की लंबाई','guide-card5-law6-desc':'पुरानी लोक परंपरा। अपना अंगूठा नाक के पास रखें — दोनों लगभग एक ही लंबाई के होते हैं।',
       'blog-title':'फैशन और फिट गाइड',
+      'blog-subtitle':'आपके बॉडी डेटा पर आधारित स्टाइलिंग गाइड — अभी पढ़ें',
+      'blog-view-all':'सभी गाइड देखें →',
+      'read-4min':'4 मिनट पढ़ें','read-5min':'5 मिनट पढ़ें','read-6min':'6 मिनट पढ़ें','read-7min':'7 मिनट पढ़ें',
 
       'blog1-title':'परफेक्ट पैंट खोजें','blog1-desc':'स्लिम, वाइड, टेपर्ड... जानें कौन सी पैंट आपके शरीर पर सूट करती है।',
       'blog2-title':'चौड़े पैरों के लिए जूते गाइड','blog2-desc':'जूते ढूंढने में परेशानी? ब्रांड-वार चौड़ाई तुलना गाइड।',
@@ -4257,6 +4331,9 @@
       'guide-card5-law5-title':'เส้นรอบข้อมือ × 2 ≈ เส้นรอบข้อเท้า','guide-card5-law5-desc':'ข้อต่อของร่างกายส่วนบนและล่างสัมพันธ์กัน รู้ข้อมือก็ประมาณข้อเท้าได้',
       'guide-card5-law6-title':'ความยาวนิ้วโป้ง ≈ ความยาวจมูก','guide-card5-law6-desc':'ภูมิปัญญาชาวบ้านเก่าแก่ ลองวางนิ้วโป้งข้างจมูก แล้วจะแปลกใจที่มันยาวเกือบเท่ากัน',
       'blog-title':'คู่มือแฟชั่นและฟิต',
+      'blog-subtitle':'คู่มือสไตล์ตามข้อมูลร่างกายของคุณ — อ่านเลย',
+      'blog-view-all':'ดูคู่มือทั้งหมด →',
+      'read-4min':'อ่าน 4 นาที','read-5min':'อ่าน 5 นาที','read-6min':'อ่าน 6 นาที','read-7min':'อ่าน 7 นาที',
       'blog1-title':'หากางเกงที่ใช่สำหรับคุณ','blog1-desc':'สลิม, วายด์, เทเปอร์... ค้นพบกางเกงที่เหมาะกับรูปร่างของคุณ',
       'blog2-title':'คู่มือรองเท้าสำหรับเท้ากว้าง','blog2-desc':'หารองเท้าลำบาก? คู่มือเปรียบเทียบความกว้างแต่ละแบรนด์',
       'blog3-title':'สร้างสัดส่วนร่างกายสัดส่วนทอง','blog3-desc':'ระบุประเภทร่างกายจากสัดส่วนไหล่ เอว และสะโพก',
@@ -4383,6 +4460,9 @@
       'guide-card5-law5-title':'Pergelangan tangan × 2 ≈ pergelangan kaki','guide-card5-law5-desc':'Sendi bagian atas dan bawah tubuh proporsional. Mengetahui pergelangan tangan membantu memperkirakan pergelangan kaki.',
       'guide-card5-law6-title':'Panjang ibu jari ≈ panjang hidung','guide-card5-law6-desc':'Pengetahuan rakyat lama. Taruh ibu jari di samping hidung — hampir persis sama panjangnya.',
       'blog-title':'Panduan Fashion & Fit',
+      'blog-subtitle':'Panduan gaya berbasis data tubuh Anda — baca sekarang',
+      'blog-view-all':'Lihat semua panduan →',
+      'read-4min':'4 menit baca','read-5min':'5 menit baca','read-6min':'6 menit baca','read-7min':'7 menit baca',
       'blog1-title':'Temukan Celana yang Tepat','blog1-desc':'Slim, wide, tapered... Temukan celana yang cocok untuk tubuhmu.',
       'blog2-title':'Panduan Sepatu untuk Kaki Lebar','blog2-desc':'Sulit menemukan sepatu? Panduan perbandingan lebar per merek.',
       'blog3-title':'Mencapai Proporsi Tubuh Ideal','blog3-desc':'Kenali tipe tubuhmu dari proporsi bahu, pinggang, dan pinggul.',
@@ -4509,6 +4589,9 @@
       'guide-card5-law5-title':'Vòng cổ tay × 2 ≈ vòng mắt cá','guide-card5-law5-desc':'Các khớp phần trên và phần dưới cơ thể tỉ lệ với nhau. Biết vòng cổ tay có thể ước tính vòng mắt cá.',
       'guide-card5-law6-title':'Độ dài ngón cái ≈ độ dài mũi','guide-card5-law6-desc':'Kiến thức dân gian lâu đời. Đặt ngón cái cạnh mũi — bạn sẽ ngạc nhiên khi chúng gần như bằng nhau.',
       'blog-title':'Hướng dẫn thời trang & vóc dáng',
+      'blog-subtitle':'Hướng dẫn phong cách dựa trên dữ liệu cơ thể của bạn — đọc ngay',
+      'blog-view-all':'Xem tất cả hướng dẫn →',
+      'read-4min':'Đọc 4 phút','read-5min':'Đọc 5 phút','read-6min':'Đọc 6 phút','read-7min':'Đọc 7 phút',
       'blog1-title':'Tìm quần phù hợp','blog1-desc':'Slim, wide, tapered... Tìm loại quần phù hợp với dáng người.',
       'blog2-title':'Hướng dẫn giày cho bàn chân rộng','blog2-desc':'Khó tìm giày? Hướng dẫn so sánh độ rộng theo thương hiệu.',
       'blog3-title':'Đạt tỷ lệ cơ thể vàng','blog3-desc':'Xác định loại cơ thể qua tỷ lệ vai, eo và hông.',
