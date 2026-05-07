@@ -290,8 +290,10 @@
     .guide-step p { font-size: 12px; color: var(--muted); line-height: 1.7; margin: 0; }
     .card-inner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
     .body-law-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    .body-law-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
-    .body-law-icon { font-size: 20px; margin-bottom: 8px; }
+    .body-law-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .body-law-thumb { width: 100%; height: 120px; object-fit: cover; display: block; }
+    .body-law-content { padding: 12px; }
+    .body-law-icon { font-size: 18px; margin-bottom: 6px; }
     .body-law-title { font-size: 12px; font-weight: 700; color: var(--accent); margin-bottom: 5px; line-height: 1.4; font-family: 'DM Sans', sans-serif; }
     .body-law-desc { font-size: 11px; color: var(--muted); line-height: 1.65; }
     @media (max-width: 768px) {
@@ -1213,34 +1215,52 @@
         <p id="guide-card5-desc" style="font-size:13px; color:var(--muted); margin-bottom:20px;">Ancient formulas da Vinci also discovered — useful for estimating body parts without a tape measure.</p>
         <div class="body-law-grid">
           <div class="body-law-item">
-            <div class="body-law-icon">🦶</div>
-            <div class="body-law-title" id="guide-card5-law1-title">Forearm length = Foot length</div>
-            <div class="body-law-desc" id="guide-card5-law1-desc">Your elbow-to-wrist length matches your foot size with surprising accuracy — usually within 1cm.</div>
+            <img src="/body-law-forearm-foot.png" alt="전완·발 비율 가이드" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">🦶</div>
+              <div class="body-law-title" id="guide-card5-law1-title">Forearm length = Foot length</div>
+              <div class="body-law-desc" id="guide-card5-law1-desc">Your elbow-to-wrist length matches your foot size with surprising accuracy — usually within 1cm.</div>
+            </div>
           </div>
           <div class="body-law-item">
-            <div class="body-law-icon">🔄</div>
-            <div class="body-law-title" id="guide-card5-law2-title">Neck × 2 ≈ Waist circumference</div>
-            <div class="body-law-desc" id="guide-card5-law2-desc">Measure your neck and double it to estimate your waist. More accurate for average body types.</div>
+            <img src="/body-law-neck-waist.png" alt="목·허리 둘레 비율 가이드" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">🔄</div>
+              <div class="body-law-title" id="guide-card5-law2-title">Neck × 2 ≈ Waist circumference</div>
+              <div class="body-law-desc" id="guide-card5-law2-desc">Measure your neck and double it to estimate your waist. More accurate for average body types.</div>
+            </div>
           </div>
           <div class="body-law-item">
-            <div class="body-law-icon">↔</div>
-            <div class="body-law-title" id="guide-card5-law3-title">Arm span ≈ Height</div>
-            <div class="body-law-desc" id="guide-card5-law3-desc">Da Vinci's Vitruvian Man key insight. Fingertip-to-fingertip with arms spread equals your height.</div>
+            <img src="/body-law-arm-span.png" alt="팔 너비·키 비율 가이드" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">↔</div>
+              <div class="body-law-title" id="guide-card5-law3-title">Arm span ≈ Height</div>
+              <div class="body-law-desc" id="guide-card5-law3-desc">Da Vinci's Vitruvian Man key insight. Fingertip-to-fingertip with arms spread equals your height.</div>
+            </div>
           </div>
           <div class="body-law-item">
-            <div class="body-law-icon">✨</div>
-            <div class="body-law-title" id="guide-card5-law4-title">Navel height = Height × 61.8%</div>
-            <div class="body-law-desc" id="guide-card5-law4-desc">The golden ratio (φ = 1.618) lives in your body. The distance from floor to navel is ~61.8% of your height.</div>
+            <img src="/body-law-golden-ratio.png" alt="황금비 배꼽 높이 가이드" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">✨</div>
+              <div class="body-law-title" id="guide-card5-law4-title">Navel height = Height × 61.8%</div>
+              <div class="body-law-desc" id="guide-card5-law4-desc">The golden ratio (φ = 1.618) lives in your body. The distance from floor to navel is ~61.8% of your height.</div>
+            </div>
           </div>
           <div class="body-law-item">
-            <div class="body-law-icon">💪</div>
-            <div class="body-law-title" id="guide-card5-law5-title">Wrist × 2 ≈ Ankle circumference</div>
-            <div class="body-law-desc" id="guide-card5-law5-desc">Upper and lower body joints are proportional. Knowing your wrist lets you estimate your ankle size.</div>
+            <img src="/body-law-wrist-ankle.png" alt="손목·발목 둘레 비율 가이드" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">💪</div>
+              <div class="body-law-title" id="guide-card5-law5-title">Wrist × 2 ≈ Ankle circumference</div>
+              <div class="body-law-desc" id="guide-card5-law5-desc">Upper and lower body joints are proportional. Knowing your wrist lets you estimate your ankle size.</div>
+            </div>
           </div>
           <div class="body-law-item">
-            <div class="body-law-icon">👋</div>
-            <div class="body-law-title" id="guide-card5-law6-title">Thumb length ≈ Nose length</div>
-            <div class="body-law-desc" id="guide-card5-law6-desc">An old folk fact — hold your thumb next to your nose and they're almost exactly the same length.</div>
+            <img src="/body-law-thumb-nose.png" alt="엄지·코 길이 비율 가이드" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">👋</div>
+              <div class="body-law-title" id="guide-card5-law6-title">Thumb length ≈ Nose length</div>
+              <div class="body-law-desc" id="guide-card5-law6-desc">An old folk fact — hold your thumb next to your nose and they're almost exactly the same length.</div>
+            </div>
           </div>
         </div>
       </div>
