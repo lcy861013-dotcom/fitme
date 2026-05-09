@@ -673,17 +673,17 @@
 
     @media (max-width: 900px) {
       .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
-      .body-section { border-right: none; border-bottom: none; height: calc(100svh - 70px); padding: 12px 6px; overflow: hidden; }
+      .body-section { border-right: none; border-bottom: none; height: calc(100vh - 70px); height: calc(100svh - 70px); padding: 12px 6px; overflow: hidden; }
       .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
       .hero-title { font-size: 48px; }
       nav { display: none; }
 
-      .body-measure-layout { flex: 1; min-height: 0; height: 100%; }
+      .body-measure-layout { flex: 1; min-height: 0; }
       .side-panel { width: 62px; }
       .side-panel:first-child { left: 4px; }
       .side-panel:last-child { right: 4px; }
       .side-btn { font-size: 8px; padding: 6px 5px; }
-      .body-container { height: calc(100svh - 120px); width: auto; max-width: 100%; aspect-ratio: 752 / 798; overflow: visible; }
+      .body-container { width: 100%; align-self: stretch; height: auto; overflow: visible; }
 
       /* Bottom sheet */
       .panel {
