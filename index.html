@@ -4932,6 +4932,9 @@
     ['height','weight','head','shoulder','chest','upper-arm','lower-arm','waist','hip','upper-leg','lower-leg','foot'].forEach(p => {
       const f = _forms[p]; if (!f) return;
       set('ftitle-' + p, _titles[p] || p);
+      const _fullT = _titles[p] || p; const _slashI = _fullT.indexOf('/');
+      const _shortT = _slashI >= 0 ? _fullT.slice(_slashI + 1).trim() : _fullT.trim();
+      const _sideB = document.getElementById('side-btn-' + p); if (_sideB) _sideB.textContent = _shortT;
       set('fdesc-' + p, f.desc);
       
       // Dynamic Unit Suffix (v1.5 + v1.9 waist/foot fix)
