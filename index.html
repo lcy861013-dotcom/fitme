@@ -340,8 +340,8 @@
     .side-btn.filled { border-color: #47ff8a; color: #47ff8a; background: rgba(71,255,138,0.06); }
     .side-btn.req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
     .side-btn.filled.req-star::before { color: #47ff8a; }
-    .body-container { position: relative; height: 100%; aspect-ratio: 752 / 798; max-height: calc(100vh - 130px); max-width: calc(50vw - 180px); }
-    .body-img { width: 100%; height: 100%; display: block; border-radius: 12px; opacity: 0.88; object-fit: fill; }
+    .body-container { position: relative; height: min(calc(100vh - 130px), calc((100vw - 220px) * 798 / 752)); aspect-ratio: 752 / 798; }
+    .body-img { width: 100%; height: 100%; display: block; border-radius: 12px; opacity: 0.88; }
     .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
     .body-mark { opacity: 0; transition: opacity 0.2s; }
 
@@ -1527,16 +1527,16 @@
         <div class="body-container">
           <img src="/skeleton-body.jpg" alt="body measurement diagram" class="body-img">
           <svg class="body-overlay" viewBox="0 0 752 798" xmlns="http://www.w3.org/2000/svg">
-            <ellipse id="mark-head" class="body-mark" cx="376" cy="58" rx="52" ry="55" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.15)"/>
-            <line id="mark-shoulder" class="body-mark" x1="180" y1="178" x2="572" y2="178" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round"/>
-            <ellipse id="mark-chest" class="body-mark" cx="376" cy="272" rx="72" ry="60" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
-            <circle id="mark-upper-arm" class="body-mark" cx="138" cy="272" r="28" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
-            <circle id="mark-lower-arm" class="body-mark" cx="104" cy="388" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
-            <ellipse id="mark-waist" class="body-mark" cx="376" cy="418" rx="76" ry="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.15)"/>
-            <ellipse id="mark-hip" class="body-mark" cx="376" cy="490" rx="105" ry="28" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
-            <circle id="mark-upper-leg" class="body-mark" cx="300" cy="600" r="32" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
-            <circle id="mark-lower-leg" class="body-mark" cx="302" cy="698" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
-            <ellipse id="mark-foot" class="body-mark" cx="308" cy="773" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <ellipse id="mark-head" class="body-mark" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.15)"/>
+            <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse id="mark-chest" class="body-mark" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-upper-arm" class="body-mark" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-lower-arm" class="body-mark" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <ellipse id="mark-waist" class="body-mark" cx="376" cy="412" rx="74" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.15)"/>
+            <ellipse id="mark-hip" class="body-mark" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-upper-leg" class="body-mark" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-lower-leg" class="body-mark" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <ellipse id="mark-foot" class="body-mark" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
           </svg>
           <!-- hidden hotspots for JS compatibility -->
           <button style="display:none" id="hs-height"></button>
