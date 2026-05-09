@@ -330,10 +330,20 @@
 
     /* MAIN ANALYSIS */
     .main-container { display: grid; grid-template-columns: 1fr 420px; min-height: 80vh; }
-    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; border-right: 1px solid var(--border); }
-    .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 32px; font-family: 'DM Sans', sans-serif; }
-    .body-container { position: relative; width: min(380px, 90vw); }
+    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 12px; border-right: 1px solid var(--border); }
+    .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 24px; font-family: 'DM Sans', sans-serif; }
+    .body-measure-layout { display: flex; align-items: center; gap: 10px; }
+    .side-panel { display: flex; flex-direction: column; gap: 5px; width: 76px; flex-shrink: 0; }
+    .side-btn { background: rgba(232,169,60,0.03); border: 1px solid var(--border); border-radius: 6px; padding: 7px 8px; font-size: 9.5px; letter-spacing: 0.5px; color: var(--muted); cursor: pointer; text-align: left; transition: all 0.18s; font-family: 'DM Sans', sans-serif; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+    .side-btn:hover { border-color: rgba(232,169,60,0.5); color: var(--accent); background: rgba(232,169,60,0.06); }
+    .side-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(232,169,60,0.1); }
+    .side-btn.filled { border-color: #47ff8a; color: #47ff8a; background: rgba(71,255,138,0.06); }
+    .side-btn.req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
+    .side-btn.filled.req-star::before { color: #47ff8a; }
+    .body-container { position: relative; width: min(280px, 55vw); }
     .body-img { width: 100%; display: block; border-radius: 12px; opacity: 0.88; }
+    .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+    .body-mark { opacity: 0; transition: opacity 0.2s; }
 
     .hotspot {
       position: absolute; width: 34px; height: 34px; border-radius: 50%;
@@ -666,14 +676,10 @@
       .hero-title { font-size: 48px; }
       nav { display: none; }
 
-      /* Hotspot touch targets: 44px (Apple HIG minimum) */
-      .hotspot { width: 44px; height: 44px; font-size: 13px; }
-      /* Prevent waist/hip overlap on small screens */
-      #hs-waist { top: 48% !important; }
-      #hs-hip   { top: 64% !important; }
-      /* Foot hotspot clips at 97% — give room */
-      #hs-foot  { top: 95% !important; }
-      .body-container { overflow: visible; }
+      .body-measure-layout { gap: 6px; }
+      .side-panel { width: 62px; }
+      .side-btn { font-size: 8.5px; padding: 6px 6px; }
+      .body-container { width: min(220px, 46vw); overflow: visible; }
 
       /* Bottom sheet */
       .panel {
@@ -1540,20 +1546,54 @@
     </div>
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
-      <div class="body-container">
-        <img src="/skeleton-body.jpg" alt="body measurement diagram" class="body-img">
-        <button class="hotspot req-marker" id="hs-height" style="left:88%; top:4%;" onclick="selectPart('height')">↕</button>
-        <button class="hotspot" id="hs-head" style="left:50%; top:8%;" onclick="selectPart('head')"></button>
-        <button class="hotspot" id="hs-shoulder" style="left:50%; top:22%;" onclick="selectPart('shoulder')">↔</button>
-        <button class="hotspot" id="hs-chest" style="left:50%; top:33%;" onclick="selectPart('chest')"></button>
-        <button class="hotspot" id="hs-upper-arm" style="left:17%; top:34%;" onclick="selectPart('upper-arm')"></button>
-        <button class="hotspot" id="hs-lower-arm" style="left:13%; top:49%;" onclick="selectPart('lower-arm')"></button>
-        <button class="hotspot req-marker" id="hs-waist" style="left:50%; top:52%;" onclick="selectPart('waist')"></button>
-        <button class="hotspot" id="hs-hip" style="left:50%; top:61%;" onclick="selectPart('hip')"></button>
-        <button class="hotspot req-marker" id="hs-weight" style="left:88%; top:55%;" onclick="selectPart('weight')">kg</button>
-        <button class="hotspot" id="hs-upper-leg" style="left:38%; top:74%;" onclick="selectPart('upper-leg')"></button>
-        <button class="hotspot" id="hs-lower-leg" style="left:38%; top:87%;" onclick="selectPart('lower-leg')"></button>
-        <button class="hotspot" id="hs-foot" style="left:40%; top:97%;" onclick="selectPart('foot')"></button>
+      <div class="body-measure-layout">
+        <!-- 왼쪽 패널 -->
+        <div class="side-panel">
+          <button class="side-btn req-star" id="side-btn-height" onclick="selectPart('height')">HEIGHT</button>
+          <button class="side-btn" id="side-btn-head" onclick="selectPart('head')">HEAD</button>
+          <button class="side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">SHOULDER</button>
+          <button class="side-btn" id="side-btn-chest" onclick="selectPart('chest')">CHEST</button>
+          <button class="side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">UPPER ARM</button>
+          <button class="side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">LOWER ARM</button>
+        </div>
+        <!-- 해골 이미지 -->
+        <div class="body-container">
+          <img src="/skeleton-body.jpg" alt="body measurement diagram" class="body-img">
+          <svg class="body-overlay" viewBox="0 0 752 798" xmlns="http://www.w3.org/2000/svg">
+            <ellipse id="mark-head" class="body-mark" cx="376" cy="58" rx="52" ry="55" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.15)"/>
+            <line id="mark-shoulder" class="body-mark" x1="180" y1="178" x2="572" y2="178" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round"/>
+            <ellipse id="mark-chest" class="body-mark" cx="376" cy="272" rx="72" ry="60" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-upper-arm" class="body-mark" cx="138" cy="272" r="28" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-lower-arm" class="body-mark" cx="104" cy="388" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <ellipse id="mark-waist" class="body-mark" cx="376" cy="418" rx="76" ry="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.15)"/>
+            <ellipse id="mark-hip" class="body-mark" cx="376" cy="490" rx="105" ry="28" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-upper-leg" class="body-mark" cx="300" cy="600" r="32" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <circle id="mark-lower-leg" class="body-mark" cx="302" cy="698" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+            <ellipse id="mark-foot" class="body-mark" cx="308" cy="773" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(232,169,60,0.12)"/>
+          </svg>
+          <!-- hidden hotspots for JS compatibility -->
+          <button style="display:none" id="hs-height"></button>
+          <button style="display:none" id="hs-head"></button>
+          <button style="display:none" id="hs-shoulder"></button>
+          <button style="display:none" id="hs-chest"></button>
+          <button style="display:none" id="hs-upper-arm"></button>
+          <button style="display:none" id="hs-lower-arm"></button>
+          <button style="display:none" id="hs-waist"></button>
+          <button style="display:none" id="hs-hip"></button>
+          <button style="display:none" id="hs-weight"></button>
+          <button style="display:none" id="hs-upper-leg"></button>
+          <button style="display:none" id="hs-lower-leg"></button>
+          <button style="display:none" id="hs-foot"></button>
+        </div>
+        <!-- 오른쪽 패널 -->
+        <div class="side-panel">
+          <button class="side-btn req-star" id="side-btn-weight" onclick="selectPart('weight')">WEIGHT</button>
+          <button class="side-btn req-star" id="side-btn-waist" onclick="selectPart('waist')">WAIST</button>
+          <button class="side-btn" id="side-btn-hip" onclick="selectPart('hip')">HIP</button>
+          <button class="side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">THIGH</button>
+          <button class="side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">SHIN</button>
+          <button class="side-btn" id="side-btn-foot" onclick="selectPart('foot')">FOOT</button>
+        </div>
       </div>
     </div>
 
@@ -5131,7 +5171,11 @@
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('form-' + part).classList.add('visible');
     document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
-    document.getElementById('hs-' + part).classList.add('active');
+    const _hs = document.getElementById('hs-' + part); if (_hs) _hs.classList.add('active');
+    document.querySelectorAll('.side-btn').forEach(b => b.classList.remove('active'));
+    const _sb = document.getElementById('side-btn-' + part); if (_sb) _sb.classList.add('active');
+    document.querySelectorAll('.body-mark').forEach(m => m.style.opacity = '0');
+    const _mk = document.getElementById('mark-' + part); if (_mk) _mk.style.opacity = '1';
     const titles = (i18n[currentLang] || i18n.en)['titles'] || i18n.en['titles'];
     document.getElementById('panel-title').textContent = titles[part] || part;
     if (window.innerWidth <= 900) {
@@ -5277,7 +5321,7 @@
     if (!hasData) { showToast(t('toast-enter-value')); return; }
     const isNew = !measurements[part];
     measurements[part] = data;
-    if (isNew) { filledCount++; document.getElementById('hs-' + part).classList.add('filled'); }
+    if (isNew) { filledCount++; const _hf = document.getElementById('hs-' + part); if (_hf) _hf.classList.add('filled'); const _sf = document.getElementById('side-btn-' + part); if (_sf) _sf.classList.add('filled'); }
     updateProgress();
     updateSavedList();
     const partLabel = ((i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'])[part] || part;
