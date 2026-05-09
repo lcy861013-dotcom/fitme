@@ -671,15 +671,15 @@
 
     @media (max-width: 900px) {
       .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
-      .body-section { border-right: none; border-bottom: none; height: auto; padding: 20px 8px; overflow: visible; }
+      .body-section { border-right: none; border-bottom: none; height: calc(100svh - 70px); padding: 12px 6px; overflow: hidden; }
       .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
       .hero-title { font-size: 48px; }
       nav { display: none; }
 
-      .body-measure-layout { gap: 6px; flex: none; }
-      .side-panel { width: 64px; }
-      .side-btn { font-size: 8.5px; padding: 6px 6px; }
-      .body-container { height: auto; max-height: none; max-width: none; width: min(240px, 50vw); aspect-ratio: 752 / 798; overflow: visible; }
+      .body-measure-layout { gap: 6px; flex: 1; min-height: 0; height: 100%; }
+      .side-panel { width: 60px; align-self: center; }
+      .side-btn { font-size: 8px; padding: 6px 5px; }
+      .body-container { height: calc(100svh - 120px); width: auto; max-width: calc(100vw - 144px); max-height: none; aspect-ratio: 752 / 798; overflow: visible; }
 
       /* Bottom sheet */
       .panel {
