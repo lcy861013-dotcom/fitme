@@ -332,8 +332,8 @@
     .main-container { display: grid; grid-template-columns: 1fr 420px; min-height: 80vh; }
     .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; border-right: 1px solid var(--border); }
     .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 32px; font-family: 'DM Sans', sans-serif; }
-    .body-container { position: relative; width: 280px; height: 500px; }
-    .body-svg { width: 100%; height: 100%; }
+    .body-container { position: relative; width: 280px; }
+    .body-img { width: 100%; display: block; border-radius: 12px; opacity: 0.88; }
 
     .hotspot {
       position: absolute; width: 34px; height: 34px; border-radius: 50%;
@@ -668,9 +668,9 @@
 
       /* Hotspot touch targets: 44px (Apple HIG minimum) */
       .hotspot { width: 44px; height: 44px; font-size: 13px; }
-      /* Prevent waist/hip overlap (gap was -4px at 44px size) */
-      #hs-waist { top: 44% !important; }
-      #hs-hip   { top: 54% !important; }
+      /* Prevent waist/hip overlap on small screens */
+      #hs-waist { top: 48% !important; }
+      #hs-hip   { top: 64% !important; }
       /* Foot hotspot clips at 97% — give room */
       #hs-foot  { top: 95% !important; }
       .body-container { overflow: visible; }
@@ -1541,30 +1541,19 @@
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
       <div class="body-container">
-        <svg class="body-svg" viewBox="0 0 280 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g id="svg-head"><circle cx="140" cy="52" r="38" stroke="#2a2a2a" stroke-width="2" fill="#1a1a1a"/><circle cx="127" cy="48" r="4" fill="#333"/><circle cx="153" cy="48" r="4" fill="#333"/><path d="M132 68 Q140 74 148 68" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/></g>
-          <g id="svg-neck"><rect x="130" y="88" width="20" height="20" rx="4" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-          <g id="svg-torso"><path d="M88 108 L192 108 L200 240 L80 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><line x1="88" y1="128" x2="192" y2="128" stroke="#333" stroke-width="1" stroke-dasharray="4 4"/><line x1="84" y1="188" x2="196" y2="188" stroke="#333" stroke-width="1" stroke-dasharray="4 4"/></g>
-          <g id="svg-arm-l"><path d="M88 112 L52 200 L62 204 L98 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><circle cx="62" cy="160" r="3" fill="#333"/><ellipse cx="56" cy="210" rx="12" ry="8" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-          <g id="svg-arm-r"><path d="M192 112 L228 200 L218 204 L182 118" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><circle cx="218" cy="160" r="3" fill="#333"/><ellipse cx="224" cy="210" rx="12" ry="8" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-          <g id="svg-hip"><path d="M80 240 L78 270 L202 270 L200 240 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/></g>
-          <g id="svg-leg-l-upper"><path d="M80 268 L72 370 L108 370 L116 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="90" cy="370" rx="18" ry="7" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-          <g id="svg-leg-l-lower"><path d="M72 374 L68 470 L108 470 L108 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="86" cy="474" rx="22" ry="9" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-          <g id="svg-leg-r-upper"><path d="M200 268 L208 370 L172 370 L164 268 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="190" cy="370" rx="18" ry="7" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-          <g id="svg-leg-r-lower"><path d="M208 374 L212 470 L172 470 L172 374 Z" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="2"/><ellipse cx="194" cy="474" rx="22" ry="9" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1.5"/></g>
-        </svg>
-        <button class="hotspot req-marker" id="hs-height" style="left:88%; top:5%;" onclick="selectPart('height')">📏</button>
-        <button class="hotspot" id="hs-head" style="left:50%; top:10%;" onclick="selectPart('head')">👤</button>
-        <button class="hotspot" id="hs-shoulder" style="left:50%; top:23%;" onclick="selectPart('shoulder')">↔</button>
-        <button class="hotspot" id="hs-chest" style="left:50%; top:32%;" onclick="selectPart('chest')">◉</button>
-        <button class="hotspot" id="hs-upper-arm" style="left:14%; top:34%;" onclick="selectPart('upper-arm')">💪</button>
-        <button class="hotspot" id="hs-lower-arm" style="left:11%; top:46%;" onclick="selectPart('lower-arm')">✋</button>
-        <button class="hotspot req-marker" id="hs-waist" style="left:50%; top:42%;" onclick="selectPart('waist')">○</button>
-        <button class="hotspot" id="hs-hip" style="left:50%; top:50%;" onclick="selectPart('hip')">◇</button>
-        <button class="hotspot req-marker" id="hs-weight" style="left:88%; top:50%;" onclick="selectPart('weight')">⚖️</button>
-        <button class="hotspot" id="hs-upper-leg" style="left:28%; top:68%;" onclick="selectPart('upper-leg')">┃</button>
-        <button class="hotspot" id="hs-lower-leg" style="left:28%; top:84%;" onclick="selectPart('lower-leg')">⊕</button>
-        <button class="hotspot" id="hs-foot" style="left:30%; top:97%;" onclick="selectPart('foot')">👟</button>
+        <img src="/skeleton-body.jpg" alt="body measurement diagram" class="body-img">
+        <button class="hotspot req-marker" id="hs-height" style="left:88%; top:4%;" onclick="selectPart('height')">↕</button>
+        <button class="hotspot" id="hs-head" style="left:50%; top:8%;" onclick="selectPart('head')"></button>
+        <button class="hotspot" id="hs-shoulder" style="left:50%; top:22%;" onclick="selectPart('shoulder')">↔</button>
+        <button class="hotspot" id="hs-chest" style="left:50%; top:33%;" onclick="selectPart('chest')"></button>
+        <button class="hotspot" id="hs-upper-arm" style="left:17%; top:34%;" onclick="selectPart('upper-arm')"></button>
+        <button class="hotspot" id="hs-lower-arm" style="left:13%; top:49%;" onclick="selectPart('lower-arm')"></button>
+        <button class="hotspot req-marker" id="hs-waist" style="left:50%; top:52%;" onclick="selectPart('waist')"></button>
+        <button class="hotspot" id="hs-hip" style="left:50%; top:61%;" onclick="selectPart('hip')"></button>
+        <button class="hotspot req-marker" id="hs-weight" style="left:88%; top:55%;" onclick="selectPart('weight')">kg</button>
+        <button class="hotspot" id="hs-upper-leg" style="left:38%; top:74%;" onclick="selectPart('upper-leg')"></button>
+        <button class="hotspot" id="hs-lower-leg" style="left:38%; top:87%;" onclick="selectPart('lower-leg')"></button>
+        <button class="hotspot" id="hs-foot" style="left:40%; top:97%;" onclick="selectPart('foot')"></button>
       </div>
     </div>
 
