@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">WHY CLOTHES NEVER FIT RIGHT</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">It's Not Your Body — It's How Clothes Are Designed</text>
+
+  <g transform="translate(40,92)">
+    <text x="160" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">The 3 Fit Problems</text>
+    <rect x="0" y="16" width="320" height="54" rx="8" fill="#1c1a18" stroke="#ff6b6b" stroke-width="1.5"/>
+    <text x="160" y="36" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b" font-weight="700">① Shoulder Seam Drops Off</text>
+    <text x="160" y="56" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Size made for broader shoulders than yours</text>
+
+    <rect x="0" y="84" width="320" height="54" rx="8" fill="#1c1a18" stroke="#ff6b6b" stroke-width="1.5"/>
+    <text x="160" y="104" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b" font-weight="700">② Waist Baggy Despite Fitting Chest</text>
+    <text x="160" y="124" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Straight cut assumes no waist taper</text>
+
+    <rect x="0" y="152" width="320" height="54" rx="8" fill="#1c1a18" stroke="#ff6b6b" stroke-width="1.5"/>
+    <text x="160" y="172" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b" font-weight="700">③ Pants Fit Waist but Too Tight at Hip</text>
+    <text x="160" y="192" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Standard rise doesn't match your WHR</text>
+
+    <rect x="0" y="222" width="320" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="160" y="241" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Ready-to-wear is designed for an "average"</text>
+    <text x="160" y="258" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">body that almost no one actually has</text>
+  </g>
+
+  <g transform="translate(420,92)">
+    <text x="165" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">The Fix: Know Your Numbers</text>
+    <rect x="0" y="16" width="330" height="54" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="165" y="36" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Measure: shoulder · chest · waist · hip</text>
+    <text x="165" y="56" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Match to brand's size chart, not just the label</text>
+
+    <rect x="0" y="84" width="330" height="54" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="165" y="104" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Buy for your widest point</text>
+    <text x="165" y="124" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Then tailor the rest — cheap and fast</text>
+
+    <rect x="0" y="152" width="330" height="54" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="165" y="172" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Know your body type</text>
+    <text x="165" y="192" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Inverted triangle / hourglass / pear / rectangle</text>
+
+    <rect x="0" y="222" width="330" height="44" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="165" y="241" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Fit = Measurement, not guessing</text>
+    <text x="165" y="258" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">The right number fixes everything</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · Why Clothes Don't Fit</text>
+</svg>

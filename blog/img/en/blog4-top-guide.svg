@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">TOP STYLE GUIDE BY BODY TYPE</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">Tops by Body Type — Neckline · Sleeve · Length</text>
+
+  <g transform="translate(40,90)">
+    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">Inverted Triangle</text>
+    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Wide shoulders · straight waist</text>
+    <path d="M25,30 L145,30 L125,110 L45,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <path d="M75,30 L85,55 L95,30" fill="#161412" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ V-neck · deep neckline</text>
+    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Flare skirts</text>
+    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ Boat neck · puff sleeves</text>
+  </g>
+
+  <g transform="translate(225,90)">
+    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">Rectangle</text>
+    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Balanced · straight waistline</text>
+    <path d="M25,30 L145,30 L145,110 L25,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <ellipse cx="85" cy="32" rx="18" ry="8" fill="#161412" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Waist-defining tops</text>
+    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Belt · tuck-in styling</text>
+    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ Boxy oversized</text>
+  </g>
+
+  <g transform="translate(410,90)">
+    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">Pear Shape</text>
+    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Narrow shoulders · wider hips</text>
+    <path d="M35,30 L135,30 L145,110 L25,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <path d="M35,35 L135,35" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Off-shoulder · puff sleeves</text>
+    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Boat neck · horizontal stripes</text>
+    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ Halter neck</text>
+  </g>
+
+  <g transform="translate(595,90)">
+    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">Hourglass</text>
+    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Balanced · defined waist</text>
+    <path d="M20,30 L150,30 L130,110 L40,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <line x1="45" y1="70" x2="125" y2="70" stroke="#d4a84b" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Wrap tops · fitted styles</text>
+    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ Any waist-defining style</text>
+    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ Drop-waist styles</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · Complete Top Guide by Body Type</text>
+</svg>

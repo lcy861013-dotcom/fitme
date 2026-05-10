@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">BODY PROPORTION VS. WEIGHT</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">Why Proportion Matters More Than the Number on the Scale</text>
+
+  <g transform="translate(60,95)">
+    <text x="140" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">Same Weight — Different Look</text>
+    <rect x="0" y="20" width="280" height="80" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="140" y="45" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">Two people, same weight: 65 kg</text>
+    <text x="140" y="65" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#e0dcd8">Person A → shoulder:hip = 1:0.9  (boxy)</text>
+    <text x="140" y="83" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b">Person B → shoulder:hip = 1:1.0  (balanced)</text>
+
+    <rect x="0" y="118" width="280" height="60" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="140" y="138" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Person B looks leaner — same weight</text>
+    <text x="140" y="158" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">Proportion, not weight, creates the visual</text>
+
+    <rect x="0" y="196" width="280" height="60" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="140" y="216" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Focus: shoulder / waist / hip ratio</text>
+    <text x="140" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">Not BMI, not the scale</text>
+  </g>
+
+  <g transform="translate(420,95)">
+    <text x="155" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">The 3 Proportion Goals</text>
+    <rect x="0" y="18" width="310" height="52" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="37" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">① Shoulder Width ≈ Hip Width</text>
+    <text x="155" y="57" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Balanced silhouette from top to bottom</text>
+
+    <rect x="0" y="82" width="310" height="52" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="101" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">② Waist = ~70% of Shoulder Width</text>
+    <text x="155" y="121" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">The 0.7 waist-to-shoulder ratio standard</text>
+
+    <rect x="0" y="146" width="310" height="52" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="155" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">③ Upper : Lower Body = 1:1 (visually)</text>
+    <text x="155" y="185" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">Use high waist + vertical lines to correct</text>
+
+    <rect x="0" y="212" width="310" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="230" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Clothing corrects proportion — no gym required</text>
+    <text x="155" y="248" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Styling = optical proportion engineering</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · Proportion Over Weight</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">WAIST-TO-HIP RATIO (WHR) SCIENCE</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">WHR: The Number That Predicts How Your Clothes Fit</text>
+
+  <g transform="translate(50,92)">
+    <text x="130" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">WHR Scale</text>
+    <rect x="0" y="16" width="260" height="46" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="130" y="36" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="14" fill="#d4a84b" font-weight="700">WHR = Waist ÷ Hip</text>
+    <text x="130" y="55" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">e.g. 68 cm ÷ 94 cm = 0.72</text>
+
+    <rect x="0" y="76" width="260" height="36" rx="6" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="130" y="92" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Below 0.65  →  Apple silhouette</text>
+    <text x="130" y="108" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Waist wider than average vs. hip</text>
+
+    <rect x="0" y="126" width="260" height="36" rx="6" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="130" y="142" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">0.65 – 0.75  →  Golden Zone</text>
+    <text x="130" y="158" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Defined waist, ideal visual balance</text>
+
+    <rect x="0" y="176" width="260" height="36" rx="6" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="130" y="192" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Above 0.85  →  Straight/boxy</text>
+    <text x="130" y="208" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Little waist definition</text>
+
+    <rect x="0" y="228" width="260" height="46" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="130" y="248" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Global average WHR (women): ~0.79</text>
+    <text x="130" y="266" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Asian female average: ~0.75</text>
+  </g>
+
+  <g transform="translate(380,92)">
+    <text x="175" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">Style Strategy by WHR</text>
+    <rect x="0" y="16" width="350" height="52" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="175" y="35" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Low WHR (Apple)  →  Define the Waist</text>
+    <text x="175" y="55" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">A-line skirts · wrap dresses · belted tops</text>
+
+    <rect x="0" y="82" width="350" height="52" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="175" y="101" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Mid WHR (Hourglass)  →  Emphasize It</text>
+    <text x="175" y="121" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Fitted tops · high-waist pants · bodycon</text>
+
+    <rect x="0" y="148" width="350" height="52" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="175" y="167" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">High WHR (Straight)  →  Create Curves</text>
+    <text x="175" y="187" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Peplum · ruffle hem · wide belt at waist</text>
+
+    <rect x="0" y="214" width="350" height="52" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="175" y="233" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Universal Rule</text>
+    <text x="175" y="253" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Define waist = look instantly more balanced</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · WHR Style Science</text>
+</svg>

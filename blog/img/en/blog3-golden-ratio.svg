@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">GOLDEN RATIO · BODY PROPORTION</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">The Golden Ratio Body — Visual Correction Principles</text>
+
+  <g transform="translate(100,85)">
+    <ellipse cx="150" cy="25" rx="22" ry="24" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <rect x="142" y="48" width="16" height="20" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+    <path d="M80,68 Q150,62 220,68 L230,110 Q150,102 70,110 Z" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <path d="M85,110 Q150,105 215,110 L200,210 Q150,220 100,210 Z" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <path d="M98,210 Q150,225 202,210 L215,260 Q150,272 85,260 Z" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <path d="M100,260 L88,360 M200,260 L212,360" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="240" y1="0" x2="240" y2="49" stroke="#8b8178" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="235" y1="0" x2="245" y2="0" stroke="#8b8178" stroke-width="1"/>
+    <line x1="235" y1="49" x2="245" y2="49" stroke="#8b8178" stroke-width="1"/>
+    <text x="270" y="28" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">Head = 1 unit</text>
+    <line x1="240" y1="49" x2="240" y2="260" stroke="#d4a84b" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="235" y1="49" x2="245" y2="49" stroke="#d4a84b" stroke-width="1"/>
+    <line x1="235" y1="260" x2="245" y2="260" stroke="#d4a84b" stroke-width="1"/>
+    <text x="270" y="155" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Upper = 4 units</text>
+    <line x1="240" y1="260" x2="240" y2="360" stroke="#d4a84b" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="235" y1="360" x2="245" y2="360" stroke="#d4a84b" stroke-width="1"/>
+    <text x="270" y="315" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Lower = 4 units</text>
+    <text x="270" y="375" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">8-head ratio = Golden Proportion</text>
+  </g>
+
+  <g transform="translate(480,90)">
+    <text x="0" y="0" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">Key Ratio Standards</text>
+    <rect x="0" y="18" width="270" height="50" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="140" y="37" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Shoulder : Waist : Hip ratio</text>
+    <text x="140" y="56" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="14" fill="#d4a84b" font-weight="700">1.0 : 0.7 : 1.0</text>
+    <rect x="0" y="84" width="270" height="50" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="140" y="103" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Leg length (outside)</text>
+    <text x="140" y="122" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="14" fill="#d4a84b" font-weight="700">52–54% of height</text>
+    <rect x="0" y="150" width="270" height="50" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="140" y="169" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Waist-to-Hip Ratio (WHR)</text>
+    <text x="140" y="188" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="14" fill="#d4a84b" font-weight="700">0.65 – 0.75</text>
+    <rect x="0" y="216" width="270" height="50" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="140" y="235" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Golden Ratio φ (phi)</text>
+    <text x="140" y="254" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="14" fill="#d4a84b" font-weight="700">1 : 1.618</text>
+    <text x="0" y="300" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">* Even if your actual ratios differ, visual</text>
+    <text x="0" y="316" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">  correction can bring you close to golden</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · Building the Golden Ratio Body</text>
+</svg>

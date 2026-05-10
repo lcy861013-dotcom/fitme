@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">CAPSULE WARDROBE BY BODY TYPE</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">Build a Capsule Wardrobe That Works for Your Body</text>
+
+  <g transform="translate(40,92)">
+    <text x="160" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">The 10-Piece Capsule Formula</text>
+    <rect x="0" y="16" width="320" height="38" rx="6" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="160" y="32" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">3 Tops · 2 Bottoms · 1 Dress · 2 Layers · 2 Shoes</text>
+    <text x="160" y="48" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#8b8178">= 30+ outfit combinations</text>
+
+    <rect x="0" y="68" width="320" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="160" y="88" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Neutral color base (black · white · beige)</text>
+    <text x="160" y="104" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Every piece mixes with every other piece</text>
+
+    <rect x="0" y="126" width="320" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="160" y="146" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Body-correct fit for each item</text>
+    <text x="160" y="162" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Not trend-based — proportion-based selection</text>
+
+    <rect x="0" y="184" width="320" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="160" y="204" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">1 statement piece per season</text>
+    <text x="160" y="220" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Add personality without losing versatility</text>
+
+    <rect x="0" y="242" width="320" height="30" rx="6" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="160" y="262" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Less is more — when each piece fits perfectly</text>
+  </g>
+
+  <g transform="translate(430,92)">
+    <text x="155" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">By Body Type: Key Pick</text>
+    <rect x="0" y="16" width="310" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="36" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Hourglass → Wrap dress (non-negotiable)</text>
+    <text x="155" y="52" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Shows waist definition naturally</text>
+
+    <rect x="0" y="74" width="310" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="94" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Inverted Triangle → Wide-leg trousers</text>
+    <text x="155" y="110" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Balance broad shoulders with hip volume</text>
+
+    <rect x="0" y="132" width="310" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="152" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Pear Shape → Off-shoulder top</text>
+    <text x="155" y="168" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Draw eye upward, balance the silhouette</text>
+
+    <rect x="0" y="190" width="310" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="155" y="210" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">Rectangle → Belted trench coat</text>
+    <text x="155" y="226" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Creates waist curve from a straight frame</text>
+
+    <rect x="0" y="248" width="310" height="30" rx="6" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="155" y="268" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">Start with your body type's hero item</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · Capsule Wardrobe by Body Type</text>
+</svg>
