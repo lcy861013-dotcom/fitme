@@ -39,8 +39,8 @@
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;}
 header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(15px);z-index:100;}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);text-decoration:none;letter-spacing:2px;}
-.back-btn{font-size:13px;color:var(--muted);text-decoration:none;border:1px solid var(--border);padding:6px 14px;border-radius:20px;}
-.back-btn:hover{color:var(--accent);border-color:var(--accent);}
+
+
 main{max-width:720px;margin:0 auto;padding:40px 20px 80px;}
 .tag{font-size:11px;letter-spacing:3px;color:var(--accent);margin-bottom:14px;font-family:'DM Sans',sans-serif;font-weight:600;}
 h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,6vw,44px);line-height:1.2;margin-bottom:10px;letter-spacing:1px;}
@@ -56,6 +56,17 @@ p{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:18px;}
 .related-card{display:block;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:10px;font-size:14px;color:var(--text);text-decoration:none;line-height:1.4;transition:border-color .2s,color .2s;}
 .related-card:hover{border-color:var(--accent);color:var(--accent);}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+.guide-img{width:100%;border-radius:12px;margin:28px 0;border:1px solid var(--border);}
+
+.logo span { color: var(--text); }
+nav { display: flex; gap: 20px; align-items: center; }
+nav a { color: var(--muted); font-size: 13px; text-decoration: none; letter-spacing: 1px; cursor: pointer; transition: color 0.2s; font-family: 'DM Sans', sans-serif; }
+nav a:hover { color: var(--accent); }
+@media (max-width: 600px) {
+  header { flex-direction: column; gap: 12px; padding: 12px; }
+  nav { gap: 12px; }
+  nav a { font-size: 11px; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -89,13 +100,19 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
 </head>
 <body>
 <header>
-  <a href="/" class="logo">FITME</a>
-  <a href="/" class="back-btn">← Home</a>
+  <a href="/" class="logo">FIT<span>ME</span></a>
+  <nav>
+    <a href="/#why-fitme">측정 가이드</a>
+    <a href="/#analysis">비율 분석</a>
+    <a href="/blog/">블로그</a>
+    <a href="/about.html">About</a>
+  </nav>
 </header>
 <main>
   <div class="tag">SHOULDER FIT</div>
   <h1>How Shoulder Width Changes Your Entire Outfit</h1>
   <div class="meta">2026.03.10 · FITME Style Guide</div>
+  <img src="/blog/img/blog9-shoulder-width.svg" alt="Shoulder width measurement and styling impact" class="guide-img">
 
   <h2>The Shoulder Is the Foundation of Every Top</h2>
   <p>When trying on a top or jacket, the first thing to check is the shoulder seam. If the seam falls more than half an inch past the edge of your actual shoulder, no fabric choice or tailoring trick can make it look right. The shoulder is the anchor point for the entire garment — sleeve length, body drape, chest fit, and collar position all depend on the shoulder seam being in the right place. Get the shoulder right and everything else becomes adjustable. Get it wrong and no amount of tailoring can fully compensate.</p>
