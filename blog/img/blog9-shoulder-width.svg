@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">SHOULDER WIDTH &amp; OUTFIT FIT</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">어깨 너비가 옷태를 완전히 바꾸는 방법</text>
+
+  <!-- Narrow shoulder -->
+  <g transform="translate(40,90)">
+    <text x="110" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178">어깨 좁음 (38cm↓)</text>
+    <!-- Shirt too wide -->
+    <path d="M30,20 L190,20 L200,30 L170,100 L50,100 L20,30 Z" fill="#1c1a18" stroke="#8b8178" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <!-- Actual shoulder -->
+    <path d="M60,20 L160,20 L150,100 L70,100 Z" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="30" y1="20" x2="190" y2="20" stroke="#ff6b6b" stroke-width="1.5"/>
+    <line x1="40" y1="8" x2="40" y2="32" stroke="#ff6b6b" stroke-width="1"/>
+    <line x1="180" y1="8" x2="180" y2="32" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="110" y="6" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">어깨선 넘침</text>
+    <text x="110" y="125" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b">✗ 기성복 어깨가 넘침</text>
+    <text x="110" y="141" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">옷걸이처럼 보임</text>
+    <text x="110" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">해결: 어깨 수선 or 슬림핏</text>
+    <text x="110" y="181" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">오프숄더로 어깨 강조</text>
+  </g>
+
+  <!-- Standard shoulder -->
+  <g transform="translate(270,90)">
+    <text x="110" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b">어깨 표준 (40~44cm)</text>
+    <path d="M30,20 L190,20 L200,30 L170,100 L50,100 L20,30 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="30" y1="20" x2="190" y2="20" stroke="#d4a84b" stroke-width="2"/>
+    <text x="110" y="6" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">어깨선 정확히 맞음</text>
+    <text x="110" y="125" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">✓ 기성복이 잘 맞음</text>
+    <text x="110" y="141" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">대부분의 스타일 소화 가능</text>
+    <text x="110" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">핏을 핵심으로 선택</text>
+    <text x="110" y="181" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">사이즈 가이드 그대로 활용</text>
+  </g>
+
+  <!-- Wide shoulder -->
+  <g transform="translate(500,90)">
+    <text x="110" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178">어깨 넓음 (46cm↑)</text>
+    <path d="M30,20 L190,20 L200,30 L170,100 L50,100 L20,30 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="2"/>
+    <!-- Tight shoulder indication -->
+    <path d="M30,20 C45,15 55,18 65,20" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+    <path d="M155,20 C165,18 175,15 190,20" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+    <text x="110" y="125" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">강점: 역삼각형 실루엣</text>
+    <text x="110" y="141" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">하의 볼륨으로 균형 맞추기</text>
+    <text x="110" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">해결: V넥으로 시선 아래로</text>
+    <text x="110" y="181" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">와이드 팬츠로 균형</text>
+  </g>
+
+  <!-- How to measure -->
+  <g transform="translate(40,295)">
+    <rect x="0" y="0" width="720" height="52" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="20" y="18" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">측정법:</text>
+    <text x="90" y="18" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">한쪽 어깨 끝(견봉)에서 반대쪽 어깨 끝까지 수평으로 측정</text>
+    <text x="20" y="38" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">기준:</text>
+    <text x="90" y="38" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">남성 40~50cm · 여성 34~44cm · ±3cm 이상이면 수선 필요 또는 와이드/슬림핏 전략 적용</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 어깨 너비가 옷태를 완전히 바꾸는 방법</text>
+</svg>

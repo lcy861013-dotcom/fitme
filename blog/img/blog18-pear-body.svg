@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">PEAR BODY TYPE · STYLE GUIDE</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">서양배형(하체 발달) 체형 코디 완전 가이드</text>
+
+  <!-- Body silhouette -->
+  <g transform="translate(40,90)">
+    <text x="100" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">서양배형 특징</text>
+    <!-- Silhouette -->
+    <ellipse cx="100" cy="35" rx="18" ry="20" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+    <path d="M65,55 L135,55 L125,115 L75,115 Z" fill="none" stroke="#d4a84b" stroke-width="1.5"/>
+    <path d="M70,115 L130,115 L155,220 L45,220 Z" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="65" y1="55" x2="135" y2="55" stroke="#d4a84b" stroke-width="1.5"/>
+    <line x1="45" y1="220" x2="155" y2="220" stroke="#d4a84b" stroke-width="1.5"/>
+
+    <!-- Measurement markers -->
+    <line x1="175" y1="55" x2="175" y2="220" stroke="#8b8178" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="168" y1="55" x2="182" y2="55" stroke="#8b8178" stroke-width="1"/>
+    <line x1="168" y1="220" x2="182" y2="220" stroke="#8b8178" stroke-width="1"/>
+    <text x="190" y="100" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">어깨</text>
+    <text x="190" y="114" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">35~38cm</text>
+    <text x="190" y="165" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">힙</text>
+    <text x="190" y="179" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">40~46cm↑</text>
+
+    <text x="100" y="248" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">어깨 &lt; 힙 · 하체 볼륨</text>
+  </g>
+
+  <!-- What works / what doesn't -->
+  <g transform="translate(290,90)">
+    <text x="220" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">서양배형 스타일 전략</text>
+
+    <!-- Upper body strategy -->
+    <rect x="0" y="16" width="440" height="56" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="220" y="36" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">상체 강조 전략 (핵심)</text>
+    <text x="220" y="54" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">오프숄더 · 퍼프소매 · 보트넥 · 밝은 상의 → 어깨를 시각적으로 넓혀서 비율 균형</text>
+    <text x="220" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">원칙: 시선을 어깨/상체로 올리면 하체 볼륨이 상대적으로 줄어 보임</text>
+
+    <!-- Lower body strategy -->
+    <rect x="0" y="84" width="440" height="56" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="220" y="104" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8" font-weight="700">하의 선택법</text>
+    <text x="220" y="122" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">A라인 스커트 · 플레어 · 다크 컬러 하의 · 스트레이트 팬츠</text>
+    <text x="220" y="136" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">피해야 할 것: 스키니 · 밝은 색 타이트 하의 · 힙 위 포켓 장식</text>
+
+    <!-- Avoid list -->
+    <rect x="0" y="152" width="210" height="76" rx="8" fill="#1c1a18" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="105" y="170" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b" font-weight="700">✗ 피해야 할 것</text>
+    <text x="10" y="188" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 힙 강조 타이트 스커트</text>
+    <text x="10" y="204" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 가로줄 하의</text>
+    <text x="10" y="220" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 포켓 장식 하의</text>
+
+    <!-- Recommended list -->
+    <rect x="230" y="152" width="210" height="76" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="335" y="170" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">✓ 추천 조합</text>
+    <text x="240" y="188" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 오프숄더 + A라인 스커트</text>
+    <text x="240" y="204" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 밝은 상의 + 다크 하의</text>
+    <text x="240" y="220" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 퍼프소매 + 스트레이트 팬츠</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 서양배형 체형 코디 완전 가이드</text>
+</svg>

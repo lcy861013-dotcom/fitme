@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">FABRIC GUIDE · DRAPE vs CLING</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">체형별 소재 가이드 — 흘러내리는 소재 vs 달라붙는 소재</text>
+
+  <!-- Drape fabrics -->
+  <g transform="translate(40,90)">
+    <rect x="0" y="0" width="340" height="260" rx="10" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="170" y="26" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">드레이프 소재 (흘러내림)</text>
+    <text x="170" y="44" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">형태 유지 · 우아한 실루엣</text>
+    <line x1="20" y1="52" x2="320" y2="52" stroke="#2a2724"/>
+
+    <text x="20" y="72" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8" font-weight="700">추천 소재</text>
+    <text x="20" y="90" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 실크 / 새틴 — 광택, 유동적 드레이프</text>
+    <text x="20" y="106" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 린넨 — 여름 와이드팬츠 최적</text>
+    <text x="20" y="122" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 울 크레이프 — 포멀, 형태 유지</text>
+    <text x="20" y="138" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 쉬폰 — 가볍고 우아한 레이어</text>
+    <text x="20" y="154" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 레이온/비스코스 — 부드러운 드레이프</text>
+
+    <line x1="20" y1="166" x2="320" y2="166" stroke="#2a2724"/>
+    <text x="20" y="184" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">적합한 체형</text>
+    <text x="20" y="200" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 직사각형 — 흘러내림으로 부드러운 곡선</text>
+    <text x="20" y="216" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 역삼각형 — 하체 볼륨 자연스럽게 표현</text>
+    <text x="20" y="232" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 모래시계형 — 곡선 강조</text>
+
+    <text x="170" y="256" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">★ 선택 기준: 손으로 들었을 때 무게감 있고 흘러내리는 것</text>
+  </g>
+
+  <!-- Cling fabrics -->
+  <g transform="translate(420,90)">
+    <rect x="0" y="0" width="340" height="260" rx="10" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="170" y="26" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#e0dcd8" font-weight="700">구조적/달라붙는 소재</text>
+    <text x="170" y="44" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">형태 강조 · 실루엣 선명</text>
+    <line x1="20" y1="52" x2="320" y2="52" stroke="#2a2724"/>
+
+    <text x="20" y="72" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8" font-weight="700">소재 종류</text>
+    <text x="20" y="90" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 저지/스판덱스 — 몸에 밀착</text>
+    <text x="20" y="106" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 두꺼운 코튼 — 형태 유지, 뻣뻣</text>
+    <text x="20" y="122" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 데님 — 구조적, 형태 고정</text>
+    <text x="20" y="138" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 폴리에스터 — 달라붙음, 광택</text>
+    <text x="20" y="154" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">• 니트/울 — 무게감, 구조적</text>
+
+    <line x1="20" y1="166" x2="320" y2="166" stroke="#2a2724"/>
+    <text x="20" y="184" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">주의할 체형</text>
+    <text x="20" y="200" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">⚠ 서양배형 — 달라붙는 하의 피하기</text>
+    <text x="20" y="216" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">⚠ 모래시계형 — 폴리에스터 와이드는 드레이프 안 살아남</text>
+    <text x="20" y="232" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">⚠ 와이드팬츠 → 무게감 있는 소재만 효과적</text>
+
+    <text x="170" y="256" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">★ 가볍고 얇은 폴리 와이드팬츠가 실망스러운 이유</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 체형별 소재 가이드</text>
+</svg>

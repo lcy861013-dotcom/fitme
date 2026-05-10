@@ -335,4 +335,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog25</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog25-en</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

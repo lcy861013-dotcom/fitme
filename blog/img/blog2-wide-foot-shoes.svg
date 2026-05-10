@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">WIDE FOOT GUIDE</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">발볼 너비 기준 & 브랜드 선택법</text>
+
+  <!-- Foot width comparison -->
+  <g transform="translate(60,100)">
+    <text x="130" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">발 너비 기준 (발 길이 260mm 기준)</text>
+    <!-- Narrow foot -->
+    <ellipse cx="70" cy="130" rx="35" ry="110" fill="none" stroke="#8b8178" stroke-width="1.5"/>
+    <text x="70" y="255" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178">B (보통)</text>
+    <text x="70" y="272" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">~93mm</text>
+    <!-- Standard foot -->
+    <ellipse cx="200" cy="130" rx="44" ry="110" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <text x="200" y="255" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">D (표준)</text>
+    <text x="200" y="272" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">~97mm</text>
+    <!-- Wide foot -->
+    <ellipse cx="340" cy="130" rx="54" ry="110" fill="none" stroke="#d4a84b" stroke-width="2.5"/>
+    <text x="340" y="255" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">E (발볼 넓음)</text>
+    <text x="340" y="272" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">~101mm</text>
+    <!-- Extra wide -->
+    <ellipse cx="490" cy="130" rx="63" ry="110" fill="none" stroke="#ff6b6b" stroke-width="2.5"/>
+    <text x="490" y="255" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#ff6b6b" font-weight="700">EE (매우 넓음)</text>
+    <text x="490" y="272" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b">~105mm+</text>
+  </g>
+
+  <!-- Brand guide -->
+  <g transform="translate(630,100)">
+    <text x="80" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">추천 전략</text>
+    <rect x="0" y="18" width="160" height="42" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="80" y="35" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">뉴발란스 · 아식스</text>
+    <text x="80" y="51" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">2E 와이드 라인 보유</text>
+    <rect x="0" y="72" width="160" height="42" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="80" y="89" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">나이키 · 아디다스</text>
+    <text x="80" y="105" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">Wide 옵션 일부 제공</text>
+    <rect x="0" y="126" width="160" height="42" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="80" y="143" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">스트랩 샌들 · 뮬</text>
+    <text x="80" y="159" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">발볼 조절 가능 구조</text>
+    <rect x="0" y="180" width="160" height="42" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="80" y="197" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">핵심 팁</text>
+    <text x="80" y="213" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">볼 먼저, 사이즈는 다음</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 발볼 넓은 분을 위한 신발 가이드</text>
+</svg>

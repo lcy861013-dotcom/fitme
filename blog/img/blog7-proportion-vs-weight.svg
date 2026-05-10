@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">SIZE vs PROPORTION</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">몸무게보다 비율이 중요한 이유</text>
+
+  <!-- Person A: same weight, short legs -->
+  <g transform="translate(80,90)">
+    <text x="90" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178">Person A</text>
+    <text x="90" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">170cm · 65kg</text>
+    <!-- Head -->
+    <ellipse cx="90" cy="50" rx="20" ry="22" fill="none" stroke="#8b8178" stroke-width="2"/>
+    <!-- Body -->
+    <rect x="64" y="72" width="52" height="90" rx="4" fill="none" stroke="#8b8178" stroke-width="2"/>
+    <!-- Legs (shorter) -->
+    <rect x="64" y="162" width="22" height="80" rx="3" fill="none" stroke="#8b8178" stroke-width="2"/>
+    <rect x="94" y="162" width="22" height="80" rx="3" fill="none" stroke="#8b8178" stroke-width="2"/>
+    <!-- Height line -->
+    <line x1="130" y1="28" x2="130" y2="242" stroke="#8b8178" stroke-width="1" stroke-dasharray="3,3"/>
+    <!-- Leg ratio label -->
+    <line x1="140" y1="162" x2="140" y2="242" stroke="#ff6b6b" stroke-width="2"/>
+    <line x1="135" y1="162" x2="145" y2="162" stroke="#ff6b6b" stroke-width="1.5"/>
+    <line x1="135" y1="242" x2="145" y2="242" stroke="#ff6b6b" stroke-width="1.5"/>
+    <text x="158" y="207" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b">47%</text>
+    <text x="90" y="270" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#ff6b6b">다리 비율 낮음</text>
+  </g>
+
+  <!-- VS -->
+  <text x="290" y="200" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="28" fill="#2a2724" font-weight="700">VS</text>
+
+  <!-- Person B: same weight, long legs -->
+  <g transform="translate(330,90)">
+    <text x="90" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b">Person B</text>
+    <text x="90" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">170cm · 65kg</text>
+    <!-- Head -->
+    <ellipse cx="90" cy="50" rx="20" ry="22" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <!-- Body (shorter torso) -->
+    <rect x="64" y="72" width="52" height="70" rx="4" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <!-- Legs (longer) -->
+    <rect x="64" y="142" width="22" height="100" rx="3" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <rect x="94" y="142" width="22" height="100" rx="3" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <!-- Leg ratio label -->
+    <line x1="140" y1="142" x2="140" y2="242" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="135" y1="142" x2="145" y2="142" stroke="#d4a84b" stroke-width="1.5"/>
+    <line x1="135" y1="242" x2="145" y2="242" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="158" y="197" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">59%</text>
+    <text x="90" y="270" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">다리 비율 높음</text>
+  </g>
+
+  <!-- Key Message -->
+  <g transform="translate(540,90)">
+    <text x="120" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">비율이 바꾸는 것들</text>
+    <rect x="0" y="16" width="240" height="44" rx="8" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="120" y="34" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">같은 체중, 다른 인상</text>
+    <text x="120" y="50" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">다리 비율 52% 이상 = 상위 15%</text>
+
+    <rect x="0" y="74" width="240" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="120" y="92" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">시각적 효과 (같은 옷 착용 시)</text>
+    <text x="120" y="108" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">Person B가 5~8cm 더 커 보임</text>
+
+    <rect x="0" y="132" width="240" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="120" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">비율 개선 방법</text>
+    <text x="120" y="166" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">하이웨이스트 + 크롭 상의</text>
+
+    <rect x="0" y="190" width="240" height="44" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="120" y="208" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">FITME가 측정하는 것</text>
+    <text x="120" y="224" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b">체중이 아닌 비율 그 자체</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 몸무게보다 비율이 중요한 이유</text>
+</svg>

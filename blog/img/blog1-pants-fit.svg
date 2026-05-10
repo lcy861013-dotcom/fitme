@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">PANTS FIT GUIDE</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">팬츠 핏 유형 비교</text>
+
+  <!-- Slim Fit -->
+  <g transform="translate(80,90)">
+    <text x="70" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" font-weight="700" fill="#d4a84b" letter-spacing="1">슬림핏</text>
+    <polygon points="35,30 105,30 95,300 45,300" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="35" y1="150" x2="105" y2="150" stroke="#2a2724" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="70" y="325" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">허벅지→발목 좁아짐</text>
+    <text x="70" y="342" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">다리 라인 강조</text>
+  </g>
+
+  <!-- Straight Fit -->
+  <g transform="translate(230,90)">
+    <text x="70" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" font-weight="700" fill="#d4a84b" letter-spacing="1">스트레이트핏</text>
+    <polygon points="30,30 110,30 110,300 30,300" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="30" y1="150" x2="110" y2="150" stroke="#2a2724" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="70" y="325" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">일정한 폭 유지</text>
+    <text x="70" y="342" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">가장 범용적</text>
+  </g>
+
+  <!-- Wide Fit -->
+  <g transform="translate(380,90)">
+    <text x="70" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" font-weight="700" fill="#d4a84b" letter-spacing="1">와이드핏</text>
+    <polygon points="25,30 115,30 130,300 10,300" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="25" y1="150" x2="115" y2="150" stroke="#2a2724" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="70" y="325" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">허리→발목 넓어짐</text>
+    <text x="70" y="342" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">트렌디·편안</text>
+  </g>
+
+  <!-- Tapered Fit -->
+  <g transform="translate(530,90)">
+    <text x="70" y="18" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" font-weight="700" fill="#d4a84b" letter-spacing="1">테이퍼드핏</text>
+    <polygon points="20,30 120,30 95,300 45,300" fill="none" stroke="#d4a84b" stroke-width="2"/>
+    <line x1="20" y1="150" x2="120" y2="150" stroke="#2a2724" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="70" y="325" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">허벅지 여유</text>
+    <text x="70" y="342" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">무릎↓ 좁아짐</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 팬츠 핏 완전 가이드</text>
+</svg>

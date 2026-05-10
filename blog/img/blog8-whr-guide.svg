@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">WAIST-TO-HIP RATIO (WHR)</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">허리-골반 비율(WHR) — 체형 분류의 과학</text>
+
+  <!-- WHR Formula -->
+  <g transform="translate(40,90)">
+    <rect x="0" y="0" width="220" height="70" rx="10" fill="#1c1a18" stroke="#d4a84b" stroke-width="2"/>
+    <text x="110" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">공식</text>
+    <text x="110" y="50" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" fill="#d4a84b" font-weight="700">WHR = 허리 ÷ 골반</text>
+
+    <!-- Example -->
+    <text x="0" y="96" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">예시: 허리 70cm ÷ 골반 96cm = <tspan fill="#d4a84b" font-weight="700">0.73</tspan></text>
+
+    <!-- Measurement points -->
+    <rect x="0" y="112" width="220" height="90" rx="8" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="110" y="130" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8" font-weight="700">측정 위치</text>
+    <text x="10" y="148" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">허리: 배꼽 위 2~4cm · 가장 좁은 지점</text>
+    <text x="10" y="164" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">골반: 엉덩이 가장 넓은 지점</text>
+    <text x="10" y="180" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">각 2회 측정 후 평균값 사용</text>
+    <text x="10" y="196" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">★ 벨트 위치(낮음)가 아닌 자연 허리선</text>
+  </g>
+
+  <!-- WHR Scale -->
+  <g transform="translate(300,90)">
+    <text x="200" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178" letter-spacing="2">WHR 기준표</text>
+    <!-- Scale bar -->
+    <defs>
+      <linearGradient id="whrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1"/>
+        <stop offset="40%" style="stop-color:#4a9d4a;stop-opacity:1"/>
+        <stop offset="70%" style="stop-color:#e88e3a;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#e84a3a;stop-opacity:1"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="18" width="400" height="16" rx="8" fill="url(#whrGrad)"/>
+
+    <!-- Markers -->
+    <line x1="0" y1="34" x2="0" y2="48" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="0" y="60" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">0.60</text>
+    <line x1="100" y1="34" x2="100" y2="48" stroke="#4a9d4a" stroke-width="1.5"/>
+    <text x="88" y="60" font-family="'DM Sans',sans-serif" font-size="10" fill="#4a9d4a">0.70</text>
+    <line x1="200" y1="34" x2="200" y2="48" stroke="#e88e3a" stroke-width="1.5"/>
+    <text x="188" y="60" font-family="'DM Sans',sans-serif" font-size="10" fill="#e88e3a">0.80</text>
+    <line x1="300" y1="34" x2="300" y2="48" stroke="#e84a3a" stroke-width="1.5"/>
+    <text x="288" y="60" font-family="'DM Sans',sans-serif" font-size="10" fill="#e84a3a">0.90</text>
+    <text x="388" y="60" font-family="'DM Sans',sans-serif" font-size="10" fill="#e84a3a">1.0+</text>
+
+    <!-- Body type rows -->
+    <rect x="0" y="76" width="400" height="36" rx="6" fill="#1c1a18" stroke="#d4a84b" stroke-width="1"/>
+    <text x="10" y="90" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b" font-weight="700">0.60~0.68</text>
+    <text x="110" y="90" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">정의된 모래시계형</text>
+    <text x="260" y="90" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">허리가 매우 선명</text>
+    <text x="10" y="106" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">사이즈 업·다운 갭 발생 → 수선 필요</text>
+
+    <rect x="0" y="120" width="400" height="36" rx="6" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="10" y="134" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b" font-weight="700">0.69~0.75</text>
+    <text x="110" y="134" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">부드러운 모래시계형</text>
+    <text x="260" y="134" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">허리 정의 보통</text>
+    <text x="10" y="150" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">대부분의 기성복이 잘 맞는 범위</text>
+
+    <rect x="0" y="164" width="400" height="36" rx="6" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="10" y="178" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b" font-weight="700">0.76~0.85</text>
+    <text x="110" y="178" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">배형·서양배형</text>
+    <text x="260" y="178" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">허리와 힙 차이 작음</text>
+    <text x="10" y="194" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">허리 강조 스타일이 효과적</text>
+
+    <rect x="0" y="208" width="400" height="36" rx="6" fill="#1c1a18" stroke="#2a2724"/>
+    <text x="10" y="222" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b" font-weight="700">0.86+</text>
+    <text x="110" y="222" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">직사각형·사과형</text>
+    <text x="260" y="222" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">허리선 거의 없음</text>
+    <text x="10" y="238" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">A라인·벨트 활용으로 허리선 생성</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 완벽한 허리-골반 비율의 과학</text>
+</svg>

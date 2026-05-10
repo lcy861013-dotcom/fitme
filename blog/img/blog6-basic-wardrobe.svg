@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <rect width="800" height="420" fill="#161412"/>
+  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">CAPSULE WARDROBE ESSENTIALS</text>
+  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">기본템 5가지 — 1주일 코디 완성</text>
+
+  <!-- Item 1: White Shirt -->
+  <g transform="translate(40,95)">
+    <rect x="0" y="0" width="130" height="150" rx="10" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
+    <text x="65" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="22" fill="#d4a84b">👔</text>
+    <text x="65" y="60" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">01 · 화이트 셔츠</text>
+    <text x="65" y="80" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">격식 · 캐주얼 모두 가능</text>
+    <text x="65" y="96" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">터크인 · 오버핏 변용</text>
+    <rect x="10" y="112" width="110" height="26" rx="5" fill="#2a2724"/>
+    <text x="65" y="129" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">코디 가능 색상: ALL</text>
+
+    <text x="65" y="175" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">체형보정: 터크인 → 허리선</text>
+    <text x="65" y="190" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">활용도: ★★★★★</text>
+  </g>
+
+  <!-- Item 2: Black Pants -->
+  <g transform="translate(195,95)">
+    <rect x="0" y="0" width="130" height="150" rx="10" fill="#1c1a18" stroke="#2a2724" stroke-width="1.5"/>
+    <text x="65" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="22" fill="#d4a84b">👖</text>
+    <text x="65" y="60" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">02 · 블랙 팬츠</text>
+    <text x="65" y="80" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">슬림 or 스트레이트</text>
+    <text x="65" y="96" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">모든 상의와 매칭</text>
+    <rect x="10" y="112" width="110" height="26" rx="5" fill="#2a2724"/>
+    <text x="65" y="129" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">다리 라인 슬리밍</text>
+
+    <text x="65" y="175" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">체형보정: 전신 슬리밍</text>
+    <text x="65" y="190" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">활용도: ★★★★★</text>
+  </g>
+
+  <!-- Item 3: Denim -->
+  <g transform="translate(350,95)">
+    <rect x="0" y="0" width="130" height="150" rx="10" fill="#1c1a18" stroke="#2a2724" stroke-width="1.5"/>
+    <text x="65" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="22" fill="#d4a84b">🔵</text>
+    <text x="65" y="60" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">03 · 데님 팬츠</text>
+    <text x="65" y="80" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">미디엄 워시 추천</text>
+    <text x="65" y="96" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">슬림 or 스트레이트</text>
+    <rect x="10" y="112" width="110" height="26" rx="5" fill="#2a2724"/>
+    <text x="65" y="129" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">캐주얼의 기본</text>
+
+    <text x="65" y="175" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">체형보정: 워시로 조절</text>
+    <text x="65" y="190" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">활용도: ★★★★☆</text>
+  </g>
+
+  <!-- Item 4: Trench Coat -->
+  <g transform="translate(505,95)">
+    <rect x="0" y="0" width="130" height="150" rx="10" fill="#1c1a18" stroke="#2a2724" stroke-width="1.5"/>
+    <text x="65" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="22" fill="#d4a84b">🧥</text>
+    <text x="65" y="60" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">04 · 트렌치코트</text>
+    <text x="65" y="80" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">베이지 or 블랙</text>
+    <text x="65" y="96" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">벨트로 허리 강조</text>
+    <rect x="10" y="112" width="110" height="26" rx="5" fill="#2a2724"/>
+    <text x="65" y="129" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">전신 비율 정리</text>
+
+    <text x="65" y="175" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">체형보정: 모든 체형 가능</text>
+    <text x="65" y="190" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">활용도: ★★★★☆</text>
+  </g>
+
+  <!-- Item 5: White Sneakers -->
+  <g transform="translate(660,95)">
+    <rect x="0" y="0" width="130" height="150" rx="10" fill="#1c1a18" stroke="#2a2724" stroke-width="1.5"/>
+    <text x="65" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="22" fill="#d4a84b">👟</text>
+    <text x="65" y="60" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">05 · 화이트 스니커즈</text>
+    <text x="65" y="80" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">깨끗한 단색 추천</text>
+    <text x="65" y="96" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">어떤 코디에도 가능</text>
+    <rect x="10" y="112" width="110" height="26" rx="5" fill="#2a2724"/>
+    <text x="65" y="129" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">발목 라인 정리</text>
+
+    <text x="65" y="175" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">체형보정: 발목 노출→다리↑</text>
+    <text x="65" y="190" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">활용도: ★★★★★</text>
+  </g>
+
+  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
+  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 기본템 5가지로 1주일 완성 코디</text>
+</svg>
