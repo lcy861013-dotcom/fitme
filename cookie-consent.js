@@ -51,6 +51,45 @@
     })(window, document, 'clarity', 'script', 'wk36ynf43e');
   }
 
+  function setupCtaTracking() {
+    if (window.__fitmeCtaTrackingBound) return;
+    window.__fitmeCtaTrackingBound = true;
+    document.addEventListener(
+      'click',
+      function (ev) {
+        var el = ev.target && ev.target.closest ? ev.target.closest('a,button') : null;
+        if (!el) return;
+
+        var consent = '';
+        try {
+          consent = localStorage.getItem(KEY) || '';
+        } catch (e) {}
+        if (consent !== 'all') return;
+        if (typeof gtag !== 'function') return;
+
+        var track = false;
+        var href = '';
+        if (el.tagName === 'A') href = el.getAttribute('href') || '';
+
+        if (el.id === 'btn-analyze' || el.id === 'btn-analyze-mobile') track = true;
+        if (el.classList && (el.classList.contains('hero-btn') || el.classList.contains('cta-btn'))) track = true;
+        if (!track && el.tagName === 'A' && (href === '/' || href === '/#analysis')) track = true;
+        if (!track) return;
+
+        var ctaId = el.id || (el.className || '').toString().split(' ')[0] || 'cta';
+        var label = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+        gtag('event', 'cta_click', {
+          cta_id: ctaId,
+          cta_label: label,
+          target_url: href || '',
+          page_path: location.pathname,
+          page_title: document.title || '',
+        });
+      },
+      true
+    );
+  }
+
   function removeBanner() {
     var el = document.getElementById('fitme-cc-banner');
     if (el) el.remove();
@@ -91,6 +130,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     ensureCss();
+    setupCtaTracking();
     var consent = '';
     try {
       consent = localStorage.getItem(KEY) || '';
