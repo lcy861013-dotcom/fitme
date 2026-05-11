@@ -308,15 +308,18 @@
     /* BLOG SECTION */
     .blog-section { padding: 60px 32px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, rgba(212,168,75,0.01) 0%, transparent 30%, rgba(212,168,75,0.015) 100%); }
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-    .blog-card { display: block; background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; position: relative; }
-    .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 32px rgba(212,168,75,0.12); }
+    .blog-card { display: block; background: linear-gradient(165deg, rgba(31,29,27,0.94) 0%, rgba(23,21,19,0.96) 100%); border: 1px solid rgba(212,168,75,0.14); border-radius: 18px; overflow: hidden; cursor: pointer; transition: all 0.28s ease; text-decoration: none; color: inherit; position: relative; }
+    .blog-card::after { content:''; position:absolute; inset:auto 0 0 0; height:1px; background:linear-gradient(90deg, transparent, rgba(212,168,75,0.55), transparent); opacity:0.45; }
+    .blog-card:hover { border-color: rgba(212,168,75,0.5); transform: translateY(-5px); box-shadow: 0 14px 40px rgba(12,8,5,0.45), 0 0 0 1px rgba(212,168,75,0.08) inset; }
     .blog-card.hot { border-color: rgba(212,168,75,0.4); }
-    .blog-thumb { height: 140px; background: linear-gradient(135deg, #1a1a2e, #16213e); display: flex; align-items: center; justify-content: center; font-size: 48px; }
-    .blog-thumb img { width: 100%; height: 140px; object-fit: cover; display: block; }
+    .blog-thumb { height: 156px; background: radial-gradient(circle at 20% 15%, rgba(212,168,75,0.22), transparent 55%), linear-gradient(135deg, #1a1713, #151210); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; overflow: hidden; }
+    .blog-thumb::after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(15,14,13,0.78), rgba(15,14,13,0.22) 55%, rgba(15,14,13,0.1)); pointer-events:none; }
+    .blog-thumb img { width: 100%; height: 156px; object-fit: cover; display: block; filter: saturate(0.78) contrast(1.04) brightness(0.78); transition: transform 0.35s ease, filter 0.35s ease; }
+    .blog-card:hover .blog-thumb img { transform: scale(1.05); filter: saturate(0.9) contrast(1.06) brightness(0.84); }
     .blog-body { padding: 20px; }
-    .blog-tag { font-size: 10px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
-    .blog-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
-    .blog-desc { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .blog-tag { display:inline-flex; align-items:center; gap:6px; font-size: 10px; letter-spacing: 1.6px; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; background: rgba(212,168,75,0.1); border: 1px solid rgba(212,168,75,0.24); border-radius: 999px; padding: 4px 10px; }
+    .blog-title { font-size: 15px; font-weight: 700; margin-bottom: 9px; line-height: 1.5; letter-spacing: -0.1px; }
+    .blog-desc { font-size: 13px; color: #b6aba0; line-height: 1.75; }
     .blog-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
     .blog-read-time { font-size: 11px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
     .blog-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px; font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px; }
@@ -860,22 +863,27 @@
     .sf-missing { background: rgba(255,255,255,0.03); border: 1px dashed var(--border); border-radius: 10px; padding: 14px; font-size: 13px; color: var(--muted); font-family: 'DM Sans', sans-serif; text-align: center; line-height: 1.7; }
 
     /* EDUCATIONAL SECTION */
-    .proportions-edu { padding: 80px 20px; background: var(--bg); border-top: 1px solid var(--border); }
-    .edu-container { max-width: 900px; margin: 0 auto; }
-    .edu-title { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--accent); margin-bottom: 16px; letter-spacing: 2px; text-align: center; }
-    .edu-intro { text-align: center; font-size: 17px; color: var(--text); line-height: 1.7; margin-bottom: 56px; max-width: 720px; margin-inline: auto; }
-    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 64px; }
-    .edu-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 0; transition: transform 0.3s; overflow: hidden; }
-    .edu-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-    .edu-thumb-wrap { width: 100%; aspect-ratio: 3/2; overflow: hidden; }
-    .edu-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .edu-card:hover .edu-thumb { transform: scale(1.05); }
-    .edu-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--accent); margin: 24px 24px 12px; letter-spacing: 1px; }
-    .edu-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 0 24px 24px; }
-    .edu-icon { font-size: 32px; margin: 24px 24px 12px; }    .edu-content-block { background: rgba(212,168,75,0.04); border-radius: 20px; padding: 40px; border: 1px solid rgba(212,168,75,0.1); }
-    .edu-content-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--accent); margin-bottom: 16px; letter-spacing: 1px; }
-    .edu-content-block p { font-size: 15px; color: var(--text); line-height: 1.8; }
+    .proportions-edu { padding: 86px 20px; background: radial-gradient(1100px 460px at 50% -120px, rgba(212,168,75,0.09), transparent 60%), var(--bg); border-top: 1px solid var(--border); }
+    .edu-container { max-width: 1040px; margin: 0 auto; }
+    .edu-title { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: var(--accent); margin-bottom: 14px; letter-spacing: 2px; text-align: center; }
+    .edu-intro { text-align: center; font-size: 16px; color: #c6bbb1; line-height: 1.8; margin-bottom: 34px; max-width: 860px; margin-inline: auto; }
+    .edu-top-metrics { display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 auto 34px; max-width: 940px; }
+    .edu-metric { background: rgba(255,255,255,0.02); border: 1px solid rgba(212,168,75,0.18); border-radius: 14px; padding: 13px 12px; text-align:center; }
+    .edu-metric-k { display:block; font-size: 10px; letter-spacing: 1.8px; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; font-family:'DM Sans',sans-serif; }
+    .edu-metric-v { display:block; font-family:'Bebas Neue',sans-serif; font-size: 27px; line-height:1; letter-spacing: 1px; color: var(--accent); }
+    .edu-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 28px; }
+    .edu-card { background: linear-gradient(165deg, rgba(29,26,24,0.9), rgba(22,20,18,0.95)); border: 1px solid rgba(212,168,75,0.18); border-radius: 16px; padding: 20px 18px; transition: transform 0.24s ease, border-color 0.24s ease; overflow: hidden; position:relative; }
+    .edu-card::before { content:''; position:absolute; top:-30px; right:-30px; width:90px; height:90px; border-radius:50%; background: radial-gradient(circle, rgba(212,168,75,0.14), transparent 70%); }
+    .edu-card:hover { transform: translateY(-4px); border-color: rgba(212,168,75,0.45); }
+    .edu-icon { font-size: 24px; margin-bottom: 10px; }
+    .edu-chip { display:inline-block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#d6c8b8; border:1px solid rgba(214,200,184,0.25); border-radius:999px; padding:3px 8px; margin-bottom:10px; }
+    .edu-card h3 { font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); margin: 0 0 9px; letter-spacing: 0; }
+    .edu-card p { font-size: 13.5px; color: #b8ada2; line-height: 1.75; margin: 0; }
+    .edu-content-block { background: linear-gradient(165deg, rgba(212,168,75,0.08), rgba(168,152,104,0.05)); border-radius: 20px; padding: 26px 24px; border: 1px solid rgba(212,168,75,0.2); }
+    .edu-content-block h3 { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 12px; letter-spacing: 0.1px; }
+    .edu-content-block p { font-size: 14px; color: #d0c7bf; line-height: 1.85; }
     @media (max-width: 850px) {
+      .edu-top-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .edu-grid { grid-template-columns: 1fr; }
       .edu-title { font-size: 32px; }
     }
@@ -1869,28 +1877,33 @@
   </div>
 
   <!-- EDUCATIONAL CONTENT SECTION (SEO & USER VALUE) -->
-  <section class="proportions-edu" id="why-fitme">
+  <section class="proportions-edu" id="proportion-science">
     <div class="edu-container">
       <h2 class="edu-title" data-i18n="edu-title">The Science of Body Proportions</h2>
       <p class="edu-intro" data-i18n="edu-intro">Understanding your body isn't about fitting into a specific size—it's about understanding the unique geometry that makes you, you. At FITME, we use data-driven analysis to help you decode your proportions.</p>
+      <div class="edu-top-metrics">
+        <div class="edu-metric"><span class="edu-metric-k">Inputs</span><span class="edu-metric-v">3 + 9</span></div>
+        <div class="edu-metric"><span class="edu-metric-k">Segments</span><span class="edu-metric-v">12</span></div>
+        <div class="edu-metric"><span class="edu-metric-k">DNA Score</span><span class="edu-metric-v">0-100</span></div>
+        <div class="edu-metric"><span class="edu-metric-k">Languages</span><span class="edu-metric-v">15</span></div>
+      </div>
       
       <div class="edu-grid">
         <div class="edu-card">
-          <div class="edu-thumb-wrap">
-            <img src="https://images.pexels.com/photos/19177046/pexels-photo-19177046.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="Horizontal balance illustration" class="edu-thumb" loading="lazy">
-          </div>
+          <div class="edu-icon">📐</div>
+          <span class="edu-chip">Horizontal Structure</span>
           <h3 data-i18n="edu-card1-h">Horizontal Balance</h3>
           <p data-i18n="edu-card1-p">The ratio between your shoulders, waist, and hips determines your silhouette. Whether you lean towards an inverted triangle or a pear shape, knowing these ratios helps you choose cuts that create visual harmony.</p>
         </div>
         <div class="edu-card">
-          <div class="edu-thumb-wrap">
-            <img src="https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="Vertical proportions illustration" class="edu-thumb" loading="lazy">
-          </div>
+          <div class="edu-icon">📏</div>
+          <span class="edu-chip">Vertical Structure</span>
           <h3 data-i18n="edu-card2-h">Vertical Proportions</h3>
           <p data-i18n="edu-card2-p">Your leg-to-torso ratio dictates where your waistline should sit. People with shorter torsos benefit from mid-rise cuts, while those with longer torsos can use high-waisted styles to elongate their silhouette.</p>
         </div>
         <div class="edu-card">
           <div class="edu-icon">⚖️</div>
+          <span class="edu-chip">Math Layer</span>
           <h3 data-i18n="edu-card3-h">The Golden Ratio</h3>
           <p data-i18n="edu-card3-p">Classical aesthetics often refer to the golden ratio (1:1.618) as a benchmark for balance. We compare your measurements to these statistical averages to identify your unique strengths and styling opportunities.</p>
         </div>
@@ -2537,11 +2550,11 @@
       'guide-link5-title':'엉덩이 둘레 재기','guide-link5-sub':'두 손뼘으로 혼자서 한 바퀴',
       'blog-title':'패션 & 핏 가이드',
       'blog-subtitle':'체형 데이터로 완성하는 실전 스타일링 가이드 — 지금 바로 읽어보세요',
-      'edu-title':'신체 비율의 과학','edu-intro':'내 몸을 이해한다는 것은 단순히 사이즈를 아는 것이 아니라, 나만의 고유한 기하학적 구조를 이해하는 것입니다. FITME는 데이터를 통해 당신의 비율을 분석합니다.',
-      'edu-card1-h':'가로 밸런스','edu-card1-p':'어깨, 허리, 골반 사이의 비율이 당신의 실루엣을 결정합니다. 역삼각형인지 모래시계형인지 파악하면 시각적 조화를 이루는 커팅을 선택할 수 있습니다.',
-      'edu-card2-h':'세로 프로포션','edu-card2-p':'다리 대 상체 비율은 허리선의 위치를 결정합니다. 상체가 짧은 경우 미드라이즈가, 긴 경우 하이웨이스트가 실루엣을 길어 보이게 합니다.',
-      'edu-card3-h':'황금 비율의 원리','edu-card3-p':'고전 미학에서 황금비율(1:1.618)은 균형의 기준입니다. 우리는 당신의 치수를 통계적 평균과 비교하여 당신만의 강점과 스타일링 포인트를 찾아냅니다.',
-      'edu-why-h':'왜 사진 대신 치수인가요?','edu-why-p':'사진은 렌즈 왜곡, 각도, 조명에 따라 왜곡될 수 있습니다. 하지만 숫자는 거짓말을 하지 않습니다. 정밀한 치수 측정을 통해 FITME는 자세나 복장에 상관없이 100% 객관적인 분석을 제공합니다. 이러한 데이터 우선 접근 방식은 당신의 스타일 추천이 실제 신체 구조에 기반하도록 하여 신뢰할 수 있는 옷장 구성의 청사진을 제공합니다.',
+      'edu-title':'핏은 감이 아니라 구조입니다','edu-intro':'같은 키·몸무게라도 어깨 폭, 팔 분절 길이, 다리 분절 길이가 다르면 실루엣은 완전히 달라집니다. FITME는 신체를 구간 비율로 해석해 “왜 이 옷이 맞고 안 맞는지”를 설명합니다.',
+      'edu-card1-h':'가로 구조 (어깨·허리·골반)','edu-card1-p':'가로 축은 실루엣의 첫인상을 결정합니다. 상체 우세형인지, 허리 대비 골반이 강조되는지에 따라 재킷 구조, 넥라인, 하의 볼륨 배분 전략이 달라집니다.',
+      'edu-card2-h':'세로 구조 (상체·다리 분절)','edu-card2-p':'골반→무릎, 무릎→복숭아뼈, 어깨→팔꿈치, 팔꿈치→손목 비율로 길이 착시를 설계합니다. 밑위·기장·커프 길이를 조정하면 체형 인상이 크게 바뀝니다.',
+      'edu-card3-h':'수학 레이어 (비율 지표)','edu-card3-p':'황금비, WHR, 어깨-허리 차이, 다리/상체 지표를 함께 분석해 체형 타입과 스타일 우선순위를 도출합니다. 감각이 아니라 재현 가능한 수치 기반 추천입니다.',
+      'edu-why-h':'왜 사진 대신 치수인가요?','edu-why-p':'사진은 렌즈·각도·포즈·조명에 따라 결과가 쉽게 흔들립니다. 치수는 조건이 달라져도 기준이 유지됩니다. FITME는 로컬 계산으로 객관성과 프라이버시를 동시에 확보해, 실제 쇼핑/코디에 재사용 가능한 분석 리포트를 제공합니다.',
       'blog-view-all':'전체 가이드 보기 →',
       'read-4min':'4분 읽기','read-5min':'5분 읽기','read-6min':'6분 읽기','read-7min':'7분 읽기',
       'blog1-title':'나에게 맞는 팬츠 핏 완전 가이드','blog1-desc':'슬림핏부터 와이드핏까지 — 체형·키·신발에 따른 팬츠 선택법과 기장·롤업 활용 실전 팁.',
@@ -2817,11 +2830,11 @@
       'guide-card5-law6-title':'Thumb length ≈ Nose length','guide-card5-law6-desc':'An old folk fact — hold your thumb next to your nose and they\'re almost exactly the same length.',
       'blog-title':'Fashion & Fit Guide',
       'blog-subtitle':'Data-driven styling guides for every body type — start reading now',
-      'edu-title':'The Science of Body Proportions','edu-intro':'Understanding your body isn\'t about fitting into a specific size—it\'s about understanding the unique geometry that makes you, you. At FITME, we use data-driven analysis to help you decode your proportions.',
-      'edu-card1-h':'Horizontal Balance','edu-card1-p':'The ratio between your shoulders, waist, and hips determines your silhouette. Whether you lean towards an inverted triangle or a pear shape, knowing these ratios helps you choose cuts that create visual harmony.',
-      'edu-card2-h':'Vertical Proportions','edu-card2-p':'Your leg-to-torso ratio dictates where your waistline should sit. People with shorter torsos benefit from mid-rise cuts, while those with longer torsos can use high-waisted styles to elongate their silhouette.',
-      'edu-card3-h':'The Golden Ratio','edu-card3-p':'Classical aesthetics often refer to the golden ratio (1:1.618) as a benchmark for balance. We compare your measurements to these statistical averages to identify your unique strengths and styling opportunities.',
-      'edu-why-h':'Why Measurements Over Photos?','edu-why-p':'Photos can be deceptive due to lens distortion, camera angles, and lighting. Numbers, however, don\'t lie. By using precise measurements, FITME provides a 100% private, objective analysis that works regardless of how you\'re posing or what you\'re currently wearing. This data-first approach ensures that your styling recommendations are based on your actual physical structure, providing a reliable blueprint for your wardrobe.',
+      'edu-title':'Fit is structure, not guesswork','edu-intro':'People with the same height and weight can look completely different because their segment ratios differ. FITME breaks your body into measurable structure, then translates that structure into styling decisions.',
+      'edu-card1-h':'Horizontal Structure (Shoulder-Waist-Hip)','edu-card1-p':'Your horizontal axis controls silhouette strength. Knowing where your frame carries width lets you choose neckline, shoulder construction, and lower-body volume with intention.',
+      'edu-card2-h':'Vertical Structure (Segment Lengths)','edu-card2-p':'Hip-to-knee, knee-to-ankle, shoulder-to-elbow, and elbow-to-wrist ratios drive visual length. Rise, hem, cuff, and layering choices become far more precise with segment data.',
+      'edu-card3-h':'Math Layer (Proportion Indices)','edu-card3-p':'Golden-ratio references, WHR, shoulder-waist differential, and leg/torso indices are combined to rank styling priorities. The output is reproducible, not vibe-based.',
+      'edu-why-h':'Why measurements over photos?','edu-why-p':'Photos are unstable inputs: lens distortion, angle, posture, and lighting all skew perception. Measurements remain consistent across contexts. FITME computes locally for privacy and delivers analysis you can reuse in real shopping and outfit planning.',
       'blog-view-all':'View All Guides →',
       'read-4min':'4 min read','read-5min':'5 min read','read-6min':'6 min read','read-7min':'7 min read',
       'blog1-title':'The Complete Pants Fit Guide','blog1-desc':'From slim to wide — how to choose pants by body type, height, and shoes. Inseam & roll-up tips included.',
