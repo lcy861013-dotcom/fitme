@@ -1,3 +1,11 @@
 https://www.perfectfitme.com/* https://perfectfitme.com/:splat 301!
 https://fitme.pages.dev/* https://perfectfitme.com/:splat 301!
 https://fitme-6d9.pages.dev/* https://perfectfitme.com/:splat 301!
+
+# Common scanner paths: normalize to home to reduce noisy 4xx spikes
+/wp-login.php /
+/xmlrpc.php /
+/.env /
+/admin /
+/phpmyadmin /
+/sitemap.xml.gz /sitemap.xml
