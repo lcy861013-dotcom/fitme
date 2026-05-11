@@ -4762,6 +4762,28 @@
     }
   };
 
+  // Keep core hero/science messaging consistent across non-KO/EN locales.
+  // This avoids mixed old copy while preserving each locale's detailed UI strings.
+  (function syncCoreMarketingCopy() {
+    const base = i18n.en || {};
+    const keys = [
+      'hero-headline','hero-sub','hero-btn',
+      'privacy-step1','privacy-step2','privacy-step3',
+      'edu-title','edu-intro',
+      'edu-card1-h','edu-card1-p',
+      'edu-card2-h','edu-card2-p',
+      'edu-card3-h','edu-card3-p',
+      'edu-why-h','edu-why-p'
+    ];
+    const locales = ['ja','zh','fr','es','pt','de','it','ru','ar','hi','th','id','vi'];
+    locales.forEach(function (loc) {
+      if (!i18n[loc]) return;
+      keys.forEach(function (k) {
+        if (base[k]) i18n[loc][k] = base[k];
+      });
+    });
+  })();
+
   // ============================================================
   // GLOBAL SHOE SIZE CONVERSION TABLE (KR mm ↔ US ↔ EU)
   // ============================================================
