@@ -8,7 +8,8 @@
   <style id="lang-fouc">body{visibility:hidden!important}</style>
   <script>
     (function(){
-      var saved = localStorage.getItem('fitme_lang');
+      var saved;
+      try { saved = localStorage.getItem('fitme_lang'); } catch(e) {}
       var lang = saved;
       if (!lang) {
         var nav = (navigator.language || '').toLowerCase();
@@ -161,7 +162,7 @@
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--border);
       position: sticky; top: 0;
-      background: rgba(13,10,6,0.97); backdrop-filter: blur(10px); z-index: 200;
+      background: rgba(13,10,6,0.97); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); z-index: 200;
     }
     .logo { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 6px; color: var(--accent); text-decoration: none; text-shadow: 0 0 20px rgba(212,168,75,0.3); }
     .logo span { color: var(--text); }
@@ -694,6 +695,7 @@
         bottom: 0; left: 0; right: 0;
         z-index: 500;
         height: 82vh;
+        height: 82dvh;
         display: flex;
         flex-direction: column;
         border-radius: 20px 20px 0 0;
@@ -709,6 +711,7 @@
         flex: 1;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
       }
       .panel-actions { display: none; }
       .mobile-analyze-bar {
@@ -784,6 +787,7 @@
         background: var(--bg);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
       }
       .mobile-result-overlay.active { display: block; }
       .mobile-result-body { padding: 20px 16px 160px; }
@@ -815,9 +819,9 @@
     /* ===== UNIT SETTINGS BUTTON & MODAL ===== */
     .unit-settings-btn { background: var(--card); border: 1px solid var(--border); color: var(--muted); padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; white-space: nowrap; }
     .unit-settings-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .unit-modal-backdrop { display: none; position: fixed; inset: 0; z-index: 900; background: rgba(15,8,2,0.75); backdrop-filter: blur(4px); }
+    .unit-modal-backdrop { display: none; position: fixed; inset: 0; z-index: 900; background: rgba(15,8,2,0.75); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
     .unit-modal-backdrop.active { display: block; }
-    .unit-settings-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 901; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; width: min(480px, 92vw); max-height: 88vh; overflow-y: auto; }
+    .unit-settings-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 901; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px 24px; width: min(480px, 92vw); max-height: 88vh; max-height: 88dvh; overflow-y: auto; }
     .unit-settings-modal.active { display: block; animation: fadeIn 0.18s; }
     .unit-row { margin-bottom: 18px; }
     .unit-row-label { font-size: 10px; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; text-transform: uppercase; }
