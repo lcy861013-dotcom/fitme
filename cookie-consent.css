@@ -1,0 +1,91 @@
+#fitme-cc-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2147483646;
+  padding: 16px;
+  background: rgba(22, 20, 18, 0.97);
+  border-top: 1px solid #2a2724;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.fitme-cc-inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.fitme-cc-msg {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #d0dcd8;
+  margin: 0 0 10px;
+}
+
+.fitme-cc-msg strong {
+  color: #d4a84b;
+}
+
+.fitme-cc-msg a {
+  color: #d4a84b;
+  text-decoration: underline;
+}
+
+.fitme-cc-msg code {
+  font-size: 11px;
+  background: #1c1a18;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #e0dcd8;
+}
+
+.fitme-cc-en {
+  opacity: 0.92;
+  font-size: 12px;
+}
+
+.fitme-cc-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.fitme-cc-btn {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+}
+
+.fitme-cc-accept {
+  background: #d4a84b;
+  color: #0f0e0d;
+}
+
+.fitme-cc-accept:hover {
+  filter: brightness(1.06);
+}
+
+.fitme-cc-min {
+  background: transparent;
+  color: #8b8178;
+  border: 1px solid #2a2724;
+}
+
+.fitme-cc-min:hover {
+  color: #e0dcd8;
+  border-color: #454039;
+}
+
+@media (max-width: 560px) {
+  .fitme-cc-btns {
+    flex-direction: column;
+  }
+  .fitme-cc-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

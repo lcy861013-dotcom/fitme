@@ -25,20 +25,12 @@
       });
     })();
   </script>
+  <script src="/consent-init.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JW0DB4GXG3"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-JW0DB4GXG3');
-  </script>
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "wk36ynf43e");
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -134,8 +126,6 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954"
-     crossorigin="anonymous"></script>
   <!-- Kakao SDK for share -->
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1957,7 +1947,7 @@
         <li><strong>Google Analytics</strong> — Anonymous visitor statistics. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent);">Privacy Policy ↗</a></li>
         <li><strong>Google AdSense</strong> — Contextual advertising. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" style="color:var(--accent);">Ads Policy ↗</a></li>
         <li><strong>Google Fonts</strong> — Font delivery via CDN. No personal data transmitted.</li>
-        <li><strong>ipapi.co</strong> — Country detection for unit settings. Only country code used; nothing stored.</li>
+        <li><strong>ipapi.co</strong> — Country detection for unit settings (after cookie banner on first visit). Only country code used; nothing stored.</li>
       </ul>
       <h2>5. Cookies</h2>
       <ul>
@@ -2014,7 +2004,7 @@
         <li><strong>Google Analytics</strong> — 익명 방문자 통계. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent);">개인정보처리방침 ↗</a></li>
         <li><strong>Google AdSense</strong> — 맥락 광고. <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener" style="color:var(--accent);">광고 정책 ↗</a></li>
         <li><strong>Google Fonts</strong> — CDN 폰트 제공. 개인정보 미전송.</li>
-        <li><strong>ipapi.co</strong> — 단위 설정을 위한 국가 감지. 국가 코드만 사용, 저장 없음.</li>
+        <li><strong>ipapi.co</strong> — 단위 설정을 위한 국가 감지(첫 방문 시 쿠키 배너 응답 후). 국가 코드만 사용, 저장 없음.</li>
       </ul>
       <h2>5. 쿠키</h2>
       <ul>
@@ -5133,7 +5123,7 @@
     cvFoot('foot-size');
   }
 
-  // IP-based country detection — runs once per day, silent
+  // IP-based country detection — runs once per day, silent; first visit waits for cookie banner (fitme-cookie-resolved)
   function detectCountryAndSetUnits() {
     if (localStorage.getItem('fitme_units')) return;
     const ctrl = new AbortController();
@@ -7075,8 +7065,23 @@
     } else {
       setLanguage(currentLang);
     }
-    // IP-based country unit detection (silent, once per day)
-    detectCountryAndSetUnits();
+    // IP-based country unit detection — after cookie choice on first visit; immediately if consent already saved
+    (function scheduleCountryDetectAfterCookies() {
+      function run() {
+        try {
+          var c = localStorage.getItem('fitme_cookie_consent');
+          if (c === 'all' || c === 'essential') detectCountryAndSetUnits();
+        } catch (e) {}
+      }
+      try {
+        var c0 = localStorage.getItem('fitme_cookie_consent');
+        if (c0 === 'all' || c0 === 'essential') {
+          detectCountryAndSetUnits();
+          return;
+        }
+      } catch (e) {}
+      document.addEventListener('fitme-cookie-resolved', run, { once: true });
+    })();
     // Hero headline rotation
     startHeadlineRotation();
 
@@ -7504,5 +7509,6 @@
 <div id="span-lb" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,8,2,0.94);cursor:zoom-out;align-items:center;justify-content:center;padding:16px;">
   <img id="span-lb-img" src="" alt="" style="max-width:100%;max-height:92vh;border-radius:12px;object-fit:contain;">
 </div>
+<script defer src="/cookie-consent.js"></script>
 </body>
 </html>
