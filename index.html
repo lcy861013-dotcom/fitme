@@ -613,6 +613,13 @@
 
     /* SAVED LIST */
     .saved-list { padding: 16px 24px; border-top: 1px solid var(--border); max-height: 200px; overflow-y: auto; display: none; }
+    /* Desktop: when analysis report is open, don't pin saved measurements + progress under the scroll strip — they steal vertical space and look like they're covering the report */
+    @media (min-width: 901px) {
+      #main-panel.has-analysis-result #saved-list,
+      #main-panel.has-analysis-result .progress-bar {
+        display: none !important;
+      }
+    }
     .saved-list-title { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
     .saved-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
     .saved-item-label { color: var(--muted); font-size: 10px; letter-spacing: 1px; font-family: 'DM Sans', sans-serif; }
@@ -7130,6 +7137,8 @@
     }
 
     document.getElementById('analysis-result').classList.add('visible');
+    var _mainPanel = document.getElementById('main-panel');
+    if (_mainPanel) _mainPanel.classList.add('has-analysis-result');
     if (typeof window.renderSizeFinder === 'function') window.renderSizeFinder();
     restoreBtn();
     showToast(t('toast-done'));
@@ -7341,6 +7350,8 @@
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.getElementById('analysis-result').classList.remove('visible');
+    var _mpReset = document.getElementById('main-panel');
+    if (_mpReset) _mpReset.classList.remove('has-analysis-result');
     ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section','signature-outfit-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
