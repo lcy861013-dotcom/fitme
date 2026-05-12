@@ -1,11 +1,10 @@
-https://www.perfectfitme.com/* https://perfectfitme.com/:splat 301!
-https://fitme.pages.dev/* https://perfectfitme.com/:splat 301!
-https://fitme-6d9.pages.dev/* https://perfectfitme.com/:splat 301!
+# Reduce noisy 404s from CMS vulnerability scanners (302 → home)
+/wp-admin https://perfectfitme.com/ 302
+/wp-login.php https://perfectfitme.com/ 302
+/xmlrpc.php https://perfectfitme.com/ 302
+/wp-admin/* https://perfectfitme.com/ 302
+/wp-content/* https://perfectfitme.com/ 302
+/wp-includes/* https://perfectfitme.com/ 302
 
-# Common scanner paths: normalize to home to reduce noisy 4xx spikes
-/wp-login.php /
-/xmlrpc.php /
-/.env /
-/admin /
-/phpmyadmin /
-/sitemap.xml.gz /sitemap.xml
+# Browsers default favicon path → actual asset
+/favicon.ico /favicon-32x32.png 302
