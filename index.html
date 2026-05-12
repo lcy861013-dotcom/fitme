@@ -6417,6 +6417,7 @@
         return 'https://images.pexels.com/photos/' + id + '/pexels-photo-' + id + '.jpeg' + FITME_THUMB_Q;
       }
       var FITME_STYLE_IMG_FALLBACK = fitmePexels(5706277);
+      var isMaleStyleThumb = currentGender === 'male';
       var FITME_STYLE_IMG_EXACT = {
         '허리 라인을 강조하는 랩 원피스': fitmePexels(985584),
         '벨티드 코트 및 재킷': fitmePexels(7671168),
@@ -6560,11 +6561,105 @@
         'Boat neck tops': fitmePexels(2584269),
         'Unstructured boxy styles': fitmePexels(9558725)
       };
+      function normalizeStyleThumbLabel(str) {
+        var t = String(str || '').trim();
+        var prev;
+        do {
+          prev = t;
+          t = t.replace(/\s*\([^()]*\)\s*$/g, '').trim();
+        } while (t !== prev);
+        return t;
+      }
+      var FITME_STYLE_IMG_MALE = {
+        '피티드 슬림핏 수트': fitmePexels(19177046),
+        'V넥 니트 + 슬림 팬츠': fitmePexels(1040945),
+        '레이어드 셔츠 룩': fitmePexels(8280592),
+        '슬림핏 청바지': fitmePexels(603022),
+        '극단적인 오버사이즈': fitmePexels(6620846),
+        '허리선 없는 박시 아우터': fitmePexels(8280592),
+        '오버사이즈 상의': fitmePexels(8386709),
+        '수평 스트라이프 상의': fitmePexels(2462992),
+        '어깨 패드 블레이저': fitmePexels(19177046),
+        '밝은 색 상의 + 다크 하의': fitmePexels(12317517),
+        '타이트 하의': fitmePexels(8762296),
+        '볼드 패턴 하의': fitmePexels(11585380),
+        '밝은 색 와이드 팬츠': fitmePexels(6764008),
+        '슬림핏 팬츠 & 치노': fitmePexels(7319027),
+        'V넥 상의': fitmePexels(1040945),
+        '피티드 셔츠': fitmePexels(1755383),
+        '레귤러핏 수트': fitmePexels(19177046),
+        '어두운 하의 + 밝은 상의': fitmePexels(12317517),
+        '어깨 패드 아우터': fitmePexels(19177046),
+        '퍼프 소매': fitmePexels(15590109),
+        '보트넥 상의': fitmePexels(2584269),
+        '더블 브레스트 블레이저': fitmePexels(19177046),
+        '와이드 팬츠': fitmePexels(6764008),
+        '피티드 수트': fitmePexels(19177046),
+        '레이어드 스타일': fitmePexels(8280592),
+        '스트럭처드 블레이저': fitmePexels(19177046),
+        '벨트 활용': fitmePexels(7697289),
+        '크루넥 니트': fitmePexels(1926769),
+        '전신 오버사이즈 룩': fitmePexels(6620846),
+        '허리 구조 없는 박시 스타일': fitmePexels(9558725),
+        '어두운 색 상의': fitmePexels(14917486),
+        '스트레이트 팬츠': fitmePexels(7319027),
+        '오픈 재킷 (수직 라인)': fitmePexels(29393408),
+        '톤온톤 코디': fitmePexels(8030180),
+        '타이트 상의': fitmePexels(8762296),
+        '가로 스트라이프 상의': fitmePexels(2462992),
+        '밝은 색 상의': fitmePexels(12317517),
+        '레귤러핏 팬츠': fitmePexels(603022),
+        '심플한 단색 상의': fitmePexels(1040945),
+        '클래식 청바지 + 흰 티셔츠': fitmePexels(1040945),
+        '극단적으로 타이트한 의류': fitmePexels(8762296),
+        'Slim-fit suit': fitmePexels(19177046),
+        'V-neck knit + slim trousers': fitmePexels(1040945),
+        'Layered shirt looks': fitmePexels(8280592),
+        'Slim-fit jeans': fitmePexels(603022),
+        'Extreme oversized silhouettes': fitmePexels(6620846),
+        'Unstructured boxy outerwear': fitmePexels(8280592),
+        'Oversized tops': fitmePexels(8386709),
+        'Horizontal-stripe tops': fitmePexels(2462992),
+        'Shoulder-pad blazers': fitmePexels(19177046),
+        'Bright top + dark bottoms': fitmePexels(12317517),
+        'Tight bottoms': fitmePexels(8762296),
+        'Bold-patterned bottoms': fitmePexels(11585380),
+        'Light wide-leg trousers': fitmePexels(6764008),
+        'Slim-fit trousers & chinos': fitmePexels(7319027),
+        'V-neck tops': fitmePexels(1040945),
+        'Fitted shirts': fitmePexels(1755383),
+        'Regular-fit suits': fitmePexels(19177046),
+        'Dark bottoms + light tops': fitmePexels(12317517),
+        'Padded shoulder outerwear': fitmePexels(19177046),
+        'Puff sleeves': fitmePexels(15590109),
+        'Boat neck tops': fitmePexels(2584269),
+        'Double-breasted blazers': fitmePexels(19177046),
+        'Wide-leg trousers': fitmePexels(6764008),
+        'Fitted suits': fitmePexels(19177046),
+        'Layered looks': fitmePexels(8280592),
+        'Structured blazers': fitmePexels(19177046),
+        'Belt styling': fitmePexels(7697289),
+        'Crew-neck knits': fitmePexels(1926769),
+        'Head-to-toe oversized looks': fitmePexels(6620846),
+        'Unstructured boxy styles': fitmePexels(9558725),
+        'Dark-colored tops': fitmePexels(14917486),
+        'Straight-fit trousers': fitmePexels(7319027),
+        'Open jacket (vertical line)': fitmePexels(29393408),
+        'Tone-on-tone outfits': fitmePexels(8030180),
+        'Tight tops': fitmePexels(8762296),
+        'Horizontal stripe tops': fitmePexels(2462992),
+        'Bright-colored tops': fitmePexels(12317517),
+        'Regular-fit trousers': fitmePexels(603022),
+        'Simple solid-color tops': fitmePexels(1040945),
+        'Classic jeans + white tee': fitmePexels(1040945),
+        'Extremely tight clothing': fitmePexels(8762296),
+        '어깨 패드가 있는 재킷': fitmePexels(19177046)
+      };
       var FITME_STYLE_NEEDLE_FALLBACK = [
         { n: 'Flared / A-line skirts', src: fitmePexels(9867335) },
-        { n: 'Shoulder-accentuating designs', src: fitmePexels(5322207) },
+        { n: 'Shoulder-accentuating designs', src: fitmePexels(5322207), srcM: fitmePexels(19177046) },
         { n: 'Boat neck / wide necklines', src: fitmePexels(2584269) },
-        { n: 'Padded shoulder jackets', src: fitmePexels(5322207) },
+        { n: 'Padded shoulder jackets', src: fitmePexels(5322207), srcM: fitmePexels(19177046) },
         { n: 'Horizontal stripe tops', src: fitmePexels(2462992) },
         { n: 'Waist-defining outfits', src: fitmePexels(7697289) },
         { n: 'Head-to-toe oversized looks', src: fitmePexels(6620846) },
@@ -6574,10 +6669,10 @@
         { n: 'Wide-leg trousers', src: fitmePexels(6764008) },
         { n: 'Classic midi dress', src: fitmePexels(36466496) },
         { n: '보트넥 및 스퀘어넥 상의', src: fitmePexels(2584269) },
-        { n: '어깨 패드가 있는 재킷', src: fitmePexels(5322207) },
+        { n: '어깨 패드가 있는 재킷', src: fitmePexels(5322207), srcM: fitmePexels(19177046) },
         { n: 'A라인 스커트', src: fitmePexels(9867335) },
         { n: '펜슬 스커트', src: fitmePexels(6013164) },
-        { n: '스트럭처드 블레이저', src: fitmePexels(5322207) },
+        { n: '스트럭처드 블레이저', src: fitmePexels(5322207), srcM: fitmePexels(19177046) },
         { n: 'pencil skirt', src: fitmePexels(6013164) },
         { n: 'A-line', src: fitmePexels(9867335) },
         { n: 'wrap dress', src: fitmePexels(985584) },
@@ -6585,8 +6680,8 @@
         { n: '스트레이트', src: fitmePexels(7319027) },
         { n: '미니스커트', src: fitmePexels(1536619) },
         { n: '카고', src: fitmePexels(9786326) },
-        { n: '재킷', src: fitmePexels(5322207) },
-        { n: 'blazer', src: fitmePexels(5322207) },
+        { n: '재킷', src: fitmePexels(5322207), srcM: fitmePexels(19177046) },
+        { n: 'blazer', src: fitmePexels(5322207), srcM: fitmePexels(19177046) },
         { n: 'オーバーサイズ', src: fitmePexels(8386709) },
         { n: 'oversized', src: fitmePexels(8386709) },
         { n: 'stripe', src: fitmePexels(2462992) },
@@ -6596,8 +6691,8 @@
         { n: 'raglan', src: fitmePexels(2917597) },
         { n: '레이어드', src: fitmePexels(8280592) },
         { n: 'layered', src: fitmePexels(8280592) },
-        { n: 'V-neck', src: fitmePexels(4600082) },
-        { n: 'V넥', src: fitmePexels(4600082) },
+        { n: 'V-neck', src: fitmePexels(4600082), srcM: fitmePexels(1040945) },
+        { n: 'V넥', src: fitmePexels(4600082), srcM: fitmePexels(1040945) },
         { n: '보트넥', src: fitmePexels(2584269) },
         { n: '원피스', src: fitmePexels(36466496) },
         { n: 'dress', src: fitmePexels(36466496) },
@@ -6616,9 +6711,15 @@
       }
       function fitmeStyleThumbForLabel(label) {
         var s = String(label || '').trim();
-        if (Object.prototype.hasOwnProperty.call(FITME_STYLE_IMG_EXACT, s)) {
-          return { src: FITME_STYLE_IMG_EXACT[s], alt: s };
+        var n = normalizeStyleThumbLabel(s);
+        var resolved = null;
+        if (isMaleStyleThumb) {
+          if (Object.prototype.hasOwnProperty.call(FITME_STYLE_IMG_MALE, s)) resolved = FITME_STYLE_IMG_MALE[s];
+          else if (Object.prototype.hasOwnProperty.call(FITME_STYLE_IMG_MALE, n)) resolved = FITME_STYLE_IMG_MALE[n];
         }
+        if (!resolved && Object.prototype.hasOwnProperty.call(FITME_STYLE_IMG_EXACT, s)) resolved = FITME_STYLE_IMG_EXACT[s];
+        if (!resolved && Object.prototype.hasOwnProperty.call(FITME_STYLE_IMG_EXACT, n)) resolved = FITME_STYLE_IMG_EXACT[n];
+        if (resolved) return { src: resolved, alt: s };
         var bestLen = 0;
         var bestSrc = FITME_STYLE_IMG_FALLBACK;
         var fi, it;
@@ -6626,7 +6727,7 @@
           it = FITME_STYLE_NEEDLE_FALLBACK[fi];
           if (it.n && s.indexOf(it.n) !== -1 && it.n.length > bestLen) {
             bestLen = it.n.length;
-            bestSrc = it.src;
+            bestSrc = isMaleStyleThumb && it.srcM ? it.srcM : it.src;
           }
         }
         return { src: bestSrc, alt: s };
