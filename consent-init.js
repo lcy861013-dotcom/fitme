@@ -23,3 +23,14 @@ function gtag() {
     });
   }
 })();
+
+/** Fire GA4 events only when user accepted analytics cookies (aligned with cta_click). */
+window.fitmeGaEvent = function (name, params) {
+  try {
+    if (localStorage.getItem('fitme_cookie_consent') !== 'all') return;
+  } catch (e) {
+    return;
+  }
+  if (typeof gtag !== 'function') return;
+  gtag('event', name, params || {});
+};

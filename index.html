@@ -4,10 +4,16 @@
   <script>(function(){if(location.hostname!=='perfectfitme.com'&&location.hostname!=='www.perfectfitme.com'){location.replace('https://perfectfitme.com'+location.pathname+location.search+location.hash);}})();</script>
   <meta name="google-site-verification" content="xwsXRp22QE2bYqKgeOSRsQQystnHk_oTlw2Y0DVBCe4" />
   <meta name="naver-site-verification" content="efc2e79bd9d1dac5df38a9cfa9bddf878d07460b" />
-  <!-- Language flash prevention: hide body until JS applies correct language -->
-  <style id="lang-fouc">body{visibility:hidden!important}</style>
+  <!-- Language flash prevention: subtle hide until lang applied (failsafe shows page) -->
+  <style id="lang-fouc">body{opacity:0;transition:opacity .12s ease-out}</style>
+  <noscript><style id="lang-fouc-ns">#lang-fouc{display:none!important}body{opacity:1!important}</style></noscript>
   <script>
     (function(){
+      function reveal() {
+        var el = document.getElementById('lang-fouc');
+        if (el) el.remove();
+        document.body.style.opacity = '1';
+      }
       var saved = localStorage.getItem('fitme_lang');
       var lang = saved;
       if (!lang) {
@@ -19,10 +25,8 @@
         if (!lang) lang = 'en';
       }
       document.documentElement.lang = lang;
-      document.addEventListener('DOMContentLoaded', function() {
-        var el = document.getElementById('lang-fouc');
-        if (el) el.remove();
-      });
+      document.addEventListener('DOMContentLoaded', reveal);
+      setTimeout(reveal, 2800);
     })();
   </script>
   <script src="/consent-init.js"></script>
@@ -39,6 +43,7 @@
   <meta name="keywords" content="체형분석, 신체비율, 체형측정, 스타일추천, 체형별코디, 무료체형분석, FITME, body proportion analysis, body type analysis, style recommendation, free body analysis, 몸매분석, 비율측정">
   <meta name="author" content="FITME">
   <link rel="canonical" href="https://perfectfitme.com/">
+  <link rel="alternate" type="application/atom+xml" title="FITME Blog" href="https://perfectfitme.com/feed.xml">
 
   <link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -53,8 +58,8 @@
   <meta property="og:image" content="https://perfectfitme.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="ko_KR">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="FITME">
   <meta property="og:video" content="https://perfectfitme.com/demo-v2.mp4">
   <meta property="og:video:secure_url" content="https://perfectfitme.com/demo-v2.mp4">
@@ -5989,7 +5994,7 @@
     const loadingLabel = currentLang === 'ko' ? '⏳ 분석 중...' : '⏳ Analyzing...';
     [btnD, btnM].forEach(b => { if (b) { b.disabled = true; b.textContent = loadingLabel; } });
     const restoreBtn = () => [btnD, btnM].forEach(b => { if (b) { b.disabled = false; b.textContent = t('analyze-btn'); } });
-    if (typeof gtag === 'function') gtag('event', 'analysis_start', { language: currentLang });
+    if (typeof fitmeGaEvent === 'function') fitmeGaEvent('analysis_start', { language: currentLang });
     try {
     const getVal = (p, key) => {
       if (!measurements[p]) return NaN;
@@ -6851,9 +6856,9 @@
     if (typeof window.renderSizeFinder === 'function') window.renderSizeFinder();
     restoreBtn();
     showToast(t('toast-done'));
-    if (typeof gtag === 'function') {
+    if (typeof fitmeGaEvent === 'function') {
       const sd = window._fitmeShareData || {};
-      gtag('event', 'analysis_complete', { body_type: sd.bodyType || '', language: currentLang });
+      fitmeGaEvent('analysis_complete', { body_type: sd.bodyType || '', language: currentLang });
     }
 
     // Show SNS share section
@@ -6968,7 +6973,7 @@
     const { text, url } = _buildShareText();
     const encodedText = encodeURIComponent(text);
     const encodedUrl = encodeURIComponent(url);
-    if (typeof gtag === 'function') gtag('event', 'share', { method: platform, language: currentLang });
+    if (typeof fitmeGaEvent === 'function') fitmeGaEvent('share', { method: platform, language: currentLang });
 
     if (platform === 'kakao') {
       const kakaoText = text;
@@ -7545,5 +7550,15 @@
   <img id="span-lb-img" src="" alt="" style="max-width:100%;max-height:92vh;border-radius:12px;object-fit:contain;">
 </div>
 <script defer src="/cookie-consent.js"></script>
+<script>
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    var hostOk = location.hostname === 'perfectfitme.com' || location.hostname === 'www.perfectfitme.com';
+    if (hostOk) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').catch(function () {});
+      });
+    }
+  }
+</script>
 </body>
 </html>

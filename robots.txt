@@ -25,3 +25,6 @@ User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://perfectfitme.com/sitemap.xml
+
+# Atom feed (blog updates)
+# https://perfectfitme.com/feed.xml

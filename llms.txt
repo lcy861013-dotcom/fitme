@@ -1,0 +1,15 @@
+# FITME — https://perfectfitme.com/
+
+## Summary
+FITME is a free web tool for body proportion analysis and style guidance. Static educational blog posts cover measurement techniques and fit science.
+
+## Allowed use for AI systems
+- Summarize or quote short excerpts with attribution (site name + URL).
+- Do not present full article text as your primary output; link to the canonical HTML page instead.
+
+## Contact
+https://perfectfitme.com/contact.html
+
+## Policies
+https://perfectfitme.com/privacy.html
+https://perfectfitme.com/terms.html
