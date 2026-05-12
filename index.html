@@ -350,9 +350,10 @@
     .side-btn.req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
     .side-btn.filled.req-star::before { color: #47ff8a; }
     .body-container { position: relative; height: min(calc(100vh - 130px), calc((100vw - 220px) * 798 / 752)); aspect-ratio: 752 / 798; }
-    .body-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; border-radius: 12px; opacity: 0.88; }
-    .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
-    .body-mark { opacity: 0; transition: opacity 0.2s; }
+    .body-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; border-radius: 12px; opacity: 0.88; pointer-events: none; }
+    .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: auto; touch-action: manipulation; }
+    .body-mark { opacity: 0; transition: opacity 0.2s; cursor: pointer; pointer-events: auto; }
+    .body-mark-hit { cursor: pointer; pointer-events: stroke; fill: none; stroke: transparent; }
 
     .hotspot {
       position: absolute; width: 34px; height: 34px; border-radius: 50%;
@@ -1536,17 +1537,18 @@
         <!-- 해골 이미지 (먼저 렌더링) -->
         <div class="body-container">
           <img src="/skeleton-body.jpg" alt="body measurement diagram" class="body-img">
-          <svg class="body-overlay" viewBox="0 0 752 798" xmlns="http://www.w3.org/2000/svg">
-            <ellipse id="mark-head" class="body-mark" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
-            <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round"/>
-            <ellipse id="mark-chest" class="body-mark" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-upper-arm" class="body-mark" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-lower-arm" class="body-mark" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <ellipse id="mark-waist" class="body-mark" cx="376" cy="412" rx="74" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
-            <ellipse id="mark-hip" class="body-mark" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-upper-leg" class="body-mark" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-lower-leg" class="body-mark" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <ellipse id="mark-foot" class="body-mark" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+          <svg class="body-overlay" viewBox="0 0 752 798" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
+            <ellipse id="mark-head" class="body-mark" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
+            <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
+            <line class="body-mark-hit" data-body-part="shoulder" x1="274" y1="165" x2="484" y2="165" stroke="transparent" stroke-width="28" stroke-linecap="round" aria-hidden="true"/>
+            <ellipse id="mark-chest" class="body-mark" data-body-part="chest" tabindex="0" role="button" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-upper-arm" class="body-mark" data-body-part="upper-arm" tabindex="0" role="button" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-lower-arm" class="body-mark" data-body-part="lower-arm" tabindex="0" role="button" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-waist" class="body-mark" data-body-part="waist" tabindex="0" role="button" cx="376" cy="412" rx="74" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
+            <ellipse id="mark-hip" class="body-mark" data-body-part="hip" tabindex="0" role="button" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-upper-leg" class="body-mark" data-body-part="upper-leg" tabindex="0" role="button" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-lower-leg" class="body-mark" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-foot" class="body-mark" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
           </svg>
           <!-- hidden hotspots for JS compatibility -->
           <button style="display:none" id="hs-height"></button>
@@ -1603,10 +1605,10 @@
       <div class="mobile-result-body" id="mobile-result-body"></div>
     </div>
 
-    <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet()"></div>
+    <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet(event)"></div>
     <div class="panel" id="main-panel">
       <span class="sheet-handle"></span>
-      <button class="sheet-close" onclick="closeSheet()">✕</button>
+      <button type="button" class="sheet-close" onclick="closeSheet(event)">✕</button>
       <div class="panel-header">
         <div class="panel-title" id="panel-title">신체 정보 입력</div>
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
@@ -2603,9 +2605,9 @@
       'blog22-title':'팔 길이 재기 — 상완·하완 2단계','blog22-desc':'소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.',
       'blog23-title':'다리 길이 재기 — 골반뼈에서 발목까지','blog23-desc':'대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.',
       'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
-      'section-label':'부위를 클릭하여 측정값을 입력하세요',
+      'section-label':'인체 그림 또는 좌우 버튼에서 부위를 선택하세요',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
-      'placeholder-text':'왼쪽 인체 도형에서<br>부위를 클릭해 주세요',
+      'placeholder-text':'왼쪽 인체 그림 또는<br>양옆 버튼에서 부위를 선택하세요',
       'save-btn':'저장하기','analyze-btn':'🔓 내 체형 정체성 공개하기','reset-btn':'초기화','edit-btn':'✏️ 수정하기','reset-confirm-btn':'🗑️ 전체 초기화',
       'mobile-hint':'키 · 몸무게 · 허리만 입력해도 분석 가능!',
       'back-to-measure':'측정으로 돌아가기',
@@ -2621,6 +2623,7 @@
       'toast-copy-done':'✅ 공유 텍스트 + 링크가 복사되었습니다!',
       'toast-need-data':'먼저 키와 체중을 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
       'confirm-reset':'모든 측정값을 초기화할까요?',
+      'sheet-discard-confirm':'입력한 내용이 저장되지 않았습니다. 창을 닫을까요?',
       'parts':{ height:'키', weight:'체중', head:'머리', shoulder:'어깨', chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완', waist:'허리', hip:'골반', 'upper-leg':'허벅지', 'lower-leg':'종아리', foot:'발' },
       'titles':{ height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리', shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴', 'upper-arm':'UPPER ARM / 상완', 'lower-arm':'LOWER ARM / 하완', waist:'WAIST / 허리', hip:'HIP / 골반', 'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발' },
       'bmi':['저체중','정상 체중 ✓','과체중','비만'],
@@ -2884,9 +2887,9 @@
       'blog22-title':'Arm Length — Upper & Lower in 2 Steps','blog22-desc':'Measure upper arm (shoulder→elbow) and lower arm (elbow→wrist) to calculate sleeve length and arm ratio.',
       'blog23-title':'Leg Length — Greater Trochanter to Ankle','blog23-desc':'Measure thigh + calf from the lateral hip bone. Includes leg-to-height ratio calculation.',
       'blog24-title':'How to Measure Hip Circumference Alone','blog24-desc':'Two hand spans from the tailbone — complete a full circuit solo. Calculate your WHR instantly.',
-      'section-label':'Click a body part to enter measurements',
+      'section-label':'Select a part on the diagram or side buttons',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
-      'placeholder-text':'Click a body part<br>on the left to start',
+      'placeholder-text':'Tap the diagram or<br>side buttons to choose a part',
       'save-btn':'Save','analyze-btn':'🔓 Reveal My Full Analysis','reset-btn':'Reset','edit-btn':'✏️ Edit','reset-confirm-btn':'🗑️ Reset All',
       'mobile-hint':'Height · Weight · Waist alone is enough to analyze!',
       'back-to-measure':'Back to Measurements',
@@ -2923,6 +2926,7 @@
       'emblem-b': '🌿 Natural Fit',
       'emblem-c': '🎨 Unique Origin',
       'confirm-reset':'Reset all measurements?',
+      'sheet-discard-confirm':'You have unsaved changes. Close this panel?',
 
       'parts':{ height:'Height', weight:'Weight', head:'Head', shoulder:'Shoulder', chest:'Chest', 'upper-arm':'Upper Arm', 'lower-arm':'Lower Arm', waist:'Waist', hip:'Hip', 'upper-leg':'Thigh', 'lower-leg':'Shin', foot:'Foot' },
       'titles':{ height:'HEIGHT', weight:'WEIGHT', head:'HEAD', shoulder:'SHOULDER', chest:'CHEST', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST', hip:'HIP', 'upper-leg':'THIGH', 'lower-leg':'SHIN', foot:'FOOT' },
@@ -5258,11 +5262,74 @@
     if (currentPart) savePart(currentPart);
   }
 
-  function closeSheet() {
+  function buildPartPayload(part) {
+    const data = {};
+    let hasData = false;
+    if (part === 'height') { const _r=document.getElementById('input-height').value; data.val=toInternal(_r,'length'); hasData=_r; }
+    else if (part === 'weight') { const _r=document.getElementById('input-weight').value; data.val=toInternal(_r,'weight'); hasData=_r; }
+    else if (part === 'head') { const _rc=document.getElementById('head-circ').value; const _rh=document.getElementById('head-height').value; data.circ=toInternal(_rc,'length'); data.height=toInternal(_rh,'length'); data.hat=radioSelections['hat']; hasData=_rc||_rh||data.hat; }
+    else if (part === 'shoulder') { const _r=document.getElementById('shoulder-width').value; data.width=toInternal(_r,'length'); hasData=_r; }
+    else if (part === 'chest') { const _r=document.getElementById('chest-circ').value; data.circ=toInternal(_r,'length'); data.size=radioSelections['top']; hasData=_r||data.size; }
+    else if (part === 'upper-arm') { const _r=document.getElementById('upper-arm-len').value; data.len=toInternal(_r,'length'); hasData=_r; }
+    else if (part === 'lower-arm') { const _r=document.getElementById('lower-arm-len').value; data.len=toInternal(_r,'length'); hasData=_r; }
+    else if (part === 'waist') { const _wunit=getUnitCfg().waist; const _wval=document.getElementById('waist-circ').value; if (_wunit==='cm') { data.circ=_wval; data.inch=_wval?(parseFloat(_wval)/2.54).toFixed(1):''; } else { data.inch=_wval; data.circ=_wval?(parseFloat(_wval)*2.54).toFixed(1):''; } hasData=_wval; }
+    else if (part === 'hip') { const _r=document.getElementById('hip-circ').value; data.circ=toInternal(_r,'length'); hasData=_r; }
+    else if (part === 'upper-leg') { const _rl=document.getElementById('upper-leg-len').value; const _rc=document.getElementById('upper-leg-circ').value; data.len=toInternal(_rl,'length'); data.circ=toInternal(_rc,'length'); hasData=_rl||_rc; }
+    else if (part === 'lower-leg') { const _r=document.getElementById('lower-leg-len').value; data.len=toInternal(_r,'length'); hasData=_r; }
+    else if (part === 'foot') { const _fv=document.getElementById('foot-size').value; const _fu=getUnitCfg().foot; data.size=_fv?String(footToMM(_fv,_fu)||_fv):_fv; data.width=radioSelections['footw']; hasData=_fv||data.width; }
+    return { data, hasData };
+  }
+
+  function isCurrentPartDirty() {
+    if (!currentPart) return false;
+    const { data, hasData } = buildPartPayload(currentPart);
+    if (!hasData) return false;
+    const saved = measurements[currentPart];
+    if (!saved) return true;
+    try {
+      return JSON.stringify(data) !== JSON.stringify(saved);
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function closeSheet(ev, force) {
+    if (!force && window.innerWidth <= 900) {
+      const panel = document.getElementById('main-panel');
+      if (panel && panel.classList.contains('sheet-open') && isCurrentPartDirty()) {
+        if (!confirm(t('sheet-discard-confirm'))) {
+          if (ev && ev.stopPropagation) ev.stopPropagation();
+          return;
+        }
+      }
+    }
     document.getElementById('main-panel').classList.remove('sheet-open');
     document.getElementById('sheet-backdrop').classList.remove('active');
     document.body.style.overflow = '';
   }
+
+  (function bindBodyDiagramHotspots() {
+    function wire(svg) {
+      if (!svg || svg.dataset.fitmeDiagramBound) return;
+      svg.dataset.fitmeDiagramBound = '1';
+      svg.addEventListener('click', function (e) {
+        const el = e.target && e.target.closest && e.target.closest('[data-body-part]');
+        if (!el) return;
+        e.preventDefault();
+        selectPart(el.getAttribute('data-body-part'));
+      });
+      svg.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const el = e.target && e.target.closest && e.target.closest('[data-body-part]');
+        if (!el) return;
+        e.preventDefault();
+        selectPart(el.getAttribute('data-body-part'));
+      });
+    }
+    var svgEl = document.querySelector('.body-overlay');
+    if (svgEl) wire(svgEl);
+    else document.addEventListener('DOMContentLoaded', function () { wire(document.querySelector('.body-overlay')); });
+  })();
 
   function closeMobileResult() {
     document.getElementById('mobile-result-overlay').classList.remove('active');
@@ -5369,20 +5436,7 @@
   }
 
   function savePart(part) {
-    const data = {};
-    let hasData = false;
-    if (part === 'height') { const _r=document.getElementById('input-height').value; data.val=toInternal(_r,'length'); hasData=_r; }
-    else if (part === 'weight') { const _r=document.getElementById('input-weight').value; data.val=toInternal(_r,'weight'); hasData=_r; }
-    else if (part === 'head') { const _rc=document.getElementById('head-circ').value; const _rh=document.getElementById('head-height').value; data.circ=toInternal(_rc,'length'); data.height=toInternal(_rh,'length'); data.hat=radioSelections['hat']; hasData=_rc||_rh||data.hat; }
-    else if (part === 'shoulder') { const _r=document.getElementById('shoulder-width').value; data.width=toInternal(_r,'length'); hasData=_r; }
-    else if (part === 'chest') { const _r=document.getElementById('chest-circ').value; data.circ=toInternal(_r,'length'); data.size=radioSelections['top']; hasData=_r||data.size; }
-    else if (part === 'upper-arm') { const _r=document.getElementById('upper-arm-len').value; data.len=toInternal(_r,'length'); hasData=_r; }
-    else if (part === 'lower-arm') { const _r=document.getElementById('lower-arm-len').value; data.len=toInternal(_r,'length'); hasData=_r; }
-    else if (part === 'waist') { const _wunit=getUnitCfg().waist; const _wval=document.getElementById('waist-circ').value; if (_wunit==='cm') { data.circ=_wval; data.inch=_wval?(parseFloat(_wval)/2.54).toFixed(1):''; } else { data.inch=_wval; data.circ=_wval?(parseFloat(_wval)*2.54).toFixed(1):''; } hasData=_wval; }
-    else if (part === 'hip') { const _r=document.getElementById('hip-circ').value; data.circ=toInternal(_r,'length'); hasData=_r; }
-    else if (part === 'upper-leg') { const _rl=document.getElementById('upper-leg-len').value; const _rc=document.getElementById('upper-leg-circ').value; data.len=toInternal(_rl,'length'); data.circ=toInternal(_rc,'length'); hasData=_rl||_rc; }
-    else if (part === 'lower-leg') { const _r=document.getElementById('lower-leg-len').value; data.len=toInternal(_r,'length'); hasData=_r; }
-    else if (part === 'foot') { const _fv=document.getElementById('foot-size').value; const _fu=getUnitCfg().foot; data.size=_fv?String(footToMM(_fv,_fu)||_fv):_fv; data.width=radioSelections['footw']; hasData=_fv||data.width; }
+    const { data, hasData } = buildPartPayload(part);
 
     if (!hasData) { showToast(t('toast-enter-value')); return; }
     const isNew = !measurements[part];
@@ -5400,7 +5454,7 @@
       saveBtn.classList.add('saved');
       setTimeout(() => { saveBtn.textContent = origText; saveBtn.classList.remove('saved'); }, 1500);
     }
-    if (window.innerWidth <= 900) { setTimeout(closeSheet, 300); }
+    if (window.innerWidth <= 900) { setTimeout(function () { closeSheet(null, true); }, 300); }
   }
 
   function updateProgress() {
@@ -7003,7 +7057,7 @@
     }
 
     if (window.innerWidth <= 900) {
-      closeSheet();
+      closeSheet(null, true);
       const resultEl = document.getElementById('analysis-result');
       document.getElementById('mobile-result-body').innerHTML = resultEl.innerHTML;
       // Make share section visible in mobile overlay copy
