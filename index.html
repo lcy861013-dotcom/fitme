@@ -483,7 +483,43 @@
     .sns-btn.copy:hover { border-color: var(--accent); background: rgba(212,168,75,0.08); }
     .sns-btn svg { flex-shrink: 0; }
     .style-section h4 { font-size: 13px; letter-spacing: 1px; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
-    .style-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+    .style-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 10px; align-items: stretch; }
+    @media (max-width: 420px) { .style-grid { grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 8px; } }
+    .style-thumb-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .style-thumb-card.style-thumb-best { border-color: rgba(71,255,138,0.28); box-shadow: 0 0 0 1px rgba(71,255,138,0.06); }
+    .style-thumb-card.style-thumb-worst { border-color: rgba(255,107,107,0.28); box-shadow: 0 0 0 1px rgba(255,107,107,0.06); }
+    .style-thumb-img-wrap {
+      aspect-ratio: 4 / 3;
+      background: #12100e;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .style-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .style-thumb-label {
+      padding: 10px 11px 11px;
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      flex: 1;
+    }
+    .style-thumb-ico { margin-right: 4px; font-size: 11px; }
+    .style-thumb-card.style-thumb-best .style-thumb-ico { color: #47ff8a; }
+    .style-thumb-card.style-thumb-worst .style-thumb-ico { color: #ff6b6b; }
     .style-item { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; font-size: 12px; line-height: 1.6; }
 
     /* SIGNATURE OUTFIT CARDS */
@@ -6366,9 +6402,110 @@
         </div>
       </div>`;
 
-    // ===== RENDER: BEST / WORST STYLES =====
-    document.getElementById('best-styles').innerHTML = best.map(s => `<span class="style-tag style-tag-best">✓ ${s}</span>`).join('');
-    document.getElementById('worst-styles').innerHTML = worst.map(s => `<span class="style-tag style-tag-worst">✕ ${s}</span>`).join('');
+    // ===== RENDER: BEST / WORST STYLES (visual thumbnails) =====
+    (function () {
+      var FITME_THUMB_Q = '?auto=compress&cs=tinysrgb&w=360&h=270&fit=crop';
+      var FITME_STYLE_IMG_FALLBACK = 'https://images.pexels.com/photos/5706277/pexels-photo-5706277.jpeg' + FITME_THUMB_Q;
+      var FITME_STYLE_IMG_RULES = [
+        { needles: ['피티드 수트', 'Fitted suit', '슬림핏 수트', 'Slim-fit suit'], src: 'https://images.pexels.com/photos/19177046/pexels-photo-19177046.jpeg' + FITME_THUMB_Q },
+        { needles: ['펜슬 스커트', 'pencil skirt', 'Pencil skirt', 'ペンシル'], src: 'https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg' + FITME_THUMB_Q },
+        { needles: ['A라인', 'A-line', 'Aライン', 'a-line skirt'], src: 'https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg' + FITME_THUMB_Q },
+        { needles: ['랩 원피스', 'wrap dress', 'Wrap dress', 'flared skirt', 'Flared skirt'], src: 'https://images.pexels.com/photos/36466496/pexels-photo-36466496.jpeg' + FITME_THUMB_Q },
+        { needles: ['미디 원피스', 'midi dress', 'Midi dress', 'classic midi', 'Classic midi'], src: 'https://images.pexels.com/photos/36466496/pexels-photo-36466496.jpeg' + FITME_THUMB_Q },
+        { needles: ['벨티드', 'belt', 'Belt', 'ベルト', 'ceinture', 'cinturón', 'cinto'], src: 'https://images.pexels.com/photos/8280592/pexels-photo-8280592.jpeg' + FITME_THUMB_Q },
+        { needles: ['코트', 'blazer', 'Blazer', '재킷', 'ジャケット', '西装外套', 'structured jacket', '스트럭처드', '더블 브레스트', 'double-breasted'], src: 'https://images.pexels.com/photos/8280592/pexels-photo-8280592.jpeg' + FITME_THUMB_Q },
+        { needles: ['수트', 'suit', 'Suit', 'スーツ', '슬림핏 수트'], src: 'https://images.pexels.com/photos/19177046/pexels-photo-19177046.jpeg' + FITME_THUMB_Q },
+        { needles: ['슬림핏', 'slim-fit', 'Slim-fit', 'スリム', 'skinny jeans'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['피티드', 'fitted', 'Fitted', 'フィット', '修身'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['와이드', 'wide-leg', 'Wide-leg', '阔腿裤', 'ワイド'], src: 'https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg' + FITME_THUMB_Q },
+        { needles: ['플레어', 'flared pants', 'フレアパンツ'], src: 'https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg' + FITME_THUMB_Q },
+        { needles: ['스트레이트', 'straight-fit', 'Straight-fit', '直筒', 'ストレート', 'Straight-cut'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['데님', 'denim', 'Denim', 'jeans', 'Jeans', '청바지', 'ジーンズ', 'Classic jeans'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['팬츠', 'trousers', 'Trousers', 'pants', 'Pants', 'パンツ', 'チノ', 'chinos', 'Chinos'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['V넥', 'V-neck', 'v-neck', 'Vネック'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['보트넥', 'boat neck', 'Boat neck', 'ボートネック'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['크루넥', 'crew-neck', 'Crew-neck', 'クルーネック'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['오버사이즈', 'oversized', 'Oversized', 'オーバーサイズ', 'boxy'], src: 'https://images.pexels.com/photos/8581406/pexels-photo-8581406.jpeg' + FITME_THUMB_Q },
+        { needles: ['스트라이프', 'stripe', 'Stripe', 'ストライプ', '条纹', 'horizontal-stripe'], src: 'https://images.pexels.com/photos/12932597/pexels-photo-12932597.jpeg' + FITME_THUMB_Q },
+        { needles: ['가로 스트라이프', 'horizontal stripe'], src: 'https://images.pexels.com/photos/12932597/pexels-photo-12932597.jpeg' + FITME_THUMB_Q },
+        { needles: ['밝은 색', 'bright-colored', 'Bright-colored', '明るい', '浅色', 'Bright top'], src: 'https://images.pexels.com/photos/12317517/pexels-photo-12317517.jpeg' + FITME_THUMB_Q },
+        { needles: ['어두운', 'dark-colored', 'Dark-colored', '暗い色', '深色'], src: 'https://images.pexels.com/photos/14917486/pexels-photo-14917486.jpeg' + FITME_THUMB_Q },
+        { needles: ['플리츠', 'pleated', 'プリーツ'], src: 'https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg' + FITME_THUMB_Q },
+        { needles: ['페플럼', 'peplum', 'Peplum'], src: 'https://images.pexels.com/photos/15590109/pexels-photo-15590109.jpeg' + FITME_THUMB_Q },
+        { needles: ['러플', 'ruffle', 'フリル', 'frill'], src: 'https://images.pexels.com/photos/12317517/pexels-photo-12317517.jpeg' + FITME_THUMB_Q },
+        { needles: ['레이어드', 'layered', 'Layered', 'レイヤード'], src: 'https://images.pexels.com/photos/8581406/pexels-photo-8581406.jpeg' + FITME_THUMB_Q },
+        { needles: ['카고', 'cargo', 'Cargo'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['미니', 'miniskirt', 'Mini-skirt', 'ミニ'], src: 'https://images.pexels.com/photos/3785762/pexels-photo-3785762.jpeg' + FITME_THUMB_Q },
+        { needles: ['로우라이즈', 'low-rise', 'Low-rise', 'ローライズ', '低腰'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['라글란', 'raglan', 'Raglan', 'ラグラン'], src: 'https://images.pexels.com/photos/36466496/pexels-photo-36466496.jpeg' + FITME_THUMB_Q },
+        { needles: ['파프', 'puff sleeve', 'Puff', 'パフ'], src: 'https://images.pexels.com/photos/15590109/pexels-photo-15590109.jpeg' + FITME_THUMB_Q },
+        { needles: ['어깨 패드', 'shoulder pad', 'padded shoulder', 'パッド'], src: 'https://images.pexels.com/photos/8280592/pexels-photo-8280592.jpeg' + FITME_THUMB_Q },
+        { needles: ['오프숄더', 'off-shoulder', 'Off-shoulder'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['엠파이어', 'empire', 'Empire line'], src: 'https://images.pexels.com/photos/36466496/pexels-photo-36466496.jpeg' + FITME_THUMB_Q },
+        { needles: ['드레이프', 'drape', 'Drape'], src: 'https://images.pexels.com/photos/12317517/pexels-photo-12317517.jpeg' + FITME_THUMB_Q },
+        { needles: ['톤온톤', 'tone-on-tone', 'Tone-on-tone'], src: 'https://images.pexels.com/photos/8030180/pexels-photo-8030180.jpeg' + FITME_THUMB_Q },
+        { needles: ['터틀넥', 'turtleneck', 'Turtleneck', 'ハイネック', '高领', 'high-neck'], src: 'https://images.pexels.com/photos/977908/pexels-photo-977908.jpeg' + FITME_THUMB_Q },
+        { needles: ['레귤러', 'regular-fit', 'Regular-fit', 'レギュラー', 'Regular trousers', '레귤러핏'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['단색', 'solid-color', 'solid color', '無地', '纯色', 'Simple solid'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['화이트 티', 'white tee', 'white t-shirt'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['타이트', 'tight clothing', 'Extremely tight', '極端にタイト', 'extremely tight'], src: 'https://images.pexels.com/photos/9302046/pexels-photo-9302046.jpeg' + FITME_THUMB_Q },
+        { needles: ['박시', 'boxy dress', '박시한'], src: 'https://images.pexels.com/photos/8581406/pexels-photo-8581406.jpeg' + FITME_THUMB_Q },
+        { needles: ['레ザ', 'leather jacket', 'Leather'], src: 'https://images.pexels.com/photos/14917486/pexels-photo-14917486.jpeg' + FITME_THUMB_Q },
+        { needles: ['니트', 'knit', 'Knit', 'ニット'], src: 'https://images.pexels.com/photos/4600082/pexels-photo-4600082.jpeg' + FITME_THUMB_Q },
+        { needles: ['조거', 'jogger', 'Jogger'], src: 'https://images.pexels.com/photos/603022/pexels-photo-603022.jpeg' + FITME_THUMB_Q },
+        { needles: ['셔츠 룩', 'shirt look', 'layered shirt'], src: 'https://images.pexels.com/photos/12932597/pexels-photo-12932597.jpeg' + FITME_THUMB_Q },
+        { needles: ['비대칭', 'asymmetric', 'Asymmetric'], src: 'https://images.pexels.com/photos/36466496/pexels-photo-36466496.jpeg' + FITME_THUMB_Q },
+        { needles: ['원피스', 'dress', 'Dress', 'ワンピース', 'all-in-one', 'jumpsuit', 'ジャンプスーツ'], src: 'https://images.pexels.com/photos/36466496/pexels-photo-36466496.jpeg' + FITME_THUMB_Q },
+        { needles: ['볼드한 패턴', 'bold-pattern', 'Bold-pattern'], src: 'https://images.pexels.com/photos/11585380/pexels-photo-11585380.jpeg' + FITME_THUMB_Q },
+        { needles: ['수직', 'vertical line', 'vertical'], src: 'https://images.pexels.com/photos/29393408/pexels-photo-29393408.jpeg' + FITME_THUMB_Q },
+        { needles: ['오픈 재킷', 'open jacket', 'Open jacket'], src: 'https://images.pexels.com/photos/8280592/pexels-photo-8280592.jpeg' + FITME_THUMB_Q },
+      ];
+      function escapeHtmlFitme(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+      function fitmeStyleThumbForLabel(label) {
+        var s = label || '';
+        var i, j, r, n;
+        for (i = 0; i < FITME_STYLE_IMG_RULES.length; i++) {
+          r = FITME_STYLE_IMG_RULES[i];
+          for (j = 0; j < r.needles.length; j++) {
+            n = r.needles[j];
+            if (n && s.indexOf(n) !== -1) return { src: r.src, alt: s };
+          }
+        }
+        return { src: FITME_STYLE_IMG_FALLBACK, alt: s };
+      }
+      function fitmeRenderStyleThumbCards(arr, kind) {
+        var icon = kind === 'best' ? '✓' : '✕';
+        var cls = kind === 'best' ? 'style-thumb-best' : 'style-thumb-worst';
+        return arr
+          .map(function (s) {
+            var th = fitmeStyleThumbForLabel(s);
+            return (
+              '<div class="style-thumb-card ' +
+              cls +
+              '">' +
+              '<div class="style-thumb-img-wrap"><img class="style-thumb-img" src="' +
+              th.src +
+              '" alt="' +
+              escapeHtmlFitme(th.alt) +
+              '" loading="lazy" decoding="async"></div>' +
+              '<div class="style-thumb-label"><span class="style-thumb-ico">' +
+              icon +
+              '</span>' +
+              escapeHtmlFitme(s) +
+              '</div></div>'
+            );
+          })
+          .join('');
+      }
+      document.getElementById('best-styles').innerHTML = fitmeRenderStyleThumbCards(best, 'best');
+      document.getElementById('worst-styles').innerHTML = fitmeRenderStyleThumbCards(worst, 'worst');
+    })();
 
     // ===== RENDER: SIGNATURE OUTFIT SECTION =====
     const sigEl = document.getElementById('signature-outfit-section');
