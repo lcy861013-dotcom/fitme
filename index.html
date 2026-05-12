@@ -334,8 +334,8 @@
     .blog-view-all:hover { background: rgba(212,168,75,0.08); border-color: var(--accent); transform: translateY(-1px); }
 
     /* MAIN ANALYSIS */
-    .main-container { display: grid; grid-template-columns: 1fr 420px; height: calc(100vh - 70px); overflow: hidden; }
-    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 12px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; }
+    .main-container { display: grid; grid-template-columns: 1fr min(440px, 36vw); height: calc(100vh - 70px); overflow: hidden; align-items: stretch; max-width: 1600px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 12px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; min-height: 0; }
     .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
     .body-measure-layout { position: relative; display: flex; justify-content: center; align-items: center; flex: 1; min-height: 0; }
     .side-panels-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; pointer-events: none; }
@@ -375,12 +375,12 @@
     .quick-start-banner .qs-items { display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
     .quick-start-banner .qs-item { background:rgba(212,168,75,0.1); border:1px solid rgba(212,168,75,0.3); border-radius:20px; padding:3px 10px; font-size:0.75rem; color:var(--text); }
 
-    /* PANEL */
-    .panel { display: flex; flex-direction: column; background: var(--surface); }
-    .panel-header { padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
+    /* PANEL — desktop: constrain height so .input-area can scroll (flex min-height fix) */
+    .panel { display: flex; flex-direction: column; background: var(--surface); min-height: 0; height: 100%; overflow: hidden; }
+    .panel-header { flex-shrink: 0; padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
     .panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; margin-bottom: 6px; }
     .panel-subtitle { font-size: 12px; color: var(--muted); line-height: 1.7; }
-    .input-area { flex: 1; padding: 24px; overflow-y: auto; }
+    .input-area { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
     .input-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 180px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 13px; text-align: center; line-height: 2; }
     .measure-tip-card { background: rgba(212,168,75,0.05); border: 1px solid rgba(212,168,75,0.25); border-radius: 16px; padding: 20px 24px; margin-bottom: 20px; overflow: hidden; transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease; max-height: 560px; opacity: 1; }
     .measure-tip-card.collapsed { max-height: 0; opacity: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; }
@@ -432,7 +432,7 @@
     .radio-btn.selected { border-color: var(--accent); background: rgba(212,168,75,0.1); color: var(--accent); font-weight: 700; }
 
     /* GENDER TOGGLE */
-    .gender-toggle { display: flex; gap: 8px; padding: 16px 24px 0; }
+    .gender-toggle { flex-shrink: 0; display: flex; gap: 8px; padding: 16px 24px 0; }
     .gender-btn { flex: 1; padding: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; cursor: pointer; transition: all 0.2s; text-align: center; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .gender-btn.active { border-color: var(--accent); background: rgba(212,168,75,0.1); color: var(--accent); }
     .gender-btn:hover:not(.active) { border-color: var(--muted); color: var(--text); }
@@ -450,7 +450,7 @@
     .btn-outline:hover { border-color: var(--text); background: rgba(255,255,255,0.05); }
 
     /* PROGRESS */
-    .progress-bar { padding: 16px 24px; border-top: 1px solid var(--border); }
+    .progress-bar { flex-shrink: 0; padding: 16px 24px; border-top: 1px solid var(--border); }
     .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
     .progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent3)); border-radius: 2px; transition: width 0.5s ease; }
@@ -673,7 +673,7 @@
     .combo-why { font-size: 11.5px; color: var(--muted); line-height: 1.6; padding-top: 10px; border-top: 1px solid var(--border); font-family: 'DM Sans', sans-serif; }
 
     /* PANEL ACTIONS */
-    .panel-actions { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+    .panel-actions { flex-shrink: 0; padding: 16px 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
 
     /* 데스크탑에서 모바일 전용 요소 숨김 */
     .sheet-handle, .sheet-close, .sheet-backdrop,
@@ -7186,7 +7186,16 @@
       const backLabel = t('back-to-measure');
       attachResultBackBtn(backLabel);
     } else {
-      document.getElementById('analysis-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      var _ia = document.querySelector('#main-panel .input-area');
+      var _ar = document.getElementById('analysis-result');
+      if (_ia && _ar && _ia.contains(_ar)) {
+        var _r = _ar.getBoundingClientRect();
+        var _b = _ia.getBoundingClientRect();
+        var _nextTop = _ia.scrollTop + (_r.top - _b.top) - 12;
+        _ia.scrollTo({ top: Math.max(0, _nextTop), behavior: 'smooth' });
+      } else if (_ar) {
+        _ar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     } catch (err) {
       console.error('runExpertAnalysis error:', err);
