@@ -640,6 +640,11 @@
     @media (max-width: 480px) { .asset-detail-row { grid-template-columns: 1fr; } }
 
     .combo-section { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .combo-section-hint { font-size: 11px; color: var(--muted); margin: 0 0 12px; line-height: 1.55; font-family: 'DM Sans', sans-serif; }
+    .combo-more-details { margin-top: 4px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: rgba(255,255,255,0.02); }
+    .combo-more-summary { cursor: pointer; padding: 12px 16px; font-size: 12px; font-weight: 600; color: var(--accent); font-family: 'DM Sans', sans-serif; list-style: none; user-select: none; }
+    .combo-more-summary::-webkit-details-marker { display: none; }
+    .combo-section-extra { margin: 0; padding: 0 12px 14px; }
     .combo-card { background: linear-gradient(135deg, rgba(212,168,75,0.06), rgba(168,152,104,0.04)); border: 1px solid rgba(212,168,75,0.22); border-radius: 16px; padding: 18px 20px; }
     .combo-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
     .combo-card-icon { font-size: 22px; }
@@ -6828,52 +6833,112 @@
       const isShortLeg = !isNaN(legRatioC) && legRatioC < 46;
       const isWideHip = !isNaN(hip) && !isNaN(h) && (hip/h*100) >= (isMale ? 56 : 60);
       const isSlimWaist = !isNaN(waist) && !isNaN(hip) && (waist/hip) <= (isMale ? 0.81 : 0.70);
-      const isWideShoulder = !isNaN(shoulder) && !isNaN(h) && (shoulder/h*100) >= (isMale ? 27 : 25);
+      const shoulderRH = (!isNaN(shoulder) && !isNaN(h) && h > 0) ? (shoulder / h * 100) : NaN;
+      const isWideShoulder = !isNaN(shoulderRH) && shoulderRH >= (isMale ? 27 : 25);
+      const isNarrowShoulder = !isNaN(shoulderRH) && shoulderRH <= (isMale ? 23 : 22);
       const torsoLenC = (!isNaN(h)&&!isNaN(uLeg)&&!isNaN(lLeg)) ? h-(uLeg+lLeg)-h/7.5 : NaN;
-      const isLongTorso = !isNaN(torsoLenC) && (torsoLenC/h*100) >= 35;
+      const torsoPct = (!isNaN(torsoLenC) && h > 0) ? (torsoLenC / h * 100) : NaN;
+      const isLongTorso = !isNaN(torsoPct) && torsoPct >= 35;
+      const isShortTorso = !isNaN(torsoPct) && torsoPct < 31;
       const isLongArm = (!isNaN(uArm)&&!isNaN(lArm)&&!isNaN(h)) && ((uArm+lArm)/h*100) >= (isMale ? 46 : 44);
+      const headFigRatio = (!isNaN(headH) && headH > 0 && !isNaN(h)) ? (h / headH) : NaN;
+      const isSmallHeadLongFig = !isNaN(headFigRatio) && headFigRatio >= 7.5;
+      const isAppleType = bodyType === 'apple';
 
       const combos = [];
-      if (isLongLeg && isWideHip)
-        combos.push(isKo
-          ? { label:'롱레그 × 힙업형', icon:'🦵🍑', outfits:['와이드 팬츠 + 크롭 상의','A라인 미니스커트 + 앵클부츠','하이웨이스트 와이드진 + 오버핏 니트'], why:'긴 다리가 와이드 실루엣을 우아하게 받쳐주고, 풍성한 힙이 하의에 자연스러운 입체감을 만들어줘요' }
-          : { label:'Long Leg × Full Hip', icon:'🦵🍑', outfits:['Wide pants + Crop top','A-line mini skirt + Ankle boots','High-waist wide jeans + Oversized knit'], why:'Long legs gracefully support wide silhouettes; full hips add natural dimension to bottoms' });
-      if (isLongLeg && isSlimWaist && !isWideHip)
-        combos.push(isKo
-          ? { label:'롱레그 × 슬림웨이스트형', icon:'🦵⬛', outfits:['스트레이트 진 + 풀 턱인 셔츠','하이웨이스트 슬랙스 + 블레이저','크롭 니트 + 미디 스커트'], why:'긴 다리와 잘록한 허리 조합 — 어떤 실루엣도 자연스럽게 비율이 살아나요' }
-          : { label:'Long Leg × Slim Waist', icon:'🦵⬛', outfits:['Straight jeans + Full tuck-in shirt','High-waist slacks + Blazer','Crop knit + Midi skirt'], why:'Long legs + slim waist — any silhouette looks naturally proportioned on you' });
-      if (isWideShoulder && isSlimWaist)
-        combos.push(isKo
-          ? { label:'넓은어깨 × 잘록허리형', icon:'🏋️⬛', outfits:['테일러드 수트 (원버튼·투버튼)','구조적인 블레이저 + 슬림 팬츠','핏 셔츠 + 네로우 타이'], why:'넓은 어깨와 잘록한 허리 — 수트핏의 교과서적인 체형이에요. 정장 스타일이 가장 압도적으로 어울려요' }
-          : { label:'Wide Shoulder × Slim Waist', icon:'🏋️⬛', outfits:['Tailored suit (one/two button)','Structured blazer + Slim pants','Fitted shirt + Narrow tie'], why:'Wide shoulders + slim waist — the textbook suit-fit body type. Formal styles look most powerful on you' });
-      if (isShortLeg && isLongTorso)
-        combos.push(isKo
-          ? { label:'숏레그 × 롱토르소형', icon:'📏', outfits:['하이웨이스트 팬츠 + 크롭 상의 (필수 조합)','9부 팬츠로 발목 노출','상하 동색 모노톤 룩'], why:'하이웨이스트로 다리 시작점을 올리고, 크롭으로 상체 길이를 시각적으로 줄이는 것이 핵심이에요' }
-          : { label:'Short Leg × Long Torso', icon:'📏', outfits:['High-waist pants + Crop top (essential combo)','7/8 ankle pants to expose ankle','Same-color monotone top & bottom'], why:'Raise the visual leg start with high-waist; reduce perceived torso length with crop tops' });
-      if (isLongArm && isWideShoulder)
-        combos.push(isKo
-          ? { label:'롱암 × 넓은어깨형', icon:'💪🏋️', outfits:['칠부(3/4) 소매 재킷','소매 롤업 옥스퍼드 셔츠','래글런 소매 스웨트셔츠'], why:'긴 팔과 넓은 어깨 조합 — 칠부 소매로 팔 비율을 딱 맞춰줘요' }
-          : { label:'Long Arm × Wide Shoulder', icon:'💪🏋️', outfits:['3/4 sleeve jacket','Sleeve roll-up oxford shirt','Raglan sleeve sweatshirt'], why:'Long arms + wide shoulders — 3/4 sleeves perfectly calibrate the arm proportion' });
-      if (isLongLeg && isWideShoulder && !isWideHip)
-        combos.push(isKo
-          ? { label:'롱레그 × 역삼각형', icon:'🦵🔺', outfits:['슬림 팬츠 + V넥 셔츠 (상하 균형)','조거 팬츠 + 심플한 상의','스트레이트 컷 데님'], why:'긴 다리 덕에 넓은 어깨가 더 압도적으로 보여요. 하의는 심플하게, 상의로 포인트를 줄 필요가 없어요' }
-          : { label:'Long Leg × Inverted Triangle', icon:'🦵🔺', outfits:['Slim pants + V-neck shirt (upper/lower balance)','Jogger pants + Simple top','Straight-cut denim'], why:'Long legs amplify the wide shoulder look. Keep bottoms simple — your upper body already makes the statement' });
+      const pushCombo = (card, priority) => {
+        combos.push(Object.assign({}, card, { priority: priority }));
+      };
 
-      const comboHtml = combos.length > 0 ? `
-        <div class="section-divider">✨ ${isKo?'복합 코디 진단':'Style Combo Analysis'}</div>
-        <div class="combo-section">
-          ${combos.map(c => `
+      if (isLongLeg && isWideHip)
+        pushCombo(isKo
+          ? { label:'롱레그 × 힙업형', icon:'🦵🍑', outfits:['와이드 팬츠 + 크롭 상의','A라인 미니스커트 + 앵클부츠','하이웨이스트 와이드진 + 오버핏 니트'], why:'긴 다리가 와이드 실루엣을 우아하게 받쳐주고, 풍성한 힙이 하의에 자연스러운 입체감을 만들어줘요' }
+          : { label:'Long Leg × Full Hip', icon:'🦵🍑', outfits:['Wide pants + Crop top','A-line mini skirt + Ankle boots','High-waist wide jeans + Oversized knit'], why:'Long legs gracefully support wide silhouettes; full hips add natural dimension to bottoms' }, 92);
+      if (isLongLeg && isSlimWaist && !isWideHip)
+        pushCombo(isKo
+          ? { label:'롱레그 × 슬림웨이스트형', icon:'🦵⬛', outfits:['스트레이트 진 + 풀 턱인 셔츠','하이웨이스트 슬랙스 + 블레이저','크롭 니트 + 미디 스커트'], why:'긴 다리와 잘록한 허리 조합 — 어떤 실루엣도 자연스럽게 비율이 살아나요' }
+          : { label:'Long Leg × Slim Waist', icon:'🦵⬛', outfits:['Straight jeans + Full tuck-in shirt','High-waist slacks + Blazer','Crop knit + Midi skirt'], why:'Long legs + slim waist — any silhouette looks naturally proportioned on you' }, 91);
+      if (isWideShoulder && isSlimWaist)
+        pushCombo(isKo
+          ? { label:'넓은어깨 × 잘록허리형', icon:'🏋️⬛', outfits:['테일러드 수트 (원버튼·투버튼)','구조적인 블레이저 + 슬림 팬츠','핏 셔츠 + 네로우 타이'], why:'넓은 어깨와 잘록한 허리 — 수트핏의 교과서적인 체형이에요. 정장 스타일이 가장 압도적으로 어울려요' }
+          : { label:'Wide Shoulder × Slim Waist', icon:'🏋️⬛', outfits:['Tailored suit (one/two button)','Structured blazer + Slim pants','Fitted shirt + Narrow tie'], why:'Wide shoulders + slim waist — the textbook suit-fit body type. Formal styles look most powerful on you' }, 94);
+      if (isShortLeg && isLongTorso)
+        pushCombo(isKo
+          ? { label:'숏레그 × 롱토르소형', icon:'📏', outfits:['하이웨이스트 팬츠 + 크롭 상의 (필수 조합)','9부 팬츠로 발목 노출','상하 동색 모노톤 룩'], why:'하이웨이스트로 다리 시작점을 올리고, 크롭으로 상체 길이를 시각적으로 줄이는 것이 핵심이에요' }
+          : { label:'Short Leg × Long Torso', icon:'📏', outfits:['High-waist pants + Crop top (essential combo)','7/8 ankle pants to expose ankle','Same-color monotone top & bottom'], why:'Raise the visual leg start with high-waist; reduce perceived torso length with crop tops' }, 90);
+      if (isLongArm && isWideShoulder)
+        pushCombo(isKo
+          ? { label:'롱암 × 넓은어깨형', icon:'💪🏋️', outfits:['칠부(3/4) 소매 재킷','소매 롤업 옥스퍼드 셔츠','래글런 소매 스웨트셔츠'], why:'긴 팔과 넓은 어깨 조합 — 칠부 소매로 팔 비율을 딱 맞춰줘요' }
+          : { label:'Long Arm × Wide Shoulder', icon:'💪🏋️', outfits:['3/4 sleeve jacket','Sleeve roll-up oxford shirt','Raglan sleeve sweatshirt'], why:'Long arms + wide shoulders — 3/4 sleeves perfectly calibrate the arm proportion' }, 89);
+      if (isLongLeg && isWideShoulder && !isWideHip)
+        pushCombo(isKo
+          ? { label:'롱레그 × 역삼각형', icon:'🦵🔺', outfits:['슬림 팬츠 + V넥 셔츠 (상하 균형)','조거 팬츠 + 심플한 상의','스트레이트 컷 데님'], why:'긴 다리 덕에 넓은 어깨가 더 압도적으로 보여요. 하의는 심플하게, 상의로 포인트를 줄 필요가 없어요' }
+          : { label:'Long Leg × Inverted Triangle', icon:'🦵🔺', outfits:['Slim pants + V-neck shirt (upper/lower balance)','Jogger pants + Simple top','Straight-cut denim'], why:'Long legs amplify the wide shoulder look. Keep bottoms simple — your upper body already makes the statement' }, 88);
+      if (isNarrowShoulder && isLongLeg)
+        pushCombo(isKo
+          ? { label:'좁은 어깨 × 롱레그형', icon:'🦵📐', outfits:['가로 스트라이프·소프트 패드 없는 숄더 재킷','볼륨 소매·스퀘어넥으로 어깨 라인 확장','하의는 다크 톤·슬림 스트레이트로 시선 하향'], why:'상체를 넓어 보이게 하고 긴 다리는 깔끔한 하의로 마무리하면 균형이 맞아요' }
+          : { label:'Narrow Shoulder × Long Leg', icon:'🦵📐', outfits:['Horizontal stripes & structured tops without heavy pads','Volume sleeves / square neck to widen shoulders','Dark slim-straight bottoms to anchor the eye downward'], why:'Build upper-body presence; keep legs clean — your proportions balance naturally' }, 86);
+      if (isNarrowShoulder && isWideHip)
+        pushCombo(isKo
+          ? { label:'좁은 어깨 × 힙업형', icon:'📐🍑', outfits:['밝은색·디테일 상의 + 다크 스트레이트 하의','보트넥·오프숄더로 가로 라인 강조','A라인 스커트로 힙 라인 정돈'], why:'상체 시선 집중 + 하체 슬림하게 잡으면 배형 균형이 좋아져요' }
+          : { label:'Narrow Shoulder × Full Hip', icon:'📐🍑', outfits:['Bright or detailed top + dark straight bottoms','Boat neck / off-shoulder to widen shoulder line','A-line skirt to skim the hips'], why:'Draw attention up; calm the lower body — classic pear-balance styling' }, 87);
+      if (isShortLeg && isShortTorso)
+        pushCombo(isKo
+          ? { label:'숏레그 × 숏토르소형', icon:'📐📐', outfits:['하이웨이스트 + 톤온톤으로 세로 한 줄 연장','크롭보다 미디 기장 상의로 비율 안정','레이어드보다 하나의 깔끔한 실루엣 우선'], why:'다리·상체 모두 짧아 보일 때는 허리 위치와 세로 라인 정리가 최우선이에요' }
+          : { label:'Short Leg × Short Torso', icon:'📐📐', outfits:['High-waist + tone-on-tone vertical line','Midi-length tops instead of extreme crops','Clean single silhouette over heavy layering'], why:'When both legs and torso read short, waist placement and vertical unity matter most' }, 84);
+      if (isLongArm && isNarrowShoulder)
+        pushCombo(isKo
+          ? { label:'롱암 × 좁은 어깨형', icon:'💪📐', outfits:['셔츠 소매 길이 맞춤(수선)·커프스 롤업','과한 어깨 패드 대신 라글란·소프트 숄더','V넥으로 목·쇄골 라인 시선 분산'], why:'팔 길이는 소매 핏으로, 어깨는 과한 구조보다 자연스러운 라인이 안정적이에요' }
+          : { label:'Long Arm × Narrow Shoulder', icon:'💪📐', outfits:['Tailored sleeve length & cuff roll-ups','Raglan / soft shoulder instead of heavy pads','V-neck to open the neckline'], why:'Sleeve proportion matters most; avoid bulky shoulders on a narrow frame' }, 83);
+      if (isSmallHeadLongFig && isLongLeg)
+        pushCombo(isKo
+          ? { label:'작은 머리 비율 × 롱레그형', icon:'👤🦵', outfits:['프린트·볼드 상의도 등신 비율 덕에 소화 가능','와이드 실루엣 하의도 무리 없이','햇·안경으로 얼굴 프레임 포인트'], why:'작은 머리와 긴 다리는 모델에 가까운 리키 실루엣 — 스타일링 여지가 넓어요' }
+          : { label:'Small Head Ratio × Long Leg', icon:'👤🦵', outfits:['Bold tops & prints — your head-to-body ratio carries them','Wide-leg bottoms still feel balanced','Hats & frames to polish the face zone'], why:'Small head + long legs reads model-longline — you can play with volume confidently' }, 82);
+      if (isAppleType && isLongLeg)
+        pushCombo(isKo
+          ? { label:'사과형 × 롱다리', icon:'🍎🦵', outfits:['오픈 롱 재킷으로 복부 시선 분산 + 세로 라인','플레어·A라인으로 하체 안정감','톤온톤으로 한 덩어리 실루엣'], why:'상체 볼륨과 긴 다리가 같이 있으면 세로 흐름과 하체 밸런스가 핵심이에요' }
+          : { label:'Apple × Long Legs', icon:'🍎🦵', outfits:['Long open jacket for vertical flow + midsection ease','Flare or A-line to ground the lower body','Tone-on-tone for one continuous line'], why:'Mid-focus torso + long legs needs vertical structure and balanced hemlines' }, 85);
+      if (isAppleType && isShortLeg)
+        pushCombo(isKo
+          ? { label:'사과형 × 숏다리', icon:'🍎📏', outfits:['하이웨이스트 필수·크롭 상의로 다리 시작점 상향','상하 같은 톤으로 실루엣 연장','과한 와이드보다 세미 와이드·스트레이트'], why:'복부 볼륨과 숏다리가 겹치면 허리선 정리와 연장이 최우선이에요' }
+          : { label:'Apple × Short Legs', icon:'🍎📏', outfits:['High-waist essential; cropped top to raise the leg line','Same-tone top & bottom to elongate','Semi-wide or straight over ultra-wide'], why:'Midsection focus + shorter legs needs waist definition and visual lengthening' }, 86);
+
+      combos.sort(function (a, b) { return (b.priority || 0) - (a.priority || 0); });
+      const COMBO_TOP_N = 5;
+      const primaryCombos = combos.slice(0, COMBO_TOP_N);
+      const extraCombos = combos.slice(COMBO_TOP_N);
+
+      const renderComboCards = function (arr) {
+        return arr.map(function (c) {
+          return `
             <div class="combo-card">
               <div class="combo-card-header">
                 <span class="combo-card-icon">${c.icon}</span>
                 <span class="combo-card-label">${c.label}</span>
               </div>
               <div class="combo-outfits">
-                ${c.outfits.map(o=>`<div class="combo-outfit-item"><span class="combo-outfit-dot">▸</span><span>${o}</span></div>`).join('')}
+                ${c.outfits.map(function (o) { return `<div class="combo-outfit-item"><span class="combo-outfit-dot">▸</span><span>${o}</span></div>`; }).join('')}
               </div>
               <div class="combo-why">💡 ${c.why}</div>
-            </div>`).join('')}
-        </div>` : '';
+            </div>`;
+        }).join('');
+      };
+
+      const comboMoreBlock = extraCombos.length > 0 ? `
+        <details class="combo-more-details">
+          <summary class="combo-more-summary">${isKo ? `그 외 조합 ${extraCombos.length}개 더 보기` : `Show ${extraCombos.length} more combination${extraCombos.length > 1 ? 's' : ''}`}</summary>
+          <div class="combo-section combo-section-extra">
+            ${renderComboCards(extraCombos)}
+          </div>
+        </details>` : '';
+
+      const comboHtml = combos.length > 0 ? `
+        <div class="section-divider">✨ ${isKo?'복합 코디 진단':'Style Combo Analysis'}</div>
+        <p class="combo-section-hint">${isKo ? '맞는 조합이 여러 개일 때는 우선순위가 높은 순으로 보여 드려요. 나머지는 아래에서 펼쳐 보실 수 있어요.' : 'When several combos match, we show the highest-priority ones first. Expand below for the rest.'}</p>
+        <div class="combo-section">
+          ${renderComboCards(primaryCombos)}
+        </div>
+        ${comboMoreBlock}` : '';
       document.getElementById('combo-style-section').innerHTML = comboHtml;
     }
 
