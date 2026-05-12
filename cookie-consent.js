@@ -24,6 +24,12 @@
 
   function loadAdSense() {
     if (document.querySelector('script[data-fitme="adsense"]')) return;
+    if (
+      document.querySelector(
+        'script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
+      )
+    )
+      return;
     var s = document.createElement('script');
     s.async = true;
     s.crossOrigin = 'anonymous';
@@ -199,12 +205,12 @@
   document.addEventListener('DOMContentLoaded', function () {
     ensureCss();
     setupCtaTracking();
+    loadAdSense();
     var consent = '';
     try {
       consent = localStorage.getItem(KEY) || '';
     } catch (e) {}
     if (consent === 'all') {
-      loadAdSense();
       loadClarity();
       return;
     }

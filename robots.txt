@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
 
+# Google AdSense crawler (explicit allow; site-wide Allow already applies)
+User-agent: Mediapartners-Google
+Allow: /
+
 # Naver
 User-agent: Yeti
 Allow: /
