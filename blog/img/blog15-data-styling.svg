@@ -1,59 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b08d3d;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .title { font-family: 'DM Sans', sans-serif; font-size: 24px; font-weight: 700; fill: #e0dcd8; }
+      .subtitle { font-family: 'DM Sans', sans-serif; font-size: 14px; fill: #8b8178; letter-spacing: 4px; }
+      .label { font-family: 'DM Sans', sans-serif; font-size: 12px; fill: #8b8178; }
+      .accent-text { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; fill: #d4a84b; }
+      .line { stroke: #2a2724; stroke-width: 1; }
+      .accent-line { stroke: #d4a84b; stroke-width: 2; fill: none; filter: url(#glow); }
+      .dashed { stroke-dasharray: 4, 3; }
+    </style>
+  </defs>
   <rect width="800" height="420" fill="#161412"/>
-  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">INTUITION vs DATA-DRIVEN STYLE</text>
-  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">감으로 고르던 스타일, 데이터로 완전히 바꿔라</text>
+  
+  <!-- Header -->
+  <text x="400" y="45" text-anchor="middle" class="subtitle">DATA-DRIVEN STYLING</text>
+  <text x="400" y="75" text-anchor="middle" class="title">데이터 기반 개인화 스타일링</text>
 
-  <!-- Before (intuition) -->
-  <g transform="translate(40,90)">
-    <rect x="0" y="0" width="320" height="260" rx="12" fill="#1c1a18" stroke="#ff6b6b" stroke-width="1.5"/>
-    <text x="160" y="26" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#ff6b6b" font-weight="700">BEFORE — 감으로</text>
-    <line x1="20" y1="36" x2="300" y2="36" stroke="#2a2724"/>
-
-    <text x="20" y="58" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">쇼핑 기준</text>
-    <text x="20" y="76" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 매장에서 마음에 드는 것</text>
-    <text x="20" y="92" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• SNS에서 예뻐 보이는 것</text>
-    <text x="20" y="108" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 마네킹에 잘 어울리는 것</text>
-    <text x="20" y="124" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 세일 중인 것</text>
-
-    <line x1="20" y1="136" x2="300" y2="136" stroke="#2a2724"/>
-    <text x="20" y="154" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">결과</text>
-    <text x="20" y="172" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 입지 않는 옷이 옷장에 쌓임</text>
-    <text x="20" y="188" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 매번 "뭘 입을지" 고민</text>
-    <text x="20" y="204" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 핏이 안 맞는 옷 방치</text>
-    <text x="20" y="220" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 트렌드 따라가다 지출 증가</text>
-
-    <rect x="20" y="234" width="280" height="16" rx="4" fill="#2a2724"/>
-    <rect x="20" y="234" width="126" height="16" rx="4" fill="#ff6b6b" opacity="0.6"/>
-    <text x="160" y="246" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">코디 성공률: 39%</text>
+  
+  <g transform="translate(200,150)">
+    <circle cx="50" cy="50" r="10" fill="#d4a84b" />
+    <circle cx="150" cy="80" r="15" fill="#d4a84b" />
+    <circle cx="250" cy="30" r="8" fill="#d4a84b" />
+    <line x1="50" y1="50" x2="150" y2="80" class="line" />
+    <line x1="150" y1="80" x2="250" y2="30" class="line" />
+    <text x="150" y="150" text-anchor="middle" class="accent-text">ALGORITHMIC FIT</text>
   </g>
 
-  <!-- Arrow -->
-  <text x="400" y="200" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="32" fill="#d4a84b">→</text>
 
-  <!-- After (data) -->
-  <g transform="translate(440,90)">
-    <rect x="0" y="0" width="320" height="260" rx="12" fill="#1c1a18" stroke="#d4a84b" stroke-width="2"/>
-    <text x="160" y="26" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#d4a84b" font-weight="700">AFTER — 데이터로</text>
-    <line x1="20" y1="36" x2="300" y2="36" stroke="#2a2724"/>
-
-    <text x="20" y="58" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">쇼핑 기준</text>
-    <text x="20" y="76" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 내 어깨 너비 맞는지 실측 확인</text>
-    <text x="20" y="92" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 체형 강점을 살리는 실루엣</text>
-    <text x="20" y="108" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 기존에 잘 맞는 옷과 비율 비교</text>
-    <text x="20" y="124" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">• 비율 보완 원칙 적용</text>
-
-    <line x1="20" y1="136" x2="300" y2="136" stroke="#2a2724"/>
-    <text x="20" y="154" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">결과</text>
-    <text x="20" y="172" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">✓ 구매 전에 핏 예측 가능</text>
-    <text x="20" y="188" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">✓ 코디 선택에 5분이면 충분</text>
-    <text x="20" y="204" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">✓ 반품율 75% 감소</text>
-    <text x="20" y="220" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">✓ 옷장이 실제로 줄어듦</text>
-
-    <rect x="20" y="234" width="280" height="16" rx="4" fill="#2a2724"/>
-    <rect x="20" y="234" width="224" height="16" rx="4" fill="#d4a84b" opacity="0.6"/>
-    <text x="160" y="246" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">코디 성공률: 87%</text>
-  </g>
-
-  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
-  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 데이터 기반 스타일링</text>
+  <!-- Footer -->
+  <line x1="100" y1="380" x2="700" y2="380" class="line" />
+  <text x="400" y="405" text-anchor="middle" class="label">PERFECTFITME.COM • PROFESSIONAL FASHION DATA ANALYSIS</text>
 </svg>

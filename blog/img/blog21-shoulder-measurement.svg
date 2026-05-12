@@ -21,13 +21,15 @@
   <rect width="800" height="420" fill="#161412"/>
   
   <!-- Header -->
-  <text x="400" y="45" text-anchor="middle" class="subtitle">PEAR SHAPE STYLING</text>
-  <text x="400" y="75" text-anchor="middle" class="title">하체 발달형(Pear Shape) 스타일링</text>
+  <text x="400" y="45" text-anchor="middle" class="subtitle">SHOULDER MEASUREMENT</text>
+  <text x="400" y="75" text-anchor="middle" class="title">정확한 어깨 너비 측정 방법</text>
 
   
-  <g transform="translate(350,130)">
-    <path d="M50,20 Q20,100 0,180 Q50,220 100,180 Q80,100 50,20" class="accent-line" />
-    <text x="50" y="250" text-anchor="middle" class="accent-text">TRIANGLE FOCUS</text>
+  <g transform="translate(250,180)">
+    <path d="M0,0 Q150,-50 300,0" class="accent-line" />
+    <circle cx="0" cy="0" r="8" fill="#d4a84b" />
+    <circle cx="300" cy="0" r="8" fill="#d4a84b" />
+    <text x="150" y="50" text-anchor="middle" class="accent-text">SHOULDER ARC</text>
   </g>
 
 

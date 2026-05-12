@@ -21,13 +21,14 @@
   <rect width="800" height="420" fill="#161412"/>
   
   <!-- Header -->
-  <text x="400" y="45" text-anchor="middle" class="subtitle">PEAR SHAPE STYLING</text>
-  <text x="400" y="75" text-anchor="middle" class="title">하체 발달형(Pear Shape) 스타일링</text>
+  <text x="400" y="45" text-anchor="middle" class="subtitle">IDEAL WHR 0.65</text>
+  <text x="400" y="75" text-anchor="middle" class="title">시각적으로 보는 0.65 황금 비율</text>
 
   
-  <g transform="translate(350,130)">
-    <path d="M50,20 Q20,100 0,180 Q50,220 100,180 Q80,100 50,20" class="accent-line" />
-    <text x="50" y="250" text-anchor="middle" class="accent-text">TRIANGLE FOCUS</text>
+  <g transform="translate(350,120)">
+    <path d="M50,0 Q30,50 50,100 Q70,150 50,200" class="accent-line" />
+    <path d="M100,0 Q120,50 100,100 Q80,150 100,200" class="accent-line" />
+    <text x="75" y="240" text-anchor="middle" class="accent-text">WHR 0.65</text>
   </g>
 
 

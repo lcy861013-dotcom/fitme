@@ -21,13 +21,14 @@
   <rect width="800" height="420" fill="#161412"/>
   
   <!-- Header -->
-  <text x="400" y="45" text-anchor="middle" class="subtitle">PEAR SHAPE STYLING</text>
-  <text x="400" y="75" text-anchor="middle" class="title">하체 발달형(Pear Shape) 스타일링</text>
+  <text x="400" y="45" text-anchor="middle" class="subtitle">THE SPAN METHOD</text>
+  <text x="400" y="75" text-anchor="middle" class="title">한 뼘 측정법으로 알맞은 사이즈 찾기</text>
 
   
-  <g transform="translate(350,130)">
-    <path d="M50,20 Q20,100 0,180 Q50,220 100,180 Q80,100 50,20" class="accent-line" />
-    <text x="50" y="250" text-anchor="middle" class="accent-text">TRIANGLE FOCUS</text>
+  <g transform="translate(300,150)">
+    <path d="M0,100 Q20,20 50,20 Q80,20 100,100 Q120,180 150,180 Q180,180 200,100" class="accent-line" />
+    <line x1="0" y1="100" x2="200" y2="100" class="line dashed" />
+    <text x="100" y="220" text-anchor="middle" class="accent-text">HAND SPAN MEASUREMENT</text>
   </g>
 
 

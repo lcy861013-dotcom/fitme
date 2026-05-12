@@ -1,58 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b08d3d;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .title { font-family: 'DM Sans', sans-serif; font-size: 24px; font-weight: 700; fill: #e0dcd8; }
+      .subtitle { font-family: 'DM Sans', sans-serif; font-size: 14px; fill: #8b8178; letter-spacing: 4px; }
+      .label { font-family: 'DM Sans', sans-serif; font-size: 12px; fill: #8b8178; }
+      .accent-text { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; fill: #d4a84b; }
+      .line { stroke: #2a2724; stroke-width: 1; }
+      .accent-line { stroke: #d4a84b; stroke-width: 2; fill: none; filter: url(#glow); }
+      .dashed { stroke-dasharray: 4, 3; }
+    </style>
+  </defs>
   <rect width="800" height="420" fill="#161412"/>
-  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">TOP STYLE GUIDE BY BODY TYPE</text>
-  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">체형별 상의 — 네크라인 · 소매 · 기장 가이드</text>
+  
+  <!-- Header -->
+  <text x="400" y="45" text-anchor="middle" class="subtitle">UPPER BODY FIT GUIDE</text>
+  <text x="400" y="75" text-anchor="middle" class="title">상의 핏과 어깨 라인 분석</text>
 
-  <!-- Inverted Triangle -->
-  <g transform="translate(40,90)">
-    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">역삼각형</text>
-    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">어깨 넓음 · 허리 직선</text>
-    <!-- Top outline -->
-    <path d="M25,30 L145,30 L125,110 L45,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
-    <!-- V neck -->
-    <path d="M75,30 L85,55 L95,30" fill="#161412" stroke="#d4a84b" stroke-width="1.5"/>
-    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ V넥 · 로우넥</text>
-    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 플레어 스커트</text>
-    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 보트넥 · 퍼프 소매</text>
+  
+  <g transform="translate(200,130)">
+    <path d="M0,50 L50,0 L150,0 L200,50 L200,200 L0,200 Z" class="accent-line" />
+    <line x1="50" y1="0" x2="150" y2="0" class="accent-line" style="stroke-width:4;" />
+    <text x="100" y="230" text-anchor="middle" class="accent-text">SHOULDER LINE</text>
   </g>
 
-  <!-- Rectangle -->
-  <g transform="translate(225,90)">
-    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">균형형 (직사각형)</text>
-    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">상하체 균형 · 허리 직선</text>
-    <path d="M25,30 L145,30 L145,110 L25,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
-    <!-- Crew neck -->
-    <ellipse cx="85" cy="32" rx="18" ry="8" fill="#161412" stroke="#d4a84b" stroke-width="1.5"/>
-    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 허리 강조 상의</text>
-    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 벨트 · 터크인</text>
-    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 박시 오버핏</text>
-  </g>
 
-  <!-- Pear -->
-  <g transform="translate(410,90)">
-    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">서양배형 (하체발달)</text>
-    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">어깨 좁음 · 힙 넓음</text>
-    <path d="M35,30 L135,30 L145,110 L25,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
-    <!-- Off shoulder -->
-    <path d="M25,30 L145,30" fill="none" stroke="#8b8178" stroke-width="1" stroke-dasharray="3,3"/>
-    <path d="M35,35 L135,35" fill="none" stroke="#d4a84b" stroke-width="2"/>
-    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 오프숄더 · 퍼프소매</text>
-    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 보트넥 · 가로줄무늬</text>
-    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 홀터넥 · 슬림 쇼울더</text>
-  </g>
-
-  <!-- Hourglass -->
-  <g transform="translate(595,90)">
-    <text x="85" y="0" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">모래시계형</text>
-    <text x="85" y="16" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">어깨·힙 균형 · 허리 강조</text>
-    <path d="M20,30 L150,30 L130,110 L40,110 Z" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
-    <!-- Cinched waist line -->
-    <line x1="45" y1="70" x2="125" y2="70" stroke="#d4a84b" stroke-width="1.5" stroke-dasharray="4,3"/>
-    <text x="85" y="135" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 랩톱 · 피티드</text>
-    <text x="85" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#e0dcd8">✓ 허리 강조 모든 스타일</text>
-    <text x="85" y="165" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#ff6b6b">✗ 드롭웨이스트</text>
-  </g>
-
-  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
-  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 체형별 상의 완전 가이드</text>
+  <!-- Footer -->
+  <line x1="100" y1="380" x2="700" y2="380" class="line" />
+  <text x="400" y="405" text-anchor="middle" class="label">PERFECTFITME.COM • PROFESSIONAL FASHION DATA ANALYSIS</text>
 </svg>

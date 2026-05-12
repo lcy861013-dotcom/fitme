@@ -1,55 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b08d3d;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .title { font-family: 'DM Sans', sans-serif; font-size: 24px; font-weight: 700; fill: #e0dcd8; }
+      .subtitle { font-family: 'DM Sans', sans-serif; font-size: 14px; fill: #8b8178; letter-spacing: 4px; }
+      .label { font-family: 'DM Sans', sans-serif; font-size: 12px; fill: #8b8178; }
+      .accent-text { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; fill: #d4a84b; }
+      .line { stroke: #2a2724; stroke-width: 1; }
+      .accent-line { stroke: #d4a84b; stroke-width: 2; fill: none; filter: url(#glow); }
+      .dashed { stroke-dasharray: 4, 3; }
+    </style>
+  </defs>
   <rect width="800" height="420" fill="#161412"/>
-  <text x="400" y="38" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="13" fill="#8b8178" letter-spacing="3">LEG LENGTH RATIO</text>
-  <text x="400" y="66" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="20" font-weight="700" fill="#e0dcd8">다리 길이 비율 — 5cm 더 커 보이는 비밀</text>
+  
+  <!-- Header -->
+  <text x="400" y="45" text-anchor="middle" class="subtitle">LEG LENGTH RATIO</text>
+  <text x="400" y="75" text-anchor="middle" class="title">다리 길이를 길어 보이게 하는 비율</text>
 
-  <!-- Scale visualization -->
-  <g transform="translate(50,85)">
-    <text x="0" y="0" font-family="'DM Sans',sans-serif" font-size="12" fill="#8b8178">키 170cm 기준 다리 비율별 시각 효과</text>
-
-    <!-- 47% bar -->
-    <rect x="0" y="20" width="282" height="30" rx="4" fill="#2a2724"/>
-    <rect x="0" y="20" width="282" height="30" rx="4" fill="#1c1a18" stroke="#2a2724"/>
-    <rect x="0" y="20" width="282" height="30" rx="4" fill="#8b8178" opacity="0.3"/>
-    <text x="290" y="40" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">47% = 80cm</text>
-    <text x="290" y="56" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">평균 이하</text>
-
-    <!-- 49% bar (average Asian) -->
-    <rect x="0" y="66" width="294" height="30" rx="4" fill="#1c1a18" stroke="#2a2724"/>
-    <rect x="0" y="66" width="294" height="30" rx="4" fill="#8b8178" opacity="0.4"/>
-    <text x="302" y="86" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">49% = 83cm</text>
-    <text x="302" y="102" font-family="'DM Sans',sans-serif" font-size="10" fill="#8b8178">동양인 평균</text>
-
-    <!-- 52% bar -->
-    <rect x="0" y="112" width="312" height="30" rx="4" fill="#1c1a18" stroke="#d4a84b"/>
-    <rect x="0" y="112" width="312" height="30" rx="4" fill="#d4a84b" opacity="0.3"/>
-    <text x="320" y="132" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">52% = 88cm ← 상위 15%</text>
-    <text x="320" y="148" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">이상적 비율</text>
-
-    <!-- 54% bar -->
-    <rect x="0" y="158" width="324" height="30" rx="4" fill="#1c1a18" stroke="#d4a84b"/>
-    <rect x="0" y="158" width="324" height="30" rx="4" fill="#d4a84b" opacity="0.5"/>
-    <text x="332" y="178" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">54% = 92cm ← 패션모델 기준</text>
-    <text x="332" y="194" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">상위 5%</text>
+  
+  <g transform="translate(350,120)">
+    <rect x="0" y="0" width="40" height="250" class="accent-line" />
+    <line x1="-20" y1="100" x2="60" y2="100" class="line dashed" />
+    <text x="20" y="280" text-anchor="middle" class="accent-text">GOLDEN MEAN</text>
   </g>
 
-  <!-- Visual tricks -->
-  <g transform="translate(50,310)">
-    <text x="0" y="0" font-family="'DM Sans',sans-serif" font-size="12" fill="#d4a84b" font-weight="700">비율 향상 스타일링 (실제 비율 변화 없이)</text>
-    <rect x="0" y="14" width="160" height="44" rx="6" fill="#1c1a18" stroke="#2a2724"/>
-    <text x="80" y="31" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">하이웨이스트</text>
-    <text x="80" y="47" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">+4~6cm 효과</text>
-    <rect x="175" y="14" width="160" height="44" rx="6" fill="#1c1a18" stroke="#2a2724"/>
-    <text x="255" y="31" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">크롭 상의</text>
-    <text x="255" y="47" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">+3~5cm 효과</text>
-    <rect x="350" y="14" width="160" height="44" rx="6" fill="#1c1a18" stroke="#2a2724"/>
-    <text x="430" y="31" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#e0dcd8">발목 노출 신발</text>
-    <text x="430" y="47" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">+2~3cm 효과</text>
-    <rect x="525" y="14" width="200" height="44" rx="6" fill="#1c1a18" stroke="#d4a84b" stroke-width="1.5"/>
-    <text x="625" y="31" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#d4a84b" font-weight="700">하이웨이스트+크롭</text>
-    <text x="625" y="47" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#d4a84b">최대 +8~10cm 효과</text>
-  </g>
 
-  <line x1="40" y1="395" x2="760" y2="395" stroke="#2a2724" stroke-width="1"/>
-  <text x="400" y="413" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#8b8178">perfectfitme.com · 다리 길이 비율 완전 가이드</text>
+  <!-- Footer -->
+  <line x1="100" y1="380" x2="700" y2="380" class="line" />
+  <text x="400" y="405" text-anchor="middle" class="label">PERFECTFITME.COM • PROFESSIONAL FASHION DATA ANALYSIS</text>
 </svg>
