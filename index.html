@@ -4808,11 +4808,26 @@
   /** Blog card thumbnails: Korean SVG under /blog/img/, English under /blog/img/en/ (when present). */
   function applyBlogThumbPaths() {
     const useKo = currentLang === 'ko';
-    document.querySelectorAll('.blog-thumb img[data-thumb-ko]').forEach(img => {
+    const IMG_VER = '4';
+    document.querySelectorAll('.blog-card').forEach(card => {
+      const img = card.querySelector('.blog-thumb img[data-thumb-ko]');
+      if (!img) return;
       const koSrc = img.getAttribute('data-thumb-ko');
       const enSrc = img.getAttribute('data-thumb-en');
       const next = useKo ? koSrc : (enSrc || koSrc);
-      if (next) img.setAttribute('src', next);
+      if (!next) return;
+      try {
+        const u = new URL(next, location.origin);
+        u.searchParams.set('v', IMG_VER);
+        img.setAttribute('src', u.pathname + u.search);
+      } catch (e) {
+        img.setAttribute('src', next + (next.indexOf('?') >= 0 ? '&' : '?') + 'v=' + IMG_VER);
+      }
+      const titleEl = card.querySelector('.blog-title[data-i18n]');
+      if (titleEl) {
+        const tt = titleEl.textContent.trim();
+        if (tt) img.setAttribute('alt', useKo ? (tt + ' 일러스트') : (tt + ' — illustration'));
+      }
     });
   }
 
@@ -7695,7 +7710,7 @@
     var hostOk = location.hostname === 'perfectfitme.com' || location.hostname === 'www.perfectfitme.com';
     if (hostOk) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js?v=3').catch(function () {});
+        navigator.serviceWorker.register('/sw.js?v=5').catch(function () {});
       });
     }
   }
