@@ -1,17 +1,33 @@
 /* FITME — lightweight offline/cache for static assets only (HTML stays network-first). */
-var CACHE = 'fitme-static-v1';
+var CACHE = 'fitme-static-v2';
 
 self.addEventListener('install', function (e) {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', function (e) {
-  e.waitUntil(self.clients.claim());
+  e.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(
+        keys
+          .filter(function (k) {
+            return k !== CACHE && k.indexOf('fitme-static-') === 0;
+          })
+          .map(function (k) {
+            return caches.delete(k);
+          })
+      );
+    }).then(function () {
+      return self.clients.claim();
+    })
+  );
 });
 
 self.addEventListener('fetch', function (e) {
   var req = e.request;
   if (req.method !== 'GET') return;
+  /* Never cache-first for full page loads — extensionless URLs like /blog/blog20-en must hit the network. */
+  if (req.mode === 'navigate' || req.destination === 'document') return;
   var url;
   try {
     url = new URL(req.url);
