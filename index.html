@@ -1848,7 +1848,7 @@
         </div>
       </a>
       <a class="blog-card hot" href="/blog/blog20" onclick="goBlog(event,'blog20')">
-        <div class="blog-thumb"><img src="/blog/img/blog20-span-method.svg" alt="손뼘 측정법 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog20-span-method.svg" data-thumb-en="/blog/img/en/blog20-span-method.svg"></div>
+        <div class="blog-thumb"><img src="/blog/img/blog20-span-method.svg" alt="손뼘 측정법 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog20-span-method.svg" data-thumb-en="/blog/img/en/blog20-span-thumb-en.png"></div>
         <div class="blog-body">
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog20-title">손뼘으로 모든 부위 재기</div>
@@ -1857,7 +1857,7 @@
         </div>
       </a>
       <a class="blog-card" href="/blog/blog21" onclick="goBlog(event,'blog21')">
-        <div class="blog-thumb"><img src="/blog/img/blog21-shoulder-measurement.svg" alt="어깨 너비 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog21-shoulder-measurement.svg" data-thumb-en="/blog/img/en/blog21-shoulder-measurement.svg"></div>
+        <div class="blog-thumb"><img src="/blog/img/blog21-shoulder-measurement.svg" alt="어깨 너비 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog21-shoulder-measurement.svg" data-thumb-en="/blog/img/en/blog21-shoulder-thumb-en.png"></div>
         <div class="blog-body">
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog21-title">혼자서 어깨 너비 재기</div>
@@ -1866,7 +1866,7 @@
         </div>
       </a>
       <a class="blog-card" href="/blog/blog22" onclick="goBlog(event,'blog22')">
-        <div class="blog-thumb"><img src="/blog/img/blog22-arm-measurement.svg" alt="팔 길이 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog22-arm-measurement.svg" data-thumb-en="/blog/img/en/blog22-arm-measurement.svg"></div>
+        <div class="blog-thumb"><img src="/blog/img/blog22-arm-measurement.svg" alt="팔 길이 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog22-arm-measurement.svg" data-thumb-en="/blog/img/en/blog22-arm-thumb-en.png"></div>
         <div class="blog-body">
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog22-title">팔 길이 재기 — 상완·하완 2단계</div>
@@ -1875,7 +1875,7 @@
         </div>
       </a>
       <a class="blog-card" href="/blog/blog23" onclick="goBlog(event,'blog23')">
-        <div class="blog-thumb"><img src="/blog/img/blog23-leg-measurement.svg" alt="다리 길이 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog23-leg-measurement.svg" data-thumb-en="/blog/img/en/blog23-leg-measurement.svg"></div>
+        <div class="blog-thumb"><img src="/blog/img/blog23-leg-measurement.svg" alt="다리 길이 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog23-leg-measurement.svg" data-thumb-en="/blog/img/en/blog23-leg-thumb-en.png"></div>
         <div class="blog-body">
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog23-title">다리 길이 재기 — 골반뼈에서 발목까지</div>
@@ -1884,7 +1884,7 @@
         </div>
       </a>
       <a class="blog-card" href="/blog/blog24" onclick="goBlog(event,'blog24')">
-        <div class="blog-thumb"><img src="/blog/img/blog24-hip-measurement.svg" alt="엉덩이 둘레 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog24-hip-measurement.svg" data-thumb-en="/blog/img/en/blog24-hip-measurement.svg"></div>
+        <div class="blog-thumb"><img src="/blog/img/blog24-hip-measurement.svg" alt="엉덩이 둘레 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/blog24-hip-measurement.svg" data-thumb-en="/blog/img/en/blog24-hip-thumb-en.png"></div>
         <div class="blog-body">
           <div class="blog-tag">HOW TO MEASURE</div>
           <div class="blog-title" data-i18n="blog24-title">엉덩이 둘레 혼자 재기</div>
@@ -4808,7 +4808,7 @@
   /** Blog card thumbnails: Korean SVG under /blog/img/, English under /blog/img/en/ (when present). */
   function applyBlogThumbPaths() {
     const useKo = currentLang === 'ko';
-    const IMG_VER = '4';
+    const IMG_VER = 'png1';
     document.querySelectorAll('.blog-card').forEach(card => {
       const img = card.querySelector('.blog-thumb img[data-thumb-ko]');
       if (!img) return;
