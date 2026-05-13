@@ -4,12 +4,18 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://perfectfitme.com/</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/"/>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/demo-video.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
     <video:video>
       <video:thumbnail_loc>https://perfectfitme.com/og-image.png</video:thumbnail_loc>
       <video:title>FITME — Free Body Proportion Analysis Demo</video:title>

@@ -143,30 +143,6 @@
   }
   </script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "FITME — Free Body Proportion Analysis Demo",
-    "description": "See how FITME maps body proportions in under 60 seconds — use ratios to think about online fit and styling, not just size charts.",
-    "thumbnailUrl": "https://perfectfitme.com/og-image.png",
-    "contentUrl": "https://perfectfitme.com/demo-v2.mp4",
-    "embedUrl": "https://perfectfitme.com/",
-    "uploadDate": "2026-05-02T00:00:00+00:00",
-    "duration": "PT60S",
-    "inLanguage": "en",
-    "publisher": {
-      "@type": "Organization",
-      "name": "FITME",
-      "url": "https://perfectfitme.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://perfectfitme.com/og-image.png"
-      }
-    }
-  }
-  </script>
-
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous" data-fitme="adsense"></script>
   <!-- Kakao SDK for share -->
@@ -572,6 +548,9 @@
     .hero-demo-play:hover { background: rgba(212,168,75,0.14); }
     .hero-demo-play:disabled { opacity: 0.45; cursor: not-allowed; }
     .hero-demo-frame.is-playing .hero-demo-play { opacity: 0; pointer-events: none; }
+    .hero-demo-watch { text-align: center; margin-top: 12px; font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .hero-demo-watch a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212,168,75,0.35); }
+    .hero-demo-watch a:hover { border-bottom-color: var(--accent); }
     .hero-demo-play-icon { font-size: 17px; line-height: 1; }
     .hero-btn { display: inline-block; padding: 16px 44px; background: var(--accent); color: var(--on-accent); font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.5px; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s; text-decoration: none; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
     .hero-btn:hover { background: #f0d060; box-shadow: 0 4px 30px rgba(212,168,75,0.45); transform: translateY(-2px); }
@@ -1351,12 +1330,16 @@
     <div class="hero-demo-wrap">
       <div class="hero-demo-label" id="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
       <div class="hero-demo-frame">
-        <video id="hero-demo-video" muted loop playsinline preload="none" poster="/og-image.png"></video>
+        <video id="hero-demo-video" src="/demo-v2.mp4" width="1280" height="720" muted loop playsinline preload="metadata" poster="/og-image.png"></video>
+        <script>
+        (function(){try{var s=localStorage.getItem('fitme_lang')==='ko'?'/demo-ko-v2.mp4':'/demo-v2.mp4';var v=document.getElementById('hero-demo-video');if(v)v.setAttribute('src',s);}catch(e){}})();
+        </script>
         <button type="button" id="hero-demo-play" class="hero-demo-play" aria-describedby="hero-demo-label">
           <span class="hero-demo-play-icon" aria-hidden="true">▶</span>
           <span data-i18n="hero-demo-play">Play demo video</span>
         </button>
       </div>
+      <p class="hero-demo-watch"><a href="/demo-video.html" data-i18n="hero-demo-watch">Watch on video page →</a></p>
     </div>
 
     <div class="hero-trust" data-i18n-trust>
@@ -2394,6 +2377,7 @@
       'hero-headline':'차트에 맞춰 샀는데 왜 어색할까요?<br><em>비율을 알면 온라인 핏 선택이 달라집니다.</em>',
       'hero-demo-label':'실제 결과 미리보기',
       'hero-demo-play':'데모 영상 재생',
+      'hero-demo-watch':'전용 동영상 페이지에서 보기 →',
       'hero-btn-sub':'무료 · 가입 불필요 · 즉시 결과',
       'sample-btn':'👀 샘플 결과 먼저 보기',
       'hero-tag-old':'나만의 핏을 찾다',
@@ -2677,6 +2661,7 @@
       'hero-headline':'Same size chart. Different silhouette.<br><em>Know your ratios — shop online with intention.</em>',
       'hero-demo-label':'SAMPLE RESULT',
       'hero-demo-play':'Play demo video',
+      'hero-demo-watch':'Watch on dedicated video page →',
       'hero-btn-sub':'Free · No account · Instant results',
       'sample-btn':'👀 Try Sample Results First',
       'hero-tag-old':'Know Your Body. Dress Better.',
@@ -4991,25 +4976,26 @@
     document.documentElement.lang = lang;
     applyTranslations();
     _applyHeadline(_hlIdx, lang);
+    syncHeroDemoVideoSrc();
     const demoVideo = document.getElementById('hero-demo-video');
-    if (demoVideo) {
-      const frame = demoVideo.closest('.hero-demo-frame');
-      const playing = frame && frame.classList.contains('is-playing');
-      const src = lang === 'ko' ? 'demo-ko-v2.mp4' : 'demo-v2.mp4';
-      if (playing && demoVideo.src) {
-        try {
-          const cur = decodeURIComponent(demoVideo.src.split('/').pop() || '');
-          if (cur !== src) {
-            demoVideo.src = src;
-            demoVideo.load();
-            demoVideo.play().catch(() => {});
-          }
-        } catch (e) {
-          demoVideo.src = src;
-          demoVideo.load();
-          demoVideo.play().catch(() => {});
-        }
-      }
+    const frame = demoVideo && demoVideo.closest('.hero-demo-frame');
+    if (demoVideo && frame && frame.classList.contains('is-playing')) {
+      demoVideo.play().catch(function () {});
+    }
+  }
+
+  function syncHeroDemoVideoSrc() {
+    const v = document.getElementById('hero-demo-video');
+    if (!v) return;
+    const path = (typeof currentLang !== 'undefined' && currentLang === 'ko') ? '/demo-ko-v2.mp4' : '/demo-v2.mp4';
+    var cur = '';
+    try {
+      var attr = (v.getAttribute('src') || '').trim();
+      if (attr) cur = attr.startsWith('/') ? attr : new URL(attr, location.origin).pathname;
+    } catch (e) {}
+    if (cur !== path) {
+      v.setAttribute('src', path);
+      try { v.load(); } catch (e2) {}
     }
   }
 
@@ -5020,14 +5006,15 @@
     if (!v || !btn || !frame) return;
 
     function demoSrcForLang() {
-      return currentLang === 'ko' ? 'demo-ko-v2.mp4' : 'demo-v2.mp4';
+      return currentLang === 'ko' ? '/demo-ko-v2.mp4' : '/demo-v2.mp4';
     }
 
     btn.addEventListener('click', function () {
       const s = demoSrcForLang();
       try {
-        const cur = v.src ? decodeURIComponent(v.src.split('/').pop() || '') : '';
-        if (!v.src || cur !== s) {
+        var cur = (v.getAttribute('src') || '').trim();
+        if (cur && !cur.startsWith('/')) cur = new URL(cur, location.origin).pathname;
+        if (!cur || cur !== s) {
           v.src = s;
           v.load();
         }
@@ -5045,6 +5032,7 @@
         btn.setAttribute('aria-label', (t('hero-demo-play') || '') + ' (off)');
       }
     } catch (e) {}
+    syncHeroDemoVideoSrc();
   }
 
   // ============================================================
