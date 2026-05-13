@@ -7695,7 +7695,7 @@
     var hostOk = location.hostname === 'perfectfitme.com' || location.hostname === 'www.perfectfitme.com';
     if (hostOk) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js').catch(function () {});
+        navigator.serviceWorker.register('/sw.js?v=3').catch(function () {});
       });
     }
   }

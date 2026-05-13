@@ -92,6 +92,8 @@ header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;alig
 .cta{padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;margin-top:20px;}
 .cta-btn{display:inline-block;background:var(--accent);color:#0a0a0a;padding:14px 36px;border-radius:50px;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+.blog-lang-section{display:block;}
+.hidden-for-lang{display:none !important;}
 </style>
 </head>
 <body>
@@ -108,6 +110,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
   <div class="page-title">Style & Fit Blog</div>
   <div class="page-sub">In-depth guides on body proportions, clothing fit, and personal styling — free for every body type.</div>
 
+  <div id="blog-section-en" class="blog-lang-section">
   <div class="section-label">ENGLISH GUIDES</div>
   <div class="grid">
     <a href="/blog/blog1-en" class="card">
@@ -336,7 +339,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
       </div>
     </a>
   </div>
+  </div>
 
+  <div id="blog-section-ko" class="blog-lang-section">
   <div class="section-label">한국어 가이드 (Korean)</div>
   <div class="grid">
     <a href="/blog/blog1" class="card">
@@ -565,6 +570,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
       </div>
     </a>
   </div>
+  </div>
 
   <div class="cta">
     <div style="font-weight:700;font-size:18px;margin-bottom:8px;">Ready to analyze your body proportions?</div>
@@ -573,6 +579,37 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
   </div>
 </main>
 <footer><p>© 2026 FITME. All rights reserved. · <a href="/privacy.html" style="color:var(--muted);">Privacy Policy</a> · <a href="/about.html" style="color:var(--muted);">About</a> · <a href="/contact.html" style="color:var(--muted);">Contact</a></p></footer>
+<script>
+(function () {
+  try {
+    var params = new URLSearchParams(window.location.search || '');
+    var enEl = document.getElementById('blog-section-en');
+    var koEl = document.getElementById('blog-section-ko');
+    if (!enEl || !koEl) return;
+    if (params.get('all') === '1') return;
+
+    if (params.get('lang') === 'ko') {
+      enEl.classList.add('hidden-for-lang');
+      document.documentElement.lang = 'ko';
+      return;
+    }
+    if (params.get('lang') === 'en') {
+      koEl.classList.add('hidden-for-lang');
+      document.documentElement.lang = 'en';
+      return;
+    }
+
+    var saved = localStorage.getItem('fitme_lang');
+    if (saved === 'ko') return;
+
+    var nav = (navigator.language || '').toLowerCase();
+    if (!saved && nav.startsWith('ko')) return;
+
+    koEl.classList.add('hidden-for-lang');
+    if (saved) document.documentElement.lang = saved;
+  } catch (e) {}
+})();
+</script>
 <script defer src="/cookie-consent.js"></script>
 </body>
 </html>
