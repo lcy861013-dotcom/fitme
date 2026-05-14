@@ -415,16 +415,25 @@
       background: linear-gradient(180deg, transparent 0%, rgba(255, 252, 248, 0.94) 12%, rgba(248, 244, 238, 0.98) 100%);
       border-top-color: rgba(212, 168, 75, 0.35);
     }
-    [data-theme="light"] .body-container.body-scan-hud {
-      background: linear-gradient(180deg, #f6f2ec 0%, #ebe4da 55%, #e2dcd4 100%);
+    [data-theme="light"] .body-measure-layout .figure-zone {
+      background:
+        radial-gradient(ellipse 85% 75% at 50% 42%, rgba(212, 168, 75, 0.06) 0%, transparent 55%),
+        linear-gradient(180deg, #f6f2ec 0%, #ebe4da 55%, #e2dcd4 100%);
       border-color: rgba(160, 130, 70, 0.35);
     }
-    [data-theme="light"] .body-container.body-scan-hud::before {
+    [data-theme="light"] #analysis .figure-zone::before {
       mix-blend-mode: normal;
       opacity: 0.14;
     }
-    [data-theme="light"] .body-container.body-scan-hud::after {
+    [data-theme="light"] #analysis .figure-zone::after {
       background: radial-gradient(ellipse 88% 78% at 50% 45%, transparent 30%, rgba(90, 80, 70, 0.12) 100%);
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .stage-bg {
+      background: linear-gradient(165deg, #f2eee8 0%, #eae4dc 38%, #e2dbd2 100%);
+    }
+    [data-theme="light"] #analysis .measure-scan-stage {
+      border-color: rgba(120, 100, 70, 0.28);
+      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
     }
     [data-theme="light"] .panel {
       background: var(--surface);
@@ -745,9 +754,255 @@
     .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 10px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; min-height: 0; }
     .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
     .body-measure-layout { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; width: 100%; align-self: stretch; }
+    /* —— 데모(measure-scan-layout-preview) HUD 무대 —— */
+    #analysis .measure-scan-stage {
+      --hud-gold: #d4a84b;
+      --hud-gold2: #e8c066;
+      --hud-gold-dim: rgba(212, 168, 75, 0.32);
+      --hud-gold-glow: rgba(212, 168, 75, 0.14);
+      --hud-muted: #8a8a96;
+      --hud-green: #5ee4a0;
+      --hud-panel: rgba(12, 10, 8, 0.9);
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      min-height: min(88vh, 700px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.75),
+        0 40px 120px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -80px 100px rgba(0, 0, 0, 0.35);
+    }
+    #analysis .measure-scan-stage .stage-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(165deg, #101015 0%, #0a090c 38%, #070608 100%);
+    }
+    #analysis .measure-scan-stage .stage-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 88% 78% at 50% 48%, transparent 0%, transparent 42%, rgba(0, 0, 0, 0.45) 88%, rgba(0, 0, 0, 0.72) 100%);
+    }
+    #analysis .measure-scan-stage .stage-ambient {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 70% at 8% 45%, var(--hud-gold-glow) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 65% at 92% 48%, var(--hud-gold-glow) 0%, transparent 52%);
+      opacity: 0.85;
+    }
+    #analysis .measure-scan-stage .stage-pillar {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 42% 65% at 50% 40%, rgba(212, 168, 75, 0.07) 0%, rgba(212, 168, 75, 0.02) 45%, transparent 70%);
+    }
+    #analysis .measure-scan-stage .stage-floor {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 42%;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(18, 14, 10, 0.92) 0%, rgba(12, 10, 9, 0.55) 35%, transparent 100%);
+    }
+    #analysis .measure-scan-stage .stage-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.055;
+      background-image:
+        linear-gradient(rgba(212, 168, 75, 0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 168, 75, 0.45) 1px, transparent 1px);
+      background-size: 18px 18px;
+      mask-image: radial-gradient(ellipse 78% 68% at 50% 46%, black 22%, transparent 78%);
+    }
+    @keyframes fitmeStageScanmove {
+      0%, 100% { background-position: 0 -25%; }
+      50% { background-position: 0 125%; }
+    }
+    #analysis .measure-scan-stage .stage-scan {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(transparent 0%, rgba(212, 168, 75, 0.02) 46%, rgba(212, 168, 75, 0.07) 50%, rgba(212, 168, 75, 0.02) 54%, transparent 100%);
+      background-size: 100% 220%;
+      animation: fitmeStageScanmove 8s ease-in-out infinite;
+      opacity: 0.28;
+    }
+    #analysis .measure-scan-stage .corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      z-index: 3;
+      pointer-events: none;
+    }
+    #analysis .measure-scan-stage .c-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+    #analysis .measure-scan-stage .c-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+    #analysis .measure-scan-stage .c-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+    #analysis .measure-scan-stage .c-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+    #analysis .measure-scan-stage .stage-inner {
+      position: relative;
+      z-index: 4;
+      min-height: min(88vh, 700px);
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 8px;
+    }
+    #analysis .measure-scan-stage .hud-header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 14px 16px 0;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--hud-muted);
+    }
+    html[lang="en"] #analysis .measure-scan-stage .hud-header { letter-spacing: 0.2em; text-transform: uppercase; }
+    #analysis .measure-scan-stage .hud-header .brand {
+      font-family: "Bebas Neue", Impact, ui-sans-serif, system-ui, sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      color: var(--hud-gold2);
+    }
+    #analysis .measure-scan-stage .hud-header .sub {
+      display: block;
+      text-align: right;
+      line-height: 1.45;
+      max-width: 240px;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+    }
+    html[lang="en"] #analysis .measure-scan-stage .hud-header .sub { font-size: 9px; letter-spacing: 0.18em; }
+    #analysis .measure-scan-stage .hud-body {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      margin: 0 6px;
+      display: flex;
+      flex-direction: column;
+    }
+    #analysis .measure-scan-stage .hud-footer {
+      position: relative;
+      z-index: 5;
+      padding: 12px 16px 18px;
+      margin-top: auto;
+    }
+    #analysis .measure-scan-stage .hud-footer .bar-cap {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--hud-muted);
+      text-align: center;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+    html[lang="en"] #analysis .measure-scan-stage .hud-footer .bar-cap { letter-spacing: 0.16em; text-transform: uppercase; }
+    #analysis .measure-scan-stage .track {
+      height: 7px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      overflow: hidden;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    #analysis .measure-scan-stage .track > div {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #7a5e24, var(--hud-gold2));
+      box-shadow: 0 0 18px rgba(212, 168, 75, 0.35);
+      border-radius: 8px;
+      transition: width 0.45s ease;
+    }
+    #analysis .measure-scan-stage .chip {
+      position: relative;
+      z-index: 6;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      margin: 0;
+      padding: 9px 11px 10px;
+      background: var(--hud-panel);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 168, 75, 0.38);
+      border-radius: 11px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      text-align: left;
+      font-family: inherit;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #analysis .measure-scan-stage .chip:hover,
+    #analysis .measure-scan-stage .chip:focus-visible {
+      transform: scale(1.02);
+      border-color: rgba(212, 168, 75, 0.65);
+      box-shadow: 0 12px 36px rgba(212, 168, 75, 0.12);
+      outline: none;
+    }
+    #analysis .measure-scan-stage .chip.req .label::after {
+      content: " ★";
+      color: var(--hud-gold);
+      font-size: 7px;
+    }
+    #analysis .measure-scan-stage .chip.side-btn::before { content: none !important; }
+    #analysis .measure-scan-stage .chip.filled { border-color: rgba(94, 228, 160, 0.45); }
+    #analysis .measure-scan-stage .chip.filled .val { color: var(--hud-green); }
+    #analysis .measure-scan-stage .chip .label {
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--hud-muted);
+      text-transform: none;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    html[lang="en"] #analysis .measure-scan-stage .chip .label { letter-spacing: 0.06em; }
+    #analysis .measure-scan-stage .chip .val {
+      font-family: "Bebas Neue", Impact, ui-sans-serif, system-ui, sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.06em;
+      color: var(--hud-gold2);
+      line-height: 1;
+    }
+    #analysis .measure-scan-stage .chip .unit { font-size: 11px; color: var(--hud-muted); font-weight: 600; margin-left: 2px; }
+    #analysis .measure-scan-stage .mini-chart {
+      display: flex;
+      gap: 3px;
+      margin-top: 8px;
+      height: 14px;
+      align-items: flex-end;
+    }
+    #analysis .measure-scan-stage .mini-chart span {
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(212, 168, 75, 0.25);
+      min-height: 4px;
+    }
+    #analysis .measure-scan-stage .mini-chart span:nth-child(1) { height: 40%; }
+    #analysis .measure-scan-stage .mini-chart span:nth-child(2) { height: 70%; }
+    #analysis .measure-scan-stage .mini-chart span:nth-child(3) { height: 55%; }
+    #analysis .measure-scan-stage .mini-chart span:nth-child(4) { height: 90%; }
+    #analysis .measure-scan-stage .chip.side-btn.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(212, 168, 75, 0.25), 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+    #analysis .measure-scan-stage .chip.side-btn.active .label { color: var(--hud-gold2); }
+    @media (max-width: 520px) {
+      #analysis .measure-scan-stage .chip .val { font-size: 20px; }
+      #analysis .measure-scan-stage .hud-row-top .chip { min-width: 100px; }
+    }
     .hud-measure-grid { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; width: 100%; gap: 8px; }
     .hud-row-top { flex-shrink: 0; display: flex; justify-content: center; padding: 2px 0 4px; }
-    .hud-row-top .side-btn { width: auto; min-width: 118px; max-width: 220px; }
+    .hud-row-top .side-btn,
+    .hud-row-top .chip { width: auto; min-width: 118px; max-width: 220px; }
     .hud-row-main {
       flex: 1 1 0;
       display: flex;
@@ -771,7 +1026,8 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
     }
-    .chips-column .side-btn {
+    .chips-column .side-btn,
+    .chips-column .chip {
       flex-shrink: 0;
       width: 100%;
       white-space: normal;
@@ -785,33 +1041,56 @@
       -webkit-backdrop-filter: blur(10px);
       box-shadow: 0 8px 22px rgba(0,0,0,0.35);
     }
-    .side-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 7px 8px; font-size: 9.5px; letter-spacing: 0.5px; color: var(--muted); cursor: pointer; text-align: left; transition: all 0.18s; font-family: 'DM Sans', sans-serif; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
-    .side-btn:hover { border-color: rgba(212,168,75,0.5); color: var(--accent); background: rgba(212,168,75,0.06); }
-    .side-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(212,168,75,0.1); }
-    .side-btn.filled { border-color: #47ff8a; color: #47ff8a; background: rgba(71,255,138,0.06); }
-    .side-btn.req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
-    .side-btn.filled.req-star::before { color: #47ff8a; }
-    .body-figure-media {
+    .side-btn:not(.chip) { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 7px 8px; font-size: 9.5px; letter-spacing: 0.5px; color: var(--muted); cursor: pointer; text-align: left; transition: all 0.18s; font-family: 'DM Sans', sans-serif; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
+    .side-btn:not(.chip):hover { border-color: rgba(212,168,75,0.5); color: var(--accent); background: rgba(212,168,75,0.06); }
+    .side-btn:not(.chip).active { border-color: var(--accent); color: var(--accent); background: rgba(212,168,75,0.1); }
+    .side-btn:not(.chip).filled { border-color: #47ff8a; color: #47ff8a; background: rgba(71,255,138,0.06); }
+    .side-btn:not(.chip).req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
+    .side-btn:not(.chip).filled.req-star::before { color: #47ff8a; }
+    .figure-zone .figure-media {
       position: absolute;
       inset: 0;
       z-index: 1;
       border-radius: inherit;
       overflow: hidden;
     }
-    .body-container.body-scan-hud {
+    #analysis .hud-row-main > .figure-zone {
+      position: relative;
+      z-index: 2;
+      flex: 1 1 0;
+      min-width: 0;
+      width: 100%;
+      max-width: min(440px, 50vw);
+      height: 100%;
+      min-height: 0;
+      margin: 0 auto;
+      align-self: stretch;
+      isolation: isolate;
+      box-sizing: border-box;
+      aspect-ratio: 752 / 798;
+      border-radius: 14px;
+      overflow: hidden;
       border: 1px solid rgba(212, 168, 75, 0.22);
       box-shadow:
-        inset 0 0 70px rgba(0, 0, 0, 0.48),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 6px 26px rgba(0, 0, 0, 0.3),
-        0 0 36px rgba(212, 168, 75, 0.06);
-      isolation: isolate;
+        inset 0 0 100px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -70px 90px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 0 48px rgba(212, 168, 75, 0.07);
+      background-color: #060504;
+      background-image:
+        radial-gradient(ellipse 72% 52% at 50% 30%, rgba(212, 168, 75, 0.16) 0%, transparent 58%),
+        radial-gradient(ellipse 95% 38% at 50% 96%, rgba(212, 168, 75, 0.11) 0%, transparent 52%),
+        linear-gradient(172deg, #161311 0%, #0c0a09 42%, #050403 100%),
+        repeating-linear-gradient(0deg, transparent 0, transparent 16px, rgba(212, 168, 75, 0.04) 16px, rgba(212, 168, 75, 0.04) 17px),
+        repeating-linear-gradient(90deg, transparent 0, transparent 16px, rgba(212, 168, 75, 0.035) 16px, rgba(212, 168, 75, 0.035) 17px);
     }
     @keyframes fitmeInnerScan {
       0%, 100% { background-position: 0 -25%; }
       50% { background-position: 0 125%; }
     }
-    .body-container.body-scan-hud::before {
+    #analysis .figure-zone::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -821,17 +1100,17 @@
       background: linear-gradient(transparent 38%, rgba(212, 168, 75, 0.06) 50%, transparent 62%);
       background-size: 100% 200%;
       animation: fitmeInnerScan 6.5s ease-in-out infinite;
-      opacity: 0.38;
+      opacity: 0.4;
       mix-blend-mode: soft-light;
     }
-    .body-container.body-scan-hud::after {
+    #analysis .figure-zone::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 4;
       border-radius: inherit;
       pointer-events: none;
-      background: radial-gradient(ellipse 88% 78% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.22) 100%);
+      background: radial-gradient(ellipse 88% 78% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.25) 100%);
     }
     .body-measure-layout .figure-intro {
       position: absolute;
@@ -858,7 +1137,7 @@
     }
     .body-measure-layout .figure-intro p:last-child { margin-bottom: 0; }
     .body-measure-layout .figure-intro strong { color: var(--accent); font-weight: 600; }
-    .body-measure-layout .body-container:has(#figure-howto:not([hidden])) .figure-intro {
+    .body-measure-layout .figure-zone:has(#figure-howto:not([hidden])) .figure-intro {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -923,26 +1202,12 @@
       line-height: 1.6;
       color: var(--muted);
     }
-    .hud-row-main > .body-container {
-      flex: 1 1 0;
-      min-width: 0;
-    }
-    .body-container {
-      position: relative;
-      box-sizing: border-box;
-      margin: 0 auto;
-      aspect-ratio: 752 / 798;
-      background: radial-gradient(ellipse 85% 75% at 50% 42%, rgba(212, 168, 75, 0.08) 0%, transparent 55%), #0a0a0c;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
     @supports (width: 1cqw) {
       .hud-row-main {
         container-type: size;
         container-name: body-measure;
       }
-      .body-container {
+      #analysis .figure-zone {
         width: min(100cqw, calc(100cqh * 752 / 798));
         height: min(100cqh, calc(100cqw * 798 / 752));
         max-width: 100%;
@@ -950,7 +1215,7 @@
       }
     }
     @supports not (width: 1cqw) {
-      .body-container {
+      #analysis .figure-zone {
         height: min(calc(100dvh - 130px), calc(100vh - 130px), calc((100vw - min(400px, 32vw) - 48px) * 798 / 752));
         width: auto;
         max-height: min(calc(100dvh - 130px), calc(100vh - 130px));
@@ -970,6 +1235,7 @@
       object-position: center center;
     }
     .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: auto; touch-action: manipulation; }
+    #analysis .figure-zone .body-overlay { z-index: 5; }
     .body-mark { opacity: 0; transition: opacity 0.2s; cursor: pointer; pointer-events: auto; }
     .body-mark-hit { cursor: pointer; pointer-events: stroke; fill: none; stroke: transparent; }
 
@@ -1342,7 +1608,8 @@
         max-height: min(82dvh, calc(100dvh - 140px));
       }
       .chips-column { flex: 0 0 clamp(78px, 24vw, 108px); }
-      .chips-column .side-btn { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
+      .chips-column .side-btn,
+      .chips-column .chip { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
       .hud-row-main { min-height: clamp(280px, 42dvh, 520px); gap: 4px; }
 
       /* Bottom sheet */
@@ -2177,21 +2444,64 @@
   <div class="main-container" id="analysis">
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
-      <div class="body-measure-layout">
+      <div class="measure-scan-stage stage body-measure-layout">
+        <div class="stage-bg" aria-hidden="true"></div>
+        <div class="stage-vignette" aria-hidden="true"></div>
+        <div class="stage-ambient" aria-hidden="true"></div>
+        <div class="stage-pillar" aria-hidden="true"></div>
+        <div class="stage-floor" aria-hidden="true"></div>
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="stage-scan" aria-hidden="true"></div>
+        <div class="corner c-tl" aria-hidden="true"></div>
+        <div class="corner c-tr" aria-hidden="true"></div>
+        <div class="corner c-bl" aria-hidden="true"></div>
+        <div class="corner c-br" aria-hidden="true"></div>
+        <div class="stage-inner">
+          <div class="hud-header">
+            <span class="brand">PERFECT FIT ME</span>
+            <div class="hud-header-right">
+              <span class="sub" id="hud-header-sub"></span>
+            </div>
+          </div>
+          <div class="hud-body">
         <div class="hud-measure-grid">
           <div class="hud-row-top">
-            <button type="button" class="side-btn req-star" id="side-btn-height" onclick="selectPart('height')">HEIGHT</button>
+            <button type="button" class="chip side-btn req" id="side-btn-height" onclick="selectPart('height')">
+              <div class="label"></div>
+              <div><span class="val">—</span><span class="unit">cm</span></div>
+              <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+            </button>
           </div>
           <div class="hud-row-main">
             <div class="chips-column chips-column--left">
-              <button type="button" class="side-btn" id="side-btn-head" onclick="selectPart('head')">HEAD</button>
-              <button type="button" class="side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">SHOULDER</button>
-              <button type="button" class="side-btn" id="side-btn-chest" onclick="selectPart('chest')">CHEST</button>
-              <button type="button" class="side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">UPPER ARM</button>
-              <button type="button" class="side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">LOWER ARM</button>
+              <button type="button" class="chip side-btn" id="side-btn-head" onclick="selectPart('head')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-chest" onclick="selectPart('chest')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
             </div>
-            <div class="body-container body-scan-hud" id="body-figure-zone">
-              <div class="body-figure-media">
+            <div class="figure-zone" id="body-figure-zone">
+              <div class="figure-media">
                 <img src="body-measure-figure.png" alt="body measurement scan" class="body-img" width="752" height="798" decoding="async" onerror="this.onerror=null;this.src='/body-measure-figure.png'">
               </div>
               <svg class="body-overlay" viewBox="0 0 752 798" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
@@ -2232,13 +2542,43 @@
               </div>
             </div>
             <div class="chips-column chips-column--right">
-              <button type="button" class="side-btn req-star" id="side-btn-weight" onclick="selectPart('weight')">WEIGHT</button>
-              <button type="button" class="side-btn req-star" id="side-btn-waist" onclick="selectPart('waist')">WAIST</button>
-              <button type="button" class="side-btn" id="side-btn-hip" onclick="selectPart('hip')">HIP</button>
-              <button type="button" class="side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">THIGH</button>
-              <button type="button" class="side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">SHIN</button>
-              <button type="button" class="side-btn" id="side-btn-foot" onclick="selectPart('foot')">FOOT</button>
+              <button type="button" class="chip side-btn req" id="side-btn-weight" onclick="selectPart('weight')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">kg</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn req" id="side-btn-waist" onclick="selectPart('waist')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit"></span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-hip" onclick="selectPart('hip')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-foot" onclick="selectPart('foot')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">mm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
             </div>
+          </div>
+        </div>
+          </div>
+          <div class="hud-footer">
+            <div class="bar-cap" id="hud-footer-cap"></div>
+            <div class="track hud-track"><div id="hud-progress-fill" style="width:0%"></div></div>
           </div>
         </div>
       </div>
@@ -2805,6 +3145,8 @@
       'section-label':'인체 그림 또는 좌우 버튼에서 부위를 선택하세요',
       'figure-intro-1':'<strong>안내</strong> 실루엣이나 위·아래 칩에서 부위를 고른 뒤 오른쪽 패널에 값을 입력하세요. 줄자는 살을 누르지 말고 수평·수직만 확인하며 살짝 맞추면 됩니다.',
       'figure-intro-2':'<strong>한뼘</strong>으로도 길이를 맞출 수 있어요. 엄지~검지끝 한 뼘을 cm로 재 두고 같은 간격을 세면 됩니다. 정확한 수치는 줄자로 다시 확인하세요.',
+      'hud-header-sub':'측정 HUD · 라이브',
+      'hud-footer-cap':'칩을 누르면 가운데에 측정 요령이 뜹니다 · 아래 막대는 입력 진행률',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
       'placeholder-text':'왼쪽 인체 그림 또는<br>양옆 버튼에서 부위를 선택하세요',
       'save-btn':'저장하기','analyze-btn':'🔓 내 체형 정체성 공개하기','reset-btn':'초기화','edit-btn':'✏️ 수정하기','reset-confirm-btn':'🗑️ 전체 초기화',
@@ -3091,6 +3433,8 @@
       'section-label':'Select a part on the diagram or side buttons',
       'figure-intro-1':'<strong>How it works</strong> Tap the figure or a chip, then enter values in the panel on the right. Keep the tape level and snug without digging into soft tissue.',
       'figure-intro-2':'<strong>Hand span</strong>: measure thumb tip to stretched index fingertip in cm, then count spans for longer lines. Use a tape when you need an exact number.',
+      'hud-header-sub':'MEASUREMENT HUD · LIVE',
+      'hud-footer-cap':'Tap a chip for how-to in the center · Bar shows your completion progress',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
       'placeholder-text':'Tap the diagram or<br>side buttons to choose a part',
       'save-btn':'Save','analyze-btn':'🔓 Reveal My Full Analysis','reset-btn':'Reset','edit-btn':'✏️ Edit','reset-confirm-btn':'🗑️ Reset All',
@@ -5209,6 +5553,8 @@
     set('placeholder-text', t('placeholder-text'), true);
     set('figure-intro-1', t('figure-intro-1'), true);
     set('figure-intro-2', t('figure-intro-2'), true);
+    set('hud-header-sub', t('hud-header-sub'));
+    set('hud-footer-cap', t('hud-footer-cap'));
     // buttons
     set('btn-analyze', t('analyze-btn'));
     set('btn-reset', t('reset-btn'));
@@ -5232,7 +5578,12 @@
       set('ftitle-' + p, _titles[p] || p);
       const _fullT = _titles[p] || p; const _slashI = _fullT.indexOf('/');
       const _shortT = _slashI >= 0 ? _fullT.slice(_slashI + 1).trim() : _fullT.trim();
-      const _sideB = document.getElementById('side-btn-' + p); if (_sideB) _sideB.textContent = _shortT;
+      const _sideB = document.getElementById('side-btn-' + p);
+      if (_sideB) {
+        const _lab = _sideB.querySelector('.label');
+        if (_lab) _lab.textContent = _shortT;
+        else _sideB.textContent = _shortT;
+      }
       set('fdesc-' + p, f.desc);
       
       // Dynamic Unit Suffix (v1.5 + v1.9 waist/foot fix)
@@ -5273,6 +5624,7 @@
       else if (fu === 'EU') footInput.placeholder = '42';
       else footInput.placeholder = '255';
     }
+    syncMeasureHudChips();
     applyBlogThumbPaths();
     // RTL
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
@@ -5718,6 +6070,87 @@
     return val;
   }
 
+  function syncMeasureHudChips() {
+    const cfg = getUnitCfg();
+    const LU = cfg.length === 'in' ? 'in' : 'cm';
+    const WU = cfg.weight === 'lb' ? 'lb' : 'kg';
+    const parts = ['height', 'weight', 'head', 'shoulder', 'chest', 'upper-arm', 'lower-arm', 'waist', 'hip', 'upper-leg', 'lower-leg', 'foot'];
+    function setChip(part, val, unit, has) {
+      const btn = document.getElementById('side-btn-' + part);
+      if (!btn) return;
+      const valEl = btn.querySelector('.val');
+      const unitEl = btn.querySelector('.unit');
+      if (valEl) valEl.textContent = val;
+      if (unitEl) unitEl.textContent = unit || '';
+      btn.classList.toggle('filled', !!has);
+    }
+    function dispLen(cmVal) {
+      if (cmVal === undefined || cmVal === null || cmVal === '') return { v: '—', u: LU };
+      const n = parseFloat(cmVal);
+      if (isNaN(n)) return { v: '—', u: LU };
+      if (cfg.length === 'in') return { v: String((n / 2.54).toFixed(1)).replace(/\.0$/, ''), u: 'in' };
+      const s = (Math.abs(n - Math.round(n)) < 0.001) ? String(Math.round(n)) : n.toFixed(1);
+      return { v: s.replace(/\.0$/, ''), u: 'cm' };
+    }
+    function dispWt(kgVal) {
+      if (kgVal === undefined || kgVal === null || kgVal === '') return { v: '—', u: WU };
+      const n = parseFloat(kgVal);
+      if (isNaN(n)) return { v: '—', u: WU };
+      if (cfg.weight === 'lb') return { v: String(Math.round(n / 0.453592)), u: 'lb' };
+      const s = (Math.abs(n - Math.round(n)) < 0.001) ? String(Math.round(n)) : n.toFixed(1);
+      return { v: s.replace(/\.0$/, ''), u: 'kg' };
+    }
+    parts.forEach(part => {
+      const d = measurements[part];
+      if (!d) {
+        let u = LU;
+        if (part === 'weight') u = WU;
+        else if (part === 'waist') u = cfg.waist === 'inch' ? '"' : 'cm';
+        else if (part === 'foot') u = cfg.foot === 'US size' ? 'US' : (cfg.foot === 'EU' ? 'EU' : 'mm');
+        setChip(part, '—', u, false);
+        return;
+      }
+      let v = '—';
+      let u = '';
+      if (part === 'height') { const x = dispLen(d.val); v = x.v; u = x.u; }
+      else if (part === 'weight') { const x = dispWt(d.val); v = x.v; u = x.u; }
+      else if (part === 'shoulder') { const x = dispLen(d.width); v = x.v; u = x.u; }
+      else if (part === 'hip') { const x = dispLen(d.circ); v = x.v; u = x.u; }
+      else if (part === 'chest') {
+        if (d.circ) { const x = dispLen(d.circ); v = x.v; u = x.u; }
+        if (d.size) { v = v === '—' ? d.size : (v + ' · ' + d.size); if (!d.circ) u = ''; }
+        if (v === '—') u = LU;
+      }
+      else if (part === 'head') {
+        if (d.circ) { const x = dispLen(d.circ); v = x.v; u = x.u; }
+        if (d.hat) { v = v === '—' ? d.hat : (v + ' · ' + d.hat); if (!d.circ) u = ''; }
+        if (v === '—') u = LU;
+      }
+      else if (part === 'upper-arm' || part === 'lower-arm' || part === 'lower-leg') { const x = dispLen(d.len); v = x.v; u = x.u; }
+      else if (part === 'waist') {
+        if (cfg.waist === 'inch') { v = d.inch ? String(d.inch) : '—'; u = d.inch ? '"' : ''; }
+        else { const x = dispLen(d.circ); v = x.v; u = x.u; }
+      }
+      else if (part === 'upper-leg') {
+        const a = d.len ? dispLen(d.len) : null;
+        const b = d.circ ? dispLen(d.circ) : null;
+        if (a && a.v !== '—' && b && b.v !== '—') { v = a.v + '/' + b.v; u = ''; }
+        else if (a && a.v !== '—') { v = a.v; u = a.u; }
+        else if (b && b.v !== '—') { v = b.v; u = b.u; }
+        else { v = '—'; u = LU; }
+      }
+      else if (part === 'foot') {
+        const fu = cfg.foot;
+        if (d.size) {
+          if (fu === 'US size') { v = mmToUS(d.size) || '—'; u = 'US'; }
+          else if (fu === 'EU') { v = mmToEU(d.size) || '—'; u = 'EU'; }
+          else { v = String(d.size); u = 'mm'; }
+        } else { v = '—'; u = fu === 'US size' ? 'US' : (fu === 'EU' ? 'EU' : 'mm'); }
+      }
+      setChip(part, v, u, true);
+    });
+  }
+
   function savePart(part) {
     const { data, hasData } = buildPartPayload(part);
 
@@ -5727,6 +6160,7 @@
     if (isNew) { filledCount++; const _hf = document.getElementById('hs-' + part); if (_hf) _hf.classList.add('filled'); const _sf = document.getElementById('side-btn-' + part); if (_sf) _sf.classList.add('filled'); }
     updateProgress();
     updateSavedList();
+    syncMeasureHudChips();
     const partLabel = ((i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'])[part] || part;
     showToast(partLabel + t('toast-saved'));
     const activeForm = document.querySelector('.measurement-form.visible');
@@ -5748,6 +6182,8 @@
     const mText = document.getElementById('progress-text-m');
     if (mFill) mFill.style.width = pct + '%';
     if (mText) mText.textContent = filledCount + ' / ' + totalParts;
+    const hFill = document.getElementById('hud-progress-fill');
+    if (hFill) hFill.style.width = pct + '%';
   }
 
   function updateSavedList() {
@@ -6337,6 +6773,7 @@
     });
     updateProgress();
     updateSavedList();
+    syncMeasureHudChips();
 
     _isSampleResult = true;
     // Show toast and scroll to analysis, then auto-run
@@ -7531,6 +7968,7 @@
     });
     document.getElementById('panel-title').textContent = t('panel-title-default');
     updateProgress();
+    syncMeasureHudChips();
     showToast(t('toast-reset'));
   }
 
@@ -7607,6 +8045,7 @@
         // (Note: actual input restoration is handled in main.js window.onload)
       });
     }
+    syncMeasureHudChips();
 
     // Legacy toggleUnit compat shim — bridges old main.js API to new unit system
     window.toggleUnit = function(unit, isInit) {
