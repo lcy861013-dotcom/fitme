@@ -721,34 +721,46 @@
       box-sizing: border-box;
     }
     @media (min-width: 901px) {
+      /* 분석 화면: 왼쪽 실루엣·HUD, 오른쪽 측정 입력 패널(항상 보임) */
+      #analysis.main-container {
+        flex-direction: row;
+        align-items: stretch;
+        gap: clamp(12px, 1.5vw, 24px);
+        padding: 10px clamp(12px, 1.5vw, 28px) 18px;
+      }
       .main-container > .body-section { order: 1; }
       .main-container > #main-panel { order: 2; }
       .main-container > #mobile-analyze-bar { order: 3; }
       .main-container > #mobile-result-overlay { order: 4; }
       .main-container > #sheet-backdrop { order: 5; }
-      .body-section {
+      #analysis > .body-section {
+        flex: 1 1 0;
+        min-width: 0;
         height: auto;
-        flex: 0 0 auto;
-        overflow: visible;
+        align-self: stretch;
+        overflow: hidden;
         justify-content: flex-start;
         border-right: none;
       }
-      #main-panel.panel {
+      #analysis #main-panel.panel {
         position: relative;
-        width: min(720px, 94vw);
-        align-self: center;
-        margin: 8px auto 24px;
+        flex: 0 0 clamp(300px, 28vw, 420px);
+        width: auto;
+        min-width: 280px;
+        max-width: 440px;
+        align-self: stretch;
+        margin: 0;
         height: auto;
         max-height: none;
         min-height: 0;
-        flex: 0 1 auto;
         border-radius: 18px;
         border: 1px solid var(--border);
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
         transform: none;
+        overflow: hidden;
       }
-      #main-panel.panel .input-area {
-        max-height: min(52vh, 520px);
+      #analysis #main-panel.panel .input-area {
+        max-height: none;
       }
     }
     .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 10px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; min-height: 0; }
