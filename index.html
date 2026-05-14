@@ -411,10 +411,6 @@
       border-top-color: rgba(212, 168, 75, 0.28);
     }
     [data-theme="light"] .body-measure-layout .figure-intro p { color: #5c564c; }
-    [data-theme="light"] .body-measure-layout .figure-howto {
-      background: linear-gradient(180deg, transparent 0%, rgba(255, 252, 248, 0.94) 12%, rgba(248, 244, 238, 0.98) 100%);
-      border-top-color: rgba(212, 168, 75, 0.35);
-    }
     [data-theme="light"] .body-measure-layout .figure-zone {
       background:
         radial-gradient(ellipse 85% 75% at 50% 42%, rgba(212, 168, 75, 0.06) 0%, transparent 55%),
@@ -1184,71 +1180,6 @@
     }
     .body-measure-layout .figure-intro p:last-child { margin-bottom: 0; }
     .body-measure-layout .figure-intro strong { color: var(--accent); font-weight: 600; }
-    .body-measure-layout .figure-zone:has(#figure-howto:not([hidden])) .figure-intro {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-    .body-measure-layout .figure-howto {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 12%;
-      bottom: 0;
-      z-index: 7;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      padding: 8px 10px 10px;
-      border-radius: 0 0 11px 11px;
-      background: linear-gradient(180deg, transparent 0%, rgba(6, 5, 4, 0.82) 10%, rgba(8, 7, 6, 0.96) 100%);
-      border-top: 1px solid rgba(212, 168, 75, 0.28);
-      box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.42);
-    }
-    .body-measure-layout .figure-howto[hidden] { display: none !important; }
-    .body-measure-layout .figure-howto-head {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-    .body-measure-layout .figure-howto-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-    }
-    html[lang="ko"] .body-measure-layout .figure-howto-title {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-    }
-    .body-measure-layout .figure-howto-close {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      border: 1px solid rgba(212, 168, 75, 0.35);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.35);
-      color: var(--accent);
-      font-size: 18px;
-      line-height: 1;
-      cursor: pointer;
-      padding: 0;
-    }
-    .body-measure-layout .figure-howto-body {
-      flex: 1;
-      min-height: 0;
-      margin: 0;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      font-size: 11px;
-      line-height: 1.6;
-      color: var(--muted);
-    }
     @supports (width: 1cqw) {
       .hud-row-main {
         container-type: size;
@@ -1283,25 +1214,10 @@
     }
     .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: auto; touch-action: manipulation; }
     #analysis .figure-zone .body-overlay { z-index: 4; }
-    .body-mark { opacity: 0; transition: opacity 0.2s; cursor: pointer; pointer-events: auto; }
-    .body-mark-hit { cursor: pointer; pointer-events: stroke; fill: none; stroke: transparent; }
+    /* 실루엣 위 부위 하이라이트는 사용하지 않음(클릭 타깃만 유지) */
+    .body-mark { opacity: 0 !important; pointer-events: auto; cursor: pointer; }
+    .body-mark-hit { opacity: 0 !important; cursor: pointer; pointer-events: stroke; fill: none; stroke: transparent; }
 
-    .hotspot {
-      position: absolute; width: 34px; height: 34px; border-radius: 50%;
-      border: 2px solid var(--accent); background: rgba(212,168,75,0.08);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      font-size: 11px; color: var(--accent); transition: all 0.2s;
-      transform: translate(-50%, -50%); z-index: 10;
-      touch-action: manipulation; -webkit-tap-highlight-color: transparent;
-      user-select: none; -webkit-user-select: none;
-    }
-    .hotspot:hover, .hotspot.active { background: var(--accent); color: var(--on-accent); box-shadow: 0 0 20px rgba(212,168,75,0.5); transform: translate(-50%, -50%) scale(1.15); }
-    .hotspot.filled { border-color: #47ff8a; background: rgba(71,255,138,0.12); color: #47ff8a; }
-    .hotspot.filled:hover { background: #47ff8a; color: var(--on-accent); }
-    .hotspot::after { content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 2px solid var(--accent); animation: pulse 2s infinite; opacity: 0; }
-    .hotspot.filled::after { border-color: #47ff8a; }
-    @keyframes pulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.8); opacity: 0; } }
-    .hotspot.req-marker::before { content: '★'; position: absolute; top: -6px; right: -6px; font-size: 8px; color: var(--accent); line-height: 1; }
     .quick-start-banner { grid-column: 1 / -1; display:flex; align-items:center; justify-content:center; gap:10px; background:linear-gradient(90deg,rgba(212,168,75,0.08),rgba(168,152,104,0.06)); border:1px solid rgba(212,168,75,0.25); border-bottom: 1px solid rgba(212,168,75,0.25); border-radius:0; padding:12px 20px; margin:0; flex-wrap:wrap; text-align:center; }
     .quick-start-banner .qs-main { font-size:0.9rem; font-weight:700; color:var(--accent); letter-spacing:0.5px; }
     .quick-start-banner .qs-sub { font-size:0.75rem; color:var(--muted); }
@@ -2536,28 +2452,9 @@
             <circle id="mark-lower-leg" class="body-mark" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
             <ellipse id="mark-foot" class="body-mark" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
           </svg>
-              <button style="display:none" id="hs-height"></button>
-              <button style="display:none" id="hs-head"></button>
-              <button style="display:none" id="hs-shoulder"></button>
-              <button style="display:none" id="hs-chest"></button>
-              <button style="display:none" id="hs-upper-arm"></button>
-              <button style="display:none" id="hs-lower-arm"></button>
-              <button style="display:none" id="hs-waist"></button>
-              <button style="display:none" id="hs-hip"></button>
-              <button style="display:none" id="hs-weight"></button>
-              <button style="display:none" id="hs-upper-leg"></button>
-              <button style="display:none" id="hs-lower-leg"></button>
-              <button style="display:none" id="hs-foot"></button>
               <div class="figure-intro" id="figure-intro-block" aria-live="polite">
                 <p id="figure-intro-1"></p>
                 <p id="figure-intro-2"></p>
-              </div>
-              <div id="figure-howto" class="figure-howto" hidden>
-                <div class="figure-howto-head">
-                  <span id="figure-howto-title" class="figure-howto-title"></span>
-                  <button type="button" class="figure-howto-close" id="figure-howto-close" onclick="document.getElementById('figure-howto').hidden=true" aria-label="Close">×</button>
-                </div>
-                <div id="figure-howto-text" class="figure-howto-body"></div>
               </div>
             </div>
             <div class="chips-rail">
@@ -5913,12 +5810,8 @@
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('form-' + part).classList.add('visible');
-    document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
-    const _hs = document.getElementById('hs-' + part); if (_hs) _hs.classList.add('active');
     document.querySelectorAll('.side-btn').forEach(b => b.classList.remove('active'));
     const _sb = document.getElementById('side-btn-' + part); if (_sb) _sb.classList.add('active');
-    document.querySelectorAll('.body-mark').forEach(m => m.style.opacity = '0');
-    const _mk = document.getElementById('mark-' + part); if (_mk) _mk.style.opacity = '1';
     const titles = (i18n[currentLang] || i18n.en)['titles'] || i18n.en['titles'];
     document.getElementById('panel-title').textContent = titles[part] || part;
     if (window.innerWidth <= 900) {
@@ -5928,14 +5821,6 @@
       document.getElementById('main-panel').classList.add('sheet-open');
       document.getElementById('sheet-backdrop').classList.add('active');
       document.body.style.overflow = 'hidden';
-    }
-    const fh = document.getElementById('figure-howto');
-    const fht = document.getElementById('figure-howto-text');
-    const fhtt = document.getElementById('figure-howto-title');
-    if (fh && fht && fhtt) {
-      fhtt.textContent = titles[part] || part;
-      fht.innerHTML = t('howto-' + part);
-      fh.hidden = window.innerWidth <= 900;
     }
   }
 
@@ -5987,8 +5872,6 @@
     document.getElementById('main-panel').classList.remove('sheet-open');
     document.getElementById('sheet-backdrop').classList.remove('active');
     document.body.style.overflow = '';
-    const _fhClose = document.getElementById('figure-howto');
-    if (_fhClose) _fhClose.hidden = true;
   }
 
   (function bindBodyDiagramHotspots() {
@@ -6205,7 +6088,7 @@
     if (!hasData) { showToast(t('toast-enter-value')); return; }
     const isNew = !measurements[part];
     measurements[part] = data;
-    if (isNew) { filledCount++; const _hf = document.getElementById('hs-' + part); if (_hf) _hf.classList.add('filled'); const _sf = document.getElementById('side-btn-' + part); if (_sf) _sf.classList.add('filled'); }
+    if (isNew) { filledCount++; const _sf = document.getElementById('side-btn-' + part); if (_sf) _sf.classList.add('filled'); }
     updateProgress();
     updateSavedList();
     syncMeasureHudChips();
@@ -6815,10 +6698,7 @@
     measurements['lower-leg'] = { len: String(s.lLeg) };
 
     // Update progress UI
-    ['height','weight','shoulder','waist','hip','upper-leg','lower-leg'].forEach(p => {
-      const el = document.getElementById('hs-' + p);
-      if (el && !el.classList.contains('filled')) { el.classList.add('filled'); filledCount++; }
-    });
+    filledCount = Object.keys(measurements).length;
     updateProgress();
     updateSavedList();
     syncMeasureHudChips();
@@ -7987,15 +7867,11 @@
     document.querySelectorAll('.input-field').forEach(i => { i.value = ''; });
     document.querySelectorAll('.radio-btn').forEach(b => b.classList.remove('selected'));
     // 3. UI 상태 초기화
-    document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('filled', 'active'));
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
     document.getElementById('placeholder').style.display = 'flex';
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
     document.querySelectorAll('.side-btn').forEach(b => b.classList.remove('active', 'filled'));
-    const _fhReset = document.getElementById('figure-howto');
-    if (_fhReset) _fhReset.hidden = true;
-    document.querySelectorAll('.body-mark').forEach(m => { m.style.opacity = '0'; });
     document.getElementById('analysis-result').classList.remove('visible');
     var _mpReset = document.getElementById('main-panel');
     if (_mpReset) _mpReset.classList.remove('has-analysis-result');
@@ -8085,13 +7961,8 @@
     if (Object.keys(measurements).length > 0) {
       filledCount = Object.keys(measurements).length;
       updateProgress();
-      Object.keys(measurements).forEach(part => {
-        const hs = document.getElementById('hs-' + part);
-        if (hs) hs.classList.add('filled');
-
-        // Restore input values if currently open or based on measurements
-        // (Note: actual input restoration is handled in main.js window.onload)
-      });
+      // Restore input values if currently open or based on measurements
+      // (Note: actual input restoration is handled in main.js window.onload)
     }
     syncMeasureHudChips();
 
