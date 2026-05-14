@@ -1013,18 +1013,47 @@
       width: 100%;
       min-width: 0;
     }
-    .hud-row-main.hud-row-main--figure-left {
+    /* 모바일 기본: 실루엣 | 칩레일(왼5+오른6 세로 스택). 데스크톱은 min-width:901px에서 5|실루엣|6 */
+    .hud-row-main.hud-row-main--tri {
+      display: flex;
+      flex-direction: row;
       align-items: stretch;
+      gap: clamp(6px, 1.6vw, 14px);
     }
-    #analysis .hud-row-main.hud-row-main--figure-left > .figure-zone {
-      margin: 0 auto 0 0;
-      max-width: min(520px, 62vw);
-      min-height: min(320px, 48vh);
+    .hud-row-main--tri .chips-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 0 0 clamp(96px, 22vw, 138px);
+      min-height: 0;
+      min-width: 0;
     }
-    .chips-column.chips-column--stack {
+    .hud-row-main--tri .chips-rail .chips-column {
+      flex: 0 1 auto;
       justify-content: flex-start;
       gap: 6px;
-      flex: 0 0 clamp(100px, 30vw, 158px);
+    }
+    @media (min-width: 901px) {
+      .hud-row-main--tri .chips-rail {
+        display: contents;
+      }
+      .hud-row-main--tri .chips-column--left {
+        order: 1;
+      }
+      .hud-row-main--tri .figure-zone {
+        order: 2;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: min(440px, 50vw);
+      }
+      .hud-row-main--tri .chips-column--right {
+        order: 3;
+      }
+      .hud-row-main--tri .chips-column {
+        flex: 0 0 clamp(96px, 22vw, 138px);
+        justify-content: space-between;
+        gap: 0;
+      }
     }
     .chips-column {
       flex: 0 0 clamp(96px, 22vw, 138px);
@@ -1620,8 +1649,12 @@
         min-height: min(52dvh, 320px);
         max-height: min(82dvh, calc(100dvh - 140px));
       }
-      .chips-column,
-      .chips-column.chips-column--stack { flex: 0 0 clamp(88px, 32vw, 120px); }
+      .hud-row-main--tri > .chips-rail { flex: 0 0 clamp(88px, 32vw, 120px); }
+      .hud-row-main--tri .chips-rail .chips-column {
+        flex: 1 1 auto;
+        flex-basis: auto;
+        min-height: 0;
+      }
       .chips-column .side-btn,
       .chips-column .chip { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
       .hud-row-main { min-height: clamp(280px, 42dvh, 520px); gap: 4px; }
@@ -2479,7 +2512,14 @@
           </div>
           <div class="hud-body">
         <div class="hud-measure-grid">
-          <div class="hud-row-main hud-row-main--figure-left">
+          <div class="hud-row-top">
+            <button type="button" class="chip side-btn req" id="side-btn-height" onclick="selectPart('height')">
+              <div class="label"></div>
+              <div><span class="val">—</span><span class="unit">cm</span></div>
+              <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+            </button>
+          </div>
+          <div class="hud-row-main hud-row-main--tri">
             <div class="figure-zone" id="body-figure-zone">
               <div class="figure-media">
                 <img src="/body-measure-figure.png" alt="FITME body measurement reference" class="body-img" width="752" height="798" decoding="async" fetchpriority="high" onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='https://perfectfitme.com/body-measure-figure.png';}else{this.onerror=null;}">
@@ -2521,12 +2561,8 @@
                 <div id="figure-howto-text" class="figure-howto-body"></div>
               </div>
             </div>
-            <div class="chips-column chips-column--right chips-column--stack">
-              <button type="button" class="chip side-btn req" id="side-btn-height" onclick="selectPart('height')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
+            <div class="chips-rail">
+              <div class="chips-column chips-column--left">
               <button type="button" class="chip side-btn" id="side-btn-head" onclick="selectPart('head')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
@@ -2552,6 +2588,8 @@
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
+              </div>
+              <div class="chips-column chips-column--right">
               <button type="button" class="chip side-btn req" id="side-btn-weight" onclick="selectPart('weight')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">kg</span></div>
@@ -2582,6 +2620,7 @@
                 <div><span class="val">—</span><span class="unit">mm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
+            </div>
             </div>
           </div>
         </div>
