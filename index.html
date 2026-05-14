@@ -406,6 +406,15 @@
       border-right-color: rgba(0, 0, 0, 0.06);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 25%);
     }
+    [data-theme="light"] .body-measure-layout .figure-intro {
+      background: linear-gradient(0deg, rgba(255, 252, 248, 0.96) 0%, rgba(255, 252, 248, 0.85) 55%, transparent 100%);
+      border-top-color: rgba(212, 168, 75, 0.28);
+    }
+    [data-theme="light"] .body-measure-layout .figure-intro p { color: #5c564c; }
+    [data-theme="light"] .body-measure-layout .figure-howto {
+      background: linear-gradient(180deg, transparent 0%, rgba(255, 252, 248, 0.94) 12%, rgba(248, 244, 238, 0.98) 100%);
+      border-top-color: rgba(212, 168, 75, 0.35);
+    }
     [data-theme="light"] .panel {
       background: var(--surface);
       border-left: 1px solid rgba(0, 0, 0, 0.06);
@@ -676,23 +685,235 @@
     .blog-view-all:hover { background: rgba(212,168,75,0.08); border-color: var(--accent); transform: translateY(-1px); }
 
     /* MAIN ANALYSIS */
-    .main-container { display: grid; grid-template-columns: 1fr min(440px, 36vw); height: calc(100vh - 70px); overflow: hidden; align-items: stretch; max-width: 1600px; margin: 0 auto; width: 100%; box-sizing: border-box; }
-    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 12px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; min-height: 0; }
-    .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 16px; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
-    .body-measure-layout { position: relative; display: flex; justify-content: center; align-items: center; flex: 1; min-height: 0; }
-    .side-panels-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: flex; justify-content: space-between; align-items: center; pointer-events: none; }
-    .side-panel { display: flex; flex-direction: column; gap: 5px; width: 76px; pointer-events: auto; }
-    .side-panel:first-child { margin-left: 10px; }
-    .side-panel:last-child { margin-right: 10px; }
+    .main-container { display: grid; grid-template-columns: 1fr min(400px, 32vw); height: calc(100vh - 70px); height: calc(100svh - 70px); height: calc(100dvh - 70px); overflow: hidden; align-items: stretch; max-width: min(1920px, 100%); margin: 0 auto; width: 100%; box-sizing: border-box; }
+    .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 10px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; min-height: 0; }
+    .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
+    .body-measure-layout { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; width: 100%; align-self: stretch; }
+    .hud-measure-grid { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; width: 100%; gap: 8px; }
+    .hud-row-top { flex-shrink: 0; display: flex; justify-content: center; padding: 2px 0 4px; }
+    .hud-row-top .side-btn { width: auto; min-width: 118px; max-width: 220px; }
+    .hud-row-main {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: clamp(6px, 1.6vw, 14px);
+      min-height: clamp(360px, 52vh, 680px);
+      width: 100%;
+      min-width: 0;
+    }
+    .chips-column {
+      flex: 0 0 clamp(96px, 22vw, 138px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 2px 0;
+      min-height: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .chips-column .side-btn {
+      flex-shrink: 0;
+      width: 100%;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+      border-radius: 11px;
+      padding: 9px 10px 10px;
+      font-size: 9px;
+      line-height: 1.25;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    }
     .side-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 7px 8px; font-size: 9.5px; letter-spacing: 0.5px; color: var(--muted); cursor: pointer; text-align: left; transition: all 0.18s; font-family: 'DM Sans', sans-serif; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3; }
     .side-btn:hover { border-color: rgba(212,168,75,0.5); color: var(--accent); background: rgba(212,168,75,0.06); }
     .side-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(212,168,75,0.1); }
     .side-btn.filled { border-color: #47ff8a; color: #47ff8a; background: rgba(71,255,138,0.06); }
     .side-btn.req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
     .side-btn.filled.req-star::before { color: #47ff8a; }
-    .body-container { position: relative; height: min(calc(100vh - 130px), calc((100vw - 220px) * 798 / 752)); aspect-ratio: 752 / 798; }
-    .body-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; border-radius: 12px; opacity: 0.88; pointer-events: none; }
-    .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: auto; touch-action: manipulation; }
+    .body-figure-media {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+    .body-container.body-scan-hud {
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      box-shadow:
+        inset 0 0 70px rgba(0, 0, 0, 0.48),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 6px 26px rgba(0, 0, 0, 0.3),
+        0 0 36px rgba(212, 168, 75, 0.06);
+      isolation: isolate;
+    }
+    @keyframes fitmeInnerScan {
+      0%, 100% { background-position: 0 -25%; }
+      50% { background-position: 0 125%; }
+    }
+    .body-container.body-scan-hud::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(transparent 38%, rgba(212, 168, 75, 0.06) 50%, transparent 62%);
+      background-size: 100% 200%;
+      animation: fitmeInnerScan 6.5s ease-in-out infinite;
+      opacity: 0.38;
+      mix-blend-mode: soft-light;
+    }
+    .body-container.body-scan-hud::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(ellipse 88% 78% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.22) 100%);
+    }
+    .body-measure-layout .figure-intro {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 6;
+      padding: 8px 10px 10px;
+      max-height: 36%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      pointer-events: none;
+      border-radius: 0 0 11px 11px;
+      background: linear-gradient(0deg, rgba(6, 5, 4, 0.93) 0%, rgba(8, 7, 6, 0.78) 55%, transparent 100%);
+      border-top: 1px solid rgba(212, 168, 75, 0.2);
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .body-measure-layout .figure-intro p {
+      margin: 0 0 6px;
+      font-size: 10px;
+      line-height: 1.5;
+      color: #c8c6d0;
+      pointer-events: auto;
+    }
+    .body-measure-layout .figure-intro p:last-child { margin-bottom: 0; }
+    .body-measure-layout .figure-intro strong { color: var(--accent); font-weight: 600; }
+    .body-measure-layout .body-container:has(#figure-howto:not([hidden])) .figure-intro {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .body-measure-layout .figure-howto {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 12%;
+      bottom: 0;
+      z-index: 7;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 8px 10px 10px;
+      border-radius: 0 0 11px 11px;
+      background: linear-gradient(180deg, transparent 0%, rgba(6, 5, 4, 0.82) 10%, rgba(8, 7, 6, 0.96) 100%);
+      border-top: 1px solid rgba(212, 168, 75, 0.28);
+      box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.42);
+    }
+    .body-measure-layout .figure-howto[hidden] { display: none !important; }
+    .body-measure-layout .figure-howto-head {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .body-measure-layout .figure-howto-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+    html[lang="ko"] .body-measure-layout .figure-howto-title {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    .body-measure-layout .figure-howto-close {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(212, 168, 75, 0.35);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+    }
+    .body-measure-layout .figure-howto-body {
+      flex: 1;
+      min-height: 0;
+      margin: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .hud-row-main > .body-container {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .body-container {
+      position: relative;
+      box-sizing: border-box;
+      margin: 0 auto;
+      aspect-ratio: 752 / 798;
+      background: radial-gradient(ellipse 85% 75% at 50% 42%, rgba(212, 168, 75, 0.08) 0%, transparent 55%), #0a0a0c;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    @supports (width: 1cqw) {
+      .hud-row-main {
+        container-type: size;
+        container-name: body-measure;
+      }
+      .body-container {
+        width: min(100cqw, calc(100cqh * 752 / 798));
+        height: min(100cqh, calc(100cqw * 798 / 752));
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+    @supports not (width: 1cqw) {
+      .body-container {
+        height: min(calc(100dvh - 130px), calc(100vh - 130px), calc((100vw - min(400px, 32vw) - 48px) * 798 / 752));
+        width: auto;
+        max-height: min(calc(100dvh - 130px), calc(100vh - 130px));
+      }
+    }
+    .body-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: inherit;
+      opacity: 1;
+      pointer-events: none;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .body-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: auto; touch-action: manipulation; }
     .body-mark { opacity: 0; transition: opacity 0.2s; cursor: pointer; pointer-events: auto; }
     .body-mark-hit { cursor: pointer; pointer-events: stroke; fill: none; stroke: transparent; }
 
@@ -1041,17 +1262,32 @@
 
     @media (max-width: 900px) {
       .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
-      .body-section { border-right: none; border-bottom: none; height: calc(100vh - 70px); height: calc(100svh - 70px); height: calc(100dvh - 70px); padding: 12px 6px; overflow: hidden; align-items: stretch; }
+      .body-section {
+        border-right: none;
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: calc(100dvh - 70px);
+        min-height: calc(100svh - 70px);
+        padding: 10px 6px max(10px, env(safe-area-inset-bottom, 0px));
+        overflow: hidden;
+      }
       .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
       .hero-title { font-size: 48px; }
       nav { display: none; }
 
-      .body-measure-layout { flex: 1; min-height: 0; width: 100%; }
-      .side-panel { width: 62px; }
-      .side-panel:first-child { margin-left: 4px; }
-      .side-panel:last-child { margin-right: 4px; }
-      .side-btn { font-size: 8px; padding: 6px 5px; }
-      .body-container { width: 100%; align-self: stretch; height: auto; overflow: visible; }
+      .body-measure-layout {
+        flex: none;
+        width: 100%;
+        height: min(78dvh, calc(100dvh - 168px));
+        height: min(78svh, calc(100svh - 168px));
+        min-height: min(52dvh, 320px);
+        max-height: min(82dvh, calc(100dvh - 140px));
+      }
+      .chips-column { flex: 0 0 clamp(78px, 24vw, 108px); }
+      .chips-column .side-btn { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
+      .hud-row-main { min-height: clamp(280px, 42dvh, 520px); gap: 4px; }
 
       /* Bottom sheet */
       .panel {
@@ -1886,10 +2122,23 @@
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
       <div class="body-measure-layout">
-        <!-- 해골 이미지 (먼저 렌더링) -->
-        <div class="body-container">
-          <img src="/skeleton-body.jpg" alt="body measurement diagram" class="body-img">
-          <svg class="body-overlay" viewBox="0 0 752 798" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
+        <div class="hud-measure-grid">
+          <div class="hud-row-top">
+            <button type="button" class="side-btn req-star" id="side-btn-height" onclick="selectPart('height')">HEIGHT</button>
+          </div>
+          <div class="hud-row-main">
+            <div class="chips-column chips-column--left">
+              <button type="button" class="side-btn" id="side-btn-head" onclick="selectPart('head')">HEAD</button>
+              <button type="button" class="side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">SHOULDER</button>
+              <button type="button" class="side-btn" id="side-btn-chest" onclick="selectPart('chest')">CHEST</button>
+              <button type="button" class="side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">UPPER ARM</button>
+              <button type="button" class="side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">LOWER ARM</button>
+            </div>
+            <div class="body-container body-scan-hud" id="body-figure-zone">
+              <div class="body-figure-media">
+                <img src="/body-measure-figure.png" alt="body measurement scan" class="body-img" width="752" height="798" decoding="async">
+              </div>
+              <svg class="body-overlay" viewBox="0 0 752 798" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
             <ellipse id="mark-head" class="body-mark" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
             <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
             <line class="body-mark-hit" data-body-part="shoulder" x1="274" y1="165" x2="484" y2="165" stroke="transparent" stroke-width="28" stroke-linecap="round" aria-hidden="true"/>
@@ -1902,37 +2151,38 @@
             <circle id="mark-lower-leg" class="body-mark" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
             <ellipse id="mark-foot" class="body-mark" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
           </svg>
-          <!-- hidden hotspots for JS compatibility -->
-          <button style="display:none" id="hs-height"></button>
-          <button style="display:none" id="hs-head"></button>
-          <button style="display:none" id="hs-shoulder"></button>
-          <button style="display:none" id="hs-chest"></button>
-          <button style="display:none" id="hs-upper-arm"></button>
-          <button style="display:none" id="hs-lower-arm"></button>
-          <button style="display:none" id="hs-waist"></button>
-          <button style="display:none" id="hs-hip"></button>
-          <button style="display:none" id="hs-weight"></button>
-          <button style="display:none" id="hs-upper-leg"></button>
-          <button style="display:none" id="hs-lower-leg"></button>
-          <button style="display:none" id="hs-foot"></button>
-        </div>
-        <!-- side-panel overlay: body-container 이후 렌더링 → 무조건 위에 표시됨 -->
-        <div class="side-panels-overlay">
-          <div class="side-panel">
-            <button class="side-btn req-star" id="side-btn-height" onclick="selectPart('height')">HEIGHT</button>
-            <button class="side-btn" id="side-btn-head" onclick="selectPart('head')">HEAD</button>
-            <button class="side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">SHOULDER</button>
-            <button class="side-btn" id="side-btn-chest" onclick="selectPart('chest')">CHEST</button>
-            <button class="side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">UPPER ARM</button>
-            <button class="side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">LOWER ARM</button>
-          </div>
-          <div class="side-panel">
-            <button class="side-btn req-star" id="side-btn-weight" onclick="selectPart('weight')">WEIGHT</button>
-            <button class="side-btn req-star" id="side-btn-waist" onclick="selectPart('waist')">WAIST</button>
-            <button class="side-btn" id="side-btn-hip" onclick="selectPart('hip')">HIP</button>
-            <button class="side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">THIGH</button>
-            <button class="side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">SHIN</button>
-            <button class="side-btn" id="side-btn-foot" onclick="selectPart('foot')">FOOT</button>
+              <button style="display:none" id="hs-height"></button>
+              <button style="display:none" id="hs-head"></button>
+              <button style="display:none" id="hs-shoulder"></button>
+              <button style="display:none" id="hs-chest"></button>
+              <button style="display:none" id="hs-upper-arm"></button>
+              <button style="display:none" id="hs-lower-arm"></button>
+              <button style="display:none" id="hs-waist"></button>
+              <button style="display:none" id="hs-hip"></button>
+              <button style="display:none" id="hs-weight"></button>
+              <button style="display:none" id="hs-upper-leg"></button>
+              <button style="display:none" id="hs-lower-leg"></button>
+              <button style="display:none" id="hs-foot"></button>
+              <div class="figure-intro" id="figure-intro-block" aria-live="polite">
+                <p id="figure-intro-1"></p>
+                <p id="figure-intro-2"></p>
+              </div>
+              <div id="figure-howto" class="figure-howto" hidden>
+                <div class="figure-howto-head">
+                  <span id="figure-howto-title" class="figure-howto-title"></span>
+                  <button type="button" class="figure-howto-close" id="figure-howto-close" onclick="document.getElementById('figure-howto').hidden=true" aria-label="Close">×</button>
+                </div>
+                <div id="figure-howto-text" class="figure-howto-body"></div>
+              </div>
+            </div>
+            <div class="chips-column chips-column--right">
+              <button type="button" class="side-btn req-star" id="side-btn-weight" onclick="selectPart('weight')">WEIGHT</button>
+              <button type="button" class="side-btn req-star" id="side-btn-waist" onclick="selectPart('waist')">WAIST</button>
+              <button type="button" class="side-btn" id="side-btn-hip" onclick="selectPart('hip')">HIP</button>
+              <button type="button" class="side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">THIGH</button>
+              <button type="button" class="side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">SHIN</button>
+              <button type="button" class="side-btn" id="side-btn-foot" onclick="selectPart('foot')">FOOT</button>
+            </div>
           </div>
         </div>
       </div>
@@ -2497,6 +2747,8 @@
       'blog23-title':'다리 길이 재기 — 골반뼈에서 발목까지','blog23-desc':'대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.',
       'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
       'section-label':'인체 그림 또는 좌우 버튼에서 부위를 선택하세요',
+      'figure-intro-1':'<strong>안내</strong> 실루엣이나 위·아래 칩에서 부위를 고른 뒤 오른쪽 패널에 값을 입력하세요. 줄자는 살을 누르지 말고 수평·수직만 확인하며 살짝 맞추면 됩니다.',
+      'figure-intro-2':'<strong>한뼘</strong>으로도 길이를 맞출 수 있어요. 엄지~검지끝 한 뼘을 cm로 재 두고 같은 간격을 세면 됩니다. 정확한 수치는 줄자로 다시 확인하세요.',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
       'placeholder-text':'왼쪽 인체 그림 또는<br>양옆 버튼에서 부위를 선택하세요',
       'save-btn':'저장하기','analyze-btn':'🔓 내 체형 정체성 공개하기','reset-btn':'초기화','edit-btn':'✏️ 수정하기','reset-confirm-btn':'🗑️ 전체 초기화',
@@ -2781,6 +3033,8 @@
       'blog23-title':'Leg Length — Greater Trochanter to Ankle','blog23-desc':'Measure thigh + calf from the lateral hip bone. Includes leg-to-height ratio calculation.',
       'blog24-title':'How to Measure Hip Circumference Alone','blog24-desc':'Two hand spans from the tailbone — complete a full circuit solo. Calculate your WHR instantly.',
       'section-label':'Select a part on the diagram or side buttons',
+      'figure-intro-1':'<strong>How it works</strong> Tap the figure or a chip, then enter values in the panel on the right. Keep the tape level and snug without digging into soft tissue.',
+      'figure-intro-2':'<strong>Hand span</strong>: measure thumb tip to stretched index fingertip in cm, then count spans for longer lines. Use a tape when you need an exact number.',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
       'placeholder-text':'Tap the diagram or<br>side buttons to choose a part',
       'save-btn':'Save','analyze-btn':'🔓 Reveal My Full Analysis','reset-btn':'Reset','edit-btn':'✏️ Edit','reset-confirm-btn':'🗑️ Reset All',
@@ -4897,6 +5151,8 @@
     set('panel-title', t('panel-title-default'));
     set('panel-subtitle', t('panel-subtitle-default'));
     set('placeholder-text', t('placeholder-text'), true);
+    set('figure-intro-1', t('figure-intro-1'), true);
+    set('figure-intro-2', t('figure-intro-2'), true);
     // buttons
     set('btn-analyze', t('analyze-btn'));
     set('btn-reset', t('reset-btn'));
@@ -5217,6 +5473,14 @@
       document.getElementById('sheet-backdrop').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+    const fh = document.getElementById('figure-howto');
+    const fht = document.getElementById('figure-howto-text');
+    const fhtt = document.getElementById('figure-howto-title');
+    if (fh && fht && fhtt) {
+      fhtt.textContent = titles[part] || part;
+      fht.innerHTML = t('howto-' + part);
+      fh.hidden = window.innerWidth <= 900;
+    }
   }
 
   function mobileSave() {
@@ -5267,6 +5531,8 @@
     document.getElementById('main-panel').classList.remove('sheet-open');
     document.getElementById('sheet-backdrop').classList.remove('active');
     document.body.style.overflow = '';
+    const _fhClose = document.getElementById('figure-howto');
+    if (_fhClose) _fhClose.hidden = true;
   }
 
   (function bindBodyDiagramHotspots() {
@@ -7185,6 +7451,10 @@
     document.getElementById('placeholder').style.display = 'flex';
     document.getElementById('saved-list').style.display = 'none';
     document.getElementById('saved-items').innerHTML = '';
+    document.querySelectorAll('.side-btn').forEach(b => b.classList.remove('active', 'filled'));
+    const _fhReset = document.getElementById('figure-howto');
+    if (_fhReset) _fhReset.hidden = true;
+    document.querySelectorAll('.body-mark').forEach(m => { m.style.opacity = '0'; });
     document.getElementById('analysis-result').classList.remove('visible');
     var _mpReset = document.getElementById('main-panel');
     if (_mpReset) _mpReset.classList.remove('has-analysis-result');

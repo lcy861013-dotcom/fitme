@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>측정 화면 레이아웃 미리보기 — 스캔 배경 + HUD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070608;
+      --bg-warm: #0e0c0a;
+      --panel: rgba(12, 10, 8, 0.9);
+      --gold: #d4a84b;
+      --gold2: #e8c066;
+      --gold-dim: rgba(212, 168, 75, 0.32);
+      --gold-glow: rgba(212, 168, 75, 0.14);
+      --muted: #8a8a96;
+      --green: #5ee4a0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(ellipse 120% 80% at 50% 0%, #121015 0%, var(--bg) 45%, #030304 100%);
+      color: #eceaf0;
+      font-family: "DM Sans", ui-sans-serif, system-ui, "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    }
+    .topbar {
+      text-align: center;
+      padding: 12px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+      border-bottom: 1px solid rgba(212, 168, 75, 0.15);
+      background: linear-gradient(90deg, rgba(212,168,75,0.08), transparent);
+    }
+    .topbar strong { color: var(--gold); }
+    .topbar kbd {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      color: var(--gold2);
+      font-size: 11px;
+    }
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .lang-toggle button {
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(212, 168, 75, 0.35);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .lang-toggle button:hover {
+      color: var(--gold2);
+      border-color: rgba(212, 168, 75, 0.55);
+    }
+    .lang-toggle button[aria-pressed="true"] {
+      background: rgba(212, 168, 75, 0.18);
+      color: var(--gold2);
+      border-color: var(--gold);
+    }
+    [data-lang-block] { display: block; }
+    [data-lang-block][hidden] { display: none !important; }
+
+    /* —— 스캔 무대: 칩·링과 같은 팔레트로 주변 정리 —— */
+    .stage {
+      position: relative;
+      max-width: 900px;
+      margin: 20px auto 40px;
+      min-height: min(92vh, 720px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.75),
+        0 40px 120px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        inset 0 -80px 100px rgba(0, 0, 0, 0.35);
+    }
+    /* 베이스: 살짝 따뜻한 차콜 (순검정 X) */
+    .stage-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(165deg, #101015 0%, #0a090c 38%, #070608 100%);
+    }
+    /* 가장자리 눌림 — HUD가 떠 보이게 */
+    .stage-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 88% 78% at 50% 48%,
+        transparent 0%,
+        transparent 42%,
+        rgba(0, 0, 0, 0.45) 88%,
+        rgba(0, 0, 0, 0.72) 100%
+      );
+    }
+    /* 좌우: 칩이 있는 쪽만 아주 옅은 앰버 안개 */
+    .stage-ambient {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 55% 70% at 8% 45%, var(--gold-glow) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 65% at 92% 48%, var(--gold-glow) 0%, transparent 52%);
+      opacity: 0.85;
+    }
+    /* 중앙 기둥 빛 — 실루엣 뒤만 살짝 밝게 */
+    .stage-pillar {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 42% 65% at 50% 40%,
+        rgba(212, 168, 75, 0.07) 0%,
+        rgba(212, 168, 75, 0.02) 45%,
+        transparent 70%
+      );
+    }
+    /* 바닥: 아래쪽만 살짝 어둡게 (무대 바닥) */
+    .stage-floor {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 42%;
+      pointer-events: none;
+      background: linear-gradient(
+        to top,
+        rgba(18, 14, 10, 0.92) 0%,
+        rgba(12, 10, 9, 0.55) 35%,
+        transparent 100%
+      );
+    }
+    /* 그리드: 더 잘게, 더 흐리게 — 배경 노이즈 역할만 */
+    .stage-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.055;
+      background-image:
+        linear-gradient(rgba(212, 168, 75, 0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 168, 75, 0.45) 1px, transparent 1px);
+      background-size: 18px 18px;
+      mask-image: radial-gradient(ellipse 78% 68% at 50% 46%, black 22%, transparent 78%);
+    }
+    .stage-scan {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        transparent 0%,
+        rgba(212, 168, 75, 0.02) 46%,
+        rgba(212, 168, 75, 0.07) 50%,
+        rgba(212, 168, 75, 0.02) 54%,
+        transparent 100%
+      );
+      background-size: 100% 220%;
+      animation: scanmove 8s ease-in-out infinite;
+      opacity: 0.28;
+    }
+    @keyframes scanmove {
+      0%, 100% { background-position: 0 -25%; }
+      50% { background-position: 0 125%; }
+    }
+    .hud-header {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 14px 16px 0;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    html[lang="en"] .hud-header {
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .hud-header .brand {
+      font-family: "Bebas Neue", Impact, ui-sans-serif, system-ui, sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.14em;
+      color: var(--gold2);
+    }
+    .hud-header .sub { text-align: right; line-height: 1.45; max-width: 220px; font-size: 10px; letter-spacing: 0.06em; }
+    html[lang="en"] .hud-header .sub { font-size: 9px; letter-spacing: 0.18em; }
+    .hud-header-right { text-align: right; }
+
+    /* 중앙 실루엣 — 좌·우 열과 같은 높이(빨간 박스 영역) */
+    .figure-zone {
+      position: relative;
+      z-index: 2;
+      flex: 1 1 0;
+      min-width: 0;
+      width: 100%;
+      max-width: min(440px, 50vw);
+      height: 100%;
+      min-height: 0;
+      margin: 0 auto;
+      align-self: stretch;
+      isolation: isolate;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      box-shadow:
+        inset 0 0 100px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 -70px 90px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        0 0 48px rgba(212, 168, 75, 0.07);
+      background-color: #060504;
+      background-image:
+        radial-gradient(ellipse 72% 52% at 50% 30%, rgba(212, 168, 75, 0.16) 0%, transparent 58%),
+        radial-gradient(ellipse 95% 38% at 50% 96%, rgba(212, 168, 75, 0.11) 0%, transparent 52%),
+        linear-gradient(172deg, #161311 0%, #0c0a09 42%, #050403 100%),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 16px,
+          rgba(212, 168, 75, 0.04) 16px,
+          rgba(212, 168, 75, 0.04) 17px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 16px,
+          rgba(212, 168, 75, 0.035) 16px,
+          rgba(212, 168, 75, 0.035) 17px
+        );
+    }
+    /* 안쪽만 도는 아주 약한 스캔 하이라이트 (이미지 위에 살짝) */
+    .figure-zone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(
+        transparent 38%,
+        rgba(212, 168, 75, 0.06) 50%,
+        transparent 62%
+      );
+      background-size: 100% 200%;
+      animation: innerScan 6.5s ease-in-out infinite;
+      opacity: 0.4;
+      mix-blend-mode: soft-light;
+    }
+    @keyframes innerScan {
+      0%, 100% { background-position: 0 -25%; }
+      50% { background-position: 0 125%; }
+    }
+    /* 가장자리만 살짝 눌러 실루엣에 시선 집중 */
+    .figure-zone::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse 88% 78% at 50% 45%,
+        transparent 35%,
+        rgba(0, 0, 0, 0.25) 100%
+      );
+    }
+    /* 실루엣 PNG가 프레임(네모)을 꽉 채우도록 — 비율 유지하며 여백 없이 채움(잘릴 수 있음) */
+    .figure-media {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border-radius: inherit;
+      overflow: hidden;
+    }
+    .figure-zone img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: contrast(1.05) saturate(0.88) brightness(0.94);
+      opacity: 1;
+    }
+    .figure-fallback {
+      display: none;
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border: none;
+      border-radius: inherit;
+      background:
+        radial-gradient(ellipse 55% 50% at 50% 40%, rgba(212, 168, 75, 0.08) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(32, 28, 24, 0.55) 0%, rgba(12, 10, 9, 0.85) 100%);
+      box-shadow: inset 0 -50px 70px rgba(0, 0, 0, 0.5);
+    }
+    .figure-fallback::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 12%;
+      transform: translateX(-50%);
+      width: 46%;
+      height: 68%;
+      border-radius: 42% 42% 38% 38% / 48% 48% 42% 42%;
+      border: 1px solid rgba(212, 168, 75, 0.18);
+      box-shadow: inset 0 0 40px rgba(212, 168, 75, 0.04);
+      opacity: 0.9;
+    }
+    .figure-zone.no-img .figure-fallback { display: block; }
+    .figure-zone.no-img img { display: none; }
+
+    /* HUD 안 기본 안내 + 한뼘 — 칩 요령이 열리면 숨김 */
+    .figure-intro {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 6;
+      padding: 10px 12px 12px;
+      max-height: 38%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      pointer-events: none;
+      border-radius: 0 0 12px 12px;
+      background: linear-gradient(
+        0deg,
+        rgba(6, 5, 4, 0.94) 0%,
+        rgba(8, 7, 6, 0.82) 55%,
+        transparent 100%
+      );
+      border-top: 1px solid rgba(212, 168, 75, 0.2);
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .figure-intro p {
+      margin: 0 0 8px;
+      font-size: 11px;
+      line-height: 1.55;
+      color: #c8c6d0;
+      pointer-events: auto;
+    }
+    .figure-intro p:last-child {
+      margin-bottom: 0;
+    }
+    .figure-intro strong {
+      color: var(--gold2);
+      font-weight: 600;
+    }
+    html[lang="en"] .figure-intro p {
+      font-size: 10px;
+      line-height: 1.5;
+    }
+    .figure-zone:has(#figure-howto:not([hidden])) .figure-intro {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    @media (max-width: 520px) {
+      .figure-intro {
+        padding: 8px 10px 10px;
+        max-height: 42%;
+      }
+      .figure-intro p {
+        font-size: 10px;
+      }
+      html[lang="en"] .figure-intro p {
+        font-size: 9px;
+      }
+    }
+
+    /* 가운데: 부위 클릭 시 측정 요령 — 아래로 최대한 확장 (웹·모바일) */
+    .figure-howto {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 14%;
+      bottom: 0;
+      z-index: 7;
+      max-height: none;
+      height: auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 8px 10px 10px;
+      border-radius: 0 0 12px 12px;
+      background: linear-gradient(180deg, transparent 0%, rgba(6, 5, 4, 0.82) 12%, rgba(8, 7, 6, 0.96) 100%);
+      border-top: 1px solid rgba(212, 168, 75, 0.28);
+      box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45);
+    }
+    .figure-howto[hidden] {
+      display: none !important;
+    }
+    .figure-howto-head {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .figure-howto-title {
+      font-family: "Bebas Neue", Impact, ui-sans-serif, system-ui, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      color: var(--gold2);
+    }
+    html[lang="ko"] .figure-howto-title {
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+    .figure-howto-close {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(212, 168, 75, 0.35);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--gold2);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+    }
+    .figure-howto-close:hover {
+      background: rgba(212, 168, 75, 0.12);
+    }
+    .figure-howto-body {
+      flex: 1;
+      min-height: 0;
+      margin: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 12px;
+      line-height: 1.65;
+      color: #d4d2dc;
+      white-space: pre-line;
+    }
+    @media (max-width: 520px) {
+      .figure-howto {
+        top: 10%;
+        padding: 6px 8px 8px;
+      }
+      .figure-howto-title {
+        font-size: 12px !important;
+      }
+      .figure-howto-body {
+        font-size: 11px;
+        line-height: 1.6;
+      }
+    }
+
+    /* 리더 라인 */
+    .leader {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      border-top: 1px solid var(--gold-dim);
+      opacity: 0.75;
+      transform-origin: left center;
+    }
+
+    /* HUD 칩 — 열 안에서는 일반 배치(겹침 방지) */
+    .chip {
+      position: relative;
+      z-index: 6;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      padding: 9px 11px 10px;
+      background: var(--panel);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 168, 75, 0.38);
+      border-radius: 11px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .chip:hover, .chip:focus-visible {
+      transform: scale(1.03);
+      border-color: rgba(212,168,75,0.65);
+      box-shadow: 0 12px 36px rgba(212,168,75,0.12);
+      outline: none;
+    }
+    .chip.req .label::after { content: " ★"; color: var(--gold); font-size: 7px; }
+    .chip.filled { border-color: rgba(94,228,160,0.45); }
+    .chip.filled .val { color: var(--green); }
+    .chip .label {
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: none;
+      margin-bottom: 5px;
+    }
+    html[lang="en"] .chip .label {
+      letter-spacing: 0.06em;
+      text-transform: none;
+    }
+    .chip .val {
+      font-family: "Bebas Neue", Impact, ui-sans-serif, system-ui, sans-serif;
+      font-size: 24px;
+      letter-spacing: 0.06em;
+      color: var(--gold2);
+      line-height: 1;
+    }
+    .chip .unit { font-size: 11px; color: var(--muted); font-weight: 600; margin-left: 2px; }
+    .mini-chart {
+      display: flex;
+      gap: 3px;
+      margin-top: 8px;
+      height: 14px;
+      align-items: flex-end;
+    }
+    .mini-chart span {
+      flex: 1;
+      border-radius: 2px;
+      background: rgba(212,168,75,0.25);
+      min-height: 4px;
+    }
+    .mini-chart span:nth-child(1) { height: 40%; }
+    .mini-chart span:nth-child(2) { height: 70%; }
+    .mini-chart span:nth-child(3) { height: 55%; }
+    .mini-chart span:nth-child(4) { height: 90%; }
+
+    /* 측정 그리드: 키(위) + 왼6 | 가운데 | 오른6 — 열만큼 세로 균등, 겹침 없음 */
+    .hud-body {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      margin: 0 6px;
+      display: flex;
+      flex-direction: column;
+    }
+    .hud-measure-grid {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      gap: 8px;
+    }
+    .hud-row-top {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      padding: 2px 0 4px;
+    }
+    .hud-row-top .chip {
+      width: auto;
+      min-width: 118px;
+      max-width: 200px;
+    }
+    .hud-row-main {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: clamp(6px, 1.8vw, 16px);
+      min-height: clamp(420px, 56vh, 720px);
+      width: 100%;
+      min-width: 0;
+    }
+    .chips-column {
+      flex: 0 0 clamp(104px, 25vw, 142px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 2px 0;
+      gap: 0;
+      min-height: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .chips-column .chip {
+      flex-shrink: 0;
+    }
+    @media (max-width: 520px) {
+      .hud-row-main {
+        min-height: clamp(320px, 46vh, 560px);
+        gap: 4px;
+      }
+      .chips-column {
+        flex: 0 0 clamp(88px, 28vw, 118px);
+        padding: 0;
+      }
+      .chip {
+        padding: 7px 8px;
+      }
+      .chip .val {
+        font-size: 20px;
+      }
+      .hud-row-top .chip {
+        min-width: 100px;
+      }
+    }
+
+    .hud-footer {
+      position: relative;
+      z-index: 5;
+      padding: 16px 20px 22px;
+      margin-top: auto;
+    }
+    .hud-footer .bar-cap {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: none;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    html[lang="en"] .hud-footer .bar-cap {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .track {
+      height: 7px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(212,168,75,0.22);
+      overflow: hidden;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .track > div {
+      height: 100%;
+      width: 58%;
+      background: linear-gradient(90deg, #7a5e24, var(--gold2));
+      box-shadow: 0 0 18px rgba(212,168,75,0.35);
+      border-radius: 8px;
+    }
+
+    .corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .c-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+    .c-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+    .c-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+    .c-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+    .stage-inner {
+      position: relative;
+      min-height: min(92vh, 720px);
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="lang-toggle">
+      <button type="button" id="lang-ko" aria-pressed="true">한글</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+    <div data-lang-block="ko">
+      <strong>배포 전 로컬 미리보기</strong> — 인터넷 없이도 이 파일만 더블클릭하면 됩니다 (이미지는 같은 폴더의 <code>body-measure-figure.png</code> 우선).<br />
+      배경은 <strong>HUD 칩 톤</strong>에 맞춰 두었고, 실제 <code>index.html</code>에는 아직 반영하지 않았습니다.<br />
+      <kbd>demos\measure-scan-layout-preview.html</kbd>
+    </div>
+    <div data-lang-block="en" hidden>
+      <strong>Local preview (before deploy)</strong> — Open this HTML file directly; no server required. Image tries <code>../body-measure-figure.png</code> first, then the live site.<br />
+      Background is tuned to match <strong>HUD chips</strong>. Not applied to <code>index.html</code> yet.<br />
+      <kbd>demos/measure-scan-layout-preview.html</kbd>
+    </div>
+  </div>
+
+    <div class="stage">
+    <div class="stage-bg"></div>
+    <div class="stage-vignette"></div>
+    <div class="stage-ambient"></div>
+    <div class="stage-pillar"></div>
+    <div class="stage-floor"></div>
+    <div class="stage-grid"></div>
+    <div class="stage-scan"></div>
+    <div class="corner c-tl"></div>
+    <div class="corner c-tr"></div>
+    <div class="corner c-bl"></div>
+    <div class="corner c-br"></div>
+
+    <div class="stage-inner">
+      <div class="hud-header">
+        <span class="brand">PERFECT FIT ME</span>
+        <div class="hud-header-right">
+          <span class="sub" data-lang-block="ko">레이아웃 미리보기<br />실제 사이트 아님 · HUD 데모</span>
+          <span class="sub" data-lang-block="en" hidden>SCAN LAYOUT PREVIEW<br />HUD · NOT LIVE SITE</span>
+        </div>
+      </div>
+
+      <div class="hud-body">
+        <div class="hud-measure-grid">
+          <div class="hud-row-top">
+            <button type="button" class="chip req" data-howto-key="height" data-label-ko="키" data-label-en="Height" data-sample="168" data-unit="cm">
+              <div class="label">키</div>
+              <div><span class="val">—</span><span class="unit">cm</span></div>
+              <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+            </button>
+          </div>
+          <div class="hud-row-main">
+            <div class="chips-column chips-column--left">
+              <button type="button" class="chip" data-howto-key="head" data-label-ko="머리 둘레" data-label-en="Head" data-sample="56" data-unit="cm">
+                <div class="label">머리 둘레</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="shoulder" data-label-ko="어깨너비" data-label-en="Shoulder" data-sample="38.2" data-unit="cm">
+                <div class="label">어깨너비</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="uarm" data-label-ko="어깨~팔꿈치" data-label-en="Shoulder–elbow" data-sample="28" data-unit="cm">
+                <div class="label">어깨~팔꿈치</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip req" data-howto-key="waist" data-label-ko="허리" data-label-en="Waist" data-sample="63.1" data-unit="cm">
+                <div class="label">허리</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="thigh" data-label-ko="골반~무릎" data-label-en="Hip–knee" data-sample="52" data-unit="cm">
+                <div class="label">골반~무릎</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="foot" data-label-ko="발 (왼)" data-label-en="Foot L" data-sample="24" data-unit="cm">
+                <div class="label">발 (왼)</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+            </div>
+            <div class="figure-zone" id="figure-zone">
+              <div class="figure-media">
+                <img id="figure-img" alt="신체 치수 안내 실루엣" width="752" height="798" decoding="async" />
+                <div class="figure-fallback" aria-hidden="true"></div>
+              </div>
+              <div class="figure-intro" id="figure-intro" aria-live="polite">
+                <p data-lang-block="ko">
+                  <strong>이 화면</strong>은 배포 전 레이아웃 미리보기입니다. <strong>양쪽 칩</strong>을 누르면 가운데에 그 부위 재는 요령이 펼쳐집니다. 줄자는 살을 누르지 않고, 수평·수직이 맞는지만 확인하며 살짝 닿는 정도로 맞추면 됩니다.
+                </p>
+                <p data-lang-block="ko">
+                  <strong>한뼘</strong>으로도 길이를 가늠할 수 있어요. 엄지끝과 편 검지끝 사이를 한 번 재어 본인 <strong>한뼘 cm</strong>을 적어 두고, 같은 간격을 몇 번 이어 세면 됩니다(성인은 보통 약 18~22cm 전후이나 사람마다 다릅니다). 정확한 치수가 필요하면 줄자로 한 번 더 맞춰 주세요.
+                </p>
+                <p data-lang-block="en" hidden>
+                  <strong>Preview only</strong> — this HUD is a layout demo. <strong>Tap a chip</strong> to open how-to text for that measurement. Keep the tape level and snug without compressing soft tissue.
+                </p>
+                <p data-lang-block="en" hidden>
+                  <strong>Hand span</strong>: measure once from thumb tip to stretched index fingertip and note your span in cm, then pace longer sections by counting spans (often ~18–22 cm for adults, but varies). Use a tape when you need a precise number.
+                </p>
+              </div>
+              <div id="figure-howto" class="figure-howto" hidden>
+                <div class="figure-howto-head">
+                  <span id="figure-howto-title" class="figure-howto-title"></span>
+                  <button type="button" class="figure-howto-close" id="figure-howto-close" aria-label="닫기">×</button>
+                </div>
+                <p id="figure-howto-text" class="figure-howto-body"></p>
+              </div>
+            </div>
+            <div class="chips-column chips-column--right">
+              <button type="button" class="chip req" data-howto-key="weight" data-label-ko="체중" data-label-en="Weight" data-sample="58" data-unit="kg">
+                <div class="label">체중</div>
+                <div><span class="val">—</span><span class="unit">kg</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="chest" data-label-ko="가슴둘레" data-label-en="Chest" data-sample="88.5" data-unit="cm">
+                <div class="label">가슴둘레</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="larm" data-label-ko="팔꿈치~손목" data-label-en="Elbow–wrist" data-sample="24" data-unit="cm">
+                <div class="label">팔꿈치~손목</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="hip" data-label-ko="엉덩이" data-label-en="Hip" data-sample="92" data-unit="cm">
+                <div class="label">엉덩이</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="shin" data-label-ko="무릎~복숭아뼈" data-label-en="Knee–ankle" data-sample="36" data-unit="cm">
+                <div class="label">무릎~복숭아뼈</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip" data-howto-key="foot" data-label-ko="발 (오른)" data-label-en="Foot R" data-sample="24" data-unit="cm">
+                <div class="label">발 (오른)</div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-footer">
+        <div class="bar-cap" data-lang-block="ko">예시 프로필 · 칩을 누르면 가운데에 측정 요령이 뜹니다 (데모)</div>
+        <div class="bar-cap" data-lang-block="en" hidden>Sample profile · tap a chip for how-to in the center (demo)</div>
+        <div class="track"><div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var zone = document.getElementById("figure-zone");
+      var img = document.getElementById("figure-img");
+      var remote = "https://perfectfitme.com/body-measure-figure.png";
+      var local = "../body-measure-figure.png";
+
+      function useFallback() {
+        zone.classList.add("no-img");
+      }
+
+      img.onload = function () {
+        zone.classList.remove("no-img");
+      };
+
+      if (location.protocol === "file:") {
+        img.src = local;
+        img.onerror = function () {
+          img.onerror = function () {
+            useFallback();
+          };
+          img.src = remote;
+        };
+      } else {
+        img.src = remote;
+        img.onerror = function () {
+          img.onerror = function () {
+            useFallback();
+          };
+          img.src = local;
+        };
+      }
+
+      function applyChipLabels(lang) {
+        document.querySelectorAll(".chip").forEach(function (btn) {
+          var ko = btn.getAttribute("data-label-ko");
+          var en = btn.getAttribute("data-label-en");
+          var lab = btn.querySelector(".label");
+          if (lab && ko && en) lab.textContent = lang === "ko" ? ko : en;
+          var unit = btn.getAttribute("data-unit");
+          var unitEl = btn.querySelector(".unit");
+          if (unitEl && unit) unitEl.textContent = unit;
+        });
+      }
+
+      var HOWTO = {
+        ko: {
+          height:
+            "① 벽에 등·엉덩이·발뒤꿈치를 살짝 붙이고 바르게 섭니다.\n② 줄자를 바닥과 수직으로 세운 뒤, 정수리(머리 꼭대기)에 닿을 때까지 천천히 올려 읽습니다. 문틀 모서리에 기대서 재도 좋아요.\n③ 턱을 과하게 들이밀거나 숙이면 길이가 달라집니다. 평소 시선 높이를 유지하세요.\n④ 아침과 저녁에는 1~2cm 차이 날 수 있어요. 같은 시간대에 재면 비교하기 쉽습니다.",
+          weight:
+            "저울은 단단한 평바닥 위에 두고, 올라선 뒤 숫자가 멈출 때까지 가만히 섭니다. 아침 공복 등 같은 조건에서 재면 추이 보기 좋아요.",
+          head: "줄자를 이마 위 한 바퀴에 맞추고, 귀 바로 위에서 겹치지 않게 읽습니다. 너무 조이지 않게 살짝 닿는 정도로요.",
+          shoulder: "어깨 끝점(어깨뼈 돌출)과 어깨 끝점 사이를 직선으로 잽니다. 팔은 자연스럽게 내리고, 숨을 내쉰 상태에서 재는 편이 좋아요.",
+          chest: "가장 두툼한 위치(보통 유두 높이)를 기준으로 수평으로 한 바퀴 잽니다. 브라 착용 여부를 매번 통일하면 좋습니다.",
+          uarm: "어깨 끝(겉으로 만져지는 어깨뼈 돌기)에서 팔꿈치 관절 중앙까지 직선으로 잽니다. 소매 길이를 생각할 때의 윗팔 구간과 비슷해요.",
+          larm: "팔꿈치 안쪽 움푹한 곳에서 손목 바깥 돌기까지 잽니다. 셔츠·시계 높이와 맞추기 좋아요.",
+          waist: "맨몸 기준으로, 배꼽 위 가장 잘록한 줄을 수평으로 잽니다. 너무 숨을 참지 말고 자연스럽게요.",
+          hip: "엉덩이 가장 넓게 나온 부분을 수평으로 잽니다. 거울로 줄이 수평인지 한 번 확인하면 정확도가 올라갑니다.",
+          thigh: "옆으로 섰을 때 골반·엉덩이가 가장 나온 높이 아래를 시작으로, 바지가 걸리는 허벅지 축을 따라 무릎 윗관절(무릎뼈 가운데)까지 잽니다. 허리 잘록한 곳과 헷갈리지 않게 주의하세요.",
+          shin: "무릎 중앙 바로 아래부터 발목 안쪽 복숭아뼈(내과) 돌기까지 잽니다. 바지 밑단·부츠 높이를 잡을 때 이 구간이 됩니다.",
+          foot: "발뒤꿈치 끝에서 발가락 끝까지. 바닥에 발을 평평하게 붙이고, 줄자를 발 안쪽에 밀착시켜 주세요."
+        },
+        en: {
+          height:
+            "① Stand tall with heels, hips, and upper back lightly touching a wall.\n② Place the tape vertically from the floor and read where it meets the crown of your head. A door jamb works well as a guide.\n③ Don’t tilt your chin up or down—keep your normal gaze height.\n④ Height can vary ~1–2 cm morning vs evening; measure at the same time of day when comparing.",
+          weight:
+            "Put the scale on a hard, flat floor. Step on and read when the value stabilizes. Same time of day (e.g. morning) helps track changes.",
+          head: "Wrap the tape around your head, above the ears and eyebrows. Snug but not tight—no twisting.",
+          shoulder: "Measure straight across from the tip of one shoulder bone to the other. Arms relaxed at your sides; breathe out naturally.",
+          chest: "Around the fullest part of the chest, usually nipple line, keeping the tape horizontal. Keep bra on/off consistent between sessions.",
+          uarm: "Measure from the outer shoulder point to the center of the elbow—same idea as upper sleeve length.",
+          larm: "From the elbow pit to the bony bump on the outside of the wrist. Handy for cuffs and watch fit.",
+          waist: "At the narrowest part of the torso, usually just above the navel. Don’t suck in—normal breathing.",
+          hip: "Around the fullest part of the hips/buttocks, tape parallel to the floor. Check in a mirror that it’s level.",
+          thigh: "From just below the fullest hip line (side view) to the middle of the kneecap, along where trousers hang. Don’t mix this up with the narrow waist.",
+          shin: "From just below the center of the knee to the inner ankle bone (medial malleolus). Matches inseam / boot-height thinking.",
+          foot: "Heel to longest toe, foot flat on the floor with the tape pressed along the inside edge of the foot."
+        }
+      };
+
+      var howtoEl = document.getElementById("figure-howto");
+      var howtoTitle = document.getElementById("figure-howto-title");
+      var howtoText = document.getElementById("figure-howto-text");
+      var howtoClose = document.getElementById("figure-howto-close");
+      var lastHowtoBtn = null;
+
+      function showHowtoFromBtn(btn) {
+        var key = btn.getAttribute("data-howto-key");
+        if (!key || !HOWTO.ko[key]) return;
+        lastHowtoBtn = btn;
+        var l = document.documentElement.lang === "en" ? "en" : "ko";
+        howtoTitle.textContent = (btn.querySelector(".label") || {}).textContent || "";
+        var base = HOWTO[l][key] || HOWTO.ko[key];
+        var spanNoteKo = "\n\n〔참고〕줄자가 없을 때는 가운데 안내처럼 본인 한뼘(cm)으로 구간을 세어 길이를 가늠할 수 있습니다.";
+        var spanNoteEn =
+          "\n\nTip: for lengths without a tape, you can pace using your hand-span length in cm (see the note in the figure panel).";
+        if (key === "weight") {
+          howtoText.textContent = base;
+        } else {
+          howtoText.textContent = base + (l === "en" ? spanNoteEn : spanNoteKo);
+        }
+        howtoEl.hidden = false;
+      }
+
+      function hideHowto() {
+        howtoEl.hidden = true;
+      }
+
+      if (howtoClose) {
+        howtoClose.addEventListener("click", function () {
+          hideHowto();
+          lastHowtoBtn = null;
+        });
+      }
+
+      function setLang(lang) {
+        var l = lang === "en" ? "en" : "ko";
+        document.documentElement.lang = l;
+        document.querySelectorAll("[data-lang-block]").forEach(function (el) {
+          el.hidden = el.getAttribute("data-lang-block") !== l;
+        });
+        var koBtn = document.getElementById("lang-ko");
+        var enBtn = document.getElementById("lang-en");
+        if (koBtn && enBtn) {
+          koBtn.setAttribute("aria-pressed", l === "ko" ? "true" : "false");
+          enBtn.setAttribute("aria-pressed", l === "en" ? "true" : "false");
+        }
+        applyChipLabels(l);
+        document.title =
+          l === "ko"
+            ? "측정 화면 레이아웃 미리보기 — 스캔 배경 + HUD"
+            : "Measure layout preview — scan + HUD (Perfect Fit Me)";
+        if (lastHowtoBtn && howtoEl && !howtoEl.hidden) {
+          showHowtoFromBtn(lastHowtoBtn);
+        }
+        try {
+          localStorage.setItem("scanPreviewLang", l);
+        } catch (e) {}
+      }
+
+      var saved = "";
+      try {
+        saved = localStorage.getItem("scanPreviewLang") || "";
+      } catch (e) {}
+      if (/[?&]lang=en\b/i.test(location.search)) setLang("en");
+      else if (saved === "en" || saved === "ko") setLang(saved);
+      else setLang("ko");
+
+      document.getElementById("lang-ko").addEventListener("click", function () {
+        setLang("ko");
+      });
+      document.getElementById("lang-en").addEventListener("click", function () {
+        setLang("en");
+      });
+
+      document.querySelectorAll(".chip").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var v = btn.getAttribute("data-sample");
+          if (!v) return;
+          var num = btn.querySelector(".val");
+          if (num.textContent === v) {
+            num.textContent = "—";
+            btn.classList.remove("filled");
+          } else {
+            num.textContent = v;
+            btn.classList.add("filled");
+          }
+          showHowtoFromBtn(btn);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

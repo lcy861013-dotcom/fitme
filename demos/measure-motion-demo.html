@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FITME 측정 모션 데모 — 키로 구간 재생</title>
+  <style>
+    :root {
+      --bg: #0f0e0d;
+      --surface: #161412;
+      --accent: #d4a84b;
+      --accent-dim: rgba(212, 168, 75, 0.35);
+      --text: #e0dcd8;
+      --muted: #8b8178;
+      --border: #2a2724;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", system-ui, "Apple SD Gothic Neo", sans-serif;
+      padding: 20px 16px 40px;
+    }
+    h1 {
+      font-size: 1.2rem;
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+    kbd {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-family: ui-monospace, monospace;
+    }
+    .layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .stage-wrap {
+      flex: 1 1 340px;
+      max-width: 420px;
+    }
+    .stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 752 / 798;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 15%, rgba(212, 168, 75, 0.1), transparent 50%),
+        linear-gradient(165deg, #1a1713, #0f0e0d);
+    }
+    .stage img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.88;
+      filter: saturate(0.55) brightness(0.78) contrast(1.08);
+      mix-blend-mode: luminosity;
+      pointer-events: none;
+    }
+    .stage svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .measure-line {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 6px rgba(212, 168, 75, 0.45));
+      stroke-dasharray: 1;
+      stroke-dashoffset: 0;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .measure-line.active {
+      opacity: 1;
+    }
+    .measure-line.dashed {
+      stroke-dasharray: 10 14;
+      animation: dashFlow 0.7s linear infinite;
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -48; }
+    }
+    .endpoint {
+      fill: var(--accent);
+      opacity: 0;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: opacity 0.15s ease;
+    }
+    .endpoint.active {
+      opacity: 1;
+      animation: nodePop 0.85s ease-out 2;
+    }
+    @keyframes nodePop {
+      0% { opacity: 0; transform: scale(0.2); }
+      35% { opacity: 1; transform: scale(1.35); }
+      100% { opacity: 0.85; transform: scale(1); }
+    }
+    .panel {
+      flex: 1 1 260px;
+      max-width: 380px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    .panel h2 {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 12px;
+    }
+    .key-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+    .key-row:last-child { border-bottom: none; }
+    .status {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      min-height: 2.5em;
+    }
+    .status strong { color: var(--accent); }
+    .err {
+      color: #c98;
+      font-size: 0.8rem;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>측정 모션 데모</h1>
+  <p class="hint">
+    아래 스테이지가 포커스된 상태에서 <strong>키보드 숫자 / 알파벳</strong>을 눌러 보세요.
+    (한 번 누르면 해당 구간이 <strong>그려지듯</strong> 재생됩니다. 연속으로 다른 키도 가능.)
+    실제 사이트의 SVG 좌표계(<code>752×798</code>)를 참고해 예시 구간을 잡았습니다.
+  </p>
+
+  <div class="layout">
+    <div class="stage-wrap">
+      <div class="stage" id="stage" tabindex="0" aria-label="측정 데모 — 키보드로 조작">
+        <img id="skel" src="https://perfectfitme.com/skeleton-body.jpg" alt=""
+          onerror="this.alt='이미지 로드 실패';document.getElementById('img-err').hidden=false">
+        <svg viewBox="0 0 752 798" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- 어깨 너비 -->
+          <line id="m-shoulder" class="measure-line" x1="274" y1="165" x2="484" y2="165" pathLength="100" />
+          <!-- 키(신장) 대략 머리 위~발 -->
+          <line id="m-height" class="measure-line dashed" x1="376" y1="28" x2="376" y2="768" pathLength="100" />
+          <!-- 허리 둘레 느낌: 좌우 호 -->
+          <path id="m-waist" class="measure-line" pathLength="100"
+            d="M 302 412 Q 376 380 450 412" />
+          <!-- 팔 길이: 어깨선 중앙 → 하완 -->
+          <line id="m-arm" class="measure-line" x1="376" y1="165" x2="239" y2="420" pathLength="100" />
+          <!-- 다리: 골반~발 -->
+          <line id="m-leg" class="measure-line" x1="376" y1="487" x2="370" y2="751" pathLength="100" />
+
+          <circle id="p1" class="endpoint" cx="274" cy="165" r="8" />
+          <circle id="p2" class="endpoint" cx="484" cy="165" r="8" />
+          <circle id="ph1" class="endpoint" cx="376" cy="28" r="8" />
+          <circle id="ph2" class="endpoint" cx="376" cy="768" r="8" />
+          <circle id="pa1" class="endpoint" cx="376" cy="165" r="8" />
+          <circle id="pa2" class="endpoint" cx="239" cy="420" r="8" />
+          <circle id="pl1" class="endpoint" cx="376" cy="487" r="8" />
+          <circle id="pl2" class="endpoint" cx="370" cy="751" r="8" />
+        </svg>
+      </div>
+      <p class="err" id="img-err" hidden>
+        해골 이미지를 불러오지 못했습니다. 로컬 서버로 이 HTML을 열거나 네트워크를 확인해 주세요.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>키 매핑</h2>
+      <div class="key-row"><kbd>1</kbd> 어깨 너비 — 가로선이 양쪽으로 펼쳐짐</div>
+      <div class="key-row"><kbd>2</kbd> 키(신장) — 머리~발 직선(점선 흐름)</div>
+      <div class="key-row"><kbd>3</kbd> 허리 라인 — 호가 그려짐</div>
+      <div class="key-row"><kbd>4</kbd> 팔 길이 — 어깨 중앙 → 하완</div>
+      <div class="key-row"><kbd>5</kbd> 다리 — 골반 → 발</div>
+      <div class="key-row"><kbd>Esc</kbd> 모든 레이어 끄기</div>
+      <p class="status" id="status">스테이지를 한 번 클릭한 뒤 키를 눌러 주세요.</p>
+    </div>
+  </div>
+
+  <script>
+(function () {
+  var stage = document.getElementById('stage');
+  var statusEl = document.getElementById('status');
+
+  function setStatus(html) {
+    statusEl.innerHTML = html;
+  }
+
+  /** pathLength=100 기준 dash 애니메이션 */
+  function animateLine(el, durationMs, onDone) {
+    el.classList.remove('active');
+    void el.offsetWidth;
+    el.style.strokeDasharray = '100';
+    el.style.strokeDashoffset = '100';
+    el.classList.add('active');
+    el.style.transition = 'none';
+    el.style.strokeDashoffset = '100';
+    void el.offsetWidth;
+    el.style.transition = 'stroke-dashoffset ' + durationMs + 'ms cubic-bezier(0.33, 1, 0.68, 1)';
+    el.style.strokeDashoffset = '0';
+    window.setTimeout(function () {
+      if (onDone) onDone();
+    }, durationMs + 40);
+  }
+
+  function resetLine(el) {
+    el.classList.remove('active');
+    el.style.transition = '';
+    el.style.strokeDasharray = '';
+    el.style.strokeDashoffset = '';
+  }
+
+  function flashEndpoints(ids) {
+    ids.forEach(function (id) {
+      var c = document.getElementById(id);
+      if (!c) return;
+      c.classList.remove('active');
+      void c.offsetWidth;
+      c.classList.add('active');
+    });
+    window.setTimeout(function () {
+      ids.forEach(function (id) {
+        var c = document.getElementById(id);
+        if (c) c.classList.remove('active');
+      });
+    }, 2000);
+  }
+
+  var allMeasure = ['m-shoulder', 'm-height', 'm-waist', 'm-arm', 'm-leg'];
+  var allPoints = ['p1', 'p2', 'ph1', 'ph2', 'pa1', 'pa2', 'pl1', 'pl2'];
+
+  function clearAll() {
+    allMeasure.forEach(function (id) { resetLine(document.getElementById(id)); });
+    allPoints.forEach(function (id) {
+      var c = document.getElementById(id);
+      if (c) c.classList.remove('active');
+    });
+    setStatus('초기화됨. 다시 키를 눌러 보세요.');
+  }
+
+  function run(key) {
+    if (key === 'Escape') {
+      clearAll();
+      return;
+    }
+    allMeasure.forEach(function (id) { resetLine(document.getElementById(id)); });
+    allPoints.forEach(function (id) {
+      var c = document.getElementById(id);
+      if (c) c.classList.remove('active');
+    });
+
+    if (key === '1') {
+      flashEndpoints(['p1', 'p2']);
+      animateLine(document.getElementById('m-shoulder'), 700, function () {
+        setStatus('<strong>어깨 너비</strong> — 좌우 견봉 사이 거리를 가로로 스캔하는 모션');
+      });
+      return;
+    }
+    if (key === '2') {
+      flashEndpoints(['ph1', 'ph2']);
+      animateLine(document.getElementById('m-height'), 900, function () {
+        setStatus('<strong>키(신장)</strong> — 상하 직선으로 전신 길이를 읽는 느낌 (점선 흐름)');
+      });
+      return;
+    }
+    if (key === '3') {
+      animateLine(document.getElementById('m-waist'), 800, function () {
+        setStatus('<strong>허리</strong> — 한 바퀴 재는 느낌을 호(arc)로 단순화');
+      });
+      return;
+    }
+    if (key === '4') {
+      flashEndpoints(['pa1', 'pa2']);
+      animateLine(document.getElementById('m-arm'), 750, function () {
+        setStatus('<strong>팔 길이</strong> — 어깨 중앙에서 하완까지 한 번에 그리기');
+      });
+      return;
+    }
+    if (key === '5') {
+      flashEndpoints(['pl1', 'pl2']);
+      animateLine(document.getElementById('m-leg'), 800, function () {
+        setStatus('<strong>다리</strong> — 골반~발 방향으로 측정선 이동');
+      });
+      return;
+    }
+  }
+
+  window.addEventListener('keydown', function (e) {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable))
+      return;
+    if (['1', '2', '3', '4', '5', 'Escape'].indexOf(e.key) === -1) return;
+    e.preventDefault();
+    run(e.key);
+  });
+
+  stage.addEventListener('click', function () {
+    stage.focus();
+    setStatus('포커스 OK — <kbd>1</kbd>~<kbd>5</kbd> 또는 <kbd>Esc</kbd>');
+  });
+})();
+  </script>
+</body>
+</html>

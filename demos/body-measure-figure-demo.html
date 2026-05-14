@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>측정 배경 이미지 데모 — Perfect Fit Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #0a0a0c;
+      --gold: #d4a84b;
+      --gold-bright: #e8c066;
+      --muted: #7a7a88;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg0);
+      color: #e8e6e1;
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+    .banner {
+      background: linear-gradient(90deg, rgba(212,168,75,0.12), transparent);
+      border-bottom: 1px solid rgba(212,168,75,0.2);
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.55;
+    }
+    .banner strong { color: var(--gold); }
+    .banner code {
+      color: var(--gold-bright);
+      font-size: 11px;
+      word-break: break-all;
+    }
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 20px 16px 36px;
+    }
+    .col-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .stage {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      background: radial-gradient(ellipse 85% 75% at 50% 42%, rgba(212, 168, 75, 0.08) 0%, transparent 55%), #0a0a0c;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .inner {
+      position: relative;
+      width: 100%;
+      max-width: min(400px, 92vw);
+      aspect-ratio: 752 / 798;
+    }
+    .inner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      border-radius: 12px;
+      display: block;
+    }
+    .err {
+      display: none;
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .err.visible { display: block; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <strong>측정 영역 배경 이미지 데모</strong> — <code>measure-hud-layout-preview.html</code>과 같이
+    이미지는 <code>https://perfectfitme.com/body-measure-figure.png</code> 를 우선 사용합니다.
+    배포 전에는 자동으로 같은 폴더 상위의 로컬 파일을 시도합니다.<br />
+    로컬에서 더블클릭으로 열기: <code>demos\body-measure-figure-demo.html</code>
+  </div>
+  <div class="wrap">
+    <div class="col-title">BODY MEASURE — FIGURE (index.html과 동일 소스)</div>
+    <div class="stage">
+      <div class="inner">
+        <img id="figure-img" alt="측정 배경" width="752" height="798" decoding="async" />
+        <p id="figure-err" class="err">
+          이미지를 불러오지 못했습니다. 루트에 <code>body-measure-figure.png</code>가 있는지 확인하거나,
+          사이트에 해당 파일을 배포한 뒤 다시 열어 주세요.
+        </p>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var img = document.getElementById("figure-img");
+      var err = document.getElementById("figure-err");
+      var remote = "https://perfectfitme.com/body-measure-figure.png";
+      var local = "../body-measure-figure.png";
+
+      function showErr() {
+        img.style.display = "none";
+        err.classList.add("visible");
+      }
+
+      img.onload = function () {
+        err.classList.remove("visible");
+        img.style.display = "block";
+      };
+
+      img.onerror = function () {
+        if (img.dataset.triedLocal === "1") {
+          showErr();
+          return;
+        }
+        img.dataset.triedLocal = "1";
+        img.src = local;
+      };
+
+      /* file:// 이면 로컬 먼저 (보통 배포본보다 로컬 파일이 먼저 있음) */
+      if (location.protocol === "file:") {
+        img.src = local;
+        img.onerror = function () {
+          img.onerror = function () {
+            showErr();
+          };
+          img.src = remote;
+        };
+      } else {
+        img.src = remote;
+      }
+    })();
+  </script>
+</body>
+</html>

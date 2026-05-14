@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>측정 화면 HUD 레이아웃 시안 — Perfect Fit Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #0a0a0c;
+      --bg1: #121218;
+      --gold: #d4a84b;
+      --gold-bright: #e8c066;
+      --muted: #7a7a88;
+      --glass: rgba(18, 16, 12, 0.72);
+      --line: rgba(212, 168, 75, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg0);
+      color: #e8e6e1;
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+    .banner {
+      background: linear-gradient(90deg, rgba(212,168,75,0.12), transparent);
+      border-bottom: 1px solid rgba(212,168,75,0.2);
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+    .banner strong { color: var(--gold); }
+    .wrap {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 16px 12px 28px;
+    }
+    .compare {
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 900px) {
+      .compare {
+        grid-template-columns: 1fr 1fr;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px 24px 40px;
+      }
+    }
+    .col-title {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.12em;
+      font-size: 13px;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    /* —— 현재 느낌: 좌우 세로 버튼 —— */
+    .legacy-stage {
+      position: relative;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg1);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .legacy-inner {
+      position: relative;
+      width: 100%;
+      max-width: 280px;
+      aspect-ratio: 752 / 798;
+    }
+    .legacy-inner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      opacity: 0.88;
+    }
+    .legacy-panels {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      padding: 0 4px;
+    }
+    .legacy-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 72px;
+      pointer-events: none;
+    }
+    .fake-btn {
+      background: rgba(30,28,26,0.9);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 6px 7px;
+      font-size: 9px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .fake-btn.accent { border-color: rgba(212,168,75,0.45); color: var(--gold); }
+    .fake-btn.done { border-color: rgba(71,255,138,0.4); color: #6dffb3; }
+
+    /* —— 시안: 다크 스캔 배경 + HUD 칩 —— */
+    .hud-stage {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 480px;
+      border: 1px solid rgba(212, 168, 75, 0.25);
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,0.5),
+        0 24px 80px rgba(0,0,0,0.65),
+        inset 0 0 120px rgba(212,168,75,0.04);
+    }
+    .hud-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 45%, rgba(212,168,75,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(40,32,20,0.5) 0%, transparent 45%),
+        linear-gradient(180deg, #0c0c10 0%, #08080b 100%);
+    }
+    .hud-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(rgba(212,168,75,0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,168,75,0.2) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, black 20%, transparent 75%);
+    }
+    .hud-scan {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent 0%,
+        rgba(212,168,75,0.06) 48%,
+        rgba(212,168,75,0.14) 50%,
+        rgba(212,168,75,0.06) 52%,
+        transparent 100%
+      );
+      background-size: 100% 180%;
+      animation: scan 5.5s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+    @keyframes scan {
+      0%, 100% { background-position: 0 -40%; }
+      50% { background-position: 0 140%; }
+    }
+    .hud-header {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px 8px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hud-header .brand {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+      color: var(--gold-bright);
+    }
+    .hud-header .status { color: var(--gold); font-weight: 600; font-size: 9px; text-align: right; line-height: 1.4; }
+
+    .hud-figure {
+      position: relative;
+      z-index: 2;
+      width: 72%;
+      max-width: 300px;
+      margin: 0 auto;
+      aspect-ratio: 752 / 798;
+    }
+    .hud-figure::before {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,75,0.18) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hud-figure img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      opacity: 0.92;
+      filter: contrast(1.05) saturate(0.85) brightness(0.95);
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    }
+    /* HUD 칩: 인체 주변에 흩어 배치 (실제 클릭 영역은 나중에 좌표 맞춤) */
+    .hud-chip {
+      position: absolute;
+      z-index: 4;
+      min-width: 108px;
+      padding: 8px 10px;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      cursor: default;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .hud-chip:hover {
+      transform: scale(1.02);
+      border-color: rgba(212,168,75,0.55);
+    }
+    .hud-chip .label {
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .hud-chip .val {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      color: var(--gold-bright);
+      line-height: 1;
+    }
+    .hud-chip .unit {
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: 2px;
+      font-weight: 600;
+    }
+    .hud-chip .sub {
+      margin-top: 6px;
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .hud-chip .sub span {
+      display: block;
+      height: 100%;
+      width: var(--p, 70%);
+      background: linear-gradient(90deg, var(--gold), var(--gold-bright));
+      border-radius: 2px;
+    }
+    /* 위치: 퍼센트는 figure 박스 기준 */
+    .chip-height { top: -2%; left: 50%; transform: translateX(-50%); text-align: center; }
+    .chip-shoulder { top: 18%; left: -6%; }
+    .chip-chest { top: 32%; right: -8%; left: auto; }
+    .chip-waist { top: 48%; left: -10%; }
+    .chip-hip { top: 58%; right: -12%; left: auto; }
+    .chip-leg { bottom: 14%; left: -4%; }
+    .chip-weight { top: 6%; right: -4%; left: auto; }
+
+    .hud-footer {
+      position: relative;
+      z-index: 3;
+      padding: 14px 18px 18px;
+    }
+    .hud-footer .bar-label {
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .hud-footer .track {
+      height: 6px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      border: 1px solid rgba(212,168,75,0.2);
+    }
+    .hud-footer .fill {
+      height: 100%;
+      width: 62%;
+      background: linear-gradient(90deg, #8a6a2a, var(--gold-bright));
+      border-radius: 6px;
+      box-shadow: 0 0 16px rgba(212,168,75,0.45);
+    }
+    .corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(212,168,75,0.35);
+      z-index: 5;
+      pointer-events: none;
+    }
+    .corner-tl { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+    .corner-tr { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+    .corner-br { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <strong>레이아웃 시안 미리보기</strong> — 실제 측정 저장·분석 로직과 연결되어 있지 않습니다. 배경·칩 위치 느낌만 확인용입니다.
+  </div>
+  <div class="wrap compare">
+    <div>
+      <div class="col-title">지금 구조 (좌우 세로 버튼)</div>
+      <div class="legacy-stage">
+        <div class="legacy-inner">
+          <img src="https://perfectfitme.com/skeleton-body.jpg" alt="" width="376" height="399" />
+          <div class="legacy-panels">
+            <div class="legacy-col">
+              <div class="fake-btn accent">★ HEIGHT</div>
+              <div class="fake-btn">HEAD</div>
+              <div class="fake-btn">SHOULDER</div>
+              <div class="fake-btn">CHEST</div>
+              <div class="fake-btn">UPPER ARM</div>
+              <div class="fake-btn">LOWER ARM</div>
+            </div>
+            <div class="legacy-col" style="align-items: flex-end;">
+              <div class="fake-btn accent">★ WEIGHT</div>
+              <div class="fake-btn accent done">★ WAIST</div>
+              <div class="fake-btn">HIP</div>
+              <div class="fake-btn">THIGH</div>
+              <div class="fake-btn">SHIN</div>
+              <div class="fake-btn">FOOT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="col-title">시안 (스캔 배경 + HUD 칩으로 부위별 수치 배치)</div>
+      <div class="hud-stage">
+        <div class="hud-bg"></div>
+        <div class="hud-grid"></div>
+        <div class="hud-scan"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="hud-header">
+          <span class="brand">PERFECT FIT ME</span>
+          <span class="status">AI SCAN ACTIVE<br />GOLDEN RATIO LAYOUT</span>
+        </div>
+
+        <div class="hud-figure" style="margin-top: 8px;">
+          <img src="https://perfectfitme.com/skeleton-body.jpg" alt="" width="376" height="399" />
+
+          <div class="hud-chip chip-height">
+            <div class="label">Height</div>
+            <div><span class="val">168</span><span class="unit">cm</span></div>
+            <div class="sub"><span style="width: 100%"></span></div>
+          </div>
+          <div class="hud-chip chip-weight">
+            <div class="label">Weight</div>
+            <div><span class="val">58</span><span class="unit">kg</span></div>
+            <div class="sub"><span style="--p: 100%; width: 100%"></span></div>
+          </div>
+          <div class="hud-chip chip-shoulder">
+            <div class="label">Shoulder</div>
+            <div><span class="val">38.2</span><span class="unit">cm</span></div>
+            <div class="sub"><span style="--p: 72%"></span></div>
+          </div>
+          <div class="hud-chip chip-chest">
+            <div class="label">Chest</div>
+            <div><span class="val">88.5</span><span class="unit">cm</span></div>
+            <div class="sub"><span style="--p: 85%"></span></div>
+          </div>
+          <div class="hud-chip chip-waist">
+            <div class="label">Waist</div>
+            <div><span class="val">63.1</span><span class="unit">cm</span></div>
+            <div class="sub"><span style="--p: 64%"></span></div>
+          </div>
+          <div class="hud-chip chip-hip">
+            <div class="label">Hip</div>
+            <div><span class="val">92.0</span><span class="unit">cm</span></div>
+            <div class="sub"><span style="--p: 90%"></span></div>
+          </div>
+          <div class="hud-chip chip-leg">
+            <div class="label">Leg</div>
+            <div><span class="val">105</span><span class="unit">cm</span></div>
+            <div class="sub"><span style="--p: 78%"></span></div>
+          </div>
+        </div>
+
+        <div class="hud-footer">
+          <div class="bar-label">Analyzing your fit profile — 62% complete (sample)</div>
+          <div class="track"><div class="fill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
