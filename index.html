@@ -415,13 +415,24 @@
       background: linear-gradient(180deg, transparent 0%, rgba(255, 252, 248, 0.94) 12%, rgba(248, 244, 238, 0.98) 100%);
       border-top-color: rgba(212, 168, 75, 0.35);
     }
+    [data-theme="light"] .body-container.body-scan-hud {
+      background: linear-gradient(180deg, #f6f2ec 0%, #ebe4da 55%, #e2dcd4 100%);
+      border-color: rgba(160, 130, 70, 0.35);
+    }
+    [data-theme="light"] .body-container.body-scan-hud::before {
+      mix-blend-mode: normal;
+      opacity: 0.14;
+    }
+    [data-theme="light"] .body-container.body-scan-hud::after {
+      background: radial-gradient(ellipse 88% 78% at 50% 45%, transparent 30%, rgba(90, 80, 70, 0.12) 100%);
+    }
     [data-theme="light"] .panel {
       background: var(--surface);
       border-left: 1px solid rgba(0, 0, 0, 0.06);
     }
     @media (min-width: 901px) {
       [data-theme="light"] .panel {
-        box-shadow: -16px 0 48px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 36px rgba(0, 0, 0, 0.08);
       }
     }
     [data-theme="light"] .input-field,
@@ -685,7 +696,52 @@
     .blog-view-all:hover { background: rgba(212,168,75,0.08); border-color: var(--accent); transform: translateY(-1px); }
 
     /* MAIN ANALYSIS */
-    .main-container { display: grid; grid-template-columns: 1fr min(400px, 32vw); height: calc(100vh - 70px); height: calc(100svh - 70px); height: calc(100dvh - 70px); overflow: hidden; align-items: stretch; max-width: min(1920px, 100%); margin: 0 auto; width: 100%; box-sizing: border-box; }
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-height: calc(100vh - 70px);
+      min-height: calc(100svh - 70px);
+      min-height: calc(100dvh - 70px);
+      max-height: calc(100dvh - 70px);
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-width: min(1920px, 100%);
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media (min-width: 901px) {
+      .main-container > .body-section { order: 1; }
+      .main-container > #main-panel { order: 2; }
+      .main-container > #mobile-analyze-bar { order: 3; }
+      .main-container > #mobile-result-overlay { order: 4; }
+      .main-container > #sheet-backdrop { order: 5; }
+      .body-section {
+        height: auto;
+        flex: 0 0 auto;
+        overflow: visible;
+        justify-content: flex-start;
+        border-right: none;
+      }
+      #main-panel.panel {
+        position: relative;
+        width: min(720px, 94vw);
+        align-self: center;
+        margin: 8px auto 24px;
+        height: auto;
+        max-height: none;
+        min-height: 0;
+        flex: 0 1 auto;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+        transform: none;
+      }
+      #main-panel.panel .input-area {
+        max-height: min(52vh, 520px);
+      }
+    }
     .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 10px; border-right: 1px solid var(--border); height: 100%; overflow: hidden; min-height: 0; }
     .section-label { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
     .body-measure-layout { position: relative; display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; width: 100%; align-self: stretch; }
@@ -1261,7 +1317,7 @@
 
 
     @media (max-width: 900px) {
-      .main-container { grid-template-columns: 1fr; height: auto; overflow: visible; }
+      .main-container { height: auto; min-height: calc(100dvh - 70px); max-height: none; overflow: visible; flex: 1 1 auto; }
       .body-section {
         border-right: none;
         border-bottom: none;
@@ -2136,7 +2192,7 @@
             </div>
             <div class="body-container body-scan-hud" id="body-figure-zone">
               <div class="body-figure-media">
-                <img src="/body-measure-figure.png" alt="body measurement scan" class="body-img" width="752" height="798" decoding="async">
+                <img src="body-measure-figure.png" alt="body measurement scan" class="body-img" width="752" height="798" decoding="async" onerror="this.onerror=null;this.src='/body-measure-figure.png'">
               </div>
               <svg class="body-overlay" viewBox="0 0 752 798" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
             <ellipse id="mark-head" class="body-mark" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
@@ -2289,7 +2345,7 @@
         </div>
 
         <div class="measurement-form" id="form-upper-arm">
-          <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">UPPER ARM / 상완</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">SHOULDER–ELBOW / 어깨~팔꿈치</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
           <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
@@ -2297,7 +2353,7 @@
         </div>
 
         <div class="measurement-form" id="form-lower-arm">
-          <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">LOWER ARM / 하완</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">ELBOW–WRIST / 팔꿈치~손목</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
           <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
@@ -2767,8 +2823,8 @@
       'toast-need-data':'먼저 키와 체중을 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
       'confirm-reset':'모든 측정값을 초기화할까요?',
       'sheet-discard-confirm':'입력한 내용이 저장되지 않았습니다. 창을 닫을까요?',
-      'parts':{ height:'키', weight:'체중', head:'머리', shoulder:'어깨', chest:'가슴', 'upper-arm':'상완', 'lower-arm':'하완', waist:'허리', hip:'골반', 'upper-leg':'허벅지', 'lower-leg':'종아리', foot:'발' },
-      'titles':{ height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리', shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴', 'upper-arm':'UPPER ARM / 상완', 'lower-arm':'LOWER ARM / 하완', waist:'WAIST / 허리', hip:'HIP / 골반', 'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발' },
+      'parts':{ height:'키', weight:'체중', head:'머리', shoulder:'어깨', chest:'가슴', 'upper-arm':'어깨~팔꿈치', 'lower-arm':'팔꿈치~손목', waist:'허리', hip:'골반', 'upper-leg':'허벅지', 'lower-leg':'종아리', foot:'발' },
+      'titles':{ height:'HEIGHT / 키', weight:'WEIGHT / 체중', head:'HEAD / 머리', shoulder:'SHOULDER / 어깨', chest:'CHEST / 가슴', 'upper-arm':'SHOULDER–ELBOW / 어깨~팔꿈치', 'lower-arm':'ELBOW–WRIST / 팔꿈치~손목', waist:'WAIST / 허리', hip:'HIP / 골반', 'upper-leg':'THIGH / 허벅지', 'lower-leg':'SHIN / 종아리', foot:'FOOT / 발' },
       'bmi':['저체중','정상 체중 ✓','과체중','비만'],
       'body-hourglass':'가슴/어깨와 골반이 균형을 이루고 허리가 잘록한 **모래시계형(Hourglass)** 체형입니다. (WHR: {r})',
       'body-pear':'골반이 어깨보다 넓어 하체에 시각적 무게감이 있는 **삼각형/배형(Pear)** 체형입니다. (WHR: {r})',
@@ -3075,8 +3131,8 @@
       'confirm-reset':'Reset all measurements?',
       'sheet-discard-confirm':'You have unsaved changes. Close this panel?',
 
-      'parts':{ height:'Height', weight:'Weight', head:'Head', shoulder:'Shoulder', chest:'Chest', 'upper-arm':'Upper Arm', 'lower-arm':'Lower Arm', waist:'Waist', hip:'Hip', 'upper-leg':'Thigh', 'lower-leg':'Shin', foot:'Foot' },
-      'titles':{ height:'HEIGHT', weight:'WEIGHT', head:'HEAD', shoulder:'SHOULDER', chest:'CHEST', 'upper-arm':'UPPER ARM', 'lower-arm':'LOWER ARM', waist:'WAIST', hip:'HIP', 'upper-leg':'THIGH', 'lower-leg':'SHIN', foot:'FOOT' },
+      'parts':{ height:'Height', weight:'Weight', head:'Head', shoulder:'Shoulder', chest:'Chest', 'upper-arm':'Shoulder–elbow', 'lower-arm':'Elbow–wrist', waist:'Waist', hip:'Hip', 'upper-leg':'Thigh', 'lower-leg':'Shin', foot:'Foot' },
+      'titles':{ height:'HEIGHT', weight:'WEIGHT', head:'HEAD', shoulder:'SHOULDER', chest:'CHEST', 'upper-arm':'SHOULDER–ELBOW', 'lower-arm':'ELBOW–WRIST', waist:'WAIST', hip:'HIP', 'upper-leg':'THIGH', 'lower-leg':'SHIN', foot:'FOOT' },
       'bmi':['Underweight','Normal weight ✓','Overweight','Obese'],
       'body-inv':'Inverted triangle — shoulders wider than hips. (ratio: {r})','body-tri':'Triangle — hips wider than shoulders. (ratio: {r})','body-rect':'Balanced rectangle / hourglass body type. (ratio: {r})',
       'body-default':'Enter more measurements for a detailed analysis.',
