@@ -1025,7 +1025,7 @@
       width: 100%;
       min-width: 0;
     }
-    /* 모바일 기본: 실루엣 | 칩레일(왼5+오른6 세로 스택). 데스크톱은 min-width:901px에서 5|실루엣|6 */
+    /* 모바일·데스크톱 공통: chips-rail은 래퍼만(자식이 메인 플렉스에 참여). 실배치는 order로 왼5 | 실루엣 | 오른6 */
     .hud-row-main.hud-row-main--tri {
       display: flex;
       flex-direction: row;
@@ -1033,38 +1033,31 @@
       gap: clamp(6px, 1.6vw, 14px);
     }
     .hud-row-main--tri .chips-rail {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 0 0 clamp(96px, 22vw, 138px);
-      min-height: 0;
+      display: contents;
+    }
+    .hud-row-main--tri .chips-column--left {
+      order: 1;
+    }
+    .hud-row-main--tri .figure-zone {
+      order: 2;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hud-row-main--tri .chips-column--right {
+      order: 3;
+    }
+    .hud-row-main--tri .chips-column {
+      flex: 0 0 clamp(88px, 20vw, 138px);
+      justify-content: space-between;
+      gap: 0;
       min-width: 0;
     }
-    .hud-row-main--tri .chips-rail .chips-column {
-      flex: 0 1 auto;
-      justify-content: flex-start;
-      gap: 6px;
-    }
     @media (min-width: 901px) {
-      .hud-row-main--tri .chips-rail {
-        display: contents;
-      }
-      .hud-row-main--tri .chips-column--left {
-        order: 1;
-      }
       .hud-row-main--tri .figure-zone {
-        order: 2;
-        margin-left: auto;
-        margin-right: auto;
         max-width: min(440px, 50vw);
-      }
-      .hud-row-main--tri .chips-column--right {
-        order: 3;
       }
       .hud-row-main--tri .chips-column {
         flex: 0 0 clamp(96px, 22vw, 138px);
-        justify-content: space-between;
-        gap: 0;
       }
     }
     .chips-column {
@@ -1660,12 +1653,6 @@
         height: min(78svh, calc(100svh - 168px));
         min-height: min(52dvh, 320px);
         max-height: min(82dvh, calc(100dvh - 140px));
-      }
-      .hud-row-main--tri > .chips-rail { flex: 0 0 clamp(88px, 32vw, 120px); }
-      .hud-row-main--tri .chips-rail .chips-column {
-        flex: 1 1 auto;
-        flex-basis: auto;
-        min-height: 0;
       }
       .chips-column .side-btn,
       .chips-column .chip { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
