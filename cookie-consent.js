@@ -115,6 +115,9 @@
     applyConsentGranted();
     loadAdSense();
     loadClarity();
+    if (typeof window.fitmeInitAdSlots === 'function') {
+      window.fitmeInitAdSlots();
+    }
     removeBanner();
     notifyCookieResolved();
   };
@@ -202,16 +205,24 @@
     };
   }
 
+  function restoreGrantedConsent() {
+    applyConsentGranted();
+    loadAdSense();
+    loadClarity();
+    if (typeof window.fitmeInitAdSlots === 'function') {
+      window.fitmeInitAdSlots();
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     ensureCss();
     setupCtaTracking();
-    loadAdSense();
     var consent = '';
     try {
       consent = localStorage.getItem(KEY) || '';
     } catch (e) {}
     if (consent === 'all') {
-      loadClarity();
+      restoreGrantedConsent();
       return;
     }
     if (consent === 'essential') return;

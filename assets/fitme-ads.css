@@ -1,0 +1,12 @@
+.fitme-ad-slot {
+  margin: 24px auto;
+  max-width: 728px;
+  min-height: 0;
+  text-align: center;
+}
+.fitme-ad-slot[hidden] {
+  display: none !important;
+}
+.fitme-ad-slot ins.adsbygoogle {
+  display: block;
+}

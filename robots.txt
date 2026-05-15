@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /demos/
 
 # Google AdSense crawler (explicit allow; site-wide Allow already applies)
 User-agent: Mediapartners-Google
