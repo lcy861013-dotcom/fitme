@@ -1,0 +1,218 @@
+/*
+ * 블로그·약관·연락처 등 간이 HTML 페이지용.
+ * 인라인 <style> 다음·</head> 직전에 로드 → html[data-theme]에 따라 다크·라이트 일관 적용.
+ * consent-init.js가 localStorage fitme_theme으로 data-theme을 먼저 설정합니다.
+ */
+
+[data-theme="light"] {
+  --bg: #f4f2ee;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --text: #11100f;
+  --muted: #5e5a56;
+  --border: #e5e1db;
+  --accent: #a67c18;
+  --accent2: #c94d28;
+  --prose: #413d38;
+}
+
+[data-theme="light"] body {
+  background:
+    radial-gradient(ellipse 720px 280px at 50% -10%, rgba(166, 124, 24, 0.08), transparent 58%),
+    linear-gradient(180deg, #fcfbfa 0%, var(--bg) 42%, #ebe8e4 100%);
+  color: var(--text);
+}
+
+[data-theme="light"] header {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 1px 14px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .logo {
+  color: var(--accent);
+}
+
+[data-theme="light"] .logo span {
+  color: var(--text);
+}
+
+[data-theme="light"] .back-btn {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+[data-theme="light"] .back-btn:hover {
+  color: var(--accent);
+}
+
+[data-theme="light"] nav a {
+  color: var(--muted);
+}
+
+[data-theme="light"] nav a:hover {
+  color: var(--accent);
+}
+
+[data-theme="light"] main {
+  color: var(--text);
+}
+
+[data-theme="light"] p,
+[data-theme="light"] li,
+[data-theme="light"] .meta,
+[data-theme="light"] .updated,
+[data-theme="light"] .step-desc,
+[data-theme="light"] .card-desc {
+  color: var(--prose);
+}
+
+[data-theme="light"] h2,
+[data-theme="light"] h3 {
+  color: var(--text);
+}
+
+[data-theme="light"] .page-title,
+[data-theme="light"] .card-title {
+  color: var(--text);
+}
+
+[data-theme="light"] ul,
+[data-theme="light"] ol {
+  color: inherit;
+}
+
+[data-theme="light"] .lead {
+  color: var(--muted);
+}
+
+[data-theme="light"] strong {
+  color: var(--text);
+}
+
+[data-theme="light"] a {
+  color: var(--accent);
+}
+
+[data-theme="light"] .tip,
+[data-theme="light"] .highlight {
+  background: rgba(166, 124, 24, 0.1);
+  color: var(--text) !important;
+  border-left-color: var(--accent);
+}
+
+[data-theme="light"] footer,
+[data-theme="light"] footer a {
+  color: var(--muted);
+}
+
+[data-theme="light"] footer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] footer a:hover {
+  color: var(--accent);
+}
+
+[data-theme="light"] .card,
+[data-theme="light"] .cta,
+[data-theme="light"] .feature-card,
+[data-theme="light"] .related-card,
+[data-theme="light"] .step-box,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .part-row,
+[data-theme="light"] .nav-link {
+  background: var(--card) !important;
+  border-color: var(--border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .card-tag,
+[data-theme="light"] .section-label {
+  color: var(--accent);
+}
+
+[data-theme="light"] .page-sub {
+  color: var(--muted);
+}
+
+[data-theme="light"] .card-date {
+  color: var(--muted) !important;
+}
+
+[data-theme="light"] .stat-label,
+[data-theme="light"] .stat-sub,
+[data-theme="light"] .nav-link-label {
+  color: var(--muted);
+}
+
+[data-theme="light"] .step-title,
+[data-theme="light"] .part-name {
+  color: var(--text);
+}
+
+[data-theme="light"] .cta-btn {
+  color: #11100f !important;
+}
+
+[data-theme="light"] .divider {
+  border-top-color: var(--border);
+}
+
+[data-theme="light"] .guide-img,
+[data-theme="light"] .feature-thumb {
+  border-color: var(--border) !important;
+}
+
+[data-theme="light"] code,
+[data-theme="light"] pre {
+  background: rgba(0, 0, 0, 0.045);
+  color: var(--text);
+}
+
+[data-theme="light"] .player-wrap,
+[data-theme="light"] video {
+  background: #0a0a0a !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="light"] .note {
+  color: var(--muted);
+}
+
+/* 제목: 기본 금색 헤더(About 등), 블로그 글 본문(h1 바로 아래 태그가 있음)만 본문색 */
+[data-theme="light"] h1 {
+  color: var(--accent);
+}
+
+[data-theme="light"] main .tag ~ h1 {
+  color: var(--text);
+}
+
+[data-theme="light"] main .tag {
+  color: var(--accent);
+}
+
+/* 404 */
+  color: var(--text);
+}
+
+[data-theme="light"] .desc {
+  color: var(--muted);
+}
+
+[data-theme="light"] .code {
+  color: #d9d6d0 !important;
+  text-shadow: none;
+}
+
+[data-theme="light"] .code span {
+  color: var(--accent);
+}
+
+[data-theme="light"] .btn {
+  color: #11100f;
+}

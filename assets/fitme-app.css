@@ -26,8 +26,9 @@
       --accent: #a67c18;
       --accent2: #c94d28;
       --accent3: #776d52;
-      --panel: #090908;
-      --panel-edge: rgba(255, 255, 255, 0.14);
+      /* Light surfaces only — 앱 카드와 동일하게 (다크 패널 토큰 금지) */
+      --panel: #f5f3f0;
+      --panel-edge: rgba(0, 0, 0, 0.08);
       --radius-xl: 24px;
       --elev-1: 0 1px 2px rgba(0, 0, 0, 0.05);
       --elev-2: 0 8px 24px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -183,16 +184,18 @@
         linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, transparent 40%);
     }
     [data-theme="light"] .blog-card {
-      border-color: rgba(255, 255, 255, 0.12);
-      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.11), 0 4px 12px rgba(0, 0, 0, 0.05);
+      background: linear-gradient(165deg, #ffffff 0%, #faf8f5 46%, #f0eae2 100%);
+      border-color: rgba(0, 0, 0, 0.07);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.085), 0 4px 12px rgba(0, 0, 0, 0.04);
     }
     [data-theme="light"] .blog-card:hover {
-      box-shadow: 0 22px 56px rgba(0, 0, 0, 0.14), 0 8px 20px rgba(0, 0, 0, 0.06);
-      border-color: rgba(166, 124, 24, 0.35);
+      box-shadow: 0 22px 56px rgba(0, 0, 0, 0.11), 0 8px 20px rgba(0, 0, 0, 0.05);
+      border-color: rgba(166, 124, 24, 0.32);
     }
     [data-theme="light"] .blog-thumb {
-      background: radial-gradient(circle at 22% 18%, rgba(212, 168, 75, 0.18), transparent 52%),
-        linear-gradient(145deg, #161412, #070706);
+      background:
+        radial-gradient(circle at 22% 18%, rgba(166, 124, 24, 0.22), transparent 52%),
+        linear-gradient(135deg, #e9e6e0, #dad5cc);
     }
     [data-theme="light"] .blog-tag {
       background: rgba(166, 124, 24, 0.12);
@@ -202,6 +205,16 @@
       border-color: rgba(166, 124, 24, 0.38);
       background: rgba(255, 255, 255, 0.75);
       box-shadow: var(--elev-1);
+    }
+
+    [data-theme="light"] .blog-card .blog-title {
+      color: var(--text);
+    }
+    [data-theme="light"] .blog-card .blog-desc {
+      color: var(--muted);
+    }
+    [data-theme="light"] .blog-meta {
+      border-top-color: rgba(0, 0, 0, 0.07);
     }
 
     [data-theme="light"] .proportions-edu {

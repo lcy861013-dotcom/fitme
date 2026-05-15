@@ -89,3 +89,37 @@
     text-align: center;
   }
 }
+
+/* Light theme — 본문 페이지와 동일 html[data-theme="light"] 상속 */
+[data-theme="light"] #fitme-cc-banner {
+  background: rgba(255, 253, 251, 0.97);
+  border-top-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .fitme-cc-msg {
+  color: var(--prose, #413d38);
+}
+
+[data-theme="light"] .fitme-cc-msg strong {
+  color: var(--accent, #a67c18);
+}
+
+[data-theme="light"] .fitme-cc-msg a {
+  color: var(--accent, #a67c18);
+}
+
+[data-theme="light"] .fitme-cc-msg code {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text, #11100f);
+}
+
+[data-theme="light"] .fitme-cc-min {
+  color: var(--muted, #5e5a56);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .fitme-cc-min:hover {
+  color: var(--text, #11100f);
+  border-color: rgba(0, 0, 0, 0.22);
+}
