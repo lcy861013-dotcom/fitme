@@ -1,4 +1,3 @@
-  <style>
     :root {
       --bg: #0a0908;
       --surface: #121110;
@@ -275,9 +274,107 @@
       background: linear-gradient(165deg, #f2eee8 0%, #eae4dc 38%, #e2dbd2 100%);
     }
     [data-theme="light"] #analysis .measure-scan-stage {
+      --hud-gold: #a67c18;
+      --hud-gold2: #c4942a;
+      --hud-gold-dim: rgba(166, 124, 24, 0.38);
+      --hud-gold-glow: rgba(166, 124, 24, 0.14);
+      --hud-muted: #58544d;
+      --hud-green: #148056;
+      --hud-panel: rgba(255, 252, 248, 0.94);
       border-color: rgba(120, 100, 70, 0.28);
-      box-shadow: 0 8px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.055),
+        0 16px 44px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.65);
     }
+    [data-theme="light"] #analysis .measure-scan-stage .stage-vignette {
+      background: radial-gradient(
+        ellipse 88% 78% at 50% 48%,
+        transparent 0%,
+        transparent 50%,
+        rgba(92, 80, 68, 0.09) 88%,
+        rgba(74, 64, 54, 0.14) 100%
+      );
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .stage-floor {
+      background: linear-gradient(
+        to top,
+        rgba(226, 218, 208, 0.9) 0%,
+        rgba(234, 228, 220, 0.42) 40%,
+        transparent 100%
+      );
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .stage-pillar {
+      background: radial-gradient(
+        ellipse 42% 65% at 50% 40%,
+        rgba(166, 124, 24, 0.11) 0%,
+        rgba(166, 124, 24, 0.035) 45%,
+        transparent 70%
+      );
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .stage-scan {
+      opacity: 0.12;
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .corner {
+      border-color: rgba(160, 130, 70, 0.32);
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .chip {
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+      border-color: rgba(160, 130, 70, 0.32);
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .chip:hover,
+    [data-theme="light"] #analysis .measure-scan-stage .chip:focus-visible {
+      box-shadow: 0 11px 30px rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .chip.side-btn.active {
+      box-shadow: 0 0 0 1px rgba(166, 124, 24, 0.22), 0 10px 28px rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="light"] #analysis .measure-scan-stage .track {
+      background: rgba(0, 0, 0, 0.065);
+      border-color: rgba(160, 130, 70, 0.28);
+    }
+
+    /*
+     * #analysis .hud-row-main > .figure-zone 가 ID 포함이라
+     * [data-theme="light"] .body-measure-layout .figure-zone 보다 우선 → 라이트에서도 다크 실루엣이 남던 문제 수정
+     */
+    [data-theme="light"] #analysis .hud-row-main > .figure-zone {
+      background-color: #f4f1ec;
+      background-image:
+        radial-gradient(ellipse 72% 52% at 50% 30%, rgba(166, 124, 24, 0.14) 0%, transparent 58%),
+        radial-gradient(ellipse 95% 38% at 50% 96%, rgba(166, 124, 24, 0.1) 0%, transparent 52%),
+        linear-gradient(172deg, #faf7f3 0%, #ebe6df 42%, #e2dbd4 100%),
+        repeating-linear-gradient(
+          0deg,
+          transparent 0,
+          transparent 16px,
+          rgba(166, 124, 24, 0.045) 16px,
+          rgba(166, 124, 24, 0.045) 17px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 16px,
+          rgba(166, 124, 24, 0.038) 16px,
+          rgba(166, 124, 24, 0.038) 17px
+        );
+      border-color: rgba(160, 130, 70, 0.38);
+      box-shadow:
+        inset 0 0 36px rgba(255, 255, 255, 0.52),
+        inset 0 1px 0 rgba(255, 255, 255, 0.78),
+        inset 0 -28px 46px rgba(90, 80, 70, 0.07),
+        0 0 0 1px rgba(0, 0, 0, 0.052),
+        0 10px 28px rgba(0, 0, 0, 0.07),
+        0 0 42px rgba(166, 124, 24, 0.08);
+    }
+
+    [data-theme="light"] #analysis .chips-column .chip,
+    [data-theme="light"] #analysis .hud-row-main .chips-column .chip,
+    [data-theme="light"] #analysis .hud-row-top .chip {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+      border-color: rgba(160, 130, 70, 0.32);
+    }
+
     [data-theme="light"] .panel {
       background: var(--surface);
       border-left: 1px solid rgba(0, 0, 0, 0.06);
