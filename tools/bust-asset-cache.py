@@ -15,7 +15,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-NEW_VERSION = "6"
+NEW_VERSION = "7"
 
 ASSETS = [
     "/consent-init.js",
@@ -25,6 +25,7 @@ ASSETS = [
     "/assets/fitme-app.js",
     "/assets/fitme-ads.css",
     "/assets/fitme-ads.js",
+    "/assets/fitme-share.js",
     "/assets/satellite-pages-theme.css",
 ]
 

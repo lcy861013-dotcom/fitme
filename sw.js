@@ -1,5 +1,5 @@
 /* FITME — lightweight offline/cache for static assets only (HTML stays network-first). */
-var CACHE = 'fitme-static-v6';
+var CACHE = 'fitme-static-v7';
 
 self.addEventListener('install', function (e) {
   self.skipWaiting();

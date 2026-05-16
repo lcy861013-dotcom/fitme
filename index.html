@@ -4,6 +4,9 @@
   <script>(function(){if(location.hostname!=='perfectfitme.com'&&location.hostname!=='www.perfectfitme.com'){location.replace('https://perfectfitme.com'+location.pathname+location.search+location.hash);}})();</script>
   <meta name="google-site-verification" content="xwsXRp22QE2bYqKgeOSRsQQystnHk_oTlw2Y0DVBCe4" />
   <meta name="naver-site-verification" content="efc2e79bd9d1dac5df38a9cfa9bddf878d07460b" />
+  <!-- TODO: replace with real tokens after registering at https://www.bing.com/webmasters/ and https://webmaster.yandex.com/ -->
+  <!-- <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" /> -->
+  <!-- <meta name="yandex-verification" content="REPLACE_WITH_YANDEX_TOKEN" /> -->
   <!-- Language flash prevention: subtle hide until lang applied (failsafe shows page) -->
   <style id="lang-fouc">body{opacity:0;transition:opacity .12s ease-out}</style>
   <noscript><style id="lang-fouc-ns">#lang-fouc{display:none!important}body{opacity:1!important}</style></noscript>
@@ -29,7 +32,7 @@
       setTimeout(reveal, 2800);
     })();
   </script>
-  <script src="/consent-init.js?v=6"></script>
+  <script src="/consent-init.js?v=7"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JW0DB4GXG3"></script>
   <script>
@@ -46,6 +49,10 @@
   <link rel="alternate" type="application/atom+xml" title="FITME Blog" href="https://perfectfitme.com/feed.xml">
 
   <link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/">
+  <link rel="alternate" hreflang="ko" href="https://perfectfitme.com/">
+  <link rel="alternate" hreflang="en" href="https://perfectfitme.com/">
+  <link rel="alternate" hreflang="ja" href="https://perfectfitme.com/blog/ja/">
+  <link rel="alternate" hreflang="pt-BR" href="https://perfectfitme.com/blog/pt/">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
@@ -55,7 +62,7 @@
   <meta property="og:url" content="https://perfectfitme.com/">
   <meta property="og:title" content="FITME — Body Proportions for Better Online Fit & Style">
   <meta property="og:description" content="Shop less blind online: map your ratios in minutes. Free proportion analysis and fit-aware style picks — no photos, no signup.">
-  <meta property="og:image" content="https://perfectfitme.com/og-image.png">
+  <meta property="og:image" content="https://perfectfitme.com/assets/og-image-en.png?v=7">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ko_KR">
@@ -72,7 +79,7 @@
   <meta name="twitter:url" content="https://perfectfitme.com/">
   <meta name="twitter:title" content="FITME — Body Proportions for Better Online Fit & Style">
   <meta name="twitter:description" content="Shop less blind online: map your ratios in minutes. Free proportion analysis and fit-aware style picks — no photos, no signup.">
-  <meta name="twitter:image" content="https://perfectfitme.com/og-image.png">
+  <meta name="twitter:image" content="https://perfectfitme.com/assets/og-image-en.png?v=7">
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -141,7 +148,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=6">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=7">
 </head>
 <body>
 
@@ -1329,7 +1336,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=6"></script>
+<script defer src="/assets/fitme-app.js?v=7"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>
@@ -1337,15 +1344,15 @@
 <div id="span-lb" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(15,8,2,0.94);cursor:zoom-out;align-items:center;justify-content:center;padding:16px;">
   <img id="span-lb-img" src="" alt="" style="max-width:100%;max-height:92vh;border-radius:12px;object-fit:contain;">
 </div>
-<link rel="stylesheet" href="/assets/fitme-ads.css?v=6">
-<script defer src="/cookie-consent.js?v=6"></script>
-<script defer src="/assets/fitme-ads.js?v=6"></script>
+<link rel="stylesheet" href="/assets/fitme-ads.css?v=7">
+<script defer src="/cookie-consent.js?v=7"></script>
+<script defer src="/assets/fitme-ads.js?v=7"></script>
 <script>
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     var hostOk = location.hostname === 'perfectfitme.com' || location.hostname === 'www.perfectfitme.com';
     if (hostOk) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/sw.js?v=6').catch(function () {});
+        navigator.serviceWorker.register('/sw.js?v=7').catch(function () {});
         try {
           if (navigator.serviceWorker.controller) {
             navigator.serviceWorker.getRegistrations().then(function (regs) {
