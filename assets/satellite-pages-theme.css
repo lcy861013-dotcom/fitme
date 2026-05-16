@@ -4,6 +4,34 @@
  * consent-init.js가 localStorage fitme_theme으로 data-theme을 먼저 설정합니다.
  */
 
+/* ─── 공통: data-theme=dark 기본값을 토큰으로 강제 (인라인 :root 위에서 일관 보장) ─── */
+html[data-theme="dark"] {
+  --bg: #0f0e0d;
+  --surface: #161412;
+  --card: #1c1a18;
+  --text: #e0dcd8;
+  --muted: #8b8178;
+  --border: #2a2724;
+  --accent: #d4a84b;
+  --prose: #d0d0d0;
+}
+
+html[data-theme="dark"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] li,
+html[data-theme="dark"] .step-desc {
+  color: var(--prose);
+}
+
+html[data-theme="dark"] .tip,
+html[data-theme="dark"] .highlight {
+  color: #ccc;
+}
+
 [data-theme="light"] {
   --bg: #f4f2ee;
   --surface: #ffffff;
