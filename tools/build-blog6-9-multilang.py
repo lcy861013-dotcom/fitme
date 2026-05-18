@@ -265,99 +265,18 @@ EDITORIAL_PT = (
     '<a href="/how-it-works.html" style="color:var(--accent);">Como funciona</a></p>'
 )
 
+_tce_spec = importlib.util.spec_from_file_location(
+    "tce", ROOT / "tools" / "thin_content_expand.py"
+)
+tce = importlib.util.module_from_spec(_tce_spec)
+_tce_spec.loader.exec_module(tce)
+
 EXPAND_JA = {
-    "capsule-5-basics": dedent("""
-  <p class="lead-answer"><strong>5着が互いに3着以上と組み合わせられれば、スニーカーとローファー2足で平日7コーデが可能です。</strong> 白T・黒ストレート・デニムジャケット・ベージュチノ・ライトワイドデニムから始め、肩縫いと股上を先に合わせてください。</p>
-  <h2>なぜ5点で足りるのか</h2>
-  <p>カプセルワードローブの核心は <strong>相互互換性</strong> です。服の総数ではなく、1着あたりの組み合わせ数がコーデの上限を決めます。</p>
-  <p>日本の既製服は平均体型向けのパターンが多く、肩幅・ヒップ・股下でズレが出やすいです。FITMEでSHRと脚比率を把握してから5点を選ぶと、同じリストでも似合うシルエットが変わります。</p>
-  <h2>5つの基本ピースと月〜金</h2>
-  <p>① 白クルーネックT ② 黒ストレート ③ ライトデニムジャケット ④ ベージュチノ ⑤ ライトワイドデニム。月：白×黒×ローファー、火：デニム×チノ、水：ワイドは前ハーフタック、木：黒トーンオントーン＋デニム、金：チノ×白T。</p>
-  <h2>体型別</h2>
-  <p>逆三角：下ダーク・ワイド、上Vネック。洋ナシ：下ダーク、上に肩の構造。長方形：ハイライズ＋イン。</p>
-  <div class="tip">💡 週末コーデ等の完全版は <a href="/blog/blog6-en" style="color:var(--accent);">English capsule guide</a>（本記事は日本向け独自版）。</div>
-  <div class="faq-block"><h3>5着で何コーデ？</h3><p>靴2足で平日7パターンが目安です。</p></div>
-""") + EDITORIAL_JA,
-    "proportion-not-weight": dedent("""
-  <p class="lead-answer"><strong>同じ体重でも肩・腰・脚の比率が違えば、似合う服は正反対になります。</strong> BMIよりSHR・WHR・脚比率を優先してください。</p>
-  <h2>体重計の落とし穴</h2>
-  <p>身長・体重が同じでも、肩÷ヒップ、脚÷身長が違えばトップスの肩幅、パンツのライズ、丈は真逆です。比率がシルエットの設計図です。</p>
-  <h2>同じBMI、違うシルエット</h2>
-  <p>肩が広くヒップが細い人は下にボリューム、ヒップが広い人はハイライズと上の構造 — 体重計の数字は同じでも店頭の正解サイズは別です。</p>
-  <h2>測るべき3比率と手順</h2>
-  <p>SHR、WHR、脚比率（股下÷身長）。メジャーでウエスト・ヒップ・肩幅を測り、FITMEで推定も可能。オンラインはサイズ表の肩・ヒップ列を先に比較。</p>
-  <h2>再計測</h2>
-  <p>3〜6ヶ月ごと、または体型変化後。「同じサイズなのに合わない」は比率の変化が原因のことが多いです。</p>
-  <div class="tip">💡 <a href="/blog/ja/taikei-fuku-erabikata" style="color:var(--accent);">体型別ガイド</a> · <a href="/blog/blog7-en" style="color:var(--accent);">English guide</a> · <a href="/how-it-works.html" style="color:var(--accent);">ツールの仕組み</a></div>
-  <motion class="faq-block"><h3>BMIは使わないの？</h3><p>健康参考にはなりますが、服のフィットは比率で決まります。</p></motion>
-""").replace('<motion class="faq-block">', '<div class="faq-block">').replace("</motion>", "</div>") + EDITORIAL_JA,
-    "whr-clothing-fit": dedent("""
-  <p class="lead-answer"><strong>WHR（最細ウエスト÷最大ヒップ）は、パンツがヒップで締まりウエストが空く理由を1数字で説明します。</strong> 0.65〜0.85のレンジごとに股上とシルエットを変えてください。</p>
-  <h2>測り方</h2>
-  <p>朝、下着のみで測定。例：68÷95≒0.72。同じウエストサイズでもヒップが違えばWHRは変わります。</p>
-  <h2>レンジ別スタイル</h2>
-  <p>0.65–0.75：ベルト・タックイン・ラップ。0.75–0.85：既製と相性が良い。0.85+：ハイウエスト、Aライン、縦の色分け。</p>
-  <h2>サイズ選び</h2>
-  <p>ヒップに合わせてサイズを取り、ウエストは補正が定番。レビューで「ウエストだけ大きい」はWHRが想定より高いサインです。</p>
-  <motion class="tip">💡 <a href="/blog/ja/pear-styling" style="color:var(--accent);">洋ナシガイド</a> · <a href="/blog/blog8-en" style="color:var(--accent);">WHR guide (EN)</a></motion>
-  <div class="faq-block"><h3>理想のWHRは？</h3><p>服では「あなたの数値に合う股上・シルエット」を探すことが目的です。</p></div>
-""").replace('<motion class="tip">', '<div class="tip">').replace("</motion>", "</div>") + EDITORIAL_JA,
-    "shoulder-fit-guide": dedent("""
-  <p class="lead-answer"><strong>肩の縫い目が肩峰（アクロミオン）に乗らない服は、袖や胴を直しても崩れます。</strong> 肩を最優先にサイズ選びを。</p>
-  <h2>肩がアンカーになる理由</h2>
-  <p>既製服のパターンは肩幅から切られます。肩が合えば袖・胴は直せる — 逆はほぼ不可能です。</p>
-  <h2>肩幅別</h2>
-  <p>広肩：Vネック・ラグラン。狭肩：構築的ブレザー・ボートネック。標準：股上と丈で調整。</p>
-  <h2>オンライン・店頭</h2>
-  <p>サイズ表の「肩」列を最初に比較。試着は肩の縫い目→胸→ウエストの順。</p>
-  <div class="tip">💡 <a href="/blog/blog21-en" style="color:var(--accent);">肩幅セルフ計測（英語）</a></div>
-  <div class="faq-block"><h3>肩だけ直せる？</h3><p>軽微なずれのみ。基本は肩が合うサイズを選ぶこと。</p></div>
-""") + EDITORIAL_JA,
+    k: fix_body_typos(v) + EDITORIAL_JA for k, v in tce.THIN_JA.items()
 }
-
 EXPAND_PT = {
-    "guarda-roupa-capsula-5-pecas": dedent("""
-  <p class="lead-answer"><strong>Cinco peças compatíveis + dois sapatos cobrem a semana de trabalho.</strong> Camiseta branca, calça preta reta, jaqueta jeans, chino bege, jeans wide claro — confira ombro e cintura antes de comprar.</p>
-  <h2>Compatibilidade cruzada</h2>
-  <p>Cada peça combina com pelo menos três outras. Armários grandes geram menos looks úteis que um cápsula bem escolhido.</p>
-  <h2>Segunda a sexta (exemplos)</h2>
-  <p>Seg: branco + preto + loafer. Ter: jaqueta jeans + chino + tênis. Qua: jeans wide com barra na frente. Qui: preto tom sobre tom + jaqueta. Sex: chino + camiseta leve.</p>
-  <h2>Por proporção</h2>
-  <p>Ombros largos: calça estruturada escura, decote V. Pera: parte de baixo escura, blusa com estrutura no ombro. Retângulo: cintura alta e top por dentro.</p>
-  <div class="tip">💡 <a href="/blog/blog6-en" style="color:var(--accent);">English capsule guide</a> — versão PT própria para o público lusófono.</div>
-""") + EDITORIAL_PT,
-    "proporcao-importa-mais-que-peso": dedent("""
-  <p class="lead-answer"><strong>Proporção define o caimento — peso sozinho não.</strong> SHR, WHR e perna-tronco antes do BMI.</p>
-  <h2>A armadilha da balança</h2>
-  <p>Duas pessoas com o mesmo peso podem precisar de silhuetas opostas se ombro-quadril e perna-tronco forem diferentes.</p>
-  <h2>Três razões essenciais</h2>
-  <p>Ombro÷quadril (SHR), cintura÷quadril (WHR), entreperna÷altura. Use FITME antes de comprar online e compare colunas ombro/quadril na tabela.</p>
-  <h2>Reavalie a cada 3–6 meses</h2>
-  <p>Treino e mudança de peso alteram proporções mais que o número na balança sugere.</p>
-  <div class="tip">💡 <a href="/blog/pt/como-se-vestir-tipo-de-corpo" style="color:var(--accent);">Tipos de corpo</a> · <a href="/blog/blog7-en" style="color:var(--accent);">English guide</a> · <a href="/how-it-works.html" style="color:var(--accent);">Como funciona</a></div>
-""") + EDITORIAL_PT,
-    "whr-e-caimento": dedent("""
-  <p class="lead-answer"><strong>WHR (cintura fina ÷ quadril largo) explica calça apertada no quadril e folgada na cintura.</strong></p>
-  <h2>Como medir</h2>
-  <p>De manhã, com roupa íntima. Cintura no ponto mais fino ÷ quadril no ponto mais largo.</p>
-  <h2>Como vestir por faixa</h2>
-  <p>WHR baixo: cintura marcada, cinto, vestido envelope. WHR alto: cós alto, linha A, blocos verticais. Evite skinny de cós baixo se o quadril é dominante.</p>
-  <h2>Tamanho</h2>
-  <p>Compre pelo quadril; ajuste cintura no alfaiate. Avaliações “cintura grande” podem indicar WHR acima do padrão da marca.</p>
-  <div class="tip">💡 <a href="/blog/pt/corpo-pera-como-vestir" style="color:var(--accent);">Corpo pera</a> · <a href="/blog/blog8-en" style="color:var(--accent);">WHR guide (EN)</a></div>
-""") + EDITORIAL_PT,
-    "ombro-e-caimento": dedent("""
-  <p class="lead-answer"><strong>A costura do ombro deve cair no acrômio — se errar, manga e corpo não salvam o look.</strong></p>
-  <h2>Por que ombro é âncora</h2>
-  <p>Modelagem parte do ombro. Costura caída = manga longa e visual desleixado. Peito e cintura o alfaiate ajusta depois.</p>
-  <h2>Por tipo</h2>
-  <p>Ombros largos: decote V, raglan. Estreitos: blazer estruturado, gola barco. Médios: quase tudo funciona.</p>
-  <h2>Compras online</h2>
-  <p>Compare a coluna “ombro” primeiro. “Ombro largo” nas reviews pode ser troca de marca, não só tamanho.</p>
-  <div class="tip">💡 <a href="/blog/blog21-en" style="color:var(--accent);">Medir ombros (EN)</a></div>
-""") + EDITORIAL_PT,
+    k: fix_body_typos(v) + EDITORIAL_PT for k, v in tce.THIN_PT.items()
 }
-
 
 def apply_expansions(posts: list, expansions: dict) -> list:
     return [

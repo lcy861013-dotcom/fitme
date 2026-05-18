@@ -141,6 +141,9 @@ h1{{font-family:'Bebas Neue','Noto Sans JP',sans-serif;font-size:clamp(28px,6vw,
 h2{{font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:19px;font-weight:700;margin:32px 0 12px;color:var(--text);}}
 p{{font-size:15px;line-height:1.95;color:#d0d0d0;margin-bottom:18px;}}
 .lead-answer{{font-size:16px;line-height:1.9;margin-bottom:24px;padding:16px 18px;background:var(--card);border-radius:10px;border:1px solid var(--border);}}
+.edition-note{{font-size:14px;line-height:1.75;color:#c8c4c0;background:rgba(212,168,75,0.06);border:1px solid var(--border);padding:14px 16px;border-radius:10px;margin-bottom:28px;}}
+.faq-block{{margin:28px 0;}}
+.faq-block h3{{font-size:16px;font-weight:700;margin:18px 0 8px;}}
 .faq-block h3{{font-size:16px;font-weight:700;margin:20px 0 8px;color:var(--text);}}
 .tip{{background:rgba(232,255,71,0.07);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.8;margin:24px 0;color:#ccc;}}
 .cta{{margin-top:56px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}}
