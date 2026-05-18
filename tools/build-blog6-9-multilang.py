@@ -400,22 +400,6 @@ def write_posts(lang: str, locale: str, posts: list, nav, footer, cta, index_met
         print(f"  wrote {out.relative_to(ROOT)}")
 
 
-SITE_ABOUT = {
-    "ja": (
-        '<div class="site-about"><p><strong>FITMEブログ</strong>は体型比率と服のフィットに特化した'
-        "独自ガイドです。英語記事が最も詳しい版で、日本語記事は国内の既製服・サイズ感を踏まえた編集版です。"
-        '<a href="/editorial-standards.html">コンテンツ基準</a> · '
-        '<a href="/how-it-works.html">無料診断ツール</a></p></div>'
-    ),
-    "pt": (
-        '<div class="site-about"><p><strong>FITME Blog</strong> publica guias originais sobre proporção e caimento. '
-        "Artigos em português trazem notas para o mercado lusófono; versões em inglês têm mais detalhe quando indicado. "
-        '<a href="/editorial-standards.html">Padrões editoriais</a> · '
-        '<a href="/how-it-works.html">Ferramenta gratuita</a></p></div>'
-    ),
-}
-
-
 def rebuild_index(lang: str, locale: str, all_posts: list, nav, footer, index_meta):
     idx = mb.index_page(
         lang=lang,
@@ -429,7 +413,7 @@ def rebuild_index(lang: str, locale: str, all_posts: list, nav, footer, index_me
         footer_text=footer,
         section_label=index_meta["section_label"],
         other_lang_links=index_meta["other_lang_links"],
-        site_about_html=SITE_ABOUT.get(lang, ""),
+        site_about_html=mb.SITE_ABOUT_HTML.get(lang, ""),
     )
     path = ROOT / "blog" / lang / "index.html"
     path.write_text(idx, encoding="utf-8")

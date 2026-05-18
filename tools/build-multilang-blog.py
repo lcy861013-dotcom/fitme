@@ -22,13 +22,55 @@ SITE = "https://perfectfitme.com"
 
 # -------------------- Shared template --------------------
 
+FOOTER_LINKS = (
+    '<a href="/privacy.html" style="color:var(--muted);">Privacy</a> · '
+    '<a href="/terms.html" style="color:var(--muted);">Terms</a> · '
+    '<a href="/contact.html" style="color:var(--muted);">Contact</a> · '
+    '<a href="/about.html" style="color:var(--muted);">About</a> · '
+    '<a href="/editorial-standards.html" style="color:var(--muted);">Editorial</a> · '
+    '<a href="/how-it-works.html" style="color:var(--muted);">How it works</a>'
+)
+
+EDITORIAL_NOTE = {
+    "ja": (
+        '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
+        "編集：FITME · <a href=\"/about.html\" style=\"color:var(--accent);\">運営</a> · "
+        "<a href=\"/editorial-standards.html\" style=\"color:var(--accent);\">コンテンツ基準</a> · "
+        "<a href=\"/how-it-works.html\" style=\"color:var(--accent);\">ツールの仕組み</a></p>"
+    ),
+    "pt": (
+        '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
+        'Editorial FITME · <a href="/about.html" style="color:var(--accent);">Sobre</a> · '
+        '<a href="/editorial-standards.html" style="color:var(--accent);">Padrões</a> · '
+        '<a href="/how-it-works.html" style="color:var(--accent);">Como funciona</a></p>'
+    ),
+}
+
+SITE_ABOUT_HTML = {
+    "ja": (
+        '<div class="site-about"><p><strong>FITMEブログ</strong>は体型比率と服のフィットに特化した'
+        "独自ガイドです。英語記事が最も詳しい版で、日本語記事は国内の既製服・サイズ感を踏まえた編集版です。"
+        '<a href="/editorial-standards.html">コンテンツ基準</a> · '
+        '<a href="/how-it-works.html">無料診断ツール</a> · '
+        '<a href="/blog/">English/Korean guides</a></p></div>'
+    ),
+    "pt": (
+        '<div class="site-about"><p><strong>FITME Blog</strong> publica guias originais sobre proporção e caimento. '
+        "Artigos em português trazem notas para o mercado lusófono; versões em inglês têm mais detalhe quando indicado. "
+        '<a href="/editorial-standards.html">Padrões editoriais</a> · '
+        '<a href="/how-it-works.html">Ferramenta gratuita</a> · '
+        '<a href="/blog/">Guias EN/KO</a></p></div>'
+    ),
+}
+
+
 def page(*, lang: str, locale_code: str, slug: str, title: str, desc: str,
          tag: str, h1: str, meta_label: str, date: str, hreflang_alts: dict[str, str],
          thumb_path: str, thumb_alt: str, body_html: str,
          related: list[tuple[str, str]], cta_title: str, cta_sub: str,
          cta_btn: str, breadcrumb_home: str, breadcrumb_blog: str,
          breadcrumb_post: str, header_nav: list[tuple[str, str]],
-         footer_text: str) -> str:
+         footer_text: str, editorial_html: str = "") -> str:
     """Render a full blog post HTML matching the existing satellite template."""
     canonical = f"{SITE}/blog/{lang}/{slug}"
     hreflang_links = "\n".join(
@@ -151,6 +193,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
   <img src="{thumb_path}" alt="{thumb_alt}" class="guide-img">
 
 {body_html}
+{editorial_html}
 
   <div class="related">
     <div class="related-title">{breadcrumb_blog}</div>
@@ -164,7 +207,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
     <a href="/?utm_source=blog&utm_medium=cta&utm_campaign=analysis_{lang}#analysis" class="cta-btn">{cta_btn}</a>
   </div>
 </main>
-<footer><p>{footer_text} · <a href="/privacy.html" style="color:var(--muted);">Privacy</a> · <a href="/terms.html" style="color:var(--muted);">Terms</a> · <a href="/contact.html" style="color:var(--muted);">Contact</a> · <a href="/about.html" style="color:var(--muted);">About</a></p></footer>
+<footer><p>{footer_text} · {FOOTER_LINKS}</p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 <script defer src="/assets/fitme-share.js?v=7"></script>
 </body>
@@ -280,7 +323,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
 {cards}
   </div>
 </main>
-<footer><p>{footer_text} · <a href="/privacy.html" style="color:var(--muted);">Privacy</a> · <a href="/terms.html" style="color:var(--muted);">Terms</a> · <a href="/contact.html" style="color:var(--muted);">Contact</a> · <a href="/about.html" style="color:var(--muted);">About</a></p></footer>
+<footer><p>{footer_text} · {FOOTER_LINKS}</p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>
@@ -293,7 +336,9 @@ JP_NAV = [
     ("/#why-fitme", "計測ガイド"),
     ("/#analysis", "体型分析"),
     ("/blog/ja/", "ブログ"),
+    ("/how-it-works.html", "使い方"),
     ("/about.html", "FITMEとは"),
+    ("/contact.html", "連絡"),
 ]
 JP_FOOTER = "© 2026 FITME. All rights reserved."
 JP_CTA = dict(
@@ -552,7 +597,9 @@ PT_NAV = [
     ("/#why-fitme", "Como medir"),
     ("/#analysis", "Análise corporal"),
     ("/blog/pt/", "Blog"),
+    ("/how-it-works.html", "Como funciona"),
     ("/about.html", "Sobre"),
+    ("/contact.html", "Contato"),
 ]
 PT_FOOTER = "© 2026 FITME. Todos os direitos reservados."
 PT_CTA = dict(
@@ -860,6 +907,7 @@ def build_lang(lang: str, locale_code: str, posts: list[dict],
             breadcrumb_home="Home", breadcrumb_blog=index_meta["section_label"],
             breadcrumb_post=post["breadcrumb_post"],
             header_nav=nav, footer_text=footer,
+            editorial_html=EDITORIAL_NOTE.get(lang, ""),
         )
         path = out_dir / f"{slug}.html"
         path.write_text(html, encoding="utf-8")
@@ -872,6 +920,7 @@ def build_lang(lang: str, locale_code: str, posts: list[dict],
         posts=posts, header_nav=nav, footer_text=footer,
         section_label=index_meta["section_label"],
         other_lang_links=index_meta["other_lang_links"],
+        site_about_html=SITE_ABOUT_HTML.get(lang, ""),
     )
     (out_dir / "index.html").write_text(idx_html, encoding="utf-8")
     written.append((out_dir / "index.html").relative_to(ROOT))
