@@ -10,6 +10,10 @@ SITE = "https://perfectfitme.com"
 MAP: dict[int, dict[str, str | None]] = {
     1: {"ja": "pants-fit-guide", "pt": "guia-modelagem-calcas"},
     3: {"ja": "golden-ratio-fuku", "pt": None},
+    6: {"ja": "capsule-5-basics", "pt": "guarda-roupa-capsula-5-pecas"},
+    7: {"ja": "proportion-not-weight", "pt": "proporcao-importa-mais-que-peso"},
+    8: {"ja": "whr-clothing-fit", "pt": "whr-e-caimento"},
+    9: {"ja": "shoulder-fit-guide", "pt": "ombro-e-caimento"},
     10: {"ja": None, "pt": "como-parecer-mais-alta"},
     12: {"ja": "find-body-type-data", "pt": None},
     13: {"ja": "taikei-fuku-erabikata", "pt": "como-se-vestir-tipo-de-corpo"},

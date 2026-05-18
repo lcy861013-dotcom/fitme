@@ -20,6 +20,21 @@ Languages: Korean (primary), English, Japanese (`/blog/ja/`), Portuguese (`/blog
 - Atom feed: https://perfectfitme.com/feed.xml
 - Sitemap: https://perfectfitme.com/sitemap.xml
 
+## Japanese guides (blog/ja/)
+- Capsule 5 basics: https://perfectfitme.com/blog/ja/capsule-5-basics
+- Proportion vs weight: https://perfectfitme.com/blog/ja/proportion-not-weight
+- WHR and fit: https://perfectfitme.com/blog/ja/whr-clothing-fit
+- Shoulder fit: https://perfectfitme.com/blog/ja/shoulder-fit-guide
+- Pants fit: https://perfectfitme.com/blog/ja/pants-fit-guide
+- Full index: https://perfectfitme.com/blog/ja/
+
+## Portuguese guides (blog/pt/)
+- Capsule 5 pieces: https://perfectfitme.com/blog/pt/guarda-roupa-capsula-5-pecas
+- Proportion vs weight: https://perfectfitme.com/blog/pt/proporcao-importa-mais-que-peso
+- WHR and fit: https://perfectfitme.com/blog/pt/whr-e-caimento
+- Shoulder fit: https://perfectfitme.com/blog/pt/ombro-e-caimento
+- Full index: https://perfectfitme.com/blog/pt/
+
 ## Featured English guides (GEO-optimized: answer-first + FAQ)
 - Pants fit (slim / straight / wide / tapered): https://perfectfitme.com/blog/blog1-en
 - Wide feet & shoe width (E, 2E, 4E): https://perfectfitme.com/blog/blog2-en
@@ -28,7 +43,7 @@ Languages: Korean (primary), English, Japanese (`/blog/ja/`), Portuguese (`/blog
 - Color placement & body proportion: https://perfectfitme.com/blog/blog5-en
 
 ## More English topics (blog6–blog25)
-Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — see https://perfectfitme.com/blog/?lang=en for the full list.
+Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — all blog6–blog25-en include answer-first leads and FAQPage schema (2026-05-18). Full list: https://perfectfitme.com/blog/?lang=en
 
 ## Korean flagship articles
 Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–blog19). Use hreflang alternates on each page when citing multilingual content.
@@ -52,4 +67,4 @@ Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–
 https://perfectfitme.com/contact.html · lcy861013@gmail.com
 
 ## Last updated
-2026-05-18
+2026-05-19
