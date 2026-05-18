@@ -31,5 +31,8 @@ Allow: /
 
 Sitemap: https://perfectfitme.com/sitemap.xml
 
+# Machine-readable site summary for AI crawlers
+# https://perfectfitme.com/llms.txt
+
 # Atom feed (blog updates)
 # https://perfectfitme.com/feed.xml

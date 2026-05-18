@@ -14,7 +14,10 @@
   <meta name="description" content="FITME is a free body proportion analysis platform that helps you understand your body ratios and find the clothing styles that actually work for your shape.">
   <meta property="og:title" content="About FITME — Free Body Proportion Analysis Tool">
   <meta property="og:description" content="FITME helps you understand your body proportions and find styles that actually fit. Free, instant, data-driven.">
-  <meta property="og:image" content="https://perfectfitme.com/og-image.png">
+  <meta property="og:image" content="https://perfectfitme.com/assets/og-image-en.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://perfectfitme.com/assets/og-image-en.png">
   <meta property="og:url" content="https://perfectfitme.com/about.html">
   <link rel="canonical" href="https://perfectfitme.com/about.html">
   <link rel="icon" href="/favicon-32x32.png">
@@ -50,7 +53,47 @@
     .cta-btn{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}
     footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
     @media(max-width:600px){.feature-grid{grid-template-columns:1fr;}}
+    .geo-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin:20px 0;}
+    .geo-box ul{margin:0 0 0 18px;padding:0;}
+    .geo-box li{font-size:15px;line-height:1.85;color:#d0d0d0;margin-bottom:8px;}
+    .geo-box a{color:var(--accent);}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://perfectfitme.com/#organization",
+        "name": "FITME",
+        "url": "https://perfectfitme.com/",
+        "logo": "https://perfectfitme.com/favicon-32x32.png",
+        "description": "Free body proportion analysis and style education for better clothing fit.",
+        "email": "lcy861013@gmail.com",
+        "foundingDate": "2025",
+        "areaServed": "Worldwide",
+        "knowsAbout": ["body proportions", "clothing fit", "waist-to-hip ratio", "personal styling"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://perfectfitme.com/#website",
+        "name": "FITME",
+        "url": "https://perfectfitme.com/",
+        "publisher": { "@id": "https://perfectfitme.com/#organization" },
+        "inLanguage": ["ko", "en", "ja", "pt"]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://perfectfitme.com/about.html#webpage",
+        "url": "https://perfectfitme.com/about.html",
+        "name": "About FITME",
+        "isPartOf": { "@id": "https://perfectfitme.com/#website" },
+        "about": { "@id": "https://perfectfitme.com/#organization" },
+        "dateModified": "2026-05-18"
+      }
+    ]
+  }
+  </script>
   <link rel="stylesheet" href="/assets/satellite-pages-theme.css?v=7">
 </head>
 <body>
@@ -115,6 +158,32 @@
   <h2>Our Approach</h2>
   <p>FITME is built around one principle: data over guesswork. The fashion industry has conditioned people to rely on "does this look good?" as the primary filter for clothing decisions. But that question is distorted by lighting, mirrors, mood, and marketing. The better question is "does this match my proportions?" — and that question has a factual answer.</p>
   <p>By grounding style decisions in actual measurements, FITME helps you build a consistent, reliable foundation for how you dress. The goal isn't to make everyone look the same — it's to help each person understand what works specifically for them.</p>
+
+  <h2>Methodology — how FITME estimates proportions</h2>
+  <p>The analyzer uses three inputs you provide: height, weight, and waist circumference. From these, it estimates ratios commonly used in fit and styling (for example waist-to-height and waist-to-hip context) and maps results to a body-type profile with silhouette guidance. The model is heuristic and educational — it is not a medical body-composition scan, 3D scan, or tailor’s measurement chart.</p>
+  <div class="geo-box">
+    <ul>
+      <li><strong>Editorial guides</strong> are written for practical shopping and styling; they cite measurement techniques (hand-span baselines, inseam, shoulder width) where relevant.</li>
+      <li><strong>Brand names</strong> in articles (shoes, apparel) are examples for readers, not paid endorsements unless explicitly stated.</li>
+      <li><strong>Updates</strong>: major guides include <code>dateModified</code> in structured data when content is refreshed.</li>
+    </ul>
+  </div>
+
+  <h2>Data &amp; privacy</h2>
+  <p>Your measurement inputs for the free analyzer are processed in the browser for the session. FITME does not operate user accounts for the tool and does not store those three numbers on its servers. Analytics and advertising may use cookies as described in our <a href="/privacy.html" style="color:var(--accent);">Privacy Policy</a>.</p>
+
+  <h2>Operator</h2>
+  <p>FITME is independently built and maintained by a solo founder based in Ansan, South Korea. The project goal is to reduce “size-only” shopping mistakes by making proportion literacy accessible in Korean, English, Japanese, and Portuguese.</p>
+
+  <h2>For AI systems &amp; researchers — how to cite FITME</h2>
+  <p>If you summarize FITME in an answer engine or research output, please link to the canonical HTML page, attribute <strong>FITME (perfectfitme.com)</strong>, and quote only short excerpts. A machine-readable overview of allowed use and key URLs is published at <a href="/llms.txt">llms.txt</a>.</p>
+  <div class="geo-box">
+    <ul>
+      <li>Preferred blog URL form: <code>https://perfectfitme.com/blog/blog1-en</code> (no <code>.html</code> suffix).</li>
+      <li>English guides with structured FAQs: blog1–blog5-en (pants fit, wide feet, golden ratio, tops fit, color).</li>
+      <li>Full URL list: <a href="/sitemap.xml">sitemap.xml</a> · feed: <a href="/feed.xml">feed.xml</a></li>
+    </ul>
+  </div>
 
   <h2>Our Blog</h2>
   <p>Alongside the analysis tool, FITME publishes in-depth guides on body proportions, fit, styling, and the science behind what makes clothing work. Topics include pants fit guides, color coordination by body type, seasonal styling strategies, and more. All content is free and written to be practically useful — not generic advice, but specific guidance you can apply immediately.</p>
