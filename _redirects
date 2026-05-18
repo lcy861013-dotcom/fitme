@@ -6,5 +6,8 @@
 /wp-content/* https://perfectfitme.com/ 302
 /wp-includes/* https://perfectfitme.com/ 302
 
+# Canonical demo page URL
+/demo-video /demo-video.html 301
+
 # Browsers default favicon path → actual asset
 /favicon.ico /favicon-32x32.png 302

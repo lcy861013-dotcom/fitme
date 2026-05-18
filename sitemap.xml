@@ -12,14 +12,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/"/>
   </url>
   <url>
-    <loc>https://perfectfitme.com/demo-video</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://perfectfitme.com/demo-video.html</loc>
+    <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <video:video>
       <video:thumbnail_loc>https://perfectfitme.com/assets/og-image-en.png</video:thumbnail_loc>
       <video:title>FITME — Free Body Proportion Analysis Demo</video:title>
-      <video:description>See how FITME analyzes your body proportions in under 60 seconds. Enter 3 measurements to get your FITME DNA score and personalized style recommendations.</video:description>
+      <video:description>Short demo: how FITME estimates body proportions in about one minute from three measurements. Educational tool — not medical advice or a tailoring service.</video:description>
       <video:content_loc>https://perfectfitme.com/demo-v2.mp4</video:content_loc>
       <video:duration>60</video:duration>
       <video:publication_date>2026-05-02T00:00:00+00:00</video:publication_date>

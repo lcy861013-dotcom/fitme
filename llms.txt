@@ -1,6 +1,9 @@
 # FITME (perfectfitme.com)
 
-> Free body proportion analysis and evidence-based style guides. Measurements stay in your browser — nothing is stored on our servers.
+> Free body proportion analysis and evidence-based style guides. Measurements stay in your browser — nothing is stored on our servers. Not a medical, 3D-scan, or professional tailoring service.
+
+## Publisher / spam policy
+FITME follows Google AdSense publisher rules including [Spam policies for Google web search](https://support.google.com/publisherpolicies/answer/11035931): no keyword stuffing, no misleading functionality claims, no doorway pages. Details: https://perfectfitme.com/editorial-standards.html
 
 ## What FITME is
 FITME helps people choose clothing that matches their body proportions, not just size labels (S/M/L). The main tool uses height, weight, and waist to estimate ratios (WHR, leg-to-torso, body-type class) and suggest silhouettes. Educational articles cover fit science, measurement how-tos, and styling by proportion.
