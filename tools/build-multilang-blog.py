@@ -161,7 +161,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
     <a href="/?utm_source=blog&utm_medium=cta&utm_campaign=analysis_{lang}#analysis" class="cta-btn">{cta_btn}</a>
   </div>
 </main>
-<footer><p>{footer_text} · <a href="/privacy.html" style="color:var(--muted);">Privacy</a></p></footer>
+<footer><p>{footer_text} · <a href="/privacy.html" style="color:var(--muted);">Privacy</a> · <a href="/terms.html" style="color:var(--muted);">Terms</a> · <a href="/contact.html" style="color:var(--muted);">Contact</a> · <a href="/about.html" style="color:var(--muted);">About</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 <script defer src="/assets/fitme-share.js?v=7"></script>
 </body>
@@ -272,7 +272,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
 {cards}
   </div>
 </main>
-<footer><p>{footer_text} · <a href="/privacy.html" style="color:var(--muted);">Privacy</a></p></footer>
+<footer><p>{footer_text} · <a href="/privacy.html" style="color:var(--muted);">Privacy</a> · <a href="/terms.html" style="color:var(--muted);">Terms</a> · <a href="/contact.html" style="color:var(--muted);">Contact</a> · <a href="/about.html" style="color:var(--muted);">About</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>
@@ -298,6 +298,9 @@ JP_CTA = dict(
 JP_POSTS = [
     {
         "n": 1,
+        "ko_slug": "blog13",
+        "en_slug": "blog13-en",
+        "pt_slug": "como-se-vestir-tipo-de-corpo",
         "slug": "taikei-fuku-erabikata",
         "title": "体型別の服の選び方 完全ガイド｜FITME",
         "desc": "洋ナシ・りんご・砂時計・長方形・逆三角の5体型別に、似合う服の選び方を体系化。無料の体型診断で自分の比率を60秒で把握。",
@@ -353,6 +356,8 @@ JP_POSTS = [
     },
     {
         "n": 2,
+        "ko_slug": "blog12",
+        "en_slug": "blog12-en",
         "slug": "find-body-type-data",
         "title": "データで本当の体型を見つける方法｜FITME",
         "desc": "「洋ナシ」「砂時計」などのラベルでなく、4つの実測値から自分の体型を判定する方法。FITME DNAスコアで60秒。",
@@ -395,6 +400,9 @@ JP_POSTS = [
     },
     {
         "n": 3,
+        "ko_slug": "blog18",
+        "en_slug": "blog18-en",
+        "pt_slug": "corpo-pera-como-vestir",
         "slug": "pear-styling",
         "title": "洋ナシ体型のための着こなしガイド｜FITME",
         "desc": "肩より腰が広い洋ナシ体型に似合うトップス・ボトム・アウター。視覚バランスを整える具体的なテクニックと、無料の体型診断。",
@@ -439,6 +447,9 @@ JP_POSTS = [
     },
     {
         "n": 4,
+        "ko_slug": "blog1",
+        "en_slug": "blog1-en",
+        "pt_slug": "guia-modelagem-calcas",
         "slug": "pants-fit-guide",
         "title": "パンツのシルエット完全ガイド｜FITME",
         "desc": "スキニー・ストレート・ワイド・テーパード、4つのパンツシルエットを体型と靴に合わせて選ぶ方法。日本人体型に最適化。",
@@ -485,6 +496,8 @@ JP_POSTS = [
     },
     {
         "n": 5,
+        "ko_slug": "blog3",
+        "en_slug": "blog3-en",
         "slug": "golden-ratio-fuku",
         "title": "ゴールデンレシオで似合う服を見つける方法｜FITME",
         "desc": "黄金比は美容整形の話だけではない。体の比率からシルエット・色・丈の最適解を導く具体的な方法とFITME DNAスコア。",
@@ -544,6 +557,9 @@ PT_CTA = dict(
 PT_POSTS = [
     {
         "n": 1,
+        "ko_slug": "blog13",
+        "en_slug": "blog13-en",
+        "ja_slug": "taikei-fuku-erabikata",
         "slug": "como-se-vestir-tipo-de-corpo",
         "title": "Como Se Vestir para Cada Tipo de Corpo — Guia Completo | FITME",
         "desc": "Pera, ampulheta, retângulo, maçã, triângulo invertido: o guia completo de como se vestir para cada tipo de corpo. Análise corporal grátis em 60 segundos.",
@@ -604,6 +620,9 @@ PT_POSTS = [
     },
     {
         "n": 2,
+        "ko_slug": "blog18",
+        "en_slug": "blog18-en",
+        "ja_slug": "pear-styling",
         "slug": "corpo-pera-como-vestir",
         "title": "Corpo Pera: Guia Completo de Como Se Vestir | FITME",
         "desc": "Como se vestir para corpo pera: blusas, calças, vestidos e jaquetas que equilibram ombros e quadril. Análise corporal grátis em 60 segundos.",
@@ -651,6 +670,8 @@ PT_POSTS = [
     },
     {
         "n": 3,
+        "ko_slug": "blog25",
+        "en_slug": "blog25-en",
         "slug": "whr-065-significado",
         "title": "WHR 0,65 — O Que Significa e Como Vestir | FITME",
         "desc": "WHR 0,65 é o índice cintura-quadril considerado ideal cientificamente. Entenda o que significa, como medir o seu e como vestir. Cálculo grátis.",
@@ -693,6 +714,9 @@ PT_POSTS = [
     },
     {
         "n": 4,
+        "ko_slug": "blog1",
+        "en_slug": "blog1-en",
+        "ja_slug": "pants-fit-guide",
         "slug": "guia-modelagem-calcas",
         "title": "Guia Completo de Modelagem de Calças: Skinny, Reta, Wide, Tapered | FITME",
         "desc": "Skinny, reta, wide leg ou tapered: o guia completo de modelagem de calças para cada tipo de corpo e cada sapato. Comprimentos, barras e ajustes.",
@@ -738,6 +762,8 @@ PT_POSTS = [
     },
     {
         "n": 5,
+        "ko_slug": "blog10",
+        "en_slug": "blog10-en",
         "slug": "como-parecer-mais-alta",
         "title": "Como Parecer Mais Alta(o): 5 Truques que Adicionam até 5 cm | FITME",
         "desc": "Cinco truques de styling que adicionam até 5 cm visualmente. Cintura alta, monocromia, comprimento certo da calça e mais. Para homens e mulheres.",
@@ -788,6 +814,24 @@ PT_POSTS = [
 
 # -------------------- Build --------------------
 
+def hreflang_alts_for(lang: str, slug: str, post: dict) -> dict[str, str]:
+    """Build full ko/en/ja/pt-BR/x-default chain from post metadata."""
+    alts: dict[str, str] = {
+        "ko": f"{SITE}/blog/{post['ko_slug']}",
+        "en": f"{SITE}/blog/{post['en_slug']}",
+        "x-default": f"{SITE}/blog/{post['en_slug']}",
+    }
+    if lang == "ja":
+        alts["ja"] = f"{SITE}/blog/ja/{slug}"
+    elif post.get("ja_slug"):
+        alts["ja"] = f"{SITE}/blog/ja/{post['ja_slug']}"
+    if lang == "pt":
+        alts["pt-BR"] = f"{SITE}/blog/pt/{slug}"
+    elif post.get("pt_slug"):
+        alts["pt-BR"] = f"{SITE}/blog/pt/{post['pt_slug']}"
+    return alts
+
+
 def build_lang(lang: str, locale_code: str, posts: list[dict],
                nav: list[tuple[str, str]], footer: str, cta: dict,
                index_meta: dict, header_nav_for_other_lang: list[tuple[str, str]]):
@@ -796,14 +840,7 @@ def build_lang(lang: str, locale_code: str, posts: list[dict],
     written = []
     for post in posts:
         slug = post["slug"]
-        other_alts = {
-            "en": f"{SITE}/blog/{post.get('en_canonical_slug', '')}"
-            if post.get("en_canonical_slug")
-            else None,
-            lang: f"{SITE}/blog/{lang}/{slug}",
-            "x-default": f"{SITE}/blog/blog{post['n']}-en",
-        }
-        hreflang_alts = {k: v for k, v in other_alts.items() if v}
+        hreflang_alts = hreflang_alts_for(lang, slug, post)
         html = page(
             lang=lang, locale_code=locale_code, slug=slug,
             title=post["title"], desc=post["desc"], tag=post["tag"],

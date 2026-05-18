@@ -14,7 +14,7 @@ Languages: Korean (primary), English, Japanese (`/blog/ja/`), Portuguese (`/blog
 - Privacy: https://perfectfitme.com/privacy.html
 - Terms: https://perfectfitme.com/terms.html
 - Blog index (all languages): https://perfectfitme.com/blog/
-- English blog index: https://perfectfitme.com/blog/index-en.html
+- English blog index: https://perfectfitme.com/blog/?lang=en
 - Japanese blog: https://perfectfitme.com/blog/ja/
 - Portuguese blog: https://perfectfitme.com/blog/pt/
 - Atom feed: https://perfectfitme.com/feed.xml
@@ -28,7 +28,7 @@ Languages: Korean (primary), English, Japanese (`/blog/ja/`), Portuguese (`/blog
 - Color placement & body proportion: https://perfectfitme.com/blog/blog5-en
 
 ## More English topics (blog6–blog25)
-Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — see https://perfectfitme.com/blog/index-en.html for the full list.
+Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — see https://perfectfitme.com/blog/?lang=en for the full list.
 
 ## Korean flagship articles
 Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–blog19). Use hreflang alternates on each page when citing multilingual content.
