@@ -176,7 +176,8 @@ def index_page(*, lang: str, locale_code: str, title: str, desc: str,
                page_title: str, page_sub: str, posts: list[dict],
                header_nav: list[tuple[str, str]],
                footer_text: str, section_label: str,
-               other_lang_links: list[tuple[str, str]]) -> str:
+               other_lang_links: list[tuple[str, str]],
+               site_about_html: str = "") -> str:
     """Render an index page for the language with cards for each post."""
     canonical = f"{SITE}/blog/{lang}/"
     nav_html = "\n    ".join(
@@ -239,6 +240,8 @@ main{{max-width:1100px;margin:0 auto;padding:48px 20px 80px;}}
 .page-title{{font-family:'Bebas Neue','Noto Sans JP',sans-serif;font-size:clamp(32px,6vw,48px);margin-bottom:8px;letter-spacing:1px;}}
 .page-sub{{font-size:15px;color:var(--muted);margin-bottom:40px;}}
 .lang-strip{{font-size:13px;color:var(--muted);margin:-24px 0 32px;}}
+.site-about{{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:32px;font-size:14px;line-height:1.85;color:#ccc;}}
+.site-about a{{color:var(--accent);}}
 .section-label{{font-size:11px;letter-spacing:3px;color:var(--accent);font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);}}
 .blog-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}}
 .blog-card{{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--text);transition:transform .2s,border-color .2s;display:flex;flex-direction:column;}}
@@ -271,6 +274,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
   <h1 class="page-title">{page_title}</h1>
   <div class="page-sub">{page_sub}</div>
   <div class="lang-strip">{other_html}</div>
+  {site_about_html}
   <div class="section-label">{section_label}</div>
   <div class="blog-grid">
 {cards}

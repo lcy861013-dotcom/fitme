@@ -255,12 +255,14 @@ def fix_body_typos(html: str) -> str:
 EDITORIAL_JA = (
     '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
     "編集：FITME · <a href=\"/about.html\" style=\"color:var(--accent);\">運営</a> · "
-    "<a href=\"/editorial-standards.html\" style=\"color:var(--accent);\">コンテンツ基準</a></p>"
+    "<a href=\"/editorial-standards.html\" style=\"color:var(--accent);\">コンテンツ基準</a> · "
+    "<a href=\"/how-it-works.html\" style=\"color:var(--accent);\">ツールの仕組み</a></p>"
 )
 EDITORIAL_PT = (
     '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
     'Editorial FITME · <a href="/about.html" style="color:var(--accent);">Sobre</a> · '
-    '<a href="/editorial-standards.html" style="color:var(--accent);">Padrões</a></p>'
+    '<a href="/editorial-standards.html" style="color:var(--accent);">Padrões</a> · '
+    '<a href="/how-it-works.html" style="color:var(--accent);">Como funciona</a></p>'
 )
 
 EXPAND_JA = {
@@ -279,49 +281,80 @@ EXPAND_JA = {
     "proportion-not-weight": dedent("""
   <p class="lead-answer"><strong>同じ体重でも肩・腰・脚の比率が違えば、似合う服は正反対になります。</strong> BMIよりSHR・WHR・脚比率を優先してください。</p>
   <h2>体重計の落とし穴</h2>
-  <p>身長・体重が同じでも、肩÷ヒップ、脚÷身長が違えばトップスの肩幅、パンツのライズ、丈は真逆です。</p>
-  <h2>測るべき3比率</h2>
-  <p>SHR（肩÷ヒップ）、WHR（ウエスト÷ヒップ）、脚比率（股下÷身長）。FITMEで60秒推定できます。</p>
-  <div class="tip">💡 <a href="/blog/blog7-en" style="color:var(--accent);">English proportion guide</a></div>
-""") + EDITORIAL_JA,
+  <p>身長・体重が同じでも、肩÷ヒップ、脚÷身長が違えばトップスの肩幅、パンツのライズ、丈は真逆です。比率がシルエットの設計図です。</p>
+  <h2>同じBMI、違うシルエット</h2>
+  <p>肩が広くヒップが細い人は下にボリューム、ヒップが広い人はハイライズと上の構造 — 体重計の数字は同じでも店頭の正解サイズは別です。</p>
+  <h2>測るべき3比率と手順</h2>
+  <p>SHR、WHR、脚比率（股下÷身長）。メジャーでウエスト・ヒップ・肩幅を測り、FITMEで推定も可能。オンラインはサイズ表の肩・ヒップ列を先に比較。</p>
+  <h2>再計測</h2>
+  <p>3〜6ヶ月ごと、または体型変化後。「同じサイズなのに合わない」は比率の変化が原因のことが多いです。</p>
+  <div class="tip">💡 <a href="/blog/ja/taikei-fuku-erabikata" style="color:var(--accent);">体型別ガイド</a> · <a href="/blog/blog7-en" style="color:var(--accent);">English guide</a> · <a href="/how-it-works.html" style="color:var(--accent);">ツールの仕組み</a></div>
+  <motion class="faq-block"><h3>BMIは使わないの？</h3><p>健康参考にはなりますが、服のフィットは比率で決まります。</p></motion>
+""").replace('<motion class="faq-block">', '<div class="faq-block">').replace("</motion>", "</div>") + EDITORIAL_JA,
     "whr-clothing-fit": dedent("""
-  <p class="lead-answer"><strong>WHRはパンツがヒップで締まりウエストが空く理由を1数字で説明します。</strong> 0.65〜0.85のレンジごとに股上とシルエットを変えてください。</p>
-  <h2>測り方とレンジ</h2>
-  <p>最細ウエスト÷最大ヒップ。0.65–0.75はウエストマーク、0.75–0.85は既製と相性良、0.85+はハイウエストとAライン。</p>
-  <p>ヒップサイズで取り、ウエストは補正が定番です。</p>
-  <div class="tip">💡 <a href="/blog/blog8-en" style="color:var(--accent);">WHR fit guide (EN)</a></div>
-""") + EDITORIAL_JA,
+  <p class="lead-answer"><strong>WHR（最細ウエスト÷最大ヒップ）は、パンツがヒップで締まりウエストが空く理由を1数字で説明します。</strong> 0.65〜0.85のレンジごとに股上とシルエットを変えてください。</p>
+  <h2>測り方</h2>
+  <p>朝、下着のみで測定。例：68÷95≒0.72。同じウエストサイズでもヒップが違えばWHRは変わります。</p>
+  <h2>レンジ別スタイル</h2>
+  <p>0.65–0.75：ベルト・タックイン・ラップ。0.75–0.85：既製と相性が良い。0.85+：ハイウエスト、Aライン、縦の色分け。</p>
+  <h2>サイズ選び</h2>
+  <p>ヒップに合わせてサイズを取り、ウエストは補正が定番。レビューで「ウエストだけ大きい」はWHRが想定より高いサインです。</p>
+  <motion class="tip">💡 <a href="/blog/ja/pear-styling" style="color:var(--accent);">洋ナシガイド</a> · <a href="/blog/blog8-en" style="color:var(--accent);">WHR guide (EN)</a></motion>
+  <div class="faq-block"><h3>理想のWHRは？</h3><p>服では「あなたの数値に合う股上・シルエット」を探すことが目的です。</p></div>
+""").replace('<motion class="tip">', '<div class="tip">').replace("</motion>", "</div>") + EDITORIAL_JA,
     "shoulder-fit-guide": dedent("""
-  <p class="lead-answer"><strong>肩の縫い目が肩峰に乗らない服は、袖や胴を直しても崩れます。</strong> 肩を最優先にサイズ選びを。</p>
-  <h2>肩がアンカー</h2>
-  <p>広肩：Vネック・ラグラン。狭肩：構築的ブレザー。標準：股上と丈で調整。</p>
+  <p class="lead-answer"><strong>肩の縫い目が肩峰（アクロミオン）に乗らない服は、袖や胴を直しても崩れます。</strong> 肩を最優先にサイズ選びを。</p>
+  <h2>肩がアンカーになる理由</h2>
+  <p>既製服のパターンは肩幅から切られます。肩が合えば袖・胴は直せる — 逆はほぼ不可能です。</p>
+  <h2>肩幅別</h2>
+  <p>広肩：Vネック・ラグラン。狭肩：構築的ブレザー・ボートネック。標準：股上と丈で調整。</p>
+  <h2>オンライン・店頭</h2>
+  <p>サイズ表の「肩」列を最初に比較。試着は肩の縫い目→胸→ウエストの順。</p>
   <div class="tip">💡 <a href="/blog/blog21-en" style="color:var(--accent);">肩幅セルフ計測（英語）</a></div>
+  <div class="faq-block"><h3>肩だけ直せる？</h3><p>軽微なずれのみ。基本は肩が合うサイズを選ぶこと。</p></div>
 """) + EDITORIAL_JA,
 }
 
 EXPAND_PT = {
     "guarda-roupa-capsula-5-pecas": dedent("""
-  <p class="lead-answer"><strong>Cinco peças compatíveis + dois sapatos cobrem a semana.</strong> Camiseta branca, calça preta, jaqueta jeans, chino bege, jeans wide claro.</p>
+  <p class="lead-answer"><strong>Cinco peças compatíveis + dois sapatos cobrem a semana de trabalho.</strong> Camiseta branca, calça preta reta, jaqueta jeans, chino bege, jeans wide claro — confira ombro e cintura antes de comprar.</p>
   <h2>Compatibilidade cruzada</h2>
-  <p>Cada peça combina com pelo menos três outras. Seg–Sex: varie camadas e tons sem repetir a mesma silhueta.</p>
-  <div class="tip">💡 <a href="/blog/blog6-en" style="color:var(--accent);">English capsule guide</a> — versão PT própria.</div>
+  <p>Cada peça combina com pelo menos três outras. Armários grandes geram menos looks úteis que um cápsula bem escolhido.</p>
+  <h2>Segunda a sexta (exemplos)</h2>
+  <p>Seg: branco + preto + loafer. Ter: jaqueta jeans + chino + tênis. Qua: jeans wide com barra na frente. Qui: preto tom sobre tom + jaqueta. Sex: chino + camiseta leve.</p>
+  <h2>Por proporção</h2>
+  <p>Ombros largos: calça estruturada escura, decote V. Pera: parte de baixo escura, blusa com estrutura no ombro. Retângulo: cintura alta e top por dentro.</p>
+  <div class="tip">💡 <a href="/blog/blog6-en" style="color:var(--accent);">English capsule guide</a> — versão PT própria para o público lusófono.</div>
 """) + EDITORIAL_PT,
     "proporcao-importa-mais-que-peso": dedent("""
   <p class="lead-answer"><strong>Proporção define o caimento — peso sozinho não.</strong> SHR, WHR e perna-tronco antes do BMI.</p>
-  <h2>Três razões</h2>
-  <p>Ombro÷quadril, cintura÷quadril, entreperna÷altura. Use FITME antes de comprar online.</p>
-  <div class="tip">💡 <a href="/blog/blog7-en" style="color:var(--accent);">English guide</a></div>
+  <h2>A armadilha da balança</h2>
+  <p>Duas pessoas com o mesmo peso podem precisar de silhuetas opostas se ombro-quadril e perna-tronco forem diferentes.</p>
+  <h2>Três razões essenciais</h2>
+  <p>Ombro÷quadril (SHR), cintura÷quadril (WHR), entreperna÷altura. Use FITME antes de comprar online e compare colunas ombro/quadril na tabela.</p>
+  <h2>Reavalie a cada 3–6 meses</h2>
+  <p>Treino e mudança de peso alteram proporções mais que o número na balança sugere.</p>
+  <div class="tip">💡 <a href="/blog/pt/como-se-vestir-tipo-de-corpo" style="color:var(--accent);">Tipos de corpo</a> · <a href="/blog/blog7-en" style="color:var(--accent);">English guide</a> · <a href="/how-it-works.html" style="color:var(--accent);">Como funciona</a></div>
 """) + EDITORIAL_PT,
     "whr-e-caimento": dedent("""
-  <p class="lead-answer"><strong>WHR explica calça apertada no quadril e folgada na cintura.</strong></p>
-  <h2>Medir e vestir</h2>
-  <p>Cintura fina ÷ quadril largo. WHR baixo: cintura marcada. WHR alto: cós alto, linha A.</p>
-  <p>Compre pelo quadril; ajuste cintura no alfaiate.</p>
+  <p class="lead-answer"><strong>WHR (cintura fina ÷ quadril largo) explica calça apertada no quadril e folgada na cintura.</strong></p>
+  <h2>Como medir</h2>
+  <p>De manhã, com roupa íntima. Cintura no ponto mais fino ÷ quadril no ponto mais largo.</p>
+  <h2>Como vestir por faixa</h2>
+  <p>WHR baixo: cintura marcada, cinto, vestido envelope. WHR alto: cós alto, linha A, blocos verticais. Evite skinny de cós baixo se o quadril é dominante.</p>
+  <h2>Tamanho</h2>
+  <p>Compre pelo quadril; ajuste cintura no alfaiate. Avaliações “cintura grande” podem indicar WHR acima do padrão da marca.</p>
+  <div class="tip">💡 <a href="/blog/pt/corpo-pera-como-vestir" style="color:var(--accent);">Corpo pera</a> · <a href="/blog/blog8-en" style="color:var(--accent);">WHR guide (EN)</a></div>
 """) + EDITORIAL_PT,
     "ombro-e-caimento": dedent("""
-  <p class="lead-answer"><strong>Costura no acrômio — ombro errado não conserta.</strong></p>
-  <h2>Por tipo de ombro</h2>
-  <p>Largos: decote V. Estreitos: blazer estruturado. Compare coluna “ombro” na tabela de tamanhos.</p>
+  <p class="lead-answer"><strong>A costura do ombro deve cair no acrômio — se errar, manga e corpo não salvam o look.</strong></p>
+  <h2>Por que ombro é âncora</h2>
+  <p>Modelagem parte do ombro. Costura caída = manga longa e visual desleixado. Peito e cintura o alfaiate ajusta depois.</p>
+  <h2>Por tipo</h2>
+  <p>Ombros largos: decote V, raglan. Estreitos: blazer estruturado, gola barco. Médios: quase tudo funciona.</p>
+  <h2>Compras online</h2>
+  <p>Compare a coluna “ombro” primeiro. “Ombro largo” nas reviews pode ser troca de marca, não só tamanho.</p>
+  <div class="tip">💡 <a href="/blog/blog21-en" style="color:var(--accent);">Medir ombros (EN)</a></div>
 """) + EDITORIAL_PT,
 }
 
@@ -367,6 +400,22 @@ def write_posts(lang: str, locale: str, posts: list, nav, footer, cta, index_met
         print(f"  wrote {out.relative_to(ROOT)}")
 
 
+SITE_ABOUT = {
+    "ja": (
+        '<div class="site-about"><p><strong>FITMEブログ</strong>は体型比率と服のフィットに特化した'
+        "独自ガイドです。英語記事が最も詳しい版で、日本語記事は国内の既製服・サイズ感を踏まえた編集版です。"
+        '<a href="/editorial-standards.html">コンテンツ基準</a> · '
+        '<a href="/how-it-works.html">無料診断ツール</a></p></div>'
+    ),
+    "pt": (
+        '<div class="site-about"><p><strong>FITME Blog</strong> publica guias originais sobre proporção e caimento. '
+        "Artigos em português trazem notas para o mercado lusófono; versões em inglês têm mais detalhe quando indicado. "
+        '<a href="/editorial-standards.html">Padrões editoriais</a> · '
+        '<a href="/how-it-works.html">Ferramenta gratuita</a></p></div>'
+    ),
+}
+
+
 def rebuild_index(lang: str, locale: str, all_posts: list, nav, footer, index_meta):
     idx = mb.index_page(
         lang=lang,
@@ -380,6 +429,7 @@ def rebuild_index(lang: str, locale: str, all_posts: list, nav, footer, index_me
         footer_text=footer,
         section_label=index_meta["section_label"],
         other_lang_links=index_meta["other_lang_links"],
+        site_about_html=SITE_ABOUT.get(lang, ""),
     )
     path = ROOT / "blog" / lang / "index.html"
     path.write_text(idx, encoding="utf-8")
