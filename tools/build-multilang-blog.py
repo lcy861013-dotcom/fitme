@@ -80,6 +80,7 @@ def page(*, lang: str, locale_code: str, slug: str, title: str, desc: str,
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <meta name="google-adsense-account" content="ca-pub-6377720400458954">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
 <style>
 :root{{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}}
 *{{margin:0;padding:0;box-sizing:border-box;}}
@@ -97,6 +98,8 @@ h1{{font-family:'Bebas Neue','Noto Sans JP',sans-serif;font-size:clamp(28px,6vw,
 .meta{{font-size:13px;color:var(--muted);margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}}
 h2{{font-family:'DM Sans','Noto Sans JP',sans-serif;font-size:19px;font-weight:700;margin:32px 0 12px;color:var(--text);}}
 p{{font-size:15px;line-height:1.95;color:#d0d0d0;margin-bottom:18px;}}
+.lead-answer{{font-size:16px;line-height:1.9;margin-bottom:24px;padding:16px 18px;background:var(--card);border-radius:10px;border:1px solid var(--border);}}
+.faq-block h3{{font-size:16px;font-weight:700;margin:20px 0 8px;color:var(--text);}}
 .tip{{background:rgba(232,255,71,0.07);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.8;margin:24px 0;color:#ccc;}}
 .cta{{margin-top:56px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}}
 .cta-btn{{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}}
@@ -220,6 +223,7 @@ def index_page(*, lang: str, locale_code: str, title: str, desc: str,
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <meta name="google-adsense-account" content="ca-pub-6377720400458954">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
 <style>
 :root{{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}}
 *{{margin:0;padding:0;box-sizing:border-box;}}

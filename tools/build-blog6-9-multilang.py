@@ -38,7 +38,7 @@ JP_EXTRA = [
   <p>カプセルワードローブの核心は <strong>相互互換性</strong> です。白T、黒ストレートパンツ、デニムジャケット、ベージュチノ、ライトインディゴのワイドデニム — この5点は互いに3着以上と組み合わせ可能。スニーカーとローファー2足で月〜金の印象を変えられます。</p>
   <h2>体型別の注意点</h2>
   <p>洋ナシ型は下をダークトーン、上に構造（肩パッド・ボートネック）を。逆三角型はワイドパンツで下半身にボリューム。胴長型はハイライズとインスタイルで脚の開始位置を上げる。</p>
-  <div class="tip">💡 基本服は肩の縫い目が正しいか最初に確認。丈とウエストは後から直せます。</motion>
+  <div class="tip">💡 基本服は肩の縫い目が正しいか最初に確認。丈とウエストは後から直せます。</div>
   <h2>FITMEで比率を把握</h2>
   <p>身長・ウエスト・ヒップから肩幅・脚比率を60秒で推定。自分に合うシルエットを無料で確認できます。</p>
 """),
@@ -69,7 +69,7 @@ JP_EXTRA = [
   <p>同じ身長・体重でも、肩幅対ヒップ、脚対胴の比率が違えば似合う服は真逆です。<strong>比率こそがシルエットの設計図</strong> です。</p>
   <h2>測るべき3つの比率</h2>
   <p>① 肩幅÷ヒップ（SHR）② ウエスト÷ヒップ（WHR）③ 股下÷身長（脚比率）。この3つでトップスの肩選び、ボトムスのライズ、丈が決まります。</p>
-  <div class="tip">💡 3〜6ヶ月ごとに再計測。筋トレや体重変化で比率は動きます。</motion>
+  <div class="tip">💡 3〜6ヶ月ごとに再計測。筋トレや体重変化で比率は動きます。</div>
 """),
         "related": [
             ("/blog/ja/find-body-type-data", "データで体型を見つける"),
@@ -97,7 +97,7 @@ JP_EXTRA = [
   <p>最細ウエスト÷最大ヒップ。例：ウエスト68cm÷ヒップ95cm≒0.72。この1数字が、既製服のパターンとのズレを説明します。</p>
   <h2>レンジ別スタイル</h2>
   <p><strong>0.65–0.75</strong>：ウエストマークが効く — ベルト、タックイン、ラップ。<br><strong>0.75–0.85</strong>：最も汎用。<br><strong>0.85+</strong>：ハイウエスト、Aライン、色の縦割りでウエストを作る。</p>
-  <div class="tip">💡 ヒップに合わせてサイズを取り、ウエストは補正が定番。</motion>
+  <div class="tip">💡 ヒップに合わせてサイズを取り、ウエストは補正が定番。</div>
 """),
         "related": [
             ("/blog/ja/golden-ratio-fuku", "ゴールデンレシオ"),
@@ -125,7 +125,7 @@ JP_EXTRA = [
   <p>ジャケットもTも、肩の縫い目が肩峰（アクロミオン）から外れると全体が崩れます。<strong>肩が合えば袖・胴は直せる</strong> — 逆はほぼ不可能です。</p>
   <h2>肩幅別の選び方</h2>
   <p>広肩：Vネック・ラグラン。狭肩：構築的ブレザー・ボートネック。標準：ほぼ全シルエット可。</p>
-  <motion class="tip">💡 オンラインはサイズ表の「肩」列を最初に比較。</motion>
+  <div class="tip">💡 オンラインはサイズ表の「肩」列を最初に比較。</div>
 """),
         "related": [
             ("/blog/ja/pants-fit-guide", "パンツガイド"),
@@ -156,7 +156,7 @@ PT_EXTRA = [
   <p>O segredo é <strong>compatibilidade cruzada</strong>: cada peça combina com pelo menos três outras. Com tênis branco e loafer preto, você cobre a semana sem repetir a mesma silhueta.</p>
   <h2>Proporção importa</h2>
   <p>Corpo pera: parte de baixo escura, parte de cima com estrutura. Ombros largos: calça wide ou flare. Tronco longo: cintura alta e top por dentro.</p>
-  <div class="tip">💡 Sempre teste o ombro primeiro no provador. Barra e cintura o alfaiate resolve.</motion>
+  <div class="tip">💡 Sempre teste o ombro primeiro no provador. Barra e cintura o alfaiate resolve.</div>
 """),
         "related": [
             ("/blog/pt/guia-modelagem-calcas", "Guia de Calças"),
@@ -211,7 +211,7 @@ PT_EXTRA = [
   <p>Cintura no ponto mais fino ÷ quadril no ponto mais largo. A maioria das calças prontas assume um WHR médio — fora disso, ou aperta no quadril ou sobra na cintura.</p>
   <h2>Como vestir</h2>
   <p>WHR baixo: cintura marcada, cinto, vestido envelope. WHR alto: cintura alta, linha A, blocos de cor vertical.</p>
-  <div class="tip">💡 Compre pelo quadril, ajuste a cintura no alfaiate.</motion>
+  <div class="tip">💡 Compre pelo quadril, ajuste a cintura no alfaiate.</div>
 """),
         "related": [
             ("/blog/pt/whr-065-significado", "WHR 0,65 — significado"),
@@ -249,10 +249,90 @@ PT_EXTRA = [
 
 
 def fix_body_typos(html: str) -> str:
-    return (
-        html.replace("</motion>", "</div>")
-        .replace('<motion class="tip">', '<div class="tip">')
-    )
+    return html.replace('<motion class="tip">', '<div class="tip">')
+
+
+EDITORIAL_JA = (
+    '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
+    "編集：FITME · <a href=\"/about.html\" style=\"color:var(--accent);\">運営</a> · "
+    "<a href=\"/editorial-standards.html\" style=\"color:var(--accent);\">コンテンツ基準</a></p>"
+)
+EDITORIAL_PT = (
+    '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
+    'Editorial FITME · <a href="/about.html" style="color:var(--accent);">Sobre</a> · '
+    '<a href="/editorial-standards.html" style="color:var(--accent);">Padrões</a></p>'
+)
+
+EXPAND_JA = {
+    "capsule-5-basics": dedent("""
+  <p class="lead-answer"><strong>5着が互いに3着以上と組み合わせられれば、スニーカーとローファー2足で平日7コーデが可能です。</strong> 白T・黒ストレート・デニムジャケット・ベージュチノ・ライトワイドデニムから始め、肩縫いと股上を先に合わせてください。</p>
+  <h2>なぜ5点で足りるのか</h2>
+  <p>カプセルワードローブの核心は <strong>相互互換性</strong> です。服の総数ではなく、1着あたりの組み合わせ数がコーデの上限を決めます。</p>
+  <p>日本の既製服は平均体型向けのパターンが多く、肩幅・ヒップ・股下でズレが出やすいです。FITMEでSHRと脚比率を把握してから5点を選ぶと、同じリストでも似合うシルエットが変わります。</p>
+  <h2>5つの基本ピースと月〜金</h2>
+  <p>① 白クルーネックT ② 黒ストレート ③ ライトデニムジャケット ④ ベージュチノ ⑤ ライトワイドデニム。月：白×黒×ローファー、火：デニム×チノ、水：ワイドは前ハーフタック、木：黒トーンオントーン＋デニム、金：チノ×白T。</p>
+  <h2>体型別</h2>
+  <p>逆三角：下ダーク・ワイド、上Vネック。洋ナシ：下ダーク、上に肩の構造。長方形：ハイライズ＋イン。</p>
+  <div class="tip">💡 週末コーデ等の完全版は <a href="/blog/blog6-en" style="color:var(--accent);">English capsule guide</a>（本記事は日本向け独自版）。</div>
+  <div class="faq-block"><h3>5着で何コーデ？</h3><p>靴2足で平日7パターンが目安です。</p></div>
+""") + EDITORIAL_JA,
+    "proportion-not-weight": dedent("""
+  <p class="lead-answer"><strong>同じ体重でも肩・腰・脚の比率が違えば、似合う服は正反対になります。</strong> BMIよりSHR・WHR・脚比率を優先してください。</p>
+  <h2>体重計の落とし穴</h2>
+  <p>身長・体重が同じでも、肩÷ヒップ、脚÷身長が違えばトップスの肩幅、パンツのライズ、丈は真逆です。</p>
+  <h2>測るべき3比率</h2>
+  <p>SHR（肩÷ヒップ）、WHR（ウエスト÷ヒップ）、脚比率（股下÷身長）。FITMEで60秒推定できます。</p>
+  <div class="tip">💡 <a href="/blog/blog7-en" style="color:var(--accent);">English proportion guide</a></div>
+""") + EDITORIAL_JA,
+    "whr-clothing-fit": dedent("""
+  <p class="lead-answer"><strong>WHRはパンツがヒップで締まりウエストが空く理由を1数字で説明します。</strong> 0.65〜0.85のレンジごとに股上とシルエットを変えてください。</p>
+  <h2>測り方とレンジ</h2>
+  <p>最細ウエスト÷最大ヒップ。0.65–0.75はウエストマーク、0.75–0.85は既製と相性良、0.85+はハイウエストとAライン。</p>
+  <p>ヒップサイズで取り、ウエストは補正が定番です。</p>
+  <div class="tip">💡 <a href="/blog/blog8-en" style="color:var(--accent);">WHR fit guide (EN)</a></div>
+""") + EDITORIAL_JA,
+    "shoulder-fit-guide": dedent("""
+  <p class="lead-answer"><strong>肩の縫い目が肩峰に乗らない服は、袖や胴を直しても崩れます。</strong> 肩を最優先にサイズ選びを。</p>
+  <h2>肩がアンカー</h2>
+  <p>広肩：Vネック・ラグラン。狭肩：構築的ブレザー。標準：股上と丈で調整。</p>
+  <div class="tip">💡 <a href="/blog/blog21-en" style="color:var(--accent);">肩幅セルフ計測（英語）</a></div>
+""") + EDITORIAL_JA,
+}
+
+EXPAND_PT = {
+    "guarda-roupa-capsula-5-pecas": dedent("""
+  <p class="lead-answer"><strong>Cinco peças compatíveis + dois sapatos cobrem a semana.</strong> Camiseta branca, calça preta, jaqueta jeans, chino bege, jeans wide claro.</p>
+  <h2>Compatibilidade cruzada</h2>
+  <p>Cada peça combina com pelo menos três outras. Seg–Sex: varie camadas e tons sem repetir a mesma silhueta.</p>
+  <div class="tip">💡 <a href="/blog/blog6-en" style="color:var(--accent);">English capsule guide</a> — versão PT própria.</div>
+""") + EDITORIAL_PT,
+    "proporcao-importa-mais-que-peso": dedent("""
+  <p class="lead-answer"><strong>Proporção define o caimento — peso sozinho não.</strong> SHR, WHR e perna-tronco antes do BMI.</p>
+  <h2>Três razões</h2>
+  <p>Ombro÷quadril, cintura÷quadril, entreperna÷altura. Use FITME antes de comprar online.</p>
+  <div class="tip">💡 <a href="/blog/blog7-en" style="color:var(--accent);">English guide</a></div>
+""") + EDITORIAL_PT,
+    "whr-e-caimento": dedent("""
+  <p class="lead-answer"><strong>WHR explica calça apertada no quadril e folgada na cintura.</strong></p>
+  <h2>Medir e vestir</h2>
+  <p>Cintura fina ÷ quadril largo. WHR baixo: cintura marcada. WHR alto: cós alto, linha A.</p>
+  <p>Compre pelo quadril; ajuste cintura no alfaiate.</p>
+""") + EDITORIAL_PT,
+    "ombro-e-caimento": dedent("""
+  <p class="lead-answer"><strong>Costura no acrômio — ombro errado não conserta.</strong></p>
+  <h2>Por tipo de ombro</h2>
+  <p>Largos: decote V. Estreitos: blazer estruturado. Compare coluna “ombro” na tabela de tamanhos.</p>
+""") + EDITORIAL_PT,
+}
+
+
+def apply_expansions(posts: list, expansions: dict) -> list:
+    return [
+        {**post, "body": expansions[post["slug"]]}
+        if post["slug"] in expansions
+        else post
+        for post in posts
+    ]
 
 
 def write_posts(lang: str, locale: str, posts: list, nav, footer, cta, index_meta):
@@ -383,7 +463,7 @@ def patch_sitemap():
 
 def main():
     print("JP extra posts:")
-    write_posts("ja", "ja", JP_EXTRA, mb.JP_NAV, mb.JP_FOOTER, mb.JP_CTA, {
+    write_posts("ja", "ja", apply_expansions(JP_EXTRA, EXPAND_JA), mb.JP_NAV, mb.JP_FOOTER, mb.JP_CTA, {
         "title": "FITMEブログ — 体型・スタイリング完全ガイド | FITME",
         "desc": "体型診断、パンツ、カプセル、WHR、肩幅まで。データで導く着こなし。",
         "page_title": "FITME ブログ",
@@ -409,7 +489,7 @@ def main():
     })
 
     print("PT extra posts:")
-    write_posts("pt", "pt-BR", PT_EXTRA, mb.PT_NAV, mb.PT_FOOTER, mb.PT_CTA, {
+    write_posts("pt", "pt-BR", apply_expansions(PT_EXTRA, EXPAND_PT), mb.PT_NAV, mb.PT_FOOTER, mb.PT_CTA, {
         "title": "FITME Blog — Guia de Tipos de Corpo e Estilo | FITME",
         "desc": "Cápsula, proporções, WHR e ombros — guias em português.",
         "page_title": "FITME Blog",
