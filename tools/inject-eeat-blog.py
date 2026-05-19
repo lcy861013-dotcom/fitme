@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inject factual author meta + YMYL disclaimer into blog HTML (EN/KO/JA/PT)."""
+"""Inject top author-meta + bottom ymyl disclaimer (factual E-E-A-T only)."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -7,47 +7,38 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BLOG = ROOT / "blog"
 
-META_CSS = """
-.author-meta{margin:40px 0 16px;padding:18px 20px;background:var(--card,#1c1a18);border:1px solid var(--border,#2a2724);border-radius:12px;font-size:14px;line-height:1.85;color:#ccc;}
-.author-meta p{margin:0 0 8px;}
-.author-meta p:last-child{margin-bottom:0;}
-.ymyl-disclaimer{font-size:13px;color:var(--muted,#8b8178);margin:0 0 24px;line-height:1.7;}
-"""
+AUTHOR_TOP = {
+    "en": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
+  <p style="margin:0;">By <strong>Changyong Lee</strong> | FITME Founder, Ansan, South Korea</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">Research-based guide. Sources: <a href="https://en.wikipedia.org/wiki/Kibbe_body_types" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | Last Updated: 2026.05.19</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">Contact: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
+</div>
+""",
+    "ko": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
+  <p style="margin:0;">글쓴이: <strong>이창용</strong> | FITME 대표, 안산</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">연구 기반 가이드. 출처: <a href="https://en.wikipedia.org/wiki/Kibbe_body_types" target="_blank" rel="noopener" style="color:#d4a84b;">키비 바디타입</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | 최종 업데이트: 2026.05.19</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">문의: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
+</div>
+""",
+    "ja": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
+  <p style="margin:0;">著者: <strong>李昌龍</strong> | FITME代表、安山</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">研究ガイド。出典: <a href="https://en.wikipedia.org/wiki/Kibbe_body_types" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | 更新: 2026.05.19</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">連絡: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
+</div>
+""",
+    "pt": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
+  <p style="margin:0;">Por <strong>Changyong Lee</strong> | Fundador FITME, Ansan</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">Guia baseado em pesquisa. Fontes: <a href="https://en.wikipedia.org/wiki/Kibbe_body_types" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | Atualizado: 2026.05.19</p>
+  <p style="margin:0;font-size:14px;color:#8b8178;">Contato: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
+</div>
+""",
+}
 
-BLOCKS = {
-    "en": (
-        '  <div class="author-meta">\n'
-        "    <p>By <strong>Changyong Lee</strong> | FITME Founder</p>\n"
-        "    <p>Research-based guide using Kibbe Body Types and ISO 8559. "
-        "Last Updated: 2026.05.19</p>\n"
-        "  </div>\n"
-        '  <p class="ymyl-disclaimer"><strong>Disclaimer:</strong> For education and style '
-        "only; not medical or health advice.</p>\n"
-    ),
-    "ko": (
-        '  <div class="author-meta">\n'
-        "    <p><strong>이창용</strong> | FITME 대표</p>\n"
-        "    <p>Kibbe 체형·ISO 8559 기반 연구 가이드. 최종 수정: 2026.05.19</p>\n"
-        "  </div>\n"
-        '  <p class="ymyl-disclaimer"><strong>면책조항:</strong> 스타일 교육 목적이며, '
-        "의학·건강 조언이 아닙니다.</p>\n"
-    ),
-    "ja": (
-        '  <div class="author-meta">\n'
-        "    <p><strong>李昌龍</strong> | FITME代表</p>\n"
-        "    <p>Kibbe・ISO 8559に基づく研究ガイド。最終更新: 2026.05.19</p>\n"
-        "  </div>\n"
-        '  <p class="ymyl-disclaimer"><strong>免責:</strong> スタイル教育目的。'
-        "医学的助言ではありません。</p>\n"
-    ),
-    "pt": (
-        '  <div class="author-meta">\n'
-        "    <p><strong>Changyong Lee</strong> | Fundador FITME</p>\n"
-        "    <p>Guia com base em Kibbe e ISO 8559. Atualizado: 2026.05.19</p>\n"
-        "  </div>\n"
-        '  <p class="ymyl-disclaimer"><strong>Aviso:</strong> Conteúdo educacional; '
-        "não é aconselhamento médico.</p>\n"
-    ),
+DISCLAIMER = {
+    "en": '  <p class="ymyl-disclaimer"><strong>Disclaimer:</strong> For education and style only; not medical or health advice.</p>\n',
+    "ko": '  <p class="ymyl-disclaimer"><strong>면책조항:</strong> 스타일 교육 목적이며, 의학·건강 조언이 아닙니다.</p>\n',
+    "ja": '  <p class="ymyl-disclaimer"><strong>免責:</strong> スタイル教育目的。医学的助言ではありません。</p>\n',
+    "pt": '  <p class="ymyl-disclaimer"><strong>Aviso:</strong> Conteúdo educacional; não é aconselhamento médico.</p>\n',
 }
 
 
@@ -63,28 +54,24 @@ def lang_for(path: Path) -> str:
 
 def inject_file(path: Path) -> bool:
     text = path.read_text(encoding="utf-8")
-    if 'class="author-meta"' in text or 'class="author-box"' in text:
+    if 'author-meta" style="border-bottom' in text:
         return False
-    block = BLOCKS[lang_for(path)]
+    lang = lang_for(path)
+    block = AUTHOR_TOP[lang]
     if '  <div class="related">' in text:
-        text = text.replace('  <div class="related">', block + '  <div class="related">', 1)
-    elif '  <div class="cta">' in text:
-        text = text.replace('  <div class="cta">', block + '  <div class="cta">', 1)
-    else:
-        return False
-    if ".author-meta{" not in text and "</style>" in text:
-        text = text.replace("</style>", META_CSS + "</style>", 1)
-    path.write_text(text, encoding="utf-8")
-    return True
+        if "ymyl-disclaimer" not in text:
+            text = text.replace('  <div class="related">', DISCLAIMER[lang] + '  <div class="related">', 1)
+        import re
+        m = re.search(r"(<h1>[^<]+</h1>\s*<div class=\"meta\">[^<]*</div>\s*)", text)
+        if m:
+            text = text[: m.end()] + block + text[m.end() :]
+            path.write_text(text, encoding="utf-8")
+            return True
+    return False
 
 
 def main() -> None:
-    n = 0
-    for path in BLOG.rglob("*.html"):
-        if path.name == "index.html":
-            continue
-        if inject_file(path):
-            n += 1
+    n = sum(1 for f in BLOG.rglob("*.html") if f.name != "index.html" and inject_file(f))
     print(f"Done. Updated {n} blog files.")
 
 
