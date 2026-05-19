@@ -39,9 +39,12 @@
   color: #e0dcd8;
 }
 
-.fitme-cc-en {
-  opacity: 0.92;
-  font-size: 12px;
+#fitme-cc-banner[dir="rtl"] .fitme-cc-inner {
+  text-align: right;
+}
+
+#fitme-cc-banner[dir="rtl"] .fitme-cc-btns {
+  flex-direction: row-reverse;
 }
 
 .fitme-cc-btns {
