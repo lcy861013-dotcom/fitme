@@ -73,6 +73,13 @@ nav a:hover { color: var(--accent); }
   nav { gap: 12px; }
   nav a { font-size: 11px; }
 }
+
+
+.author-meta{margin:40px 0 16px;padding:18px 20px;background:var(--card,#1c1a18);border:1px solid var(--border,#2a2724);border-radius:12px;font-size:14px;line-height:1.85;color:#ccc;}
+.author-meta p{margin:0 0 8px;}
+.author-meta p:last-child{margin-bottom:0;}
+.personal-note{margin:24px 0;padding:16px 18px;border-left:3px solid var(--accent,#d4a84b);background:rgba(212,168,75,0.08);font-size:14px;line-height:1.8;color:#ccc;}
+.ymyl-disclaimer{font-size:13px;color:var(--muted,#8b8178);margin:0 0 24px;line-height:1.7;}
 </style>
 <script type="application/ld+json">
 {
@@ -191,6 +198,10 @@ nav a:hover { color: var(--accent); }
   <h2>Step 2 — Calculate Each Body Part</h2>
 
   <p>Once you know your span, use this table to estimate any measurement.<br>Formula: <strong>span count × your span cm = actual length</strong></p>
+  <div class="personal-note">
+<strong>From My Research:</strong> Standard size charts failed me because they ignore torso-to-leg ratio. I studied fit systems and anthropometric data to build this framework. This guide reflects that research, not medical advice.
+  </div>
+
 
   <div class="part-list">
     <div class="part-row">
@@ -256,7 +267,12 @@ nav a:hover { color: var(--accent); }
     <a href="/blog/blog24-en" class="nav-link"><div class="nav-link-label">NEXT →</div>Hip Circumference</a>
   </div>
 
-    <div class="related">
+  <div class="author-meta">
+    <p>By <strong>Changyong Lee</strong> | FITME Founder</p>
+    <p>Research-based guide using Kibbe Body Types and ISO 8559. Last Updated: 2026.05.19</p>
+  </div>
+  <p class="ymyl-disclaimer"><strong>Disclaimer:</strong> For education and style only; not medical or health advice.</p>
+<div class="related">
     <div class="related-title">Related Guides</div>
     <div class="related-grid">
     <a href="/blog/blog21-en" class="related-card">How to Measure Shoulder Width Alone</a>

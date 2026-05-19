@@ -68,6 +68,13 @@ nav a:hover { color: var(--accent); }
   nav { gap: 12px; }
   nav a { font-size: 11px; }
 }
+
+
+.author-meta{margin:40px 0 16px;padding:18px 20px;background:var(--card,#1c1a18);border:1px solid var(--border,#2a2724);border-radius:12px;font-size:14px;line-height:1.85;color:#ccc;}
+.author-meta p{margin:0 0 8px;}
+.author-meta p:last-child{margin-bottom:0;}
+.personal-note{margin:24px 0;padding:16px 18px;border-left:3px solid var(--accent,#d4a84b);background:rgba(212,168,75,0.08);font-size:14px;line-height:1.8;color:#ccc;}
+.ymyl-disclaimer{font-size:13px;color:var(--muted,#8b8178);margin:0 0 24px;line-height:1.7;}
 </style>
 <script type="application/ld+json">
 {
@@ -151,6 +158,10 @@ nav a:hover { color: var(--accent); }
   <h2>Step 2 — 한 뼘으로 각 부위 계산하기</h2>
 
   <p>내 한 뼘 길이를 알면 아래 표를 참고해 각 부위 길이를 계산할 수 있습니다.<br>공식: <strong>뼘 수 × 내 한 뼘 cm = 실제 길이</strong></p>
+  <div class="personal-note">
+<strong>연구 메모:</strong> 표준 사이즈표는 상체·다리 비율을 반영하지 못해 저에게 맞지 않았습니다. 핏 시스템과 인체 비율 자료를 바탕으로 이 가이드를 정리했으며, 의학적 조언이 아닙니다.
+  </div>
+
 
   <div class="part-list">
     <div class="part-row">
@@ -210,7 +221,12 @@ nav a:hover { color: var(--accent); }
     <a href="/blog/blog24" class="nav-link"><div class="nav-link-label">NEXT →</div>엉덩이 둘레 재기</a>
   </div>
 
-  <div class="related">
+  <div class="author-meta">
+    <p><strong>이창용</strong> | FITME 대표</p>
+    <p>Kibbe 체형·ISO 8559 기반 연구 가이드. 최종 수정: 2026.05.19</p>
+  </div>
+  <p class="ymyl-disclaimer"><strong>면책조항:</strong> 스타일 교육 목적이며, 의학·건강 조언이 아닙니다.</p>
+<div class="related">
     <div class="related-title">관련 가이드</div>
     <div class="related-grid">
       <a href="/blog/blog21" class="related-card">가슴 둘레 재기 — 셔츠·재킷 사이즈 완벽 공략</a>
@@ -225,7 +241,7 @@ nav a:hover { color: var(--accent); }
     <a href="/?utm_source=blog&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">내 체형 무료 분석 →</a>
   </div>
 </main>
-<footer><p>© 2026 FITME. 모든 권리 보유. · <a href="/privacy.html" style="color:var(--muted);">개인정보처리방침</a></p></footer>
+<footer><p>© 2026 FITME. 모든 권리 보유. · <a href="/privacy.html" style="color:var(--muted);">개인정보처리방침</a> · <a href="/terms.html" style="color:var(--muted);">이용약관</a> · <a href="/contact.html" style="color:var(--muted);">문의</a> · <a href="/about.html" style="color:var(--muted);">소개</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
   <script defer src="/assets/fitme-share.js?v=7"></script>
 </body>

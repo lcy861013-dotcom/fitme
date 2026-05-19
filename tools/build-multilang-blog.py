@@ -31,6 +31,21 @@ FOOTER_LINKS = (
     '<a href="/how-it-works.html" style="color:var(--muted);">How it works</a>'
 )
 
+AUTHOR_HTML = {
+    "ja": (
+        '  <div class="author-meta"><p><strong>李昌龍</strong> | FITME代表</p>'
+        "<p>Kibbe・ISO 8559に基づく研究ガイド。最終更新: 2026.05.19</p></div>"
+        '<p class="ymyl-disclaimer"><strong>免責:</strong> スタイル教育目的。'
+        "医学的助言ではありません。</p>"
+    ),
+    "pt": (
+        '  <div class="author-meta"><p><strong>Changyong Lee</strong> | Fundador FITME</p>'
+        "<p>Guia com base em Kibbe e ISO 8559. Atualizado: 2026.05.19</p></div>"
+        '<p class="ymyl-disclaimer"><strong>Aviso:</strong> Conteúdo educacional; '
+        "não é aconselhamento médico.</p>"
+    ),
+}
+
 EDITORIAL_NOTE = {
     "ja": (
         '<p style="font-size:13px;color:var(--muted);margin-top:28px;">'
@@ -70,7 +85,7 @@ def page(*, lang: str, locale_code: str, slug: str, title: str, desc: str,
          related: list[tuple[str, str]], cta_title: str, cta_sub: str,
          cta_btn: str, breadcrumb_home: str, breadcrumb_blog: str,
          breadcrumb_post: str, header_nav: list[tuple[str, str]],
-         footer_text: str, editorial_html: str = "") -> str:
+         footer_text: str, editorial_html: str = "", author_html: str = "") -> str:
     """Render a full blog post HTML matching the existing satellite template."""
     canonical = f"{SITE}/blog/{lang}/{slug}"
     hreflang_links = "\n".join(
@@ -145,6 +160,10 @@ p{{font-size:15px;line-height:1.95;color:#d0d0d0;margin-bottom:18px;}}
 .faq-block{{margin:28px 0;}}
 .faq-block h3{{font-size:16px;font-weight:700;margin:18px 0 8px;}}
 .faq-block h3{{font-size:16px;font-weight:700;margin:20px 0 8px;color:var(--text);}}
+.author-meta{{margin:40px 0 16px;padding:18px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;font-size:14px;line-height:1.85;color:#ccc;}}
+.author-meta p{{margin:0 0 8px;}}
+.author-meta p:last-child{{margin-bottom:0;}}
+.ymyl-disclaimer{{font-size:13px;color:var(--muted);margin:0 0 24px;line-height:1.7;}}
 .tip{{background:rgba(232,255,71,0.07);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.8;margin:24px 0;color:#ccc;}}
 .cta{{margin-top:56px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}}
 .cta-btn{{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-family:'DM Sans','Noto Sans JP',sans-serif;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}}
@@ -197,6 +216,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
 
 {body_html}
 {editorial_html}
+{author_html}
 
   <div class="related">
     <div class="related-title">{breadcrumb_blog}</div>
@@ -911,6 +931,7 @@ def build_lang(lang: str, locale_code: str, posts: list[dict],
             breadcrumb_post=post["breadcrumb_post"],
             header_nav=nav, footer_text=footer,
             editorial_html=EDITORIAL_NOTE.get(lang, ""),
+            author_html=AUTHOR_HTML.get(lang, ""),
         )
         path = out_dir / f"{slug}.html"
         path.write_text(html, encoding="utf-8")
