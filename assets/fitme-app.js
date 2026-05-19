@@ -158,7 +158,7 @@
       'body-inv':'어깨가 골반보다 넓어 상체가 강조되는 **역삼각형(Inverted Triangle)** 체형입니다. (WHR: {r})',
       'body-rect':'상/하체의 너비 차이가 적고 직선적인 실루엣의 **일자형(Rectangle)** 체형입니다. (WHR: {r})',
       'body-apple':'복부와 허리 주변에 볼륨감이 집중된 **타원형/사과형(Apple)** 체형입니다. (WHR: {r})',
-      'body-default':'더 많은 측정값을 입력하면 전문가 수준의 정밀 분석이 가능합니다.',
+      'body-default':'더 많은 측정값을 입력하면 더 정밀한 분석이 가능합니다.',
       'best-hourglass':['허리 라인을 강조하는 랩 원피스','벨티드 코트 및 재킷','바디라인을 살리는 피티드 상의','하이웨이스트 와이드 팬츠','펜슬 스커트'],
       'worst-hourglass':['허리선이 없는 박시한 원피스','지나치게 두꺼운 레이어드','전신 오버사이즈 룩'],
       'best-pear':['어깨 패드가 있는 재킷','보트넥 및 스퀘어넥 상의','밝은 색상이나 패턴이 있는 상의','어두운 톤의 스트레이트 팬츠','A라인 스커트'],
@@ -265,11 +265,11 @@
           ],avoid:'극단적으로 타이트하거나 극단적으로 오버사이즈한 의류'
         }
       },
-      'occasion-title':'전문가 제안 상황별 코디 (TPO Strategy)',
+      'occasion-title':'맞춤 상황별 코디 (TPO Strategy)',
       'occasion-meeting':'💕 프레젠테이션 · 소개팅 (Smart & Trust)',
       'occasion-business':'💼 비즈니스 컨퍼런스 (Professional & Chic)',
       'occasion-casual':'👕 위켄드 겟어웨이 (Relaxed & Sophisticated)',
-      'outfit-why-label':'전문가 스타일링 분석',
+      'outfit-why-label':'비율 기반 분석',
       'prop-leg':'다리 길이 비율 (Vertical)','prop-whr':'허리-엉덩이 비율 (WHR)','prop-shoulder':'상-하체 밸런스 (Horizontal)',
       'body-type-hourglass':'모래시계형 체형','body-type-pear':'삼각형(배형) 체형','body-type-inv':'역삼각형 체형','body-type-rect':'일자형 체형','body-type-apple':'타원형(사과형) 체형','body-type-def':'체형 분석 중',
       'body-strength-hourglass':'균형 잡힌 실루엣이 특징인 이상적인 체형입니다. 자연스러운 라인을 살리는 것이 핵심입니다.',
@@ -277,7 +277,7 @@
       'body-strength-inv':'세련되고 도회적인 무드의 넓은 어깨가 특징입니다. 하체에 볼륨을 더해 드라마틱한 X라인을 완성할 수 있습니다.',
       'body-strength-rect':'모던하고 시크한 직선 실루엣이 돋보이는 모델형 체형입니다. 곡선을 인위적으로 만들어주면 훨씬 다채로운 연출이 가능합니다.',
       'body-strength-apple':'부드러운 실루엣과 볼륨감 있는 상체가 특징입니다. 수직선을 강조하는 스타일링으로 슬림하고 길어 보이는 효과를 줄 수 있습니다.',
-      'body-strength-def':'키와 체중, 어깨, 허리, 골반 너비를 모두 입력하면 패션 전문가의 정밀 체형 분석 리포트가 생성됩니다.',
+      'body-strength-def':'키와 체중, 어깨, 허리, 골반 너비를 모두 입력하면 비율 기반 정밀 체형 분석 리포트가 생성됩니다.',
       'body-tip-hourglass':'강점인 허리 라인을 절대 숨기지 마세요! 벨트나 랩 스타일을 활용해 곡선을 극대화하는 것이 최고의 전략입니다.',
       'body-tip-pear':'상의는 밝고 화려하게, 하의는 심플하고 차분하게! 어깨선을 넓어 보이게 하는 네크라인 선택이 신의 한 수입니다.',
       'body-tip-inv':'하체에 시선을 머물게 하세요. 화려한 패턴의 팬츠나 볼륨감 있는 스커트가 상체의 무게감을 완벽하게 덜어줍니다.',
@@ -3748,10 +3748,10 @@
     const msg = currentLang === 'ko' ? '👀 샘플 값으로 분석합니다!' : '👀 Running sample analysis!';
     showToast(msg);
     document.getElementById('analysis').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(runExpertAnalysis, 600);
+    setTimeout(runProportionAnalysis, 600);
   }
 
-  function runExpertAnalysis() {
+  function runProportionAnalysis() {
     const btnD = document.getElementById('btn-analyze');
     const btnM = document.getElementById('btn-analyze-mobile');
     const loadingLabel = currentLang === 'ko' ? '⏳ 분석 중...' : '⏳ Analyzing...';
@@ -4770,7 +4770,7 @@
       }
     }
     } catch (err) {
-      console.error('runExpertAnalysis error:', err);
+      console.error('runProportionAnalysis error:', err);
       restoreBtn();
       showToast(currentLang === 'ko' ? '분석 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.' : 'An error occurred. Please try again.');
     }
@@ -5394,7 +5394,7 @@
         </div>`;
     }
 
-    // Expose size-finder functions to global scope (called from onclick attrs and runExpertAnalysis)
+    // Expose size-finder functions to global scope (called from onclick attrs and runProportionAnalysis)
     window.renderSizeFinder = renderSizeFinder;
     window.sfFilter = sfFilter;
     window.sfPick = sfPick;
