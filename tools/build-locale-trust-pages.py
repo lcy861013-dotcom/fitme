@@ -98,6 +98,7 @@ CONTACT = {
         "title": "Contact FITME",
         "desc": "Contact FITME by email. Ansan, South Korea. Reply within 72 hours.",
         "main": """  <h1>Contact FITME</h1>
+  <p>FITME is operated by solo founder <strong>Changyong Lee</strong>.</p>
   <p>For questions, feedback, or partnership inquiries:</p>
   <p><strong>Email:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
   <p><strong>Location:</strong> Ansan, South Korea</p>
@@ -109,6 +110,7 @@ CONTACT = {
         "title": "문의하기 — FITME",
         "desc": "FITME 문의: 이메일 lcy861013@gmail.com · 안산 · 72시간 내 답변 목표.",
         "main": """  <h1>문의하기</h1>
+  <p>FITME는 1인 창업가 <strong>이창용</strong>이 운영합니다.</p>
   <p>질문, 피드백, 제휴 문의:</p>
   <p><strong>이메일:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
   <p><strong>위치:</strong> 대한민국 안산</p>
@@ -120,6 +122,7 @@ CONTACT = {
         "title": "お問い合わせ — FITME",
         "desc": "FITMEへの連絡先。安山（韓国）。72時間以内の返信を目標。",
         "main": """  <h1>お問い合わせ</h1>
+  <p>FITMEは<strong>李昌龍</strong>が一人で運営しています（solo founder）。</p>
   <p>ご質問・フィードバック・提携のお問い合わせ:</p>
   <p><strong>メール:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
   <p><strong>所在地:</strong> 韓国・安山</p>
@@ -131,6 +134,7 @@ CONTACT = {
         "title": "Contato — FITME",
         "desc": "Contato FITME por e-mail. Ansan, Coreia do Sul. Resposta em até 72 horas.",
         "main": """  <h1>Contato FITME</h1>
+  <p>A FITME é operada pelo fundador solo <strong>Changyong Lee</strong>.</p>
   <p>Dúvidas, feedback ou parcerias:</p>
   <p><strong>E-mail:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
   <p><strong>Local:</strong> Ansan, Coreia do Sul</p>
