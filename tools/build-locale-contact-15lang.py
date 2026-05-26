@@ -213,14 +213,14 @@ CONTACT: dict[str, dict[str, str]] = {
 
 
 def hreflang_contact() -> str:
-    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/contact.html">']
+    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/contact">']
     for loc in LANGS:
         if loc == "en":
             continue
         lines.append(
-            f'<link rel="alternate" hreflang="{loc}" href="{SITE}/{loc}/contact.html">'
+            f'<link rel="alternate" hreflang="{loc}" href="{SITE}/{loc}/contact">'
         )
-    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/contact.html">')
+    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/contact">')
     return "\n".join(lines)
 
 
@@ -228,7 +228,7 @@ def locale_contact_html(loc: str) -> str:
     c = CONTACT[loc]
     n = NAV[loc]
     html_lang, extra = META[loc]
-    canon = f"{SITE}/{loc}/contact.html"
+    canon = f"{SITE}/{loc}/contact"
     body = f"""  <h1>{c['h1']}</h1>
   <p>{c['op']}</p>
   <p>{c['intro']}</p>
@@ -264,15 +264,15 @@ def locale_contact_html(loc: str) -> str:
   <nav>
     <a href="/#analysis">{n['nav_analysis']}</a>
     <a href="/blog/">{n['nav_blog']}</a>
-    <a href="/{loc}/about.html">{n['nav_about']}</a>
-    <a href="/{loc}/contact.html" style="color:var(--accent);">{n['nav_contact']}</a>
+    <a href="/{loc}/about">{n['nav_about']}</a>
+    <a href="/{loc}/contact" style="color:var(--accent);">{n['nav_contact']}</a>
     <a href="/privacy.html">{n['nav_privacy']}</a>
   </nav>
 </header>
 <main>
 {body}
 </main>
-<footer><p>{n['footer_copy']} · <a href="/privacy.html">{n['footer_privacy']}</a> · <a href="/terms.html">{n['footer_terms']}</a> · <a href="/{loc}/contact.html">{n['footer_contact']}</a> · <a href="/{loc}/about.html">{n['footer_about']}</a></p></footer>
+<footer><p>{n['footer_copy']} · <a href="/privacy.html">{n['footer_privacy']}</a> · <a href="/terms.html">{n['footer_terms']}</a> · <a href="/{loc}/contact">{n['footer_contact']}</a> · <a href="/{loc}/about">{n['footer_about']}</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>

@@ -8,7 +8,23 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://perfectfitme.com"
 
-for loc in ("ko", "en", "ja", "pt"):
+for loc in (
+    "ko",
+    "en",
+    "ja",
+    "pt",
+    "es",
+    "zh",
+    "fr",
+    "de",
+    "it",
+    "ru",
+    "ar",
+    "hi",
+    "th",
+    "id",
+    "vi",
+):
     about = ROOT / loc / "about.html"
     text = about.read_text(encoding="utf-8")
     canon = f"{SITE}/{loc}/about"

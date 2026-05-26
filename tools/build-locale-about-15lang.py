@@ -65,7 +65,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Project started:",
         "started": "March 2026",
         "contact_l": "Contact:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Contact page</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Contact page</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Analysis",
         "nav_blog": "Blog",
         "nav_about": "About",
@@ -89,7 +89,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "프로젝트 시작:",
         "started": "2026년 3월",
         "contact_l": "문의:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">문의 페이지</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">문의 페이지</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "비율 분석",
         "nav_blog": "블로그",
         "nav_about": "소개",
@@ -113,7 +113,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "開始:",
         "started": "2026年3月",
         "contact_l": "連絡:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">お問い合わせ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">お問い合わせ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "体型分析",
         "nav_blog": "ブログ",
         "nav_about": "紹介",
@@ -137,7 +137,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Início do projeto:",
         "started": "março de 2026",
         "contact_l": "Contato:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Página de contato</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Página de contato</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Análise",
         "nav_blog": "Blog",
         "nav_about": "Sobre",
@@ -161,7 +161,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Inicio del proyecto:",
         "started": "marzo de 2026",
         "contact_l": "Contacto:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Página de contacto</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Página de contacto</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Análisis",
         "nav_blog": "Blog",
         "nav_about": "Sobre",
@@ -185,7 +185,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "项目开始：",
         "started": "2026 年 3 月",
         "contact_l": "联系：",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">联系页面</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">联系页面</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "比例分析",
         "nav_blog": "博客",
         "nav_about": "关于",
@@ -209,7 +209,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Début du projet :",
         "started": "mars 2026",
         "contact_l": "Contact :",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Page contact</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Page contact</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Analyse",
         "nav_blog": "Blog",
         "nav_about": "À propos",
@@ -233,7 +233,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Projektstart:",
         "started": "März 2026",
         "contact_l": "Kontakt:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Kontaktseite</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Kontaktseite</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Analyse",
         "nav_blog": "Blog",
         "nav_about": "Über uns",
@@ -257,7 +257,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Inizio progetto:",
         "started": "marzo 2026",
         "contact_l": "Contatto:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Pagina contatti</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Pagina contatti</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Analisi",
         "nav_blog": "Blog",
         "nav_about": "Chi siamo",
@@ -281,7 +281,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Старт проекта:",
         "started": "март 2026",
         "contact_l": "Контакты:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Страница контактов</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Страница контактов</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Анализ",
         "nav_blog": "Блог",
         "nav_about": "О нас",
@@ -305,7 +305,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "بداية المشروع:",
         "started": "مارس 2026",
         "contact_l": "تواصل:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">صفحة التواصل</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">صفحة التواصل</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "تحليل",
         "nav_blog": "مدونة",
         "nav_about": "عنّا",
@@ -329,7 +329,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "प्रोजेक्ट शुरू:",
         "started": "मार्च 2026",
         "contact_l": "संपर्क:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">संपर्क पृष्ठ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">संपर्क पृष्ठ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "विश्लेषण",
         "nav_blog": "ब्लॉग",
         "nav_about": "परिचय",
@@ -353,7 +353,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "เริ่มโปรเจกต์:",
         "started": "มีนาคม 2026",
         "contact_l": "ติดต่อ:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">หน้าติดต่อ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">หน้าติดต่อ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "วิเคราะห์",
         "nav_blog": "บล็อก",
         "nav_about": "เกี่ยวกับ",
@@ -377,7 +377,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Mulai proyek:",
         "started": "Maret 2026",
         "contact_l": "Kontak:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Halaman kontak</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Halaman kontak</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Analisis",
         "nav_blog": "Blog",
         "nav_about": "Tentang",
@@ -401,7 +401,7 @@ LOCALES: dict[str, dict[str, str]] = {
         "started_l": "Bắt đầu dự án:",
         "started": "tháng 3 năm 2026",
         "contact_l": "Liên hệ:",
-        "contact": "<a href=\"/{loc}/contact.html\" style=\"color:var(--accent);\">Trang liên hệ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
+        "contact": "<a href=\"/{loc}/contact\" style=\"color:var(--accent);\">Trang liên hệ</a> · <a href=\"mailto:lcy861013@gmail.com\" style=\"color:var(--accent);\">lcy861013@gmail.com</a>",
         "nav_analysis": "Phân tích",
         "nav_blog": "Blog",
         "nav_about": "Giới thiệu",
@@ -419,14 +419,14 @@ LOCALES: dict[str, dict[str, str]] = {
 
 
 def hreflang_block() -> str:
-    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/about.html">']
+    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/about">']
     for loc in LANGS:
         if loc == "en":
             continue
         lines.append(
-            f'<link rel="alternate" hreflang="{loc}" href="{SITE}/{loc}/about.html">'
+            f'<link rel="alternate" hreflang="{loc}" href="{SITE}/{loc}/about">'
         )
-    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/about.html">')
+    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/about">')
     return "\n".join(lines)
 
 
@@ -444,7 +444,7 @@ def main_body(loc: str, d: dict[str, str]) -> str:
 def locale_about_html(loc: str) -> str:
     d = LOCALES[loc]
     html_lang, extra = META[loc]
-    canon = f"{SITE}/{loc}/about.html"
+    canon = f"{SITE}/{loc}/about"
     body = main_body(loc, d)
     return f"""<!DOCTYPE html>
 <html lang="{html_lang}"{extra}>
@@ -474,8 +474,8 @@ def locale_about_html(loc: str) -> str:
   <nav>
     <a href="/#analysis">{d['nav_analysis']}</a>
     <a href="/blog/">{d['nav_blog']}</a>
-    <a href="/{loc}/about.html" style="color:var(--accent);">{d['nav_about']}</a>
-    <a href="/{loc}/contact.html">{d['nav_contact']}</a>
+    <a href="/{loc}/about" style="color:var(--accent);">{d['nav_about']}</a>
+    <a href="/{loc}/contact">{d['nav_contact']}</a>
     <a href="/privacy.html">{d['nav_privacy']}</a>
   </nav>
 </header>
@@ -486,7 +486,7 @@ def locale_about_html(loc: str) -> str:
     <a href="/?utm_source=about&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">{d['cta']}</a>
   </div>
 </main>
-<footer><p>{d['footer_copy']} · <a href="/privacy.html">{d['footer_privacy']}</a> · <a href="/terms.html">{d['footer_terms']}</a> · <a href="/{loc}/contact.html">{d['footer_contact']}</a> · <a href="/{loc}/about.html">{d['footer_about']}</a></p></footer>
+<footer><p>{d['footer_copy']} · <a href="/privacy.html">{d['footer_privacy']}</a> · <a href="/terms.html">{d['footer_terms']}</a> · <a href="/{loc}/contact">{d['footer_contact']}</a> · <a href="/{loc}/about">{d['footer_about']}</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>
