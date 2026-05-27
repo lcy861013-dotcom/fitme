@@ -4775,6 +4775,7 @@
       showToast(currentLang === 'ko' ? '분석 중 오류가 발생했어요. 잠시 후 다시 시도해주세요.' : 'An error occurred. Please try again.');
     }
   }
+  window.runProportionAnalysis = runProportionAnalysis;
 
   function switchOccTab(btn, panelId) {
     btn.closest('.occasion-section').querySelectorAll('.occ-tab').forEach(b => b.classList.remove('active'));
@@ -4951,10 +4952,11 @@
       Kakao.init('35545588bedacb9b5a80dd250aadd17a');
     }
 
-    // Expose helpers for external scripts
+    // Expose helpers for external scripts (onclick attrs on index.html)
     window.t = t;
     window.setLanguage = setLanguage;
     window.applyTranslations = applyTranslations;
+    window.runProportionAnalysis = runProportionAnalysis;
     (function initThemeToggle() {
       var btn = document.getElementById('theme-toggle');
       if (!btn) return;
@@ -5394,7 +5396,7 @@
         </div>`;
     }
 
-    // Expose size-finder functions to global scope (called from onclick attrs and runProportionAnalysis)
+    // Expose size-finder functions to global scope (called from onclick attrs)
     window.renderSizeFinder = renderSizeFinder;
     window.sfFilter = sfFilter;
     window.sfPick = sfPick;
