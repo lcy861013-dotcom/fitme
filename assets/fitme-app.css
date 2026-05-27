@@ -674,12 +674,22 @@
       box-sizing: border-box;
     }
     @media (min-width: 901px) {
-      /* 분석 화면: 왼쪽 실루엣·HUD, 오른쪽 측정 입력 패널(항상 보임) */
+      /* 분석 화면: 실루엣·HUD + 입력 패널을 뷰포트 가운데 한 덩어리로 */
       #analysis.main-container {
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: stretch;
         gap: clamp(12px, 1.5vw, 24px);
         padding: 10px clamp(12px, 1.5vw, 28px) 18px;
+      }
+      #analysis > .tool-disclaimer {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+        order: 0;
       }
       .main-container > .body-section { order: 1; }
       .main-container > #main-panel { order: 2; }
@@ -687,13 +697,22 @@
       .main-container > #mobile-result-overlay { order: 4; }
       .main-container > #sheet-backdrop { order: 5; }
       #analysis > .body-section {
-        flex: 1 1 0;
+        flex: 0 1 min(900px, calc(100% - clamp(300px, 28vw, 420px) - clamp(24px, 3vw, 48px)));
+        max-width: 900px;
+        width: 100%;
         min-width: 0;
         height: auto;
         align-self: stretch;
         overflow: hidden;
-        justify-content: flex-start;
+        justify-content: center;
+        align-items: center;
         border-right: none;
+      }
+      #analysis .measure-scan-stage {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
       #analysis #main-panel.panel {
         position: relative;
