@@ -163,105 +163,105 @@
     en: {
       aria: 'Cookie notice',
       lead:
-        '<strong>Cookies.</strong> Analytics and personalised ads (Google AdSense) may use cookies for site operations, Google Analytics, Microsoft Clarity, and Google AdSense. See our <a href="/privacy.html">Privacy Policy</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookies.</strong> Analytics and personalised ads (Google AdSense) may use cookies for site operations, Google Analytics, Microsoft Clarity, and Google AdSense. See our <a href="/privacy">Privacy Policy</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Accept all',
       min: 'Essential only',
     },
     ko: {
       aria: '쿠키 안내',
       lead:
-        '<strong>쿠키·개인화 광고</strong> 서비스 운영 및 Google Analytics, Microsoft Clarity, <strong>Google AdSense</strong> 맞춤 광고를 위해 쿠키가 사용될 수 있습니다. 세부 내용은 <a href="/privacy.html">개인정보처리방침</a>을 확인하세요. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>쿠키·개인화 광고</strong> 서비스 운영 및 Google Analytics, Microsoft Clarity, <strong>Google AdSense</strong> 맞춤 광고를 위해 쿠키가 사용될 수 있습니다. 세부 내용은 <a href="/privacy">개인정보처리방침</a>을 확인하세요. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: '동의합니다',
       min: '필수만',
     },
     ja: {
       aria: 'クッキーに関するお知らせ',
       lead:
-        '<strong>クッキー</strong> サイト運営、Google Analytics、Microsoft Clarity、<strong>Google AdSense</strong> のパーソナライズ広告のために使用される場合があります。詳細は <a href="/privacy.html">プライバシーポリシー</a> をご確認ください。Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>クッキー</strong> サイト運営、Google Analytics、Microsoft Clarity、<strong>Google AdSense</strong> のパーソナライズ広告のために使用される場合があります。詳細は <a href="/privacy">プライバシーポリシー</a> をご確認ください。Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: '同意する',
       min: '必須のみ',
     },
     pt: {
       aria: 'Aviso de cookies',
       lead:
-        '<strong>Cookies.</strong> Análises e anúncios personalizados (Google AdSense) podem usar cookies para o funcionamento do site, Google Analytics, Microsoft Clarity e Google AdSense. Consulte a <a href="/privacy.html">Política de Privacidade</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookies.</strong> Análises e anúncios personalizados (Google AdSense) podem usar cookies para o funcionamento do site, Google Analytics, Microsoft Clarity e Google AdSense. Consulte a <a href="/privacy">Política de Privacidade</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Aceitar tudo',
       min: 'Somente essenciais',
     },
     es: {
       aria: 'Aviso de cookies',
       lead:
-        '<strong>Cookies.</strong> El análisis y los anuncios personalizados (Google AdSense) pueden usar cookies para el sitio, Google Analytics, Microsoft Clarity y Google AdSense. Consulte la <a href="/privacy.html">Política de privacidad</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookies.</strong> El análisis y los anuncios personalizados (Google AdSense) pueden usar cookies para el sitio, Google Analytics, Microsoft Clarity y Google AdSense. Consulte la <a href="/privacy">Política de privacidad</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Aceptar todo',
       min: 'Solo esenciales',
     },
     zh: {
       aria: 'Cookie 提示',
       lead:
-        '<strong>Cookie。</strong> 为网站运营、Google Analytics、Microsoft Clarity 与 Google AdSense 个性化广告，我们可能使用 Cookie。详见 <a href="/privacy.html">隐私政策</a>。Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookie。</strong> 为网站运营、Google Analytics、Microsoft Clarity 与 Google AdSense 个性化广告，我们可能使用 Cookie。详见 <a href="/privacy">隐私政策</a>。Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: '全部接受',
       min: '仅必要',
     },
     fr: {
       aria: 'Avis sur les cookies',
       lead:
-        '<strong>Cookies.</strong> Les analyses et publicités personnalisées (Google AdSense) peuvent utiliser des cookies pour le site, Google Analytics, Microsoft Clarity et Google AdSense. Voir la <a href="/privacy.html">politique de confidentialité</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookies.</strong> Les analyses et publicités personnalisées (Google AdSense) peuvent utiliser des cookies pour le site, Google Analytics, Microsoft Clarity et Google AdSense. Voir la <a href="/privacy">politique de confidentialité</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Tout accepter',
       min: 'Essentiels uniquement',
     },
     de: {
       aria: 'Cookie-Hinweis',
       lead:
-        '<strong>Cookies.</strong> Analyse und personalisierte Werbung (Google AdSense) können Cookies für den Betrieb, Google Analytics, Microsoft Clarity und Google AdSense nutzen. Siehe <a href="/privacy.html">Datenschutz</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookies.</strong> Analyse und personalisierte Werbung (Google AdSense) können Cookies für den Betrieb, Google Analytics, Microsoft Clarity und Google AdSense nutzen. Siehe <a href="/privacy">Datenschutz</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Alle akzeptieren',
       min: 'Nur notwendige',
     },
     it: {
       aria: 'Informativa sui cookie',
       lead:
-        '<strong>Cookie.</strong> Analisi e annunci personalizzati (Google AdSense) possono usare cookie per il sito, Google Analytics, Microsoft Clarity e Google AdSense. Vedi <a href="/privacy.html">Privacy Policy</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookie.</strong> Analisi e annunci personalizzati (Google AdSense) possono usare cookie per il sito, Google Analytics, Microsoft Clarity e Google AdSense. Vedi <a href="/privacy">Privacy Policy</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Accetta tutto',
       min: 'Solo essenziali',
     },
     ru: {
       aria: 'Уведомление о cookie',
       lead:
-        '<strong>Cookie.</strong> Аналитика и персонализированная реклама (Google AdSense) могут использовать cookie для работы сайта, Google Analytics, Microsoft Clarity и Google AdSense. См. <a href="/privacy.html">политику конфиденциальности</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookie.</strong> Аналитика и персонализированная реклама (Google AdSense) могут использовать cookie для работы сайта, Google Analytics, Microsoft Clarity и Google AdSense. См. <a href="/privacy">политику конфиденциальности</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Принять все',
       min: 'Только необходимые',
     },
     ar: {
       aria: 'إشعار ملفات تعريف الارتباط',
       lead:
-        '<strong>ملفات تعريف الارتباط.</strong> قد تُستخدم للتشغيل والتحليلات والإعلانات المخصصة (Google AdSense) وGoogle Analytics وMicrosoft Clarity وGoogle AdSense. راجع <a href="/privacy.html">سياسة الخصوصية</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>ملفات تعريف الارتباط.</strong> قد تُستخدم للتشغيل والتحليلات والإعلانات المخصصة (Google AdSense) وGoogle Analytics وMicrosoft Clarity وGoogle AdSense. راجع <a href="/privacy">سياسة الخصوصية</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'قبول الكل',
       min: 'الأساسية فقط',
     },
     hi: {
       aria: 'कुकी सूचना',
       lead:
-        '<strong>कुकीज़.</strong> विश्लेषण और व्यक्तिगत विज्ञापन (Google AdSense) साइट संचालन, Google Analytics, Microsoft Clarity और Google AdSense के लिए कुकीज़ उपयोग कर सकते हैं। <a href="/privacy.html">गोपनीयता नीति</a> देखें। Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>कुकीज़.</strong> विश्लेषण और व्यक्तिगत विज्ञापन (Google AdSense) साइट संचालन, Google Analytics, Microsoft Clarity और Google AdSense के लिए कुकीज़ उपयोग कर सकते हैं। <a href="/privacy">गोपनीयता नीति</a> देखें। Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'सभी स्वीकार करें',
       min: 'केवल आवश्यक',
     },
     th: {
       aria: 'ประกาศคุกกี้',
       lead:
-        '<strong>คุกกี้</strong> การวิเคราะห์และโฆษณาเฉพาะบุคคล (Google AdSense) อาจใช้คุกกี้สำหรับการทำงานของไซต์ Google Analytics Microsoft Clarity และ Google AdSense ดู <a href="/privacy.html">นโยบายความเป็นส่วนตัว</a> Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>คุกกี้</strong> การวิเคราะห์และโฆษณาเฉพาะบุคคล (Google AdSense) อาจใช้คุกกี้สำหรับการทำงานของไซต์ Google Analytics Microsoft Clarity และ Google AdSense ดู <a href="/privacy">นโยบายความเป็นส่วนตัว</a> Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'ยอมรับทั้งหมด',
       min: 'เฉพาะที่จำเป็น',
     },
     id: {
       aria: 'Pemberitahuan cookie',
       lead:
-        '<strong>Cookie.</strong> Analitik dan iklan personal (Google AdSense) dapat menggunakan cookie untuk operasi situs, Google Analytics, Microsoft Clarity, dan Google AdSense. Lihat <a href="/privacy.html">Kebijakan Privasi</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookie.</strong> Analitik dan iklan personal (Google AdSense) dapat menggunakan cookie untuk operasi situs, Google Analytics, Microsoft Clarity, dan Google AdSense. Lihat <a href="/privacy">Kebijakan Privasi</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Terima semua',
       min: 'Hanya esensial',
     },
     vi: {
       aria: 'Thông báo cookie',
       lead:
-        '<strong>Cookie.</strong> Phân tích và quảng cáo cá nhân hóa (Google AdSense) có thể dùng cookie cho vận hành site, Google Analytics, Microsoft Clarity và Google AdSense. Xem <a href="/privacy.html">Chính sách quyền riêng tư</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
+        '<strong>Cookie.</strong> Phân tích và quảng cáo cá nhân hóa (Google AdSense) có thể dùng cookie cho vận hành site, Google Analytics, Microsoft Clarity và Google AdSense. Xem <a href="/privacy">Chính sách quyền riêng tư</a>. Publisher ID: <code>pub-6377720400458954</code> · <a href="/ads.txt">ads.txt</a>',
       ok: 'Chấp nhận tất cả',
       min: 'Chỉ cần thiết',
     },

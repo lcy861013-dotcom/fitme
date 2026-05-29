@@ -23,12 +23,12 @@ SITE = "https://perfectfitme.com"
 # -------------------- Shared template --------------------
 
 FOOTER_LINKS = (
-    '<a href="/privacy.html" style="color:var(--muted);">Privacy</a> · '
-    '<a href="/terms.html" style="color:var(--muted);">Terms</a> · '
-    '<a href="/contact.html" style="color:var(--muted);">Contact</a> · '
-    '<a href="/about.html" style="color:var(--muted);">About</a> · '
-    '<a href="/editorial-standards.html" style="color:var(--muted);">Editorial</a> · '
-    '<a href="/how-it-works.html" style="color:var(--muted);">How it works</a>'
+    '<a href="/privacy" style="color:var(--muted);">Privacy</a> · '
+    '<a href="/terms" style="color:var(--muted);">Terms</a> · '
+    '<a href="/contact" style="color:var(--muted);">Contact</a> · '
+    '<a href="/about" style="color:var(--muted);">About</a> · '
+    '<a href="/editorial-standards" style="color:var(--muted);">Editorial</a> · '
+    '<a href="/how-it-works" style="color:var(--muted);">How it works</a>'
 )
 
 AUTHOR_HTML = {

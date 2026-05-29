@@ -483,7 +483,7 @@ def locale_about_html(loc: str) -> str:
     <a href="/blog/">{d['nav_blog']}</a>
     <a href="/{loc}/about" style="color:var(--accent);">{d['nav_about']}</a>
     <a href="/{loc}/contact">{d['nav_contact']}</a>
-    <a href="/privacy.html">{d['nav_privacy']}</a>
+    <a href="/privacy">{d['nav_privacy']}</a>
   </nav>
 </header>
 <main>
@@ -493,7 +493,7 @@ def locale_about_html(loc: str) -> str:
     <a href="/?utm_source=about&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">{d['cta']}</a>
   </div>
 </main>
-<footer><p>{d['footer_copy']} · <a href="/privacy.html">{d['footer_privacy']}</a> · <a href="/terms.html">{d['footer_terms']}</a> · <a href="/{loc}/contact">{d['footer_contact']}</a> · <a href="/{loc}/about">{d['footer_about']}</a></p></footer>
+<footer><p>{d['footer_copy']} · <a href="/privacy">{d['footer_privacy']}</a> · <a href="/terms">{d['footer_terms']}</a> · <a href="/{loc}/contact">{d['footer_contact']}</a> · <a href="/{loc}/about">{d['footer_about']}</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>

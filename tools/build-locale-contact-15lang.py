@@ -271,13 +271,13 @@ def locale_contact_html(loc: str) -> str:
     <a href="/blog/">{n['nav_blog']}</a>
     <a href="/{loc}/about">{n['nav_about']}</a>
     <a href="/{loc}/contact" style="color:var(--accent);">{n['nav_contact']}</a>
-    <a href="/privacy.html">{n['nav_privacy']}</a>
+    <a href="/privacy">{n['nav_privacy']}</a>
   </nav>
 </header>
 <main>
 {body}
 </main>
-<footer><p>{n['footer_copy']} · <a href="/privacy.html">{n['footer_privacy']}</a> · <a href="/terms.html">{n['footer_terms']}</a> · <a href="/{loc}/contact">{n['footer_contact']}</a> · <a href="/{loc}/about">{n['footer_about']}</a></p></footer>
+<footer><p>{n['footer_copy']} · <a href="/privacy">{n['footer_privacy']}</a> · <a href="/terms">{n['footer_terms']}</a> · <a href="/{loc}/contact">{n['footer_contact']}</a> · <a href="/{loc}/about">{n['footer_about']}</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>
