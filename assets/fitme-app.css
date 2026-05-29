@@ -1085,9 +1085,7 @@
       padding: 2px 0;
       min-height: 0;
       overflow-x: hidden;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
+      overflow-y: visible;
     }
     .chips-column .side-btn,
     .chips-column .chip {
@@ -1183,8 +1181,7 @@
       z-index: 6;
       padding: 8px 10px 10px;
       max-height: 36%;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      overflow-y: visible;
       pointer-events: none;
       border-radius: 0 0 11px 11px;
       background: linear-gradient(0deg, rgba(6, 5, 4, 0.93) 0%, rgba(8, 7, 6, 0.78) 55%, transparent 100%);
@@ -1265,17 +1262,11 @@
     .quick-start-banner .qs-items { display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:center; }
     .quick-start-banner .qs-item { background:rgba(212,168,75,0.1); border:1px solid rgba(212,168,75,0.3); border-radius:20px; padding:3px 10px; font-size:0.75rem; color:var(--text); }
 
-    .panel { display: flex; flex-direction: column; background: var(--surface); min-height: 0; height: 100%; overflow: hidden; }
-    @media (min-width: 901px) {
-      #analysis > #main-panel.panel {
-        height: auto;
-        overflow: visible;
-      }
-    }
+    .panel { display: flex; flex-direction: column; background: var(--surface); min-height: 0; height: auto; overflow: visible; }
     .panel-header { flex-shrink: 0; padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
     .panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 3px; margin-bottom: 6px; }
     .panel-subtitle { font-size: 12px; color: var(--muted); line-height: 1.7; }
-    .input-area { flex: 1; min-height: 0; padding: 24px; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+    .input-area { flex: 1 1 auto; min-height: 0; padding: 24px; overflow-y: visible; overflow-x: hidden; }
     .input-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 180px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 13px; text-align: center; line-height: 2; }
     .measure-tip-card { background: rgba(212,168,75,0.05); border: 1px solid rgba(212,168,75,0.25); border-radius: 16px; padding: 20px 24px; margin-bottom: 20px; overflow: hidden; transition: max-height 0.5s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease; max-height: 560px; opacity: 1; }
     .measure-tip-card.collapsed { max-height: 0; opacity: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; border-width: 0; }
@@ -1589,7 +1580,42 @@
     .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--accent); color: var(--on-accent); padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: 1px; transition: transform 0.3s; z-index: 999; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
     .toast.show { transform: translateX(-50%) translateY(0); }
 
-
+    /* 데스크톱 분석 UI — 파일 하단에서 최종 적용(앞선 .input-area/.chips 규칙 덮어씀) */
+    @media (min-width: 901px) {
+      #analysis.main-container {
+        align-items: start;
+      }
+      #analysis > .body-section,
+      #analysis > #main-panel.panel {
+        align-self: start;
+      }
+      #analysis > #main-panel.panel {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+      }
+      #analysis > #main-panel.panel .input-area,
+      #analysis > #main-panel.panel .saved-list {
+        overflow: visible;
+        overflow-y: visible;
+        max-height: none;
+        flex: 0 0 auto;
+      }
+      #analysis .measure-scan-stage,
+      #analysis .measure-scan-stage .stage-inner {
+        min-height: 0;
+        height: auto;
+      }
+      #analysis .chips-column,
+      #analysis .hud-row-main--tri .chips-column {
+        overflow: visible;
+        overflow-y: visible;
+      }
+      #analysis .body-measure-layout .figure-intro {
+        overflow-y: visible;
+        max-height: none;
+      }
+    }
 
     @media (max-width: 900px) {
       .main-container { height: auto; min-height: calc(100dvh - 70px); max-height: none; overflow: visible; flex: 1 1 auto; }
@@ -1619,6 +1645,15 @@
       .chips-column .side-btn,
       .chips-column .chip { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
       .hud-row-main { min-height: clamp(280px, 42dvh, 520px); gap: 4px; }
+      #analysis .chips-column {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+      #analysis .body-measure-layout .figure-intro {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
 
       /* Bottom sheet */
       .panel {
