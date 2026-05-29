@@ -1021,9 +1021,52 @@
       box-shadow: 0 0 0 1px rgba(212, 168, 75, 0.25), 0 12px 32px rgba(0, 0, 0, 0.5);
     }
     #analysis .measure-scan-stage .chip.side-btn.active .label { color: var(--hud-gold2); }
+    @media (max-width: 640px) {
+      #analysis .hud-row-main.hud-row-main--tri {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "figure figure"
+          "chipsL chipsR";
+        gap: 8px 6px;
+        align-items: start;
+      }
+      #analysis .hud-row-main--tri .figure-zone {
+        grid-area: figure;
+        order: unset;
+        width: min(100%, 280px);
+        max-width: 100%;
+        margin: 0 auto;
+        flex: none;
+        justify-self: center;
+        aspect-ratio: 752 / 798;
+      }
+      #analysis .hud-row-main--tri .chips-column--left {
+        grid-area: chipsL;
+        order: unset;
+      }
+      #analysis .hud-row-main--tri .chips-column--right {
+        grid-area: chipsR;
+        order: unset;
+      }
+      #analysis .hud-row-main--tri .chips-column {
+        flex: none;
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+      #analysis .body-measure-layout .figure-intro p#figure-intro-2 {
+        display: none;
+      }
+      #analysis .hud-row-top .chip {
+        min-width: 0;
+        width: 100%;
+        max-width: none;
+      }
+    }
     @media (max-width: 520px) {
-      #analysis .measure-scan-stage .chip .val { font-size: 20px; }
-      #analysis .measure-scan-stage .hud-row-top .chip { min-width: 100px; }
+      #analysis .measure-scan-stage .chip .val { font-size: 14px; }
+      #analysis .measure-scan-stage .hud-header .brand { font-size: 17px; }
     }
     .hud-measure-grid { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; width: 100%; gap: 8px; }
     .hud-row-top { flex-shrink: 0; display: flex; justify-content: center; padding: 2px 0 4px; }
@@ -1605,42 +1648,101 @@
         display: block;
         width: 100%;
       }
-      .main-container { height: auto; min-height: calc(100dvh - 70px); max-height: none; overflow: visible; flex: 1 1 auto; }
-      .body-section {
+      .main-container { height: auto; min-height: 0; max-height: none; overflow: visible; flex: 1 1 auto; }
+      #analysis > .body-section {
         border-right: none;
         border-bottom: none;
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        min-height: calc(100dvh - 70px);
-        min-height: calc(100svh - 70px);
-        padding: 10px 6px max(10px, env(safe-area-inset-bottom, 0px));
-        overflow: hidden;
+        min-height: 0;
+        padding: 8px 4px 12px;
+        overflow: visible;
       }
       .guide-grid, .blog-grid, .about-features { grid-template-columns: 1fr; }
       .hero-title { font-size: 48px; }
       nav { display: none; }
 
-      .body-measure-layout {
+      #analysis .measure-scan-stage,
+      #analysis .measure-scan-stage .stage-inner {
+        min-height: 0;
+        height: auto;
+      }
+      #analysis .body-measure-layout {
         flex: none;
         width: 100%;
-        height: min(78dvh, calc(100dvh - 168px));
-        height: min(78svh, calc(100svh - 168px));
-        min-height: min(52dvh, 320px);
-        max-height: min(82dvh, calc(100dvh - 140px));
+        height: auto;
+        min-height: 0;
+        max-height: none;
       }
-      .chips-column .side-btn,
-      .chips-column .chip { font-size: 7.5px; padding: 6px 6px 7px; border-radius: 9px; }
-      .hud-row-main { min-height: clamp(280px, 42dvh, 520px); gap: 4px; }
-      #analysis .chips-column {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: thin;
+      #analysis .hud-row-main {
+        container-type: normal;
+        min-height: 0;
+        gap: 6px;
+        align-items: stretch;
+      }
+      #analysis .hud-row-main > .figure-zone {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 42%;
+        min-width: 0;
+        width: auto;
+        max-width: none;
+        height: auto !important;
+        aspect-ratio: 752 / 798;
+        align-self: stretch;
+      }
+      #analysis .figure-zone .figure-media {
+        position: relative;
+        inset: auto;
+        flex: none;
+        width: 100%;
+        min-height: 0;
+        max-height: min(44vh, 400px);
+        aspect-ratio: 752 / 798;
+        z-index: 2;
+      }
+      #analysis .figure-zone .body-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        max-height: min(44vh, 400px);
+        aspect-ratio: 752 / 798;
+        z-index: 4;
       }
       #analysis .body-measure-layout .figure-intro {
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
+        position: relative;
+        z-index: 7;
+        flex-shrink: 0;
+        max-height: none;
+        overflow: visible;
+        margin-top: 0;
+        padding: 8px 10px 10px;
+        font-size: 9px;
+        line-height: 1.45;
       }
+      #analysis .body-measure-layout .figure-intro p {
+        font-size: 9px;
+        line-height: 1.45;
+      }
+      .hud-row-main--tri .chips-column {
+        flex: 0 0 clamp(70px, 20vw, 92px);
+        justify-content: flex-start;
+        gap: 5px;
+        overflow-y: visible;
+      }
+      .chips-column .side-btn,
+      .chips-column .chip {
+        font-size: 7px;
+        padding: 5px 5px 6px;
+        border-radius: 8px;
+        line-height: 1.2;
+      }
+      #analysis .measure-scan-stage .chip .val { font-size: 15px; }
+      #analysis .measure-scan-stage .chip .label { font-size: 8px; }
 
       /* Bottom sheet */
       .panel {
