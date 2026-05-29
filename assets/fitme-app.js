@@ -146,7 +146,7 @@
       'footer-editorial':'콘텐츠 기준','footer-how':'작동 방식','footer-blog-nav':'블로그',
       'footer-copy':'© 2026 FITME. 글로벌 체형 분석 서비스.',
       'publisher-title':'발행: FITME · 이창용 (1인 창업, 대한민국)',
-      'publisher-body':'한국어·영어 핏 가이드와 브라우저 기반 무료 비율 도구를 제공합니다. 의료 조언이 아닙니다. 쇼핑 전 <a href="/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a>, <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a>, <a href="/about" style="color:var(--accent);font-weight:600;">소개</a>를 확인해 주세요.',
+      'publisher-body':'한국어·영어 핏 가이드와 브라우저 기반 무료 비율 도구를 제공합니다. 의료 조언이 아닙니다. 쇼핑 전 <a href="/ko/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a>, <a href="/ko/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a>, <a href="/ko/about" style="color:var(--accent);font-weight:600;">소개</a>를 확인해 주세요.',
       'section-tag-measure':'측정 방법','blog-tag-measure':'측정 가이드',
       'blog-badge-new':'✦ 신규','blog-badge-hot':'🔥 인기',
       'units-btn':'단위','unit-modal-label':'측정 단위','unit-modal-title':'단위 설정',
@@ -2445,6 +2445,41 @@
 
   function t(key) { return (i18n[currentLang] || i18n.en)[key] || (i18n.en[key] || key); }
 
+  /** Trust/legal footer URLs: Korean UI → /ko/*, otherwise English root pages. */
+  function trustHref(page) {
+    const ko = {
+      privacy: '/ko/privacy',
+      terms: '/ko/terms',
+      about: '/ko/about',
+      contact: '/ko/contact',
+      editorial: '/ko/editorial-standards',
+      how: '/ko/how-it-works',
+      blog: '/blog/',
+    };
+    const en = {
+      privacy: '/privacy',
+      terms: '/terms',
+      about: '/about',
+      contact: '/contact',
+      editorial: '/editorial-standards',
+      how: '/how-it-works',
+      blog: '/blog/',
+    };
+    const map = currentLang === 'ko' ? ko : en;
+    return map[page] || map.about;
+  }
+
+  function applyTrustLinks() {
+    document.querySelectorAll('[data-trust-link]').forEach((el) => {
+      const page = el.getAttribute('data-trust-link');
+      if (page) el.setAttribute('href', trustHref(page));
+    });
+    const pub = document.getElementById('publisher-body');
+    if (pub && currentLang === 'ko') {
+      pub.innerHTML = t('publisher-body');
+    }
+  }
+
   /** Blog card thumbnails: hero PNGs under /blog/img/en/ (KO + EN use same assets). */
   function applyBlogThumbPaths() {
     const useKo = currentLang === 'ko';
@@ -2643,6 +2678,7 @@
     // RTL
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
+    applyTrustLinks();
   }
 
   function setLanguage(lang) {
