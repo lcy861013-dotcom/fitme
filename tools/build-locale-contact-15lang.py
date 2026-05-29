@@ -42,6 +42,13 @@ about = _load_about_module()
 LANGS = about.LANGS
 META = about.META
 NAV = about.LOCALES
+INDEXABLE_TRUST_LOCALES = about.INDEXABLE_TRUST_LOCALES
+
+
+def robots_meta(loc: str) -> str:
+    if loc in INDEXABLE_TRUST_LOCALES:
+        return ""
+    return '  <meta name="robots" content="noindex, follow">\n'
 
 CONTACT: dict[str, dict[str, str]] = {
     "en": {
@@ -213,14 +220,12 @@ CONTACT: dict[str, dict[str, str]] = {
 
 
 def hreflang_contact() -> str:
-    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/contact">']
-    for loc in LANGS:
-        if loc == "en":
-            continue
-        lines.append(
-            f'<link rel="alternate" hreflang="{loc}" href="{SITE}/{loc}/contact">'
-        )
-    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/contact">')
+    lines = [
+        f'<link rel="alternate" hreflang="en" href="{SITE}/contact">',
+        f'<link rel="alternate" hreflang="ja" href="{SITE}/ja/contact">',
+        f'<link rel="alternate" hreflang="pt-BR" href="{SITE}/pt/contact">',
+        f'<link rel="alternate" hreflang="x-default" href="{SITE}/contact">',
+    ]
     return "\n".join(lines)
 
 
@@ -244,7 +249,7 @@ def locale_contact_html(loc: str) -> str:
   <script>gtag('js', new Date()); gtag('config', 'G-JW0DB4GXG3');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{c['title']}</title>
+{robots_meta(loc)}  <title>{c['title']}</title>
   <meta name="description" content="{c['desc']}">
   <meta property="og:title" content="{c['title']}">
   <meta property="og:description" content="{c['desc']}">

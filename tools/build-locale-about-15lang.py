@@ -10,6 +10,9 @@ SITE = "https://perfectfitme.com"
 
 LANGS = ("ko", "en", "ja", "pt", "es", "zh", "fr", "de", "it", "ru", "ar", "hi", "th", "id", "vi")
 
+# AdSense/GSC: index only full editorial locales; keep others as noindex doorways for UX only.
+INDEXABLE_TRUST_LOCALES = frozenset({"ja", "pt"})
+
 HEAD_EXTRA = """
 <style>
 :root{{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}}
@@ -418,15 +421,19 @@ LOCALES: dict[str, dict[str, str]] = {
 }
 
 
+def robots_meta(loc: str) -> str:
+    if loc in INDEXABLE_TRUST_LOCALES:
+        return ""
+    return '  <meta name="robots" content="noindex, follow">\n'
+
+
 def hreflang_block() -> str:
-    lines = [f'<link rel="alternate" hreflang="en" href="{SITE}/about">']
-    for loc in LANGS:
-        if loc == "en":
-            continue
-        lines.append(
-            f'<link rel="alternate" hreflang="{loc}" href="{SITE}/{loc}/about">'
-        )
-    lines.append(f'<link rel="alternate" hreflang="x-default" href="{SITE}/about">')
+    lines = [
+        f'<link rel="alternate" hreflang="en" href="{SITE}/about">',
+        f'<link rel="alternate" hreflang="ja" href="{SITE}/ja/about">',
+        f'<link rel="alternate" hreflang="pt-BR" href="{SITE}/pt/about">',
+        f'<link rel="alternate" hreflang="x-default" href="{SITE}/about">',
+    ]
     return "\n".join(lines)
 
 
@@ -454,7 +461,7 @@ def locale_about_html(loc: str) -> str:
   <script>gtag('js', new Date()); gtag('config', 'G-JW0DB4GXG3');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{d['title']}</title>
+{robots_meta(loc)}  <title>{d['title']}</title>
   <meta name="description" content="{d['desc']}">
   <meta property="og:title" content="{d['title']}">
   <meta property="og:description" content="{d['desc']}">
