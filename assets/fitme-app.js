@@ -2,7 +2,7 @@
   // ============================================================
   const i18n = {
     ko: {
-      'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-blog':'블로그','nav-about':'About',
+      'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-blog':'블로그','nav-about':'소개',
       'hero-tag':'직구·쇼핑몰, 사이즈보다 먼저 비율',
       'hero-live-suffix':'무료 · 가입불필요 · 완전 비공개',
       'hero-headline':'차트에 맞춰 샀는데 왜 어색할까요?<br><em>비율을 알면 온라인 핏 선택이 달라집니다.</em>',
@@ -18,7 +18,7 @@
       'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
       'privacy-step1':'3개로 시작 + 세부 구간 측정','privacy-step2':'비율 구조 분석','privacy-step3':'강점/보완 스타일 전략',
       'hero-privacy-note':'셀카 없음 · 업로드 없음 · 내 정보는 이 페이지를 절대 벗어나지 않아요',
-      'why-section-tag':'WHY FITME?','why-section-title':'온라인에서 맞는 사이즈 ≠ 내 실루엣',
+      'why-section-tag':'왜 FITME인가요?','why-section-title':'온라인에서 맞는 사이즈 ≠ 내 실루엣',
       'why-section-intro':'모델 컷과 후기만 보고 장바구니에 넣었다가 실패한 적 있나요? 같은 사이즈라도 어깨 너비, 다리 길이, 허리 라인이 다르면 핏이 완전히 달라집니다. FITME는 사진 없이 몇 가지 치수만으로 그 비율을 보여 주고, 무엇을 살려 무엇을 피할지 방향을 잡아 줍니다.',
       'why-card1-title':'비율이 핵심, 사이즈 태그가 아닌','why-card2-title':'수학적 정밀도','why-card3-title':'장점 극대화, 단점 완벽 보완',
       'why-card1-desc':'S, M, L 사이즈 태그는 핏에 대해 거의 아무것도 말해주지 않습니다. 같은 사이즈를 입는 두 사람도 어깨 너비, 다리-상체 비율, 허리-골반 곡선이 완전히 다를 수 있습니다. 바로 그 간극 — 사이즈와 비율 사이 — 이 기술적으로 맞는 옷이 어딘가 어색해 보이는 이유입니다. FITME는 사이즈 태그를 완전히 우회합니다. 측정값 3개를 입력하면 실제 신체 비율을 정밀하게 분석해 태그가 아닌 당신만의 비율에 맞는 스타일을 제안합니다.',
@@ -140,9 +140,17 @@
       'progress-label':'입력 완료','saved-list-title':'저장된 측정값',
       'analysis-report-title':'분석 리포트','analysis-best':'✨ BEST 스타일 추천','analysis-worst':'⚠️ 주의할 스타일',
       'combo-analysis-title':'✨ 복합 코디 진단','combo-analysis-hint':'맞는 조합이 여러 개일 때는 우선순위가 높은 순으로 보여 드려요. 나머지는 아래에서 펼쳐 보실 수 있어요.','combo-analysis-more':'그 외 조합 {n}개 더 보기',
+      'tool-disclaimer':'<strong>면책:</strong> 결과는 스타일 안내용 추정치입니다. 의료 진단·3D 체형 스캔·전문 재단 치수가 아닙니다. <span style="opacity:0.9">*입력된 수치 기반의 통계적 분석 결과입니다.</span>',
       'analysis-disclaimer':'*입력된 수치 기반의 통계적 분석 결과입니다.',
-      'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'About FITME','footer-contact':'Contact Us',
-      'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'FITME 소개','footer-contact':'문의하기',
+      'footer-editorial':'콘텐츠 기준','footer-how':'작동 방식','footer-blog-nav':'블로그',
+      'footer-copy':'© 2026 FITME. 글로벌 체형 분석 서비스.',
+      'publisher-title':'발행: FITME · 이창용 (1인 창업, 경기 안산)',
+      'publisher-body':'한국어·영어 핏 가이드와 브라우저 기반 무료 비율 도구를 제공합니다. 의료 조언이 아닙니다. 쇼핑 전 <a href="/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a>, <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a>, <a href="/about" style="color:var(--accent);font-weight:600;">소개</a>를 확인해 주세요.',
+      'section-tag-measure':'측정 방법','blog-tag-measure':'측정 가이드',
+      'blog-badge-new':'✦ 신규','blog-badge-hot':'🔥 인기',
+      'units-btn':'단위','unit-modal-label':'측정 단위','unit-modal-title':'단위 설정',
+      'panel-req-hint':'★ 키 · 몸무게 · 허리는 필수 · 나머지는 선택',
       'sns-kakao':'카카오톡','sns-copy':'링크 복사','sns-tagline':'나의 체형 분석 결과를 공유해보세요!',
       'toast-enter-value':'값을 입력해주세요!','toast-saved':' 저장 완료! ✓','toast-link':'링크 복사됨! 🔗',
       'toast-kakao-copy':'📋 복사됐어요! 카카오톡 채팅창에 붙여넣기 하세요 💛',
@@ -428,9 +436,17 @@
       'progress-label':'Completed','saved-list-title':'Saved Measurements',
       'analysis-report-title':'Analysis Report','analysis-best':'✨ BEST Style Picks','analysis-worst':'⚠️ Styles to Avoid',
       'combo-analysis-title':'✨ Style Combo Analysis','combo-analysis-hint':'When several combos match your measurements, we show the most relevant ones first. Expand below for the rest.','combo-analysis-more':'Show {n} more combo(s)',
+      'tool-disclaimer':'<strong>Disclaimer:</strong> Results are estimates for style guidance only. Not a medical diagnosis, 3D body scan, or professional tailor measurement. <span style="opacity:0.9">*Statistical analysis based on entered measurements.</span>',
       'analysis-disclaimer':'*Statistical analysis based on entered measurements.',
       'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service','footer-about':'About FITME','footer-contact':'Contact Us',
+      'footer-editorial':'Editorial standards','footer-how':'How it works','footer-blog-nav':'Blog',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
+      'publisher-title':'Publisher: FITME · Changyong Lee (solo founder, Ansan, South Korea)',
+      'publisher-body':'Original English fit guides plus a free browser-based proportion tool. Not medical advice. Read <a href="/how-it-works" style="color:var(--accent);font-weight:600;">how FITME works</a>, our <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">editorial standards</a>, and the <a href="/about" style="color:var(--accent);font-weight:600;">about page</a> before using results for shopping decisions.',
+      'section-tag-measure':'HOW TO MEASURE','blog-tag-measure':'HOW TO MEASURE',
+      'blog-badge-new':'✦ NEW','blog-badge-hot':'🔥 HOT',
+      'units-btn':'Units','unit-modal-label':'Measurement Units','unit-modal-title':'Unit Settings',
+      'panel-req-hint':'★ Height · Weight · Waist are required · others optional',
       'sns-kakao':'KakaoTalk','sns-copy':'Copy Link','sns-tagline':'Share your body analysis results!',
       'toast-enter-value':'Please enter a value!','toast-saved':' saved! ✓','toast-link':'Link copied! 🔗',
       'toast-kakao-copy':'📋 Copied! Paste it in your KakaoTalk chat 💛',
@@ -2461,7 +2477,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-headline','guide-card-desc','guide-step2']);
+    const htmlKeys = new Set(['hero-sub','hero-headline','guide-card-desc','guide-step2','publisher-body','tool-disclaimer']);
     // Dynamic hero headline (uses <br> and <em>)
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) heroHl.innerHTML = t('hero-headline');
@@ -2472,6 +2488,7 @@
     });
     // guide section (no data-i18n, use IDs)
     const set = (id, val, html) => { const el = document.getElementById(id); if (el) { if(html) el.innerHTML = val; else el.textContent = val; } };
+    set('guide-measure-section-tag', t('section-tag-measure'));
     set('guide-section-title', t('guide-section-title'));
     set('guide-section-sub', t('guide-section-sub'));
     set('guide-card-title', t('guide-card-title'));
@@ -2549,7 +2566,19 @@
     set('analysis-report-title', t('analysis-report-title'));
     set('analysis-best-title', t('analysis-best'));
     set('analysis-worst-title', t('analysis-worst'));
-    set('analysis-disclaimer', t('analysis-disclaimer'));
+    const discHtml = t('tool-disclaimer');
+    set('tool-disclaimer-main', discHtml, true);
+    set('analysis-disclaimer', discHtml, true);
+    set('publisher-title', t('publisher-title'));
+    set('publisher-body', t('publisher-body'), true);
+    set('panel-req-hint', t('panel-req-hint'));
+    set('unit-modal-label', t('unit-modal-label'));
+    set('unit-modal-title', t('unit-modal-title'));
+    const unitBtnSpan = document.querySelector('#unit-settings-btn span');
+    if (unitBtnSpan) unitBtnSpan.textContent = t('units-btn');
+    document.querySelectorAll('[data-i18n="blog-tag-measure"]').forEach(el => { el.textContent = t('blog-tag-measure'); });
+    document.querySelectorAll('[data-i18n="blog-badge-new"]').forEach(el => { el.textContent = t('blog-badge-new'); });
+    document.querySelectorAll('[data-i18n="blog-badge-hot"]').forEach(el => { el.textContent = t('blog-badge-hot'); });
     // all save buttons
     document.querySelectorAll('.btn-save').forEach(btn => btn.textContent = t('save-btn'));
     // gender buttons

@@ -158,7 +158,7 @@
       <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
       <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
     </button>
-    <button class="unit-settings-btn" id="unit-settings-btn" onclick="openUnitSettings()">⚖️ <span>Units</span></button>
+    <button class="unit-settings-btn" id="unit-settings-btn" onclick="openUnitSettings()">⚖️ <span data-i18n="units-btn">단위</span></button>
     <select id="lang-select" class="lang-switcher" onchange="setLanguage(this.value)">
       <option value="ko">🇰🇷 한국어</option>
       <option value="en">🇺🇸 English</option>
@@ -180,7 +180,7 @@
       <a href="/#why-fitme" data-i18n="nav-guide">측정 가이드</a>
       <a href="/#analysis" data-i18n="nav-analysis">비율 분석</a>
       <a href="/blog/" data-i18n="nav-blog">블로그</a>
-      <a href="/about" data-i18n="nav-about">About</a>
+      <a href="/about" data-i18n="nav-about">소개</a>
     </nav>
   </div>
 </header>
@@ -317,7 +317,7 @@
   <!-- GUIDE -->
   <section class="guide-content" id="guide">
     <div class="section-header">
-      <div class="section-tag">HOW TO MEASURE</div>
+      <div class="section-tag" id="guide-measure-section-tag">측정 방법</div>
       <h2 class="section-title" id="guide-section-title">Same Height, Different Fit</h2>
       <p id="guide-section-sub" style="font-size:14px; color:var(--muted); margin-top:10px;">Leg length, arm length, shoulder width — true proportions can only be known by measuring</p>
     </div>
@@ -729,46 +729,46 @@
       <a class="blog-card hot" href="/blog/blog20" onclick="goBlog(event,'blog20')">
         <div class="blog-thumb"><img src="/blog/img/en/blog20-span-thumb-en.png" alt="손뼘 측정법 일러스트" loading="lazy" data-thumb-ko="/blog/img/en/blog20-span-thumb-en.png" data-thumb-en="/blog/img/en/blog20-span-thumb-en.png"></div>
         <div class="blog-body">
-          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-tag" data-i18n="blog-tag-measure">측정 가이드</div>
           <div class="blog-title" data-i18n="blog20-title">손뼘으로 모든 부위 재기</div>
           <div class="blog-desc" data-i18n="blog20-desc">내 한 뼘 = 평생 줄자. 한 번 재두면 어깨·허리·다리·팔 모두 계산 가능.</div>
-          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge hot">🔥 HOT</span></div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge hot" data-i18n="blog-badge-hot">🔥 인기</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog21" onclick="goBlog(event,'blog21')">
         <div class="blog-thumb"><img src="/blog/img/en/blog21-shoulder-thumb-en.png" alt="어깨 너비 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/en/blog21-shoulder-thumb-en.png" data-thumb-en="/blog/img/en/blog21-shoulder-thumb-en.png"></div>
         <div class="blog-body">
-          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-tag" data-i18n="blog-tag-measure">측정 가이드</div>
           <div class="blog-title" data-i18n="blog21-title">혼자서 어깨 너비 재기</div>
           <div class="blog-desc" data-i18n="blog21-desc">견봉(어깨 끝뼈) 찾는 법부터 손뼘으로 자가 측정하는 2단계 방법.</div>
-          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new" data-i18n="blog-badge-new">✦ 신규</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog22" onclick="goBlog(event,'blog22')">
         <div class="blog-thumb"><img src="/blog/img/en/blog22-arm-thumb-en.png" alt="팔 길이 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/en/blog22-arm-thumb-en.png" data-thumb-en="/blog/img/en/blog22-arm-thumb-en.png"></div>
         <div class="blog-body">
-          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-tag" data-i18n="blog-tag-measure">측정 가이드</div>
           <div class="blog-title" data-i18n="blog22-title">팔 길이 재기 — 상완·하완 2단계</div>
           <div class="blog-desc" data-i18n="blog22-desc">소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.</div>
-          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new" data-i18n="blog-badge-new">✦ 신규</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog23" onclick="goBlog(event,'blog23')">
         <div class="blog-thumb"><img src="/blog/img/en/blog23-leg-thumb-en.png" alt="다리 길이 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/en/blog23-leg-thumb-en.png" data-thumb-en="/blog/img/en/blog23-leg-thumb-en.png"></div>
         <div class="blog-body">
-          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-tag" data-i18n="blog-tag-measure">측정 가이드</div>
           <div class="blog-title" data-i18n="blog23-title">다리 길이 재기 — 골반뼈에서 발목까지</div>
           <div class="blog-desc" data-i18n="blog23-desc">대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.</div>
-          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new" data-i18n="blog-badge-new">✦ 신규</span></div>
         </div>
       </a>
       <a class="blog-card" href="/blog/blog24" onclick="goBlog(event,'blog24')">
         <div class="blog-thumb"><img src="/blog/img/en/blog24-hip-thumb-en.png" alt="엉덩이 둘레 측정 일러스트" loading="lazy" data-thumb-ko="/blog/img/en/blog24-hip-thumb-en.png" data-thumb-en="/blog/img/en/blog24-hip-thumb-en.png"></div>
         <div class="blog-body">
-          <div class="blog-tag">HOW TO MEASURE</div>
+          <div class="blog-tag" data-i18n="blog-tag-measure">측정 가이드</div>
           <div class="blog-title" data-i18n="blog24-title">엉덩이 둘레 혼자 재기</div>
           <div class="blog-desc" data-i18n="blog24-desc">두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.</div>
-          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new">✦ NEW</span></div>
+          <div class="blog-meta"><span class="blog-read-time" data-i18n="read-5min">5 min read</span><span class="blog-badge new" data-i18n="blog-badge-new">✦ 신규</span></div>
         </div>
       </a>
     </div>
@@ -779,7 +779,7 @@
 
   <!-- MAIN ANALYSIS -->
   <div class="main-container" id="analysis">
-    <p class="tool-disclaimer" style="max-width:720px;margin:0 auto 16px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--muted);border:1px solid var(--border);border-radius:10px;background:var(--card);"><strong>Disclaimer:</strong> Results are estimates for style guidance only. Not a medical diagnosis, 3D body scan, or professional tailor measurement.</p>
+    <p id="tool-disclaimer-main" class="tool-disclaimer" style="max-width:720px;margin:0 auto 16px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--muted);border:1px solid var(--border);border-radius:10px;background:var(--card);"></p>
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
       <div class="measure-scan-stage stage body-measure-layout">
@@ -933,7 +933,7 @@
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
         
         
-        <div class="panel-req-hint" id="panel-req-hint">★ Height · Weight · Waist are required &nbsp;·&nbsp; others optional</div>
+        <div class="panel-req-hint" id="panel-req-hint">★ 키 · 몸무게 · 허리는 필수 · 나머지는 선택</div>
       </div>
       <div class="gender-toggle">
         <button class="gender-btn active" id="gender-female" onclick="setGender('female')">👩 여성</button>
@@ -1158,7 +1158,7 @@
             <button class="challenge-btn" onclick="challengeShare()" id="challenge-btn">→ Send the Challenge</button>
           </div>
 
-          <p id="analysis-disclaimer" class="tool-disclaimer" style="font-size:12px;line-height:1.65;color:var(--muted);margin-top:20px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;"><strong>Disclaimer:</strong> Results are estimates for style guidance only. Not a medical diagnosis, 3D body scan, or professional tailor measurement. <span data-i18n="analysis-disclaimer-ko">*입력된 수치 기반의 통계적 분석 결과입니다.</span></p>
+          <p id="analysis-disclaimer" class="tool-disclaimer" style="font-size:12px;line-height:1.65;color:var(--muted);margin-top:20px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;"></p>
 
           <!-- RELATED ARTICLES -->
           <div id="related-articles" style="margin-top:28px; display:none;">
@@ -1271,21 +1271,21 @@
   </noscript>
 
   <section class="publisher-trust" aria-label="Publisher information" style="max-width:720px;margin:32px auto 0;padding:20px 22px;border:1px solid var(--border);border-radius:12px;background:var(--card);font-size:14px;line-height:1.75;color:var(--muted);">
-    <p style="margin:0 0 10px;color:var(--text);font-weight:600;">Publisher: FITME · Changyong Lee (solo founder, Ansan, South Korea)</p>
-    <p style="margin:0;">Original English fit guides plus a free browser-based proportion tool. Not medical advice. Read <a href="/how-it-works" style="color:var(--accent);font-weight:600;">how FITME works</a>, our <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">editorial standards</a>, and the <a href="/about" style="color:var(--accent);font-weight:600;">about page</a> before using results for shopping decisions.</p>
+    <p id="publisher-title" style="margin:0 0 10px;color:var(--text);font-weight:600;"></p>
+    <p id="publisher-body" style="margin:0;"></p>
   </section>
 
   <footer>
     <div class="footer-links">
       <a href="/privacy" data-i18n="footer-privacy">개인정보처리방침</a>
       <a href="/terms" data-i18n="footer-terms">이용약관</a>
-      <a href="/about" data-i18n="footer-about">About FITME</a>
-      <a href="/contact" data-i18n="footer-contact">Contact</a>
-      <a href="/editorial-standards">Editorial standards</a>
-      <a href="/how-it-works">How it works</a>
-      <a href="/blog/">Blog</a>
+      <a href="/about" data-i18n="footer-about">FITME 소개</a>
+      <a href="/contact" data-i18n="footer-contact">문의하기</a>
+      <a href="/editorial-standards" data-i18n="footer-editorial">콘텐츠 기준</a>
+      <a href="/how-it-works" data-i18n="footer-how">작동 방식</a>
+      <a href="/blog/" data-i18n="footer-blog-nav">블로그</a>
     </div>
-    <p class="footer-copy" data-i18n="footer-copy">&copy; 2026 FITME. Free proportion tool &amp; fit guides.</p>
+    <p class="footer-copy" data-i18n="footer-copy">&copy; 2026 FITME. 글로벌 체형 분석 서비스.</p>
   </footer>
 </div>
 
@@ -1294,8 +1294,8 @@
 <div class="unit-settings-modal" id="unit-settings-modal">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;">
     <div>
-      <div style="font-size:9px;letter-spacing:3px;color:var(--accent);font-family:'DM Sans',sans-serif;margin-bottom:4px;text-transform:uppercase;">Measurement Units</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;">Unit Settings</div>
+      <div id="unit-modal-label" style="font-size:9px;letter-spacing:3px;color:var(--accent);font-family:'DM Sans',sans-serif;margin-bottom:4px;text-transform:uppercase;">측정 단위</div>
+      <div id="unit-modal-title" style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;">단위 설정</div>
     </div>
     <button onclick="closeUnitSettings()" style="background:var(--card);border:1px solid var(--border);color:var(--muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;">✕</button>
   </div>
@@ -1351,7 +1351,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=8"></script>
+<script defer src="/assets/fitme-app.js?v=9"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>
