@@ -481,6 +481,7 @@
     nav { display: flex; gap: 20px; }
     nav a { color: var(--muted); font-size: 13px; text-decoration: none; letter-spacing: 1px; cursor: pointer; transition: color 0.2s; font-family: 'DM Sans', sans-serif; }
     nav a:hover { color: var(--text); }
+    #guide, #analysis, #why-fitme { scroll-margin-top: 96px; }
     .lang-switcher { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; outline: none; font-family: 'DM Sans', sans-serif; }
 
     /* PAGE SYSTEM */

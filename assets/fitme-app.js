@@ -2480,6 +2480,45 @@
     }
   }
 
+  function isHomePath() {
+    const p = window.location.pathname.replace(/\/$/, '') || '/';
+    return p === '' || p === '/' || p === '/index.html';
+  }
+
+  function scrollToHomeSection(sectionId) {
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+    const header = document.querySelector('header');
+    const offset = (header ? header.offsetHeight : 72) + 16;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  }
+
+  function bindHomeNavAnchors() {
+    document.querySelectorAll('[data-home-anchor]').forEach((a) => {
+      if (a.dataset.fitmeAnchorBound) return;
+      a.dataset.fitmeAnchorBound = '1';
+      a.addEventListener('click', function (e) {
+        const id = a.getAttribute('data-home-anchor');
+        if (!id || !isHomePath()) return;
+        e.preventDefault();
+        if (location.hash !== '#' + id) {
+          history.pushState(null, '', '#' + id);
+        }
+        scrollToHomeSection(id);
+      });
+    });
+  }
+
+  function scrollHomeHashOnLoad() {
+    if (!isHomePath() || !location.hash) return;
+    const id = location.hash.replace(/^#/, '');
+    if (!id) return;
+    requestAnimationFrame(function () {
+      setTimeout(function () { scrollToHomeSection(id); }, 80);
+    });
+  }
+
   /** Blog card thumbnails: hero PNGs under /blog/img/en/ (KO + EN use same assets). */
   function applyBlogThumbPaths() {
     const useKo = currentLang === 'ko';
@@ -2679,6 +2718,7 @@
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
     applyTrustLinks();
+    bindHomeNavAnchors();
   }
 
   function setLanguage(lang) {
@@ -5063,6 +5103,13 @@
     startHeadlineRotation();
 
     initHeroDemoVideo();
+    bindHomeNavAnchors();
+    scrollHomeHashOnLoad();
+    window.addEventListener('hashchange', function () {
+      if (!isHomePath()) return;
+      const id = location.hash.replace(/^#/, '');
+      if (id) scrollToHomeSection(id);
+    });
 
     // Restore saved measurements and update UI
     if (Object.keys(measurements).length > 0) {
