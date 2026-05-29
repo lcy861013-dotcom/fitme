@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
 Disallow: /demos/
 # Extensionless URLs are canonical; /terms.html etc. only 308 to /terms
 Disallow: /terms.html
