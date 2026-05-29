@@ -137,13 +137,13 @@ def patch_about() -> None:
     old = (
         "  <p>FITME is independently built and maintained by <strong>Changyong Lee</strong>, "
         "a fashion merchandiser with 7+ years of experience in apparel fit analysis and "
-        "proportion consulting. Based in Ansan, South Korea. The project goal is to reduce "
+        "proportion consulting. Based in South Korea. The project goal is to reduce "
         "“size-only” shopping mistakes by making proportion literacy accessible in Korean, "
         "English, Japanese, and Portuguese.</p>"
     )
     new = (
         "  <p>FITME is independently built and maintained by <strong>Changyong Lee</strong>, "
-        "a solo founder based in Ansan, South Korea.</p>\n"
+        "a solo founder based in South Korea.</p>\n"
         "  <p>I created FITME after struggling to find clothes that fit my proportions. "
         "This project translates research from systems like Kibbe Body Types and ISO 8559 "
         "garment standards into practical tools. Started March 2026.</p>\n"

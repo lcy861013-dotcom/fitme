@@ -41,9 +41,9 @@ ABOUT = {
     "en": {
         "lang": "en",
         "title": "About FITME — Solo Founder",
-        "desc": "FITME is built by Changyong Lee, a solo founder in Ansan, South Korea. Research-based proportion tools.",
+        "desc": "FITME is built by Changyong Lee, a solo founder in South Korea. Research-based proportion tools.",
         "main": """  <h1>About FITME</h1>
-  <p>FITME is independently built and maintained by <strong>Changyong Lee</strong>, a solo founder based in Ansan, South Korea.</p>
+  <p>FITME is independently built and maintained by <strong>Changyong Lee</strong>, a solo founder based in South Korea.</p>
   <p><strong>Why I Built FITME:</strong> I struggled to find clothes that fit my proportions. Standard S/M/L sizes ignored my torso-to-leg ratio and shoulder width. After researching fit systems like <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:var(--accent);">Kibbe Body Types</a> and <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:var(--accent);">ISO 8559 garment standards</a>, I built this tool to share what I learned.</p>
   <p><strong>Project Started:</strong> March 2026</p>
   <p><strong>Contact:</strong> <a href="/en/contact.html" style="color:var(--accent);">Contact page</a> · <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
@@ -54,9 +54,9 @@ ABOUT = {
     "ko": {
         "lang": "ko",
         "title": "About FITME — 1인 창업가",
-        "desc": "FITME는 안산의 1인 창업가 이창용이 운영하는 체형 비율·핏 가이드 사이트입니다.",
+        "desc": "FITME는 대한민국의 1인 창업가 이창용이 운영하는 체형 비율·핏 가이드 사이트입니다.",
         "main": """  <h1>About FITME</h1>
-  <p>FITME는 안산에 거주하는 1인 창업가 <strong>이창용</strong>이 직접 만들고 운영합니다.</p>
+  <p>FITME는 대한민국에 거주하는 1인 창업가 <strong>이창용</strong>이 직접 만들고 운영합니다.</p>
   <p><strong>제작 계기:</strong> 제 사이즈에 맞는 옷을 사도 체형 비율이 맞지 않아 실패를 반복했습니다. 어깨-힙 비율, 몸통-다리 비율을 무시한 S/M/L 사이즈의 한계를 느끼고 <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:var(--accent);">키비 바디타입</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:var(--accent);">ISO 8559 의류 표준</a>을 연구해 이 도구를 만들었습니다.</p>
   <p><strong>프로젝트 시작:</strong> 2026년 3월</p>
   <p><strong>문의:</strong> <a href="/ko/contact.html" style="color:var(--accent);">문의 페이지</a> · <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
@@ -67,9 +67,9 @@ ABOUT = {
     "ja": {
         "lang": "ja",
         "title": "FITMEについて — 運営者",
-        "desc": "FITMEは韓国安山の李昌龍が運営する、体型比率の教育ツールです。",
+        "desc": "FITMEは韓国の李昌龍が運営する、体型比率の教育ツールです。",
         "main": """  <h1>About FITME</h1>
-  <p>FITMEは韓国安山を拠点とする<strong>李昌龍</strong>が一人で開発・運営しています。</p>
+  <p>FITMEは韓国を拠点とする<strong>李昌龍</strong>が一人で開発・運営しています。</p>
   <p><strong>制作のきっかけ:</strong> 標準サイズでは胴と脚の比率が合わず、服選びに苦労しました。<a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:var(--accent);">Kibbe</a>や<a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:var(--accent);">ISO 8559</a>などの研究をもとに、このツールを公開しました。</p>
   <p><strong>開始:</strong> 2026年3月</p>
   <p><strong>連絡:</strong> <a href="/ja/contact.html" style="color:var(--accent);">お問い合わせ</a> · <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
@@ -80,9 +80,9 @@ ABOUT = {
     "pt": {
         "lang": "pt-BR",
         "title": "Sobre a FITME — Fundador",
-        "desc": "FITME é operada por Changyong Lee, fundador solo em Ansan, Coreia do Sul.",
+        "desc": "FITME é operada por Changyong Lee, fundador solo na Coreia do Sul.",
         "main": """  <h1>About FITME</h1>
-  <p>A FITME é criada e mantida por <strong>Changyong Lee</strong>, fundador solo em Ansan, Coreia do Sul.</p>
+  <p>A FITME é criada e mantida por <strong>Changyong Lee</strong>, fundador solo na Coreia do Sul.</p>
   <p><strong>Por que criei a FITME:</strong> Tamanhos S/M/L ignoravam minhas proporções. Pesquisei sistemas como <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:var(--accent);">Kibbe</a> e <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:var(--accent);">ISO 8559</a> e transformei isso em uma ferramenta prática.</p>
   <p><strong>Início do projeto:</strong> março de 2026</p>
   <p><strong>Contato:</strong> <a href="/pt/contact.html" style="color:var(--accent);">Página de contato</a> · <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
@@ -96,48 +96,48 @@ CONTACT = {
     "en": {
         "lang": "en",
         "title": "Contact FITME",
-        "desc": "Contact FITME by email. Ansan, South Korea. Reply within 72 hours.",
+        "desc": "Contact FITME by email. South Korea. Reply within 72 hours.",
         "main": """  <h1>Contact FITME</h1>
   <p>FITME is operated by solo founder <strong>Changyong Lee</strong>.</p>
   <p>For questions, feedback, or partnership inquiries:</p>
   <p><strong>Email:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
-  <p><strong>Location:</strong> Ansan, South Korea</p>
+  <p><strong>Location:</strong> South Korea</p>
   <p>We aim to reply within 72 hours.</p>
 """,
     },
     "ko": {
         "lang": "ko",
         "title": "문의하기 — FITME",
-        "desc": "FITME 문의: 이메일 lcy861013@gmail.com · 안산 · 72시간 내 답변 목표.",
+        "desc": "FITME 문의: 이메일 lcy861013@gmail.com · 대한민국 · 72시간 내 답변 목표.",
         "main": """  <h1>문의하기</h1>
   <p>FITME는 1인 창업가 <strong>이창용</strong>이 운영합니다.</p>
   <p>질문, 피드백, 제휴 문의:</p>
   <p><strong>이메일:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
-  <p><strong>위치:</strong> 대한민국 안산</p>
+  <p><strong>위치:</strong> 대한민국</p>
   <p>72시간 이내 답변을 목표로 합니다.</p>
 """,
     },
     "ja": {
         "lang": "ja",
         "title": "お問い合わせ — FITME",
-        "desc": "FITMEへの連絡先。安山（韓国）。72時間以内の返信を目標。",
+        "desc": "FITMEへの連絡先。韓国。72時間以内の返信を目標。",
         "main": """  <h1>お問い合わせ</h1>
   <p>FITMEは<strong>李昌龍</strong>が一人で運営しています（solo founder）。</p>
   <p>ご質問・フィードバック・提携のお問い合わせ:</p>
   <p><strong>メール:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
-  <p><strong>所在地:</strong> 韓国・安山</p>
+  <p><strong>所在地:</strong> 韓国</p>
   <p>72時間以内の返信を目標としています。</p>
 """,
     },
     "pt": {
         "lang": "pt-BR",
         "title": "Contato — FITME",
-        "desc": "Contato FITME por e-mail. Ansan, Coreia do Sul. Resposta em até 72 horas.",
+        "desc": "Contato FITME por e-mail. Coreia do Sul. Resposta em até 72 horas.",
         "main": """  <h1>Contato FITME</h1>
   <p>A FITME é operada pelo fundador solo <strong>Changyong Lee</strong>.</p>
   <p>Dúvidas, feedback ou parcerias:</p>
   <p><strong>E-mail:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
-  <p><strong>Local:</strong> Ansan, Coreia do Sul</p>
+  <p><strong>Local:</strong> Coreia do Sul</p>
   <p>Respondemos em até 72 horas.</p>
 """,
     },

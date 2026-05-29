@@ -10,7 +10,7 @@ BLOG = ROOT / "blog"
 
 AUTHOR_TOP = {
     "en": """  <motion class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">By <strong>Changyong Lee</strong> | FITME Founder, Ansan, South Korea</p>
+  <p style="margin:0;">By <strong>Changyong Lee</strong> | FITME Founder, South Korea</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Research-based guide. Sources: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | Last Updated: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Contact: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
@@ -18,19 +18,19 @@ AUTHOR_TOP = {
         '<motion class="author-meta"', '<div class="author-meta"'
     ),
     "ko": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">글쓴이: <strong>이창용</strong> | FITME 대표, 안산</p>
+  <p style="margin:0;">글쓴이: <strong>이창용</strong> | FITME 대표, 대한민국</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">연구 기반 가이드. 출처: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">키비 바디타입</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | 최종 업데이트: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">문의: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
 """,
     "ja": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">著者: <strong>李昌龍</strong> | FITME代表、安山</p>
+  <p style="margin:0;">著者: <strong>李昌龍</strong> | FITME代表、韓国</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">研究ガイド。出典: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | 更新: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">連絡: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
 """,
     "pt": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">Por <strong>Changyong Lee</strong> | Fundador FITME, Ansan</p>
+  <p style="margin:0;">Por <strong>Changyong Lee</strong> | Fundador FITME, Coreia do Sul</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Guia baseado em pesquisa. Fontes: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | Atualizado: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Contato: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
@@ -147,7 +147,7 @@ def patch_about() -> None:
     main = """<main>
   <section lang="en">
   <h1>About FITME</h1>
-  <p>FITME is independently built and maintained by <strong>Changyong Lee</strong>, a solo founder based in Ansan, South Korea.</p>
+  <p>FITME is independently built and maintained by <strong>Changyong Lee</strong>, a solo founder based in South Korea.</p>
   <p><strong>Why I Built FITME:</strong> I struggled to find clothes that fit my proportions. Standard S/M/L sizes ignored my torso-to-leg ratio and shoulder width. After researching fit systems like <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:var(--accent);">Kibbe Body Types</a> and <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:var(--accent);">ISO 8559 garment standards</a>, I built this tool to share what I learned.</p>
   <p><strong>Project Started:</strong> March 2026</p>
   <p><strong>Contact:</strong> <a href="/contact.html" style="color:var(--accent);">Contact page</a> · <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
@@ -155,7 +155,7 @@ def patch_about() -> None:
   <hr class="divider" style="margin:40px 0;">
   <section lang="ko">
   <h1>About FITME</h1>
-  <p>FITME는 안산에 거주하는 1인 창업가 <strong>이창용</strong>이 직접 만들고 운영합니다.</p>
+  <p>FITME는 대한민국에 거주하는 1인 창업가 <strong>이창용</strong>이 직접 만들고 운영합니다.</p>
   <p><strong>제작 계기:</strong> 제 사이즈에 맞는 옷을 사도 체형 비율이 맞지 않아 실패를 반복했습니다. 어깨-힙 비율, 몸통-다리 비율을 무시한 S/M/L 사이즈의 한계를 느끼고 <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:var(--accent);">키비 바디타입</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:var(--accent);">ISO 8559 의류 표준</a>을 연구해 이 도구를 만들었습니다.</p>
   <p><strong>프로젝트 시작:</strong> 2026년 3월</p>
   <p><strong>문의:</strong> <a href="/contact.html" style="color:var(--accent);">문의 페이지</a> · <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
@@ -186,13 +186,13 @@ def patch_contact() -> None:
   <h1>Contact FITME</h1>
   <p>For questions, feedback, or partnership inquiries:</p>
   <p><strong>Email:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
-  <p><strong>Location:</strong> Ansan, South Korea</p>
+  <p><strong>Location:</strong> South Korea</p>
   <p>We aim to reply within 72 hours.</p>
   <section lang="ko" style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border);">
   <h1 style="font-size:clamp(28px,6vw,40px);">문의하기</h1>
   <p>질문, 피드백, 제휴 문의:</p>
   <p><strong>이메일:</strong> <a href="mailto:lcy861013@gmail.com" style="color:var(--accent);">lcy861013@gmail.com</a></p>
-  <p><strong>위치:</strong> 대한민국 안산</p>
+  <p><strong>위치:</strong> 대한민국</p>
   <p>72시간 이내 답변을 목표로 합니다.</p>
   </section>
 </main>"""

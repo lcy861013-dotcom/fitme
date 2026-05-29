@@ -9,25 +9,25 @@ BLOG = ROOT / "blog"
 
 AUTHOR_TOP = {
     "en": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">By <strong>Changyong Lee</strong> | FITME Founder, Ansan, South Korea</p>
+  <p style="margin:0;">By <strong>Changyong Lee</strong> | FITME Founder, South Korea</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Research-based guide. Sources: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | Last Updated: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Contact: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
 """,
     "ko": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">글쓴이: <strong>이창용</strong> | FITME 대표, 안산</p>
+  <p style="margin:0;">글쓴이: <strong>이창용</strong> | FITME 대표, 대한민국</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">연구 기반 가이드. 출처: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">키비 바디타입</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | 최종 업데이트: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">문의: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
 """,
     "ja": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">著者: <strong>李昌龍</strong> | FITME代表、安山</p>
+  <p style="margin:0;">著者: <strong>李昌龍</strong> | FITME代表、韓国</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">研究ガイド。出典: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | 更新: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">連絡: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>
 """,
     "pt": """  <div class="author-meta" style="border-bottom:1px solid #2a2724;padding:10px 0;margin-bottom:20px;">
-  <p style="margin:0;">Por <strong>Changyong Lee</strong> | Fundador FITME, Ansan</p>
+  <p style="margin:0;">Por <strong>Changyong Lee</strong> | Fundador FITME, Coreia do Sul</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Guia baseado em pesquisa. Fontes: <a href="https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women" target="_blank" rel="noopener" style="color:#d4a84b;">Kibbe</a>, <a href="https://www.iso.org/standard/69080.html" target="_blank" rel="noopener" style="color:#d4a84b;">ISO 8559</a> | Atualizado: 2026.05.19</p>
   <p style="margin:0;font-size:14px;color:#8b8178;">Contato: <a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a></p>
 </div>

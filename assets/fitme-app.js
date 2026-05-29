@@ -441,7 +441,7 @@
       'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service','footer-about':'About FITME','footer-contact':'Contact Us',
       'footer-editorial':'Editorial standards','footer-how':'How it works','footer-blog-nav':'Blog',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
-      'publisher-title':'Publisher: FITME · Changyong Lee (solo founder, Ansan, South Korea)',
+      'publisher-title':'Publisher: FITME · Changyong Lee (solo founder, South Korea)',
       'publisher-body':'Original English fit guides plus a free browser-based proportion tool. Not medical advice. Read <a href="/how-it-works" style="color:var(--accent);font-weight:600;">how FITME works</a>, our <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">editorial standards</a>, and the <a href="/about" style="color:var(--accent);font-weight:600;">about page</a> before using results for shopping decisions.',
       'section-tag-measure':'HOW TO MEASURE','blog-tag-measure':'HOW TO MEASURE',
       'blog-badge-new':'✦ NEW','blog-badge-hot':'🔥 HOT',
