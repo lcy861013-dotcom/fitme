@@ -9,27 +9,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://perfectfitme.com"
 
-HEAD_EXTRA = """
-<style>
-:root{{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}}
-*{{margin:0;padding:0;box-sizing:border-box;}}
-body{{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;}}
-header{{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(15px);z-index:100;}}
-.logo{{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);text-decoration:none;letter-spacing:2px;}}
-.logo span{{color:var(--text);}}
-nav{{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}}
-nav a{{color:var(--muted);font-size:13px;text-decoration:none;letter-spacing:1px;}}
-nav a:hover{{color:var(--accent);}}
-main{{max-width:720px;margin:0 auto;padding:60px 20px 80px;}}
-h1{{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,52px);line-height:1.1;margin-bottom:16px;letter-spacing:1px;color:var(--accent);}}
-p{{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:18px;}}
-footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}}
-footer a{{color:var(--muted);}}
-</style>
-<link rel="stylesheet" href="/assets/satellite-pages-theme.css?v=7">
-"""
-
-
 def _load_about_module():
     path = ROOT / "tools" / "build-locale-about-15lang.py"
     spec = importlib.util.spec_from_file_location("about15", path)
@@ -39,6 +18,10 @@ def _load_about_module():
 
 
 about = _load_about_module()
+HEAD_EXTRA = about.HEAD_EXTRA
+font_link = about.font_link
+header_nav = about.header_nav
+trust_footer = about.trust_footer
 LANGS = about.LANGS
 META = about.META
 NAV = about.LOCALES
@@ -258,7 +241,7 @@ def locale_contact_html(loc: str) -> str:
   <link rel="canonical" href="{canon}">
 {hreflang_contact()}
   <link rel="icon" href="/favicon-32x32.png">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {font_link(loc)}
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
 {HEAD_EXTRA}
@@ -267,18 +250,14 @@ def locale_contact_html(loc: str) -> str:
 <header>
   <a href="/" class="logo">FIT<span>ME</span></a>
   <nav>
-    <a href="/#analysis">{n['nav_analysis']}</a>
-    <a href="/blog/">{n['nav_blog']}</a>
-    <a href="/{loc}/about">{n['nav_about']}</a>
-    <a href="/{loc}/contact" style="color:var(--accent);">{n['nav_contact']}</a>
-    <a href="/privacy">{n['nav_privacy']}</a>
+{header_nav(loc, n, "contact")}
   </nav>
 </header>
 <main>
 {body}
 </main>
-<footer><p>{n['footer_copy']} · <a href="/privacy">{n['footer_privacy']}</a> · <a href="/terms">{n['footer_terms']}</a> · <a href="/{loc}/contact">{n['footer_contact']}</a> · <a href="/{loc}/about">{n['footer_about']}</a></p></footer>
-<script defer src="/cookie-consent.js?v=7"></script>
+{trust_footer(loc, n)}
+<script defer src="/cookie-consent.js?v=8"></script>
 </body>
 </html>
 """

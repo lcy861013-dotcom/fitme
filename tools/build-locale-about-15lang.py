@@ -15,25 +15,83 @@ INDEXABLE_TRUST_LOCALES = frozenset({"ja", "pt"})
 
 HEAD_EXTRA = """
 <style>
-:root{{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}}
-*{{margin:0;padding:0;box-sizing:border-box;}}
-body{{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;}}
-header{{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(15px);z-index:100;}}
-.logo{{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);text-decoration:none;letter-spacing:2px;}}
-.logo span{{color:var(--text);}}
-nav{{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}}
-nav a{{color:var(--muted);font-size:13px;text-decoration:none;letter-spacing:1px;}}
-nav a:hover{{color:var(--accent);}}
-main{{max-width:720px;margin:0 auto;padding:60px 20px 80px;}}
-h1{{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,52px);line-height:1.1;margin-bottom:16px;letter-spacing:1px;color:var(--accent);}}
-p{{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:18px;}}
-.cta{{margin-top:48px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}}
-.cta-btn{{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}}
-footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}}
-footer a{{color:var(--muted);}}
+:root{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;}
+html[lang="ko"] body{font-family:'Noto Sans KR','DM Sans',sans-serif;}
+header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(15px);z-index:100;}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);text-decoration:none;letter-spacing:2px;}
+.logo span{color:var(--text);}
+nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+nav a{color:var(--muted);font-size:13px;text-decoration:none;}
+nav a:hover{color:var(--accent);}
+main{max-width:720px;margin:0 auto;padding:56px 20px 80px;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,48px);color:var(--accent);margin-bottom:12px;}
+p{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:14px;}
+.cta{margin-top:48px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}
+.cta-btn{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}
+footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+footer a{color:var(--muted);}
 </style>
 <link rel="stylesheet" href="/assets/satellite-pages-theme.css?v=7">
 """
+
+KO_FONT = (
+    '<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans'
+    ":wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap\" rel=\"stylesheet\">"
+)
+EN_FONT = (
+    '<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans'
+    ':wght@300;400;500;600;700&display=swap" rel="stylesheet">'
+)
+
+
+def font_link(loc: str) -> str:
+    return KO_FONT if loc == "ko" else EN_FONT
+
+
+def ko_trust_nav(active: str) -> str:
+    items = [
+        ("/blog/", "블로그", "blog"),
+        ("/ko/how-it-works", "작동 방식", "how"),
+        ("/ko/about", "소개", "about"),
+        ("/ko/editorial-standards", "콘텐츠 기준", "editorial"),
+        ("/ko/contact", "문의", "contact"),
+        ("/ko/privacy", "개인정보", "privacy"),
+    ]
+    lines = []
+    for href, label, key in items:
+        style = ' style="color:var(--accent);"' if key == active else ""
+        lines.append(f'    <a href="{href}"{style}>{label}</a>')
+    return "\n".join(lines)
+
+
+def ko_trust_footer() -> str:
+    return (
+        '<footer><p>© 2026 FITME · <a href="/ko/privacy">개인정보처리방침</a> · '
+        '<a href="/ko/terms">이용약관</a> · <a href="/ko/contact">문의</a> · '
+        '<a href="/ko/about">소개</a></p></footer>'
+    )
+
+
+def header_nav(loc: str, d: dict[str, str], active: str) -> str:
+    if loc == "ko":
+        return ko_trust_nav(active)
+    return f"""    <a href="/#analysis">{d['nav_analysis']}</a>
+    <a href="/blog/">{d['nav_blog']}</a>
+    <a href="/{loc}/about"{" style=\"color:var(--accent);\"" if active == "about" else ""}>{d['nav_about']}</a>
+    <a href="/{loc}/contact"{" style=\"color:var(--accent);\"" if active == "contact" else ""}>{d['nav_contact']}</a>
+    <a href="/privacy">{d['nav_privacy']}</a>"""
+
+
+def trust_footer(loc: str, d: dict[str, str]) -> str:
+    if loc == "ko":
+        return ko_trust_footer()
+    return (
+        f"<footer><p>{d['footer_copy']} · <a href=\"/privacy\">{d['footer_privacy']}</a> · "
+        f"<a href=\"/terms\">{d['footer_terms']}</a> · <a href=\"/{loc}/contact\">{d['footer_contact']}</a> · "
+        f'<a href="/{loc}/about">{d["footer_about"]}</a></p></footer>'
+    )
 
 KIBBE = 'https://en.wikipedia.org/wiki/Dressing_by_body_type_in_women'
 ISO = "https://www.iso.org/standard/69080.html"
@@ -470,7 +528,7 @@ def locale_about_html(loc: str) -> str:
   <link rel="canonical" href="{canon}">
 {hreflang_block()}
   <link rel="icon" href="/favicon-32x32.png">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {font_link(loc)}
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
 {HEAD_EXTRA}
@@ -479,27 +537,21 @@ def locale_about_html(loc: str) -> str:
 <header>
   <a href="/" class="logo">FIT<span>ME</span></a>
   <nav>
-    <a href="/#analysis">{d['nav_analysis']}</a>
-    <a href="/blog/">{d['nav_blog']}</a>
-    <a href="/{loc}/about" style="color:var(--accent);">{d['nav_about']}</a>
-    <a href="/{loc}/contact">{d['nav_contact']}</a>
-    <a href="/privacy">{d['nav_privacy']}</a>
+{header_nav(loc, d, "about")}
   </nav>
 </header>
 <main>
 {body}
-  <motion class="cta">
+  <div class="cta">
     <div style="font-weight:700;font-size:18px;margin-bottom:8px;">{d['cta_sub']}</div>
     <a href="/?utm_source=about&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">{d['cta']}</a>
   </div>
 </main>
-<footer><p>{d['footer_copy']} · <a href="/privacy">{d['footer_privacy']}</a> · <a href="/terms">{d['footer_terms']}</a> · <a href="/{loc}/contact">{d['footer_contact']}</a> · <a href="/{loc}/about">{d['footer_about']}</a></p></footer>
-<script defer src="/cookie-consent.js?v=7"></script>
+{trust_footer(loc, d)}
+<script defer src="/cookie-consent.js?v=8"></script>
 </body>
 </html>
-""".replace("<motion class=\"cta\">", '<motion class="cta">').replace(
-        '<motion class="cta">', '<div class="cta">', 1
-    )
+"""
 
 
 def patch_root_about() -> None:
