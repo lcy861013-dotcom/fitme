@@ -145,7 +145,7 @@
       'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'FITME 소개','footer-contact':'문의하기',
       'footer-editorial':'콘텐츠 기준','footer-how':'작동 방식','footer-blog-nav':'블로그',
       'footer-copy':'© 2026 FITME. 글로벌 체형 분석 서비스.',
-      'publisher-title':'발행: FITME · 이창용 (1인 창업, 경기 안산)',
+      'publisher-title':'발행: FITME · 이창용 (1인 창업, 대한민국)',
       'publisher-body':'한국어·영어 핏 가이드와 브라우저 기반 무료 비율 도구를 제공합니다. 의료 조언이 아닙니다. 쇼핑 전 <a href="/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a>, <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a>, <a href="/about" style="color:var(--accent);font-weight:600;">소개</a>를 확인해 주세요.',
       'section-tag-measure':'측정 방법','blog-tag-measure':'측정 가이드',
       'blog-badge-new':'✦ 신규','blog-badge-hot':'🔥 인기',
