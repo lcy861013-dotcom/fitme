@@ -13,6 +13,20 @@ Disallow: /blog/*.html
 Disallow: /demo-video.html
 Disallow: /*/about.html
 Disallow: /*/contact.html
+# noindex locale doorways (indexable trust hubs: /ja/ /pt/ only)
+Disallow: /ko/
+Disallow: /en/
+Disallow: /es/
+Disallow: /zh/
+Disallow: /fr/
+Disallow: /de/
+Disallow: /it/
+Disallow: /ru/
+Disallow: /ar/
+Disallow: /hi/
+Disallow: /th/
+Disallow: /id/
+Disallow: /vi/
 
 # Google AdSense crawler (explicit allow; site-wide Allow already applies)
 User-agent: Mediapartners-Google
