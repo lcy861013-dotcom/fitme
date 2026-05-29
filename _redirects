@@ -6,6 +6,14 @@
 /wp-content/* https://perfectfitme.com/ 302
 /wp-includes/* https://perfectfitme.com/ 302
 
+# Legal / trust pages: explicit 301 (Cloudflare also strips .html with 308)
+/privacy.html /privacy 301
+/terms.html /terms 301
+/contact.html /contact 301
+/about.html /about 301
+/editorial-standards.html /editorial-standards 301
+/how-it-works.html /how-it-works 301
+
 # Canonical demo page URL
 /demo-video /demo-video.html 301
 

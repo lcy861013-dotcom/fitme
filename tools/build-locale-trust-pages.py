@@ -200,7 +200,7 @@ def page_html(locale: str, kind: str, data: dict) -> str:
 <main>
 {data['main']}{cta_block}
 </main>
-<footer><p>© 2026 FITME · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/{locale}/contact.html">Contact</a> · <a href="/{locale}/about.html">About</a></p></footer>
+<footer><p>© 2026 FITME · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/{locale}/contact">Contact</a> · <a href="/{locale}/about">About</a></p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
 </body>
 </html>

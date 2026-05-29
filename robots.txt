@@ -1,6 +1,14 @@
 User-agent: *
 Allow: /
 Disallow: /demos/
+# Extensionless URLs are canonical; /terms.html etc. only 308 to /terms
+Disallow: /terms.html
+Disallow: /privacy.html
+Disallow: /contact.html
+Disallow: /about.html
+Disallow: /editorial-standards.html
+Disallow: /how-it-works.html
+Disallow: /blog/*.html
 
 # Google AdSense crawler (explicit allow; site-wide Allow already applies)
 User-agent: Mediapartners-Google
