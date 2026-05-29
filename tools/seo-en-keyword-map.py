@@ -29,8 +29,8 @@ BLOG_DIR = ROOT / "blog"
 KW: dict[int, dict[str, str]] = {
     1: dict(
         kw="pants fit guide",
-        title="Pants Fit Guide: Slim, Straight, Wide & Tapered (2026)",
-        desc="The complete pants fit guide for men and women. Match slim, straight, wide-leg or tapered cuts to your body type and shoes — free body analysis.",
+        title="Pants Fit: Slim vs Straight vs Wide (Your Body)",
+        desc="Same waist tag, different leg line — which cut actually suits you? Slim, straight, wide & tapered compared + free 60-sec body map.",
         h1="Pants Fit Guide: Slim, Straight, Wide & Tapered",
     ),
     2: dict(
@@ -89,8 +89,8 @@ KW: dict[int, dict[str, str]] = {
     ),
     11: dict(
         kw="clothes never fit right",
-        title="Why Clothes Never Fit Right (It's Not Your Body)",
-        desc="Why off-the-rack clothes never fit perfectly — and it's not your body's fault. Brand sizing chaos, vanity sizing, and 4 fixes that actually work.",
+        title="Why Clothes Never Fit (It's Not Your Body)",
+        desc="Size letters ignore your proportions. Brand chaos, vanity sizing, and 4 fixes that work — including a free 60-second ratio check.",
         h1="Why Clothes Never Fit You Right",
     ),
     12: dict(
@@ -131,8 +131,8 @@ KW: dict[int, dict[str, str]] = {
     ),
     18: dict(
         kw="pear body shape dressing",
-        title="Pear Body Shape Dressing Guide: Balance Your Proportions",
-        desc="Pear body shape dressing guide. Best tops, denim, dresses and outerwear to balance hips and shoulders — with free body proportion analysis.",
+        title="Pear Body Shape: What to Wear (Jeans & Tops)",
+        desc="Balance wider hips without hiding them: best necklines, denim rises, jackets & dresses. Outfit formulas + free proportion analysis.",
         h1="Pear Body Shape Dressing Guide",
     ),
     19: dict(
@@ -143,32 +143,32 @@ KW: dict[int, dict[str, str]] = {
     ),
     20: dict(
         kw="measure body with hand span",
-        title="How to Measure Your Body with Hand Spans — No Tape",
-        desc="No tape measure? Use your hand span. The exact method to measure shoulder, waist, hip, leg and arm length using only your hands — free guide.",
+        title="No Tape? Measure Your Body with Hand Spans",
+        desc="No ruler at home? Calibrate one hand span, then estimate shoulder, waist, hip & legs. Step-by-step guide + free FITME tool.",
         h1="How to Measure Anything with Your Hand Span",
     ),
     21: dict(
         kw="how to measure shoulder width",
-        title="How to Measure Shoulder Width Alone (Acromion Method)",
-        desc="Measure shoulder width by yourself using the acromion method and hand spans. The exact step-by-step from FITME, plus what size jacket to buy.",
+        title="Measure Shoulder Width Alone — No Tape",
+        desc="Find your acromion, count hand spans, compare to jacket charts. Self-measurement in 2 steps — no helper needed.",
         h1="How to Measure Shoulder Width Alone",
     ),
     22: dict(
         kw="how to measure arm length",
-        title="How to Measure Arm Length: Upper, Lower & Sleeve",
-        desc="Measure your arm length (upper + lower + sleeve) at home with hand spans. The exact method jackets, blouses and dress shirts are sized by.",
+        title="Measure Arm Length at Home (Sleeve Fit)",
+        desc="Sleeves too short online? Upper arm, forearm & total sleeve length with hand spans. Sizing for jackets and shirts.",
         h1="How to Measure Arm Length — Upper & Lower",
     ),
     23: dict(
         kw="how to measure leg length",
-        title="How to Measure Leg Length (Greater Trochanter Method)",
-        desc="Measure leg length precisely from greater trochanter to ankle using hand spans. The right way to find inseam, outseam and leg-to-torso ratio.",
+        title="Measure Leg Length for Inseam — No Tape",
+        desc="Wrong inseam again? Greater-trochanter to ankle with hand spans + how to use the number on size charts.",
         h1="How to Measure Leg Length — Greater Trochanter to Ankle",
     ),
     24: dict(
         kw="how to measure hip circumference",
-        title="How to Measure Hip Circumference Alone — Two-Span Method",
-        desc="Measure hip circumference by yourself with the two-hand-span method. The exact landmark, posture and hand position — accurate to 1 cm.",
+        title="Measure Hip Size Alone — Hand-Span Method",
+        desc="Jeans size from hip circumference: landmarks, posture & two-span method without a mirror struggle.",
         h1="How to Measure Hip Circumference Alone",
     ),
     25: dict(
