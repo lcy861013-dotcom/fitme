@@ -7,11 +7,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://perfectfitme.com"
 
-HREFLANG = """<link rel="alternate" hreflang="ko" href="{SITE}/ko/about.html">
-<link rel="alternate" hreflang="en" href="{SITE}/en/about.html">
-<link rel="alternate" hreflang="ja" href="{SITE}/ja/about.html">
-<link rel="alternate" hreflang="pt" href="{SITE}/pt/about.html">
-<link rel="alternate" hreflang="x-default" href="{SITE}/en/about.html">"""
+HREFLANG = """<link rel="alternate" hreflang="ko" href="{SITE}/ko/about">
+<link rel="alternate" hreflang="en" href="{SITE}/en/about">
+<link rel="alternate" hreflang="ja" href="{SITE}/ja/about">
+<link rel="alternate" hreflang="pt" href="{SITE}/pt/about">
+<link rel="alternate" hreflang="x-default" href="{SITE}/about">"""
 
 HREFLANG_CONTACT = HREFLANG.replace("/about.html", "/contact.html")
 

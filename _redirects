@@ -14,8 +14,40 @@
 /editorial-standards.html /editorial-standards 301
 /how-it-works.html /how-it-works 301
 
-# Canonical demo page URL
-/demo-video /demo-video.html 301
+# Demo video: extensionless canonical (do NOT redirect /demo-video → .html; that caused a loop)
+/demo-video.html /demo-video 301
+
+# Locale trust pages (.html → extensionless)
+/en/about.html /en/about 301
+/ko/about.html /ko/about 301
+/en/contact.html /en/contact 301
+/ko/contact.html /ko/contact 301
+/ja/about.html /ja/about 301
+/ja/contact.html /ja/contact 301
+/pt/about.html /pt/about 301
+/pt/contact.html /pt/contact 301
+/es/about.html /es/about 301
+/es/contact.html /es/contact 301
+/zh/about.html /zh/about 301
+/zh/contact.html /zh/contact 301
+/fr/about.html /fr/about 301
+/fr/contact.html /fr/contact 301
+/de/about.html /de/about 301
+/de/contact.html /de/contact 301
+/it/about.html /it/about 301
+/it/contact.html /it/contact 301
+/ru/about.html /ru/about 301
+/ru/contact.html /ru/contact 301
+/ar/about.html /ar/about 301
+/ar/contact.html /ar/contact 301
+/hi/about.html /hi/about 301
+/hi/contact.html /hi/contact 301
+/th/about.html /th/about 301
+/th/contact.html /th/contact 301
+/id/about.html /id/about 301
+/id/contact.html /id/contact 301
+/vi/about.html /vi/about 301
+/vi/contact.html /vi/contact 301
 
 # Browsers default favicon path → actual asset
 /favicon.ico /favicon-32x32.png 302
