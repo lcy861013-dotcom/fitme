@@ -675,36 +675,42 @@
     #analysis.main-container {
       padding: 8px 0 56px;
     }
+    #analysis > .tool-disclaimer {
+      box-sizing: border-box;
+      width: min(720px, calc(100% - 32px));
+      max-width: min(720px, calc(100% - 32px));
+      margin: 0 auto 16px;
+      padding: 12px 16px;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+    }
     @media (min-width: 901px) {
-      /* 분석 화면: 실루엣·HUD + 입력 패널을 가운데 한 덩어리로 (뷰포트 고정 높이 없음) */
+      /* 면책(전체 너비) → HUD + 입력 패널 2열 그리드 */
       #analysis.main-container {
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: minmax(0, min(900px, calc(100vw - clamp(300px, 28vw, 420px) - clamp(32px, 4vw, 64px)))) clamp(280px, 28vw, 420px);
+        grid-template-rows: auto auto;
         justify-content: center;
-        align-items: flex-start;
-        gap: clamp(12px, 1.5vw, 24px);
+        align-items: start;
+        column-gap: clamp(12px, 1.5vw, 24px);
+        row-gap: 16px;
         padding: 16px clamp(12px, 1.5vw, 28px) 56px;
       }
       #analysis > .tool-disclaimer {
-        flex: 0 0 100%;
-        width: 100%;
-        max-width: 720px;
-        margin-left: auto;
-        margin-right: auto;
-        order: 0;
+        grid-column: 1 / -1;
+        justify-self: center;
       }
-      .main-container > .body-section { order: 1; }
-      .main-container > #main-panel { order: 2; }
-      .main-container > #mobile-analyze-bar { order: 3; }
-      .main-container > #mobile-result-overlay { order: 4; }
-      .main-container > #sheet-backdrop { order: 5; }
       #analysis > .body-section {
-        flex: 0 0 auto;
-        width: min(900px, calc(100vw - clamp(300px, 28vw, 420px) - clamp(32px, 4vw, 64px)));
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
         max-width: 900px;
         min-width: 0;
         height: auto;
-        align-self: flex-start;
         overflow: visible;
         justify-content: center;
         align-items: center;
@@ -716,16 +722,16 @@
         margin-left: auto;
         margin-right: auto;
       }
-      #analysis #main-panel.panel {
+      #analysis > #main-panel.panel {
+        grid-column: 2;
+        grid-row: 2;
         position: relative;
-        flex: 0 0 clamp(300px, 28vw, 420px);
-        width: auto;
+        width: 100%;
         min-width: 280px;
         max-width: 440px;
-        align-self: flex-start;
         margin: 0;
         height: auto;
-        max-height: none;
+        max-height: calc(100dvh - 110px);
         min-height: 0;
         border-radius: 18px;
         border: 1px solid var(--border);
@@ -733,8 +739,9 @@
         transform: none;
         overflow: hidden;
       }
-      #analysis #main-panel.panel .input-area {
-        max-height: none;
+      #analysis > #main-panel.panel .input-area {
+        overflow-y: auto;
+        max-height: calc(100dvh - 300px);
       }
     }
     .body-section { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px 10px; border-right: 1px solid var(--border); height: auto; overflow: visible; min-height: 0; }
@@ -752,7 +759,7 @@
       position: relative;
       max-width: 900px;
       margin: 0 auto;
-      min-height: min(88vh, 700px);
+      min-height: clamp(360px, 52vh, 560px);
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(212, 168, 75, 0.22);
@@ -835,7 +842,7 @@
     #analysis .measure-scan-stage .stage-inner {
       position: relative;
       z-index: 4;
-      min-height: min(88vh, 700px);
+      min-height: clamp(360px, 52vh, 560px);
       display: flex;
       flex-direction: column;
       padding-bottom: 8px;
@@ -995,7 +1002,7 @@
       flex-direction: row;
       align-items: stretch;
       gap: clamp(6px, 1.6vw, 14px);
-      min-height: clamp(360px, 52vh, 680px);
+      min-height: clamp(280px, 38vh, 520px);
       width: 100%;
       min-width: 0;
     }
