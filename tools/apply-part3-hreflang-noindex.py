@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Part 3: normalize hreflang clusters, noindex blog listing pages, verify source URLs."""
+"""Part 3: normalize hreflang clusters, index blog listing pages, verify source URLs."""
 from __future__ import annotations
 
 import re
@@ -34,6 +34,7 @@ HREFLANG_RE = re.compile(
     r'\n?\s*<link rel="alternate" hreflang="[^"]+"[^>]*>\s*',
     re.IGNORECASE,
 )
+ROBOTS_INDEX = '<meta name="robots" content="index, follow">'
 ROBOTS_NOINDEX = '<meta name="robots" content="noindex, follow">'
 
 # Reverse lookup for ja/pt article paths
@@ -77,16 +78,26 @@ def replace_hreflang(html: str, block: str) -> str:
     return stripped
 
 
-def ensure_noindex(html: str) -> str:
-    if "noindex" in html.lower() and "robots" in html.lower():
-        return html
+def ensure_robots_meta(html: str, content: str) -> str:
+    if re.search(r'<meta name="robots"[^>]*>', html, re.I):
+        return re.sub(
+            r'<meta name="robots"[^>]*>',
+            f'<meta name="robots" content="{content}">',
+            html,
+            count=1,
+            flags=re.I,
+        )
     m = re.search(r"(<meta name=\"viewport\"[^>]*>\s*)", html, re.I)
     if m:
-        return html[: m.end()] + ROBOTS_NOINDEX + "\n" + html[m.end() :]
+        return html[: m.end()] + f'<meta name="robots" content="{content}">\n' + html[m.end() :]
     m = re.search(r"(<meta charset[^>]*>\s*)", html, re.I)
     if m:
-        return html[: m.end()] + ROBOTS_NOINDEX + "\n" + html[m.end() :]
+        return html[: m.end()] + f'<meta name="robots" content="{content}">\n' + html[m.end() :]
     return html
+
+
+def ensure_index(html: str) -> str:
+    return ensure_robots_meta(html, "index, follow")
 
 
 def ensure_source_links(html: str) -> str:
@@ -144,7 +155,7 @@ def patch_blog_number(n: int) -> int:
 def patch_listing_index(path: Path, hreflang_block_html: str) -> None:
     text = path.read_text(encoding="utf-8")
     text = replace_hreflang(text, hreflang_block_html)
-    text = ensure_noindex(text)
+    text = ensure_index(text)
     path.write_text(text, encoding="utf-8")
 
 
@@ -203,7 +214,7 @@ def main() -> None:
         if not all(u in raw for u in SOURCE_LINKS):
             missing.append(str(path.relative_to(ROOT)))
     bad = verify_urls()
-    print(f"Patched hreflang/noindex on {total}+ listing/trust pages")
+    print(f"Patched hreflang/index on {total}+ listing/trust pages")
     if missing:
         print(f"Missing source links ({len(missing)}):", ", ".join(missing[:10]), "...")
     else:
