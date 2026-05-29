@@ -232,7 +232,7 @@ footer{{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-
 </main>
 <footer><p>{footer_text} · {FOOTER_LINKS}</p></footer>
 <script defer src="/cookie-consent.js?v=7"></script>
-<script defer src="/assets/fitme-share.js?v=7"></script>
+<script defer src="/assets/fitme-share.js?v=8"></script>
 </body>
 </html>
 """)

@@ -2,7 +2,7 @@
 """
 For every blog post (KO + EN):
   1. Replace generic /og-image.png with the post's own thumbnail (huge SEO/SMM win).
-  2. Inject /assets/fitme-share.js?v=7 before </body> if not already present.
+  2. Inject /assets/fitme-share.js?v=8 before </body> if not already present.
 Idempotent. Skips files that don't follow the blog template (no <main>).
 """
 import re
@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BLOG_DIR = ROOT / "blog"
 
-SHARE_TAG = '<script defer src="/assets/fitme-share.js?v=7"></script>'
+SHARE_TAG = '<script defer src="/assets/fitme-share.js?v=8"></script>'
 
 # Map each blog post to its thumbnail file path.
 # We assume `/blog/img/en/blogN-...-thumb-en.png` exists (it does for blog1..blog25).

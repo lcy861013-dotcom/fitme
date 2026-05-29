@@ -42,9 +42,18 @@
     var encodedDesc = encodeURIComponent(ctx.desc);
     var encodedImg = encodeURIComponent(ctx.image);
     var pinDesc = encodeURIComponent(ctx.title + ' — ' + ctx.desc);
+    var lang = (document.documentElement.lang || '').toLowerCase();
+    var shareLabel =
+      lang.indexOf('ko') === 0
+        ? '이 가이드 공유하기'
+        : lang.indexOf('ja') === 0
+          ? 'このガイドをシェア'
+          : lang.indexOf('pt') === 0
+            ? 'Compartilhar este guia'
+            : 'Share this guide';
 
     bar.innerHTML =
-      '<div class="fitme-share-label">Share this guide</div>' +
+      '<div class="fitme-share-label">' + shareLabel + '</div>' +
       '<div class="fitme-share-buttons">' +
       '<a class="fitme-share-btn pinterest" target="_blank" rel="noopener" ' +
       'href="https://www.pinterest.com/pin/create/button/?url=' +
@@ -138,9 +147,12 @@
       '.fitme-share-btn.copy[data-copied="true"]{border-color:#47ff8a;color:#47ff8a;}',
       'html[data-theme="light"] .fitme-share-bar{background:rgba(166,124,24,0.08);border-color:rgba(166,124,24,0.25);}',
       'html[data-theme="light"] .fitme-share-label{color:#5e5a56;}',
-      'html[data-theme="light"] .fitme-share-btn{background:#fff;color:#11100f;border-color:rgba(0,0,0,0.1);box-shadow:0 1px 2px rgba(0,0,0,0.05);}',
-      'html[data-theme="light"] .fitme-share-btn:hover{border-color:#a67c18;}',
-      'html[data-theme="light"] .fitme-share-btn.pinterest,html[data-theme="light"] .fitme-share-btn.whatsapp,html[data-theme="light"] .fitme-share-btn.x,html[data-theme="light"] .fitme-share-btn.facebook{color:#fff;}',
+      'html[data-theme="light"] .fitme-share-btn.copy{background:#fff;color:#11100f;border-color:rgba(0,0,0,0.1);box-shadow:0 1px 2px rgba(0,0,0,0.05);}',
+      'html[data-theme="light"] .fitme-share-btn.copy:hover{border-color:#a67c18;}',
+      'html[data-theme="light"] .fitme-share-btn.pinterest{background:#E60023;color:#fff;border-color:#E60023;}',
+      'html[data-theme="light"] .fitme-share-btn.whatsapp{background:#25D366;color:#fff;border-color:#25D366;}',
+      'html[data-theme="light"] .fitme-share-btn.x{background:#000;color:#fff;border-color:#222;}',
+      'html[data-theme="light"] .fitme-share-btn.facebook{background:#1877F2;color:#fff;border-color:#1877F2;}',
       '@media (max-width:560px){.fitme-share-buttons{gap:6px;}.fitme-share-btn{font-size:12px;padding:8px 11px;}}',
     ].join('');
     document.head.appendChild(s);
