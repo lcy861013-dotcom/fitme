@@ -699,36 +699,48 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
-        align-items: flex-start;
+        align-items: stretch;
         justify-content: center;
         gap: clamp(16px, 2vw, 28px);
-        width: min(1320px, 100%);
+        width: min(1320px, calc(100% - 24px));
         max-width: 100%;
         box-sizing: border-box;
       }
       #analysis .analysis-workspace > .body-section {
-        flex: 1 1 520px;
-        width: auto;
-        max-width: 900px;
-        min-width: min(100%, 480px);
-        height: auto;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: min(900px, 62vw);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
         overflow: visible;
-        justify-content: center;
-        align-items: center;
         border-right: none;
       }
+      #analysis .analysis-workspace .body-measure-layout,
       #analysis .analysis-workspace .measure-scan-stage {
+        flex: 1 1 auto;
         width: 100%;
         max-width: 100%;
+        min-height: clamp(380px, 54vh, 600px);
+        display: flex;
+        flex-direction: column;
+      }
+      #analysis .analysis-workspace .measure-scan-stage .stage-inner {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
       }
       #analysis .analysis-workspace > #main-panel.panel {
-        flex: 0 0 clamp(300px, 28vw, 400px);
-        width: clamp(300px, 28vw, 400px);
+        flex: 0 0 clamp(280px, 30vw, 400px);
+        width: clamp(280px, 30vw, 400px);
         max-width: 400px;
         position: relative;
         margin: 0;
-        height: auto;
-        align-self: flex-start;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
         border-radius: 18px;
         border: 1px solid var(--border);
         box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
@@ -736,7 +748,7 @@
         overflow: visible;
       }
       #analysis .analysis-workspace > #main-panel.panel .input-area {
-        flex: 0 0 auto;
+        flex: 1 1 auto;
         overflow-y: visible;
         max-height: none;
       }
@@ -1575,9 +1587,16 @@
         overflow-y: visible;
         max-height: none;
       }
-      #analysis .measure-scan-stage,
-      #analysis .measure-scan-stage .stage-inner {
-        min-height: clamp(380px, 54vh, 600px);
+      #analysis .analysis-workspace .hud-body,
+      #analysis .analysis-workspace .hud-measure-grid {
+        flex: 1 1 auto;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      #analysis .analysis-workspace .hud-row-main {
+        flex: 1 1 auto;
+        min-height: clamp(300px, 38vh, 480px);
       }
     }
 
