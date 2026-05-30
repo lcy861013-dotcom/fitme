@@ -183,7 +183,6 @@ def page_html(locale: str, kind: str, data: dict) -> str:
   <link rel="icon" href="/favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
 {HEAD_EXTRA}
 </head>
 <body>

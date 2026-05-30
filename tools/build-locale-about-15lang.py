@@ -530,7 +530,6 @@ def locale_about_html(loc: str) -> str:
   <link rel="icon" href="/favicon-32x32.png">
   {font_link(loc)}
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6377720400458954" crossorigin="anonymous"></script>
 {HEAD_EXTRA}
 </head>
 <body>

@@ -26,12 +26,6 @@
 
   function loadAdSense() {
     if (document.querySelector('script[data-fitme="adsense"]')) return;
-    if (
-      document.querySelector(
-        'script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
-      )
-    )
-      return;
     var s = document.createElement('script');
     s.async = true;
     s.crossOrigin = 'anonymous';
@@ -39,6 +33,12 @@
     s.src =
       'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' +
       encodeURIComponent(CLIENT_ID);
+    s.onload = function () {
+      s.dataset.fitmeLoaded = '1';
+      if (typeof window.fitmeInitAdSlots === 'function') {
+        window.fitmeInitAdSlots();
+      }
+    };
     document.head.appendChild(s);
   }
 
