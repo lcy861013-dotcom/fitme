@@ -1,10 +1,9 @@
 /**
- * AdSense display slots — enable after site approval.
- * Set LIVE to true in this file, then deploy.
- * Script loads only after cookie consent (see cookie-consent.js).
+ * AdSense display slots — LIVE must be true before AdSense re-review.
+ * Script loads on every page (cookie-consent.js); slots fill after cookie consent.
  */
 (function () {
-  var LIVE = false;
+  var LIVE = true;
   var pushed = false;
 
   function hasConsent() {

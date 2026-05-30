@@ -301,6 +301,8 @@
   document.addEventListener('DOMContentLoaded', function () {
     ensureCss();
     setupCtaTracking();
+    /* Load AdSense script for crawlers/review; ad fill waits for consent (fitme-ads.js). */
+    loadAdSense();
     var consent = '';
     try {
       consent = localStorage.getItem(KEY) || '';

@@ -146,7 +146,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=16">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=17">
 </head>
 <body>
 
@@ -220,22 +220,7 @@
       </div>
     </div>
     <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
-
-    <!-- DEMO VIDEO PREVIEW -->
-    <div class="hero-demo-wrap">
-      <div class="hero-demo-label" id="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
-      <div class="hero-demo-frame">
-        <video id="hero-demo-video" src="/demo-v2.mp4" width="1280" height="720" muted loop playsinline preload="metadata" poster="/assets/og-image-en.png"></video>
-        <script>
-        (function(){try{var s=localStorage.getItem('fitme_lang')==='ko'?'/demo-ko-v2.mp4':'/demo-v2.mp4';var v=document.getElementById('hero-demo-video');if(v)v.setAttribute('src',s);}catch(e){}})();
-        </script>
-        <button type="button" id="hero-demo-play" class="hero-demo-play" aria-describedby="hero-demo-label">
-          <span class="hero-demo-play-icon" aria-hidden="true">▶</span>
-          <span data-i18n="hero-demo-play">Play demo video</span>
-        </button>
-      </div>
-      <p class="hero-demo-watch"><a href="/demo-video" data-i18n="hero-demo-watch">Watch on video page →</a></p>
-    </div>
+    <p class="hero-demo-outlink"><a href="/demo-video" data-i18n="hero-demo-outlink">실제 결과 미리보기 영상 →</a></p>
 
     <div class="hero-trust" data-i18n-trust>
       <span data-i18n="hero-trust1">No photos required</span>
@@ -313,240 +298,7 @@
     </div>
   </section>
 
-  <!-- GUIDE -->
-  <section class="guide-content" id="guide">
-    <div class="section-header">
-      <div class="section-tag" id="guide-measure-section-tag">측정 방법</div>
-      <h2 class="section-title" id="guide-section-title">Same Height, Different Fit</h2>
-      <p id="guide-section-sub" style="font-size:14px; color:var(--muted); margin-top:10px;">Leg length, arm length, shoulder width — true proportions can only be known by measuring</p>
-    </div>
-    <div class="guide-grid">
-      <!-- CARD 1: 손뼘으로 재기 (featured — 가장 쉬운 방법) -->
-      <div class="guide-card featured">
-        <h3 id="guide-card4-title">🤚 Measure with Hand Spans — Your Hand is Always a Ruler</h3>
-        <p id="guide-card4-desc" style="font-size:13px; color:var(--muted); margin-bottom:20px;">No tools at all? One hand is all you need. Once you know your hand span, you carry a ruler everywhere.</p>
-        <div class="card-inner-grid">
-          <div>
-            <div id="guide-card4-step1-label" style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">STEP 01 — Find Your Hand Span</div>
-            <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:12px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                <span id="guide-card4-male" style="font-size:13px; color:var(--muted);">👨 Adult Male Average</span>
-                <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent);">20–22 cm</span>
-              </div>
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span id="guide-card4-female" style="font-size:13px; color:var(--muted);">👩 Adult Female Average</span>
-                <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent);">17–19 cm</span>
-              </div>
-            </div>
-            <div style="background:rgba(212,168,75,0.06); border:1px solid rgba(212,168,75,0.2); border-radius:12px; padding:14px;">
-              <div id="guide-card4-howto-title" style="font-size:12px; color:var(--accent); font-weight:700; margin-bottom:6px;">✋ How to Measure Accurately</div>
-              <p id="guide-card4-howto" style="font-size:12px; color:var(--muted); line-height:1.8; margin:0;">Spread your hand wide — thumb tip to pinky tip. Press against a wall, mark with a pencil, then measure. That's your personal hand span.</p>
-            </div>
-          </div>
-          <div>
-            <div id="guide-card4-step2-label" style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">STEP 02 — Count by Body Part</div>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                  <div id="guide-card4-shoulder-label" style="font-size:13px; color:var(--text);">Shoulder Width</div>
-                  <div id="guide-card4-shoulder" style="font-size:11px; color:var(--muted);">Neck to shoulder end × 2</div>
-                </div>
-                <div id="guide-card4-shoulder-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~2–2.5 spans</div>
-              </div>
-              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                  <div id="guide-card4-waist-label" style="font-size:13px; color:var(--text);">Waist Circumference</div>
-                  <div id="guide-card4-waist" style="font-size:11px; color:var(--muted);">Front + back each × 2</div>
-                </div>
-                <div id="guide-card4-waist-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~3.5–4.5 spans</div>
-              </div>
-              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                  <div id="guide-card4-leg-label" style="font-size:13px; color:var(--text);">Leg Length (outer)</div>
-                  <div id="guide-card4-leg" style="font-size:11px; color:var(--muted);">Hip bone → ankle</div>
-                </div>
-                <div id="guide-card4-leg-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~3.5–5 spans</div>
-              </div>
-              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                  <div id="guide-card4-arm-label" style="font-size:13px; color:var(--text);">Arm Length</div>
-                  <div id="guide-card4-arm" style="font-size:11px; color:var(--muted);">Shoulder end → wrist</div>
-                </div>
-                <div id="guide-card4-arm-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~3–3.5 spans</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <p id="guide-card4-tip" style="font-size:12px; color:var(--muted); margin-top:16px; line-height:1.7; padding-top:14px; border-top:1px solid var(--border);">💡 Spans × your span cm = actual length — e.g. shoulder = 2.3 spans, span = 18cm → ~41.4cm</p>
-
-        <!-- 부위별 측정 가이드 링크 -->
-        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
-          <div id="guide-links-title" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">📸 Visual Measurement Guides</div>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
-            <a href="/blog/blog20" onclick="goBlog(event,'blog20')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">✋</span><div><div id="guide-link1-title" style="font-size:13px;font-weight:600;">Hand Span Baseline</div><div id="guide-link1-sub" style="font-size:11px;color:var(--muted);">Essential first step</div></div>
-            </a>
-            <a href="/blog/blog21" onclick="goBlog(event,'blog21')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">🦴</span><div><div id="guide-link2-title" style="font-size:13px;font-weight:600;">Shoulder Width</div><div id="guide-link2-sub" style="font-size:11px;color:var(--muted);">Acromion + self-measuring method</div></div>
-            </a>
-            <a href="/blog/blog22" onclick="goBlog(event,'blog22')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">💪</span><div><div id="guide-link3-title" style="font-size:13px;font-weight:600;">Arm Length</div><div id="guide-link3-sub" style="font-size:11px;color:var(--muted);">Upper + forearm in 2 steps</div></div>
-            </a>
-            <a href="/blog/blog23" onclick="goBlog(event,'blog23')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">🦵</span><div><div id="guide-link4-title" style="font-size:13px;font-weight:600;">Leg Length</div><div id="guide-link4-sub" style="font-size:11px;color:var(--muted);">Hip bone → ankle in 2 steps</div></div>
-            </a>
-            <a href="/blog/blog24" onclick="goBlog(event,'blog24')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;grid-column:span 2;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-              <span style="font-size:20px;">🍑</span><div><div id="guide-link5-title" style="font-size:13px;font-weight:600;">Hip Circumference</div><div id="guide-link5-sub" style="font-size:11px;color:var(--muted);">Two hands, solo measurement</div></div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 2: 일상 물건으로 재기 -->
-      <div class="guide-card">
-        <h3 id="guide-card2-title" data-i18n="guide-card2-title">📏 집에 있는 물건으로 재기</h3>
-        <p id="guide-card2-desc" data-i18n="guide-card2-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">줄자도 스마트폰도 없다면? 주변 물건이 이미 자입니다.</p>
-        <div class="card-inner-grid">
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
-              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-a4">📄 A4 용지 (세로)</span>
-              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">29.7 cm</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
-              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-bill">💴 지폐 (가로)</span>
-              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">14.8 cm</span>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
-              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-card">💳 신용카드 (가로)</span>
-              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">8.56 cm</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
-              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-pen">🖊 볼펜 (길이)</span>
-              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">약 14 cm</span>
-            </div>
-          </div>
-        </div>
-        <p id="guide-card2-tip" data-i18n="guide-card2-tip" style="font-size:12px; color:var(--muted); margin-top:14px; line-height:1.7;">💡 예) 어깨 너비를 A4로 재면 → A4가 1.5장 → 약 44.5cm</p>
-      </div>
-
-      <!-- CARD 3: 사진으로 정확히 재기 -->
-      <div class="guide-card">
-        <h3 id="guide-card3-title" data-i18n="guide-card3-title">📸 사진 한 장으로 정확히 재기</h3>
-        <p id="guide-card3-desc" data-i18n="guide-card3-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">A4 한 장만 있으면 오차 1cm 이내로 잴 수 있습니다.</p>
-        <div class="card-inner-grid">
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
-              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 01</div>
-              <p id="guide-card3-step1" data-i18n="guide-card3-step1" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">A4 용지를 어깨·허리 옆에 붙이고 전신 정면 사진을 찍어요.</p>
-            </div>
-            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
-              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 02</div>
-              <p id="guide-card3-step2" data-i18n="guide-card3-step2" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">사진 속 A4(29.7cm) 기준으로 각 부위 비율을 계산합니다.</p>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
-              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 03</div>
-              <p id="guide-card3-step3" data-i18n="guide-card3-step3" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">계산한 치수를 FITME에 입력 → 비율 분석 완료!</p>
-            </div>
-            <div style="background:rgba(212,168,75,0.06); border:1px solid rgba(212,168,75,0.2); border-radius:10px; padding:14px;">
-              <p id="guide-card3-tip" data-i18n="guide-card3-tip" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">📱 iPhone 사진 앱 → 편집 → 눈금자 기능으로 더 정확하게!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 4: 스마트폰으로 재기 -->
-      <div class="guide-card guide-card4-span">
-        <h3 id="guide-card-title">📱 Measure Right Now — Using Your Smartphone</h3>
-        <div class="card-inner-grid" style="margin-top:16px;">
-          <div>
-            <p id="guide-card-desc" style="font-size:13px; color:var(--muted); margin-bottom:14px;">No measuring tape? No problem. Your smartphone is all you need.</p>
-            <div style="background:rgba(212,168,75,0.06); border:1px solid rgba(212,168,75,0.2); border-radius:12px; padding:16px; text-align:center;">
-              <div id="guide-ruler-label" style="font-size:11px; color:var(--muted); letter-spacing:2px; margin-bottom:8px;">Avg. Smartphone Length</div>
-              <div id="guide-ruler-size" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1;">~15 CM</div>
-              <div id="guide-ruler-hint" style="font-size:11px; color:var(--muted); margin-top:6px;">Use it as a ruler</div>
-            </div>
-          </div>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div class="guide-step">
-              <div class="step-num">01</div>
-              <p id="guide-step1-p">Hold your phone vertically and count how many times it fits along the body part</p>
-            </div>
-            <div class="guide-step">
-              <div class="step-num">02</div>
-              <p id="guide-step2-p">Count × 15cm = length of that part<br>e.g. 3 times → ~45cm</p>
-            </div>
-            <div class="guide-step">
-              <div class="step-num">03</div>
-              <p id="guide-step3-p">Enter the measurements in the body diagram to get your analysis!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 5: 신체 비율의 법칙 (new) -->
-      <div class="guide-card guide-card4-span">
-        <h3 id="guide-card5-title">🧬 Hidden Body Proportion Laws</h3>
-        <p id="guide-card5-desc" style="font-size:13px; color:var(--muted); margin-bottom:20px;">Ancient formulas da Vinci also discovered — useful for estimating body parts without a tape measure.</p>
-        <div class="body-law-grid">
-          <div class="body-law-item">
-            <img src="https://images.pexels.com/photos/9486779/pexels-photo-9486779.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="발 클로즈업" class="body-law-thumb" loading="lazy">
-            <div class="body-law-content">
-              <div class="body-law-icon">🦶</div>
-              <div class="body-law-title" id="guide-card5-law1-title">Forearm length = Foot length</div>
-              <div class="body-law-desc" id="guide-card5-law1-desc">Your elbow-to-wrist length matches your foot size with surprising accuracy — usually within 1cm.</div>
-            </div>
-          </div>
-          <div class="body-law-item">
-            <img src="https://images.pexels.com/photos/6516061/pexels-photo-6516061.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="허리 줄자 측정" class="body-law-thumb" loading="lazy">
-            <div class="body-law-content">
-              <div class="body-law-icon">🔄</div>
-              <div class="body-law-title" id="guide-card5-law2-title">Neck × 2 ≈ Waist circumference</div>
-              <div class="body-law-desc" id="guide-card5-law2-desc">Measure your neck and double it to estimate your waist. More accurate for average body types.</div>
-            </div>
-          </div>
-          <div class="body-law-item">
-            <img src="https://images.pexels.com/photos/7801499/pexels-photo-7801499.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="팔 벌린 운동 자세" class="body-law-thumb" loading="lazy">
-            <div class="body-law-content">
-              <div class="body-law-icon">↔</div>
-              <div class="body-law-title" id="guide-card5-law3-title">Arm span ≈ Height</div>
-              <div class="body-law-desc" id="guide-card5-law3-desc">Da Vinci's Vitruvian Man key insight. Fingertip-to-fingertip with arms spread equals your height.</div>
-            </div>
-          </div>
-          <div class="body-law-item">
-            <img src="https://images.pexels.com/photos/32996765/pexels-photo-32996765.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="신체 비율 실루엣" class="body-law-thumb" loading="lazy">
-            <div class="body-law-content">
-              <div class="body-law-icon">✨</div>
-              <div class="body-law-title" id="guide-card5-law4-title">Navel height = Height × 61.8%</div>
-              <div class="body-law-desc" id="guide-card5-law4-desc">The golden ratio (φ = 1.618) lives in your body. The distance from floor to navel is ~61.8% of your height.</div>
-            </div>
-          </div>
-          <div class="body-law-item">
-            <img src="https://images.pexels.com/photos/6461080/pexels-photo-6461080.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="손목 줄자 측정" class="body-law-thumb" loading="lazy">
-            <div class="body-law-content">
-              <div class="body-law-icon">💪</div>
-              <div class="body-law-title" id="guide-card5-law5-title">Wrist × 2 ≈ Ankle circumference</div>
-              <div class="body-law-desc" id="guide-card5-law5-desc">Upper and lower body joints are proportional. Knowing your wrist lets you estimate your ankle size.</div>
-            </div>
-          </div>
-          <div class="body-law-item">
-            <img src="https://images.pexels.com/photos/8481625/pexels-photo-8481625.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="엄지손가락 클로즈업" class="body-law-thumb" loading="lazy">
-            <div class="body-law-content">
-              <div class="body-law-icon">👋</div>
-              <div class="body-law-title" id="guide-card5-law6-title">Thumb length ≈ Nose length</div>
-              <div class="body-law-desc" id="guide-card5-law6-desc">An old folk fact — hold your thumb next to your nose and they're almost exactly the same length.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- BLOG -->
+<!-- BLOG -->
   <section class="blog-section" id="blog-section">
     <div class="section-header">
       <div class="section-tag">STYLE GUIDE</div>
@@ -776,7 +528,308 @@
     </div>
   </section>
 
-  <!-- MAIN ANALYSIS -->
+  
+<!-- EDUCATIONAL CONTENT SECTION (SEO & USER VALUE) -->
+  <section class="proportions-edu" id="proportion-science">
+    <div class="edu-container">
+      <h2 class="edu-title" data-i18n="edu-title">The Science of Body Proportions</h2>
+      <p class="edu-intro" data-i18n="edu-intro">Understanding your body isn't about fitting into a specific size—it's about understanding the unique geometry that makes you, you. At FITME, we use data-driven analysis to help you decode your proportions.</p>
+      <div class="edu-top-metrics">
+        <div class="edu-metric"><span class="edu-metric-k">Inputs</span><span class="edu-metric-v">3 + 9</span></div>
+        <div class="edu-metric"><span class="edu-metric-k">Segments</span><span class="edu-metric-v">12</span></div>
+        <div class="edu-metric"><span class="edu-metric-k">DNA Score</span><span class="edu-metric-v">0-100</span></div>
+        <div class="edu-metric"><span class="edu-metric-k">Languages</span><span class="edu-metric-v">15</span></div>
+      </div>
+      
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-icon">📐</div>
+          <span class="edu-chip">Horizontal Structure</span>
+          <h3 data-i18n="edu-card1-h">Horizontal Balance</h3>
+          <p data-i18n="edu-card1-p">The ratio between your shoulders, waist, and hips determines your silhouette. Whether you lean towards an inverted triangle or a pear shape, knowing these ratios helps you choose cuts that create visual harmony.</p>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon">📏</div>
+          <span class="edu-chip">Vertical Structure</span>
+          <h3 data-i18n="edu-card2-h">Vertical Proportions</h3>
+          <p data-i18n="edu-card2-p">Your leg-to-torso ratio dictates where your waistline should sit. People with shorter torsos benefit from mid-rise cuts, while those with longer torsos can use high-waisted styles to elongate their silhouette.</p>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon">⚖️</div>
+          <span class="edu-chip">Math Layer</span>
+          <h3 data-i18n="edu-card3-h">The Golden Ratio</h3>
+          <p data-i18n="edu-card3-p">Classical aesthetics often refer to the golden ratio (1:1.618) as a benchmark for balance. We compare your measurements to these statistical averages to identify your unique strengths and styling opportunities.</p>
+        </div>
+      </div>
+
+      <div class="edu-content-block">
+        <h3 data-i18n="edu-why-h">Why Measurements Over Photos?</h3>
+        <p data-i18n="edu-why-p">Photos can be deceptive due to lens distortion, camera angles, and lighting. Numbers, however, don't lie. By using precise measurements, FITME provides a 100% private, objective analysis that works regardless of how you're posing or what you're currently wearing. This data-first approach ensures that your styling recommendations are based on your actual physical structure, providing a reliable blueprint for your wardrobe.</p>
+      </div>
+    </div>
+  </section>
+
+
+<!-- GUIDE -->
+  <section class="guide-content" id="guide">
+    <div class="section-header">
+      <div class="section-tag" id="guide-measure-section-tag">측정 방법</div>
+      <h2 class="section-title" id="guide-section-title">Same Height, Different Fit</h2>
+      <p id="guide-section-sub" style="font-size:14px; color:var(--muted); margin-top:10px;">Leg length, arm length, shoulder width — true proportions can only be known by measuring</p>
+    </div>
+        <p class="guide-teaser" data-i18n="guide-teaser" style="max-width:720px;margin:12px auto 24px;font-size:15px;line-height:1.75;color:var(--muted);text-align:center;padding:0 16px;">손뼘·어깨·다리 라인 — 한 번만 재두면 직구·쇼핑몰에서 사이즈 추측이 줄어듭니다. 단계별 글은 블로그에 모아 두었어요.</p>
+    <div class="guide-quick-links" style="max-width:640px;margin:0 auto 20px;padding:0 16px;">
+      <div id="guide-links-title" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;text-align:center;">📸 Visual Measurement Guides</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+        <a href="/blog/blog20" onclick="goBlog(event,'blog20')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:20px;">✋</span><div><div id="guide-link1-title" style="font-size:13px;font-weight:600;">Hand Span Baseline</div><div id="guide-link1-sub" style="font-size:11px;color:var(--muted);">Essential first step</div></div>
+        </a>
+        <a href="/blog/blog21" onclick="goBlog(event,'blog21')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:20px;">🦴</span><div><div id="guide-link2-title" style="font-size:13px;font-weight:600;">Shoulder Width</div><div id="guide-link2-sub" style="font-size:11px;color:var(--muted);">Acromion + self-measuring method</div></div>
+        </a>
+        <a href="/blog/blog22" onclick="goBlog(event,'blog22')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:20px;">💪</span><div><div id="guide-link3-title" style="font-size:13px;font-weight:600;">Arm Length</div><div id="guide-link3-sub" style="font-size:11px;color:var(--muted);">Upper + forearm in 2 steps</div></div>
+        </a>
+        <a href="/blog/blog23" onclick="goBlog(event,'blog23')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:20px;">🦵</span><div><div id="guide-link4-title" style="font-size:13px;font-weight:600;">Leg Length</div><div id="guide-link4-sub" style="font-size:11px;color:var(--muted);">Hip bone → ankle in 2 steps</div></div>
+        </a>
+        <a href="/blog/blog24" onclick="goBlog(event,'blog24')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;grid-column:span 2;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:20px;">🍑</span><div><div id="guide-link5-title" style="font-size:13px;font-weight:600;">Hip Circumference</div><div id="guide-link5-sub" style="font-size:11px;color:var(--muted);">Two hands, solo measurement</div></div>
+        </a>
+      </div>
+      <p style="text-align:center;margin-top:18px;"><a href="/blog/" class="blog-view-all" data-i18n="guide-view-all" style="display:inline-block;">전체 측정·스타일 가이드 보기 →</a></p>
+    </div>
+    <details class="guide-full-details" style="max-width:1040px;margin:0 auto 8px;padding:0 16px;">
+      <summary data-i18n="guide-full-summary" style="cursor:pointer;font-size:13px;color:var(--accent);letter-spacing:0.3px;margin-bottom:12px;list-style:none;text-align:center;">메인에서 자세한 측정 방법 펼치기</summary>
+<div class="guide-grid">
+      <!-- CARD 1: 손뼘으로 재기 (featured — 가장 쉬운 방법) -->
+      <div class="guide-card featured">
+        <h3 id="guide-card4-title">🤚 Measure with Hand Spans — Your Hand is Always a Ruler</h3>
+        <p id="guide-card4-desc" style="font-size:13px; color:var(--muted); margin-bottom:20px;">No tools at all? One hand is all you need. Once you know your hand span, you carry a ruler everywhere.</p>
+        <div class="card-inner-grid">
+          <div>
+            <div id="guide-card4-step1-label" style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">STEP 01 — Find Your Hand Span</div>
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; margin-bottom:12px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                <span id="guide-card4-male" style="font-size:13px; color:var(--muted);">👨 Adult Male Average</span>
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent);">20–22 cm</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span id="guide-card4-female" style="font-size:13px; color:var(--muted);">👩 Adult Female Average</span>
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent);">17–19 cm</span>
+              </div>
+            </div>
+            <div style="background:rgba(212,168,75,0.06); border:1px solid rgba(212,168,75,0.2); border-radius:12px; padding:14px;">
+              <div id="guide-card4-howto-title" style="font-size:12px; color:var(--accent); font-weight:700; margin-bottom:6px;">✋ How to Measure Accurately</div>
+              <p id="guide-card4-howto" style="font-size:12px; color:var(--muted); line-height:1.8; margin:0;">Spread your hand wide — thumb tip to pinky tip. Press against a wall, mark with a pencil, then measure. That's your personal hand span.</p>
+            </div>
+          </div>
+          <div>
+            <div id="guide-card4-step2-label" style="font-size:12px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">STEP 02 — Count by Body Part</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div id="guide-card4-shoulder-label" style="font-size:13px; color:var(--text);">Shoulder Width</div>
+                  <div id="guide-card4-shoulder" style="font-size:11px; color:var(--muted);">Neck to shoulder end × 2</div>
+                </div>
+                <div id="guide-card4-shoulder-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~2–2.5 spans</div>
+              </div>
+              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div id="guide-card4-waist-label" style="font-size:13px; color:var(--text);">Waist Circumference</div>
+                  <div id="guide-card4-waist" style="font-size:11px; color:var(--muted);">Front + back each × 2</div>
+                </div>
+                <div id="guide-card4-waist-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~3.5–4.5 spans</div>
+              </div>
+              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div id="guide-card4-leg-label" style="font-size:13px; color:var(--text);">Leg Length (outer)</div>
+                  <div id="guide-card4-leg" style="font-size:11px; color:var(--muted);">Hip bone → ankle</div>
+                </div>
+                <div id="guide-card4-leg-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~3.5–5 spans</div>
+              </div>
+              <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <div id="guide-card4-arm-label" style="font-size:13px; color:var(--text);">Arm Length</div>
+                  <div id="guide-card4-arm" style="font-size:11px; color:var(--muted);">Shoulder end → wrist</div>
+                </div>
+                <div id="guide-card4-arm-span" style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:var(--accent);">~3–3.5 spans</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="guide-card4-tip" style="font-size:12px; color:var(--muted); margin-top:16px; line-height:1.7; padding-top:14px; border-top:1px solid var(--border);">💡 Spans × your span cm = actual length — e.g. shoulder = 2.3 spans, span = 18cm → ~41.4cm</p>
+
+        <!-- 부위별 측정 가이드 링크 -->
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+          <div id="guide-links-title" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">📸 Visual Measurement Guides</div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+            <a href="/blog/blog20" onclick="goBlog(event,'blog20')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">✋</span><div><div id="guide-link1-title" style="font-size:13px;font-weight:600;">Hand Span Baseline</div><div id="guide-link1-sub" style="font-size:11px;color:var(--muted);">Essential first step</div></div>
+            </a>
+            <a href="/blog/blog21" onclick="goBlog(event,'blog21')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">🦴</span><div><div id="guide-link2-title" style="font-size:13px;font-weight:600;">Shoulder Width</div><div id="guide-link2-sub" style="font-size:11px;color:var(--muted);">Acromion + self-measuring method</div></div>
+            </a>
+            <a href="/blog/blog22" onclick="goBlog(event,'blog22')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">💪</span><div><div id="guide-link3-title" style="font-size:13px;font-weight:600;">Arm Length</div><div id="guide-link3-sub" style="font-size:11px;color:var(--muted);">Upper + forearm in 2 steps</div></div>
+            </a>
+            <a href="/blog/blog23" onclick="goBlog(event,'blog23')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">🦵</span><div><div id="guide-link4-title" style="font-size:13px;font-weight:600;">Leg Length</div><div id="guide-link4-sub" style="font-size:11px;color:var(--muted);">Hip bone → ankle in 2 steps</div></div>
+            </a>
+            <a href="/blog/blog24" onclick="goBlog(event,'blog24')" style="display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--text);transition:border-color 0.2s;grid-column:span 2;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+              <span style="font-size:20px;">🍑</span><div><div id="guide-link5-title" style="font-size:13px;font-weight:600;">Hip Circumference</div><div id="guide-link5-sub" style="font-size:11px;color:var(--muted);">Two hands, solo measurement</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: 일상 물건으로 재기 -->
+      <div class="guide-card">
+        <h3 id="guide-card2-title" data-i18n="guide-card2-title">📏 집에 있는 물건으로 재기</h3>
+        <p id="guide-card2-desc" data-i18n="guide-card2-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">줄자도 스마트폰도 없다면? 주변 물건이 이미 자입니다.</p>
+        <div class="card-inner-grid">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-a4">📄 A4 용지 (세로)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">29.7 cm</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-bill">💴 지폐 (가로)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">14.8 cm</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-card">💳 신용카드 (가로)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">8.56 cm</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:12px 14px;">
+              <span style="font-size:12px; color:var(--muted);" data-i18n="guide-obj-pen">🖊 볼펜 (길이)</span>
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--accent);">약 14 cm</span>
+            </div>
+          </div>
+        </div>
+        <p id="guide-card2-tip" data-i18n="guide-card2-tip" style="font-size:12px; color:var(--muted); margin-top:14px; line-height:1.7;">💡 예) 어깨 너비를 A4로 재면 → A4가 1.5장 → 약 44.5cm</p>
+      </div>
+
+      <!-- CARD 3: 사진으로 정확히 재기 -->
+      <div class="guide-card">
+        <h3 id="guide-card3-title" data-i18n="guide-card3-title">📸 사진 한 장으로 정확히 재기</h3>
+        <p id="guide-card3-desc" data-i18n="guide-card3-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">A4 한 장만 있으면 오차 1cm 이내로 잴 수 있습니다.</p>
+        <div class="card-inner-grid">
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 01</div>
+              <p id="guide-card3-step1" data-i18n="guide-card3-step1" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">A4 용지를 어깨·허리 옆에 붙이고 전신 정면 사진을 찍어요.</p>
+            </div>
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 02</div>
+              <p id="guide-card3-step2" data-i18n="guide-card3-step2" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">사진 속 A4(29.7cm) 기준으로 각 부위 비율을 계산합니다.</p>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--accent); margin-bottom:4px;">STEP 03</div>
+              <p id="guide-card3-step3" data-i18n="guide-card3-step3" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">계산한 치수를 FITME에 입력 → 비율 분석 완료!</p>
+            </div>
+            <div style="background:rgba(212,168,75,0.06); border:1px solid rgba(212,168,75,0.2); border-radius:10px; padding:14px;">
+              <p id="guide-card3-tip" data-i18n="guide-card3-tip" style="font-size:12px; color:var(--muted); line-height:1.7; margin:0;">📱 iPhone 사진 앱 → 편집 → 눈금자 기능으로 더 정확하게!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4: 스마트폰으로 재기 -->
+      <div class="guide-card guide-card4-span">
+        <h3 id="guide-card-title">📱 Measure Right Now — Using Your Smartphone</h3>
+        <div class="card-inner-grid" style="margin-top:16px;">
+          <div>
+            <p id="guide-card-desc" style="font-size:13px; color:var(--muted); margin-bottom:14px;">No measuring tape? No problem. Your smartphone is all you need.</p>
+            <div style="background:rgba(212,168,75,0.06); border:1px solid rgba(212,168,75,0.2); border-radius:12px; padding:16px; text-align:center;">
+              <div id="guide-ruler-label" style="font-size:11px; color:var(--muted); letter-spacing:2px; margin-bottom:8px;">Avg. Smartphone Length</div>
+              <div id="guide-ruler-size" style="font-family:'Bebas Neue',sans-serif; font-size:36px; color:var(--accent); line-height:1;">~15 CM</div>
+              <div id="guide-ruler-hint" style="font-size:11px; color:var(--muted); margin-top:6px;">Use it as a ruler</div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div class="guide-step">
+              <div class="step-num">01</div>
+              <p id="guide-step1-p">Hold your phone vertically and count how many times it fits along the body part</p>
+            </div>
+            <div class="guide-step">
+              <div class="step-num">02</div>
+              <p id="guide-step2-p">Count × 15cm = length of that part<br>e.g. 3 times → ~45cm</p>
+            </div>
+            <div class="guide-step">
+              <div class="step-num">03</div>
+              <p id="guide-step3-p">Enter the measurements in the body diagram to get your analysis!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 5: 신체 비율의 법칙 (new) -->
+      <div class="guide-card guide-card4-span">
+        <h3 id="guide-card5-title">🧬 Hidden Body Proportion Laws</h3>
+        <p id="guide-card5-desc" style="font-size:13px; color:var(--muted); margin-bottom:20px;">Ancient formulas da Vinci also discovered — useful for estimating body parts without a tape measure.</p>
+        <div class="body-law-grid">
+          <div class="body-law-item">
+            <img src="https://images.pexels.com/photos/9486779/pexels-photo-9486779.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="발 클로즈업" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">🦶</div>
+              <div class="body-law-title" id="guide-card5-law1-title">Forearm length = Foot length</div>
+              <div class="body-law-desc" id="guide-card5-law1-desc">Your elbow-to-wrist length matches your foot size with surprising accuracy — usually within 1cm.</div>
+            </div>
+          </div>
+          <div class="body-law-item">
+            <img src="https://images.pexels.com/photos/6516061/pexels-photo-6516061.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="허리 줄자 측정" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">🔄</div>
+              <div class="body-law-title" id="guide-card5-law2-title">Neck × 2 ≈ Waist circumference</div>
+              <div class="body-law-desc" id="guide-card5-law2-desc">Measure your neck and double it to estimate your waist. More accurate for average body types.</div>
+            </div>
+          </div>
+          <div class="body-law-item">
+            <img src="https://images.pexels.com/photos/7801499/pexels-photo-7801499.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="팔 벌린 운동 자세" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">↔</div>
+              <div class="body-law-title" id="guide-card5-law3-title">Arm span ≈ Height</div>
+              <div class="body-law-desc" id="guide-card5-law3-desc">Da Vinci's Vitruvian Man key insight. Fingertip-to-fingertip with arms spread equals your height.</div>
+            </div>
+          </div>
+          <div class="body-law-item">
+            <img src="https://images.pexels.com/photos/32996765/pexels-photo-32996765.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="신체 비율 실루엣" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">✨</div>
+              <div class="body-law-title" id="guide-card5-law4-title">Navel height = Height × 61.8%</div>
+              <div class="body-law-desc" id="guide-card5-law4-desc">The golden ratio (φ = 1.618) lives in your body. The distance from floor to navel is ~61.8% of your height.</div>
+            </div>
+          </div>
+          <div class="body-law-item">
+            <img src="https://images.pexels.com/photos/6461080/pexels-photo-6461080.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="손목 줄자 측정" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">💪</div>
+              <div class="body-law-title" id="guide-card5-law5-title">Wrist × 2 ≈ Ankle circumference</div>
+              <div class="body-law-desc" id="guide-card5-law5-desc">Upper and lower body joints are proportional. Knowing your wrist lets you estimate your ankle size.</div>
+            </div>
+          </div>
+          <div class="body-law-item">
+            <img src="https://images.pexels.com/photos/8481625/pexels-photo-8481625.jpeg?auto=compress&cs=tinysrgb&w=600&h=380&dpr=1" alt="엄지손가락 클로즈업" class="body-law-thumb" loading="lazy">
+            <div class="body-law-content">
+              <div class="body-law-icon">👋</div>
+              <div class="body-law-title" id="guide-card5-law6-title">Thumb length ≈ Nose length</div>
+              <div class="body-law-desc" id="guide-card5-law6-desc">An old folk fact — hold your thumb next to your nose and they're almost exactly the same length.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+    </details>
+  </section>
+
+<!-- MAIN ANALYSIS -->
   <div class="main-container" id="analysis">
     <p id="tool-disclaimer-main" class="tool-disclaimer"></p>
     <div class="analysis-workspace">
@@ -1221,46 +1274,7 @@
     <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet(event)"></div>
   </div>
 
-  <!-- EDUCATIONAL CONTENT SECTION (SEO & USER VALUE) -->
-  <section class="proportions-edu" id="proportion-science">
-    <div class="edu-container">
-      <h2 class="edu-title" data-i18n="edu-title">The Science of Body Proportions</h2>
-      <p class="edu-intro" data-i18n="edu-intro">Understanding your body isn't about fitting into a specific size—it's about understanding the unique geometry that makes you, you. At FITME, we use data-driven analysis to help you decode your proportions.</p>
-      <div class="edu-top-metrics">
-        <div class="edu-metric"><span class="edu-metric-k">Inputs</span><span class="edu-metric-v">3 + 9</span></div>
-        <div class="edu-metric"><span class="edu-metric-k">Segments</span><span class="edu-metric-v">12</span></div>
-        <div class="edu-metric"><span class="edu-metric-k">DNA Score</span><span class="edu-metric-v">0-100</span></div>
-        <div class="edu-metric"><span class="edu-metric-k">Languages</span><span class="edu-metric-v">15</span></div>
-      </div>
-      
-      <div class="edu-grid">
-        <div class="edu-card">
-          <div class="edu-icon">📐</div>
-          <span class="edu-chip">Horizontal Structure</span>
-          <h3 data-i18n="edu-card1-h">Horizontal Balance</h3>
-          <p data-i18n="edu-card1-p">The ratio between your shoulders, waist, and hips determines your silhouette. Whether you lean towards an inverted triangle or a pear shape, knowing these ratios helps you choose cuts that create visual harmony.</p>
-        </div>
-        <div class="edu-card">
-          <div class="edu-icon">📏</div>
-          <span class="edu-chip">Vertical Structure</span>
-          <h3 data-i18n="edu-card2-h">Vertical Proportions</h3>
-          <p data-i18n="edu-card2-p">Your leg-to-torso ratio dictates where your waistline should sit. People with shorter torsos benefit from mid-rise cuts, while those with longer torsos can use high-waisted styles to elongate their silhouette.</p>
-        </div>
-        <div class="edu-card">
-          <div class="edu-icon">⚖️</div>
-          <span class="edu-chip">Math Layer</span>
-          <h3 data-i18n="edu-card3-h">The Golden Ratio</h3>
-          <p data-i18n="edu-card3-p">Classical aesthetics often refer to the golden ratio (1:1.618) as a benchmark for balance. We compare your measurements to these statistical averages to identify your unique strengths and styling opportunities.</p>
-        </div>
-      </div>
-
-      <div class="edu-content-block">
-        <h3 data-i18n="edu-why-h">Why Measurements Over Photos?</h3>
-        <p data-i18n="edu-why-p">Photos can be deceptive due to lens distortion, camera angles, and lighting. Numbers, however, don't lie. By using precise measurements, FITME provides a 100% private, objective analysis that works regardless of how you're posing or what you're currently wearing. This data-first approach ensures that your styling recommendations are based on your actual physical structure, providing a reliable blueprint for your wardrobe.</p>
-      </div>
-    </div>
-  </section>
-
+  
   <div class="fitme-ad-slot" hidden aria-hidden="true">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6377720400458954" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
@@ -1353,7 +1367,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=13"></script>
+<script defer src="/assets/fitme-app.js?v=14"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>
@@ -1362,8 +1376,8 @@
   <img id="span-lb-img" src="" alt="" style="max-width:100%;max-height:92vh;border-radius:12px;object-fit:contain;">
 </div>
 <link rel="stylesheet" href="/assets/fitme-ads.css?v=8">
-<script defer src="/assets/fitme-ads.js?v=8"></script>
-<script defer src="/cookie-consent.js?v=9"></script>
+<script defer src="/assets/fitme-ads.js?v=9"></script>
+<script defer src="/cookie-consent.js?v=10"></script>
 <script>
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     var hostOk = location.hostname === 'perfectfitme.com' || location.hostname === 'www.perfectfitme.com';

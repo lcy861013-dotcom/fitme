@@ -553,7 +553,10 @@
     .privacy-step { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
     .ps-num { width: 20px; height: 20px; border-radius: 50%; background: rgba(212,168,75,0.12); border: 1px solid rgba(212,168,75,0.35); color: var(--accent); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
     .ps-arrow { color: rgba(212,168,75,0.45); font-size: 14px; margin: 0 2px; }
-    .hero-privacy-note { font-size: 11px; color: var(--muted); margin-bottom: 24px; letter-spacing: 0.3px; font-family: 'DM Sans', sans-serif; opacity: 0.7; }
+    .hero-privacy-note { font-size: 11px; color: var(--muted); margin-bottom: 12px; letter-spacing: 0.3px; font-family: 'DM Sans', sans-serif; opacity: 0.7; }
+    .hero-demo-outlink { margin: 0 auto 20px; font-size: 13px; font-family: 'DM Sans', sans-serif; }
+    .hero-demo-outlink a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212,168,75,0.35); }
+    .hero-demo-outlink a:hover { border-bottom-color: var(--accent); }
     .hero-preview-val { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--accent); line-height: 1; }
     .hero-preview-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
     .hero-preview-grade { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #a89868; line-height: 1; }
@@ -599,6 +602,10 @@
 
     /* GUIDE SECTION */
     .guide-content { padding: 60px 32px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, transparent 0%, rgba(212,168,75,0.02) 50%, transparent 100%); }
+    .guide-full-details summary { font-family: 'DM Sans', sans-serif; }
+    .guide-full-details summary::-webkit-details-marker { display: none; }
+    .guide-full-details[open] summary { margin-bottom: 20px; }
+    .guide-teaser { font-family: 'DM Sans', sans-serif; }
     .section-header { text-align: center; margin-bottom: 48px; }
     .section-tag { font-size: 11px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; font-family: 'DM Sans', sans-serif; }
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 4px; }
