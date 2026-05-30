@@ -2,6 +2,8 @@
   // ============================================================
   const i18n = {
     ko: {
+      'site-title':'온라인 쇼핑 실패 끝, 무료 체형 분석 도구 | FITME',
+      'site-description':'S/M/L 사이즈가 왜 브랜드마다 다를까요? 사진 없이 어깨·허리·다리 비율을 분석해 나에게 맞는 스타일을 제안합니다. 100% 비공개 무료 분석.',
       'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-blog':'블로그','nav-about':'소개',
       'hero-tag':'직구·쇼핑몰, 사이즈보다 먼저 비율',
       'hero-live-suffix':'무료 · 가입불필요 · 완전 비공개',
@@ -298,6 +300,8 @@
       'forms':{ height:{desc:'전체 신장을 입력하세요.',label:'키 (cm)'}, weight:{desc:'체중을 입력하세요. BMI 분석에 활용됩니다.',label:'체중 (kg)'}, head:{desc:'머리 둘레와 세로 길이를 측정하세요.',label:'머리 둘레 (cm)',label2:'모자 사이즈',label3:'머리 세로 길이 (cm)'}, shoulder:{desc:'어깨 끝에서 끝까지 너비를 측정하세요.',label:'어깨 너비 (cm)'}, chest:{desc:'가슴 둘레와 상의 사이즈를 입력하세요.',label:'가슴 둘레 (cm)',label2:'상의 사이즈'}, 'upper-arm':{desc:'어깨에서 팔꿈치까지 길이를 측정하세요.',label:'어깨→팔꿈치 (cm)'}, 'lower-arm':{desc:'팔꿈치에서 손목까지 길이를 측정하세요.',label:'팔꿈치→손목 (cm)'}, waist:{desc:'청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)',label:'허리 사이즈 (inch)',hint:'※ 모르면 허리 둘레(cm) ÷ 2.54'}, hip:{desc:'엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.',label:'골반 둘레 (cm)'}, 'upper-leg':{desc:'골반에서 무릎까지 길이를 측정하세요.',label:'골반→무릎 (cm)',label2:'허벅지 둘레 (cm)'}, 'lower-leg':{desc:'무릎에서 복숭아뼈까지 길이를 측정하세요.',label:'무릎→복숭아뼈 (cm)'}, foot:{desc:'발 사이즈와 발볼을 입력하세요.',label:'발 사이즈 (mm)',label2:'발볼',narrow:'좁음',normal:'보통',wide:'넓음'} }
     },
     en: {
+      'site-title':'End Online Shopping Failures, Free Body Analysis Tool | FITME',
+      'site-description':'Why do S/M/L sizes vary by brand? Analyze your shoulder, waist, and leg ratios without photos for personalized style tips. 100% private free analysis.',
       'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-blog':'Blog','nav-about':'About',
       'hero-tag':'FOR ONLINE SHOPPERS WHO CARE ABOUT FIT',
       'hero-live-suffix':'📷 No Photos · Measurements Only · 100% Private',
@@ -2558,7 +2562,15 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const val = t(key);
-      if (htmlKeys.has(key)) el.innerHTML = val; else el.textContent = val;
+      if (el.tagName === 'META') {
+        el.setAttribute('content', val);
+      } else if (el.tagName === 'TITLE') {
+        document.title = val;
+      } else if (htmlKeys.has(key)) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
     });
     // guide section (no data-i18n, use IDs)
     const set = (id, val, html) => { const el = document.getElementById(id); if (el) { if(html) el.innerHTML = val; else el.textContent = val; } };

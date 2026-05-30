@@ -593,16 +593,26 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
   </div>
   </div>
 
-  <div class="cta">
-    <div style="font-weight:700;font-size:18px;margin-bottom:8px;">Ready to analyze your body proportions?</div>
-    <div style="font-size:14px;color:var(--muted);">Free body analysis — takes under 2 minutes</div>
-    <a href="/?utm_source=blog&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">Analyze My Body Type Free →</a>
+  <div class="cta" id="blog-cta">
+    <div class="cta-text-en">
+      <div style="font-weight:700;font-size:18px;margin-bottom:8px;">Ready to analyze your body proportions?</div>
+      <div style="font-size:14px;color:var(--muted);">Free body analysis — takes under 2 minutes</div>
+      <a href="/?utm_source=blog&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">Analyze My Body Type Free →</a>
+    </div>
+    <div class="cta-text-ko" style="display:none;">
+      <div style="font-family:'Black Han Sans',sans-serif;font-size:18px;margin-bottom:8px;">내 체형 비율이 궁금하다면?</div>
+      <div style="font-size:14px;color:var(--muted);">무료 신체 분석 — 2분이면 충분합니다</div>
+      <a href="/?utm_source=blog&utm_medium=cta&utm_campaign=analysis#analysis" class="cta-btn">내 체형 무료 분석하기 →</a>
+    </div>
   </div>
 </main>
   <div class="fitme-ad-slot" hidden aria-hidden="true">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6377720400458954" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
-<footer><p>© 2026 FITME. All rights reserved. · <a href="/ko/privacy" style="color:var(--muted);">Privacy</a> · <a href="/ko/terms" style="color:var(--muted);">Terms</a> · <a href="/ko/contact" style="color:var(--muted);">Contact</a> · <a href="/ko/about" style="color:var(--muted);">About</a> · <a href="/ko/editorial-standards" style="color:var(--muted);">Editorial</a> · <a href="/ko/how-it-works" style="color:var(--muted);">How it works</a></p></footer>
+<footer id="blog-footer">
+  <p class="footer-en">© 2026 FITME. All rights reserved. · <a href="/ko/privacy" style="color:var(--muted);">Privacy</a> · <a href="/ko/terms" style="color:var(--muted);">Terms</a> · <a href="/ko/contact" style="color:var(--muted);">Contact</a> · <a href="/ko/about" style="color:var(--muted);">About</a> · <a href="/ko/editorial-standards" style="color:var(--muted);">Editorial</a> · <a href="/ko/how-it-works" style="color:var(--muted);">How it works</a></p>
+  <p class="footer-ko" style="display:none;">© 2026 FITME. 모든 권리 보유. · <a href="/ko/privacy" style="color:var(--muted);">개인정보처리방침</a> · <a href="/ko/terms" style="color:var(--muted);">이용약관</a> · <a href="/ko/contact" style="color:var(--muted);">문의</a> · <a href="/ko/about" style="color:var(--muted);">소개</a> · <a href="/ko/editorial-standards" style="color:var(--muted);">콘텐츠 기준</a> · <a href="/ko/how-it-works" style="color:var(--muted);">작동 방식</a></p>
+</footer>
 <script>
 (function () {
   try {
@@ -610,28 +620,60 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
     var enEl = document.getElementById('blog-section-en');
     var koEl = document.getElementById('blog-section-ko');
     if (!enEl || !koEl) return;
-    if (params.get('all') === '1') return;
+    
+    var saved = localStorage.getItem('fitme_lang');
+    var nav = (navigator.language || '').toLowerCase();
+    var isKo = (params.get('lang') === 'ko') || (saved === 'ko') || (!params.get('lang') && !saved && nav.startsWith('ko'));
+    
+    if (params.get('all') === '1') isKo = false;
 
-    if (params.get('lang') === 'ko') {
+    if (isKo && params.get('all') !== '1') {
       enEl.classList.add('hidden-for-lang');
       document.documentElement.lang = 'ko';
-      return;
-    }
-    if (params.get('lang') === 'en') {
+      // Update Title/Meta
+      document.title = "체형 가이드 블로그: 팬츠 핏, 비율 분석, 측정법 | FITME";
+      var desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute('content', '온라인 쇼핑을 위한 체형 가이드: 팬츠 핏 고르는 법, 줄자 없이 체형 재는 법, 비율 분석 등. 무료 분석 도구 포함.');
+      // Update CTA/Footer
+      var ctaEn = document.querySelector('.cta-text-en');
+      var ctaKo = document.querySelector('.cta-text-ko');
+      if (ctaEn && ctaKo) { ctaEn.style.display = 'none'; ctaKo.style.display = 'block'; }
+      var footEn = document.querySelector('.footer-en');
+      var footKo = document.querySelector('.footer-ko');
+      if (footEn && footKo) { footEn.style.display = 'none'; footKo.style.display = 'block'; }
+      
+      // Update Site About
+      var about = document.querySelector('.site-about');
+      if (about) about.innerHTML = '<p><strong>FITME 블로그</strong>는 가공된 콘텐츠가 아닌, 실제 옷 선택에 도움이 되는 독자적인 체형 및 비율 가이드를 발행합니다. 영어 문서가 가장 방대하며, <a href="/blog/ja/">日本語</a> 및 <a href="/blog/pt/">Português</a>는 시장 특성에 맞춘 현지화 버전입니다. 정기적으로 가이드를 업데이트합니다. 기준: <a href="/ko/editorial-standards">콘텐츠 기준</a> · <a href="/ko/how-it-works">작동 방식</a> · <a href="/">무료 분석 도구</a>.</p>';
+      var langStrip = document.querySelector('.lang-strip span');
+      if (langStrip) langStrip.textContent = '다른 언어:';
+      
+      // Update Header
+      var navLinks = document.querySelectorAll('header nav a');
+      if (navLinks.length >= 6) {
+        navLinks[0].textContent = '측정 가이드'; navLinks[0].href = '/#why-fitme';
+        navLinks[1].textContent = '비율 분석'; navLinks[1].href = '/#analysis';
+        navLinks[2].textContent = '블로그'; navLinks[2].href = '/blog/';
+        navLinks[3].textContent = '작동 방식'; navLinks[3].href = '/ko/how-it-works';
+        navLinks[4].textContent = '소개'; navLinks[4].href = '/ko/about';
+        navLinks[5].textContent = '문의'; navLinks[5].href = '/ko/contact';
+      }
+      var pageTitle = document.querySelector('.page-title');
+      if (pageTitle) pageTitle.textContent = '스타일 & 핏 블로그';
+      var pageSub = document.querySelector('.page-sub');
+      if (pageSub) pageSub.textContent = '체형 비율, 의류 핏, 퍼스널 스타일링에 대한 심층 가이드 — 모든 체형을 위해 무료로 제공됩니다.';
+    } else if (params.get('lang') === 'en' || (!isKo && params.get('all') !== '1')) {
       koEl.classList.add('hidden-for-lang');
       document.documentElement.lang = 'en';
-      return;
+      // Fix English links that were hardcoded to /ko/
+      var navLinks = document.querySelectorAll('header nav a');
+      if (navLinks.length >= 6) {
+        navLinks[3].href = '/how-it-works';
+        navLinks[4].href = '/en/about';
+        navLinks[5].href = '/en/contact';
+      }
     }
-
-    var saved = localStorage.getItem('fitme_lang');
-    if (saved === 'ko') return;
-
-    var nav = (navigator.language || '').toLowerCase();
-    if (!saved && nav.startsWith('ko')) return;
-
-    koEl.classList.add('hidden-for-lang');
-    if (saved) document.documentElement.lang = saved;
-  } catch (e) {}
+  } catch (e) { console.error(e); }
 })();
 </script>
 <link rel="stylesheet" href="/assets/fitme-ads.css?v=8">
