@@ -35,6 +35,8 @@
       'story-label':'왜 만들었나요','story-title':'많은 사람이 화면 속 사이즈표만 보고 삽니다.<br>그 표는 당신의 실루엣을 설명하지 않습니다.',
       'story-p1':'리뷰 사진과 사이즈표가 같아도 어깨·허리·다리 비율이 다르면 같은 옷이 전혀 다른 핏이 됩니다. 그래서 반품·교환을 반복하게 되죠.',
       'story-p2':'FITME는 “내 비율이 먼저” 보이도록 만들었습니다. 숫자 몇 개로 실루엣과 스타일 방향을 정리하면 — 어떤 넥라인·실루엣을 고르고 무엇을 피할지 — 직구와 국내 온라인 쇼핑이 훨씬 덜 막막해집니다.',
+      'story-p3':'저는 매장보다 온라인 쇼핑을 훨씬 많이 해요. XL이면 될 줄 알았고, 허리 32면 될 줄 알았는데 — 사진·리뷰 보고 집에서 입어 보면 “거의 맞는데… 나한테는 아닌” 그 느낌이 반복됐어요. 예쁜 옷인데 실루엣이 안 맞는, 그 패턴요.',
+      'story-p4':'트레이닝복 하나가 맞을 때까지 두세 벌은 더 사 봤고, 반품 박스는 쌓였죠. 그때 깨달았어요 — 사이즈표가 아니라 <em>어깨·다리·허리 비율</em>을 모르고 있었다는 걸요.',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
       'hanspan-tag':'✦ 가장 쉬운 방법','hanspan-headline':'지금 딱 한 번만 — 내 한 뼘 재기','hanspan-desc':'손 펼쳐서 엄지↔새끼손가락 끝 거리를 재세요. 이 하나면 줄자 없이도 어깨·허리·다리 모두 계산할 수 있어요.','hanspan-save':'저장하기',
       'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
@@ -107,6 +109,15 @@
       'edu-card2-h':'세로 구조 (상체·다리 분절)','edu-card2-p':'골반→무릎, 무릎→복숭아뼈, 어깨→팔꿈치, 팔꿈치→손목 비율로 길이 착시를 설계합니다. 밑위·기장·커프 길이를 조정하면 체형 인상이 크게 바뀝니다.',
       'edu-card3-h':'수학 레이어 (비율 지표)','edu-card3-p':'황금비, WHR, 어깨-허리 차이, 다리/상체 지표를 함께 분석해 체형 타입과 스타일 우선순위를 도출합니다. 감각이 아니라 재현 가능한 수치 기반 추천입니다.',
       'edu-why-h':'왜 사진 대신 치수인가요?','edu-why-p':'사진은 렌즈·각도·포즈·조명에 따라 결과가 쉽게 흔들립니다. 치수는 조건이 달라져도 기준이 유지됩니다. FITME는 로컬 계산으로 객관성과 프라이버시를 동시에 확보해, 실제 쇼핑/코디에 재사용 가능한 분석 리포트를 제공합니다.',
+      'edu-founder-h':'온라인 쇼핑, 사이즈표만으로는 부족한 이유',
+      'edu-founder-p':'상세 페이지에는 보통 가슴·허리·총장 숫자만 있습니다. 그런데 같은 “32” 허리도 엉덩이·다리 비율에 따라 바지 핏이 완전히 달라집니다. 저는 이 간극을 사이즈표만으로는 못 채워서, 손뼘·어깨·다리 같은 <strong>구간 치수</strong>부터 재기 시작했어요. FITME 도구는 그 숫자를 비율로 정리해 주고, 아래 추천 글들은 “쇼핑할 때 어떻게 쓰면 덜 실패하는지”를 더 깊게 다룹니다. 메인 글과 블로그는 같은 주제를 다른 각도로 설명합니다 — 여기는 왜 비율인지, 각 글은 현장에서 어떻게 적용하는지예요.',
+      'edu-readmore-h':'더 읽어보기 — 쇼핑·비율',
+      'edu-readmore-1-title':'왜 어떤 옷은 나에게 절대 안 맞을까?',
+      'edu-readmore-1-desc':'사이즈 문제가 아니라 비율 문제일 때 — 반품 줄이는 사고방식',
+      'edu-readmore-2-title':'몸무게보다 비율이 중요한 이유',
+      'edu-readmore-2-desc':'같은 kg도 실루엣이 다른 이유와 쇼핑에 쓰는 법',
+      'edu-readmore-3-title':'손뼘으로 모든 부위 재기',
+      'edu-readmore-3-desc':'줄자 없이 시작하는 측정 — FITME 시리즈 ①',
       'blog-view-all':'전체 가이드 보기 →',
       'read-4min':'4분 읽기','read-5min':'5분 읽기','read-6min':'6분 읽기','read-7min':'7분 읽기',
       'blog1-title':'나에게 맞는 팬츠 핏 완전 가이드','blog1-desc':'슬림핏부터 와이드핏까지 — 체형·키·신발에 따른 팬츠 선택법과 기장·롤업 활용 실전 팁.',
@@ -337,6 +348,8 @@
       'story-label':'WHY WE BUILT THIS','story-title':'Most checkout screens ask for a size.<br>They don’t describe how clothes hang on you.',
       'story-p1':'Reviews and size charts can’t show someone else’s shoulder-to-waist balance or leg-to-torso line. That’s why the same numeric size arrives feeling almost-right-but-not — and returns pile up.',
       'story-p2':'FITME starts from your ratios: what flatters your lines, what fights them. Use it alongside any retailer — the goal is fewer guess buys and more outfits that feel deliberate on your body.',
+      'story-p3':'I shop online more than in stores. XL should work, waist 32 should work — I bought from photos and reviews, tried them at home, and thought “almost… but not on me.” Pretty clothes, wrong silhouette, again.',
+      'story-p4':'One tracksuit became two or three before the fit felt right; return boxes piled up. That’s when it clicked — not the size tag, but not knowing my <em>shoulder, leg, and waist ratios</em>.',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
       'hanspan-tag':'✦ Easiest Method','hanspan-headline':'Just once — measure your hand span','hanspan-desc':'Spread your hand wide: thumb tip to pinky tip. One measurement lets you estimate shoulders, waist & legs without any tools.','hanspan-save':'Save',
       'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
@@ -409,6 +422,15 @@
       'edu-card2-h':'Vertical Structure (Segment Lengths)','edu-card2-p':'Hip-to-knee, knee-to-ankle, shoulder-to-elbow, and elbow-to-wrist ratios drive visual length. Rise, hem, cuff, and layering choices become far more precise with segment data.',
       'edu-card3-h':'Math Layer (Proportion Indices)','edu-card3-p':'Golden-ratio references, WHR, shoulder-waist differential, and leg/torso indices are combined to rank styling priorities. The output is reproducible, not vibe-based.',
       'edu-why-h':'Why measurements over photos?','edu-why-p':'Photos are unstable inputs: lens distortion, angle, posture, and lighting all skew perception. Measurements remain consistent across contexts. FITME computes locally for privacy and delivers analysis you can reuse in real shopping and outfit planning.',
+      'edu-founder-h':'Why size charts aren’t enough for online shopping',
+      'edu-founder-p':'Product pages usually list chest, waist, and length — not how <strong>your</strong> shoulder, hip, and leg segments compare. Same “32” waist can fit completely differently depending on hip and leg line. I started with hand span, shoulder, and leg counts because labels alone couldn’t explain my returns. The tool below turns numbers into ratios; the articles linked here go deeper on <em>how to shop with them</em>. This section explains why ratios matter — each post shows how to apply that in real purchases.',
+      'edu-readmore-h':'Read next — shopping & proportions',
+      'edu-readmore-1-title':'Why some clothes never fit you',
+      'edu-readmore-1-desc':'When it’s a proportion problem, not a size label — and how to shop smarter',
+      'edu-readmore-2-title':'Why proportions matter more than weight',
+      'edu-readmore-2-desc':'Same kg, different silhouette — and what to do with that when you buy',
+      'edu-readmore-3-title':'Measure anything with your hand span',
+      'edu-readmore-3-desc':'Start without a tape — FITME measurement series part ①',
       'blog-view-all':'View All Guides →',
       'read-4min':'4 min read','read-5min':'5 min read','read-6min':'6 min read','read-7min':'7 min read',
       'blog1-title':'The Complete Pants Fit Guide','blog1-desc':'From slim to wide — how to choose pants by body type, height, and shoes. Inseam & roll-up tips included.',
@@ -2363,7 +2385,13 @@
       'edu-card1-h','edu-card1-p',
       'edu-card2-h','edu-card2-p',
       'edu-card3-h','edu-card3-p',
-      'edu-why-h','edu-why-p'
+      'edu-why-h','edu-why-p',
+      'edu-founder-h','edu-founder-p',
+      'edu-readmore-h',
+      'edu-readmore-1-title','edu-readmore-1-desc',
+      'edu-readmore-2-title','edu-readmore-2-desc',
+      'edu-readmore-3-title','edu-readmore-3-desc',
+      'story-label','story-title','story-p1','story-p2','story-p3','story-p4'
     ];
     const locales = ['ja','zh','fr','es','pt','de','it','ru','ar','hi','th','id','vi'];
     locales.forEach(function (loc) {
@@ -2563,7 +2591,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-headline','guide-card-desc','guide-step2','publisher-body','tool-disclaimer']);
+    const htmlKeys = new Set(['hero-sub','hero-headline','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p']);
     // Dynamic hero headline (uses <br> and <em>)
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) heroHl.innerHTML = t('hero-headline');

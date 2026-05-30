@@ -247,6 +247,14 @@
       background: linear-gradient(165deg, rgba(166, 124, 24, 0.06), rgba(255, 255, 255, 0.95));
       border-color: rgba(166, 124, 24, 0.2);
     }
+    [data-theme="light"] .edu-editorial {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="light"] .edu-readmore-list a {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
     [data-theme="light"] .hanspan-input-wrap {
       background: #f5f3f0;
       border-color: rgba(0, 0, 0, 0.1);
@@ -1950,6 +1958,17 @@
     .edu-content-block { background: linear-gradient(165deg, rgba(212,168,75,0.08), rgba(168,152,104,0.05)); border-radius: 20px; padding: 26px 24px; border: 1px solid rgba(212,168,75,0.2); }
     .edu-content-block h3 { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 12px; letter-spacing: 0.1px; }
     .edu-content-block p { font-size: 14px; color: var(--muted); line-height: 1.85; }
+    .edu-editorial { margin-top: 28px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 24px 22px; }
+    .edu-editorial h3 { font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); margin: 0 0 12px; letter-spacing: 0.1px; }
+    .edu-editorial p { font-size: 14px; color: var(--muted); line-height: 1.9; margin: 0; }
+    .edu-editorial p strong { color: var(--text); font-weight: 600; }
+    .edu-readmore { margin-top: 24px; }
+    .edu-readmore-h { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+    .edu-readmore-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .edu-readmore-list a { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; text-decoration: none; transition: border-color 0.2s, transform 0.15s; }
+    .edu-readmore-list a:hover { border-color: rgba(212,168,75,0.45); transform: translateY(-1px); }
+    .edu-readmore-title { display: block; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .edu-readmore-desc { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
     @media (max-width: 850px) {
       .edu-top-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .edu-grid { grid-template-columns: 1fr; }
