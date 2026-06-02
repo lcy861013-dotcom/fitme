@@ -4,7 +4,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://perfectfitme.com/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/"/>
@@ -13,7 +13,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/demo-video</loc>
-    <lastmod>2026-05-20</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
     <video:video>
@@ -29,43 +29,43 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/about</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://perfectfitme.com/editorial-standards</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://perfectfitme.com/how-it-works</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
   </url>
   <url>
     <loc>https://perfectfitme.com/privacy</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://perfectfitme.com/terms</loc>
-    <lastmod>2026-05-11</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://perfectfitme.com/contact</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/"/>
@@ -78,7 +78,7 @@
   <!-- Blog posts: Korean -->
   <url>
     <loc>https://perfectfitme.com/blog/blog1</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog1"/>
@@ -91,7 +91,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog2</loc>
-    <lastmod>2026-02-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog2"/>
@@ -100,7 +100,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog3</loc>
-    <lastmod>2026-02-15</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog3"/>
@@ -111,7 +111,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog4</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog4"/>
@@ -120,7 +120,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog5</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog5"/>
@@ -129,7 +129,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog6</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog6"/>
@@ -142,7 +142,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog7</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog7"/>
@@ -155,7 +155,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog8</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog8"/>
@@ -168,7 +168,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog9</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog9"/>
@@ -181,7 +181,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog10</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog10"/>
@@ -192,7 +192,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog11</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog11"/>
@@ -201,7 +201,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog12</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog12"/>
@@ -212,7 +212,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog13</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog13"/>
@@ -225,7 +225,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog14</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog14"/>
@@ -234,7 +234,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog15</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog15"/>
@@ -243,7 +243,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog16</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog16"/>
@@ -252,7 +252,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog17</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog17"/>
@@ -261,7 +261,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog18</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog18"/>
@@ -274,7 +274,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog19</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog19"/>
@@ -283,7 +283,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog20</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog20"/>
@@ -292,7 +292,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog21</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog21"/>
@@ -301,7 +301,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog22</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog22"/>
@@ -310,7 +310,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog23</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog23"/>
@@ -319,7 +319,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog24</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog24"/>
@@ -328,7 +328,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog25</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog25"/>
@@ -341,7 +341,7 @@
   <!-- Blog posts: English -->
   <url>
     <loc>https://perfectfitme.com/blog/blog1-en</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog1"/>
@@ -354,7 +354,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog2-en</loc>
-    <lastmod>2026-02-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog2"/>
@@ -363,7 +363,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog3-en</loc>
-    <lastmod>2026-02-15</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog3"/>
@@ -374,7 +374,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog4-en</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog4"/>
@@ -383,7 +383,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog5-en</loc>
-    <lastmod>2026-03-15</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog5"/>
@@ -392,7 +392,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog6-en</loc>
-    <lastmod>2026-03-22</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog6"/>
@@ -405,7 +405,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog7-en</loc>
-    <lastmod>2026-03-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog7"/>
@@ -418,7 +418,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog8-en</loc>
-    <lastmod>2026-04-05</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog8"/>
@@ -431,7 +431,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog9-en</loc>
-    <lastmod>2026-04-12</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog9"/>
@@ -444,7 +444,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog10-en</loc>
-    <lastmod>2026-04-19</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog10"/>
@@ -455,7 +455,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog11-en</loc>
-    <lastmod>2026-04-22</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog11"/>
@@ -464,7 +464,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog12-en</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog12"/>
@@ -475,7 +475,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog13-en</loc>
-    <lastmod>2026-04-28</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog13"/>
@@ -488,7 +488,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog14-en</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog14"/>
@@ -497,7 +497,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog15-en</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog15"/>
@@ -506,7 +506,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog16-en</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog16"/>
@@ -515,7 +515,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog17-en</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog17"/>
@@ -524,7 +524,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog18-en</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog18"/>
@@ -537,7 +537,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog19-en</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog19"/>
@@ -546,7 +546,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog20-en</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog20"/>
@@ -555,7 +555,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog21-en</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog21"/>
@@ -564,7 +564,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog22-en</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog22"/>
@@ -573,7 +573,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog23-en</loc>
-    <lastmod>2026-05-04</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog23"/>
@@ -582,7 +582,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog24-en</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog24"/>
@@ -591,7 +591,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog25-en</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog25"/>
@@ -604,7 +604,7 @@
   <!-- Blog: Japanese -->
   <url>
     <loc>https://perfectfitme.com/blog/ja/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/"/>
@@ -615,7 +615,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/pants-fit-guide</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog1"/>
@@ -626,7 +626,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/golden-ratio-fuku</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog3"/>
@@ -636,7 +636,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/find-body-type-data</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog12"/>
@@ -646,7 +646,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/taikei-fuku-erabikata</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog13"/>
@@ -657,7 +657,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/pear-styling</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog18"/>
@@ -670,7 +670,7 @@
   <!-- Blog: Portuguese (Brazil) -->
   <url>
     <loc>https://perfectfitme.com/blog/pt/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/"/>
@@ -681,7 +681,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/guia-modelagem-calcas</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog1"/>
@@ -692,7 +692,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/como-parecer-mais-alta</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog10"/>
@@ -702,7 +702,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/como-se-vestir-tipo-de-corpo</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog13"/>
@@ -713,7 +713,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/corpo-pera-como-vestir</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog18"/>
@@ -724,7 +724,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/whr-065-significado</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog25"/>
@@ -738,7 +738,7 @@
   <!-- Added: JA/PT blog loc + locale trust (2026-05-29) -->
   <url>
     <loc>https://perfectfitme.com/ja/about</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/about"/>
@@ -748,7 +748,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/ja/contact</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.45</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/contact"/>
@@ -758,7 +758,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/pt/about</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.55</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/about"/>
@@ -768,7 +768,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/pt/contact</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.45</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/contact"/>
@@ -782,7 +782,7 @@
   <!-- Added: JA/PT blog loc + locale trust (2026-05-29) -->
   <url>
     <loc>https://perfectfitme.com/blog/ja/capsule-5-basics</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog6"/>
@@ -793,7 +793,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/proportion-not-weight</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog7"/>
@@ -804,7 +804,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/whr-clothing-fit</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog8"/>
@@ -815,7 +815,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/ja/shoulder-fit-guide</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog9"/>
@@ -826,7 +826,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/guarda-roupa-capsula-5-pecas</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog6"/>
@@ -837,7 +837,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/proporcao-importa-mais-que-peso</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog7"/>
@@ -848,7 +848,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/whr-e-caimento</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog8"/>
@@ -859,7 +859,7 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/pt/ombro-e-caimento</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog9"/>
@@ -871,7 +871,7 @@
 
   <url>
     <loc>https://perfectfitme.com/feed.xml</loc>
-    <lastmod>2026-05-12</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
