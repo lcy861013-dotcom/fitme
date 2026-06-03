@@ -19,6 +19,7 @@
       'sample-btn':'👀 샘플 결과 먼저 보기',
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'브랜드 사이즈는 어깨·상체·다리 라인마다 다르게 걸립니다. FITME는 구간 비율로 체형 타입과 스타일 방향을 정리해 직구·국내 쇼핑 때 원하는 핏에 더 가깝게 고르기 쉽게 도와줘요.<br>키·몸무게·허리 3가지로 바로 시작하고, 세부 치수를 더하면 핏 감이 더 또렷해져요.',
+      'hero-en-priority':'해외 직구·영문 검색: 측정·핏 가이드는 <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">영문 글</a>을 먼저 올리고 있어요. 위에서 언제든 한국어로 전환할 수 있어요.',
       'hero-btn':'정밀 비율 분석 시작 →',
       'hero-trust1':'사진 불필요','hero-trust2':'가입 불필요','hero-trust3':'100% 비공개',
       'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
@@ -144,6 +145,7 @@
       'blog22-title':'팔 길이 재기 — 상완·하완 2단계','blog22-desc':'소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.',
       'blog23-title':'다리 길이 재기 — 골반뼈에서 발목까지','blog23-desc':'대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.',
       'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
+      'blog26-title':'2XL 오버핏인데도 어색할 때 — 라벨 말고 비율','blog26-desc':'사이즈만 키우면 어깨·기장이 또 어긋납니다. ASOS·아마존 직구 전에 재야 할 치수(영문).',
       'section-label':'인체 그림 또는 좌우 버튼에서 부위를 선택하세요',
       'figure-intro-1':'<strong>안내</strong> 왼쪽 실루엣이나 오른쪽 칩에서 부위를 고른 뒤 패널에 값을 입력하세요. 줄자는 살을 누르지 말고 수평·수직만 확인하며 살짝 맞추면 됩니다.',
       'figure-intro-2':'<strong>한뼘</strong>으로도 길이를 맞출 수 있어요. 엄지~검지끝 한 뼘을 cm로 재 두고 같은 간격을 세면 됩니다. 정확한 수치는 줄자로 다시 확인하세요.',
@@ -332,6 +334,7 @@
       'sample-btn':'👀 Try Sample Results First',
       'hero-tag-old':'Know Your Body. Dress Better.',
       'hero-sub':'Brand cut sheets meet your shoulders and legs differently than they meet someone else’s. FITME maps segment ratios — shoulders, torso, leg lines — so you can filter styles for your shape, not just a letter on a tag.<br>Start with 3 quick inputs; add more measurements for sharper fit cues and styling notes.',
+      'hero-en-priority':'Global shoppers: fit guides and measurement series are published in <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">English first</a> — switch language anytime above.',
       'hero-btn':'Start Precision Analysis →',
       'hero-trust1':'No photos required','hero-trust2':'No signup','hero-trust3':'100% private',
       'hero-badge1':'📷 No Photos Required','hero-badge2':'📏 3 Measurements Only','hero-badge3':'🌍 15 Languages','hero-badge4':'🔒 Your Privacy Is Our DNA','hero-scroll-hint':'Start Measuring Now','share-nudge':'Share with friends so they can get their body analysis too 👇',
@@ -457,6 +460,7 @@
       'blog22-title':'Arm Length — Upper & Lower in 2 Steps','blog22-desc':'Measure upper arm (shoulder→elbow) and lower arm (elbow→wrist) to calculate sleeve length and arm ratio.',
       'blog23-title':'Leg Length — Greater Trochanter to Ankle','blog23-desc':'Measure thigh + calf from the lateral hip bone. Includes leg-to-height ratio calculation.',
       'blog24-title':'How to Measure Hip Circumference Alone','blog24-desc':'Two hand spans from the tailbone — complete a full circuit solo. Calculate your WHR instantly.',
+      'blog26-title':'2XL Oversize Still Fits Wrong? Measure First','blog26-desc':'Why sizing up fails at shoulders and hem — and what to measure before ASOS, Amazon, or any brand checkout.',
       'section-label':'Select a part on the diagram or side buttons',
       'figure-intro-1':'<strong>How it works</strong> Tap the silhouette or a chip on the right, then enter values in the panel. Keep the tape level and snug without digging into soft tissue.',
       'figure-intro-2':'<strong>Hand span</strong>: measure thumb tip to stretched index fingertip in cm, then count spans for longer lines. Use a tape when you need an exact number.',
@@ -2591,7 +2595,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-headline','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p']);
+    const htmlKeys = new Set(['hero-sub','hero-en-priority','hero-headline','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p']);
     // Dynamic hero headline (uses <br> and <em>)
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) heroHl.innerHTML = t('hero-headline');
@@ -2979,8 +2983,13 @@
 
   function goBlog(event, id) {
     event.preventDefault();
+    const slug = String(id).replace(/-en$/, '');
+    if (slug === 'blog26') {
+      window.location.href = '/blog/blog26-en';
+      return;
+    }
     const suffix = (currentLang === 'ko') ? '' : '-en';
-    window.location.href = '/blog/' + id + suffix;
+    window.location.href = '/blog/' + slug + suffix;
   }
 
   // STATE

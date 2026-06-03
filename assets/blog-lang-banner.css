@@ -1,0 +1,30 @@
+.blog-lang-banner {
+  margin: 0 0 22px;
+  padding: 12px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  background: rgba(212, 168, 75, 0.08);
+  border: 1px solid var(--border, #2a2724);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.blog-lang-banner__label {
+  color: var(--muted, #8b8178);
+}
+.blog-lang-banner__label strong {
+  color: var(--text, #e0dcd8);
+  font-weight: 600;
+}
+.blog-lang-banner__link {
+  color: var(--accent, #d4a84b);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.blog-lang-banner__link:hover {
+  text-decoration: underline;
+}
