@@ -197,7 +197,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=19">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=20">
 </head>
 <body>
 
@@ -227,9 +227,9 @@
       <option value="vi">🇻🇳 Tiếng Việt</option>
     </select>
     <nav>
-      <a href="/#guide" data-i18n="nav-guide" data-home-anchor="guide">측정 가이드</a>
-      <a href="/#analysis" data-i18n="nav-analysis" data-home-anchor="analysis">비율 분석</a>
       <a href="/blog/" data-i18n="nav-blog">블로그</a>
+      <a href="/#blog-section" data-i18n="nav-guides" data-home-anchor="blog-section">가이드</a>
+      <a href="/#analysis" data-i18n="nav-analysis" data-home-anchor="analysis">비율 분석</a>
       <a href="/about" data-i18n="nav-about" data-trust-link="about">소개</a>
     </nav>
   </div>
@@ -238,101 +238,55 @@
 <!-- ===== HOME PAGE ===== -->
 <div id="page-home" class="page active">
 
-  <!-- HERO -->
-  <div class="hero">
+  <!-- HERO — guides first, calculator second -->
+  <div class="hero hero--publisher">
     <div class="hero-social-proof">
       <span class="sp-dot"></span>
       <span data-i18n="hero-live-suffix">📷 No Photos · Measurements Only · 100% Private</span>
     </div>
-    <div class="hero-tag" data-i18n="hero-tag">KNOW YOUR BODY. DRESS YOUR BEST.</div>
-    <div class="headline-dots" id="headline-dots">
-      <div class="headline-dot active" onclick="goHeadline(0)"></div>
-      <div class="headline-dot" onclick="goHeadline(1)"></div>
-      <div class="headline-dot" onclick="goHeadline(2)"></div>
-    </div>
-    <h1 class="hero-headline" id="hero-headline-text">Same height. Different proportions.<br><em>Measure segments, style with precision.</em></h1>
-    <p class="hero-sub" data-i18n="hero-sub">Shoulder to elbow, elbow to wrist, hip to knee, knee to ankle. FITME reads your segment ratios and turns them into a personal styling blueprint.</p>
-    <p class="hero-en-priority" data-i18n="hero-en-priority" style="font-size:13px;color:var(--muted);max-width:560px;margin:12px auto 20px;line-height:1.65;">Global shoppers: fit guides and measurement series are published in <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">English first</a> — switch language anytime above.</p>
+    <div class="hero-tag" data-i18n="hero-tag-publisher">FIT GUIDES · MEASUREMENT SCIENCE</div>
+    <h1 class="hero-headline hero-headline--static" id="hero-headline-text">Fit guides from real measurements.<br><em>Free calculator when you are ready.</em></h1>
+    <p class="hero-sub" data-i18n="hero-sub-publisher">FITME publishes original articles on WHR, oversize sizing, fabric drape, and body proportions — written by solo founder Changyong Lee from real online-shopping experience. The free tool below runs in your browser when you want numbers.</p>
+    <p class="hero-en-priority" data-i18n="hero-en-priority">Global shoppers: flagship guides are in <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">English</a> — switch language anytime above.</p>
 
-    <!-- PRIVACY HOW IT WORKS STRIP -->
-    <div class="hero-privacy-strip">
-      <div class="privacy-step">
-        <span class="ps-num">1</span>
-        <span data-i18n="privacy-step1">Enter 3 Measurements</span>
-      </div>
-      <span class="ps-arrow">→</span>
-      <div class="privacy-step">
-        <span class="ps-num">2</span>
-        <span data-i18n="privacy-step2">Analyze Proportions</span>
-      </div>
-      <span class="ps-arrow">→</span>
-      <div class="privacy-step">
-        <span class="ps-num">3</span>
-        <span data-i18n="privacy-step3">Get Style Blueprint</span>
+    <div class="guides-hub" id="guides-hub">
+      <p class="guides-hub-label" data-i18n="guides-hub-label">Start here — featured guides</p>
+      <div class="guides-hub-grid">
+        <a href="/blog/blog26-en" class="guides-hub-card">
+          <span class="guides-hub-kicker" data-i18n="guides-hub-1-kicker">Online sizing</span>
+          <span class="guides-hub-title" data-i18n="guides-hub-1-title">2XL oversize still fits wrong? Measure first</span>
+          <span class="guides-hub-desc" data-i18n="guides-hub-1-desc">Founder workflow for direct-to-consumer brands</span>
+        </a>
+        <a href="/blog/blog8-en" class="guides-hub-card">
+          <span class="guides-hub-kicker" data-i18n="guides-hub-2-kicker">WHR</span>
+          <span class="guides-hub-title" data-i18n="guides-hub-2-title">How to measure waist-to-hip ratio</span>
+          <span class="guides-hub-desc" data-i18n="guides-hub-2-desc">When jeans gap at the waist but fit at the hips</span>
+        </a>
+        <a href="/about" class="guides-hub-card">
+          <span class="guides-hub-kicker" data-i18n="guides-hub-3-kicker">About</span>
+          <span class="guides-hub-title" data-i18n="guides-hub-3-title">Who writes FITME &amp; why</span>
+          <span class="guides-hub-desc" data-i18n="guides-hub-3-desc">Methodology, limits, and editorial standards</span>
+        </a>
       </div>
     </div>
-    <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
-    <p class="hero-demo-outlink"><a href="/demo-video" data-i18n="hero-demo-outlink">실제 결과 미리보기 영상 →</a></p>
 
-    <div class="hero-trust" data-i18n-trust>
-      <span data-i18n="hero-trust1">No photos required</span>
-      <span data-i18n="hero-trust2">No signup</span>
-      <span data-i18n="hero-trust3">100% private</span>
+    <div class="hero-cta-row">
+      <a class="hero-btn" href="#blog-section" data-i18n="hero-btn-guides">Browse all fit guides →</a>
+      <a class="hero-btn hero-btn--outline" href="#analysis" data-i18n="hero-btn-calc">Open free calculator ↓</a>
     </div>
-    <a class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Start Precision Analysis →</a>
-    <div class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Instant results</div>
-    <div style="margin-top:6px;">
-      <button class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 샘플 결과 먼저 보기</button>
-    </div>
+    <p class="hero-publisher-links">
+      <a href="/editorial-standards" data-i18n="hero-link-editorial">Editorial standards</a>
+      <span aria-hidden="true"> · </span>
+      <a href="/how-it-works" data-i18n="hero-link-how">How the tool works</a>
+    </p>
 
-    <div class="hero-badges" style="margin-top:20px;">
-      <div class="hero-badge"><span data-i18n="hero-badge1">📷 No Photos Required</span></div>
-      <div class="hero-badge"><span data-i18n="hero-badge2">📏 3 Measurements Only</span></div>
-      <div class="hero-badge"><span data-i18n="hero-badge3">🌍 15 Languages</span></div>
-      <div class="hero-badge"><span data-i18n="hero-badge4">🔒 Zero Data Stored</span></div>
-    </div>
-    <div class="hero-scroll-hint" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})">
-      <span data-i18n="hero-scroll-hint">Start Measuring Now</span>
+    <div class="hero-scroll-hint" onclick="document.getElementById('blog-section').scrollIntoView({behavior:'smooth'})">
+      <span data-i18n="hero-scroll-hint-guides">Read the guides</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </div>
 
-  <!-- WHY FITME -->
-  <section class="why-fitme-section" id="why-fitme">
-    <div class="section-header">
-      <div class="section-tag" data-i18n="why-section-tag">WHY FITME?</div>
-      <h2 class="section-title" data-i18n="why-section-title" style="font-size:clamp(22px,4vw,34px);letter-spacing:2px;">Why Proportions Matter More Than Size</h2>
-      <p class="why-fitme-intro" data-i18n="why-section-intro">Two people can wear the same size and look completely different. The reason isn't the clothes — it's body proportions. Shoulder width, leg-to-torso ratio, waistline definition: these are what actually control how clothing looks on you. FITME measures yours precisely, without photos.</p>
-      <p class="why-pull-quote lang-en">"Your size is a label. Your proportions are the truth."</p>
-      <p class="why-pull-quote lang-ko">"사이즈는 그냥 태그입니다. 비율이 진짜입니다."</p>
-    </div>
-    <div class="why-fitme-grid">
-      <div class="why-card">
-        <div class="why-card-icon">📐</div>
-        <h3 class="why-card-title" data-i18n="why-card1-title">Proportions, Not Size Labels</h3>
-        <p class="why-card-desc" data-i18n="why-card1-desc">S, M, L sizes tell you almost nothing about fit. Two people wearing the same size can have completely different shoulder widths, different leg-to-torso ratios, different waist-to-hip curves. That gap — between label and proportion — is exactly why clothes that technically fit often look wrong. FITME bypasses size labels entirely. Enter 3 measurements and get a precise breakdown of your actual body ratios, so you can dress for your proportions instead of a tag.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-card-icon">📐</div>
-        <h3 class="why-card-title" data-i18n="why-card2-title">Mathematical Precision</h3>
-        <p class="why-card-desc" data-i18n="why-card2-desc">FITME applies the Golden Ratio (φ = 1.618) — the mathematical principle behind classical art and natural beauty — alongside Waist-to-Hip Ratio (WHR), shoulder-to-waist differential, and vertical proportion indices to generate your personalized FITME DNA Score™ (0–100). Unlike photo assessments that vary by lighting, angle, and camera quality, our measurement-based algorithm delivers consistent, reproducible results every time. Your body's true proportions don't change based on camera angle — and neither does your FITME score.</p>
-      </div>
-      <div class="why-card featured">
-        <div class="why-card-icon">✨</div>
-        <h3 class="why-card-title" data-i18n="why-card3-title">Enhance Strengths, Conceal Weaknesses</h3>
-        <p class="why-card-desc" data-i18n="why-card3-desc">Every body has natural strengths — proportions that, when dressed correctly, create a visually powerful silhouette. The challenge is knowing what your strengths actually are. FITME provides objective data about your unique proportions: leg-to-torso ratio, shoulder-to-hip width, and waistline definition. Armed with this data, you make intentional styling choices: A-line skirts to balance wider hips, structured shoulders to create breadth, high-waist cuts to elongate the leg line, vertical patterns to add height. These are data-driven strategies from your specific measurements — not generic body-type advice.</p>
-      </div>
-    </div>
-    <div class="privacy-dna-banner">
-      <div class="dna-icon">🔒</div>
-      <div>
-        <div class="dna-title" data-i18n="dna-title">YOUR PRIVACY IS OUR DNA</div>
-        <div class="dna-sub" data-i18n="dna-sub">Zero photos stored. Zero data sold. Zero compromise. Your measurements are processed locally and never leave your device.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STORY -->
+  <!-- STORY (founder — above tool) -->
   <section class="story-section" id="story">
     <div class="story-inner">
       <div class="story-label" data-i18n="story-label">왜 만들었나요</div>
@@ -585,7 +539,41 @@
     </div>
   </section>
 
-  
+  <!-- WHY FITME -->
+  <section class="why-fitme-section" id="why-fitme">
+    <div class="section-header">
+      <div class="section-tag" data-i18n="why-section-tag">WHY FITME?</div>
+      <h2 class="section-title" data-i18n="why-section-title" style="font-size:clamp(22px,4vw,34px);letter-spacing:2px;">Why Proportions Matter More Than Size</h2>
+      <p class="why-fitme-intro" data-i18n="why-section-intro">Two people can wear the same size and look completely different. The reason isn't the clothes — it's body proportions. Shoulder width, leg-to-torso ratio, waistline definition: these are what actually control how clothing looks on you. FITME measures yours precisely, without photos.</p>
+      <p class="why-pull-quote lang-en">"Your size is a label. Your proportions are the truth."</p>
+      <p class="why-pull-quote lang-ko">"사이즈는 그냥 태그입니다. 비율이 진짜입니다."</p>
+    </div>
+    <div class="why-fitme-grid">
+      <div class="why-card">
+        <div class="why-card-icon">📐</div>
+        <h3 class="why-card-title" data-i18n="why-card1-title">Proportions, Not Size Labels</h3>
+        <p class="why-card-desc" data-i18n="why-card1-desc">S, M, L sizes tell you almost nothing about fit. Two people wearing the same size can have completely different shoulder widths, different leg-to-torso ratios, different waist-to-hip curves. That gap — between label and proportion — is exactly why clothes that technically fit often look wrong. FITME bypasses size labels entirely. Enter 3 measurements and get a precise breakdown of your actual body ratios, so you can dress for your proportions instead of a tag.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon">📐</div>
+        <h3 class="why-card-title" data-i18n="why-card2-title">Mathematical Precision</h3>
+        <p class="why-card-desc" data-i18n="why-card2-desc">FITME applies the Golden Ratio (φ = 1.618) — the mathematical principle behind classical art and natural beauty — alongside Waist-to-Hip Ratio (WHR), shoulder-to-waist differential, and vertical proportion indices to generate your personalized FITME DNA Score™ (0–100). Unlike photo assessments that vary by lighting, angle, and camera quality, our measurement-based algorithm delivers consistent, reproducible results every time. Your body's true proportions don't change based on camera angle — and neither does your FITME score.</p>
+      </div>
+      <div class="why-card featured">
+        <div class="why-card-icon">✨</div>
+        <h3 class="why-card-title" data-i18n="why-card3-title">Enhance Strengths, Conceal Weaknesses</h3>
+        <p class="why-card-desc" data-i18n="why-card3-desc">Every body has natural strengths — proportions that, when dressed correctly, create a visually powerful silhouette. The challenge is knowing what your strengths actually are. FITME provides objective data about your unique proportions: leg-to-torso ratio, shoulder-to-hip width, and waistline definition. Armed with this data, you make intentional styling choices: A-line skirts to balance wider hips, structured shoulders to create breadth, high-waist cuts to elongate the leg line, vertical patterns to add height. These are data-driven strategies from your specific measurements — not generic body-type advice.</p>
+      </div>
+    </div>
+    <div class="privacy-dna-banner">
+      <div class="dna-icon">🔒</div>
+      <div>
+        <div class="dna-title" data-i18n="dna-title">YOUR PRIVACY IS OUR DNA</div>
+        <div class="dna-sub" data-i18n="dna-sub">Zero photos stored. Zero data sold. Zero compromise. Your measurements are processed locally and never leave your device.</div>
+      </div>
+    </div>
+  </section>
+
 <!-- EDUCATIONAL CONTENT SECTION (SEO & USER VALUE) -->
   <section class="proportions-edu" id="proportion-science">
     <div class="edu-container">
@@ -946,6 +934,51 @@
     </div>
   
     </details>
+  </section>
+
+<!-- FREE CALCULATOR INTRO -->
+  <section class="tool-intro" id="tool-intro">
+    <div class="tool-intro-inner">
+      <div class="section-tag" data-i18n="tool-intro-tag">FREE TOOL</div>
+      <h2 class="section-title" data-i18n="tool-intro-title">Body proportion calculator</h2>
+      <p class="tool-intro-sub" data-i18n="tool-intro-sub">After reading the guides above, enter a few measurements for a private ratio breakdown — no photos, no account.</p>
+
+      <div class="hero-privacy-strip">
+        <div class="privacy-step">
+          <span class="ps-num">1</span>
+          <span data-i18n="privacy-step1">Enter 3 Measurements</span>
+        </div>
+        <span class="ps-arrow">→</span>
+        <div class="privacy-step">
+          <span class="ps-num">2</span>
+          <span data-i18n="privacy-step2">Analyze Proportions</span>
+        </div>
+        <span class="ps-arrow">→</span>
+        <div class="privacy-step">
+          <span class="ps-num">3</span>
+          <span data-i18n="privacy-step3">Get Style Blueprint</span>
+        </div>
+      </div>
+      <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
+
+      <div class="hero-trust" data-i18n-trust>
+        <span data-i18n="hero-trust1">No photos required</span>
+        <span data-i18n="hero-trust2">No signup</span>
+        <span data-i18n="hero-trust3">100% private</span>
+      </div>
+      <div class="tool-intro-actions">
+        <button type="button" class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Start Precision Analysis →</button>
+        <button type="button" class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 Try Sample Results First</button>
+      </div>
+      <p class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Instant results</p>
+      <p class="hero-demo-outlink"><a href="/demo-video" data-i18n="hero-demo-outlink">Watch sample result video →</a></p>
+      <div class="hero-badges">
+        <div class="hero-badge"><span data-i18n="hero-badge1">📷 No Photos Required</span></div>
+        <div class="hero-badge"><span data-i18n="hero-badge2">📏 3 Measurements Only</span></div>
+        <div class="hero-badge"><span data-i18n="hero-badge3">🌍 15 Languages</span></div>
+        <div class="hero-badge"><span data-i18n="hero-badge4">🔒 Zero Data Stored</span></div>
+      </div>
+    </div>
   </section>
 
 <!-- MAIN ANALYSIS -->
@@ -1488,7 +1521,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=18"></script>
+<script defer src="/assets/fitme-app.js?v=19"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

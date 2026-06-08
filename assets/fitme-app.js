@@ -4,8 +4,19 @@
     ko: {
       'site-title':'온라인 쇼핑 실패 끝, 무료 체형 분석 도구 | FITME',
       'site-description':'S/M/L 사이즈가 왜 브랜드마다 다를까요? 사진 없이 어깨·허리·다리 비율을 분석해 나에게 맞는 스타일을 제안합니다. 100% 비공개 무료 분석.',
-      'nav-guide':'측정 가이드','nav-analysis':'비율 분석','nav-blog':'블로그','nav-about':'소개',
+      'nav-guide':'측정 가이드','nav-guides':'가이드','nav-analysis':'비율 분석','nav-blog':'블로그','nav-about':'소개',
       'hero-tag':'직구·쇼핑몰, 사이즈보다 먼저 비율',
+      'hero-tag-publisher':'핏 가이드 · 측정 과학',
+      'hero-headline-publisher':'실측 기반 핏 가이드.<br><em>준비되면 무료 계산기.</em>',
+      'hero-sub-publisher':'FITME는 WHR, 오버핏 사이징, 소재 드레이프, 체형 비율에 대한 <strong>독자 원고</strong>를 발행합니다. 창업자 이창용이 직접 온라인 쇼핑 경험을 바탕으로 씁니다. 숫자가 필요할 때 아래 무료 도구를 브라우저에서 바로 쓸 수 있어요.',
+      'guides-hub-label':'여기서 시작 — 추천 가이드',
+      'guides-hub-1-kicker':'온라인 사이징','guides-hub-1-title':'2XL 오버핏인데도 안 맞나요? 먼저 재세요','guides-hub-1-desc':'D2C 브랜드 직구 — 창업자 워크플로',
+      'guides-hub-2-kicker':'WHR','guides-hub-2-title':'허리-골반 비율(WHR) 측정법','guides-hub-2-desc':'허리는 헐렁한데 엉덩이는 맞을 때',
+      'guides-hub-3-kicker':'소개','guides-hub-3-title':'FITME를 쓰는 사람 & 이유','guides-hub-3-desc':'방법론, 한계, 편집 기준',
+      'hero-btn-guides':'전체 핏 가이드 보기 →','hero-btn-calc':'무료 계산기 열기 ↓',
+      'hero-link-editorial':'편집 기준','hero-link-how':'도구 작동 방식',
+      'hero-scroll-hint-guides':'가이드 읽기',
+      'tool-intro-tag':'무료 도구','tool-intro-title':'체형 비율 계산기','tool-intro-sub':'위 가이드를 읽은 뒤, 몇 가지 치수만 입력하면 비공개 비율 분석을 받을 수 있어요 — 사진·가입 불필요.',
       'hero-live-suffix':'무료 · 가입불필요 · 완전 비공개',
       'hero-headline':'차트에 맞춰 샀는데 왜 어색할까요?<br><em>비율을 알면 온라인 핏 선택이 달라집니다.</em>',
       'hero-demo-label':'실제 결과 미리보기',
@@ -332,8 +343,19 @@
     en: {
       'site-title':'Body Type Calculator - Free Proportion & Style Analysis | FITME',
       'site-description':'Discover your body proportions in 2 minutes. No photos or signup. Get fit and style tips from your shoulder, waist, and leg ratios. 100% private and free.',
-      'nav-guide':'How to Measure','nav-analysis':'Body Analysis','nav-blog':'Blog','nav-about':'About',
+      'nav-guide':'How to Measure','nav-guides':'Guides','nav-analysis':'Body Analysis','nav-blog':'Blog','nav-about':'About',
       'hero-tag':'FOR ONLINE SHOPPERS WHO CARE ABOUT FIT',
+      'hero-tag-publisher':'FIT GUIDES · MEASUREMENT SCIENCE',
+      'hero-headline-publisher':'Fit guides from real measurements.<br><em>Free calculator when you are ready.</em>',
+      'hero-sub-publisher':'FITME publishes original articles on WHR, oversize sizing, fabric drape, and body proportions — written by solo founder Changyong Lee from real online-shopping experience. The free tool below runs in your browser when you want numbers.',
+      'guides-hub-label':'Start here — featured guides',
+      'guides-hub-1-kicker':'Online sizing','guides-hub-1-title':'2XL oversize still fits wrong? Measure first','guides-hub-1-desc':'Founder workflow for direct-to-consumer brands',
+      'guides-hub-2-kicker':'WHR','guides-hub-2-title':'How to measure waist-to-hip ratio','guides-hub-2-desc':'When jeans gap at the waist but fit at the hips',
+      'guides-hub-3-kicker':'About','guides-hub-3-title':'Who writes FITME & why','guides-hub-3-desc':'Methodology, limits, and editorial standards',
+      'hero-btn-guides':'Browse all fit guides →','hero-btn-calc':'Open free calculator ↓',
+      'hero-link-editorial':'Editorial standards','hero-link-how':'How the tool works',
+      'hero-scroll-hint-guides':'Read the guides',
+      'tool-intro-tag':'FREE TOOL','tool-intro-title':'Body proportion calculator','tool-intro-sub':'After reading the guides above, enter a few measurements for a private ratio breakdown — no photos, no account.',
       'hero-live-suffix':'📷 No Photos · Measurements Only · 100% Private',
       'hero-headline':'Same size chart. Different silhouette.<br><em>Know your ratios — shop online with intention.</em>',
       'hero-demo-label':'SAMPLE RESULT',
@@ -2623,10 +2645,13 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-en-priority','hero-headline','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note']);
-    // Dynamic hero headline (uses <br> and <em>)
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-headline','hero-headline-publisher','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note']);
+    // Hero headline — static publisher layout vs rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
-    if (heroHl) heroHl.innerHTML = t('hero-headline');
+    if (heroHl) {
+      const hlKey = heroHl.classList.contains('hero-headline--static') ? 'hero-headline-publisher' : 'hero-headline';
+      heroHl.innerHTML = t(hlKey);
+    }
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const val = t(key);
@@ -3886,6 +3911,8 @@
   }
 
   function startHeadlineRotation() {
+    const el = document.getElementById('hero-headline-text');
+    if (el && el.classList.contains('hero-headline--static')) return;
     _applyHeadline(0, currentLang);
     _hlTimer = setInterval(() => goHeadline((_hlIdx + 1) % 3), 4000);
   }
