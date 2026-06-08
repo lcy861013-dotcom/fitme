@@ -149,6 +149,47 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is FITME free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The body proportion calculator and style guides on perfectfitme.com are free. No account or payment is required. Optional ads may appear after you accept cookies, following our privacy policy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does FITME store my body measurements?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Measurements you enter run only in your browser. FITME servers do not receive or store height, weight, waist, or other body data."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is FITME medical advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. FITME provides educational styling and fit guidance based on proportions you enter. It is not a medical diagnosis, diet program, 3D body scan, or professional tailoring service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who publishes FITME?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FITME is built and written by Changyong Lee, a solo founder in South Korea. Articles are based on personal fit experience and measurement methodology documented on the About and Editorial Standards pages."
+        }
+      }
+    ]
+  }
+  </script>
+
   <meta name="google-adsense-account" content="ca-pub-6377720400458954">
   <!-- Kakao SDK for share -->
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
@@ -156,7 +197,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=18">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=19">
 </head>
 <body>
 
@@ -610,6 +651,39 @@
             </a>
           </li>
         </ul>
+      </div>
+
+      <div class="edu-publisher" id="home-publisher">
+        <h3 class="edu-publisher-h" data-i18n="home-publisher-h">What FITME publishes (beyond the calculator)</h3>
+        <p class="edu-publisher-p" data-i18n="home-publisher-p">FITME is an independent education site: a free browser-based proportion tool plus <strong>original fit guides</strong> written by founder Changyong Lee. We explain WHR, shoulder width, leg-to-torso balance, fabric drape, and online sizing — with FAQs, measurement walkthroughs, and styling notes grounded in real shopping experience.</p>
+        <p class="edu-founder-story" data-i18n="home-founder-story">I am <strong>175&nbsp;cm, 78&nbsp;kg</strong>, usually <strong>2XL oversize</strong> with a <strong>32&nbsp;inch waist</strong> — and still returned jeans because the waist gaped while the hips fit. That gap between label size and body ratios is why I measure segments (hand span, shoulder, leg line) and why this site exists. Guides like <a href="/blog/blog8-en">how to measure WHR</a> and <a href="/blog/blog26-en">2XL oversize fit</a> come from that workflow, not generic templates.</p>
+        <ul class="edu-publisher-links">
+          <li><a href="/about">About the founder &amp; methodology</a></li>
+          <li><a href="/how-it-works">How the calculator works (limits included)</a></li>
+          <li><a href="/editorial-standards">Editorial standards &amp; spam policy</a></li>
+          <li><a href="/blog/">Full blog — 25+ English guides + Korean editions</a></li>
+        </ul>
+        <p class="edu-publisher-note" data-i18n="home-publisher-note"><strong>Not medical advice.</strong> For education and wardrobe decisions only. See <a href="/privacy">Privacy</a> for cookies, analytics, and ads.</p>
+      </div>
+
+      <div class="edu-faq" id="home-faq">
+        <h3 class="edu-faq-h" data-i18n="home-faq-h">Frequently asked questions</h3>
+        <div class="edu-faq-item">
+          <h4 data-i18n="home-faq-q1">Is FITME free?</h4>
+          <p data-i18n="home-faq-a1">Yes — the calculator and articles are free. No signup. Measurements stay on your device.</p>
+        </div>
+        <div class="edu-faq-item">
+          <h4 data-i18n="home-faq-q2">Do you save my measurements?</h4>
+          <p data-i18n="home-faq-a2">No server storage. Data lives in your browser session only unless you choose to save locally on your device.</p>
+        </div>
+        <div class="edu-faq-item">
+          <h4 data-i18n="home-faq-q3">How is this different from S / M / L?</h4>
+          <p data-i18n="home-faq-a3">Size labels ignore shoulder width, WHR, and leg-to-torso ratio. FITME uses your numbers to suggest silhouettes that match your proportions — not a single tag.</p>
+        </div>
+        <div class="edu-faq-item">
+          <h4 data-i18n="home-faq-q4">Who writes the guides?</h4>
+          <p data-i18n="home-faq-a4">Changyong Lee (solo founder, South Korea). Each post includes practical notes from measuring and shopping with my own body as reference.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1327,13 +1401,15 @@
   <noscript>
     <section style="max-width:720px;margin:24px auto;padding:20px;border:1px solid #2a2724;border-radius:12px;font-family:sans-serif;line-height:1.7;color:#d0d0d0;">
       <h2 style="color:#d4a84b;font-size:20px;">FITME — Free Body Proportion Analysis</h2>
-      <p>FITME helps you understand shoulder, waist, hip, and leg ratios with a free browser-based tool. No sign-up; measurements stay on your device. Read our <a href="/blog/" style="color:#d4a84b;">style &amp; fit blog</a>, <a href="/about" style="color:#d4a84b;">about page</a>, and <a href="/editorial-standards" style="color:#d4a84b;">editorial standards</a>.</p>
+      <p>FITME helps you understand shoulder, waist, hip, and leg ratios with a free browser-based tool. No sign-up; measurements stay on your device.</p>
+      <p>Publisher: Changyong Lee, solo founder (South Korea). Original guides on WHR, pants fit, and body-type styling. Not medical advice.</p>
+      <p><a href="/blog/" style="color:#d4a84b;">Blog</a> · <a href="/about" style="color:#d4a84b;">About</a> · <a href="/editorial-standards" style="color:#d4a84b;">Editorial standards</a> · <a href="/how-it-works" style="color:#d4a84b;">How it works</a></p>
     </section>
   </noscript>
 
   <section class="publisher-trust" aria-label="Publisher information" style="max-width:720px;margin:32px auto 0;padding:20px 22px;border:1px solid var(--border);border-radius:12px;background:var(--card);font-size:14px;line-height:1.75;color:var(--muted);">
-    <p id="publisher-title" style="margin:0 0 10px;color:var(--text);font-weight:600;"></p>
-    <p id="publisher-body" style="margin:0;"></p>
+    <p id="publisher-title" style="margin:0 0 10px;color:var(--text);font-weight:600;">Publisher: FITME · Changyong Lee (solo founder, South Korea)</p>
+    <p id="publisher-body" style="margin:0;">Original English fit guides plus a free browser-based proportion tool. Not medical advice. Read <a href="/how-it-works" style="color:var(--accent);font-weight:600;">how FITME works</a>, our <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">editorial standards</a>, and the <a href="/about" style="color:var(--accent);font-weight:600;">about page</a> before using results for shopping decisions.</p>
   </section>
 
   <footer>
@@ -1412,7 +1488,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=17"></script>
+<script defer src="/assets/fitme-app.js?v=18"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

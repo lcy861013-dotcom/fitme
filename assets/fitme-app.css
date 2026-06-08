@@ -251,6 +251,10 @@
       background: rgba(255, 255, 255, 0.92);
       border-color: rgba(0, 0, 0, 0.08);
     }
+    [data-theme="light"] .edu-publisher {
+      background: linear-gradient(165deg, rgba(212,168,75,0.08), #fff);
+      border-color: rgba(180,140,60,0.25);
+    }
     [data-theme="light"] .edu-readmore-list a {
       background: rgba(255, 255, 255, 0.92);
       border-color: rgba(0, 0, 0, 0.08);
@@ -1969,6 +1973,19 @@
     .edu-readmore-list a:hover { border-color: rgba(212,168,75,0.45); transform: translateY(-1px); }
     .edu-readmore-title { display: block; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
     .edu-readmore-desc { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+    .edu-publisher { margin-top: 28px; background: linear-gradient(165deg, rgba(212,168,75,0.06), rgba(22,20,18,0.95)); border: 1px solid rgba(212,168,75,0.22); border-radius: 18px; padding: 24px 22px; }
+    .edu-publisher-h { font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); margin: 0 0 12px; }
+    .edu-publisher-p, .edu-founder-story, .edu-publisher-note { font-size: 14px; color: var(--muted); line-height: 1.9; margin: 0 0 14px; }
+    .edu-founder-story strong, .edu-publisher-p strong { color: var(--text); font-weight: 600; }
+    .edu-founder-story a, .edu-publisher-note a { color: var(--accent); }
+    .edu-publisher-links { margin: 0 0 14px 18px; padding: 0; font-size: 14px; line-height: 1.85; color: var(--muted); }
+    .edu-publisher-links a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .edu-publisher-links a:hover { text-decoration: underline; }
+    .edu-faq { margin-top: 24px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .edu-faq-h { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin: 0 0 16px; }
+    .edu-faq-item { margin-bottom: 18px; }
+    .edu-faq-item h4 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); margin: 0 0 6px; }
+    .edu-faq-item p { font-size: 14px; color: var(--muted); line-height: 1.85; margin: 0; }
     @media (max-width: 850px) {
       .edu-top-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .edu-grid { grid-template-columns: 1fr; }
