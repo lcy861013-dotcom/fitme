@@ -1,5 +1,5 @@
 /* FITME — lightweight offline/cache for static assets only (HTML stays network-first). */
-var CACHE = 'fitme-static-v8';
+var CACHE = 'fitme-static-v9';
 
 self.addEventListener('install', function (e) {
   self.skipWaiting();
@@ -37,6 +37,8 @@ self.addEventListener('fetch', function (e) {
   if (url.origin !== self.location.origin) return;
   var path = url.pathname;
   if (path === '/' || path.endsWith('.html')) return;
+  /* Crawler / trust files must always hit the network (never SW cache-first). */
+  if (path === '/ads.txt' || path === '/robots.txt' || path === '/sitemap.xml' || path === '/llms.txt') return;
   /* Blog illustrations change often; never stale-cache SVG/PNG here (fixes broken or mixed-language thumbs). */
   if (path.indexOf('/blog/img/') === 0) return;
 

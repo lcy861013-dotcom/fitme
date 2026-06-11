@@ -1,3 +1,10 @@
+# Canonical host + ads.txt path variants (AdSense crawler must reach 200 on apex)
+https://www.perfectfitme.com/ads.txt https://perfectfitme.com/ads.txt 301
+https://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
+http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
+/ads.txt/ /ads.txt 301
+/ADS.TXT /ads.txt 301
+
 # Reduce noisy 404s from CMS vulnerability scanners (302 → home)
 /wp-admin https://perfectfitme.com/ 302
 /wp-login.php https://perfectfitme.com/ 302

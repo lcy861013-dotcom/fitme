@@ -9,8 +9,17 @@ Disallow: /wp-json/
 Disallow: /.env
 Disallow: /.git/
 
-# Google AdSense crawler (explicit allow; site-wide Allow already applies)
+# Google AdSense / ads.txt crawlers (explicit allow for root ads.txt)
 User-agent: Mediapartners-Google
+Allow: /ads.txt
+Allow: /
+
+User-agent: Google-adstxt
+Allow: /ads.txt
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /ads.txt
 Allow: /
 
 # Naver
