@@ -2594,7 +2594,8 @@
       a.dataset.fitmeAnchorBound = '1';
       a.addEventListener('click', function (e) {
         const id = a.getAttribute('data-home-anchor');
-        if (!id || !isHomePath()) return;
+        if (!id || !document.getElementById(id)) return;
+        if (!isHomePath()) return;
         e.preventDefault();
         if (location.hash !== '#' + id) {
           history.pushState(null, '', '#' + id);
@@ -2607,9 +2608,11 @@
   function scrollHomeHashOnLoad() {
     if (!isHomePath() || !location.hash) return;
     const id = location.hash.replace(/^#/, '');
-    if (!id) return;
+    if (!id || !document.getElementById(id)) return;
+    function run() { scrollToHomeSection(id); }
     requestAnimationFrame(function () {
-      setTimeout(function () { scrollToHomeSection(id); }, 80);
+      setTimeout(run, 80);
+      setTimeout(run, 400);
     });
   }
 
