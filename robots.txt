@@ -2,32 +2,12 @@ User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
 Disallow: /demos/
-# Extensionless URLs are canonical; /terms.html etc. only 308 to /terms
-Disallow: /terms.html
-Disallow: /privacy.html
-Disallow: /contact.html
-Disallow: /about.html
-Disallow: /editorial-standards.html
-Disallow: /how-it-works.html
-# Allow blog posts for AdSense indexing
-# Disallow: /blog/*.html
-Disallow: /demo-video.html
-Disallow: /*/about.html
-Disallow: /*/contact.html
-# noindex locale doorways (indexable trust hubs: /ja/ /pt/ only)
-Disallow: /ko/
-Disallow: /en/
-Disallow: /es/
-Disallow: /zh/
-Disallow: /fr/
-Disallow: /de/
-Disallow: /it/
-Disallow: /ru/
-Disallow: /ar/
-Disallow: /hi/
-Disallow: /th/
-Disallow: /id/
-Disallow: /vi/
+# Scanner / probe paths (also 302 → home in _redirects)
+Disallow: /wp-admin
+Disallow: /wp-login.php
+Disallow: /wp-json/
+Disallow: /.env
+Disallow: /.git/
 
 # Google AdSense crawler (explicit allow; site-wide Allow already applies)
 User-agent: Mediapartners-Google
@@ -63,3 +43,7 @@ Sitemap: https://perfectfitme.com/sitemap.xml
 
 # Atom feed (blog updates)
 # https://perfectfitme.com/feed.xml
+
+# Note: noindex locale doorways (/en/, /fr/, …) use <meta robots="noindex"> — not robots.txt
+# blocks, so Google can recrawl and drop them. Canonical trust pages use extensionless URLs
+# (/about, /privacy). Legacy *.html paths 301 to extensionless via _redirects.

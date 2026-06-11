@@ -22,6 +22,16 @@ REPLACEMENTS = [
     ('href="/how-it-works.html"', 'href="/how-it-works"'),
     ("https://perfectfitme.com/demo-video.html", "https://perfectfitme.com/demo-video"),
     ('href="/demo-video.html"', 'href="/demo-video"'),
+    ('href="/ko/privacy.html"', 'href="/ko/privacy"'),
+    ('href="/ko/terms.html"', 'href="/ko/terms"'),
+    ('href="/ko/how-it-works.html"', 'href="/ko/how-it-works"'),
+    ('href="/ko/editorial-standards.html"', 'href="/ko/editorial-standards"'),
+    ('href="/ko/about.html"', 'href="/ko/about"'),
+    ('href="/ko/contact.html"', 'href="/ko/contact"'),
+    ('href="/ja/about.html"', 'href="/ja/about"'),
+    ('href="/ja/contact.html"', 'href="/ja/contact"'),
+    ('href="/pt/about.html"', 'href="/pt/about"'),
+    ('href="/pt/contact.html"', 'href="/pt/contact"'),
 ]
 
 SKIP_DIRS = {".git", "__pycache__", "node_modules", ".cursor"}

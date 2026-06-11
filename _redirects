@@ -14,18 +14,89 @@
 /editorial-standards.html /editorial-standards 301
 /how-it-works.html /how-it-works 301
 
+# Blog: legacy / special paths (must be before :slug wildcard)
+/blog/index.html /blog/ 301
+/blog/index-en.html /blog/ 301
+/blog/blog26 /blog/blog26-en 301
+
+# Blog: extensionless canonical (avoid duplicate .html URLs in Search Console)
+/blog/:slug.html /blog/:slug 301
+/blog/:lang/:slug.html /blog/:lang/:slug 301
+
 # Demo video: extensionless canonical (do NOT redirect /demo-video → .html; that caused a loop)
 /demo-video.html /demo-video 301
 
-# Locale trust pages (.html → extensionless)
-/en/about.html /en/about 301
+# Noindex locale doorways → canonical EN trust pages (reduce duplicate hubs in GSC)
+/en /about 301
+/en/ /about 301
+/en/index.html /about 301
+/en/about /about 301
+/en/contact /contact 301
+/fr /about 301
+/fr/ /about 301
+/fr/index.html /about 301
+/fr/about /about 301
+/fr/contact /contact 301
+/es /about 301
+/es/ /about 301
+/es/index.html /about 301
+/es/about /about 301
+/es/contact /contact 301
+/zh /about 301
+/zh/ /about 301
+/zh/index.html /about 301
+/zh/about /about 301
+/zh/contact /contact 301
+/de /about 301
+/de/ /about 301
+/de/index.html /about 301
+/de/about /about 301
+/de/contact /contact 301
+/it /about 301
+/it/ /about 301
+/it/index.html /about 301
+/it/about /about 301
+/it/contact /contact 301
+/ru /about 301
+/ru/ /about 301
+/ru/index.html /about 301
+/ru/about /about 301
+/ru/contact /contact 301
+/ar /about 301
+/ar/ /about 301
+/ar/index.html /about 301
+/ar/about /about 301
+/ar/contact /contact 301
+/hi /about 301
+/hi/ /about 301
+/hi/index.html /about 301
+/hi/about /about 301
+/hi/contact /contact 301
+/th /about 301
+/th/ /about 301
+/th/index.html /about 301
+/th/about /about 301
+/th/contact /contact 301
+/id /about 301
+/id/ /about 301
+/id/index.html /about 301
+/id/about /about 301
+/id/contact /contact 301
+/vi /about 301
+/vi/ /about 301
+/vi/index.html /about 301
+/vi/about /about 301
+/vi/contact /contact 301
+
+# Korean legal / trust (indexed KO copies — extensionless)
 /ko/about.html /ko/about 301
-/en/contact.html /en/contact 301
 /ko/contact.html /ko/contact 301
 /ko/privacy.html /ko/privacy 301
 /ko/terms.html /ko/terms 301
 /ko/how-it-works.html /ko/how-it-works 301
 /ko/editorial-standards.html /ko/editorial-standards 301
+
+# Japanese / Portuguese hubs (indexed locales)
 /ja /ja/about 301
 /ja/ /ja/about 301
 /ja/index.html /ja/about 301
@@ -36,28 +107,32 @@
 /pt/index.html /pt/about 301
 /pt/about.html /pt/about 301
 /pt/contact.html /pt/contact 301
-/es/about.html /es/about 301
-/es/contact.html /es/contact 301
-/zh/about.html /zh/about 301
-/zh/contact.html /zh/contact 301
-/fr/about.html /fr/about 301
-/fr/contact.html /fr/contact 301
-/de/about.html /de/about 301
-/de/contact.html /de/contact 301
-/it/about.html /it/about 301
-/it/contact.html /it/contact 301
-/ru/about.html /ru/about 301
-/ru/contact.html /ru/contact 301
-/ar/about.html /ar/about 301
-/ar/contact.html /ar/contact 301
-/hi/about.html /hi/about 301
-/hi/contact.html /hi/contact 301
-/th/about.html /th/about 301
-/th/contact.html /th/contact 301
-/id/about.html /id/about 301
-/id/contact.html /id/contact 301
-/vi/about.html /vi/about 301
-/vi/contact.html /vi/contact 301
+
+# Other locale .html doorways → canonical EN trust (single hop)
+/en/about.html /about 301
+/en/contact.html /contact 301
+/fr/about.html /about 301
+/fr/contact.html /contact 301
+/es/about.html /about 301
+/es/contact.html /contact 301
+/zh/about.html /about 301
+/zh/contact.html /contact 301
+/de/about.html /about 301
+/de/contact.html /contact 301
+/it/about.html /about 301
+/it/contact.html /contact 301
+/ru/about.html /about 301
+/ru/contact.html /contact 301
+/ar/about.html /about 301
+/ar/contact.html /contact 301
+/hi/about.html /about 301
+/hi/contact.html /contact 301
+/th/about.html /about 301
+/th/contact.html /contact 301
+/id/about.html /about 301
+/id/contact.html /contact 301
+/vi/about.html /about 301
+/vi/contact.html /contact 301
 
 # Browsers default favicon path → actual asset
 /favicon.ico /favicon-32x32.png 302
