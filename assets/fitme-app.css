@@ -1402,6 +1402,14 @@
 
     /* SNS SHARE SECTION */
     .sns-share-section { margin-top: 24px; padding: 20px; background: linear-gradient(135deg, rgba(212,168,75,0.05), rgba(168,152,104,0.03)); border: 1px solid rgba(212,168,75,0.2); border-radius: 14px; }
+    .result-feedback { margin-top: 20px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); text-align: center; }
+    .result-feedback-q { font-size: 14px; font-weight: 600; margin: 0 0 12px; color: var(--text); font-family: 'DM Sans', sans-serif; }
+    .result-feedback-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .result-feedback-btn { padding: 10px 22px; border-radius: 100px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .result-feedback-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .result-feedback-btn[data-helpful="yes"]:hover:not(:disabled) { background: rgba(212,168,75,0.1); }
+    .result-feedback-btn:disabled { opacity: 0.45; cursor: default; }
+    .result-feedback-thanks { font-size: 12px; color: var(--muted); margin: 0; font-family: 'DM Sans', sans-serif; }
     .sns-share-title { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; font-family: 'DM Sans', sans-serif; margin-bottom: 6px; }
     .sns-share-sub { font-size: 13px; color: var(--text); margin-bottom: 16px; font-weight: 500; }
     .sns-share-sub span { color: var(--accent); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1px; }

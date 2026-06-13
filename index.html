@@ -197,7 +197,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=20">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=21">
 </head>
 <body>
 
@@ -1306,6 +1306,16 @@
           <!-- Brand Size Finder -->
           <div id="size-finder-section"></div>
 
+          <!-- Result satisfaction (GA4: result_feedback) -->
+          <div class="result-feedback" id="result-feedback" style="display:none;" aria-live="polite">
+            <p class="result-feedback-q" data-i18n="result-feedback-q">Was this helpful?</p>
+            <div class="result-feedback-actions">
+              <button type="button" class="result-feedback-btn" data-helpful="yes" data-i18n="result-feedback-yes">Yes, helpful</button>
+              <button type="button" class="result-feedback-btn" data-helpful="no" data-i18n="result-feedback-no">Not really</button>
+            </div>
+            <p class="result-feedback-thanks" id="result-feedback-thanks" hidden data-i18n="result-feedback-thanks">Thanks — we use this to improve FITME.</p>
+          </div>
+
           <!-- SNS Share Section -->
           <div class="sns-share-section" id="sns-share-section" style="display:none;">
             <div class="sns-share-title">🔥 SHARE YOUR RESULTS</div>
@@ -1521,7 +1531,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=21"></script>
+<script defer src="/assets/fitme-app.js?v=22"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

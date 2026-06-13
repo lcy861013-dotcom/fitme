@@ -185,6 +185,10 @@
       'combo-analysis-title':'✨ 복합 코디 진단','combo-analysis-hint':'맞는 조합이 여러 개일 때는 우선순위가 높은 순으로 보여 드려요. 나머지는 아래에서 펼쳐 보실 수 있어요.','combo-analysis-more':'그 외 조합 {n}개 더 보기',
       'tool-disclaimer':'<strong>면책:</strong> 결과는 스타일 안내용 추정치입니다. 의료 진단·3D 체형 스캔·전문 재단 치수가 아닙니다. <span style="opacity:0.9">*입력된 수치 기반의 통계적 분석 결과입니다.</span>',
       'analysis-disclaimer':'*입력된 수치 기반의 통계적 분석 결과입니다.',
+      'result-feedback-q':'분석 결과가 도움이 됐나요?',
+      'result-feedback-yes':'네, 도움이 됐어요',
+      'result-feedback-no':'별로예요',
+      'result-feedback-thanks':'감사합니다. FITME 개선에 반영할게요.',
       'footer-privacy':'개인정보처리방침','footer-terms':'이용약관','footer-about':'FITME 소개','footer-contact':'문의하기',
       'footer-editorial':'콘텐츠 기준','footer-how':'작동 방식','footer-blog-nav':'블로그',
       'footer-copy':'© 2026 FITME. 글로벌 체형 분석 서비스.',
@@ -524,6 +528,10 @@
       'combo-analysis-title':'✨ Style Combo Analysis','combo-analysis-hint':'When several combos match your measurements, we show the most relevant ones first. Expand below for the rest.','combo-analysis-more':'Show {n} more combo(s)',
       'tool-disclaimer':'<strong>Disclaimer:</strong> Results are estimates for style guidance only. Not a medical diagnosis, 3D body scan, or professional tailor measurement. <span style="opacity:0.9">*Statistical analysis based on entered measurements.</span>',
       'analysis-disclaimer':'*Statistical analysis based on entered measurements.',
+      'result-feedback-q':'Was this analysis helpful?',
+      'result-feedback-yes':'Yes, helpful',
+      'result-feedback-no':'Not really',
+      'result-feedback-thanks':'Thanks — we use this to improve FITME.',
       'footer-privacy':'Privacy Policy','footer-terms':'Terms of Service','footer-about':'About FITME','footer-contact':'Contact Us',
       'footer-editorial':'Editorial standards','footer-how':'How it works','footer-blog-nav':'Blog',
       'footer-copy':'© 2026 FITME. Global Body Analysis Service.',
@@ -2616,6 +2624,44 @@
     });
   }
 
+  function resetResultFeedback() {
+    document.querySelectorAll('.result-feedback').forEach(function (box) {
+      box.style.display = 'none';
+      box.classList.remove('is-answered');
+      const thanks = box.querySelector('.result-feedback-thanks');
+      const actions = box.querySelector('.result-feedback-actions');
+      if (thanks) thanks.hidden = true;
+      if (actions) actions.style.display = '';
+      box.querySelectorAll('.result-feedback-btn').forEach(function (b) { b.disabled = false; });
+    });
+  }
+
+  function showResultFeedback() {
+    const box = document.getElementById('result-feedback');
+    if (box) box.style.display = 'block';
+  }
+
+  function bindResultFeedback() {
+    if (document.documentElement.dataset.fitmeFeedbackBound) return;
+    document.documentElement.dataset.fitmeFeedbackBound = '1';
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest && e.target.closest('.result-feedback [data-helpful]');
+      if (!btn) return;
+      const box = btn.closest('.result-feedback');
+      if (!box || box.classList.contains('is-answered')) return;
+      const helpful = btn.getAttribute('data-helpful') === 'yes';
+      box.classList.add('is-answered');
+      box.querySelectorAll('.result-feedback-btn').forEach(function (b) { b.disabled = true; });
+      const actions = box.querySelector('.result-feedback-actions');
+      if (actions) actions.style.display = 'none';
+      const thanks = box.querySelector('.result-feedback-thanks');
+      if (thanks) thanks.hidden = false;
+      if (typeof fitmeGaEvent === 'function') {
+        fitmeGaEvent('result_feedback', { helpful: helpful ? 'yes' : 'no', language: currentLang });
+      }
+    });
+  }
+
   /** Blog card thumbnails: hero PNGs under /blog/img/en/ (KO + EN use same assets). */
   function applyBlogThumbPaths() {
     const useKo = currentLang === 'ko';
@@ -3972,6 +4018,7 @@
   }
 
   function runProportionAnalysis() {
+    resetResultFeedback();
     const btnD = document.getElementById('btn-analyze');
     const btnM = document.getElementById('btn-analyze-mobile');
     const loadingLabel = currentLang === 'ko' ? '⏳ 분석 중...' : '⏳ Analyzing...';
@@ -4929,6 +4976,7 @@
       const sd = window._fitmeShareData || {};
       fitmeGaEvent('analysis_complete', { body_type: sd.bodyType || '', language: currentLang });
     }
+    showResultFeedback();
 
     // Show SNS share section
     const shareSection = document.getElementById('sns-share-section');
@@ -5219,6 +5267,7 @@
 
     initHeroDemoVideo();
     bindHomeNavAnchors();
+    bindResultFeedback();
     scrollHomeHashOnLoad();
     window.addEventListener('hashchange', function () {
       if (!isHomePath()) return;
