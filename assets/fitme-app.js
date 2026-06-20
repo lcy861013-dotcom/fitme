@@ -9,10 +9,11 @@
       'hero-tag-publisher':'핏 가이드 · 측정 과학',
       'hero-headline-publisher':'실측 기반 핏 가이드.<br><em>준비되면 무료 계산기.</em>',
       'hero-sub-publisher':'Perfect Fit Me(핏미, FITME)는 WHR, 오버핏 사이징, 소재 드레이프, 체형 비율에 대한 <strong>독자 원고</strong>를 발행합니다. 창업자 이창용이 직접 온라인 쇼핑 경험을 바탕으로 씁니다. 숫자가 필요할 때 아래 무료 도구를 브라우저에서 바로 쓸 수 있어요.',
-      'guides-hub-label':'여기서 시작 — 추천 가이드',
-      'guides-hub-1-kicker':'온라인 사이징','guides-hub-1-title':'2XL 오버핏인데도 안 맞나요? 먼저 재세요','guides-hub-1-desc':'D2C 브랜드 직구 — 창업자 워크플로',
-      'guides-hub-2-kicker':'WHR','guides-hub-2-title':'허리-골반 비율(WHR) 측정법','guides-hub-2-desc':'허리는 헐렁한데 엉덩이는 맞을 때',
-      'guides-hub-3-kicker':'소개','guides-hub-3-title':'FITME를 쓰는 사람 & 이유','guides-hub-3-desc':'방법론, 한계, 편집 기준',
+      'hero-positioning':'사이즈는 맞는데 핏이 안 맞을 때 — S/M/L 말고 <em>허리·골반·어깨 비율</em>로 이유를 봅니다.',
+      'guides-hub-label':'여기서 시작 — 이런 고민이면 이 글부터',
+      'guides-hub-1-kicker':'온라인 사이징','guides-hub-1-title':'2XL 오버핏인데도 안 맞나요? 먼저 재세요','guides-hub-1-desc':'<strong>누구용:</strong> 사이즈표는 맞는데 어깨·허리만 어색할 때',
+      'guides-hub-2-kicker':'WHR','guides-hub-2-title':'허리-골반 비율(WHR) 측정법','guides-hub-2-desc':'<strong>누구용:</strong> 엉덩이는 맞는데 허리만 헐렁한 바지가 반복될 때',
+      'guides-hub-3-kicker':'배형','guides-hub-3-title':'골반 넓고 허리 좁을 때 코디','guides-hub-3-desc':'<strong>누구용:</strong> 하체는 큰데 허리는 좁아 바지 고르기가 제일 어려울 때',
       'hero-btn-guides':'전체 핏 가이드 보기 →','hero-btn-calc':'무료 계산기 열기 ↓',
       'hero-link-editorial':'편집 기준','hero-link-how':'도구 작동 방식',
       'hero-scroll-hint-guides':'가이드 읽기',
@@ -358,10 +359,11 @@
       'hero-tag-publisher':'FIT GUIDES · MEASUREMENT SCIENCE',
       'hero-headline-publisher':'Fit guides from real measurements.<br><em>Free calculator when you are ready.</em>',
       'hero-sub-publisher':'Perfect Fit Me (FITME) publishes original articles on WHR, oversize sizing, fabric drape, and body proportions — written by solo founder Changyong Lee from real online-shopping experience. The free tool below runs in your browser when you want numbers.',
-      'guides-hub-label':'Start here — featured guides',
-      'guides-hub-1-kicker':'Online sizing','guides-hub-1-title':'2XL oversize still fits wrong? Measure first','guides-hub-1-desc':'Founder workflow for direct-to-consumer brands',
-      'guides-hub-2-kicker':'WHR','guides-hub-2-title':'WHR 0.65 & 0.74: measure waist-to-hip ratio','guides-hub-2-desc':'When jeans gap at the waist but fit at the hips',
-      'guides-hub-3-kicker':'About','guides-hub-3-title':'Who writes FITME & why','guides-hub-3-desc':'Methodology, limits, and editorial standards',
+      'hero-positioning':'When the size tag fits but clothes don&rsquo;t — measure shoulder, waist, and hip <em>ratios</em>, not just S/M/L.',
+      'guides-hub-label':'Start here — if this sounds like you',
+      'guides-hub-1-kicker':'Online sizing','guides-hub-1-title':'2XL oversize still fits wrong? Measure first','guides-hub-1-desc':'<strong>For you if:</strong> the chart says 2XL but shoulders or waist still feel wrong.',
+      'guides-hub-2-kicker':'WHR','guides-hub-2-title':'WHR 0.65 & 0.74: measure waist-to-hip ratio','guides-hub-2-desc':'<strong>For you if:</strong> jeans fit at the hips but gape at the waist — again and again.',
+      'guides-hub-3-kicker':'Pear body','guides-hub-3-title':'Dressing a pear / fuller-hip shape','guides-hub-3-desc':'<strong>For you if:</strong> hips feel wide, waist is narrow, and pants are the hardest buy.',
       'hero-btn-guides':'Browse all fit guides →','hero-btn-calc':'Open free calculator ↓',
       'hero-link-editorial':'Editorial standards','hero-link-how':'How the tool works',
       'hero-scroll-hint-guides':'Read the guides',
@@ -2706,7 +2708,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-headline','hero-headline-publisher','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc']);
     // Hero headline — static publisher layout vs rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) {

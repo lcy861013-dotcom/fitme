@@ -566,6 +566,21 @@
     .hero--publisher .hero-sub { max-width: 620px; font-size: 15px; }
     .hero--publisher .hero-en-priority { font-size: 13px; color: var(--muted); max-width: 560px; margin: 12px auto 28px; line-height: 1.65; }
     .guides-hub { max-width: 720px; margin: 0 auto 28px; text-align: left; }
+    .hero-positioning {
+      max-width: 640px;
+      margin: 0 auto 22px;
+      padding: 13px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.6;
+      text-align: center;
+      color: var(--text);
+      border: 1px solid rgba(212, 168, 75, 0.28);
+      border-radius: 10px;
+      background: rgba(212, 168, 75, 0.05);
+      font-family: 'DM Sans', sans-serif;
+    }
+    html[lang="ko"] .hero-positioning { font-family: 'Noto Sans KR', 'DM Sans', sans-serif; }
     .guides-hub-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; font-family: 'DM Sans', sans-serif; text-align: center; }
     .guides-hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .guides-hub-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
