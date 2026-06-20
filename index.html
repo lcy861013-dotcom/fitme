@@ -973,7 +973,20 @@
         <button type="button" class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 Try Sample Results First</button>
       </div>
       <p class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Instant results</p>
-      <p class="hero-demo-outlink"><a href="/demo-video" data-i18n="hero-demo-outlink">Watch sample result video →</a></p>
+      <div class="hero-demo-wrap">
+        <div class="hero-demo-label" id="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
+        <div class="hero-demo-frame">
+          <video id="hero-demo-video" src="/demo-v2.mp4" width="1280" height="720" muted loop playsinline preload="metadata" poster="/assets/og-image-en.png"></video>
+          <script>
+          (function(){try{var s=localStorage.getItem('fitme_lang')==='ko'?'/demo-ko-v2.mp4':'/demo-v2.mp4';var v=document.getElementById('hero-demo-video');if(v)v.setAttribute('src',s);}catch(e){}})();
+          </script>
+          <button type="button" id="hero-demo-play" class="hero-demo-play" aria-describedby="hero-demo-label">
+            <span class="hero-demo-play-icon" aria-hidden="true">▶</span>
+            <span data-i18n="hero-demo-play">Play demo video</span>
+          </button>
+        </div>
+        <p class="hero-demo-watch"><a href="/demo-video" data-i18n="hero-demo-watch">Watch on dedicated video page →</a></p>
+      </div>
       <div class="hero-badges">
         <div class="hero-badge"><span data-i18n="hero-badge1">📷 No Photos Required</span></div>
         <div class="hero-badge"><span data-i18n="hero-badge2">📏 3 Measurements Only</span></div>
