@@ -184,6 +184,12 @@
       'analysis-report-title':'분석 리포트','analysis-best':'✨ BEST 스타일 추천','analysis-worst':'⚠️ 주의할 스타일',
       'combo-analysis-title':'✨ 복합 코디 진단','combo-analysis-hint':'맞는 조합이 여러 개일 때는 우선순위가 높은 순으로 보여 드려요. 나머지는 아래에서 펼쳐 보실 수 있어요.','combo-analysis-more':'그 외 조합 {n}개 더 보기',
       'tool-disclaimer':'<strong>면책:</strong> 결과는 스타일 안내용 추정치입니다. 의료 진단·3D 체형 스캔·전문 재단 치수가 아닙니다. <span style="opacity:0.9">*입력된 수치 기반의 통계적 분석 결과입니다.</span>',
+      'calc-guide-title':'시작 전 30초만 읽어주세요',
+      'calc-guide-1':'키·몸무게·허리만 넣어도 시작할 수 있어요 (대략적인 결과).',
+      'calc-guide-2':'바지·핏이 문제면 <strong>골반 둘레(cm)</strong>를 꼭 추가하세요.',
+      'calc-guide-3':'허리는 좁고 엉덩이·골반이 크면 WHR과 체형(배형 등)이 나와요.',
+      'calc-guide-4':'브랜드 사이즈표 대체가 아니라, “왜 안 맞는지” 보는 도구예요.',
+      'calc-guide-link':'<a href="/blog/blog8" style="color:var(--accent);font-weight:600;">5분 측정 가이드 (WHR·골반) →</a>',
       'analysis-disclaimer':'*입력된 수치 기반의 통계적 분석 결과입니다.',
       'result-feedback-q':'분석 결과가 도움이 됐나요?',
       'result-feedback-yes':'네, 도움이 됐어요',
@@ -527,6 +533,12 @@
       'analysis-report-title':'Analysis Report','analysis-best':'✨ BEST Style Picks','analysis-worst':'⚠️ Styles to Avoid',
       'combo-analysis-title':'✨ Style Combo Analysis','combo-analysis-hint':'When several combos match your measurements, we show the most relevant ones first. Expand below for the rest.','combo-analysis-more':'Show {n} more combo(s)',
       'tool-disclaimer':'<strong>Disclaimer:</strong> Results are estimates for style guidance only. Not a medical diagnosis, 3D body scan, or professional tailor measurement. <span style="opacity:0.9">*Statistical analysis based on entered measurements.</span>',
+      'calc-guide-title':'Read this first (30 seconds)',
+      'calc-guide-1':'Height, weight, and waist are enough to start (rough result).',
+      'calc-guide-2':'Pants fit issues? Add <strong>hip circumference (cm)</strong>.',
+      'calc-guide-3':'Narrow waist + fuller hips → WHR and body shape (e.g. pear) appear.',
+      'calc-guide-4':'Not a brand size chart — see <em>why</em> clothes fit wrong on you.',
+      'calc-guide-link':'<a href="/blog/blog8-en" style="color:var(--accent);font-weight:600;">5-min measure guide (WHR & hips) →</a>',
       'analysis-disclaimer':'*Statistical analysis based on entered measurements.',
       'result-feedback-q':'Was this analysis helpful?',
       'result-feedback-yes':'Yes, helpful',
@@ -2694,7 +2706,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-headline','hero-headline-publisher','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-headline','hero-headline-publisher','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link']);
     // Hero headline — static publisher layout vs rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) {
@@ -4017,6 +4029,108 @@
     setTimeout(runProportionAnalysis, 600);
   }
 
+  function buildPlainFitSummary(bodyType, whr, hasHip, hasShoulder, lang, gender) {
+    const isKo = lang === 'ko';
+    const whrStr = whr != null ? whr : '—';
+    const title = isKo ? '한 줄 요약' : 'In plain words';
+    const tryLabel = isKo ? '시도해볼 것' : 'Try this';
+    const moreLabel = isKo ? '더 읽기' : 'Read more';
+    const link = (href, label) => `<a href="${href}" style="color:var(--accent);font-weight:600;">${label}</a>`;
+
+    const wrap = (lead, problem, tries, links) => `
+      <p class="plain-fit-title">${title}</p>
+      <p class="plain-fit-lead">${lead}</p>
+      ${problem ? `<p class="plain-fit-problem">${problem}</p>` : ''}
+      <p class="plain-fit-label">${tryLabel}</p>
+      <ul class="plain-fit-list">${tries.map(item => `<li>${item}</li>`).join('')}</ul>
+      <p class="plain-fit-more">${moreLabel}: ${links.join(isKo ? ' · ' : ' · ')}</p>`;
+
+    if (!hasHip || bodyType === 'default') {
+      return isKo
+        ? `<p class="plain-fit-title">${title}</p>
+           <p class="plain-fit-lead">지금은 <strong>대략 분석</strong>만 나왔어요. 바지·핏이 고민이면 <strong>골반 둘레(cm)</strong>와 <strong>어깨 너비</strong>를 추가해 보세요.</p>
+           <p class="plain-fit-note">허리+골반이 있어야 WHR과 체형 방향(배형·모래시계 등)이 나옵니다. 사이즈표 대체가 아니라 “왜 안 맞는지” 이해하는 도구예요.</p>
+           <p class="plain-fit-more">${moreLabel}: ${link('/blog/blog8', 'WHR 측정법')} · ${link('/blog/blog24', '골반 둘레 재기')}</p>`
+        : `<p class="plain-fit-title">${title}</p>
+           <p class="plain-fit-lead"><strong>Rough result only.</strong> For pants fit, add <strong>hip circumference (cm)</strong> and <strong>shoulder width</strong>.</p>
+           <p class="plain-fit-note">Waist + hip unlock WHR and body-shape direction. Not a size chart — understand <em>why</em> clothes fit wrong.</p>
+           <p class="plain-fit-more">${moreLabel}: ${link('/blog/blog8-en', 'Measure WHR')} · ${link('/blog/blog24', 'Measure hips')}</p>`;
+    }
+
+    if (bodyType === 'pear') {
+      return wrap(
+        isKo
+          ? `배형(골반 &gt; 어깨)에 가깝고, 허리÷골반(WHR)은 <strong>${whrStr}</strong>이에요.`
+          : `You read <strong>pear-shaped</strong> (hips wider than shoulders). WHR: <strong>${whrStr}</strong>.`,
+        isKo ? '흔한 문제: 엉덩이·골반은 맞는데 허리만 헐렁한 바지' : 'Common issue: jeans fit at the hips but gape at the waist',
+        isKo
+          ? ['하이웨이스트·허리 라인 들어간 핏', 'A라인·플레어 스커트', '상의 밝은색·볼륨 / 하의 다크 스트레이트', '로우라이즈·밝은 하의는 피하기']
+          : ['High-waist & waist-defining cuts', 'A-line or flare skirts', 'Brighter or detailed tops + dark straight bottoms', 'Skip low-rise & loud hip patterns'],
+        isKo
+          ? [link('/blog/blog18', '배형 스타일링'), link('/blog/blog8', 'WHR·청바지 갭')]
+          : [link('/blog/blog18-en', 'Pear-body dressing'), link('/blog/blog8-en', 'WHR & jean gap')]
+      );
+    }
+    if (bodyType === 'hourglass') {
+      return wrap(
+        isKo
+          ? `모래시계형에 가깝고 WHR <strong>${whrStr}</strong> — 어깨·골반 균형에 허리가 잘록해요.`
+          : `Hourglass read — balanced shoulders/hips, defined waist. WHR: <strong>${whrStr}</strong>.`,
+        isKo ? '흔한 문제: 허리 강조 없는 박시핏이 실루엣을 가림' : 'Common issue: boxy cuts hide your waist definition',
+        isKo
+          ? ['허리 라인 보이는 벨티드·랩 스타일', '하이웨이스트 하의', '피티드 상의 + 밸런스 하의']
+          : ['Belted & wrap styles', 'High-waist bottoms', 'Fitted tops with balanced hemlines'],
+        isKo
+          ? [link('/blog/blog2', '체형 유형 가이드'), link('/blog/blog8', 'WHR 측정')]
+          : [link('/blog/blog2-en', 'Body types guide'), link('/blog/blog8-en', 'WHR guide')]
+      );
+    }
+    if (bodyType === 'inv') {
+      return wrap(
+        isKo
+          ? `역삼각형(어깨 &gt; 골반)에 가깝고 WHR <strong>${whrStr}</strong>이에요.`
+          : `Inverted-triangle read — shoulders wider than hips. WHR: <strong>${whrStr}</strong>.`,
+        isKo ? '흔한 문제: 상체가 더 넓어 보이거나 하체가 가늘어 보임' : 'Common issue: tops overpower the lower body',
+        isKo
+          ? ['V넥·깊은 네크라인', '와이드·플레어 하의로 하체 볼륨', '어깨 패드·볼드 숄더 피하기']
+          : ['V-necks & open necklines', 'Wide or flare bottoms', 'Skip heavy shoulder pads'],
+        isKo
+          ? [link('/blog/blog2', '체형 유형 가이드')]
+          : [link('/blog/blog2-en', 'Body types guide')]
+      );
+    }
+    if (bodyType === 'apple') {
+      return wrap(
+        isKo
+          ? `사과형에 가깝고 WHR <strong>${whrStr}</strong> — 복부·허리 쪽 볼륨이 상대적으로 큼.`
+          : `Apple read — more volume mid-torso. WHR: <strong>${whrStr}</strong>.`,
+        isKo ? '흔한 문제: 허리 조이는 벨트·타이트 상의가 불편' : 'Common issue: tight waistbands & clingy tops',
+        isKo
+          ? ['세로 라인(오픈 재킷·롱 목걸이)', '드레이프·부드러운 소재', '스트레이트 하의·톤온톤']
+          : ['Vertical lines (open layers)', 'Soft drape fabrics', 'Straight bottoms, tone-on-tone'],
+        isKo
+          ? [link('/blog/blog2', '체형 유형 가이드')]
+          : [link('/blog/blog2-en', 'Body types guide')]
+      );
+    }
+    if (bodyType === 'rect') {
+      return wrap(
+        isKo
+          ? `일자형에 가깝고 WHR <strong>${whrStr}</strong> — 상·하체 폭 차이가 작아요.`
+          : `Rectangle read — similar shoulder/hip width. WHR: <strong>${whrStr}</strong>.`,
+        isKo ? '흔한 문제: 허리 라인이 안 보여 실루엣이 각져 보임' : 'Common issue: little waist definition',
+        isKo
+          ? ['벨티드·허리 라인 만들기', '비대칭 네크·레이어드', '하이웨이스트로 비율 정리']
+          : ['Belted styles', 'Asymmetric necklines & layers', 'High-waist to shape proportion'],
+        isKo
+          ? [link('/blog/blog2', '체형 유형 가이드')]
+          : [link('/blog/blog2-en', 'Body types guide')]
+      );
+    }
+
+    return '';
+  }
+
   function runProportionAnalysis() {
     resetResultFeedback();
     const btnD = document.getElementById('btn-analyze');
@@ -4318,6 +4432,19 @@
 
     const badgeMap = { hourglass: '⏳', pear: '🍐', inv: '🔺', rect: '⬛', apple: '🍎', default: '📐' };
     document.getElementById('analysis-badge').innerHTML = typeName ? `<div class="body-type-badge"><span>${currentGender==='male'?'👨':'👩'}</span><span>${badgeMap[bodyType]}</span><span class="badge-label">${typeName}</span></div>` : '';
+
+    const plainEl = document.getElementById('analysis-plain-summary');
+    if (plainEl) {
+      const plainHtml = buildPlainFitSummary(bodyType, whr, !isNaN(hip), !isNaN(shoulder), currentLang, currentGender);
+      if (plainHtml) {
+        plainEl.innerHTML = plainHtml;
+        plainEl.hidden = false;
+      } else {
+        plainEl.innerHTML = '';
+        plainEl.hidden = true;
+      }
+    }
+
     document.getElementById('analysis-text').innerHTML = strength + (bodyType !== 'default' ? `<br><span style="font-size:13px; color:var(--muted); font-weight:normal;">${lc['body-strength-'+bodyType]}</span>` : '');
     document.getElementById('analysis-tip').innerHTML = tip ? `<div class="analysis-tip">💡 ${tip}</div>` : '';
 
@@ -5184,7 +5311,7 @@
     document.getElementById('analysis-result').classList.remove('visible');
     var _mpReset = document.getElementById('main-panel');
     if (_mpReset) _mpReset.classList.remove('has-analysis-result');
-    ['fitme-score-section','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section','signature-outfit-section'].forEach(id => { const el = document.getElementById(id); if (el) el.innerHTML = ''; });
+    ['fitme-score-section','analysis-plain-summary','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section','signature-outfit-section'].forEach(id => { const el = document.getElementById(id); if (el) { el.innerHTML = ''; if (id === 'analysis-plain-summary') el.hidden = true; } });
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
     window._fitmeShareData = null;

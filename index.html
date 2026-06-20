@@ -198,7 +198,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=21">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=22">
 </head>
 <body>
 
@@ -985,6 +985,16 @@
 <!-- MAIN ANALYSIS -->
   <div class="main-container" id="analysis">
     <p id="tool-disclaimer-main" class="tool-disclaimer"></p>
+    <div class="calc-quick-guide" id="calc-quick-guide">
+      <p class="calc-quick-guide-title" data-i18n="calc-guide-title">시작 전 30초만 읽어주세요</p>
+      <ol class="calc-quick-guide-list">
+        <li data-i18n="calc-guide-1">키·몸무게·허리만 넣어도 시작할 수 있어요 (대략적인 결과).</li>
+        <li data-i18n="calc-guide-2">바지·핏이 문제면 <strong>골반 둘레(cm)</strong>를 꼭 추가하세요.</li>
+        <li data-i18n="calc-guide-3">허리는 좁고 엉덩이·골반이 크면 WHR과 체형(배형 등)이 나와요.</li>
+        <li data-i18n="calc-guide-4">브랜드 사이즈표 대체가 아니라, &ldquo;왜 안 맞는지&rdquo; 보는 도구예요.</li>
+      </ol>
+      <p class="calc-quick-guide-foot" data-i18n="calc-guide-link"><a href="/blog/blog8">5분 측정 가이드 (WHR·골반) →</a></p>
+    </div>
     <div class="analysis-workspace">
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
@@ -1265,6 +1275,8 @@
               <button class="share-btn" onclick="copyLink()">🔗</button>
             </div>
           </div>
+          <!-- Plain-language fit summary (shown first) -->
+          <div id="analysis-plain-summary" class="analysis-plain-summary" hidden></div>
           <!-- FITME DNA Score Banner -->
           <div id="fitme-score-section"></div>
           <!-- Top grid: body badge + radar chart -->
@@ -1532,7 +1544,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=23"></script>
+<script defer src="/assets/fitme-app.js?v=24"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>
