@@ -55,6 +55,25 @@
       'story-p4':'트레이닝복 하나가 맞을 때까지 두세 벌은 더 사 봤고, 반품 박스는 쌓였죠. 그때 깨달았어요 — 사이즈표가 아니라 <em>어깨·다리·허리 비율</em>을 모르고 있었다는 걸요.',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
       'hanspan-tag':'✦ 가장 쉬운 방법','hanspan-headline':'지금 딱 한 번만 — 내 한 뼘 재기','hanspan-desc':'손 펼쳐서 엄지↔새끼손가락 끝 거리를 재세요. 이 하나면 줄자 없이도 어깨·허리·다리 모두 계산할 수 있어요.','hanspan-save':'저장하기',
+      'no-tape-title':'📏 줄자 없어도 측정 — 여기부터',
+      'no-tape-phone':'📱 <strong>키:</strong> 폰 세로(~15cm)를 바닥부터 머리까지 세기 → 키 입력칸에서 cm 넣기',
+      'no-tape-span':'✋ <strong>어깨·다리:</strong> 부위 선택 → 뼘 수 입력 → 「cm 넣기」',
+      'no-tape-three':'⚡ <strong>최소:</strong> 키·몸무게·허리만 넣어도 분석 시작',
+      'span-calc-label':'줄자 없음 — 뼘 수로 계산',
+      'span-calc-label-phone':'줄자 없음 — 폰 길이(~15cm)로 키 재기',
+      'span-calc-label-hip':'줄자 없음 — 골반 한 바퀴 뼘 수',
+      'span-calc-mid':'뼘 ×',
+      'span-calc-phone-mid':'개 × 15cm =',
+      'span-calc-btn':'cm 넣기',
+      'span-need-hanspan':'먼저 위에서 한 뼘(cm)을 저장해 주세요',
+      'span-applied':'{cm}cm 입력됨',
+      'span-hint-height':'벽에 붙어 서서, 바닥~머리까지 폰이 몇 개인지 세세요',
+      'span-hint-shoulder':'보통 2–2.5뼘 (목→어깨 끝 × 2)',
+      'span-hint-upper-arm':'어깨→팔꿈치 바깥쪽 — 약 1.5–2뼘',
+      'span-hint-lower-arm':'팔꿈치→손목 — 약 1.2–1.6뼘',
+      'span-hint-hip':'엉덩이 가장 넓은 곳 한 바퀴 — 보통 5–6뼘',
+      'span-hint-upper-leg':'골반뼈→무릎 위 — 약 2–3뼘',
+      'span-hint-lower-leg':'무릎 아래→발목 — 약 2–2.5뼘',
       'howto-height':'📐 벽에 등을 붙이고 서서, 머리 위에 책을 수평으로 올린 뒤 바닥~표시 지점까지 재세요',
       'howto-weight':'⚖️ 아침 공복·화장실 후가 가장 정확해요. 체중계 위에서 움직이지 말고 측정하세요',
       'howto-head':'📏 이마 중앙에서 귀 위를 지나 뒷머리까지 한 바퀴. 줄자가 수평인지 확인하세요',
@@ -408,6 +427,25 @@
       'story-p4':'One tracksuit became two or three before the fit felt right; return boxes piled up. That’s when it clicked — not the size tag, but not knowing my <em>shoulder, leg, and waist ratios</em>.',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
       'hanspan-tag':'✦ Easiest Method','hanspan-headline':'Just once — measure your hand span','hanspan-desc':'Spread your hand wide: thumb tip to pinky tip. One measurement lets you estimate shoulders, waist & legs without any tools.','hanspan-save':'Save',
+      'no-tape-title':'📏 No tape measure? Start here',
+      'no-tape-phone':'📱 <strong>Height:</strong> stack phone upright (~15&nbsp;cm each) — enter count on the Height form',
+      'no-tape-span':'✋ <strong>Shoulder / legs:</strong> pick a body part → enter span count → tap “fill cm”',
+      'no-tape-three':'⚡ <strong>Minimum:</strong> height + weight + waist still starts analysis',
+      'span-calc-label':'No tape — count hand spans',
+      'span-calc-label-phone':'No tape — phone as ruler (~15&nbsp;cm)',
+      'span-calc-label-hip':'No tape — hip girth in spans (around body)',
+      'span-calc-mid':'spans ×',
+      'span-calc-phone-mid':'phones × 15cm =',
+      'span-calc-btn':'Fill cm',
+      'span-need-hanspan':'Save your hand span (cm) in the box above first',
+      'span-applied':'Filled {cm} cm',
+      'span-hint-height':'Stand by a wall; count how many phone lengths floor to head',
+      'span-hint-shoulder':'Usually ~2–2.5 spans (neck to shoulder × 2)',
+      'span-hint-upper-arm':'Shoulder to elbow, outer arm — ~1.5–2 spans',
+      'span-hint-lower-arm':'Elbow to wrist — ~1.2–1.6 spans',
+      'span-hint-hip':'Widest hip line — usually ~5–6 spans around',
+      'span-hint-upper-leg':'Hip bone to above knee — ~2–3 spans',
+      'span-hint-lower-leg':'Below knee to ankle — ~2–2.5 spans',
       'howto-height':'📐 Stand against a wall, place a book flat on your head, mark the spot, then measure from floor to mark',
       'howto-weight':'⚖️ Best measured in the morning before eating. Stand still on the scale and wait for a stable reading',
       'howto-head':'📏 Wrap a tape around your head — from forehead, above the ears, to the widest part at the back',
@@ -2714,7 +2752,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
     // Hero headline — calc-first / publisher static / rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) {
@@ -5258,6 +5296,67 @@
     showToast(currentLang === 'ko' ? '부위를 클릭해서 값을 수정하세요 ✏️' : 'Click a body part to edit your measurements ✏️');
   }
 
+  function getHandSpanCm() {
+    try {
+      var v = parseFloat(localStorage.getItem('fitme_hanspan'));
+      return v > 0 ? v : NaN;
+    } catch (e) {
+      return NaN;
+    }
+  }
+
+  function updateSpanHanspanDisplays() {
+    var span = getHandSpanCm();
+    var label = span ? (String(span).replace(/\.0$/, '') + 'cm') : '—';
+    document.querySelectorAll('.span-calc-hanspan').forEach(function (el) {
+      el.textContent = label;
+    });
+  }
+
+  function applySpanCalc(btn) {
+    var box = btn.closest('.span-calc-box');
+    if (!box) return;
+    var countInp = box.querySelector('.span-calc-count');
+    var targetId = btn.getAttribute('data-span-target');
+    var mode = btn.getAttribute('data-span-mode') || 'hand';
+    var count = countInp ? parseFloat(countInp.value) : NaN;
+    if (!count || count <= 0) {
+      if (countInp) countInp.focus();
+      return;
+    }
+    var cm;
+    if (mode === 'phone') {
+      cm = Math.round(count * 15 * 10) / 10;
+    } else {
+      var hand = getHandSpanCm();
+      if (!hand) {
+        showToast(t('span-need-hanspan'));
+        var hs = document.getElementById('hanspan-cm-input');
+        if (hs) {
+          hs.focus();
+          document.getElementById('no-tape-panel')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        return;
+      }
+      cm = Math.round(count * hand * 10) / 10;
+    }
+    var target = document.getElementById(targetId);
+    if (!target) return;
+    target.value = cm;
+    target.dispatchEvent(new Event('input', { bubbles: true }));
+    var msg = (t('span-applied') || 'Filled {cm} cm').replace('{cm}', String(cm));
+    showToast(msg);
+  }
+
+  function initSpanCalc() {
+    document.querySelectorAll('.span-calc-apply').forEach(function (btn) {
+      if (btn.dataset.spanBound) return;
+      btn.dataset.spanBound = '1';
+      btn.addEventListener('click', function () { applySpanCalc(btn); });
+    });
+    updateSpanHanspanDisplays();
+  }
+
   function dismissTipCard() {
     var card = document.getElementById('measure-tip-card');
     if (card) card.classList.add('collapsed');
@@ -5270,6 +5369,7 @@
     if (!val || val < 10 || val > 35) { input.focus(); return; }
     try { localStorage.setItem('fitme_hanspan', val); } catch(e) {}
     _showHanspanBadge(val);
+    updateSpanHanspanDisplays();
   }
 
   function _showHanspanBadge(val) {
@@ -5298,6 +5398,7 @@
         var inp = document.getElementById('hanspan-cm-input');
         if (inp) inp.value = saved;
         _showHanspanBadge(saved);
+        updateSpanHanspanDisplays();
       }
     } catch(e) {}
   })();
@@ -5402,6 +5503,7 @@
     startHeadlineRotation();
 
     initHeroDemoVideo();
+    initSpanCalc();
     bindHomeNavAnchors();
     bindResultFeedback();
     scrollHomeHashOnLoad();

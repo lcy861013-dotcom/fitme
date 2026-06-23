@@ -198,7 +198,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=24">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=25">
 </head>
 <body>
 
@@ -276,6 +276,34 @@
       </ol>
       <p class="calc-quick-guide-foot" data-i18n="calc-guide-link"><a href="/blog/blog8">5분 측정 가이드 (WHR·골반) →</a></p>
     </details>
+
+    <div class="no-tape-panel" id="no-tape-panel" aria-label="Measure without a tape">
+      <div class="no-tape-panel-head">
+        <span class="no-tape-panel-title" data-i18n="no-tape-title">📏 No tape measure? Use this first</span>
+      </div>
+      <div class="hanspan-spotlight">
+        <div class="hanspan-tag" data-i18n="hanspan-tag">✦ Easiest method</div>
+        <div class="hanspan-headline" data-i18n="hanspan-headline">Just once — save your hand span</div>
+        <div class="hanspan-desc" data-i18n="hanspan-desc">Spread hand wide: thumb tip to pinky tip. One number lets you estimate shoulders, legs &amp; more without tools.</div>
+        <div class="hanspan-input-row">
+          <div class="hanspan-input-wrap">
+            <input type="number" class="hanspan-input" id="hanspan-cm-input" placeholder="18" min="10" max="35" step="0.5" inputmode="decimal" aria-label="Hand span cm">
+            <span class="hanspan-unit">cm</span>
+          </div>
+          <button type="button" class="hanspan-save-btn" onclick="saveHanspan()" data-i18n="hanspan-save">Save</button>
+        </div>
+        <div class="hanspan-saved-badge" id="hanspan-saved-badge">
+          <span class="hanspan-saved-check" aria-hidden="true">✓</span>
+          <span class="hanspan-saved-text" id="hanspan-saved-text">Hand span saved</span>
+        </div>
+      </div>
+      <ul class="no-tape-quicklist">
+        <li data-i18n="no-tape-phone">📱 <strong>Height:</strong> stack phone upright (~15&nbsp;cm each) — enter count on the Height form</li>
+        <li data-i18n="no-tape-span">✋ <strong>Shoulder / legs:</strong> pick a body part → enter span count → tap “fill cm”</li>
+        <li data-i18n="no-tape-three">⚡ <strong>Minimum:</strong> height + weight + waist still starts analysis</li>
+      </ul>
+    </div>
+
     <div class="analysis-workspace">
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
@@ -426,6 +454,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
           <div class="part-howto-box" data-i18n="howto-height"></div>
+          <div class="span-calc-box" data-span-mode="phone" data-span-target="input-height" data-span-hint="span-hint-height">
+            <p class="span-calc-label" data-i18n="span-calc-label-phone">No tape — phone as ruler (~15&nbsp;cm)</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.5" min="1" max="30" placeholder="12" inputmode="decimal" aria-label="Phone count">
+              <span class="span-calc-mid" data-i18n="span-calc-phone-mid">phones × 15cm =</span>
+              <button type="button" class="span-calc-apply" data-span-mode="phone" data-span-target="input-height" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-height">Stand by a wall; count how many phone lengths floor to head</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
         </div>
@@ -460,6 +497,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-shoulder"></div>
+          <div class="span-calc-box" data-span-mode="hand" data-span-target="shoulder-width" data-span-hint="span-hint-shoulder">
+            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="2.3" inputmode="decimal" aria-label="Span count">
+              <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
+              <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="shoulder-width" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-shoulder">Usually ~2–2.5 spans (neck to shoulder × 2)</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
         </div>
@@ -486,6 +532,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">SHOULDER–ELBOW / 어깨~팔꿈치</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
+          <div class="span-calc-box" data-span-mode="hand" data-span-target="upper-arm-len" data-span-hint="span-hint-upper-arm">
+            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="1.8" inputmode="decimal">
+              <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
+              <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="upper-arm-len" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-upper-arm">Shoulder to elbow, outer arm — ~1.5–2 spans</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
         </div>
@@ -494,6 +549,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">ELBOW–WRIST / 팔꿈치~손목</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
+          <div class="span-calc-box" data-span-mode="hand" data-span-target="lower-arm-len" data-span-hint="span-hint-lower-arm">
+            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="1.5" inputmode="decimal">
+              <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
+              <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="lower-arm-len" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-lower-arm">Elbow to wrist — ~1.2–1.6 spans</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
         </div>
@@ -511,6 +575,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-hip"></div>
+          <div class="span-calc-box" data-span-mode="hand" data-span-target="hip-circ" data-span-hint="span-hint-hip">
+            <p class="span-calc-label" data-i18n="span-calc-label-hip">No tape — hip girth in spans (around body)</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.1" min="2" max="30" placeholder="5.5" inputmode="decimal">
+              <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
+              <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="hip-circ" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-hip">Widest hip line — usually ~5–6 spans around</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
         </div>
@@ -519,6 +592,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-leg"></div>
+          <div class="span-calc-box" data-span-mode="hand" data-span-target="upper-leg-len" data-span-hint="span-hint-upper-leg">
+            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="2.5" inputmode="decimal">
+              <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
+              <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="upper-leg-len" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-upper-leg">Hip bone to above knee — ~2–3 spans</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42" min="0"></div>
           <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
@@ -528,6 +610,15 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-leg"></div>
+          <div class="span-calc-box" data-span-mode="hand" data-span-target="lower-leg-len" data-span-hint="span-hint-lower-leg">
+            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+            <div class="span-calc-row">
+              <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="2.2" inputmode="decimal">
+              <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
+              <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="lower-leg-len" data-i18n="span-calc-btn">Fill cm</button>
+            </div>
+            <p class="span-calc-guide" data-i18n="span-hint-lower-leg">Below knee to ankle — ~2–2.5 spans</p>
+          </div>
           <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38" min="0"></div>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
         </div>
@@ -1508,7 +1599,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=26"></script>
+<script defer src="/assets/fitme-app.js?v=27"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

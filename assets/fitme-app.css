@@ -800,6 +800,89 @@
       border-radius: 10px;
       background: var(--card);
     }
+    #analysis > .no-tape-panel {
+      box-sizing: border-box;
+      width: min(720px, calc(100% - 32px));
+      max-width: min(720px, calc(100% - 32px));
+      margin: 0 auto 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(212, 168, 75, 0.4);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(212,168,75,0.1) 0%, rgba(212,168,75,0.03) 100%);
+    }
+    .no-tape-panel-head { margin-bottom: 10px; }
+    .no-tape-panel-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 17px;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+    }
+    .no-tape-quicklist {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .no-tape-quicklist strong { color: var(--text); font-weight: 600; }
+    .no-tape-panel .hanspan-spotlight { margin-bottom: 0; }
+    .span-calc-box {
+      background: rgba(212,168,75,0.06);
+      border: 1px dashed rgba(212,168,75,0.35);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .span-calc-label {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .span-calc-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .span-calc-count {
+      width: 72px;
+      padding: 8px 10px;
+      border: 1px solid rgba(212,168,75,0.4);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .span-calc-mid {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .span-calc-mid .span-calc-hanspan { color: var(--accent); }
+    .span-calc-apply {
+      padding: 7px 12px;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .span-calc-apply:hover { filter: brightness(1.06); }
+    .span-calc-guide {
+      margin: 8px 0 0;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
     #analysis > .calc-quick-guide {
       box-sizing: border-box;
       width: min(720px, calc(100% - 32px));
