@@ -9,15 +9,16 @@
       'hero-tag-publisher':'핏 가이드 · 측정 과학',
       'hero-headline-publisher':'실측 기반 핏 가이드.<br><em>준비되면 무료 계산기.</em>',
       'hero-sub-publisher':'Perfect Fit Me(핏미, FITME)는 WHR, 오버핏 사이징, 소재 드레이프, 체형 비율에 대한 <strong>독자 원고</strong>를 발행합니다. 창업자 이창용이 직접 온라인 쇼핑 경험을 바탕으로 씁니다. 숫자가 필요할 때 아래 무료 도구를 브라우저에서 바로 쓸 수 있어요.',
-      'hero-positioning':'사이즈는 맞는데 핏이 안 맞을 때 — S/M/L 말고 <em>허리·골반·어깨 비율</em>로 이유를 봅니다.',
+      'hero-positioning':'키·허리·골반 비율이면 &ldquo;나한테 왜 안 맞는지&rdquo;가 보여요. 줄자 없어도 시작할 수 있어요.',
       'guides-hub-label':'여기서 시작 — 이런 고민이면 이 글부터',
       'guides-hub-1-kicker':'온라인 사이징','guides-hub-1-title':'2XL 오버핏인데도 안 맞나요? 먼저 재세요','guides-hub-1-desc':'<strong>누구용:</strong> 사이즈표는 맞는데 어깨·허리만 어색할 때',
       'guides-hub-2-kicker':'WHR','guides-hub-2-title':'허리-골반 비율(WHR) 측정법','guides-hub-2-desc':'<strong>누구용:</strong> 엉덩이는 맞는데 허리만 헐렁한 바지가 반복될 때',
       'guides-hub-3-kicker':'배형','guides-hub-3-title':'골반 넓고 허리 좁을 때 코디','guides-hub-3-desc':'<strong>누구용:</strong> 하체는 큰데 허리는 좁아 바지 고르기가 제일 어려울 때',
       'hero-btn-guides':'전체 핏 가이드 보기 →','hero-btn-calc':'무료 계산기 열기 ↓',
-      'hero-tag-calc':'무료 도구 · 사진 없음',
-      'hero-headline-calc':'키·몸무게·허리 넣고<br><em>바로 비율 분석</em>',
-      'hero-scroll-hint-calc':'아래에서 부위를 눌러 숫자 입력',
+      'hero-tag-calc':'30초면 끝 · 사진·가입 없음',
+      'hero-headline-calc':'L 사이즈인데 바지가 왜 안 맞을까?<br><em>숫자 몇 개 넣고 지금 확인해 보세요</em>',
+      'hero-scroll-hint-calc':'👇 아래에서 <strong>키</strong>부터 눌러 보세요',
+      'hero-btn-measure':'지금 재보기 →',
       'hero-link-editorial':'편집 기준','hero-link-how':'도구 작동 방식',
       'hero-scroll-hint-guides':'가이드 읽기',
       'tool-intro-tag':'무료 도구','tool-intro-title':'체형 비율 계산기','tool-intro-sub':'위 가이드를 읽은 뒤, 몇 가지 치수만 입력하면 비공개 비율 분석을 받을 수 있어요 — 사진·가입 불필요.',
@@ -31,7 +32,7 @@
       'guide-full-summary':'메인에서 자세한 측정 방법 펼치기',
       'guide-view-all':'전체 측정·스타일 가이드 보기 →',
       'hero-btn-sub':'무료 · 가입 불필요 · 즉시 결과',
-      'sample-btn':'👀 샘플 결과 먼저 보기',
+      'sample-btn':'맛보기만 할래요',
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'브랜드 사이즈는 어깨·상체·다리 라인마다 다르게 걸립니다. FITME는 구간 비율로 체형 타입과 스타일 방향을 정리해 직구·국내 쇼핑 때 원하는 핏에 더 가깝게 고르기 쉽게 도와줘요.<br>키·몸무게·허리 3가지로 바로 시작하고, 세부 치수를 더하면 핏 감이 더 또렷해져요.',
       'hero-en-priority':'해외 직구·영문 검색: 측정·핏 가이드는 <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">영문 글</a>을 먼저 올리고 있어요. 위에서 언제든 한국어로 전환할 수 있어요.',
@@ -54,8 +55,9 @@
       'story-p3':'저는 매장보다 온라인 쇼핑을 훨씬 많이 해요. 키 175·78kg · 상의 2XL(오버핏) · 허리 32 · 발 250mm — 요즘 유행도 그렇고 배 편하려고 2XL 많이 입어요. 그런데 사이즈표만 보면 “거의 맞겠지” 싶었거든요 — 사진·리뷰 보고 집에서 입어 보면 “거의 맞는데… 나한테는 아닌” 그 느낌이 반복됐어요. 예쁜 옷인데 실루엣이 안 맞는, 그 패턴요.',
       'story-p4':'트레이닝복 하나가 맞을 때까지 두세 벌은 더 사 봤고, 반품 박스는 쌓였죠. 그때 깨달았어요 — 사이즈표가 아니라 <em>어깨·다리·허리 비율</em>을 모르고 있었다는 걸요.',
       'tip-card-title':'📏 측정 전 30초만요!','tip-card-1':'줄자 없어도 OK — 스마트폰 세로 길이(약 15cm)를 자 대신 쓰세요','tip-card-2':'한 뼘(엄지~소지 끝) cm를 먼저 재두면 어깨·다리도 간단히 계산 가능해요','tip-card-3':'키·몸무게·허리 3개만 입력해도 바로 분석 시작! 나머지는 선택이에요','tip-card-btn':'알겠어요, 재러 가기 →',
-      'hanspan-tag':'✦ 가장 쉬운 방법','hanspan-headline':'지금 딱 한 번만 — 내 한 뼘 재기','hanspan-desc':'손 펼쳐서 엄지↔새끼손가락 끝 거리를 재세요. 이 하나면 줄자 없이도 어깨·허리·다리 모두 계산할 수 있어요.','hanspan-save':'저장하기',
-      'no-tape-title':'📏 줄자 없어도 측정 — 여기부터',
+      'hanspan-tag':'✦ 손으로 나머지 재기','hanspan-headline':'손 펼친 길이만 알면 돼요','hanspan-desc':'엄지 끝↔새끼 끝 거리(cm). 모르면 아래 평균값으로 시작해도 됩니다.','hanspan-save':'저장',
+      'hanspan-preset-m':'남성 평균 18cm','hanspan-preset-f':'여성 평균 16cm',
+      'no-tape-title':'줄자 없어도 OK (선택)',
       'no-tape-phone':'📱 <strong>키:</strong> 폰 세로(~15cm)를 바닥부터 머리까지 세기 → 키 입력칸에서 cm 넣기',
       'no-tape-span':'✋ <strong>어깨·다리:</strong> 부위 선택 → 뼘 수 입력 → 「cm 넣기」',
       'no-tape-three':'⚡ <strong>최소:</strong> 키·몸무게·허리만 넣어도 분석 시작',
@@ -193,7 +195,7 @@
       'blog23-title':'다리 길이 재기 — 골반뼈에서 발목까지','blog23-desc':'대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.',
       'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
       'blog26-title':'2XL 오버핏인데도 어색할 때 — 라벨 말고 비율','blog26-desc':'사이즈만 키우면 어깨·기장이 또 어긋납니다. ASOS·아마존 직구 전에 재야 할 치수(영문).',
-      'section-label':'인체 그림 또는 좌우 버튼에서 부위를 선택하세요',
+      'section-label':'👇 재보고 싶은 부위를 눌러 보세요',
       'figure-intro-1':'<strong>안내</strong> 왼쪽 실루엣이나 오른쪽 칩에서 부위를 고른 뒤 패널에 값을 입력하세요. 줄자는 살을 누르지 말고 수평·수직만 확인하며 살짝 맞추면 됩니다.',
       'figure-intro-2':'<strong>한뼘</strong>으로도 길이를 맞출 수 있어요. 엄지~검지끝 한 뼘을 cm로 재 두고 같은 간격을 세면 됩니다. 정확한 수치는 줄자로 다시 확인하세요.',
       'hud-header-sub':'측정 HUD · 라이브',
@@ -387,9 +389,11 @@
       'guides-hub-2-kicker':'WHR','guides-hub-2-title':'WHR 0.65 & 0.74: measure waist-to-hip ratio','guides-hub-2-desc':'<strong>For you if:</strong> jeans fit at the hips but gape at the waist — again and again.',
       'guides-hub-3-kicker':'Pear body','guides-hub-3-title':'Dressing a pear / fuller-hip shape','guides-hub-3-desc':'<strong>For you if:</strong> hips feel wide, waist is narrow, and pants are the hardest buy.',
       'hero-btn-guides':'Browse all fit guides →','hero-btn-calc':'Open free calculator ↓',
-      'hero-tag-calc':'FREE TOOL · NO PHOTOS',
-      'hero-headline-calc':'Enter height, weight &amp; waist.<br><em>See your ratios instantly.</em>',
-      'hero-scroll-hint-calc':'Tap a body part below to enter numbers',
+      'hero-tag-calc':'30 seconds · no photos',
+      'hero-headline-calc':'Size L but jeans still wrong?<br><em>Enter a few numbers and see why</em>',
+      'hero-positioning':'Waist, hip &amp; shoulder <em>ratios</em> show why the tag fits but the fit doesn&rsquo;t. No tape needed to start.',
+      'hero-scroll-hint-calc':'👇 Tap <strong>Height</strong> below to start',
+      'hero-btn-measure':'Try it now →',
       'hero-link-editorial':'Editorial standards','hero-link-how':'How the tool works',
       'hero-scroll-hint-guides':'Read the guides',
       'tool-intro-tag':'FREE TOOL','tool-intro-title':'Body proportion calculator','tool-intro-sub':'After reading the guides above, enter a few measurements for a private ratio breakdown — no photos, no account.',
@@ -403,7 +407,7 @@
       'guide-full-summary':'Show detailed measurement methods on this page',
       'guide-view-all':'Full measurement & style guides →',
       'hero-btn-sub':'Free · No account · Instant results',
-      'sample-btn':'👀 Try Sample Results First',
+      'sample-btn':'Just show me a sample',
       'hero-tag-old':'Know Your Body. Dress Better.',
       'hero-sub':'Brand cut sheets meet your shoulders and legs differently than they meet someone else’s. FITME maps segment ratios — shoulders, torso, leg lines — so you can filter styles for your shape, not just a letter on a tag.<br>Start with 3 quick inputs; add more measurements for sharper fit cues and styling notes.',
       'hero-en-priority':'Global shoppers: fit guides and measurement series are published in <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">English first</a> — switch language anytime above.',
@@ -426,8 +430,9 @@
       'story-p3':'I shop online more than in stores — 175 cm, 78 kg, 2XL oversize tops (trend + belly comfort), waist 32, foot 250 mm — size charts still felt “close enough.” Photos and reviews looked fine; at home it was “almost… but not on me” again. Pretty clothes, wrong silhouette.',
       'story-p4':'One tracksuit became two or three before the fit felt right; return boxes piled up. That’s when it clicked — not the size tag, but not knowing my <em>shoulder, leg, and waist ratios</em>.',
       'tip-card-title':'📏 30 seconds before you start!','tip-card-1':'No tape measure? No problem — use your phone length (~15cm) as a ruler','tip-card-2':'Measure one hand span (thumb to pinky) in cm — useful for shoulders & legs too','tip-card-3':'Just height, weight & waist = instant analysis! Everything else is optional','tip-card-btn':'Got it, let\'s measure →',
-      'hanspan-tag':'✦ Easiest Method','hanspan-headline':'Just once — measure your hand span','hanspan-desc':'Spread your hand wide: thumb tip to pinky tip. One measurement lets you estimate shoulders, waist & legs without any tools.','hanspan-save':'Save',
-      'no-tape-title':'📏 No tape measure? Start here',
+      'hanspan-tag':'✦ Measure the rest with your hand','hanspan-headline':'Your spread-hand length (cm)','hanspan-desc':'Thumb tip to pinky tip. Not sure? Start with an average below.','hanspan-save':'Save',
+      'hanspan-preset-m':'Male avg 18cm','hanspan-preset-f':'Female avg 16cm',
+      'no-tape-title':'No tape? Optional shortcut',
       'no-tape-phone':'📱 <strong>Height:</strong> stack phone upright (~15&nbsp;cm each) — enter count on the Height form',
       'no-tape-span':'✋ <strong>Shoulder / legs:</strong> pick a body part → enter span count → tap “fill cm”',
       'no-tape-three':'⚡ <strong>Minimum:</strong> height + weight + waist still starts analysis',
@@ -565,7 +570,7 @@
       'blog23-title':'Leg Length — Greater Trochanter to Ankle','blog23-desc':'Measure thigh + calf from the lateral hip bone. Includes leg-to-height ratio calculation.',
       'blog24-title':'How to Measure Hip Circumference Alone','blog24-desc':'Two hand spans from the tailbone — complete a full circuit solo. Calculate your WHR instantly.',
       'blog26-title':'2XL Oversize Wrong on Shoulders? Measure First','blog26-desc':'2XL for comfort but seams pinch? Shoulder, chest & length to check on ASOS, Amazon & DTC charts.',
-      'section-label':'Select a part on the diagram or side buttons',
+      'section-label':'👇 Tap a body part to measure',
       'figure-intro-1':'<strong>How it works</strong> Tap the silhouette or a chip on the right, then enter values in the panel. Keep the tape level and snug without digging into soft tissue.',
       'figure-intro-2':'<strong>Hand span</strong>: measure thumb tip to stretched index fingertip in cm, then count spans for longer lines. Use a tape when you need an exact number.',
       'hud-header-sub':'MEASUREMENT HUD · LIVE',
@@ -2752,7 +2757,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
     // Hero headline — calc-first / publisher static / rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) {
@@ -5361,6 +5366,21 @@
     var card = document.getElementById('measure-tip-card');
     if (card) card.classList.add('collapsed');
     try { localStorage.setItem('fitme_tip_dismissed', '1'); } catch(e) {}
+  }
+
+  function presetHanspan(cm) {
+    var input = document.getElementById('hanspan-cm-input');
+    if (!input) return;
+    input.value = cm;
+    saveHanspan();
+  }
+
+  function startMeasuring() {
+    var el = document.getElementById('analysis');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(function () {
+      if (typeof selectPart === 'function') selectPart('height');
+    }, 450);
   }
 
   function saveHanspan() {
