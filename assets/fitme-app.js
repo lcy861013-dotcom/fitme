@@ -4013,9 +4013,9 @@
   }
 
   function _applyHeadline(idx, lang) {
-    const lines = heroHeadlines[lang] || heroHeadlines.en;
     const el = document.getElementById('hero-headline-text');
-    if (!el) return;
+    if (!el || el.classList.contains('hero-poster-title')) return;
+    const lines = heroHeadlines[lang] || heroHeadlines.en;
     el.innerHTML = lines[idx % lines.length];
     _setHeadlineDots(idx % lines.length);
   }
