@@ -16,6 +16,12 @@
       'guides-hub-3-kicker':'배형','guides-hub-3-title':'골반 넓고 허리 좁을 때 코디','guides-hub-3-desc':'<strong>누구용:</strong> 하체는 큰데 허리는 좁아 바지 고르기가 제일 어려울 때',
       'hero-btn-guides':'전체 핏 가이드 보기 →','hero-btn-calc':'무료 계산기 열기 ↓',
       'hero-tag-calc':'30초면 끝 · 사진·가입 없음',
+      'hero-poster-line1':'사이즈는 맞는데',
+      'hero-poster-line2':'핏만 이상할 때',
+      'hero-poster-sub':'숫자 몇 개만 넣으면 WHR·체형·핏 이유가 바로 보여요. 줄자 없어도 시작할 수 있어요.',
+      'hero-pill-1':'📷 사진 없음','hero-pill-2':'⚡ 30초','hero-pill-3':'🆓 무료','hero-pill-4':'🔒 비공개',
+      'hero-preview-label':'샘플 결과','hero-preview-insight':'허리는 좁은데 골반이 넓어요 — 바지가 허리에서 뜨는 이유',
+      'hero-preview-score-label':'DNA','hero-preview-type':'Pear · 배형','hero-preview-whr':'WHR 0.72',
       'hero-headline-calc':'L 사이즈인데 바지가 왜 안 맞을까?<br><em>숫자 몇 개 넣고 지금 확인해 보세요</em>',
       'hero-scroll-hint-calc':'👇 아래에서 <strong>키</strong>부터 눌러 보세요',
       'hero-btn-measure':'지금 재보기 →',
@@ -390,6 +396,12 @@
       'guides-hub-3-kicker':'Pear body','guides-hub-3-title':'Dressing a pear / fuller-hip shape','guides-hub-3-desc':'<strong>For you if:</strong> hips feel wide, waist is narrow, and pants are the hardest buy.',
       'hero-btn-guides':'Browse all fit guides →','hero-btn-calc':'Open free calculator ↓',
       'hero-tag-calc':'30 seconds · no photos',
+      'hero-poster-line1':'Size tag fits but',
+      'hero-poster-line2':'the fit feels wrong',
+      'hero-poster-sub':'A few numbers show your WHR, body shape, and why clothes fit odd — no tape needed to start.',
+      'hero-pill-1':'📷 No photos','hero-pill-2':'⚡ 30 sec','hero-pill-3':'🆓 Free','hero-pill-4':'🔒 Private',
+      'hero-preview-label':'Sample result','hero-preview-insight':'Narrow waist, fuller hips — why jeans gape at the waist',
+      'hero-preview-score-label':'DNA','hero-preview-type':'Pear shape','hero-preview-whr':'WHR 0.72',
       'hero-headline-calc':'Size L but jeans still wrong?<br><em>Enter a few numbers and see why</em>',
       'hero-positioning':'Waist, hip &amp; shoulder <em>ratios</em> show why the tag fits but the fit doesn&rsquo;t. No tape needed to start.',
       'hero-scroll-hint-calc':'👇 Tap <strong>Height</strong> below to start',
@@ -2757,10 +2769,10 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','hero-preview-insight','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
     // Hero headline — calc-first / publisher static / rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
-    if (heroHl) {
+    if (heroHl && !heroHl.classList.contains('hero-poster-title')) {
       const dataKey = heroHl.getAttribute('data-i18n');
       const hlKey = dataKey || (heroHl.classList.contains('hero-headline--static') ? 'hero-headline-publisher' : 'hero-headline');
       heroHl.innerHTML = t(hlKey);
@@ -4011,7 +4023,7 @@
   function goHeadline(idx) {
     clearInterval(_hlTimer);
     const el = document.getElementById('hero-headline-text');
-    if (!el) return;
+    if (!el || el.classList.contains('hero-poster-title')) return;
     el.classList.add('fade-out');
     setTimeout(() => {
       _hlIdx = idx;
@@ -4025,7 +4037,7 @@
 
   function startHeadlineRotation() {
     const el = document.getElementById('hero-headline-text');
-    if (el && el.classList.contains('hero-headline--static')) return;
+    if (!el || el.classList.contains('hero-headline--static') || el.classList.contains('hero-poster-title')) return;
     _applyHeadline(0, currentLang);
     _hlTimer = setInterval(() => goHeadline((_hlIdx + 1) % 3), 4000);
   }

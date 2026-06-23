@@ -198,7 +198,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=26">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=27">
 </head>
 <body>
 
@@ -239,25 +239,48 @@
 <!-- ===== HOME PAGE ===== -->
 <div id="page-home" class="page active">
 
-  <!-- HERO — calculator first -->
-  <div class="hero hero--calc-first">
-    <div class="hero-social-proof">
-      <span class="sp-dot"></span>
-      <span data-i18n="hero-live-suffix">📷 No Photos · Measurements Only · 100% Private</span>
-    </div>
-    <div class="hero-tag" data-i18n="hero-tag-calc">30초면 끝 · 사진·가입 없음</div>
-    <h1 class="hero-headline hero-headline--static" id="hero-headline-text" data-i18n="hero-headline-calc">L 사이즈인데 바지가 왜 안 맞을까?<br><em>숫자 몇 개 넣고 지금 확인해 보세요</em></h1>
-    <p class="hero-positioning" data-i18n="hero-positioning">키·허리·골반 비율이면 &ldquo;나한테 왜 안 맞는지&rdquo;가 보여요. 줄자 없어도 시작할 수 있어요.</p>
-    <div class="hero-calc-bar">
-      <button type="button" class="hero-btn" onclick="startMeasuring()" data-i18n="hero-btn-measure">지금 재보기 →</button>
-      <button type="button" class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">맛보기만 할래요</button>
-      <div class="hero-trust hero-trust--inline" data-i18n-trust>
-        <span data-i18n="hero-trust1">No photos required</span>
-        <span data-i18n="hero-trust2">No signup</span>
-        <span data-i18n="hero-trust3">100% private</span>
+  <!-- HERO — poster + result preview -->
+  <div class="hero hero--poster">
+    <div class="hero-poster-glow" aria-hidden="true"></div>
+    <div class="hero-poster-inner">
+      <div class="hero-poster-copy">
+        <div class="hero-tag" data-i18n="hero-tag-calc">30초면 끝 · 사진·가입 없음</div>
+        <h1 class="hero-poster-title" id="hero-headline-text">
+          <span class="hero-poster-line" data-i18n="hero-poster-line1">사이즈는 맞는데</span>
+          <span class="hero-poster-gradient" data-i18n="hero-poster-line2">핏만 이상할 때</span>
+        </h1>
+        <p class="hero-poster-sub" data-i18n="hero-poster-sub">숫자 몇 개만 넣으면 WHR·체형·핏 이유가 바로 보여요. 줄자 없어도 시작할 수 있어요.</p>
+        <div class="hero-poster-cta">
+          <button type="button" class="hero-btn hero-btn--poster" onclick="startMeasuring()" data-i18n="hero-btn-measure">지금 재보기 →</button>
+          <button type="button" class="hero-sample-link" onclick="trySampleValues()" data-i18n="sample-btn">맛보기만 할래요</button>
+        </div>
+        <div class="hero-pill-row" aria-label="Features">
+          <span class="hero-pill" data-i18n="hero-pill-1">📷 사진 없음</span>
+          <span class="hero-pill" data-i18n="hero-pill-2">⚡ 30초</span>
+          <span class="hero-pill" data-i18n="hero-pill-3">🆓 무료</span>
+          <span class="hero-pill" data-i18n="hero-pill-4">🔒 비공개</span>
+        </div>
+      </div>
+      <div class="hero-poster-visual" aria-hidden="true">
+        <div class="hero-preview-stack">
+          <div class="hero-preview-card hero-preview-card--back">
+            <div class="hero-preview-kicker" data-i18n="hero-preview-label">샘플 결과</div>
+            <p class="hero-preview-insight" data-i18n="hero-preview-insight">허리는 좁은데 골반이 넓어요 — 바지가 허리에서 뜨는 이유</p>
+            <div class="hero-preview-bars">
+              <span style="--w:72%"></span><span style="--w:88%"></span><span style="--w:61%"></span>
+            </div>
+          </div>
+          <div class="hero-preview-card hero-preview-card--front">
+            <div class="hero-preview-score">
+              <span class="hero-preview-score-num">78</span>
+              <span class="hero-preview-score-label" data-i18n="hero-preview-score-label">DNA</span>
+            </div>
+            <div class="hero-preview-type" data-i18n="hero-preview-type">Pear · 배형</div>
+            <div class="hero-preview-metric" data-i18n="hero-preview-whr">WHR 0.72</div>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
     <div class="hero-scroll-hint" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})">
       <span data-i18n="hero-scroll-hint-calc">👇 아래에서 <strong>키</strong>부터 눌러 보세요</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -1604,7 +1627,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=28"></script>
+<script defer src="/assets/fitme-app.js?v=30"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>
