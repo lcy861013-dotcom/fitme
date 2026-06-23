@@ -198,7 +198,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=23">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=24">
 </head>
 <body>
 
@@ -239,18 +239,500 @@
 <!-- ===== HOME PAGE ===== -->
 <div id="page-home" class="page active">
 
-  <!-- HERO — guides first, calculator second -->
-  <div class="hero hero--publisher">
+  <!-- HERO — calculator first -->
+  <div class="hero hero--calc-first">
     <div class="hero-social-proof">
       <span class="sp-dot"></span>
       <span data-i18n="hero-live-suffix">📷 No Photos · Measurements Only · 100% Private</span>
     </div>
-    <div class="hero-tag" data-i18n="hero-tag-publisher">FIT GUIDES · MEASUREMENT SCIENCE</div>
-    <h1 class="hero-headline hero-headline--static" id="hero-headline-text">Fit guides from real measurements.<br><em>Free calculator when you are ready.</em></h1>
-    <p class="hero-sub" data-i18n="hero-sub-publisher">Perfect Fit Me (FITME) publishes original articles on WHR, oversize sizing, fabric drape, and body proportions — written by solo founder Changyong Lee from real online-shopping experience. The free tool below runs in your browser when you want numbers.</p>
-    <p class="hero-en-priority" data-i18n="hero-en-priority">Global shoppers: flagship guides are in <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">English</a> — switch language anytime above.</p>
+    <div class="hero-tag" data-i18n="hero-tag-calc">FREE TOOL · NO PHOTOS</div>
+    <h1 class="hero-headline hero-headline--static" id="hero-headline-text" data-i18n="hero-headline-calc">Enter height, weight &amp; waist.<br><em>See your ratios instantly.</em></h1>
     <p class="hero-positioning" data-i18n="hero-positioning">When the size tag fits but clothes don&rsquo;t — measure shoulder, waist, and hip <em>ratios</em>, not just S/M/L.</p>
+    <div class="hero-calc-bar">
+      <button type="button" class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 Try Sample Results First</button>
+      <div class="hero-trust hero-trust--inline" data-i18n-trust>
+        <span data-i18n="hero-trust1">No photos required</span>
+        <span data-i18n="hero-trust2">No signup</span>
+        <span data-i18n="hero-trust3">100% private</span>
+      </div>
+    </div>
+    <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
+    <div class="hero-scroll-hint" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})">
+      <span data-i18n="hero-scroll-hint-calc">Tap a body part below to enter numbers</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </div>
 
+<!-- MAIN ANALYSIS -->
+  <div class="main-container" id="analysis">
+    <p id="tool-disclaimer-main" class="tool-disclaimer"></p>
+    <details class="calc-quick-guide" id="calc-quick-guide">
+      <summary class="calc-quick-guide-title" data-i18n="calc-guide-title">💡 입력 팁 (펼치기)</summary>
+      <ol class="calc-quick-guide-list">
+        <li data-i18n="calc-guide-1">키·몸무게·허리만 넣어도 시작할 수 있어요 (대략적인 결과).</li>
+        <li data-i18n="calc-guide-2">바지·핏이 문제면 <strong>골반 둘레(cm)</strong>를 꼭 추가하세요.</li>
+        <li data-i18n="calc-guide-3">허리는 좁고 엉덩이·골반이 크면 WHR과 체형(배형 등)이 나와요.</li>
+        <li data-i18n="calc-guide-4">브랜드 사이즈표 대체가 아니라, &ldquo;왜 안 맞는지&rdquo; 보는 도구예요.</li>
+      </ol>
+      <p class="calc-quick-guide-foot" data-i18n="calc-guide-link"><a href="/blog/blog8">5분 측정 가이드 (WHR·골반) →</a></p>
+    </details>
+    <div class="analysis-workspace">
+    <div class="body-section">
+      <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
+      <div class="measure-scan-stage stage body-measure-layout">
+        <div class="stage-bg" aria-hidden="true"></div>
+        <div class="stage-vignette" aria-hidden="true"></div>
+        <div class="stage-ambient" aria-hidden="true"></div>
+        <div class="stage-pillar" aria-hidden="true"></div>
+        <div class="stage-floor" aria-hidden="true"></div>
+        <div class="stage-grid" aria-hidden="true"></div>
+        <div class="stage-scan" aria-hidden="true"></div>
+        <div class="corner c-tl" aria-hidden="true"></div>
+        <div class="corner c-tr" aria-hidden="true"></div>
+        <div class="corner c-bl" aria-hidden="true"></div>
+        <div class="corner c-br" aria-hidden="true"></div>
+        <div class="stage-inner">
+          <div class="hud-header">
+            <span class="brand">PERFECT FIT ME</span>
+            <div class="hud-header-right">
+              <span class="sub" id="hud-header-sub"></span>
+            </div>
+          </div>
+          <div class="hud-body">
+        <div class="hud-measure-grid">
+          <div class="hud-row-top">
+            <button type="button" class="chip side-btn req" id="side-btn-height" onclick="selectPart('height')">
+              <div class="label"></div>
+              <div><span class="val">—</span><span class="unit">cm</span></div>
+              <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+            </button>
+          </div>
+          <div class="hud-row-main hud-row-main--tri">
+            <div class="figure-zone" id="body-figure-zone">
+              <div class="figure-media">
+                <img src="/body-measure-figure.png" alt="FITME body measurement reference" class="body-img" width="752" height="798" decoding="async" fetchpriority="high" onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='https://perfectfitme.com/body-measure-figure.png';}else{this.onerror=null;}">
+              </div>
+              <svg class="body-overlay" viewBox="0 0 752 798" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
+            <ellipse id="mark-head" class="body-mark" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
+            <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
+            <line class="body-mark-hit" data-body-part="shoulder" x1="274" y1="165" x2="484" y2="165" stroke="transparent" stroke-width="28" stroke-linecap="round" aria-hidden="true"/>
+            <ellipse id="mark-chest" class="body-mark" data-body-part="chest" tabindex="0" role="button" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-upper-arm" class="body-mark" data-body-part="upper-arm" tabindex="0" role="button" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-lower-arm" class="body-mark" data-body-part="lower-arm" tabindex="0" role="button" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-waist" class="body-mark" data-body-part="waist" tabindex="0" role="button" cx="376" cy="412" rx="74" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
+            <ellipse id="mark-hip" class="body-mark" data-body-part="hip" tabindex="0" role="button" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-upper-leg" class="body-mark" data-body-part="upper-leg" tabindex="0" role="button" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-lower-leg" class="body-mark" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-foot" class="body-mark" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+          </svg>
+              <div class="figure-intro" id="figure-intro-block" aria-live="polite">
+                <p id="figure-intro-1"></p>
+                <p id="figure-intro-2"></p>
+              </div>
+            </div>
+            <div class="chips-rail">
+              <div class="chips-column chips-column--left">
+              <button type="button" class="chip side-btn" id="side-btn-head" onclick="selectPart('head')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-chest" onclick="selectPart('chest')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              </div>
+              <div class="chips-column chips-column--right">
+              <button type="button" class="chip side-btn req" id="side-btn-weight" onclick="selectPart('weight')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">kg</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn req" id="side-btn-waist" onclick="selectPart('waist')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit"></span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-hip" onclick="selectPart('hip')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">cm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+              <button type="button" class="chip side-btn" id="side-btn-foot" onclick="selectPart('foot')">
+                <div class="label"></div>
+                <div><span class="val">—</span><span class="unit">mm</span></div>
+                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
+              </button>
+            </div>
+            </div>
+          </div>
+        </div>
+          </div>
+          <div class="hud-footer">
+            <div class="bar-cap" id="hud-footer-cap"></div>
+            <div class="track hud-track"><div id="hud-progress-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="main-panel">
+      <span class="sheet-handle"></span>
+      <button type="button" class="sheet-close" onclick="closeSheet(event)">✕</button>
+      <div class="panel-header">
+        <div class="panel-title" id="panel-title">신체 정보 입력</div>
+        <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
+        
+        
+        <div class="panel-req-hint" id="panel-req-hint">★ 키 · 몸무게 · 허리는 필수 · 나머지는 선택</div>
+      </div>
+      <div class="gender-toggle">
+        <button class="gender-btn active" id="gender-female" onclick="setGender('female')">👩 여성</button>
+        <button class="gender-btn" id="gender-male" onclick="setGender('male')">👨 남성</button>
+      </div>
+      <div class="input-area">
+        <div class="input-placeholder" id="placeholder">
+          <div style="font-size:32px; margin-bottom:12px; animation: bounce 1.5s infinite;">←</div>
+          <p id="placeholder-text">왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
+        </div>
+
+        <div class="measurement-form" id="form-height">
+          <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
+          <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-height"></div>
+          <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-weight">
+          <div class="form-title-row"><div class="form-title" id="ftitle-weight">WEIGHT / 체중</div><span class="field-badge required">REQUIRED</span></div>
+          <div class="form-desc" id="fdesc-weight">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
+          <div class="part-howto-box" data-i18n="howto-weight"></div>
+          <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('weight')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-head">
+          <div class="form-title-row"><div class="form-title" id="ftitle-head">HEAD / 머리</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-head">머리 둘레와 세로 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-head"></div>
+          <div class="input-group"><label class="input-label" id="flabel-head">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel3-head">머리 세로 길이 (cm)</label><input class="input-field" type="number" id="head-height" placeholder="23" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel2-head">모자 사이즈</label>
+            <div class="radio-group" id="radio-hat">
+              <div class="radio-btn" onclick="selectRadio('hat','S')">S</div>
+              <div class="radio-btn" onclick="selectRadio('hat','M')">M</div>
+              <div class="radio-btn" onclick="selectRadio('hat','L')">L</div>
+              <div class="radio-btn" onclick="selectRadio('hat','XL')">XL</div>
+              <div class="radio-btn" onclick="selectRadio('hat','FREE')">FREE</div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('head')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-shoulder">
+          <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-shoulder"></div>
+          <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-chest">
+          <div class="form-title-row"><div class="form-title" id="ftitle-chest">CHEST / 가슴</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-chest">가슴 둘레와 상의 사이즈를 입력하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-chest"></div>
+          <div class="input-group"><label class="input-label" id="flabel-chest">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel2-chest">상의 사이즈</label>
+            <div class="radio-group" id="radio-top">
+              <div class="radio-btn" onclick="selectRadio('top','XS')">XS</div>
+              <div class="radio-btn" onclick="selectRadio('top','S')">S</div>
+              <div class="radio-btn" onclick="selectRadio('top','M')">M</div>
+              <div class="radio-btn" onclick="selectRadio('top','L')">L</div>
+              <div class="radio-btn" onclick="selectRadio('top','XL')">XL</div>
+              <div class="radio-btn" onclick="selectRadio('top','2XL')">2XL</div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('chest')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-upper-arm">
+          <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">SHOULDER–ELBOW / 어깨~팔꿈치</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
+          <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-lower-arm">
+          <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">ELBOW–WRIST / 팔꿈치~손목</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
+          <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-waist">
+          <div class="form-title-row"><div class="form-title" id="ftitle-waist">WAIST / 허리</div><span class="field-badge required">REQUIRED</span></div>
+          <div class="form-desc" id="fdesc-waist">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
+          <div class="part-howto-box" data-i18n="howto-waist"></div>
+          <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5" min="0"></div>
+          <div id="fhint-waist" style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('waist')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-hip">
+          <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-hip"></div>
+          <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-upper-leg">
+          <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-upper-leg"></div>
+          <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-lower-leg">
+          <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-lower-leg"></div>
+          <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38" min="0"></div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
+        </div>
+
+        <div class="measurement-form" id="form-foot">
+          <div class="form-title-row"><div class="form-title" id="ftitle-foot">FOOT / 발</div><span class="field-badge optional">OPTIONAL</span></div>
+          <div class="form-desc" id="fdesc-foot">발 사이즈와 발볼을 입력하세요.</div>
+          <div class="part-howto-box" data-i18n="howto-foot"></div>
+          <div class="input-row">
+            <div class="input-group"><label class="input-label" id="flabel-foot">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255" min="0"></div>
+            <div class="input-group"><label class="input-label" id="flabel2-foot">발볼</label>
+              <div class="radio-group" id="radio-footw" style="flex-direction:column;gap:6px;">
+                <div class="radio-btn" id="footw-narrow" data-value="narrow" onclick="selectRadio('footw','narrow')">좁음</div>
+                <div class="radio-btn" id="footw-normal" data-value="normal" onclick="selectRadio('footw','normal')">보통</div>
+                <div class="radio-btn" id="footw-wide" data-value="wide" onclick="selectRadio('footw','wide')">넓음</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('foot')">저장하기</button>
+        </div>
+
+        <div class="analysis-card" id="analysis-result">
+          <div class="analysis-header">
+            <div class="form-title" id="analysis-report-title" style="color:var(--text);">분석 리포트</div>
+            <div class="share-group">
+              <button class="share-btn" onclick="copyLink()">🔗</button>
+            </div>
+          </div>
+          <!-- Plain-language fit summary (shown first) -->
+          <div id="analysis-plain-summary" class="analysis-plain-summary" hidden></div>
+          <!-- FITME DNA Score Banner -->
+          <div id="fitme-score-section"></div>
+          <!-- Top grid: body badge + radar chart -->
+          <div class="dna-top-grid">
+            <div>
+              <div id="analysis-badge"></div>
+              <p id="analysis-text" class="analysis-summary"></p>
+              <div id="analysis-tip"></div>
+            </div>
+            <div class="radar-wrap">
+              <canvas id="radar-chart" width="150" height="150"></canvas>
+              <div class="radar-label">FITME DNA</div>
+            </div>
+          </div>
+          <!-- BMI + proportion stats -->
+          <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:6px;"></p>
+          <div id="analysis-props"></div>
+          <!-- Occasion recommendations (FIRST) -->
+          <div id="analysis-occasions"></div>
+          <!-- best / worst -->
+          <div class="style-section" style="margin-top:18px;">
+            <h4 id="analysis-best-title">✨ BEST 스타일 추천</h4>
+            <div class="style-grid" id="best-styles"></div>
+            <h4 id="analysis-worst-title" style="margin-top:16px;">⚠️ 주의할 스타일</h4>
+            <div class="style-grid" id="worst-styles"></div>
+          </div>
+          <!-- 시그니처 코디 -->
+          <div id="signature-outfit-section"></div>
+          <!-- 체형 세부 분석 -->
+          <div id="detail-analysis-section"></div>
+          <!-- 복합 코디 진단 -->
+          <div id="combo-style-section"></div>
+          <!-- FITME Advanced Analysis (v1.4) -->
+          <div id="advanced-analysis-section"></div>
+          <!-- Weight goal card -->          <div id="weight-goal-section"></div>
+          <!-- Exercise prescription -->
+          <div id="exercise-prescription"></div>
+          <!-- 90-Day Roadmap -->
+          <div id="roadmap-section"></div>
+          <!-- Brand Size Finder -->
+          <div id="size-finder-section"></div>
+
+          <!-- Result satisfaction (GA4: result_feedback) -->
+          <div class="result-feedback" id="result-feedback" style="display:none;" aria-live="polite">
+            <p class="result-feedback-q" data-i18n="result-feedback-q">Was this helpful?</p>
+            <div class="result-feedback-actions">
+              <button type="button" class="result-feedback-btn" data-helpful="yes" data-i18n="result-feedback-yes">Yes, helpful</button>
+              <button type="button" class="result-feedback-btn" data-helpful="no" data-i18n="result-feedback-no">Not really</button>
+            </div>
+            <p class="result-feedback-thanks" id="result-feedback-thanks" hidden data-i18n="result-feedback-thanks">Thanks — we use this to improve FITME.</p>
+          </div>
+
+          <!-- SNS Share Section -->
+          <div class="sns-share-section" id="sns-share-section" style="display:none;">
+            <div class="sns-share-title">🔥 SHARE YOUR RESULTS</div>
+            <div class="sns-share-sub" id="sns-share-tagline" data-i18n="sns-tagline">나의 체형 분석 결과를 공유해보세요!</div>
+            <p style="font-size:12px;color:var(--muted);margin:0 0 12px;font-family:'DM Sans',sans-serif;" data-i18n="share-nudge">친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇</p>
+            <div class="sns-btn-row">
+              <button class="sns-btn kakao" onclick="snsShare('kakao')" title="카카오톡으로 공유">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.8c0 2.747 1.638 5.166 4.133 6.612L5 21l4.735-2.51C10.434 18.679 11.203 18.8 12 18.8c5.523 0 10-3.477 10-7.8S17.523 3 12 3z"/></svg>
+                <span data-i18n="sns-kakao">카카오톡</span>
+              </button>
+              <button class="sns-btn twitter" onclick="snsShare('twitter')" title="X(트위터)로 공유">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                X
+              </button>
+              <button class="sns-btn facebook" onclick="snsShare('facebook')" title="페이스북으로 공유">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </button>
+              <button class="sns-btn line" onclick="snsShare('line')" title="LINE으로 공유">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+                LINE
+              </button>
+              <button class="sns-btn copy" onclick="snsShare('copy')" title="링크 복사">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <span data-i18n="sns-copy">링크 복사</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- CHALLENGE CARD -->
+          <div class="challenge-card" id="challenge-card" style="display:none;">
+            <div class="challenge-card-icon">🏆</div>
+            <div class="challenge-card-title" id="challenge-title">What's YOUR #1 body asset?</div>
+            <div class="challenge-card-sub" id="challenge-sub">I just found mine on FITME — took 2 minutes.<br>Tag a friend and challenge them to find theirs.</div>
+            <button class="challenge-btn" onclick="challengeShare()" id="challenge-btn">→ Send the Challenge</button>
+          </div>
+
+          <p id="analysis-disclaimer" class="tool-disclaimer" style="font-size:12px;line-height:1.65;color:var(--muted);margin-top:20px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;"></p>
+
+          <!-- RELATED ARTICLES -->
+          <div id="related-articles" style="margin-top:28px; display:none;">
+            <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:14px; font-family:'DM Sans',sans-serif;" data-i18n="related-title">RELATED ARTICLES</div>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+              <a class="lang-en" href="/blog/blog3-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">Golden Ratio Body Shape: How to Dress for Your Proportions</div>
+                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
+              </a>
+              <a class="lang-en" href="/blog/blog4-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">How to Dress for Your Body Type: Complete Tops Guide</div>
+                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
+              </a>
+              <a class="lang-en" href="/blog/blog5-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">Color Coordination Rules: How to Use Color to Flatter Your Body Shape</div>
+                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
+              </a>
+              <a class="lang-ko" href="/blog/blog3" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">황금비율 체형 만들기 — 시각 보정의 원리</div>
+                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
+              </a>
+              <a class="lang-ko" href="/blog/blog4" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">체형별 상의 완전 가이드 — 네크라인·소매·기장</div>
+                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
+              </a>
+              <a class="lang-ko" href="/blog/blog11" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">왜 어떤 옷은 나에게 절대 안 맞을까?</div>
+                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-label"><span id="progress-label-text">입력 완료</span><span id="progress-text">0 / 12</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      </div>
+
+      <div class="saved-list" id="saved-list">
+        <div class="saved-list-title" id="saved-list-title">저장된 측정값</div>
+        <div id="saved-items"></div>
+      </div>
+
+      <!-- 모바일 고정 저장 버튼 -->
+      <div class="mobile-save-bar" id="mobile-save-bar">
+        <button class="btn btn-primary" id="mobile-save-btn" onclick="mobileSave()">저장하기</button>
+      </div>
+
+      <div class="panel-actions">
+        <p id="desktop-analyze-hint" data-i18n="mobile-hint" style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
+        <button id="btn-analyze" data-i18n="analyze-btn" class="btn btn-accent2" onclick="runProportionAnalysis()">🔥 신체 비율 분석하기</button>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-outline" style="flex:1;font-size:0.8rem;" onclick="editMeasurements()" data-i18n="edit-btn">✏️ 수정하기</button>
+          <button id="btn-reset" class="btn btn-outline" style="flex:1;font-size:0.8rem;color:#ff6b6b;border-color:#ff6b6b44;" onclick="resetAll()" data-i18n="reset-confirm-btn">🗑️ 전체 초기화</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- 모바일 분석하기/초기화 버튼 -->
+    <div class="mobile-analyze-bar" id="mobile-analyze-bar">
+      <div class="mobile-progress">
+        <div class="progress-label"><span id="progress-label-text-m" data-i18n="progress-label">입력 완료</span><span id="progress-text-m">0 / 12</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill-m" style="width:0%"></div></div>
+      </div>
+      <p id="mobile-analyze-hint" data-i18n="mobile-hint" style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
+      <button id="btn-analyze-mobile" data-i18n="analyze-btn" class="btn btn-accent2" onclick="runProportionAnalysis()">🔥 신체 비율 분석하기</button>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-outline" style="flex:1;font-size:0.8rem;" onclick="editMeasurements()" data-i18n="edit-btn">✏️ 수정하기</button>
+        <button class="btn btn-outline" style="flex:1;font-size:0.8rem;color:#ff6b6b;border-color:#ff6b6b44;" onclick="resetAll()" data-i18n="reset-confirm-btn">🗑️ 전체 초기화</button>
+      </div>
+    </div>
+
+    <!-- Mobile full-screen result overlay -->
+    <div class="mobile-result-overlay" id="mobile-result-overlay">
+      <div class="mobile-result-body" id="mobile-result-body"></div>
+    </div>
+
+    <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet(event)"></div>
+  </div>
+
+  
+
+  <section class="guides-hub-section" id="guides-hub-section" aria-label="Fit guides">
     <div class="guides-hub" id="guides-hub">
       <p class="guides-hub-label" data-i18n="guides-hub-label">Start here — featured guides</p>
       <div class="guides-hub-grid">
@@ -271,24 +753,18 @@
         </a>
       </div>
     </div>
-
-    <div class="hero-cta-row">
+    <div class="hero-cta-row guides-hub-cta">
       <a class="hero-btn" href="#blog-section" data-home-anchor="blog-section" data-i18n="hero-btn-guides">Browse all fit guides →</a>
-      <a class="hero-btn hero-btn--outline" href="#analysis" data-home-anchor="analysis" data-i18n="hero-btn-calc">Open free calculator ↓</a>
+      <a class="hero-btn hero-btn--outline" href="/demo-video" data-i18n="hero-demo-watch">Watch demo video →</a>
     </div>
     <p class="hero-publisher-links">
       <a href="/editorial-standards" data-i18n="hero-link-editorial">Editorial standards</a>
       <span aria-hidden="true"> · </span>
       <a href="/how-it-works" data-i18n="hero-link-how">How the tool works</a>
     </p>
+  </section>
 
-    <div class="hero-scroll-hint" onclick="document.getElementById('blog-section').scrollIntoView({behavior:'smooth'})">
-      <span data-i18n="hero-scroll-hint-guides">Read the guides</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </div>
-  </div>
-
-  <!-- STORY (founder — above tool) -->
+  <!-- STORY -->
   <section class="story-section" id="story">
     <div class="story-inner">
       <div class="story-label" data-i18n="story-label">왜 만들었나요</div>
@@ -938,532 +1414,6 @@
     </details>
   </section>
 
-<!-- FREE CALCULATOR INTRO -->
-  <section class="tool-intro" id="tool-intro">
-    <div class="tool-intro-inner">
-      <div class="section-tag" data-i18n="tool-intro-tag">FREE TOOL</div>
-      <h2 class="section-title" data-i18n="tool-intro-title">Body proportion calculator</h2>
-      <p class="tool-intro-sub" data-i18n="tool-intro-sub">After reading the guides above, enter a few measurements for a private ratio breakdown — no photos, no account.</p>
-
-      <div class="hero-privacy-strip">
-        <div class="privacy-step">
-          <span class="ps-num">1</span>
-          <span data-i18n="privacy-step1">Enter 3 Measurements</span>
-        </div>
-        <span class="ps-arrow">→</span>
-        <div class="privacy-step">
-          <span class="ps-num">2</span>
-          <span data-i18n="privacy-step2">Analyze Proportions</span>
-        </div>
-        <span class="ps-arrow">→</span>
-        <div class="privacy-step">
-          <span class="ps-num">3</span>
-          <span data-i18n="privacy-step3">Get Style Blueprint</span>
-        </div>
-      </div>
-      <p class="hero-privacy-note" data-i18n="hero-privacy-note">No selfies · No uploads · Your data never leaves this page</p>
-
-      <div class="hero-trust" data-i18n-trust>
-        <span data-i18n="hero-trust1">No photos required</span>
-        <span data-i18n="hero-trust2">No signup</span>
-        <span data-i18n="hero-trust3">100% private</span>
-      </div>
-      <div class="tool-intro-actions">
-        <button type="button" class="hero-btn" onclick="document.getElementById('analysis').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn">Start Precision Analysis →</button>
-        <button type="button" class="hero-sample-btn" onclick="trySampleValues()" data-i18n="sample-btn">👀 Try Sample Results First</button>
-      </div>
-      <p class="hero-btn-sub" data-i18n="hero-btn-sub">Free · No account · Instant results</p>
-      <div class="hero-demo-wrap">
-        <div class="hero-demo-label" id="hero-demo-label" data-i18n="hero-demo-label">SAMPLE RESULT</div>
-        <div class="hero-demo-frame">
-          <video id="hero-demo-video" src="/demo-v2.mp4" width="1280" height="720" muted loop playsinline preload="metadata" poster="/assets/og-image-en.png"></video>
-          <script>
-          (function(){try{var s=localStorage.getItem('fitme_lang')==='ko'?'/demo-ko-v2.mp4':'/demo-v2.mp4';var v=document.getElementById('hero-demo-video');if(v)v.setAttribute('src',s);}catch(e){}})();
-          </script>
-          <button type="button" id="hero-demo-play" class="hero-demo-play" aria-describedby="hero-demo-label">
-            <span class="hero-demo-play-icon" aria-hidden="true">▶</span>
-            <span data-i18n="hero-demo-play">Play demo video</span>
-          </button>
-        </div>
-        <p class="hero-demo-watch"><a href="/demo-video" data-i18n="hero-demo-watch">Watch on dedicated video page →</a></p>
-      </div>
-      <div class="hero-badges">
-        <div class="hero-badge"><span data-i18n="hero-badge1">📷 No Photos Required</span></div>
-        <div class="hero-badge"><span data-i18n="hero-badge2">📏 3 Measurements Only</span></div>
-        <div class="hero-badge"><span data-i18n="hero-badge3">🌍 15 Languages</span></div>
-        <div class="hero-badge"><span data-i18n="hero-badge4">🔒 Zero Data Stored</span></div>
-      </div>
-    </div>
-  </section>
-
-<!-- MAIN ANALYSIS -->
-  <div class="main-container" id="analysis">
-    <p id="tool-disclaimer-main" class="tool-disclaimer"></p>
-    <div class="calc-quick-guide" id="calc-quick-guide">
-      <p class="calc-quick-guide-title" data-i18n="calc-guide-title">시작 전 30초만 읽어주세요</p>
-      <ol class="calc-quick-guide-list">
-        <li data-i18n="calc-guide-1">키·몸무게·허리만 넣어도 시작할 수 있어요 (대략적인 결과).</li>
-        <li data-i18n="calc-guide-2">바지·핏이 문제면 <strong>골반 둘레(cm)</strong>를 꼭 추가하세요.</li>
-        <li data-i18n="calc-guide-3">허리는 좁고 엉덩이·골반이 크면 WHR과 체형(배형 등)이 나와요.</li>
-        <li data-i18n="calc-guide-4">브랜드 사이즈표 대체가 아니라, &ldquo;왜 안 맞는지&rdquo; 보는 도구예요.</li>
-      </ol>
-      <p class="calc-quick-guide-foot" data-i18n="calc-guide-link"><a href="/blog/blog8">5분 측정 가이드 (WHR·골반) →</a></p>
-    </div>
-    <div class="analysis-workspace">
-    <div class="body-section">
-      <div class="section-label" data-i18n="section-label">부위를 클릭하여 측정값을 입력하세요</div>
-      <div class="measure-scan-stage stage body-measure-layout">
-        <div class="stage-bg" aria-hidden="true"></div>
-        <div class="stage-vignette" aria-hidden="true"></div>
-        <div class="stage-ambient" aria-hidden="true"></div>
-        <div class="stage-pillar" aria-hidden="true"></div>
-        <div class="stage-floor" aria-hidden="true"></div>
-        <div class="stage-grid" aria-hidden="true"></div>
-        <div class="stage-scan" aria-hidden="true"></div>
-        <div class="corner c-tl" aria-hidden="true"></div>
-        <div class="corner c-tr" aria-hidden="true"></div>
-        <div class="corner c-bl" aria-hidden="true"></div>
-        <div class="corner c-br" aria-hidden="true"></div>
-        <div class="stage-inner">
-          <div class="hud-header">
-            <span class="brand">PERFECT FIT ME</span>
-            <div class="hud-header-right">
-              <span class="sub" id="hud-header-sub"></span>
-            </div>
-          </div>
-          <div class="hud-body">
-        <div class="hud-measure-grid">
-          <div class="hud-row-top">
-            <button type="button" class="chip side-btn req" id="side-btn-height" onclick="selectPart('height')">
-              <div class="label"></div>
-              <div><span class="val">—</span><span class="unit">cm</span></div>
-              <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-            </button>
-          </div>
-          <div class="hud-row-main hud-row-main--tri">
-            <div class="figure-zone" id="body-figure-zone">
-              <div class="figure-media">
-                <img src="/body-measure-figure.png" alt="FITME body measurement reference" class="body-img" width="752" height="798" decoding="async" fetchpriority="high" onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='https://perfectfitme.com/body-measure-figure.png';}else{this.onerror=null;}">
-              </div>
-              <svg class="body-overlay" viewBox="0 0 752 798" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
-            <ellipse id="mark-head" class="body-mark" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
-            <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
-            <line class="body-mark-hit" data-body-part="shoulder" x1="274" y1="165" x2="484" y2="165" stroke="transparent" stroke-width="28" stroke-linecap="round" aria-hidden="true"/>
-            <ellipse id="mark-chest" class="body-mark" data-body-part="chest" tabindex="0" role="button" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-upper-arm" class="body-mark" data-body-part="upper-arm" tabindex="0" role="button" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-lower-arm" class="body-mark" data-body-part="lower-arm" tabindex="0" role="button" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <ellipse id="mark-waist" class="body-mark" data-body-part="waist" tabindex="0" role="button" cx="376" cy="412" rx="74" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
-            <ellipse id="mark-hip" class="body-mark" data-body-part="hip" tabindex="0" role="button" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-upper-leg" class="body-mark" data-body-part="upper-leg" tabindex="0" role="button" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-lower-leg" class="body-mark" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <ellipse id="mark-foot" class="body-mark" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-          </svg>
-              <div class="figure-intro" id="figure-intro-block" aria-live="polite">
-                <p id="figure-intro-1"></p>
-                <p id="figure-intro-2"></p>
-              </div>
-            </div>
-            <div class="chips-rail">
-              <div class="chips-column chips-column--left">
-              <button type="button" class="chip side-btn" id="side-btn-head" onclick="selectPart('head')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-chest" onclick="selectPart('chest')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              </div>
-              <div class="chips-column chips-column--right">
-              <button type="button" class="chip side-btn req" id="side-btn-weight" onclick="selectPart('weight')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">kg</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn req" id="side-btn-waist" onclick="selectPart('waist')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit"></span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-hip" onclick="selectPart('hip')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">cm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-              <button type="button" class="chip side-btn" id="side-btn-foot" onclick="selectPart('foot')">
-                <div class="label"></div>
-                <div><span class="val">—</span><span class="unit">mm</span></div>
-                <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
-              </button>
-            </div>
-            </div>
-          </div>
-        </div>
-          </div>
-          <div class="hud-footer">
-            <div class="bar-cap" id="hud-footer-cap"></div>
-            <div class="track hud-track"><div id="hud-progress-fill" style="width:0%"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel" id="main-panel">
-      <span class="sheet-handle"></span>
-      <button type="button" class="sheet-close" onclick="closeSheet(event)">✕</button>
-      <div class="panel-header">
-        <div class="panel-title" id="panel-title">신체 정보 입력</div>
-        <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
-        
-        
-        <div class="panel-req-hint" id="panel-req-hint">★ 키 · 몸무게 · 허리는 필수 · 나머지는 선택</div>
-      </div>
-      <div class="gender-toggle">
-        <button class="gender-btn active" id="gender-female" onclick="setGender('female')">👩 여성</button>
-        <button class="gender-btn" id="gender-male" onclick="setGender('male')">👨 남성</button>
-      </div>
-      <div class="input-area">
-        <div class="input-placeholder" id="placeholder">
-          <div style="font-size:32px; margin-bottom:12px; animation: bounce 1.5s infinite;">←</div>
-          <p id="placeholder-text">왼쪽 인체 도형에서<br>부위를 클릭해 주세요</p>
-        </div>
-
-        <div class="measurement-form" id="form-height">
-          <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
-          <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-height"></div>
-          <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-weight">
-          <div class="form-title-row"><div class="form-title" id="ftitle-weight">WEIGHT / 체중</div><span class="field-badge required">REQUIRED</span></div>
-          <div class="form-desc" id="fdesc-weight">체중을 입력하세요. BMI 분석에 활용됩니다.</div>
-          <div class="part-howto-box" data-i18n="howto-weight"></div>
-          <div class="input-group"><label class="input-label" id="flabel-weight">체중 (kg)</label><input class="input-field" type="number" id="input-weight" placeholder="68" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('weight')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-head">
-          <div class="form-title-row"><div class="form-title" id="ftitle-head">HEAD / 머리</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-head">머리 둘레와 세로 길이를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-head"></div>
-          <div class="input-group"><label class="input-label" id="flabel-head">머리 둘레 (cm)</label><input class="input-field" type="number" id="head-circ" placeholder="57" min="0"></div>
-          <div class="input-group"><label class="input-label" id="flabel3-head">머리 세로 길이 (cm)</label><input class="input-field" type="number" id="head-height" placeholder="23" min="0"></div>
-          <div class="input-group"><label class="input-label" id="flabel2-head">모자 사이즈</label>
-            <div class="radio-group" id="radio-hat">
-              <div class="radio-btn" onclick="selectRadio('hat','S')">S</div>
-              <div class="radio-btn" onclick="selectRadio('hat','M')">M</div>
-              <div class="radio-btn" onclick="selectRadio('hat','L')">L</div>
-              <div class="radio-btn" onclick="selectRadio('hat','XL')">XL</div>
-              <div class="radio-btn" onclick="selectRadio('hat','FREE')">FREE</div>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('head')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-shoulder">
-          <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-shoulder"></div>
-          <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-chest">
-          <div class="form-title-row"><div class="form-title" id="ftitle-chest">CHEST / 가슴</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-chest">가슴 둘레와 상의 사이즈를 입력하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-chest"></div>
-          <div class="input-group"><label class="input-label" id="flabel-chest">가슴 둘레 (cm)</label><input class="input-field" type="number" id="chest-circ" placeholder="95" min="0"></div>
-          <div class="input-group"><label class="input-label" id="flabel2-chest">상의 사이즈</label>
-            <div class="radio-group" id="radio-top">
-              <div class="radio-btn" onclick="selectRadio('top','XS')">XS</div>
-              <div class="radio-btn" onclick="selectRadio('top','S')">S</div>
-              <div class="radio-btn" onclick="selectRadio('top','M')">M</div>
-              <div class="radio-btn" onclick="selectRadio('top','L')">L</div>
-              <div class="radio-btn" onclick="selectRadio('top','XL')">XL</div>
-              <div class="radio-btn" onclick="selectRadio('top','2XL')">2XL</div>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('chest')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-upper-arm">
-          <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">SHOULDER–ELBOW / 어깨~팔꿈치</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
-          <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-lower-arm">
-          <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">ELBOW–WRIST / 팔꿈치~손목</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
-          <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-waist">
-          <div class="form-title-row"><div class="form-title" id="ftitle-waist">WAIST / 허리</div><span class="field-badge required">REQUIRED</span></div>
-          <div class="form-desc" id="fdesc-waist">청바지·팬츠 구매 시 사용하는 허리 사이즈(인치)를 입력하세요. (예: 28, 30, 32)</div>
-          <div class="part-howto-box" data-i18n="howto-waist"></div>
-          <div class="input-group"><label class="input-label" id="flabel-waist">허리 사이즈 (inch)</label><input class="input-field" type="number" id="waist-circ" placeholder="30" step="0.5" min="0"></div>
-          <div id="fhint-waist" style="font-size:11px; color:var(--muted); margin-top:-6px; margin-bottom:8px;">※ 모르면 허리 둘레(cm) ÷ 2.54</div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('waist')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-hip">
-          <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-hip"></div>
-          <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-upper-leg">
-          <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-upper-leg"></div>
-          <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42" min="0"></div>
-          <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-lower-leg">
-          <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-lower-leg"></div>
-          <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38" min="0"></div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
-        </div>
-
-        <div class="measurement-form" id="form-foot">
-          <div class="form-title-row"><div class="form-title" id="ftitle-foot">FOOT / 발</div><span class="field-badge optional">OPTIONAL</span></div>
-          <div class="form-desc" id="fdesc-foot">발 사이즈와 발볼을 입력하세요.</div>
-          <div class="part-howto-box" data-i18n="howto-foot"></div>
-          <div class="input-row">
-            <div class="input-group"><label class="input-label" id="flabel-foot">발 사이즈 (mm)</label><input class="input-field" type="number" id="foot-size" placeholder="255" min="0"></div>
-            <div class="input-group"><label class="input-label" id="flabel2-foot">발볼</label>
-              <div class="radio-group" id="radio-footw" style="flex-direction:column;gap:6px;">
-                <div class="radio-btn" id="footw-narrow" data-value="narrow" onclick="selectRadio('footw','narrow')">좁음</div>
-                <div class="radio-btn" id="footw-normal" data-value="normal" onclick="selectRadio('footw','normal')">보통</div>
-                <div class="radio-btn" id="footw-wide" data-value="wide" onclick="selectRadio('footw','wide')">넓음</div>
-              </div>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('foot')">저장하기</button>
-        </div>
-
-        <div class="analysis-card" id="analysis-result">
-          <div class="analysis-header">
-            <div class="form-title" id="analysis-report-title" style="color:var(--text);">분석 리포트</div>
-            <div class="share-group">
-              <button class="share-btn" onclick="copyLink()">🔗</button>
-            </div>
-          </div>
-          <!-- Plain-language fit summary (shown first) -->
-          <div id="analysis-plain-summary" class="analysis-plain-summary" hidden></div>
-          <!-- FITME DNA Score Banner -->
-          <div id="fitme-score-section"></div>
-          <!-- Top grid: body badge + radar chart -->
-          <div class="dna-top-grid">
-            <div>
-              <div id="analysis-badge"></div>
-              <p id="analysis-text" class="analysis-summary"></p>
-              <div id="analysis-tip"></div>
-            </div>
-            <div class="radar-wrap">
-              <canvas id="radar-chart" width="150" height="150"></canvas>
-              <div class="radar-label">FITME DNA</div>
-            </div>
-          </div>
-          <!-- BMI + proportion stats -->
-          <p id="bmi-text" style="font-size:12px; color:var(--muted); margin-bottom:6px;"></p>
-          <div id="analysis-props"></div>
-          <!-- Occasion recommendations (FIRST) -->
-          <div id="analysis-occasions"></div>
-          <!-- best / worst -->
-          <div class="style-section" style="margin-top:18px;">
-            <h4 id="analysis-best-title">✨ BEST 스타일 추천</h4>
-            <div class="style-grid" id="best-styles"></div>
-            <h4 id="analysis-worst-title" style="margin-top:16px;">⚠️ 주의할 스타일</h4>
-            <div class="style-grid" id="worst-styles"></div>
-          </div>
-          <!-- 시그니처 코디 -->
-          <div id="signature-outfit-section"></div>
-          <!-- 체형 세부 분석 -->
-          <div id="detail-analysis-section"></div>
-          <!-- 복합 코디 진단 -->
-          <div id="combo-style-section"></div>
-          <!-- FITME Advanced Analysis (v1.4) -->
-          <div id="advanced-analysis-section"></div>
-          <!-- Weight goal card -->          <div id="weight-goal-section"></div>
-          <!-- Exercise prescription -->
-          <div id="exercise-prescription"></div>
-          <!-- 90-Day Roadmap -->
-          <div id="roadmap-section"></div>
-          <!-- Brand Size Finder -->
-          <div id="size-finder-section"></div>
-
-          <!-- Result satisfaction (GA4: result_feedback) -->
-          <div class="result-feedback" id="result-feedback" style="display:none;" aria-live="polite">
-            <p class="result-feedback-q" data-i18n="result-feedback-q">Was this helpful?</p>
-            <div class="result-feedback-actions">
-              <button type="button" class="result-feedback-btn" data-helpful="yes" data-i18n="result-feedback-yes">Yes, helpful</button>
-              <button type="button" class="result-feedback-btn" data-helpful="no" data-i18n="result-feedback-no">Not really</button>
-            </div>
-            <p class="result-feedback-thanks" id="result-feedback-thanks" hidden data-i18n="result-feedback-thanks">Thanks — we use this to improve FITME.</p>
-          </div>
-
-          <!-- SNS Share Section -->
-          <div class="sns-share-section" id="sns-share-section" style="display:none;">
-            <div class="sns-share-title">🔥 SHARE YOUR RESULTS</div>
-            <div class="sns-share-sub" id="sns-share-tagline" data-i18n="sns-tagline">나의 체형 분석 결과를 공유해보세요!</div>
-            <p style="font-size:12px;color:var(--muted);margin:0 0 12px;font-family:'DM Sans',sans-serif;" data-i18n="share-nudge">친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇</p>
-            <div class="sns-btn-row">
-              <button class="sns-btn kakao" onclick="snsShare('kakao')" title="카카오톡으로 공유">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.8c0 2.747 1.638 5.166 4.133 6.612L5 21l4.735-2.51C10.434 18.679 11.203 18.8 12 18.8c5.523 0 10-3.477 10-7.8S17.523 3 12 3z"/></svg>
-                <span data-i18n="sns-kakao">카카오톡</span>
-              </button>
-              <button class="sns-btn twitter" onclick="snsShare('twitter')" title="X(트위터)로 공유">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                X
-              </button>
-              <button class="sns-btn facebook" onclick="snsShare('facebook')" title="페이스북으로 공유">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                Facebook
-              </button>
-              <button class="sns-btn line" onclick="snsShare('line')" title="LINE으로 공유">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-                LINE
-              </button>
-              <button class="sns-btn copy" onclick="snsShare('copy')" title="링크 복사">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                <span data-i18n="sns-copy">링크 복사</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- CHALLENGE CARD -->
-          <div class="challenge-card" id="challenge-card" style="display:none;">
-            <div class="challenge-card-icon">🏆</div>
-            <div class="challenge-card-title" id="challenge-title">What's YOUR #1 body asset?</div>
-            <div class="challenge-card-sub" id="challenge-sub">I just found mine on FITME — took 2 minutes.<br>Tag a friend and challenge them to find theirs.</div>
-            <button class="challenge-btn" onclick="challengeShare()" id="challenge-btn">→ Send the Challenge</button>
-          </div>
-
-          <p id="analysis-disclaimer" class="tool-disclaimer" style="font-size:12px;line-height:1.65;color:var(--muted);margin-top:20px;padding:12px 14px;border:1px solid var(--border);border-radius:8px;"></p>
-
-          <!-- RELATED ARTICLES -->
-          <div id="related-articles" style="margin-top:28px; display:none;">
-            <div style="font-size:11px; letter-spacing:3px; color:var(--accent); text-transform:uppercase; margin-bottom:14px; font-family:'DM Sans',sans-serif;" data-i18n="related-title">RELATED ARTICLES</div>
-            <div style="display:flex; flex-direction:column; gap:10px;">
-              <a class="lang-en" href="/blog/blog3-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">Golden Ratio Body Shape: How to Dress for Your Proportions</div>
-                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
-              </a>
-              <a class="lang-en" href="/blog/blog4-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">How to Dress for Your Body Type: Complete Tops Guide</div>
-                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
-              </a>
-              <a class="lang-en" href="/blog/blog5-en" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">Color Coordination Rules: How to Use Color to Flatter Your Body Shape</div>
-                <div style="font-size:11px; color:var(--muted);">FITME Blog →</div>
-              </a>
-              <a class="lang-ko" href="/blog/blog3" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">황금비율 체형 만들기 — 시각 보정의 원리</div>
-                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
-              </a>
-              <a class="lang-ko" href="/blog/blog4" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">체형별 상의 완전 가이드 — 네크라인·소매·기장</div>
-                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
-              </a>
-              <a class="lang-ko" href="/blog/blog11" style="display:block; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:14px 16px; text-decoration:none; transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(212,168,75,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:4px;">왜 어떤 옷은 나에게 절대 안 맞을까?</div>
-                <div style="font-size:11px; color:var(--muted);">FITME 블로그 →</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="progress-bar">
-        <div class="progress-label"><span id="progress-label-text">입력 완료</span><span id="progress-text">0 / 12</span></div>
-        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-      </div>
-
-      <div class="saved-list" id="saved-list">
-        <div class="saved-list-title" id="saved-list-title">저장된 측정값</div>
-        <div id="saved-items"></div>
-      </div>
-
-      <!-- 모바일 고정 저장 버튼 -->
-      <div class="mobile-save-bar" id="mobile-save-bar">
-        <button class="btn btn-primary" id="mobile-save-btn" onclick="mobileSave()">저장하기</button>
-      </div>
-
-      <div class="panel-actions">
-        <p id="desktop-analyze-hint" data-i18n="mobile-hint" style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
-        <button id="btn-analyze" data-i18n="analyze-btn" class="btn btn-accent2" onclick="runProportionAnalysis()">🔥 신체 비율 분석하기</button>
-        <div style="display:flex;gap:8px;">
-          <button class="btn btn-outline" style="flex:1;font-size:0.8rem;" onclick="editMeasurements()" data-i18n="edit-btn">✏️ 수정하기</button>
-          <button id="btn-reset" class="btn btn-outline" style="flex:1;font-size:0.8rem;color:#ff6b6b;border-color:#ff6b6b44;" onclick="resetAll()" data-i18n="reset-confirm-btn">🗑️ 전체 초기화</button>
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <!-- 모바일 분석하기/초기화 버튼 -->
-    <div class="mobile-analyze-bar" id="mobile-analyze-bar">
-      <div class="mobile-progress">
-        <div class="progress-label"><span id="progress-label-text-m" data-i18n="progress-label">입력 완료</span><span id="progress-text-m">0 / 12</span></div>
-        <div class="progress-track"><div class="progress-fill" id="progress-fill-m" style="width:0%"></div></div>
-      </div>
-      <p id="mobile-analyze-hint" data-i18n="mobile-hint" style="text-align:center;font-size:0.82rem;color:#a0aec0;margin:0 0 6px;">키 · 몸무게 · 허리만 입력해도 분석 가능!</p>
-      <button id="btn-analyze-mobile" data-i18n="analyze-btn" class="btn btn-accent2" onclick="runProportionAnalysis()">🔥 신체 비율 분석하기</button>
-      <div style="display:flex;gap:8px;">
-        <button class="btn btn-outline" style="flex:1;font-size:0.8rem;" onclick="editMeasurements()" data-i18n="edit-btn">✏️ 수정하기</button>
-        <button class="btn btn-outline" style="flex:1;font-size:0.8rem;color:#ff6b6b;border-color:#ff6b6b44;" onclick="resetAll()" data-i18n="reset-confirm-btn">🗑️ 전체 초기화</button>
-      </div>
-    </div>
-
-    <!-- Mobile full-screen result overlay -->
-    <div class="mobile-result-overlay" id="mobile-result-overlay">
-      <div class="mobile-result-body" id="mobile-result-body"></div>
-    </div>
-
-    <div class="sheet-backdrop" id="sheet-backdrop" onclick="closeSheet(event)"></div>
-  </div>
-
-  
   <div class="fitme-ad-slot" hidden aria-hidden="true">
     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6377720400458954" data-ad-format="auto" data-full-width-responsive="true"></ins>
   </div>
@@ -1558,7 +1508,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=25"></script>
+<script defer src="/assets/fitme-app.js?v=26"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

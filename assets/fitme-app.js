@@ -15,6 +15,9 @@
       'guides-hub-2-kicker':'WHR','guides-hub-2-title':'허리-골반 비율(WHR) 측정법','guides-hub-2-desc':'<strong>누구용:</strong> 엉덩이는 맞는데 허리만 헐렁한 바지가 반복될 때',
       'guides-hub-3-kicker':'배형','guides-hub-3-title':'골반 넓고 허리 좁을 때 코디','guides-hub-3-desc':'<strong>누구용:</strong> 하체는 큰데 허리는 좁아 바지 고르기가 제일 어려울 때',
       'hero-btn-guides':'전체 핏 가이드 보기 →','hero-btn-calc':'무료 계산기 열기 ↓',
+      'hero-tag-calc':'무료 도구 · 사진 없음',
+      'hero-headline-calc':'키·몸무게·허리 넣고<br><em>바로 비율 분석</em>',
+      'hero-scroll-hint-calc':'아래에서 부위를 눌러 숫자 입력',
       'hero-link-editorial':'편집 기준','hero-link-how':'도구 작동 방식',
       'hero-scroll-hint-guides':'가이드 읽기',
       'tool-intro-tag':'무료 도구','tool-intro-title':'체형 비율 계산기','tool-intro-sub':'위 가이드를 읽은 뒤, 몇 가지 치수만 입력하면 비공개 비율 분석을 받을 수 있어요 — 사진·가입 불필요.',
@@ -185,7 +188,7 @@
       'analysis-report-title':'분석 리포트','analysis-best':'✨ BEST 스타일 추천','analysis-worst':'⚠️ 주의할 스타일',
       'combo-analysis-title':'✨ 복합 코디 진단','combo-analysis-hint':'맞는 조합이 여러 개일 때는 우선순위가 높은 순으로 보여 드려요. 나머지는 아래에서 펼쳐 보실 수 있어요.','combo-analysis-more':'그 외 조합 {n}개 더 보기',
       'tool-disclaimer':'<strong>면책:</strong> 결과는 스타일 안내용 추정치입니다. 의료 진단·3D 체형 스캔·전문 재단 치수가 아닙니다. <span style="opacity:0.9">*입력된 수치 기반의 통계적 분석 결과입니다.</span>',
-      'calc-guide-title':'시작 전 30초만 읽어주세요',
+      'calc-guide-title':'💡 입력 팁 (펼치기)',
       'calc-guide-1':'키·몸무게·허리만 넣어도 시작할 수 있어요 (대략적인 결과).',
       'calc-guide-2':'바지·핏이 문제면 <strong>골반 둘레(cm)</strong>를 꼭 추가하세요.',
       'calc-guide-3':'허리는 좁고 엉덩이·골반이 크면 WHR과 체형(배형 등)이 나와요.',
@@ -365,6 +368,9 @@
       'guides-hub-2-kicker':'WHR','guides-hub-2-title':'WHR 0.65 & 0.74: measure waist-to-hip ratio','guides-hub-2-desc':'<strong>For you if:</strong> jeans fit at the hips but gape at the waist — again and again.',
       'guides-hub-3-kicker':'Pear body','guides-hub-3-title':'Dressing a pear / fuller-hip shape','guides-hub-3-desc':'<strong>For you if:</strong> hips feel wide, waist is narrow, and pants are the hardest buy.',
       'hero-btn-guides':'Browse all fit guides →','hero-btn-calc':'Open free calculator ↓',
+      'hero-tag-calc':'FREE TOOL · NO PHOTOS',
+      'hero-headline-calc':'Enter height, weight &amp; waist.<br><em>See your ratios instantly.</em>',
+      'hero-scroll-hint-calc':'Tap a body part below to enter numbers',
       'hero-link-editorial':'Editorial standards','hero-link-how':'How the tool works',
       'hero-scroll-hint-guides':'Read the guides',
       'tool-intro-tag':'FREE TOOL','tool-intro-title':'Body proportion calculator','tool-intro-sub':'After reading the guides above, enter a few measurements for a private ratio breakdown — no photos, no account.',
@@ -535,7 +541,7 @@
       'analysis-report-title':'Analysis Report','analysis-best':'✨ BEST Style Picks','analysis-worst':'⚠️ Styles to Avoid',
       'combo-analysis-title':'✨ Style Combo Analysis','combo-analysis-hint':'When several combos match your measurements, we show the most relevant ones first. Expand below for the rest.','combo-analysis-more':'Show {n} more combo(s)',
       'tool-disclaimer':'<strong>Disclaimer:</strong> Results are estimates for style guidance only. Not a medical diagnosis, 3D body scan, or professional tailor measurement. <span style="opacity:0.9">*Statistical analysis based on entered measurements.</span>',
-      'calc-guide-title':'Read this first (30 seconds)',
+      'calc-guide-title':'💡 Input tips (expand)',
       'calc-guide-1':'Height, weight, and waist are enough to start (rough result).',
       'calc-guide-2':'Pants fit issues? Add <strong>hip circumference (cm)</strong>.',
       'calc-guide-3':'Narrow waist + fuller hips → WHR and body shape (e.g. pear) appear.',
@@ -2708,11 +2714,12 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc']);
-    // Hero headline — static publisher layout vs rotating carousel
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc']);
+    // Hero headline — calc-first / publisher static / rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl) {
-      const hlKey = heroHl.classList.contains('hero-headline--static') ? 'hero-headline-publisher' : 'hero-headline';
+      const dataKey = heroHl.getAttribute('data-i18n');
+      const hlKey = dataKey || (heroHl.classList.contains('hero-headline--static') ? 'hero-headline-publisher' : 'hero-headline');
       heroHl.innerHTML = t(hlKey);
     }
     document.querySelectorAll('[data-i18n]').forEach(el => {
