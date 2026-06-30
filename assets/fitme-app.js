@@ -25,6 +25,9 @@
       'hero-headline-calc':'L 사이즈인데 바지가 왜 안 맞을까?<br><em>숫자 몇 개 넣고 지금 확인해 보세요</em>',
       'hero-scroll-hint-calc':'👇 아래에서 <strong>키</strong>부터 눌러 보세요',
       'hero-btn-measure':'비율부터 확인 →',
+      'result-next-hip':'골반 넣고 WHR 보기 →',
+      'result-next-shoulder':'어깨 넣고 체형 보기 →',
+      'result-next-waist':'허리 넣고 분석하기 →',
       'hero-link-editorial':'편집 기준','hero-link-how':'도구 작동 방식',
       'hero-scroll-hint-guides':'가이드 읽기',
       'tool-intro-tag':'무료 도구','tool-intro-title':'체형 비율 계산기','tool-intro-sub':'위 가이드를 읽은 뒤, 몇 가지 치수만 입력하면 비공개 비율 분석을 받을 수 있어요 — 사진·가입 불필요.',
@@ -250,7 +253,7 @@
       'body-inv':'어깨가 골반보다 넓어 상체가 강조되는 **역삼각형(Inverted Triangle)** 체형입니다. (WHR: {r})',
       'body-rect':'상/하체의 너비 차이가 적고 직선적인 실루엣의 **일자형(Rectangle)** 체형입니다. (WHR: {r})',
       'body-apple':'복부와 허리 주변에 볼륨감이 집중된 **타원형/사과형(Apple)** 체형입니다. (WHR: {r})',
-      'body-default':'더 많은 측정값을 입력하면 더 정밀한 분석이 가능합니다.',
+      'body-default':'골반·어깨 넣으면 체형·WHR이 정확해져요.',
       'best-hourglass':['허리 라인을 강조하는 랩 원피스','벨티드 코트 및 재킷','바디라인을 살리는 피티드 상의','하이웨이스트 와이드 팬츠','펜슬 스커트'],
       'worst-hourglass':['허리선이 없는 박시한 원피스','지나치게 두꺼운 레이어드','전신 오버사이즈 룩'],
       'best-pear':['어깨 패드가 있는 재킷','보트넥 및 스퀘어넥 상의','밝은 색상이나 패턴이 있는 상의','어두운 톤의 스트레이트 팬츠','A라인 스커트'],
@@ -363,7 +366,7 @@
       'occasion-casual':'👕 위켄드 겟어웨이 (Relaxed & Sophisticated)',
       'outfit-why-label':'비율 기반 분석',
       'prop-leg':'다리 길이 비율 (Vertical)','prop-whr':'허리-엉덩이 비율 (WHR)','prop-shoulder':'상-하체 밸런스 (Horizontal)',
-      'body-type-hourglass':'모래시계형 체형','body-type-pear':'삼각형(배형) 체형','body-type-inv':'역삼각형 체형','body-type-rect':'일자형 체형','body-type-apple':'타원형(사과형) 체형','body-type-def':'체형 분석 중',
+      'body-type-hourglass':'모래시계형 체형','body-type-pear':'삼각형(배형) 체형','body-type-inv':'역삼각형 체형','body-type-rect':'일자형 체형','body-type-apple':'타원형(사과형) 체형','body-type-def':'기본 분석 완료',
       'body-strength-hourglass':'균형 잡힌 실루엣이 특징인 이상적인 체형입니다. 자연스러운 라인을 살리는 것이 핵심입니다.',
       'body-strength-pear':'안정감 있는 하체 라인과 슬림한 상체가 매력인 체형입니다. 상체에 시각적 포인트를 주어 밸런스를 맞추세요.',
       'body-strength-inv':'세련되고 도회적인 무드의 넓은 어깨가 특징입니다. 하체에 볼륨을 더해 드라마틱한 X라인을 완성할 수 있습니다.',
@@ -406,6 +409,9 @@
       'hero-positioning':'Waist, hip &amp; shoulder <em>ratios</em> show why the tag fits but the fit doesn&rsquo;t. No tape needed to start.',
       'hero-scroll-hint-calc':'👇 Tap <strong>Height</strong> below to start',
       'hero-btn-measure':'Check my ratios →',
+      'result-next-hip':'Add hips for WHR →',
+      'result-next-shoulder':'Add shoulders for shape →',
+      'result-next-waist':'Add waist to analyze →',
       'hero-link-editorial':'Editorial standards','hero-link-how':'How the tool works',
       'hero-scroll-hint-guides':'Read the guides',
       'tool-intro-tag':'FREE TOOL','tool-intro-title':'Body proportion calculator','tool-intro-sub':'After reading the guides above, enter a few measurements for a private ratio breakdown — no photos, no account.',
@@ -649,7 +655,7 @@
       'titles':{ height:'HEIGHT', weight:'WEIGHT', head:'HEAD', shoulder:'SHOULDER', chest:'CHEST', 'upper-arm':'SHOULDER–ELBOW', 'lower-arm':'ELBOW–WRIST', waist:'WAIST', hip:'HIP', 'upper-leg':'THIGH', 'lower-leg':'SHIN', foot:'FOOT' },
       'bmi':['Underweight','Normal weight ✓','Overweight','Obese'],
       'body-inv':'Inverted triangle — shoulders wider than hips. (ratio: {r})','body-tri':'Triangle — hips wider than shoulders. (ratio: {r})','body-rect':'Balanced rectangle / hourglass body type. (ratio: {r})',
-      'body-default':'Enter more measurements for a detailed analysis.',
+      'body-default':'Add hips & shoulders for shape and WHR.',
       'best-inv':['Wide-leg pants','Bright-colored bottoms','Flared / A-line skirts','Straight-fit trousers','Midi-length dresses'],
       'worst-inv':['Raglan sleeve tops','Padded shoulder jackets','Boat neck / wide necklines','Off-shoulder tops','Horizontal stripe tops'],
       'best-tri':['Oversized tops','Bright-colored tops','Shoulder-accentuating designs','Puff sleeves','Boat neck / off-shoulder'],
@@ -758,7 +764,7 @@
       'occasion-casual':'👕 Everyday Casual',
       'outfit-why-label':'Why it works',
       'prop-leg':'Leg ratio','prop-whr':'Waist-hip ratio','prop-shoulder':'Shoulder-hip balance',
-      'body-type-inv':'Inverted Triangle','body-type-tri':'Triangle','body-type-rect':'Balanced / Hourglass','body-type-def':'Analyzing Body Type',
+      'body-type-inv':'Inverted Triangle','body-type-tri':'Triangle','body-type-rect':'Balanced / Hourglass','body-type-def':'Basic analysis done',
       'body-strength-inv':'Broad shoulders and slim hips define this powerful, sporty silhouette. Adding lower-body volume creates an ideal balance.',
       'body-strength-tri':'A firm lower body and slim upper body are your assets. Adding shoulder emphasis creates a beautifully balanced look.',
       'body-strength-rect':'Your balanced shoulder-to-hip ratio means most styles work well. Defining the waist unlocks a perfect hourglass silhouette.',
@@ -3283,6 +3289,64 @@
     if (window._resultScrollCleanup) { window._resultScrollCleanup(); window._resultScrollCleanup = null; }
   }
 
+  function _hasMeasurement(part) {
+    const v = measurements[part];
+    if (!v) return false;
+    if (part === 'height' || part === 'weight') return !!v.val;
+    if (part === 'shoulder') return !!v.width;
+    if (part === 'waist') return !!(v.circ || v.inch);
+    if (part === 'hip') return !!v.circ;
+    return Object.keys(v).some(function (k) { return v[k]; });
+  }
+
+  function getSuggestedNextPart() {
+    if (_isSampleResult) return null;
+    if (!_hasMeasurement('hip')) return 'hip';
+    if (!_hasMeasurement('shoulder')) return 'shoulder';
+    if (!_hasMeasurement('waist')) return 'waist';
+    return null;
+  }
+
+  function getResultNextStepLabel(part) {
+    const p = part || getSuggestedNextPart();
+    if (!p) return t('back-to-measure');
+    const key = 'result-next-' + p;
+    const val = t(key);
+    return val !== key ? val : t('back-to-measure');
+  }
+
+  function openNextMeasurement(part) {
+    closeMobileResult();
+    const p = part || getSuggestedNextPart();
+    const analysis = document.getElementById('analysis');
+    if (analysis) analysis.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (p && typeof selectPart === 'function') {
+      window.setTimeout(function () { selectPart(p); }, window.innerWidth <= 900 ? 100 : 250);
+    }
+  }
+
+  function updateResultNextStep() {
+    const nextPart = getSuggestedNextPart();
+    let el = document.getElementById('result-next-step');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'result-next-step';
+      el.className = 'result-next-step';
+      const card = document.getElementById('analysis-result');
+      const summary = document.getElementById('analysis-plain-summary');
+      if (card && summary) card.insertBefore(el, summary);
+      else if (card) card.prepend(el);
+    }
+    if (nextPart) {
+      const label = getResultNextStepLabel(nextPart);
+      el.innerHTML = '<button type="button" class="result-next-btn" onclick="openNextMeasurement(\'' + nextPart + '\')">' + label + '</button>';
+      el.hidden = false;
+    } else {
+      el.innerHTML = '';
+      el.hidden = true;
+    }
+  }
+
   function attachResultBackBtn(backLabel) {
     const existing = document.getElementById('result-float-back');
     if (existing) existing.remove();
@@ -3316,8 +3380,13 @@
 
     const btn = document.createElement('button');
     btn.id = 'result-float-back';
-    btn.innerHTML = '← ' + backLabel;
-    btn.onclick = () => closeMobileResult();
+    const nextPart = getSuggestedNextPart();
+    const label = nextPart ? getResultNextStepLabel(nextPart) : backLabel;
+    btn.innerHTML = nextPart ? label : ('← ' + backLabel);
+    btn.onclick = function () {
+      if (nextPart) openNextMeasurement(nextPart);
+      else closeMobileResult();
+    };
     btn.style.cssText = `
       position:fixed; bottom:80px; left:50%; transform:translateX(-50%) translateY(20px);
       background:var(--accent); color:var(--bg); border:none; border-radius:50px;
@@ -5160,6 +5229,7 @@
     document.getElementById('analysis-result').classList.add('visible');
     var _mainPanel = document.getElementById('main-panel');
     if (_mainPanel) _mainPanel.classList.add('has-analysis-result');
+    updateResultNextStep();
     if (typeof window.renderSizeFinder === 'function') window.renderSizeFinder();
     restoreBtn();
     showToast(t('toast-done'));
@@ -5388,11 +5458,24 @@
   }
 
   function startMeasuring() {
-    var el = document.getElementById('analysis');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    window.setTimeout(function () {
+    var analysis = document.getElementById('analysis');
+    if (analysis) analysis.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var openHeight = function () {
       if (typeof selectPart === 'function') selectPart('height');
-    }, 450);
+      var input = document.getElementById('input-height');
+      if (input) {
+        window.setTimeout(function () {
+          try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
+        }, window.innerWidth <= 900 ? 320 : 120);
+      }
+      var btn = document.getElementById('side-btn-height');
+      if (btn) {
+        btn.classList.add('pulse-highlight');
+        window.setTimeout(function () { btn.classList.remove('pulse-highlight'); }, 2200);
+      }
+    };
+    if (window.innerWidth <= 900) openHeight();
+    else window.setTimeout(openHeight, 180);
   }
 
   function saveHanspan() {
@@ -5494,6 +5577,8 @@
     window.setLanguage = setLanguage;
     window.applyTranslations = applyTranslations;
     window.runProportionAnalysis = runProportionAnalysis;
+    window.startMeasuring = startMeasuring;
+    window.openNextMeasurement = openNextMeasurement;
     (function initThemeToggle() {
       var btn = document.getElementById('theme-toggle');
       if (!btn) return;

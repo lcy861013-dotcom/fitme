@@ -1675,6 +1675,25 @@
     .side-btn:not(.chip).filled { border-color: #47ff8a; color: #47ff8a; background: rgba(71,255,138,0.06); }
     .side-btn:not(.chip).req-star::before { content: '★ '; font-size: 7px; color: var(--accent); }
     .side-btn:not(.chip).filled.req-star::before { color: #47ff8a; }
+    @keyframes measure-pulse { 0%, 100% { transform: scale(1); box-shadow: none; } 50% { transform: scale(1.05); box-shadow: 0 0 0 4px rgba(212,168,75,0.35); } }
+    .side-btn.pulse-highlight,
+    .chip.side-btn.pulse-highlight { animation: measure-pulse 0.9s ease-in-out 2; border-color: var(--accent) !important; color: var(--accent) !important; }
+    .result-next-step { margin: 0 0 16px; }
+    .result-next-btn {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(212,168,75,0.45);
+      background: rgba(212,168,75,0.1);
+      color: var(--accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .result-next-btn:hover { background: rgba(212,168,75,0.18); border-color: var(--accent); }
     .figure-zone .figure-media {
       position: absolute;
       inset: 0;
