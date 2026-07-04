@@ -212,6 +212,22 @@
       'panel-req-hint':'★ 키 · 몸무게 · 허리만 먼저 — 나머지는 선택',
       'toast-ready-analyze':'필수 3개 완료! 아래에서 분석해 보세요 ✓',
       'toast-next-part':' 저장됨 → 다음으로',
+      'size-guide-title':'내 추천 사이즈',
+      'size-guide-sub':'일반 브랜드 기준 · 이 옷은 이 사이즈부터',
+      'size-guide-top':'상의',
+      'size-guide-bottom':'하의',
+      'size-guide-waist':'허리',
+      'size-guide-chest-label':'가슴',
+      'size-guide-hip-label':'골반',
+      'size-guide-waist-label':'허리',
+      'size-guide-my':'내 치수',
+      'size-guide-range':'구간',
+      'size-guide-est':'(추정)',
+      'size-guide-need-chest':'가슴 둘레를 넣으면 상의 사이즈가 더 정확해져요',
+      'size-guide-need-hip':'골반 둘레를 넣으면 하의 사이즈가 더 정확해져요',
+      'size-guide-note':'브랜드는 표마다 1~2사이즈 달라요. 아래 브랜드 찾기로 확인하세요.',
+      'size-guide-try':'추천',
+      'size-guide-inch':'인치',
       'hud-header-sub':'측정 HUD · 라이브',
       'hud-footer-cap':'칩을 누르면 가운데에 측정 요령이 뜹니다 · 아래 막대는 입력 진행률',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
@@ -602,6 +618,22 @@
       'panel-req-hint':'★ Height · weight · waist first — rest optional',
       'toast-ready-analyze':'Core 3 saved! Run analysis below ✓',
       'toast-next-part':' saved → next',
+      'size-guide-title':'Your size guide',
+      'size-guide-sub':'Standard chart · start with this letter + cm',
+      'size-guide-top':'Tops',
+      'size-guide-bottom':'Bottoms',
+      'size-guide-waist':'Waist',
+      'size-guide-chest-label':'Chest',
+      'size-guide-hip-label':'Hips',
+      'size-guide-waist-label':'Waist',
+      'size-guide-my':'Yours',
+      'size-guide-range':'Range',
+      'size-guide-est':'(est.)',
+      'size-guide-need-chest':'Add chest circumference for a sharper top size',
+      'size-guide-need-hip':'Add hip circumference for a sharper bottom size',
+      'size-guide-note':'Brands vary by 1–2 sizes. Use Brand Size Finder below to confirm.',
+      'size-guide-try':'Try',
+      'size-guide-inch':'in',
       'hud-header-sub':'MEASUREMENT HUD · LIVE',
       'hud-footer-cap':'Tap a chip for how-to in the center · Bar shows your completion progress',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
@@ -4321,6 +4353,84 @@
     return '';
   }
 
+  // Standard letter sizes (cm bands). Brands vary — shown as a shopping starting point.
+  const SIZE_BANDS = {
+    female: {
+      chest: [
+        { l: 'XXS', min: 74, max: 79 }, { l: 'XS', min: 79, max: 84 }, { l: 'S', min: 84, max: 89 },
+        { l: 'M', min: 89, max: 94 }, { l: 'L', min: 94, max: 100 }, { l: 'XL', min: 100, max: 106 },
+        { l: 'XXL', min: 106, max: 114 }
+      ],
+      waist: [
+        { l: 'XXS', min: 56, max: 61 }, { l: 'XS', min: 61, max: 66 }, { l: 'S', min: 66, max: 71 },
+        { l: 'M', min: 71, max: 76 }, { l: 'L', min: 76, max: 82 }, { l: 'XL', min: 82, max: 88 },
+        { l: 'XXL', min: 88, max: 96 }
+      ],
+      hip: [
+        { l: 'XXS', min: 82, max: 87 }, { l: 'XS', min: 87, max: 92 }, { l: 'S', min: 92, max: 97 },
+        { l: 'M', min: 97, max: 102 }, { l: 'L', min: 102, max: 108 }, { l: 'XL', min: 108, max: 114 },
+        { l: 'XXL', min: 114, max: 122 }
+      ]
+    },
+    male: {
+      chest: [
+        { l: 'XS', min: 86, max: 91 }, { l: 'S', min: 91, max: 96 }, { l: 'M', min: 96, max: 101 },
+        { l: 'L', min: 101, max: 106 }, { l: 'XL', min: 106, max: 112 }, { l: 'XXL', min: 112, max: 120 },
+        { l: '3XL', min: 120, max: 128 }
+      ],
+      waist: [
+        { l: 'XS', min: 70, max: 75 }, { l: 'S', min: 75, max: 80 }, { l: 'M', min: 80, max: 85 },
+        { l: 'L', min: 85, max: 90 }, { l: 'XL', min: 90, max: 96 }, { l: 'XXL', min: 96, max: 104 },
+        { l: '3XL', min: 104, max: 112 }
+      ],
+      hip: [
+        { l: 'XS', min: 86, max: 91 }, { l: 'S', min: 91, max: 96 }, { l: 'M', min: 96, max: 101 },
+        { l: 'L', min: 101, max: 106 }, { l: 'XL', min: 106, max: 112 }, { l: 'XXL', min: 112, max: 120 },
+        { l: '3XL', min: 120, max: 128 }
+      ]
+    }
+  };
+
+  function matchSizeBand(val, bands) {
+    if (isNaN(val) || !bands || !bands.length) return null;
+    for (let i = 0; i < bands.length; i++) {
+      if (val >= bands[i].min && val < bands[i].max) {
+        return { letter: bands[i].l, min: bands[i].min, max: bands[i].max, near: val >= bands[i].max - 2, idx: i };
+      }
+    }
+    if (val < bands[0].min) return { letter: bands[0].l, min: bands[0].min, max: bands[0].max, below: true, idx: 0 };
+    const last = bands[bands.length - 1];
+    return { letter: last.l, min: last.min, max: last.max, above: true, idx: bands.length - 1 };
+  }
+
+  function styleSizeKind(styleText) {
+    const s = String(styleText).toLowerCase();
+    if (/pant|jean|skirt|trouser|chino|short|bottom|바지|팬츠|스커트|청바지|슬랙스|하의|와이드|테이퍼드|치노/.test(s)) return 'bottom';
+    if (/dress|원피스|gown|jumpsuit|overall/.test(s)) return 'dress';
+    return 'top';
+  }
+
+  function buildPersonalSizeGuide(chest, waist, hip, shoulder, isMale) {
+    const bands = SIZE_BANDS[isMale ? 'male' : 'female'];
+    let chestVal = chest;
+    let chestEst = false;
+    if (isNaN(chestVal) && !isNaN(shoulder) && shoulder > 0) {
+      chestVal = +(shoulder * (isMale ? 2.2 : 2.15)).toFixed(1);
+      chestEst = true;
+    }
+    const top = matchSizeBand(chestVal, bands.chest);
+    const bottomFrom = !isNaN(hip) ? hip : waist;
+    const bottomKey = !isNaN(hip) ? 'hip' : 'waist';
+    const bottom = matchSizeBand(bottomFrom, bands[bottomKey]);
+    const waistBand = matchSizeBand(waist, bands.waist);
+    const waistInch = !isNaN(waist) ? +(waist / 2.54).toFixed(1) : NaN;
+    return {
+      top: top ? { ...top, measure: chestVal, est: chestEst, key: 'chest' } : null,
+      bottom: bottom ? { ...bottom, measure: bottomFrom, key: bottomKey } : null,
+      waist: waistBand ? { ...waistBand, measure: waist, inch: waistInch, key: 'waist' } : null
+    };
+  }
+
   function runProportionAnalysis() {
     resetResultFeedback();
     const btnD = document.getElementById('btn-analyze');
@@ -4715,7 +4825,7 @@
         </div>
       </div>`;
 
-    // ===== RENDER: BEST / WORST STYLES (text only) =====
+    // ===== RENDER: PERSONAL SIZE GUIDE + BEST / WORST STYLES =====
     (function () {
       function escapeHtmlFitme(str) {
         return String(str)
@@ -4724,15 +4834,83 @@
           .replace(/>/g, '&gt;')
           .replace(/"/g, '&quot;');
       }
+      const sizeGuide = buildPersonalSizeGuide(chest, waist, hip, shoulder, isMale);
+      window._fitmeSizeGuide = sizeGuide;
+
+      function sizeLineForKind(kind) {
+        if (kind === 'bottom' && sizeGuide.bottom) {
+          const b = sizeGuide.bottom;
+          const mLabel = b.key === 'hip' ? t('size-guide-hip-label') : t('size-guide-waist-label');
+          return t('size-guide-try') + ' <strong>' + b.letter + '</strong> · ' + mLabel + ' ' + b.min + '–' + b.max + 'cm'
+            + ' <span class="size-guide-mine">(' + t('size-guide-my') + ' ' + Math.round(b.measure) + 'cm)</span>';
+        }
+        if ((kind === 'top' || kind === 'dress') && sizeGuide.top) {
+          const b = sizeGuide.top;
+          return t('size-guide-try') + ' <strong>' + b.letter + '</strong> · ' + t('size-guide-chest-label') + ' ' + b.min + '–' + b.max + 'cm'
+            + ' <span class="size-guide-mine">(' + t('size-guide-my') + ' ' + Math.round(b.measure) + 'cm'
+            + (b.est ? ' ' + t('size-guide-est') : '') + ')</span>';
+        }
+        return '';
+      }
+
       function fitmeRenderStyleList(arr, kind) {
         var icon = kind === 'best' ? '✓' : '✕';
         var cls = kind === 'best' ? 'style-item style-item-best' : 'style-item style-item-worst';
         return arr
           .map(function (s) {
-            return '<div class="' + cls + '"><span class="style-item-ico">' + icon + '</span>' + escapeHtmlFitme(s) + '</div>';
+            var sizeHtml = '';
+            if (kind === 'best') {
+              var line = sizeLineForKind(styleSizeKind(s));
+              if (line) sizeHtml = '<div class="style-item-size">' + line + '</div>';
+            }
+            return '<div class="' + cls + '"><div class="style-item-main"><span class="style-item-ico">' + icon + '</span>' + escapeHtmlFitme(s) + '</div>' + sizeHtml + '</div>';
           })
           .join('');
       }
+
+      const sgEl = document.getElementById('size-guide-section');
+      if (sgEl) {
+        function rowHtml(label, row, measureLabel) {
+          if (!row) return '';
+          const est = row.est ? ' ' + t('size-guide-est') : '';
+          const inch = row.inch && !isNaN(row.inch)
+            ? ' · ' + row.inch + t('size-guide-inch')
+            : '';
+          return '<div class="size-guide-row">'
+            + '<div class="size-guide-cat">' + label + '</div>'
+            + '<div class="size-guide-letter">' + row.letter + '</div>'
+            + '<div class="size-guide-meta">'
+            + '<span>' + measureLabel + ' ' + row.min + '–' + row.max + 'cm</span>'
+            + '<span class="size-guide-mine">' + t('size-guide-my') + ' ' + Math.round(row.measure) + 'cm' + est + inch + '</span>'
+            + '</div></div>';
+        }
+        const tips = [];
+        if (!sizeGuide.top) tips.push(t('size-guide-need-chest'));
+        else if (sizeGuide.top.est) tips.push(t('size-guide-need-chest'));
+        if (!sizeGuide.bottom || sizeGuide.bottom.key === 'waist') tips.push(t('size-guide-need-hip'));
+        const topLabel = sizeGuide.top
+          ? (sizeGuide.top.key === 'chest' ? t('size-guide-chest-label') : t('size-guide-chest-label'))
+          : t('size-guide-chest-label');
+        const bottomLabel = sizeGuide.bottom
+          ? (sizeGuide.bottom.key === 'hip' ? t('size-guide-hip-label') : t('size-guide-waist-label'))
+          : t('size-guide-hip-label');
+        if (sizeGuide.top || sizeGuide.bottom || sizeGuide.waist) {
+          sgEl.innerHTML = '<div class="size-guide-card">'
+            + '<div class="size-guide-head">'
+            + '<div class="size-guide-title">📏 ' + t('size-guide-title') + '</div>'
+            + '<div class="size-guide-sub">' + t('size-guide-sub') + '</div>'
+            + '</div>'
+            + rowHtml(t('size-guide-top'), sizeGuide.top, topLabel)
+            + rowHtml(t('size-guide-bottom'), sizeGuide.bottom, bottomLabel)
+            + rowHtml(t('size-guide-waist'), sizeGuide.waist, t('size-guide-waist-label'))
+            + (tips.length ? '<div class="size-guide-tips">' + tips.map(function (x) { return '<p>💡 ' + x + '</p>'; }).join('') + '</div>' : '')
+            + '<p class="size-guide-note">' + t('size-guide-note') + '</p>'
+            + '</div>';
+        } else {
+          sgEl.innerHTML = '';
+        }
+      }
+
       document.getElementById('best-styles').innerHTML = fitmeRenderStyleList(best, 'best');
       document.getElementById('worst-styles').innerHTML = fitmeRenderStyleList(worst, 'worst');
     })();
@@ -5593,7 +5771,8 @@
     document.getElementById('analysis-result').classList.remove('visible');
     var _mpReset = document.getElementById('main-panel');
     if (_mpReset) _mpReset.classList.remove('has-analysis-result');
-    ['fitme-score-section','analysis-plain-summary','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section','signature-outfit-section'].forEach(id => { const el = document.getElementById(id); if (el) { el.innerHTML = ''; if (id === 'analysis-plain-summary') el.hidden = true; } });
+    ['fitme-score-section','analysis-plain-summary','analysis-badge','analysis-text','analysis-tip','bmi-text','analysis-props','weight-goal-section','exercise-prescription','analysis-occasions','size-guide-section','best-styles','worst-styles','roadmap-section','detail-analysis-section','combo-style-section','size-finder-section','signature-outfit-section'].forEach(id => { const el = document.getElementById(id); if (el) { el.innerHTML = ''; if (id === 'analysis-plain-summary') el.hidden = true; } });
+    window._fitmeSizeGuide = null;
     const snsSection = document.getElementById('sns-share-section');
     if (snsSection) snsSection.style.display = 'none';
     window._fitmeShareData = null;
