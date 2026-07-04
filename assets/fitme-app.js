@@ -808,7 +808,7 @@
       'occasion-casual':'👕 Everyday Casual',
       'outfit-why-label':'Why it works',
       'prop-leg':'Leg ratio','prop-whr':'Waist-hip ratio','prop-shoulder':'Shoulder-hip balance',
-      'body-type-inv':'Inverted Triangle','body-type-tri':'Triangle','body-type-rect':'Balanced / Hourglass','body-type-def':'Basic analysis done',
+      'body-type-hourglass':'Hourglass','body-type-pear':'Pear shape','body-type-inv':'Inverted Triangle','body-type-tri':'Triangle','body-type-rect':'Rectangle','body-type-apple':'Apple shape','body-type-def':'Basic analysis done',
       'body-strength-inv':'Broad shoulders and slim hips define this powerful, sporty silhouette. Adding lower-body volume creates an ideal balance.',
       'body-strength-tri':'A firm lower body and slim upper body are your assets. Adding shoulder emphasis creates a beautifully balanced look.',
       'body-strength-rect':'Your balanced shoulder-to-hip ratio means most styles work well. Defining the waist unlocks a perfect hourglass silhouette.',
@@ -5570,11 +5570,12 @@
 
   function _buildShareText() {
     const data = window._fitmeShareData || {};
-    const typeName = data.typeName || '';
+    const typeName = data.typeName || (currentLang === 'ko' ? '나만의 체형' : 'my body type');
+    const scoreBit = data.score != null ? ` · DNA ${data.score}` : '';
     const url = 'https://perfectfitme.com/';
     const msgs = {
-      ko: `내 체형 분석 결과: ${typeName} 🔥\n체형 분석 + 스타일 추천을 무료로 받아보세요 → ${url}`,
-      en: `My body analysis result: ${typeName} 🔥\nGet your free body analysis & style tips → ${url}`,
+      ko: `내 체형 분석 결과: ${typeName}${scoreBit} 🔥\n체형 분석 + 스타일 추천을 무료로 받아보세요 → ${url}`,
+      en: `My body analysis result: ${typeName}${scoreBit} 🔥\nGet your free body analysis & style tips → ${url}`,
       ja: `体型診断結果: ${typeName} 🔥\n体型分析＆スタイル診断を無料で → ${url}`,
       zh: `我的体型分析结果: ${typeName} 🔥\n免费获取你的体型分析 → ${url}`,
       fr: `Mon résultat d'analyse corporelle: ${typeName} 🔥\nObtenez votre analyse corporelle gratuite → ${url}`,
