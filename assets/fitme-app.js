@@ -205,8 +205,13 @@
       'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
       'blog26-title':'2XL 오버핏인데도 어색할 때 — 라벨 말고 비율','blog26-desc':'사이즈만 키우면 어깨·기장이 또 어긋납니다. ASOS·아마존 직구 전에 재야 할 치수(영문).',
       'section-label':'👇 재보고 싶은 부위를 눌러 보세요',
-      'figure-intro-1':'<strong>안내</strong> 왼쪽 실루엣이나 오른쪽 칩에서 부위를 고른 뒤 패널에 값을 입력하세요. 줄자는 살을 누르지 말고 수평·수직만 확인하며 살짝 맞추면 됩니다.',
-      'figure-intro-2':'<strong>한뼘</strong>으로도 길이를 맞출 수 있어요. 엄지~검지끝 한 뼘을 cm로 재 두고 같은 간격을 세면 됩니다. 정확한 수치는 줄자로 다시 확인하세요.',
+      'figure-intro-1':'<strong>먼저 3개만</strong> — <strong>키 · 몸무게 · 허리</strong>를 넣으면 바로 분석할 수 있어요.',
+      'figure-intro-2':'어깨·골반 등은 <strong>더 많은 부위</strong>에서 추가. 줄자 없이 재기는 각 입력 화면에서 펼치세요.',
+      'measure-extra-show':'+ 더 많은 부위 (선택)',
+      'measure-extra-hide':'간단히 — 키·몸무게·허리만',
+      'panel-req-hint':'★ 키 · 몸무게 · 허리만 먼저 — 나머지는 선택',
+      'toast-ready-analyze':'필수 3개 완료! 아래에서 분석해 보세요 ✓',
+      'toast-next-part':' 저장됨 → 다음으로',
       'hud-header-sub':'측정 HUD · 라이브',
       'hud-footer-cap':'칩을 누르면 가운데에 측정 요령이 뜹니다 · 아래 막대는 입력 진행률',
       'panel-title-default':'신체 정보 입력','panel-subtitle-default':'정확한 분석을 위해 치수를 입력해 주세요.',
@@ -240,6 +245,7 @@
       'panel-req-hint':'★ 키 · 몸무게 · 허리는 필수 · 나머지는 선택',
       'sns-kakao':'카카오톡','sns-copy':'링크 복사','sns-tagline':'나의 체형 분석 결과를 공유해보세요!',
       'toast-enter-value':'값을 입력해주세요!','toast-saved':' 저장 완료! ✓','toast-link':'링크 복사됨! 🔗',
+      'save-btn-done':'저장됨 ✓',
       'toast-kakao-copy':'📋 복사됐어요! 카카오톡 채팅창에 붙여넣기 하세요 💛',
       'toast-copy-done':'✅ 공유 텍스트 + 링크가 복사되었습니다!',
       'toast-need-data':'먼저 키와 체중을 입력해주세요!','toast-done':'분석 완료! 🔥','toast-reset':'초기화 완료',
@@ -589,8 +595,13 @@
       'blog24-title':'How to Measure Hip Circumference Alone','blog24-desc':'Two hand spans from the tailbone — complete a full circuit solo. Calculate your WHR instantly.',
       'blog26-title':'2XL Oversize Wrong on Shoulders? Measure First','blog26-desc':'2XL for comfort but seams pinch? Shoulder, chest & length to check on ASOS, Amazon & DTC charts.',
       'section-label':'👇 Tap a body part to measure',
-      'figure-intro-1':'<strong>How it works</strong> Tap the silhouette or a chip on the right, then enter values in the panel. Keep the tape level and snug without digging into soft tissue.',
-      'figure-intro-2':'<strong>Hand span</strong>: measure thumb tip to stretched index fingertip in cm, then count spans for longer lines. Use a tape when you need an exact number.',
+      'figure-intro-1':'<strong>Start with 3</strong> — <strong>height, weight, waist</strong> are enough for a first analysis.',
+      'figure-intro-2':'Shoulders, hips & more are under <strong>More parts</strong>. No-tape helpers are collapsed inside each form.',
+      'measure-extra-show':'+ More parts (optional)',
+      'measure-extra-hide':'Simple — height, weight, waist only',
+      'panel-req-hint':'★ Height · weight · waist first — rest optional',
+      'toast-ready-analyze':'Core 3 saved! Run analysis below ✓',
+      'toast-next-part':' saved → next',
       'hud-header-sub':'MEASUREMENT HUD · LIVE',
       'hud-footer-cap':'Tap a chip for how-to in the center · Bar shows your completion progress',
       'panel-title-default':'Body Measurements','panel-subtitle-default':'Enter your measurements for accurate analysis.',
@@ -624,6 +635,7 @@
       'panel-req-hint':'★ Height · Weight · Waist are required · others optional',
       'sns-kakao':'KakaoTalk','sns-copy':'Copy Link','sns-tagline':'Share your body analysis results!',
       'toast-enter-value':'Please enter a value!','toast-saved':' saved! ✓','toast-link':'Link copied! 🔗',
+      'save-btn-done':'Saved ✓',
       'toast-kakao-copy':'📋 Copied! Paste it in your KakaoTalk chat 💛',
       'toast-copy-done':'✅ Share text + link copied!',
       'toast-need-data':'Please enter height, weight & shoulder width first!','toast-done':'Analysis complete! 🔥','toast-reset':'Reset complete',
@@ -2865,6 +2877,8 @@
     set('placeholder-text', t('placeholder-text'), true);
     set('figure-intro-1', t('figure-intro-1'), true);
     set('figure-intro-2', t('figure-intro-2'), true);
+    const _extraLbl = document.getElementById('measure-extra-toggle-label');
+    if (_extraLbl) _extraLbl.textContent = isSimpleMeasureMode() ? t('measure-extra-show') : t('measure-extra-hide');
     set('hud-header-sub', t('hud-header-sub'));
     set('hud-footer-cap', t('hud-footer-cap'));
     // buttons
@@ -3190,8 +3204,31 @@
   }
 
   let currentPart = null;
+  const CORE_PARTS = ['height', 'weight', 'waist'];
+  const CORE_NEXT = { height: 'weight', weight: 'waist', waist: null };
+  const EXTRA_PARTS = ['head', 'shoulder', 'chest', 'upper-arm', 'lower-arm', 'hip', 'upper-leg', 'lower-leg', 'foot'];
+
+  function isSimpleMeasureMode() {
+    const stage = document.getElementById('measure-scan-stage');
+    return !!(stage && stage.classList.contains('measure-simple'));
+  }
+
+  function setExtraMeasures(show) {
+    const stage = document.getElementById('measure-scan-stage');
+    const label = document.getElementById('measure-extra-toggle-label');
+    if (!stage) return;
+    stage.classList.toggle('measure-simple', !show);
+    if (label) label.textContent = show ? t('measure-extra-hide') : t('measure-extra-show');
+  }
+
+  function toggleExtraMeasures() {
+    setExtraMeasures(isSimpleMeasureMode());
+  }
 
   function selectPart(part) {
+    if (EXTRA_PARTS.indexOf(part) !== -1 && isSimpleMeasureMode()) {
+      setExtraMeasures(true);
+    }
     currentPart = part;
     document.querySelectorAll('.measurement-form').forEach(f => f.classList.remove('visible'));
     document.getElementById('placeholder').style.display = 'none';
@@ -3318,6 +3355,7 @@
   function openNextMeasurement(part) {
     closeMobileResult();
     const p = part || getSuggestedNextPart();
+    if (p && EXTRA_PARTS.indexOf(p) !== -1) setExtraMeasures(true);
     const analysis = document.getElementById('analysis');
     if (analysis) analysis.scrollIntoView({ behavior: 'smooth', block: 'start' });
     if (p && typeof selectPart === 'function') {
@@ -3537,21 +3575,40 @@
     if (!hasData) { showToast(t('toast-enter-value')); return; }
     const isNew = !measurements[part];
     measurements[part] = data;
-    if (isNew) { filledCount++; const _sf = document.getElementById('side-btn-' + part); if (_sf) _sf.classList.add('filled'); }
+    const _sf = document.getElementById('side-btn-' + part);
+    if (isNew) { filledCount++; }
+    if (_sf) {
+      _sf.classList.add('filled');
+      _sf.classList.add('pulse-highlight');
+      setTimeout(function () { _sf.classList.remove('pulse-highlight'); }, 1600);
+    }
     updateProgress();
     updateSavedList();
     syncMeasureHudChips();
     const partLabel = ((i18n[currentLang] || i18n.en)['parts'] || i18n.en['parts'])[part] || part;
-    showToast(partLabel + t('toast-saved'));
+    const nextCore = CORE_NEXT[part];
+    const goNext = nextCore && !measurements[nextCore];
+    const coreDone = CORE_PARTS.every(function (p) { return !!measurements[p]; });
+    if (goNext) showToast(partLabel + t('toast-next-part'), { ok: true });
+    else if (part === 'waist' && coreDone) showToast(t('toast-ready-analyze'), { ok: true });
+    else showToast(partLabel + t('toast-saved'), { ok: true });
     const activeForm = document.querySelector('.measurement-form.visible');
     const saveBtn = activeForm && activeForm.querySelector('.btn-save');
-    if (saveBtn) {
-      const origText = saveBtn.textContent;
-      saveBtn.textContent = '✓ ' + origText;
-      saveBtn.classList.add('saved');
-      setTimeout(() => { saveBtn.textContent = origText; saveBtn.classList.remove('saved'); }, 1500);
+    const mobileSave = document.getElementById('mobile-save-btn');
+    const doneLabel = t('save-btn-done');
+    [saveBtn, mobileSave].forEach(function (btn) {
+      if (!btn) return;
+      const origText = btn.textContent;
+      btn.textContent = doneLabel;
+      btn.classList.add('saved');
+      setTimeout(function () { btn.textContent = origText; btn.classList.remove('saved'); }, 1800);
+    });
+    const delay = window.innerWidth <= 900 ? 450 : 280;
+    if (goNext) {
+      setTimeout(function () { selectPart(nextCore); }, delay);
+    } else if (window.innerWidth <= 900) {
+      setTimeout(function () { closeSheet(null, true); }, 300);
     }
-    if (window.innerWidth <= 900) { setTimeout(function () { closeSheet(null, true); }, 300); }
   }
 
   function updateProgress() {
@@ -5557,11 +5614,17 @@
     showToast(t('toast-reset'));
   }
 
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
+  function showToast(msg, opts) {
+    const el = document.getElementById('toast');
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.toggle('toast--ok', !!(opts && opts.ok));
+    el.classList.add('show');
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(function () {
+      el.classList.remove('show');
+      el.classList.remove('toast--ok');
+    }, opts && opts.ok ? 3200 : 2500);
   }
 
 
@@ -5579,6 +5642,11 @@
     window.runProportionAnalysis = runProportionAnalysis;
     window.startMeasuring = startMeasuring;
     window.openNextMeasurement = openNextMeasurement;
+    window.toggleExtraMeasures = toggleExtraMeasures;
+    window.setExtraMeasures = setExtraMeasures;
+    window.selectPart = selectPart;
+    var hasExtraSaved = EXTRA_PARTS.some(function (p) { return !!measurements[p]; });
+    setExtraMeasures(hasExtraSaved);
     (function initThemeToggle() {
       var btn = document.getElementById('theme-toggle');
       if (!btn) return;

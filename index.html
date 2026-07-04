@@ -198,7 +198,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=28">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=29">
 </head>
 <body>
 
@@ -335,7 +335,7 @@
     <div class="analysis-workspace">
     <div class="body-section">
       <div class="section-label" data-i18n="section-label">👇 재보고 싶은 부위를 눌러 보세요</div>
-      <div class="measure-scan-stage stage body-measure-layout">
+      <div class="measure-scan-stage stage body-measure-layout measure-simple" id="measure-scan-stage">
         <div class="stage-bg" aria-hidden="true"></div>
         <div class="stage-vignette" aria-hidden="true"></div>
         <div class="stage-ambient" aria-hidden="true"></div>
@@ -369,17 +369,17 @@
                 <img src="/body-measure-figure.png" alt="FITME body measurement reference" class="body-img" width="752" height="798" decoding="async" fetchpriority="high" onerror="if(!this.dataset._fb){this.dataset._fb='1';this.src='https://perfectfitme.com/body-measure-figure.png';}else{this.onerror=null;}">
               </div>
               <svg class="body-overlay" viewBox="0 0 752 798" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Body measurement regions">
-            <ellipse id="mark-head" class="body-mark" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
-            <line id="mark-shoulder" class="body-mark" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
-            <line class="body-mark-hit" data-body-part="shoulder" x1="274" y1="165" x2="484" y2="165" stroke="transparent" stroke-width="28" stroke-linecap="round" aria-hidden="true"/>
-            <ellipse id="mark-chest" class="body-mark" data-body-part="chest" tabindex="0" role="button" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-upper-arm" class="body-mark" data-body-part="upper-arm" tabindex="0" role="button" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-lower-arm" class="body-mark" data-body-part="lower-arm" tabindex="0" role="button" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-head" class="body-mark body-mark-extra" data-body-part="head" tabindex="0" role="button" cx="376" cy="63" rx="48" ry="52" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
+            <line id="mark-shoulder" class="body-mark body-mark-extra" x1="274" y1="165" x2="484" y2="165" stroke="#E8A93C" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>
+            <line class="body-mark-hit body-mark-extra" data-body-part="shoulder" x1="274" y1="165" x2="484" y2="165" stroke="transparent" stroke-width="28" stroke-linecap="round" aria-hidden="true"/>
+            <ellipse id="mark-chest" class="body-mark body-mark-extra" data-body-part="chest" tabindex="0" role="button" cx="376" cy="280" rx="70" ry="58" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-upper-arm" class="body-mark body-mark-extra" data-body-part="upper-arm" tabindex="0" role="button" cx="271" cy="285" r="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-lower-arm" class="body-mark body-mark-extra" data-body-part="lower-arm" tabindex="0" role="button" cx="239" cy="420" r="22" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
             <ellipse id="mark-waist" class="body-mark" data-body-part="waist" tabindex="0" role="button" cx="376" cy="412" rx="74" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.15)"/>
-            <ellipse id="mark-hip" class="body-mark" data-body-part="hip" tabindex="0" role="button" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-upper-leg" class="body-mark" data-body-part="upper-leg" tabindex="0" role="button" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <circle id="mark-lower-leg" class="body-mark" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
-            <ellipse id="mark-foot" class="body-mark" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-hip" class="body-mark body-mark-extra" data-body-part="hip" tabindex="0" role="button" cx="376" cy="487" rx="100" ry="26" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-upper-leg" class="body-mark body-mark-extra" data-body-part="upper-leg" tabindex="0" role="button" cx="350" cy="587" r="30" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <circle id="mark-lower-leg" class="body-mark body-mark-extra" data-body-part="lower-leg" tabindex="0" role="button" cx="352" cy="680" r="24" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
+            <ellipse id="mark-foot" class="body-mark body-mark-extra" data-body-part="foot" tabindex="0" role="button" cx="370" cy="751" rx="38" ry="20" stroke="#E8A93C" stroke-width="2.5" fill="rgba(212,168,75,0.12)"/>
           </svg>
               <div class="figure-intro" id="figure-intro-block" aria-live="polite">
                 <p id="figure-intro-1"></p>
@@ -388,27 +388,27 @@
             </div>
             <div class="chips-rail">
               <div class="chips-column chips-column--left">
-              <button type="button" class="chip side-btn" id="side-btn-head" onclick="selectPart('head')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-head" onclick="selectPart('head')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-shoulder" onclick="selectPart('shoulder')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-shoulder" onclick="selectPart('shoulder')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-chest" onclick="selectPart('chest')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-chest" onclick="selectPart('chest')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-upper-arm" onclick="selectPart('upper-arm')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-lower-arm" onclick="selectPart('lower-arm')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
@@ -425,22 +425,22 @@
                 <div><span class="val">—</span><span class="unit"></span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-hip" onclick="selectPart('hip')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-hip" onclick="selectPart('hip')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-upper-leg" onclick="selectPart('upper-leg')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-lower-leg" onclick="selectPart('lower-leg')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">cm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
               </button>
-              <button type="button" class="chip side-btn" id="side-btn-foot" onclick="selectPart('foot')">
+              <button type="button" class="chip side-btn chip-extra" id="side-btn-foot" onclick="selectPart('foot')">
                 <div class="label"></div>
                 <div><span class="val">—</span><span class="unit">mm</span></div>
                 <div class="mini-chart"><span></span><span></span><span></span><span></span></div>
@@ -451,6 +451,9 @@
         </div>
           </div>
           <div class="hud-footer">
+            <button type="button" class="measure-extra-toggle" id="measure-extra-toggle" onclick="toggleExtraMeasures()">
+              <span id="measure-extra-toggle-label" data-i18n="measure-extra-show">+ 더 많은 부위 (선택)</span>
+            </button>
             <div class="bar-cap" id="hud-footer-cap"></div>
             <div class="track hud-track"><div id="hud-progress-fill" style="width:0%"></div></div>
           </div>
@@ -466,7 +469,7 @@
         <div class="panel-subtitle" id="panel-subtitle">정확한 분석을 위해 치수를 입력해 주세요.</div>
         
         
-        <div class="panel-req-hint" id="panel-req-hint">★ 키 · 몸무게 · 허리는 필수 · 나머지는 선택</div>
+        <div class="panel-req-hint" id="panel-req-hint" data-i18n="panel-req-hint">★ 키 · 몸무게 · 허리만 먼저 — 나머지는 선택</div>
       </div>
       <div class="gender-toggle">
         <button class="gender-btn active" id="gender-female" onclick="setGender('female')">👩 여성</button>
@@ -482,16 +485,16 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-height">HEIGHT / 키</div><span class="field-badge required">REQUIRED</span></div>
           <div class="form-desc" id="fdesc-height">전체 신장을 입력하세요.</div>
           <div class="part-howto-box" data-i18n="howto-height"></div>
-          <div class="span-calc-box" data-span-mode="phone" data-span-target="input-height" data-span-hint="span-hint-height">
-            <p class="span-calc-label" data-i18n="span-calc-label-phone">No tape — phone as ruler (~15&nbsp;cm)</p>
+          <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174" min="0"></div>
+          <details class="span-calc-box" data-span-mode="phone" data-span-target="input-height" data-span-hint="span-hint-height">
+            <summary class="span-calc-label" data-i18n="span-calc-label-phone">No tape — phone as ruler (~15&nbsp;cm)</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.5" min="1" max="30" placeholder="12" inputmode="decimal" aria-label="Phone count">
               <span class="span-calc-mid" data-i18n="span-calc-phone-mid">phones × 15cm =</span>
               <button type="button" class="span-calc-apply" data-span-mode="phone" data-span-target="input-height" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-height">Stand by a wall; count how many phone lengths floor to head</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-height">키 (cm)</label><input class="input-field" type="number" id="input-height" placeholder="174" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('height')">저장하기</button>
         </div>
 
@@ -525,16 +528,16 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-shoulder">SHOULDER / 어깨</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-shoulder">어깨 끝에서 끝까지 너비를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-shoulder"></div>
-          <div class="span-calc-box" data-span-mode="hand" data-span-target="shoulder-width" data-span-hint="span-hint-shoulder">
-            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+          <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44" min="0"></div>
+          <details class="span-calc-box" data-span-mode="hand" data-span-target="shoulder-width" data-span-hint="span-hint-shoulder">
+            <summary class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="2.3" inputmode="decimal" aria-label="Span count">
               <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
               <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="shoulder-width" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-shoulder">Usually ~2–2.5 spans (neck to shoulder × 2)</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-shoulder">어깨 너비 (cm)</label><input class="input-field" type="number" id="shoulder-width" placeholder="44" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('shoulder')">저장하기</button>
         </div>
 
@@ -560,16 +563,16 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-arm">SHOULDER–ELBOW / 어깨~팔꿈치</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-arm">어깨에서 팔꿈치까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-arm"></div>
-          <div class="span-calc-box" data-span-mode="hand" data-span-target="upper-arm-len" data-span-hint="span-hint-upper-arm">
-            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+          <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
+          <details class="span-calc-box" data-span-mode="hand" data-span-target="upper-arm-len" data-span-hint="span-hint-upper-arm">
+            <summary class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="1.8" inputmode="decimal">
               <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
               <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="upper-arm-len" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-upper-arm">Shoulder to elbow, outer arm — ~1.5–2 spans</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-upper-arm">어깨→팔꿈치 (cm)</label><input class="input-field" type="number" id="upper-arm-len" placeholder="32" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-arm')">저장하기</button>
         </div>
 
@@ -577,16 +580,16 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-arm">ELBOW–WRIST / 팔꿈치~손목</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-arm">팔꿈치에서 손목까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-arm"></div>
-          <div class="span-calc-box" data-span-mode="hand" data-span-target="lower-arm-len" data-span-hint="span-hint-lower-arm">
-            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+          <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
+          <details class="span-calc-box" data-span-mode="hand" data-span-target="lower-arm-len" data-span-hint="span-hint-lower-arm">
+            <summary class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="1.5" inputmode="decimal">
               <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
               <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="lower-arm-len" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-lower-arm">Elbow to wrist — ~1.2–1.6 spans</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-lower-arm">팔꿈치→손목 (cm)</label><input class="input-field" type="number" id="lower-arm-len" placeholder="26" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-arm')">저장하기</button>
         </div>
 
@@ -603,16 +606,16 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-hip">HIP / 골반</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-hip">엉덩이(골반)의 가장 넓은 부분의 둘레를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-hip"></div>
-          <div class="span-calc-box" data-span-mode="hand" data-span-target="hip-circ" data-span-hint="span-hint-hip">
-            <p class="span-calc-label" data-i18n="span-calc-label-hip">No tape — hip girth in spans (around body)</p>
+          <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96" min="0"></div>
+          <details class="span-calc-box" data-span-mode="hand" data-span-target="hip-circ" data-span-hint="span-hint-hip">
+            <summary class="span-calc-label" data-i18n="span-calc-label-hip">No tape — hip girth in spans (around body)</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.1" min="2" max="30" placeholder="5.5" inputmode="decimal">
               <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
               <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="hip-circ" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-hip">Widest hip line — usually ~5–6 spans around</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-hip">골반 둘레 (cm)</label><input class="input-field" type="number" id="hip-circ" placeholder="96" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('hip')">저장하기</button>
         </div>
 
@@ -620,17 +623,17 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-upper-leg">THIGH / 허벅지</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-upper-leg">골반에서 무릎까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-upper-leg"></div>
-          <div class="span-calc-box" data-span-mode="hand" data-span-target="upper-leg-len" data-span-hint="span-hint-upper-leg">
-            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+          <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42" min="0"></div>
+          <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54" min="0"></div>
+          <details class="span-calc-box" data-span-mode="hand" data-span-target="upper-leg-len" data-span-hint="span-hint-upper-leg">
+            <summary class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="2.5" inputmode="decimal">
               <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
               <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="upper-leg-len" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-upper-leg">Hip bone to above knee — ~2–3 spans</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-upper-leg">골반→무릎 (cm)</label><input class="input-field" type="number" id="upper-leg-len" placeholder="42" min="0"></div>
-          <div class="input-group"><label class="input-label" id="flabel2-upper-leg">허벅지 둘레 (cm)</label><input class="input-field" type="number" id="upper-leg-circ" placeholder="54" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('upper-leg')">저장하기</button>
         </div>
 
@@ -638,16 +641,16 @@
           <div class="form-title-row"><div class="form-title" id="ftitle-lower-leg">SHIN / 종아리</div><span class="field-badge optional">OPTIONAL</span></div>
           <div class="form-desc" id="fdesc-lower-leg">무릎에서 복숭아뼈까지 길이를 측정하세요.</div>
           <div class="part-howto-box" data-i18n="howto-lower-leg"></div>
-          <div class="span-calc-box" data-span-mode="hand" data-span-target="lower-leg-len" data-span-hint="span-hint-lower-leg">
-            <p class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</p>
+          <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38" min="0"></div>
+          <details class="span-calc-box" data-span-mode="hand" data-span-target="lower-leg-len" data-span-hint="span-hint-lower-leg">
+            <summary class="span-calc-label" data-i18n="span-calc-label">No tape — count hand spans</summary>
             <div class="span-calc-row">
               <input type="number" class="span-calc-count" step="0.1" min="0.5" max="20" placeholder="2.2" inputmode="decimal">
               <span class="span-calc-mid"><span data-i18n="span-calc-mid">spans ×</span> <strong class="span-calc-hanspan">—</strong></span>
               <button type="button" class="span-calc-apply" data-span-mode="hand" data-span-target="lower-leg-len" data-i18n="span-calc-btn">Fill cm</button>
             </div>
             <p class="span-calc-guide" data-i18n="span-hint-lower-leg">Below knee to ankle — ~2–2.5 spans</p>
-          </div>
-          <div class="input-group"><label class="input-label" id="flabel-lower-leg">무릎→복숭아뼈 (cm)</label><input class="input-field" type="number" id="lower-leg-len" placeholder="38" min="0"></div>
+          </details>
           <button class="btn btn-primary btn-save" data-i18n="save-btn" onclick="savePart('lower-leg')">저장하기</button>
         </div>
 
@@ -1627,7 +1630,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=36"></script>
+<script defer src="/assets/fitme-app.js?v=37"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

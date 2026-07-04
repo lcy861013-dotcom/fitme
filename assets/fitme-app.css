@@ -2171,8 +2171,48 @@
     .footer-copy { font-size: 12px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
 
     /* TOAST */
-    .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--accent); color: var(--on-accent); padding: 12px 24px; border-radius: 100px; font-size: 13px; font-weight: 700; letter-spacing: 1px; transition: transform 0.3s; z-index: 999; white-space: nowrap; font-family: 'DM Sans', sans-serif; }
+    .toast { position: fixed; bottom: 96px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--accent); color: var(--on-accent); padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 700; letter-spacing: 0.3px; transition: transform 0.3s; z-index: 10050; white-space: nowrap; max-width: min(92vw, 420px); overflow: hidden; text-overflow: ellipsis; font-family: 'DM Sans', sans-serif; box-shadow: 0 10px 36px rgba(0,0,0,0.45); }
     .toast.show { transform: translateX(-50%) translateY(0); }
+    .toast.toast--ok { background: #47ff8a; color: #0a0a0a; }
+
+    /* Simple measure mode: core 3 only */
+    .measure-scan-stage.measure-simple .chip-extra,
+    .measure-scan-stage.measure-simple .body-mark-extra { display: none !important; }
+    .measure-scan-stage.measure-simple .chips-column--left { display: none !important; }
+    .measure-extra-toggle {
+      display: block;
+      width: 100%;
+      margin: 0 0 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px dashed rgba(212,168,75,0.4);
+      background: rgba(212,168,75,0.08);
+      color: var(--accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+    .measure-extra-toggle:hover { background: rgba(212,168,75,0.14); }
+    .measure-scan-stage:not(.measure-simple) .measure-extra-toggle {
+      border-style: solid;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+    }
+    details.span-calc-box > summary.span-calc-label {
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+    details.span-calc-box > summary.span-calc-label::-webkit-details-marker { display: none; }
+    details.span-calc-box > summary.span-calc-label::before {
+      content: '▸ ';
+      color: var(--accent);
+    }
+    details.span-calc-box[open] > summary.span-calc-label::before { content: '▾ '; }
+    details.span-calc-box:not([open]) .span-calc-row,
+    details.span-calc-box:not([open]) .span-calc-guide { display: none; }
 
     /* 데스크톱 분석 UI — 파일 하단에서 최종 적용 */
     @media (min-width: 901px) {
