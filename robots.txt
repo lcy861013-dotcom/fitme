@@ -8,6 +8,9 @@ Disallow: /wp-login.php
 Disallow: /wp-json/
 Disallow: /.env
 Disallow: /.git/
+Disallow: /admin
+Disallow: /phpmyadmin
+Disallow: /cgi-bin/
 
 # Google AdSense / ads.txt crawlers (explicit allow for root ads.txt)
 User-agent: Mediapartners-Google

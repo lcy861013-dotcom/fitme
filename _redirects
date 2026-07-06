@@ -12,6 +12,19 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 /wp-admin/* https://perfectfitme.com/ 302
 /wp-content/* https://perfectfitme.com/ 302
 /wp-includes/* https://perfectfitme.com/ 302
+/admin https://perfectfitme.com/ 302
+/administrator https://perfectfitme.com/ 302
+/phpmyadmin https://perfectfitme.com/ 302
+/index.php https://perfectfitme.com/ 302
+
+# Feed / sitemap aliases (also in functions/_middleware.js — rules here are backup within 125-rule cap)
+/feed /feed.xml 301
+/atom.xml /feed.xml 301
+/rss.xml /feed.xml 301
+/sitemap_index.xml /sitemap.xml 301
+/sitemap-index.xml /sitemap.xml 301
+/sitemap.xml.gz /sitemap.xml 301
+/manifest.json /site.webmanifest 301
 
 # Legal / trust pages: explicit 301 (Cloudflare also strips .html with 308)
 /privacy.html /privacy 301
@@ -115,45 +128,7 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 /pt/about.html /pt/about 301
 /pt/contact.html /pt/contact 301
 
-# Other locale .html doorways → canonical EN trust (single hop)
-/en/about.html /about 301
-/en/contact.html /contact 301
-/fr/about.html /about 301
-/fr/contact.html /contact 301
-/es/about.html /about 301
-/es/contact.html /contact 301
-/zh/about.html /about 301
-/zh/contact.html /contact 301
-/de/about.html /about 301
-/de/contact.html /contact 301
-/it/about.html /about 301
-/it/contact.html /contact 301
-/ru/about.html /about 301
-/ru/contact.html /contact 301
-/ar/about.html /about 301
-/ar/contact.html /contact 301
-/hi/about.html /about 301
-/hi/contact.html /contact 301
-/th/about.html /about 301
-/th/contact.html /contact 301
-/id/about.html /about 301
-/id/contact.html /contact 301
-/vi/about.html /about 301
-/vi/contact.html /contact 301
-
 # Browsers default favicon path → actual asset
 /favicon.ico /favicon-32x32.png 302
 /apple-touch-icon.png /icon-192.png 302
 /apple-touch-icon-precomposed.png /icon-192.png 302
-
-# Common feed/sitemap aliases (reduce 404 noise)
-/feed /feed.xml 301
-/atom.xml /feed.xml 301
-/rss.xml /feed.xml 301
-/sitemap_index.xml /sitemap.xml 301
-/sitemap-index.xml /sitemap.xml 301
-
-# Scanner / probe paths (302 → home; already blocked from indexing)
-/wp-json/* https://perfectfitme.com/ 302
-/.env https://perfectfitme.com/ 302
-/.git/* https://perfectfitme.com/ 302
