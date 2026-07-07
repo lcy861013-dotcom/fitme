@@ -254,7 +254,10 @@
       'footer-editorial':'콘텐츠 기준','footer-how':'작동 방식','footer-blog-nav':'블로그',
       'footer-copy':'© 2026 Perfect Fit Me (FITME). 글로벌 체형 분석 서비스.',
       'publisher-title':'발행: Perfect Fit Me (FITME) · 이창용 (1인 창업, 대한민국)',
-      'publisher-body':'한국어·영어 핏 가이드 25편 이상 + 브라우저 무료 비율 도구. 1인 창업자 이창용이 직접 작성·운영합니다. 의료 조언이 아닙니다. <a href="/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a> · <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a> · <a href="/about" style="color:var(--accent);font-weight:600;">소개</a>',
+      'publisher-body':'한국어·영어 핏 가이드 25편 이상 + 브라우저 무료 비율 도구. 1인 창업자 이창용이 직접 작성·운영합니다. 의료 조언이 아닙니다. <a href="/ko/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a> · <a href="/ko/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a> · <a href="/ko/about" style="color:var(--accent);font-weight:600;">소개</a>',
+      'publisher-intro-lead':'<strong>Perfect Fit Me (FITME)</strong>는 옷 사이즈(S/M/L)가 아니라 <em>체형 비율</em>을 이해하도록 돕는 무료 교육 사이트입니다. 키·몸무게·허리를 입력하면 WHR, 다리·몸통 비율, 체형 프로필과 스타일 방향을 추정합니다.',
+      'publisher-intro-p2':'FITME는 <strong>사진을 업로드하지 않으며</strong>, 3D 스캔·의료 조언·수선 치수를 대체하지 않습니다. 측정값은 브라우저에서만 처리됩니다. <a href="/blog/">25편 이상의 원문 핏 가이드</a>(바지 핏, 어깨, 캡슐 워드로브, 측정법)를 1인 창업자가 직접 작성·업데이트합니다.',
+      'publisher-intro-p3':'<a href="/ko/about">소개</a>(방법론·한계), <a href="/ko/how-it-works">작동 방식</a>, <a href="/ko/editorial-standards">콘텐츠 기준</a>을 참고하세요. 추천 글: <a href="/blog/blog1">비율에 맞는 바지</a>, <a href="/blog/blog8">WHR과 청바지 허리 뜸</a>, <a href="/blog/blog26">측정 시리즈</a>.',
       'section-tag-measure':'측정 방법','blog-tag-measure':'측정 가이드',
       'blog-badge-new':'✦ 신규','blog-badge-hot':'🔥 인기',
       'units-btn':'단위','unit-modal-label':'측정 단위','unit-modal-title':'단위 설정',
@@ -661,6 +664,9 @@
       'footer-copy':'© 2026 Perfect Fit Me (FITME). Global Body Analysis Service.',
       'publisher-title':'Publisher: Perfect Fit Me (FITME) · Changyong Lee (solo founder, South Korea)',
       'publisher-body':'25+ original English fit guides plus a free browser-based proportion tool. Solo founder Changyong Lee — not medical advice. <a href="/how-it-works" style="color:var(--accent);font-weight:600;">How it works</a> · <a href="/editorial-standards" style="color:var(--accent);font-weight:600;">Editorial standards</a> · <a href="/about" style="color:var(--accent);font-weight:600;">About</a>',
+      'publisher-intro-lead':'<strong>Perfect Fit Me (FITME)</strong> is a free educational site that helps you understand body <em>proportions</em> — not just clothing size labels. Enter height, weight, and waist to estimate ratios such as waist-to-hip (WHR), leg-to-torso balance, and a practical body-type profile with style direction.',
+      'publisher-intro-p2':'FITME does <strong>not</strong> upload photos, run 3D body scans, give medical advice, or replace a tailor. Measurements are processed in your browser. We publish <a href="/blog/">25+ original fit guides</a> on pants silhouettes, shoulders, capsule wardrobes, and measurement how-tos — written by the solo founder and updated regularly.',
+      'publisher-intro-p3':'Read <a href="/about">About FITME</a> (methodology &amp; limits), <a href="/how-it-works">How the tool works</a>, and our <a href="/editorial-standards">Editorial standards</a>. Popular starting points: <a href="/blog/blog1-en">pants that fit your proportions</a>, <a href="/blog/blog8-en">WHR and why jeans gape</a>, <a href="/blog/blog26-en">measurement series overview</a>.',
       'section-tag-measure':'HOW TO MEASURE','blog-tag-measure':'HOW TO MEASURE',
       'blog-badge-new':'✦ NEW','blog-badge-hot':'🔥 HOT',
       'units-btn':'Units','unit-modal-label':'Measurement Units','unit-modal-title':'Unit Settings',
@@ -2702,9 +2708,7 @@
       if (page) el.setAttribute('href', trustHref(page));
     });
     const pub = document.getElementById('publisher-body');
-    if (pub && currentLang === 'ko') {
-      pub.innerHTML = t('publisher-body');
-    }
+    if (pub) pub.innerHTML = t('publisher-body');
   }
 
   function isHomePath() {
@@ -2819,7 +2823,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','hero-preview-insight','guide-card-desc','guide-step2','publisher-body','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','hero-preview-insight','guide-card-desc','guide-step2','publisher-body','publisher-intro-lead','publisher-intro-p2','publisher-intro-p3','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
     // Hero headline — calc-first / publisher static / rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl && !heroHl.classList.contains('hero-poster-title')) {
@@ -6288,4 +6292,7 @@
       }, 50);
     });
   });
+
+  // Apply language as soon as this defer script runs (HTML parsed) — correct KO/EN before first paint
+  setLanguage(currentLang);
 
