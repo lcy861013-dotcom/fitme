@@ -566,10 +566,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog25-en"/>
   </url>
   <url>
+    <loc>https://perfectfitme.com/blog/blog26</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog26"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog26-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog26-en"/>
+  </url>
+  <url>
     <loc>https://perfectfitme.com/blog/blog26-en</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog26"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog26-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog26-en"/>
   </url>
