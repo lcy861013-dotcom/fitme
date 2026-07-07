@@ -889,6 +889,28 @@
       background: linear-gradient(180deg, rgba(212,168,75,0.04) 0%, transparent 100%);
       text-align: center;
     }
+    .guides-hub-section--spotlight {
+      padding: 36px 20px 32px;
+      margin: 0 auto 8px;
+      max-width: 900px;
+      border: 1px solid rgba(212, 168, 75, 0.22);
+      border-radius: 18px;
+      background: linear-gradient(165deg, rgba(212,168,75,0.08) 0%, rgba(28,26,24,0.4) 55%, transparent 100%);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    }
+    [data-theme="light"] .guides-hub-section--spotlight {
+      background: linear-gradient(165deg, rgba(212,168,75,0.12) 0%, #fff 60%);
+      border-color: rgba(166, 124, 0, 0.2);
+      box-shadow: 0 8px 28px rgba(80,60,20,0.08);
+    }
+    .guides-hub-calc-hint {
+      margin: 18px auto 0;
+      max-width: 520px;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+    }
     .guides-hub-section .guides-hub { margin-bottom: 20px; }
     .guides-hub-cta { margin-top: 4px; }
     /* PUBLISHER-FIRST HERO */

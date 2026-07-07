@@ -11,9 +11,10 @@
       'hero-sub-publisher':'Perfect Fit Me(핏미, FITME)는 WHR, 오버핏 사이징, 소재 드레이프, 체형 비율에 대한 <strong>독자 원고</strong>를 발행합니다. 창업자 이창용이 직접 온라인 쇼핑 경험을 바탕으로 씁니다. 숫자가 필요할 때 아래 무료 도구를 브라우저에서 바로 쓸 수 있어요.',
       'hero-positioning':'키·허리·골반 비율이면 &ldquo;나한테 왜 안 맞는지&rdquo;가 보여요. 줄자 없어도 시작할 수 있어요.',
       'guides-hub-label':'여기서 시작 — 이런 고민이면 이 글부터',
-      'guides-hub-1-kicker':'온라인 사이징','guides-hub-1-title':'2XL 오버핏인데도 안 맞나요? 먼저 재세요','guides-hub-1-desc':'<strong>누구용:</strong> 사이즈표는 맞는데 어깨·허리만 어색할 때',
+      'guides-hub-1-kicker':'팬츠 핏','guides-hub-1-title':'나에게 맞는 팬츠 핏 완전 가이드','guides-hub-1-desc':'<strong>누구용:</strong> 사이즈는 맞는데 바지 핏·기장이 계속 어색할 때',
       'guides-hub-2-kicker':'WHR','guides-hub-2-title':'허리-골반 비율(WHR) 측정법','guides-hub-2-desc':'<strong>누구용:</strong> 엉덩이는 맞는데 허리만 헐렁한 바지가 반복될 때',
-      'guides-hub-3-kicker':'배형','guides-hub-3-title':'골반 넓고 허리 좁을 때 코디','guides-hub-3-desc':'<strong>누구용:</strong> 하체는 큰데 허리는 좁아 바지 고르기가 제일 어려울 때',
+      'guides-hub-3-kicker':'배형','guides-hub-3-title':'서양배형 체형 코디 완전 가이드','guides-hub-3-desc':'<strong>누구용:</strong> 하체는 큰데 허리는 좁아 바지 고르기가 제일 어려울 때',
+      'guides-hub-calc-hint':'가이드를 읽은 뒤 아래 <strong>무료 비율 계산기</strong>로 내 숫자를 확인하세요.',
       'hero-btn-guides':'전체 핏 가이드 보기 →','hero-btn-calc':'무료 계산기 열기 ↓',
       'hero-tag-calc':'체형 계산기 · 30초 · 무료',
       'hero-poster-line1':'반품 또 했지 · 사이즈표 속임',
@@ -419,9 +420,10 @@
       'hero-sub-publisher':'Perfect Fit Me (FITME) publishes original articles on WHR, oversize sizing, fabric drape, and body proportions — written by solo founder Changyong Lee from real online-shopping experience. The free tool below runs in your browser when you want numbers.',
       'hero-positioning':'When the size tag fits but clothes don&rsquo;t — measure shoulder, waist, and hip <em>ratios</em>, not just S/M/L.',
       'guides-hub-label':'Start here — if this sounds like you',
-      'guides-hub-1-kicker':'Online sizing','guides-hub-1-title':'2XL oversize still fits wrong? Measure first','guides-hub-1-desc':'<strong>For you if:</strong> the chart says 2XL but shoulders or waist still feel wrong.',
+      'guides-hub-1-kicker':'Pants fit','guides-hub-1-title':'The Complete Pants Fit Guide','guides-hub-1-desc':'<strong>For you if:</strong> the size chart says yes but rise, length, or leg shape still feels wrong.',
       'guides-hub-2-kicker':'WHR','guides-hub-2-title':'WHR 0.65 & 0.74: measure waist-to-hip ratio','guides-hub-2-desc':'<strong>For you if:</strong> jeans fit at the hips but gape at the waist — again and again.',
-      'guides-hub-3-kicker':'Pear body','guides-hub-3-title':'Dressing a pear / fuller-hip shape','guides-hub-3-desc':'<strong>For you if:</strong> hips feel wide, waist is narrow, and pants are the hardest buy.',
+      'guides-hub-3-kicker':'Pear body','guides-hub-3-title':'Pear Body Shape: jeans & tops for wide hips','guides-hub-3-desc':'<strong>For you if:</strong> hips feel wide, waist is narrow, and pants are the hardest buy.',
+      'guides-hub-calc-hint':'Read a guide first, then use the <strong>free proportion calculator</strong> below for your numbers.',
       'hero-btn-guides':'Browse all fit guides →','hero-btn-calc':'Open free calculator ↓',
       'hero-tag-calc':'Body calculator · 30 sec · free',
       'hero-poster-line1':'Returned it again. Charts lie.',
@@ -2711,6 +2713,14 @@
     if (pub) pub.innerHTML = t('publisher-body');
   }
 
+  function applyGuideHubLinks() {
+    const suffix = currentLang === 'ko' ? '' : '-en';
+    document.querySelectorAll('.guides-hub-card[data-guide-slug]').forEach((el) => {
+      const slug = el.getAttribute('data-guide-slug');
+      if (slug) el.setAttribute('href', '/blog/' + slug + suffix);
+    });
+  }
+
   function isHomePath() {
     const p = window.location.pathname.replace(/\/$/, '') || '/';
     return p === '' || p === '/' || p === '/index.html';
@@ -2823,7 +2833,7 @@
     const hUnit = cfg.length;
     const wUnit = cfg.weight;
     // data-i18n elements (innerHTML safe for keys with <br>/<strong>)
-    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','hero-preview-insight','guide-card-desc','guide-step2','publisher-body','publisher-intro-lead','publisher-intro-p2','publisher-intro-p3','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','no-tape-phone','no-tape-span','no-tape-three']);
+    const htmlKeys = new Set(['hero-sub','hero-sub-publisher','hero-en-priority','hero-positioning','hero-headline','hero-headline-publisher','hero-headline-calc','hero-scroll-hint-calc','hero-preview-insight','guide-card-desc','guide-step2','publisher-body','publisher-intro-lead','publisher-intro-p2','publisher-intro-p3','tool-disclaimer','story-title','story-p3','story-p4','edu-founder-p','home-publisher-p','home-founder-story','home-publisher-note','calc-guide-2','calc-guide-3','calc-guide-4','calc-guide-link','guides-hub-1-desc','guides-hub-2-desc','guides-hub-3-desc','guides-hub-calc-hint','no-tape-phone','no-tape-span','no-tape-three']);
     // Hero headline — calc-first / publisher static / rotating carousel
     const heroHl = document.getElementById('hero-headline-text');
     if (heroHl && !heroHl.classList.contains('hero-poster-title')) {
@@ -3004,6 +3014,7 @@
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
     applyTrustLinks();
+    applyGuideHubLinks();
     bindHomeNavAnchors();
   }
 
