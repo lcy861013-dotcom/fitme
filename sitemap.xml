@@ -37,6 +37,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/about"/>
   </url>
   <url>
+    <loc>https://perfectfitme.com/ko/privacy</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/ko/terms</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/ko/contact</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/ko/how-it-works</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/ko/editorial-standards</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://perfectfitme.com/about</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>

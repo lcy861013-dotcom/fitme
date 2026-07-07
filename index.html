@@ -8,15 +8,8 @@
   <!-- <meta name="msvalidate.01" content="REPLACE_WITH_BING_TOKEN" /> -->
   <!-- <meta name="yandex-verification" content="REPLACE_WITH_YANDEX_TOKEN" /> -->
   <!-- Language flash prevention: subtle hide until lang applied (failsafe shows page) -->
-  <style id="lang-fouc">body{opacity:0;transition:opacity .12s ease-out}</style>
-  <noscript><style id="lang-fouc-ns">#lang-fouc{display:none!important}body{opacity:1!important}</style></noscript>
   <script>
     (function(){
-      function reveal() {
-        var el = document.getElementById('lang-fouc');
-        if (el) el.remove();
-        document.body.style.opacity = '1';
-      }
       var saved = localStorage.getItem('fitme_lang');
       var lang = saved;
       if (!lang) {
@@ -38,8 +31,6 @@
         else lang = 'en';
       }
       document.documentElement.lang = lang;
-      document.addEventListener('DOMContentLoaded', reveal);
-      setTimeout(reveal, 2800);
     })();
   </script>
   <script src="/consent-init.js?v=7"></script>
@@ -198,7 +189,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+Thai:wght@300;400;500;700&family=Noto+Sans+Arabic:wght@300;400;500;700&family=Noto+Sans+Devanagari:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/assets/fitme-app.css?v=30">
+  <link rel="stylesheet" href="/assets/fitme-app.css?v=31">
 </head>
 <body>
 
@@ -228,10 +219,10 @@
       <option value="vi">🇻🇳 Tiếng Việt</option>
     </select>
     <nav>
-      <a href="/blog/" data-i18n="nav-blog">블로그</a>
-      <a href="/#blog-section" data-i18n="nav-guides" data-home-anchor="blog-section">가이드</a>
-      <a href="/#analysis" data-i18n="nav-analysis" data-home-anchor="analysis">비율 분석</a>
-      <a href="/about" data-i18n="nav-about" data-trust-link="about">소개</a>
+      <a href="/blog/" data-i18n="nav-blog">Blog</a>
+      <a href="/#blog-section" data-i18n="nav-guides" data-home-anchor="blog-section">Guides</a>
+      <a href="/#analysis" data-i18n="nav-analysis" data-home-anchor="analysis">Body Analysis</a>
+      <a href="/about" data-i18n="nav-about" data-trust-link="about">About</a>
     </nav>
   </div>
 </header>
@@ -244,28 +235,28 @@
     <div class="hero-poster-glow" aria-hidden="true"></div>
     <div class="hero-poster-inner">
       <div class="hero-poster-copy">
-        <div class="hero-tag" data-i18n="hero-tag-calc">체형 계산기 · 30초 · 무료</div>
+        <div class="hero-tag" data-i18n="hero-tag-calc">Body calculator · 30 sec · free</div>
         <h1 class="hero-poster-title" id="hero-headline-text">
-          <span class="hero-poster-line" data-i18n="hero-poster-line1">반품 또 했지 · 사이즈표 속임</span>
-          <span class="hero-poster-gradient" data-i18n="hero-poster-line2">비율이 진짜임</span>
+          <span class="hero-poster-line" data-i18n="hero-poster-line1">Returned it again. Charts lie.</span>
+          <span class="hero-poster-gradient" data-i18n="hero-poster-line2">ratios tell the truth</span>
         </h1>
-        <p class="hero-poster-sub" data-i18n="hero-poster-sub">거의 맞는데 짜증나는 핏. 네 몸이 이상한 거 아님. 사이즈가 문제가 아님 — 치수 넣으면 체형·WHR 나옴.</p>
+        <p class="hero-poster-sub" data-i18n="hero-poster-sub">Almost fits but infuriating. Not your body's fault. Size wasn't the problem — enter numbers, get your shape and WHR.</p>
         <div class="hero-poster-cta">
-          <button type="button" class="hero-btn hero-btn--poster" onclick="startMeasuring()" data-i18n="hero-btn-measure">비율부터 확인 →</button>
-          <button type="button" class="hero-sample-link" onclick="trySampleValues()" data-i18n="sample-btn">맛보기만 할래요</button>
+          <button type="button" class="hero-btn hero-btn--poster" onclick="startMeasuring()" data-i18n="hero-btn-measure">Check my ratios →</button>
+          <button type="button" class="hero-sample-link" onclick="trySampleValues()" data-i18n="sample-btn">Just show me a sample</button>
         </div>
         <div class="hero-pill-row" aria-label="Features">
-          <span class="hero-pill" data-i18n="hero-pill-1">📷 사진 없음</span>
-          <span class="hero-pill" data-i18n="hero-pill-2">⚡ 30초</span>
-          <span class="hero-pill" data-i18n="hero-pill-3">🆓 무료</span>
-          <span class="hero-pill" data-i18n="hero-pill-4">🔒 비공개</span>
+          <span class="hero-pill" data-i18n="hero-pill-1">📷 No photos</span>
+          <span class="hero-pill" data-i18n="hero-pill-2">⚡ 30 sec</span>
+          <span class="hero-pill" data-i18n="hero-pill-3">🆓 Free</span>
+          <span class="hero-pill" data-i18n="hero-pill-4">🔒 Private</span>
         </div>
       </div>
       <div class="hero-poster-visual" aria-hidden="true">
         <div class="hero-preview-stack">
           <div class="hero-preview-card hero-preview-card--back">
-            <div class="hero-preview-kicker" data-i18n="hero-preview-label">샘플 결과</div>
-            <p class="hero-preview-insight" data-i18n="hero-preview-insight">허리는 좁은데 골반이 넓어요 — 바지가 허리에서 뜨는 이유</p>
+            <div class="hero-preview-kicker" data-i18n="hero-preview-label">Sample result</div>
+            <p class="hero-preview-insight" data-i18n="hero-preview-insight">Narrow waist, fuller hips — why jeans gape at the waist</p>
             <div class="hero-preview-bars">
               <span style="--w:72%"></span><span style="--w:88%"></span><span style="--w:61%"></span>
             </div>
@@ -275,17 +266,26 @@
               <span class="hero-preview-score-num">78</span>
               <span class="hero-preview-score-label" data-i18n="hero-preview-score-label">DNA</span>
             </div>
-            <div class="hero-preview-type" data-i18n="hero-preview-type">Pear · 배형</div>
+            <div class="hero-preview-type" data-i18n="hero-preview-type">Pear shape</div>
             <div class="hero-preview-metric" data-i18n="hero-preview-whr">WHR 0.72</div>
           </div>
         </div>
       </div>
     </div>
     <div class="hero-scroll-hint" onclick="startMeasuring()">
-      <span data-i18n="hero-scroll-hint-calc">👇 아래에서 <strong>키</strong>부터 눌러 보세요</span>
+      <span data-i18n="hero-scroll-hint-calc">👇 Tap <strong>Height</strong> below to start</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
   </div>
+
+  <!-- Static publisher content: crawlable without JS (AdSense content-quality review) -->
+  <section class="publisher-intro" id="publisher-intro" aria-label="About FITME">
+    <div class="publisher-intro-inner">
+      <p class="publisher-intro-lead"><strong>Perfect Fit Me (FITME)</strong> is a free educational site that helps you understand body <em>proportions</em> — not just clothing size labels. Enter height, weight, and waist to estimate ratios such as waist-to-hip (WHR), leg-to-torso balance, and a practical body-type profile with style direction.</p>
+      <p>FITME does <strong>not</strong> upload photos, run 3D body scans, give medical advice, or replace a tailor. Measurements are processed in your browser. We publish <a href="/blog/">25+ original fit guides</a> on pants silhouettes, shoulders, capsule wardrobes, and measurement how-tos — written by the solo founder and updated regularly.</p>
+      <p>Read <a href="/about">About FITME</a> (methodology &amp; limits), <a href="/how-it-works">How the tool works</a>, and our <a href="/editorial-standards">Editorial standards</a> (Google publisher quality checklist). Popular starting points: <a href="/blog/blog1-en">pants that fit your proportions</a>, <a href="/blog/blog8-en">WHR and why jeans gape</a>, <a href="/blog/blog26-en">measurement series overview</a>.</p>
+    </div>
+  </section>
 
 <!-- MAIN ANALYSIS -->
   <div class="main-container" id="analysis">
@@ -1423,8 +1423,8 @@
 
       <!-- CARD 3: 사진으로 정확히 재기 -->
       <div class="guide-card">
-        <h3 id="guide-card3-title" data-i18n="guide-card3-title">📸 사진 한 장으로 정확히 재기</h3>
-        <p id="guide-card3-desc" data-i18n="guide-card3-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">A4 한 장만 있으면 오차 1cm 이내로 잴 수 있습니다.</p>
+        <h3 id="guide-card3-title" data-i18n="guide-card3-title">📸 Measure Accurately with One Photo</h3>
+        <p id="guide-card3-desc" data-i18n="guide-card3-desc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">Optional DIY: use a photo with A4 paper for scale — you measure offline and type numbers in. FITME never uploads or stores photos.</p>
         <div class="card-inner-grid">
           <div style="display:flex; flex-direction:column; gap:8px;">
             <div style="background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px;">
@@ -1632,7 +1632,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script defer src="/assets/fitme-app.js?v=39"></script>
+<script defer src="/assets/fitme-app.js?v=40"></script>
 <style>
   @keyframes bounce { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(8px); } }
 </style>

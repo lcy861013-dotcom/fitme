@@ -46,6 +46,13 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 # Demo video: extensionless canonical (do NOT redirect /demo-video → .html; that caused a loop)
 /demo-video.html /demo-video 301
 
+# Legacy /en trust paths (blog footers)
+/en/editorial-standards /editorial-standards 301
+/en/how-it-works /how-it-works 301
+
+# Thin KO doorway duplicate
+/ko/index.html /ko/about 301
+
 # Noindex locale doorways → canonical EN trust pages (reduce duplicate hubs in GSC)
 /en /about 301
 /en/ /about 301
