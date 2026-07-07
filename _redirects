@@ -37,9 +37,8 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 # Blog: legacy / special paths (must be before :slug wildcard)
 /blog/index.html /blog/ 301
 /blog/index-en.html /blog/ 301
-/blog/blog26 /blog/blog26-en 301
 
-# Blog: extensionless canonical (avoid duplicate .html URLs in Search Console)
+# Blog: extensionless canonical
 /blog/:slug.html /blog/:slug 301
 /blog/:lang/:slug.html /blog/:lang/:slug 301
 

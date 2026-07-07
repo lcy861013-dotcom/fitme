@@ -45,7 +45,7 @@
       'sample-btn':'맛보기만 할래요',
       'hero-tag-old':'나만의 핏을 찾다',
       'hero-sub':'브랜드 사이즈는 어깨·상체·다리 라인마다 다르게 걸립니다. FITME는 구간 비율로 체형 타입과 스타일 방향을 정리해 직구·국내 쇼핑 때 원하는 핏에 더 가깝게 고르기 쉽게 도와줘요.<br>키·몸무게·허리 3가지로 바로 시작하고, 세부 치수를 더하면 핏 감이 더 또렷해져요.',
-      'hero-en-priority':'해외 직구·영문 검색: 측정·핏 가이드는 <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">영문 글</a>을 먼저 올리고 있어요. 위에서 언제든 한국어로 전환할 수 있어요.',
+      'hero-en-priority':'해외 직구·영문 검색: <a href="/blog/blog26-en" style="color:var(--accent);font-weight:600;text-decoration:none;">영문 2XL 핏 가이드</a>도 함께 올려 두었어요. 위에서 언제든 한국어로 전환할 수 있어요.',
       'hero-btn':'정밀 비율 분석 시작 →',
       'hero-trust1':'사진 불필요','hero-trust2':'가입 불필요','hero-trust3':'100% 비공개',
       'hero-badge1':'✅ 무료','hero-badge2':'⚡ 즉시 결과','hero-badge3':'🌍 15개국 언어','hero-badge4':'🔒 개인정보가 우리의 DNA','hero-scroll-hint':'지금 바로 측정하기','share-nudge':'친구에게 공유하면 함께 체형 분석을 받을 수 있어요 👇',
@@ -160,7 +160,7 @@
       'edu-founder-p':'상세 페이지에는 보통 가슴·허리·총장 숫자만 있습니다. 그런데 같은 “32” 허리도 엉덩이·다리 비율에 따라 바지 핏이 완전히 달라집니다. 저는 이 간극을 사이즈표만으로는 못 채워서, 손뼘·어깨·다리 같은 <strong>구간 치수</strong>부터 재기 시작했어요. FITME 도구는 그 숫자를 비율로 정리해 주고, 아래 추천 글들은 “쇼핑할 때 어떻게 쓰면 덜 실패하는지”를 더 깊게 다룹니다. 메인 글과 블로그는 같은 주제를 다른 각도로 설명합니다 — 여기는 왜 비율인지, 각 글은 현장에서 어떻게 적용하는지예요.',
       'home-publisher-h':'FITME가 제공하는 것 (계산기 외)',
       'home-publisher-p':'FITME는 1인이 운영하는 교육 사이트입니다. 브라우저 무료 비율 도구와 <strong>창업자 이창용이 직접 쓴 핏 가이드</strong>를 함께 제공합니다. WHR, 어깨 너비, 다리·상체 비율, 원단, 온라인 사이징을 FAQ·측정법·코디 팁으로 다루며, 실제 쇼핑·반품 경험을 바탕으로 합니다.',
-      'home-founder-story':'저는 <strong>175cm, 78kg</strong>, 보통 <strong>2XL 오버핏</strong>·<strong>허리 32</strong>인데도 엉덩이는 맞고 허리만 뜨는 바지를 자주 반품했습니다. 라벨 사이즈와 체형 비율 사이 간극 때문에 손뼘·어깨·다리 구간부터 재기 시작했고, 이 사이트가 그 과정에서 나왔습니다. <a href="/blog/blog8">WHR 측정</a>, <a href="/blog/blog26-en">2XL 직구 핏</a> 같은 글은 그 경험에서 나온 가이드입니다.',
+      'home-founder-story':'저는 <strong>175cm, 78kg</strong>, 보통 <strong>2XL 오버핏</strong>·<strong>허리 32</strong>인데도 엉덩이는 맞고 허리만 뜨는 바지를 자주 반품했습니다. 라벨 사이즈와 체형 비율 사이 간극 때문에 손뼘·어깨·다리 구간부터 재기 시작했고, 이 사이트가 그 과정에서 나왔습니다. <a href="/blog/blog8">WHR 측정</a>, <a href="/blog/blog26">2XL 직구 핏</a> 같은 글은 그 경험에서 나온 가이드입니다.',
       'home-publisher-note':'<strong>의료 조언이 아닙니다.</strong> 스타일·쇼핑 교육 목적입니다. 쿠키·분석·광고는 <a href="/privacy">개인정보처리방침</a>을 참고하세요.',
       'home-faq-h':'자주 묻는 질문',
       'home-faq-q1':'FITME는 무료인가요?',
@@ -204,7 +204,7 @@
       'blog22-title':'팔 길이 재기 — 상완·하완 2단계','blog22-desc':'소매 길이와 팔 비율을 동시에 파악. 어깨→팔꿈치→손목 손뼘 측정 완전 가이드.',
       'blog23-title':'다리 길이 재기 — 골반뼈에서 발목까지','blog23-desc':'대전자(골반 옆 뼈) 기준으로 허벅지+종아리 손뼘 측정. 다리 비율 계산까지.',
       'blog24-title':'엉덩이 둘레 혼자 재기','blog24-desc':'두 손뼘으로 혼자서 한 바퀴. 꼬리뼈에서 시작해 WHR까지 계산하는 법.',
-      'blog26-title':'2XL 오버핏인데도 어색할 때 — 라벨 말고 비율','blog26-desc':'사이즈만 키우면 어깨·기장이 또 어긋납니다. ASOS·아마존 직구 전에 재야 할 치수(영문).',
+      'blog26-title':'2XL 오버핏인데도 어색할 때 — 라벨 말고 실측표','blog26-desc':'사이즈만 키우면 어깨·기장이 또 어긋납니다. 무신사·직구 전에 재야 할 어깨·가슴·총장 치수.',
       'section-label':'👇 재보고 싶은 부위를 눌러 보세요',
       'figure-intro-1':'<strong>먼저 3개만</strong> — <strong>키 · 몸무게 · 허리</strong>를 넣으면 바로 분석할 수 있어요.',
       'figure-intro-2':'어깨·골반 등은 <strong>더 많은 부위</strong>에서 추가. 줄자 없이 재기는 각 입력 화면에서 펼치세요.',
@@ -258,7 +258,7 @@
       'publisher-body':'한국어·영어 핏 가이드 25편 이상 + 브라우저 무료 비율 도구. 1인 창업자 이창용이 직접 작성·운영합니다. 의료 조언이 아닙니다. <a href="/ko/how-it-works" style="color:var(--accent);font-weight:600;">작동 방식</a> · <a href="/ko/editorial-standards" style="color:var(--accent);font-weight:600;">콘텐츠 기준</a> · <a href="/ko/about" style="color:var(--accent);font-weight:600;">소개</a>',
       'publisher-intro-lead':'<strong>Perfect Fit Me (FITME)</strong>는 옷 사이즈(S/M/L)가 아니라 <em>체형 비율</em>을 이해하도록 돕는 무료 교육 사이트입니다. 키·몸무게·허리를 입력하면 WHR, 다리·몸통 비율, 체형 프로필과 스타일 방향을 추정합니다.',
       'publisher-intro-p2':'FITME는 <strong>사진을 업로드하지 않으며</strong>, 3D 스캔·의료 조언·수선 치수를 대체하지 않습니다. 측정값은 브라우저에서만 처리됩니다. <a href="/blog/">25편 이상의 원문 핏 가이드</a>(바지 핏, 어깨, 캡슐 워드로브, 측정법)를 1인 창업자가 직접 작성·업데이트합니다.',
-      'publisher-intro-p3':'<a href="/ko/about">소개</a>(방법론·한계), <a href="/ko/how-it-works">작동 방식</a>, <a href="/ko/editorial-standards">콘텐츠 기준</a>을 참고하세요. 추천 글: <a href="/blog/blog1">비율에 맞는 바지</a>, <a href="/blog/blog8">WHR과 청바지 허리 뜸</a>, <a href="/blog/blog26">측정 시리즈</a>.',
+      'publisher-intro-p3':'<a href="/ko/about">소개</a>(방법론·한계), <a href="/ko/how-it-works">작동 방식</a>, <a href="/ko/editorial-standards">콘텐츠 기준</a>을 참고하세요. 추천 글: <a href="/blog/blog1">비율에 맞는 바지</a>, <a href="/blog/blog8">WHR과 청바지 허리 뜸</a>, <a href="/blog/blog26">2XL·오버핏 직구 핏</a>.',
       'section-tag-measure':'측정 방법','blog-tag-measure':'측정 가이드',
       'blog-badge-new':'✦ 신규','blog-badge-hot':'🔥 인기',
       'units-btn':'단위','unit-modal-label':'측정 단위','unit-modal-title':'단위 설정',
@@ -3229,10 +3229,6 @@
   function goBlog(event, id) {
     event.preventDefault();
     const slug = String(id).replace(/-en$/, '');
-    if (slug === 'blog26') {
-      window.location.href = '/blog/blog26-en';
-      return;
-    }
     const suffix = (currentLang === 'ko') ? '' : '-en';
     window.location.href = '/blog/' + slug + suffix;
   }
