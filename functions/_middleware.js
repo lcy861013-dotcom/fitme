@@ -23,6 +23,9 @@ const SCANNER_302 = new Set([
   '/.env',
   '/login',
   '/register',
+  '/signin',
+  '/signup',
+  '/user/login',
   '/manager',
   '/console',
   '/actuator',
@@ -33,13 +36,66 @@ const SCANNER_302 = new Set([
   '/security.txt',
   '/crossdomain.xml',
   '/browserconfig.xml',
+  '/readme.html',
+  '/license.txt',
+  '/config.json',
+  '/debug',
+  '/trace',
+  '/graphql',
+  '/swagger',
+  '/swagger-ui',
+  '/telescope',
+  '/_profiler',
+  '/shell',
+  '/.aws/credentials',
 ]);
 
 /** @type {string[]} */
-const SCANNER_PREFIX_302 = ['/.git/', '/wp-json/', '/cgi-bin/', '/api/'];
+const SCANNER_PREFIX_302 = [
+  '/.git/',
+  '/wp-json/',
+  '/cgi-bin/',
+  '/api/',
+  '/vendor/',
+  '/node_modules/',
+  '/backup/',
+  '/.well-known/security.txt',
+];
+
+/** @type {string[]} */
+const SCANNER_FRAGMENT_302 = [
+  '/wp-admin',
+  '/wp-content',
+  '/wp-includes',
+  '/phpunit',
+  '/eval-stdin',
+  '/autoload.php',
+  '/setup.php',
+  '/install.php',
+  '/xmlrpc.php',
+];
+
+/** @type {RegExp} */
+const SCANNER_EXT_RE = /\.(php|asp|aspx|jsp|cgi|sql|bak|old|zip|tar|gz)$/i;
+
+/**
+ * @param {string} path
+ * @returns {boolean}
+ */
+function isScannerLikePath(path) {
+  const lower = path.toLowerCase();
+
+  if (SCANNER_302.has(lower)) return true;
+  if (SCANNER_PREFIX_302.some((prefix) => lower.startsWith(prefix))) return true;
+  if (SCANNER_FRAGMENT_302.some((fragment) => lower.includes(fragment))) return true;
+  if (SCANNER_EXT_RE.test(lower)) return true;
+  if (lower.startsWith('/.env') || lower.startsWith('/.git')) return true;
+
+  return false;
+}
 
 /** @param {{ request: Request; next: () => Promise<Response> }} context */
-export function onRequest(context) {
+export async function onRequest(context) {
   const url = new URL(context.request.url);
   const path = url.pathname;
 
@@ -48,15 +104,16 @@ export function onRequest(context) {
     return Response.redirect(url.origin + alias, 301);
   }
 
-  const lower = path.toLowerCase();
-
-  if (
-    SCANNER_302.has(lower) ||
-    lower.endsWith('.php') ||
-    SCANNER_PREFIX_302.some((prefix) => lower.startsWith(prefix))
-  ) {
+  if (isScannerLikePath(path)) {
     return Response.redirect(HOME, 302);
   }
 
-  return context.next();
+  const response = await context.next();
+
+  // Free-plan analytics hide top 404 URLs — absorb obvious scanner misses post-hoc.
+  if (response.status === 404 && isScannerLikePath(path)) {
+    return Response.redirect(HOME, 302);
+  }
+
+  return response;
 }
