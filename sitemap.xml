@@ -584,58 +584,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog26-en"/>
   </url>
 
-  <!-- Blog: Japanese -->
-
-  <!-- Blog: Portuguese (Brazil) -->
-
-
-
-  <!-- Added: JA/PT blog loc + locale trust (2026-05-29) -->
-  <url>
-    <loc>https://perfectfitme.com/ja/about</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/about"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://perfectfitme.com/ja/about"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://perfectfitme.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/about"/>
-  </url>
-  <url>
-    <loc>https://perfectfitme.com/ja/contact</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.45</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://perfectfitme.com/ja/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://perfectfitme.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/contact"/>
-  </url>
-  <url>
-    <loc>https://perfectfitme.com/pt/about</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/about"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://perfectfitme.com/ja/about"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://perfectfitme.com/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/about"/>
-  </url>
-  <url>
-    <loc>https://perfectfitme.com/pt/contact</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.45</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/contact"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://perfectfitme.com/ja/contact"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://perfectfitme.com/pt/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/contact"/>
-  </url>
-
-
-
-  <!-- Added: JA/PT blog loc + locale trust (2026-05-29) -->
-
   <url>
     <loc>https://perfectfitme.com/feed.xml</loc>
     <lastmod>2026-05-30</lastmod>

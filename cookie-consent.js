@@ -301,8 +301,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     ensureCss();
     setupCtaTracking();
-    /* Load AdSense script for crawlers/review; ad fill waits for consent (fitme-ads.js). */
-    loadAdSense();
+    /* AdSense loads only after Accept — avoid ad-first signal on tool/thin pages during review. */
     var consent = '';
     try {
       consent = localStorage.getItem(KEY) || '';

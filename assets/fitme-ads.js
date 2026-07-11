@@ -3,7 +3,8 @@
  * Script loads on every page (cookie-consent.js); slots fill after cookie consent.
  */
 (function () {
-  var LIVE = true;
+  // Keep false until AdSense approval — thin/tool pages must not look ad-first.
+  var LIVE = false;
   var pushed = false;
 
   function hasConsent() {
