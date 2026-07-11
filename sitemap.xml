@@ -230,7 +230,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog13-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog13-en"/>
   </url>
-<url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog14</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog14"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog14-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog14-en"/>
+  </url>
+  <url>
     <loc>https://perfectfitme.com/blog/blog15</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -275,7 +284,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog19-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog19-en"/>
   </url>
-<url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog20</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog20"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog20-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog20-en"/>
+  </url>
+  <url>
     <loc>https://perfectfitme.com/blog/blog21</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -319,6 +337,15 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog25"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog25-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog25-en"/>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog26</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog26"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog26-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog26-en"/>
   </url>
 
   <!-- Blog posts: English -->
@@ -441,9 +468,10 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog14-en</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog14"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog14-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog14-en"/>
   </url>
@@ -494,9 +522,10 @@
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog20-en</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog20"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog20-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog20-en"/>
   </url>
@@ -545,11 +574,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog25-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog25-en"/>
   </url>
-<url>
+  <url>
     <loc>https://perfectfitme.com/blog/blog26-en</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog26"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog26-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog26-en"/>
   </url>
