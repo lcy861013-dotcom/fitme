@@ -14,6 +14,20 @@ const ALIASES_301 = {
   '/sitemap.xml.gz': '/sitemap.xml',
   '/manifest.json': '/site.webmanifest',
   '/apple-touch-icon-precomposed.png': '/icon-192.png',
+  '/ja': '/about',
+  '/ja/': '/about',
+  '/ja/about': '/about',
+  '/ja/about.html': '/about',
+  '/ja/contact': '/contact',
+  '/ja/contact.html': '/contact',
+  '/ja/index.html': '/about',
+  '/pt': '/about',
+  '/pt/': '/about',
+  '/pt/about': '/about',
+  '/pt/about.html': '/about',
+  '/pt/contact': '/contact',
+  '/pt/contact.html': '/contact',
+  '/pt/index.html': '/about',
 };
 
 /** @type {Set<string>} */

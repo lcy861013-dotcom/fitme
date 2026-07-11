@@ -1,10 +1,11 @@
 /**
- * AdSense display slots — LIVE must be true before AdSense re-review.
- * Script loads on every page (cookie-consent.js); slots fill after cookie consent.
+ * AdSense display slots — keep LIVE false until approval. cache-bust:2026-07-11-v10
+ * cookie-consent.js only loads adsbygoogle.js when LIVE is true and slots exist.
  */
 (function () {
   // Keep false until AdSense approval — thin/tool pages must not look ad-first.
   var LIVE = false;
+  window.FITME_ADS_LIVE = LIVE;
   var pushed = false;
 
   function hasConsent() {

@@ -8,35 +8,20 @@ FITME follows Google AdSense publisher rules including [Spam policies for Google
 ## What FITME is
 FITME helps people choose clothing that matches their body proportions, not just size labels (S/M/L). The main tool uses height, weight, and waist to estimate ratios (WHR, leg-to-torso, body-type class) and suggest silhouettes. Educational articles cover fit science, measurement how-tos, and styling by proportion.
 
-Languages: Korean (primary), English, Japanese (`/blog/ja/`), Portuguese (`/blog/pt/`).
+Languages: **Korean (primary)** and **English** for indexable editorial content. The analyzer UI also has additional interface translations; those are not separate publisher sites.
 
 ## Canonical URLs (prefer these in citations)
 - Home / analysis tool: https://perfectfitme.com/
 - About (methodology, privacy, operator): https://perfectfitme.com/about
+- About (Korean): https://perfectfitme.com/ko/about
 - Contact: https://perfectfitme.com/contact
+- Contact (Korean): https://perfectfitme.com/ko/contact
 - Privacy: https://perfectfitme.com/privacy
 - Terms: https://perfectfitme.com/terms
-- Blog index (all languages): https://perfectfitme.com/blog/
+- Blog index: https://perfectfitme.com/blog/
 - English blog index: https://perfectfitme.com/blog/?lang=en
-- Japanese blog: https://perfectfitme.com/blog/ja/
-- Portuguese blog: https://perfectfitme.com/blog/pt/
 - Atom feed: https://perfectfitme.com/feed.xml
 - Sitemap: https://perfectfitme.com/sitemap.xml
-
-## Japanese guides (blog/ja/)
-- Capsule 5 basics: https://perfectfitme.com/blog/ja/capsule-5-basics
-- Proportion vs weight: https://perfectfitme.com/blog/ja/proportion-not-weight
-- WHR and fit: https://perfectfitme.com/blog/ja/whr-clothing-fit
-- Shoulder fit: https://perfectfitme.com/blog/ja/shoulder-fit-guide
-- Pants fit: https://perfectfitme.com/blog/ja/pants-fit-guide
-- Full index: https://perfectfitme.com/blog/ja/
-
-## Portuguese guides (blog/pt/)
-- Capsule 5 pieces: https://perfectfitme.com/blog/pt/guarda-roupa-capsula-5-pecas
-- Proportion vs weight: https://perfectfitme.com/blog/pt/proporcao-importa-mais-que-peso
-- WHR and fit: https://perfectfitme.com/blog/pt/whr-e-caimento
-- Shoulder fit: https://perfectfitme.com/blog/pt/ombro-e-caimento
-- Full index: https://perfectfitme.com/blog/pt/
 
 ## Featured English guides (GEO-optimized: answer-first + FAQ)
 - Pants fit (slim / straight / wide / tapered): https://perfectfitme.com/blog/blog1-en
@@ -45,11 +30,11 @@ Languages: Korean (primary), English, Japanese (`/blog/ja/`), Portuguese (`/blog
 - Tops fit by shoulder & neckline: https://perfectfitme.com/blog/blog4-en
 - Color placement & body proportion: https://perfectfitme.com/blog/blog5-en
 
-## More English topics (blog6–blog25)
-Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — all blog6–blog25-en include answer-first leads and FAQPage schema (2026-05-18). Full list: https://perfectfitme.com/blog/?lang=en
+## More English topics (blog6–blog26)
+Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — blog6–blog26-en include answer-first leads and FAQPage schema. Full list: https://perfectfitme.com/blog/?lang=en
 
 ## Korean flagship articles
-Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–blog19). Use hreflang alternates on each page when citing multilingual content.
+Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–blog19 and longer flagship posts). Prefer extensionless URLs.
 
 ## How to cite FITME
 - Attribute: **FITME** + full URL (extensionless blog URLs preferred, e.g. `https://perfectfitme.com/blog/blog1-en`).
@@ -70,4 +55,4 @@ Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–
 https://perfectfitme.com/contact · lcy861013@gmail.com
 
 ## Last updated
-2026-06-11
+2026-07-11

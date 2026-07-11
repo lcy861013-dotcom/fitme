@@ -122,17 +122,21 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 /ko/how-it-works.html /ko/how-it-works 301
 /ko/editorial-standards.html /ko/editorial-standards 301
 
-# Japanese / Portuguese hubs (indexed locales)
-/ja /ja/about 301
-/ja/ /ja/about 301
-/ja/index.html /ja/about 301
-/ja/about.html /ja/about 301
-/ja/contact.html /ja/contact 301
-/pt /pt/about 301
-/pt/ /pt/about 301
-/pt/index.html /pt/about 301
-/pt/about.html /pt/about 301
-/pt/contact.html /pt/contact 301
+# Japanese / Portuguese hubs → canonical EN trust (thin locale pages no longer served)
+/ja https://perfectfitme.com/about 301
+/ja/ https://perfectfitme.com/about 301
+/ja/index.html https://perfectfitme.com/about 301
+/ja/about https://perfectfitme.com/about 301
+/ja/about.html https://perfectfitme.com/about 301
+/ja/contact https://perfectfitme.com/contact 301
+/ja/contact.html https://perfectfitme.com/contact 301
+/pt https://perfectfitme.com/about 301
+/pt/ https://perfectfitme.com/about 301
+/pt/index.html https://perfectfitme.com/about 301
+/pt/about https://perfectfitme.com/about 301
+/pt/about.html https://perfectfitme.com/about 301
+/pt/contact https://perfectfitme.com/contact 301
+/pt/contact.html https://perfectfitme.com/contact 301
 
 # Browsers default favicon path → actual asset
 /favicon.ico /favicon-32x32.png 302

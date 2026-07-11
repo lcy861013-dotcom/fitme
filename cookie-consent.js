@@ -24,7 +24,15 @@
     }
   }
 
+  function shouldLoadAdSense() {
+    if (!document.querySelector('.fitme-ad-slot ins.adsbygoogle')) return false;
+    if (typeof window.FITME_ADS_LIVE === 'boolean') return window.FITME_ADS_LIVE;
+    // Fail closed during review if fitme-ads.js did not set the flag.
+    return false;
+  }
+
   function loadAdSense() {
+    if (!shouldLoadAdSense()) return;
     if (document.querySelector('script[data-fitme="adsense"]')) return;
     var s = document.createElement('script');
     s.async = true;
