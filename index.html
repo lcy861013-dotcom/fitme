@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="dark">
 <head>
-  <script>(function(){if(location.hostname!=='perfectfitme.com'&&location.hostname!=='www.perfectfitme.com'){location.replace('https://perfectfitme.com'+location.pathname+location.search+location.hash);}})();</script>
+  <script>(function(){if(location.hostname!=='perfectfitme.com'){location.replace('https://perfectfitme.com'+location.pathname+location.search+location.hash);}})();</script>
   <meta name="google-site-verification" content="xwsXRp22QE2bYqKgeOSRsQQystnHk_oTlw2Y0DVBCe4" />
   <meta name="naver-site-verification" content="efc2e79bd9d1dac5df38a9cfa9bddf878d07460b" />
   <!-- TODO: replace with real tokens after registering at https://www.bing.com/webmasters/ and https://webmaster.yandex.com/ -->
@@ -1644,7 +1644,7 @@
 <script defer src="/cookie-consent.js?v=10"></script>
 <script>
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    var hostOk = location.hostname === 'perfectfitme.com' || location.hostname === 'www.perfectfitme.com';
+    var hostOk = location.hostname === 'perfectfitme.com';
     if (hostOk) {
       window.addEventListener('load', function () {
         navigator.serviceWorker.register('/sw.js?v=8').catch(function () {});

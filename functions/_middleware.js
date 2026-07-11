@@ -186,6 +186,25 @@ function empty404() {
   });
 }
 
+const APEX_HOST = 'perfectfitme.com';
+
+/**
+ * Strip accidental CORS * on document responses (not set in repo; can appear from CF).
+ * @param {Response} response
+ * @returns {Response}
+ */
+function withoutWildcardCors(response) {
+  const acao = response.headers.get('Access-Control-Allow-Origin');
+  if (acao !== '*') return response;
+  const headers = new Headers(response.headers);
+  headers.delete('Access-Control-Allow-Origin');
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
 /** @param {{ request: Request; next: () => Promise<Response> }} context */
 export async function onRequest(context) {
   const { request } = context;
@@ -193,9 +212,16 @@ export async function onRequest(context) {
   const path = url.pathname;
   const method = request.method.toUpperCase();
 
+  // Canonical host: www (and any other host) → apex. Pages _redirects host rules are unreliable.
+  const host = (request.headers.get('host') || url.hostname || '').split(':')[0].toLowerCase();
+  if (host && host !== APEX_HOST && host !== 'localhost' && !host.endsWith('.pages.dev')) {
+    const dest = new URL(url.pathname + url.search, HOME);
+    return Response.redirect(dest.toString(), 301);
+  }
+
   const alias = ALIASES_301[path];
   if (alias) {
-    return Response.redirect(url.origin + alias, 301);
+    return Response.redirect(`https://${APEX_HOST}${alias}`, 301);
   }
 
   // Known scanner paths → 302 home (drops out of 4xx bucket entirely).
@@ -206,7 +232,7 @@ export async function onRequest(context) {
   const response = await context.next();
 
   if (response.status !== 404) {
-    return response;
+    return withoutWildcardCors(response);
   }
 
   // Post-hoc: scanner-shaped path that slipped through → still 302.
@@ -225,5 +251,5 @@ export async function onRequest(context) {
   }
 
   // Real browsers keep the styled 404.html from Pages.
-  return response;
+  return withoutWildcardCors(response);
 }
