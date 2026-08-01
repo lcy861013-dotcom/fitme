@@ -8,7 +8,7 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SITE_OG = "/assets/og-image-en.png"
+SITE_OG = "/assets/og-image-en.jpg"
 TODAY = date.today().isoformat()
 
 FOOTER_OLD = re.compile(
@@ -31,11 +31,11 @@ FOOTER_PRIVACY_ONLY = re.compile(
 
 
 def copy_og_image() -> None:
-    src = ROOT / "assets" / "og-image-en.png"
-    dst = ROOT / "og-image.png"
+    src = ROOT / "assets" / "og-image-en.jpg"
+    dst = ROOT / "og-image.jpg"
     if src.exists():
         shutil.copy2(src, dst)
-        print(f"Copied {src.name} -> og-image.png")
+        print(f"Copied {src.name} -> og-image.jpg")
 
 
 def replace_og_urls() -> int:
@@ -46,8 +46,8 @@ def replace_og_urls() -> int:
         if "node_modules" in path.parts or ".git" in path.parts:
             continue
         raw = path.read_text(encoding="utf-8")
-        new = raw.replace("https://perfectfitme.com/og-image.png", f"https://perfectfitme.com{SITE_OG}")
-        new = new.replace("/og-image.png", SITE_OG)
+        new = raw.replace("https://perfectfitme.com/og-image.jpg", f"https://perfectfitme.com{SITE_OG}")
+        new = new.replace("/og-image.jpg", SITE_OG)
         if new != raw:
             path.write_text(new, encoding="utf-8")
             n += 1
@@ -131,7 +131,7 @@ def fix_webmanifest() -> None:
     path = ROOT / "site.webmanifest"
     raw = path.read_text(encoding="utf-8")
     icons = [
-        {"src": "/assets/og-image-en.png", "sizes": "512x512", "type": "image/png"},
+        {"src": "/assets/og-image-en.jpg", "sizes": "512x512", "type": "image/png"},
         {"src": "/favicon-32x32.png", "sizes": "32x32", "type": "image/png"},
     ]
     import json

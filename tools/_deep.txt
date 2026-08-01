@@ -1,0 +1,95 @@
+pages checked: 143
+problems: 88
+  [h1 count 0] 404.html
+  [description 173 chars] about.html
+  [description short 56] ar/about.html
+  [description short 59] ar/contact.html
+  [description short 56] ar/index.html
+  [description short 51] blog/blog17.html
+  [description short 57] blog/blog20.html
+  [title 68 chars] blog/blog21-en.html: Across Shoulder Width: How to Measure (Acromion to Acromion) | FITME
+  [title 72 chars] blog/blog26-en.html: 2XL Oversize Wrong on Shoulders? What to Measure Before Checkout | FIT
+  [description short 50] blog/ja/capsule-5-basics.html
+  [description short 58] blog/ja/find-body-type-data.html
+  [description short 59] blog/ja/golden-ratio-fuku.html
+  [description short 23] blog/ja/index.html
+  [description short 57] blog/ja/pants-fit-guide.html
+  [description short 59] blog/ja/pear-styling.html
+  [description short 34] blog/ja/proportion-not-weight.html
+  [description short 34] blog/ja/shoulder-fit-guide.html
+  [description short 45] blog/ja/whr-clothing-fit.html
+  [title 67 chars] blog/pt/como-parecer-mais-alta.html: Como Parecer Mais Alta(o): 5 Truques que Adicionam até 5 cm | FITME
+  [title 73 chars] blog/pt/guia-modelagem-calcas.html: Guia Completo de Modelagem de Calças: Skinny, Reta, Wide, Tapered | FI
+  [description short 34] blog/pt/index.html
+  [no description] demos/body-measure-figure-demo.html
+  [no canonical] demos/body-measure-figure-demo.html
+  [h1 count 0] demos/body-measure-figure-demo.html
+  [no description] demos/measure-hud-layout-preview.html
+  [no canonical] demos/measure-hud-layout-preview.html
+  [h1 count 0] demos/measure-hud-layout-preview.html
+  [img empty alt] demos/measure-hud-layout-preview.html
+  [img empty alt] demos/measure-hud-layout-preview.html
+  [no description] demos/measure-motion-demo.html
+  [no canonical] demos/measure-motion-demo.html
+  [img empty alt] demos/measure-motion-demo.html
+  [no description] demos/measure-scan-layout-preview.html
+  [no canonical] demos/measure-scan-layout-preview.html
+  [h1 count 0] demos/measure-scan-layout-preview.html
+  [no description] demos/skeleton-ab-compare.html
+  [no canonical] demos/skeleton-ab-compare.html
+  [description short 59] en/contact.html
+  [no title] googlee58e083c1a9f7cf1.html
+  [no description] googlee58e083c1a9f7cf1.html
+  [no canonical] googlee58e083c1a9f7cf1.html
+  [h1 count 0] googlee58e083c1a9f7cf1.html
+  [no html lang] googlee58e083c1a9f7cf1.html
+  [no title] index.html
+  [no description] index.html
+  [img empty alt] index.html
+  [description short 31] ja/about.html
+  [description short 27] ja/contact.html
+  [description short 31] ja/index.html
+  [description short 56] ko/contact.html
+  [description short 38] ko/editorial-standards.html
+  [description short 45] ko/how-it-works.html
+  [description short 49] ko/index.html
+  [description short 54] ko/privacy.html
+  [description short 41] ko/terms.html
+  [description short 51] th/contact.html
+  [description short 57] vi/contact.html
+  [description short 44] zh/about.html
+  [description short 28] zh/contact.html
+  [description short 44] zh/index.html
+  [duplicate title] عن FITME — المؤسس -> ar/about.html, ar/index.html
+  [duplicate title] Über FITME — Gründer -> de/about.html, de/index.html
+  [duplicate title] About FITME — Solo Founder -> en/about.html, en/index.html
+  [duplicate title] Sobre FITME — Fundador -> es/about.html, es/index.html
+  [duplicate title] À propos de FITME — Fondateur -> fr/about.html, fr/index.html
+  [duplicate title] FITME के बारे में — संस्थापक -> hi/about.html, hi/index.html
+  [duplicate title] Tentang FITME — Pendiri -> id/about.html, id/index.html
+  [duplicate title] Informazioni su FITME — Fondatore -> it/about.html, it/index.html
+  [duplicate title] FITMEについて — 運営者 -> ja/about.html, ja/index.html
+  [duplicate title] Sobre a FITME — Fundador -> pt/about.html, pt/index.html
+  [duplicate title] О FITME — Основатель -> ru/about.html, ru/index.html
+  [duplicate title] เกี่ยวกับ FITME — ผู้ก่อตั้ง -> th/about.html, th/index.html
+  [duplicate title] Giới thiệu FITME — Nhà sáng lập -> vi/about.html, vi/index.html
+  [duplicate title] 关于 FITME — 独立创始人 -> zh/about.html, zh/index.html
+  [duplicate description] يُشغّل FITME تشانغيونغ لي، مؤسس منفرد في كوري -> ar/about.html, ar/index.html
+  [duplicate description] FITME wird von Changyong Lee, Solo-Gründer in -> de/about.html, de/index.html
+  [duplicate description] FITME is built by Changyong Lee, a solo found -> en/about.html, en/index.html
+  [duplicate description] FITME la crea Changyong Lee, fundador en soli -> es/about.html, es/index.html
+  [duplicate description] FITME est créé par Changyong Lee, fondateur s -> fr/about.html, fr/index.html
+  [duplicate description] FITME को दक्षिण कोरिया में रहने वाले स्वतंत्र -> hi/about.html, hi/index.html
+  [duplicate description] FITME dioperasikan oleh Changyong Lee, pendir -> id/about.html, id/index.html
+  [duplicate description] FITME è gestito da Changyong Lee, fondatore u -> it/about.html, it/index.html
+  [duplicate description] FITMEは韓国の李昌龍が運営する、体型比率の教育ツールです。 -> ja/about.html, ja/index.html
+  [duplicate description] A FITME é operada por Changyong Lee, fundador -> pt/about.html, pt/index.html
+  [duplicate description] FITME создаёт Changyong Lee, основатель-одино -> ru/about.html, ru/index.html
+  [duplicate description] FITME ดำเนินการโดย Changyong Lee ผู้ก่อตั้งเด -> th/about.html, th/index.html
+  [duplicate description] FITME do Changyong Lee, nhà sáng lập độc lập  -> vi/about.html, vi/index.html
+  [duplicate description] FITME 由韩国的独立创始人 Changyong Lee 运营，提供体型比例教育工具。 -> zh/about.html, zh/index.html
+
+assets over 250 KB:
+  2197 KB  demo-v2.mp4
+  2197 KB  demo-ko-v2.mp4
+  626 KB  assets/fitme-app.js

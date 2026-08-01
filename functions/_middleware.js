@@ -14,10 +14,8 @@ const ALIASES_301 = {
   '/sitemap.xml.gz': '/sitemap.xml',
   '/manifest.json': '/site.webmanifest',
   '/apple-touch-icon-precomposed.png': '/icon-192.png',
-  '/blog/img/blog26-oversize-thumb-ko.png': '/blog/img/blog26-oversize-thumb-ko.jpg',
-  '/blog/img/blog27-musinsa-size-thumb-ko.png': '/blog/img/blog27-musinsa-size-thumb-ko.jpg',
-  '/blog/img/blog28-short-height-coord-ko.png': '/blog/img/blog28-short-height-coord-ko.jpg',
-  '/blog/img/blog29-thigh-rise-pants-ko.png': '/blog/img/blog29-thigh-rise-pants-ko.jpg',
+  '/og-image.png': '/og-image.jpg',
+  '/assets/og-image-en.png': '/assets/og-image-en.jpg',
   '/ja': '/about',
   '/ja/': '/about',
   '/ja/about': '/about',
@@ -240,6 +238,11 @@ export async function onRequest(context) {
   const alias = ALIASES_301[path];
   if (alias) {
     return Response.redirect(`https://${APEX_HOST}${alias}`, 301);
+  }
+
+  // Blog illustrations were re-exported as JPEG; keep the old PNG URLs alive.
+  if (path.startsWith('/blog/img/') && path.endsWith('.png')) {
+    return Response.redirect(`https://${APEX_HOST}${path.slice(0, -4)}.jpg`, 301);
   }
 
   // Known scanner paths → 302 home (drops out of 4xx bucket entirely).

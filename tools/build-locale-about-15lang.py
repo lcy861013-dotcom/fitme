@@ -523,7 +523,7 @@ def locale_about_html(loc: str) -> str:
   <meta name="description" content="{d['desc']}">
   <meta property="og:title" content="{d['title']}">
   <meta property="og:description" content="{d['desc']}">
-  <meta property="og:image" content="{SITE}/assets/og-image-en.png">
+  <meta property="og:image" content="{SITE}/assets/og-image-en.jpg">
   <meta property="og:url" content="{canon}">
   <link rel="canonical" href="{canon}">
 {hreflang_block()}

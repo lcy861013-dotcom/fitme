@@ -23,7 +23,7 @@
     var title = $meta('og:title') || document.title || 'FITME';
     var desc = $meta('og:description') || $meta('description') || '';
     var image =
-      $meta('og:image') || (window.location.origin + '/assets/og-image-en.png');
+      $meta('og:image') || (window.location.origin + '/assets/og-image-en.jpg');
     return {
       url: url,
       title: title,

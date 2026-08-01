@@ -176,7 +176,7 @@ def page_html(locale: str, kind: str, data: dict) -> str:
   <meta name="description" content="{data['desc']}">
   <meta property="og:title" content="{data['title']}">
   <meta property="og:description" content="{data['desc']}">
-  <meta property="og:image" content="{SITE}/assets/og-image-en.png">
+  <meta property="og:image" content="{SITE}/assets/og-image-en.jpg">
   <meta property="og:url" content="{canon}">
   <link rel="canonical" href="{canon}">
 {hreflang}

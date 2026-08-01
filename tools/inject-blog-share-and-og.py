@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 For every blog post (KO + EN):
-  1. Replace generic /og-image.png with the post's own thumbnail (huge SEO/SMM win).
+  1. Replace generic /og-image.jpg with the post's own thumbnail (huge SEO/SMM win).
   2. Inject /assets/fitme-share.js?v=8 before </body> if not already present.
 Idempotent. Skips files that don't follow the blog template (no <main>).
 """

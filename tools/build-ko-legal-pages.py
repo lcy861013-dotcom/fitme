@@ -21,7 +21,7 @@ HEAD = """<!DOCTYPE html>
   <meta name="description" content="{desc}">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
-  <meta property="og:image" content="{SITE}/assets/og-image-en.png">
+  <meta property="og:image" content="{SITE}/assets/og-image-en.jpg">
   <meta property="og:url" content="{SITE}/ko/{slug}">
   <link rel="canonical" href="{SITE}/ko/{slug}">
   <link rel="alternate" hreflang="en" href="{SITE}/{slug}">
