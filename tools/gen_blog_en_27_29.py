@@ -130,7 +130,7 @@ def wrap(
     <p>By <strong>Changyong Lee</strong> 쨌 FITME solo founder (South Korea)</p>
     <p style="font-size:14px;color:#8b8178;">175 cm 쨌 78 kg 쨌 founder shopping notes 쨌 <a href="/editorial-standards" style="color:#d4a84b;">Editorial standards</a> 쨌 <!--email_off--><a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a><!--/email_off--></p>
   </div>
-  <img src="{img_src}?v=1" alt="{img_alt}" class="guide-img" loading="lazy" width="1200" height="675">
+  <img src="{img_src}?v=1" alt="{img_alt}" class="guide-img" loading="lazy" width="1200" height="800">
   <p class="lead-answer">{lead}</p>
 {body}
   <p class="ymyl-disclaimer"><strong>Disclaimer:</strong> Style and shopping education only. Not medical, diet, or growth advice. Garment measurements follow seller charts.</p>
@@ -250,13 +250,13 @@ def main():
                 "blog27-en",
                 "How to Read Online Size Charts (Flat vs Circumference) | FITME",
                 "Stop trusting L/XL suggestions. Compare shoulder, chest, length, rise and inseam to your notes ??including Korean flat charts like Musinsa.",
-                "/blog/img/blog27-musinsa-size-thumb-ko.jpg",
+                "/blog/img/en/blog27-size-chart-thumb-en.jpg",
                 "ONLINE SHOPPING 쨌 SIZE CHARTS",
                 "How to Read Online Size Charts<br>??Flat vs Circumference",
                 "Aug 1, 2026 쨌 FITME English guide",
                 "?뙋 <strong>English</strong> ??size-chart checklist for global shoppers",
                 "blog27",
-                "/blog/img/blog27-musinsa-size-thumb-ko.jpg",
+                "/blog/img/en/blog27-size-chart-thumb-en.jpg",
                 "Size chart illustration highlighting shoulder, chest, and length columns",
                 "<strong>Open the garment size chart before the ?쐒ecommended size??table.</strong> Match shoulder, chest, and length (or waist, hip, rise, inseam for pants) to your notes within about 짹1?? cm. Letters and height/weight suggestions are secondary.",
                 body27,
