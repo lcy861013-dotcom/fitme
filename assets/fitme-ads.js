@@ -1,5 +1,5 @@
-/**
- * AdSense display slots. cache-bust:2026-08-01-v11
+﻿/**
+ * AdSense display slots. cache-bust:2026-08-01-v12
  * cookie-consent.js only loads adsbygoogle.js when LIVE is true and slots exist.
  * Slots stay hidden until consent is granted and the loader reports ready, so an
  * unfilled slot (before approval, or on no-fill) leaves no empty gap.
@@ -56,6 +56,38 @@
     });
   }
 
+  /** A slot must be visible for AdSense to size it, so collapse it again on no-fill. */
+  function collapseUnfilledSlots() {
+    var checks = 0;
+    var iv = setInterval(function () {
+      checks += 1;
+      var pending = 0;
+      document.querySelectorAll('.fitme-ad-slot').forEach(function (wrap) {
+        var ins = wrap.querySelector('ins.adsbygoogle');
+        if (!ins) return;
+        var status = ins.getAttribute('data-ad-status');
+        if (status === 'unfilled') {
+          wrap.hidden = true;
+          wrap.setAttribute('aria-hidden', 'true');
+        } else if (status !== 'filled') {
+          pending += 1;
+        }
+      });
+      if (!pending || checks >= 20) {
+        clearInterval(iv);
+        if (checks >= 20) {
+          document.querySelectorAll('.fitme-ad-slot').forEach(function (wrap) {
+            var ins = wrap.querySelector('ins.adsbygoogle');
+            if (ins && ins.getAttribute('data-ad-status') !== 'filled') {
+              wrap.hidden = true;
+              wrap.setAttribute('aria-hidden', 'true');
+            }
+          });
+        }
+      }
+    }, 500);
+  }
+
   function pushAds() {
     if (!LIVE || !hasConsent() || pushed) return;
     var slots = document.querySelectorAll('.fitme-ad-slot ins.adsbygoogle');
@@ -70,6 +102,7 @@
           (window.adsbygoogle = window.adsbygoogle || []).push({});
         });
         pushed = true;
+        collapseUnfilledSlots();
       } catch (e) {}
     });
   }
