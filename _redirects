@@ -38,6 +38,7 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 /blog/index.html /blog/ 301
 /blog/index-en.html /blog/ 301
 /blog/blog27-en /blog/blog27 302
+/blog/blog28-en /blog/blog28 302
 
 # Blog: extensionless canonical
 /blog/:slug.html /blog/:slug 301
