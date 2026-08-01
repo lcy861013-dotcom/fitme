@@ -138,6 +138,12 @@ http://www.perfectfitme.com/* https://perfectfitme.com/:splat 301
 /pt/contact https://perfectfitme.com/contact 301
 /pt/contact.html https://perfectfitme.com/contact 301
 
+# Thumbnails converted PNG → JPEG (keep old OG/image URLs alive for external caches)
+/blog/img/blog26-oversize-thumb-ko.png /blog/img/blog26-oversize-thumb-ko.jpg 301
+/blog/img/blog27-musinsa-size-thumb-ko.png /blog/img/blog27-musinsa-size-thumb-ko.jpg 301
+/blog/img/blog28-short-height-coord-ko.png /blog/img/blog28-short-height-coord-ko.jpg 301
+/blog/img/blog29-thigh-rise-pants-ko.png /blog/img/blog29-thigh-rise-pants-ko.jpg 301
+
 # Browsers default favicon path → actual asset
 /favicon.ico /favicon-32x32.png 302
 /apple-touch-icon.png /icon-192.png 302
