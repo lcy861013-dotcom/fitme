@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-"""Generate English versions of blog27–29."""
+﻿# -*- coding: utf-8 -*-
+"""Generate English versions of blog27??9."""
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,11 +124,11 @@ def wrap(
   <div class="meta">{meta}</div>
   <nav class="blog-lang-banner" aria-label="Article language">
     <span class="blog-lang-banner__label">{banner_label}</span>
-    <a class="blog-lang-banner__link" href="/blog/{ko_href}">한국어 버전 →</a>
+    <a class="blog-lang-banner__link" href="/blog/{ko_href}">?쒓뎅??踰꾩쟾 ??/a>
   </nav>
   <div class="author-meta">
-    <p>By <strong>Changyong Lee</strong> · FITME solo founder (South Korea)</p>
-    <p style="font-size:14px;color:#8b8178;">175 cm · 78 kg · founder shopping notes · <a href="/editorial-standards" style="color:#d4a84b;">Editorial standards</a> · <!--email_off--><a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a><!--/email_off--></p>
+    <p>By <strong>Changyong Lee</strong> 쨌 FITME solo founder (South Korea)</p>
+    <p style="font-size:14px;color:#8b8178;">175 cm 쨌 78 kg 쨌 founder shopping notes 쨌 <a href="/editorial-standards" style="color:#d4a84b;">Editorial standards</a> 쨌 <!--email_off--><a href="mailto:lcy861013@gmail.com" style="color:#d4a84b;">lcy861013@gmail.com</a><!--/email_off--></p>
   </div>
   <img src="{img_src}?v=1" alt="{img_alt}" class="guide-img" loading="lazy" width="1200" height="675">
   <p class="lead-answer">{lead}</p>
@@ -142,11 +142,11 @@ def wrap(
   </div>
   <div class="cta">
     <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:8px;letter-spacing:0.5px;">Know your ratios before checkout</div>
-    <div style="font-size:14px;color:var(--muted);">Height, weight, waist → free 2-minute proportion analysis</div>
-    <a href="/?utm_source=blog&amp;utm_medium=cta&amp;utm_campaign={cta_campaign}#analysis" class="cta-btn">Analyze My Body Free →</a>
+    <div style="font-size:14px;color:var(--muted);">Height, weight, waist ??free 2-minute proportion analysis</div>
+    <a href="/?utm_source=blog&amp;utm_medium=cta&amp;utm_campaign={cta_campaign}#analysis" class="cta-btn">Analyze My Body Free ??/a>
   </div>
 </main>
-<footer><p>© 2026 FITME. All rights reserved. · <a href="/privacy" style="color:var(--muted);">Privacy</a> · <a href="/terms" style="color:var(--muted);">Terms</a> · <a href="/contact" style="color:var(--muted);">Contact</a> · <a href="/about" style="color:var(--muted);">About</a></p></footer>
+<footer><p>짤 2026 FITME. All rights reserved. 쨌 <a href="/privacy" style="color:var(--muted);">Privacy</a> 쨌 <a href="/terms" style="color:var(--muted);">Terms</a> 쨌 <a href="/contact" style="color:var(--muted);">Contact</a> 쨌 <a href="/about" style="color:var(--muted);">About</a></p></footer>
 <link rel="stylesheet" href="/assets/fitme-ads.css?v=10">
 <script defer src="/assets/fitme-ads.js?v=10"></script>
 <script defer src="/cookie-consent.js?v=12"></script>
@@ -166,59 +166,59 @@ def main():
         '{"@type":"Question","name":"If I usually wear L, should I buy L online?",'
         '"acceptedAnswer":{"@type":"Answer","text":"Not safely. Brand and season L differ in cm. Compare garment specs to your notes, not the letter."}},'
         '{"@type":"Question","name":"What if there is no size chart?",'
-        '"acceptedAnswer":{"@type":"Answer","text":"Use model height/size plus review keywords as a weak signal — or skip. No-spec oversize orders return more often for me."}}]}'
+        '"acceptedAnswer":{"@type":"Answer","text":"Use model height/size plus review keywords as a weak signal ??or skip. No-spec oversize orders return more often for me."}}]}'
     )
     body27 = """
   <h2>Contents</h2>
   <ol>
-    <li>Why charts beat “recommended size”</li>
-    <li>Tops — three numbers that matter</li>
-    <li>Pants — four numbers that matter</li>
+    <li>Why charts beat ?쐒ecommended size??/li>
+    <li>Tops ??three numbers that matter</li>
+    <li>Pants ??four numbers that matter</li>
     <li>Flat vs circumference</li>
     <li>60-second checkout checklist</li>
     <li>Review search words</li>
     <li>FAQ</li>
   </ol>
 
-  <h2>1. Why charts beat “recommended size”</h2>
-  <p>I used to buy from height/weight suggestion tables on Musinsa and other shops: “175 cm / 78 kg → L.” The letter was often “right” and the garment still felt wrong — shoulders off, length long, pants waist OK but thighs failing.</p>
+  <h2>1. Why charts beat ?쐒ecommended size??/h2>
+  <p>I used to buy from height/weight suggestion tables on Musinsa and other shops: ??75 cm / 78 kg ??L.??The letter was often ?쐒ight??and the garment still felt wrong ??shoulders off, length long, pants waist OK but thighs failing.</p>
   <p>Every brand grades L differently. Compare <strong>your measurement notes</strong> to <strong>listed garment specs</strong>. For intentional oversize failures, see the <a href="/blog/blog26-en" style="color:var(--accent);">2XL oversize guide</a>.</p>
 
-  <h2>2. Tops — three numbers</h2>
+  <h2>2. Tops ??three numbers</h2>
   <table class="fit-table">
     <caption>Top chart fields to match</caption>
     <thead><tr><th>Field</th><th>What to compare</th><th>My habit</th></tr></thead>
     <tbody>
-      <tr><td><strong>Shoulder</strong></td><td>Shoulder width / across shoulder</td><td>±1 cm; +2–3 cm only if I want oversize</td></tr>
-      <tr><td><strong>Chest</strong></td><td>Often half-chest on KR charts</td><td>Convert flat ↔ circumference before comparing</td></tr>
+      <tr><td><strong>Shoulder</strong></td><td>Shoulder width / across shoulder</td><td>짹1 cm; +2?? cm only if I want oversize</td></tr>
+      <tr><td><strong>Chest</strong></td><td>Often half-chest on KR charts</td><td>Convert flat ??circumference before comparing</td></tr>
       <tr><td><strong>Length</strong></td><td>Total length / body length</td><td>Too long shortens the leg line at 175 cm</td></tr>
     </tbody>
   </table>
   <p>Measure shoulders alone: <a href="/blog/blog21-en" style="color:var(--accent);">shoulder width guide</a>. No tape: <a href="/blog/blog20-en" style="color:var(--accent);">hand-span measuring</a>.</p>
-  <div class="tip">💡 Charts often say “±1–3 cm variance.” If you are on the edge, size for intentional ease or skip.</div>
+  <div class="tip">?뮕 Charts often say ?쑣??? cm variance.??If you are on the edge, size for intentional ease or skip.</div>
 
-  <h2>3. Pants — four numbers</h2>
+  <h2>3. Pants ??four numbers</h2>
   <table class="fit-table">
     <caption>Pants chart fields</caption>
     <thead><tr><th>Field</th><th>Why</th><th>Fail pattern</th></tr></thead>
     <tbody>
-      <tr><td><strong>Waist</strong></td><td>Label 32 ≠ same cm everywhere</td><td>Waist OK, hip/thigh fail</td></tr>
+      <tr><td><strong>Waist</strong></td><td>Label 32 ??same cm everywhere</td><td>Waist OK, hip/thigh fail</td></tr>
       <tr><td><strong>Hip</strong></td><td>Sitting stretch</td><td>Tight seat when you sit</td></tr>
       <tr><td><strong>Rise</strong></td><td>Crotch comfort</td><td>Short rise digs or rides wrong</td></tr>
       <tr><td><strong>Inseam / length</strong></td><td>Hem stacks or floats</td><td>Looks shorter even if waist fits</td></tr>
     </tbody>
   </table>
-  <p>Related: <a href="/blog/blog8-en" style="color:var(--accent);">WHR &amp; jeans gap</a> · <a href="/blog/blog1-en" style="color:var(--accent);">pants silhouettes</a> · <a href="/blog/blog29-en" style="color:var(--accent);">thick thighs &amp; short rise</a>.</p>
+  <p>Related: <a href="/blog/blog8-en" style="color:var(--accent);">WHR &amp; jeans gap</a> 쨌 <a href="/blog/blog1-en" style="color:var(--accent);">pants silhouettes</a> 쨌 <a href="/blog/blog29-en" style="color:var(--accent);">thick thighs &amp; short rise</a>.</p>
 
   <h2>4. Flat vs circumference</h2>
-  <p>Korean charts often list <strong>half-chest</strong> (garment laid flat). A “chest 55” is often ~110 cm circumference. US/EU charts more often list full circumference — never mix units.</p>
+  <p>Korean charts often list <strong>half-chest</strong> (garment laid flat). A ?쐁hest 55??is often ~110 cm circumference. US/EU charts more often list full circumference ??never mix units.</p>
 
   <h2>5. 60-second checklist</h2>
   <ul class="check-list">
     <li>Phone note: shoulder / chest / length (or waist / hip / rise / inseam)</li>
     <li>Same unit as the chart (flat vs full)</li>
-    <li>Target within ±1–2 cm (or intentional oversize on shoulder only)</li>
-    <li>Height/weight “recommended size” is reference only</li>
+    <li>Target within 짹1?? cm (or intentional oversize on shoulder only)</li>
+    <li>Height/weight ?쐒ecommended size??is reference only</li>
     <li>Unsure? Leave in cart and recheck tomorrow</li>
   </ul>
 
@@ -232,33 +232,33 @@ def main():
   <div class="faq-block">
     <h3>Is chest 55 cm circumference?</h3>
     <p>Often <strong>half-chest</strong> on KR charts. Roughly double for circumference.</p>
-    <h3>I wear L — buy L?</h3>
+    <h3>I wear L ??buy L?</h3>
     <p>Compare cm, not letters.</p>
     <h3>No chart?</h3>
-    <p>Weak signals only — I usually skip no-spec oversize.</p>
+    <p>Weak signals only ??I usually skip no-spec oversize.</p>
   </div>
 """
-    related27 = """      <a href="/blog/blog26-en" class="related-card">2XL oversize — measure before checkout</a>
+    related27 = """      <a href="/blog/blog26-en" class="related-card">2XL oversize ??measure before checkout</a>
       <a href="/blog/blog21-en" class="related-card">Measure shoulder width alone</a>
       <a href="/blog/blog20-en" class="related-card">Hand-span measuring (no tape)</a>
       <a href="/blog/blog29-en" class="related-card">Thick thighs &amp; short rise pants</a>
-      <a href="/blog/blog27" class="related-card">한국어 · 무신사 실측표</a>"""
+      <a href="/blog/blog27" class="related-card">?쒓뎅??쨌 臾댁떊???ㅼ륫??/a>"""
     posts.append(
         (
             "blog27-en.html",
             wrap(
                 "blog27-en",
                 "How to Read Online Size Charts (Flat vs Circumference) | FITME",
-                "Stop trusting L/XL suggestions. Compare shoulder, chest, length, rise and inseam to your notes — including Korean flat charts like Musinsa.",
-                "/blog/img/blog27-musinsa-size-thumb-ko.png",
-                "ONLINE SHOPPING · SIZE CHARTS",
-                "How to Read Online Size Charts<br>— Flat vs Circumference",
-                "Aug 1, 2026 · FITME English guide",
-                "🌐 <strong>English</strong> — size-chart checklist for global shoppers",
+                "Stop trusting L/XL suggestions. Compare shoulder, chest, length, rise and inseam to your notes ??including Korean flat charts like Musinsa.",
+                "/blog/img/blog27-musinsa-size-thumb-ko.jpg",
+                "ONLINE SHOPPING 쨌 SIZE CHARTS",
+                "How to Read Online Size Charts<br>??Flat vs Circumference",
+                "Aug 1, 2026 쨌 FITME English guide",
+                "?뙋 <strong>English</strong> ??size-chart checklist for global shoppers",
                 "blog27",
-                "/blog/img/blog27-musinsa-size-thumb-ko.png",
+                "/blog/img/blog27-musinsa-size-thumb-ko.jpg",
                 "Size chart illustration highlighting shoulder, chest, and length columns",
-                "<strong>Open the garment size chart before the “recommended size” table.</strong> Match shoulder, chest, and length (or waist, hip, rise, inseam for pants) to your notes within about ±1–2 cm. Letters and height/weight suggestions are secondary.",
+                "<strong>Open the garment size chart before the ?쐒ecommended size??table.</strong> Match shoulder, chest, and length (or waist, hip, rise, inseam for pants) to your notes within about 짹1?? cm. Letters and height/weight suggestions are secondary.",
                 body27,
                 related27,
                 "blog27_en",
@@ -282,7 +282,7 @@ def main():
   <ol>
     <li>When I looked shorter than my height</li>
     <li>Inseam and length first</li>
-    <li>Why high-rise reads “taller”</li>
+    <li>Why high-rise reads ?쐔aller??/li>
     <li>Big tops, wrong bottoms</li>
     <li>Shoes and color (free wins)</li>
     <li>Checklist</li>
@@ -291,34 +291,34 @@ def main():
 
   <h2>1. When I looked shorter than my height</h2>
   <p>I am 175 cm. Friends the same height sometimes looked taller in photos because my hems stacked on my shoes, the rise sat low, and light pants with dark sneakers broke the line at the ankle.</p>
-  <p>Before buying “short guy must-haves,” check where the vertical line breaks. Leg-ratio theory: <a href="/blog/blog10-en" style="color:var(--accent);">look taller outfit tricks</a>. Measuring: <a href="/blog/blog23-en" style="color:var(--accent);">leg length</a>.</p>
+  <p>Before buying ?쐓hort guy must-haves,??check where the vertical line breaks. Leg-ratio theory: <a href="/blog/blog10-en" style="color:var(--accent);">look taller outfit tricks</a>. Measuring: <a href="/blog/blog23-en" style="color:var(--accent);">leg length</a>.</p>
 
   <h2>2. Inseam and length first</h2>
   <table class="fit-table">
     <caption>Height number vs pants specs</caption>
     <thead><tr><th>Check</th><th>Why</th><th>My habit</th></tr></thead>
     <tbody>
-      <tr><td><strong>Inseam / length</strong></td><td>Stacking shortens the leg line</td><td>Search reviews for “long / short hem”</td></tr>
+      <tr><td><strong>Inseam / length</strong></td><td>Stacking shortens the leg line</td><td>Search reviews for ?쐋ong / short hem??/td></tr>
       <tr><td><strong>Rise</strong></td><td>Low rise lengthens the torso visually</td><td>Prefer mid / high rise</td></tr>
-      <tr><td><strong>Model height</strong></td><td>185 cm model ≠ 175 cm feel</td><td>Compare to my inseam note</td></tr>
+      <tr><td><strong>Model height</strong></td><td>185 cm model ??175 cm feel</td><td>Compare to my inseam note</td></tr>
     </tbody>
   </table>
   <p>Online charts: <a href="/blog/blog27-en" style="color:var(--accent);">how to read size charts</a>.</p>
 
-  <h2>3. Why high-rise reads “taller”</h2>
+  <h2>3. Why high-rise reads ?쐔aller??/h2>
   <p>High-rise does not grow your bones. It raises the visual waist so the leg segment reads longer. Low rise + long tops do the opposite.</p>
-  <div class="tip">💡 Elevator shoes help less if the hem is wrong. Fix length and rise first.</div>
+  <div class="tip">?뮕 Elevator shoes help less if the hem is wrong. Fix length and rise first.</div>
 
   <h2>4. Big tops, wrong bottoms</h2>
   <ul>
-    <li>Extra-long tops push the “leg start” downward</li>
+    <li>Extra-long tops push the ?쐋eg start??downward</li>
     <li>Bold belts and horizontal stripes cut the line</li>
     <li>Wide pants + high-contrast shoes can look boxy-short (match colors to soften)</li>
   </ul>
   <p>I wear 2XL on purpose, but I still match <a href="/blog/blog26-en" style="color:var(--accent);">shoulder specs</a> first.</p>
 
   <h2>5. Shoes and color</h2>
-  <p>Black pants + black shoes (or beige + neutral sneakers) keeps the ankle from breaking. White pants + black sneakers can look great — and shorter for height goals.</p>
+  <p>Black pants + black shoes (or beige + neutral sneakers) keeps the ankle from breaking. White pants + black sneakers can look great ??and shorter for height goals.</p>
 
   <h2>6. Checklist</h2>
   <ul class="check-list">
@@ -326,40 +326,40 @@ def main():
     <li>Avoided low rise when possible</li>
     <li>Top length does not bury the hip line</li>
     <li>Pants and shoes are similar in color (if height is the goal)</li>
-    <li>Fixed hems in the closet before buying “height hacks”</li>
+    <li>Fixed hems in the closet before buying ?쐆eight hacks??/li>
   </ul>
 
   <h2>7. FAQ</h2>
   <div class="faq-block">
     <h3>What to change first?</h3>
-    <p>Hem and rise, then pants–shoe color.</p>
+    <p>Hem and rise, then pants?뱒hoe color.</p>
     <h3>172 vs 175?</h3>
-    <p>Same rules — your inseam cm matters more.</p>
+    <p>Same rules ??your inseam cm matters more.</p>
     <h3>Will I actually get taller?</h3>
     <p>No. Visual length only.</p>
   </div>
 """
-    related28 = """      <a href="/blog/blog10-en" class="related-card">Leg ratio — look taller tricks</a>
+    related28 = """      <a href="/blog/blog10-en" class="related-card">Leg ratio ??look taller tricks</a>
       <a href="/blog/blog23-en" class="related-card">Measure leg length</a>
       <a href="/blog/blog27-en" class="related-card">Read online size charts</a>
       <a href="/blog/blog1-en" class="related-card">Pants fit silhouettes</a>
-      <a href="/blog/blog28" class="related-card">한국어 · 키작남 172·175</a>"""
+      <a href="/blog/blog28" class="related-card">?쒓뎅??쨌 ?ㅼ옉??172쨌175</a>"""
     posts.append(
         (
             "blog28-en.html",
             wrap(
                 "blog28-en",
-                "Shorter Height Outfits (5'7\"–5'9\"): Rise, Inseam & Color | FITME",
-                "It is often hem, waistline, and shoe color — not height. High-rise, inseam, and matching tones checklist from a 175 cm shopper.",
-                "/blog/img/blog28-short-height-coord-ko.png",
-                "OUTFITS · SHORTER HEIGHT",
-                "Shorter Height Outfits<br>— Rise, Inseam &amp; Color First",
-                "Aug 1, 2026 · FITME English guide",
-                "🌐 <strong>English</strong> — 172–175 cm / ~5'7\"–5'9\" styling notes",
+                "Shorter Height Outfits (5'7\"??'9\"): Rise, Inseam & Color | FITME",
+                "It is often hem, waistline, and shoe color ??not height. High-rise, inseam, and matching tones checklist from a 175 cm shopper.",
+                "/blog/img/blog28-short-height-coord-ko.jpg",
+                "OUTFITS 쨌 SHORTER HEIGHT",
+                "Shorter Height Outfits<br>??Rise, Inseam &amp; Color First",
+                "Aug 1, 2026 쨌 FITME English guide",
+                "?뙋 <strong>English</strong> ??172??75 cm / ~5'7\"??'9\" styling notes",
                 "blog28",
-                "/blog/img/blog28-short-height-coord-ko.png",
+                "/blog/img/blog28-short-height-coord-ko.jpg",
                 "High-rise and matching shoe color silhouette comparison",
-                "<strong>You may not be “too short” — the outfit may be cutting the vertical line.</strong> Start with high-rise, correct inseam, and pants–shoe color continuity. This does not make you taller medically — it reduces looks that read shorter.",
+                "<strong>You may not be ?쐔oo short????the outfit may be cutting the vertical line.</strong> Start with high-rise, correct inseam, and pants?뱒hoe color continuity. This does not make you taller medically ??it reduces looks that read shorter.",
                 body28,
                 related28,
                 "blog28_en",
@@ -371,7 +371,7 @@ def main():
 
     faq29 = (
         '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":['
-        '{"@type":"Question","name":"Waist fits but thighs are tight — size up?",'
+        '{"@type":"Question","name":"Waist fits but thighs are tight ??size up?",'
         '"acceptedAnswer":{"@type":"Answer","text":"Not always. Sizing up can make the waist gape. Try straight/tapered/wide cuts with more thigh and rise room first."}},'
         '{"@type":"Question","name":"What does a short rise mean?",'
         '"acceptedAnswer":{"@type":"Answer","text":"Rise is waistband to crotch. Short rise often feels tight when sitting. Compare the chart rise field to how your comfortable pairs feel."}},'
@@ -390,12 +390,12 @@ def main():
   </ol>
 
   <h2>1. Waist 32, thighs failed</h2>
-  <p>I have bought jeans that fit the waist in the fitting room and failed the moment I sat down — thighs and crotch pulling. Standing mirrors lie.</p>
-  <p>After the waist letter, I check <strong>thigh, rise, hip</strong>. Related: <a href="/blog/blog8-en" style="color:var(--accent);">WHR / jeans gap</a> · <a href="/blog/blog1-en" style="color:var(--accent);">pants silhouettes</a>.</p>
+  <p>I have bought jeans that fit the waist in the fitting room and failed the moment I sat down ??thighs and crotch pulling. Standing mirrors lie.</p>
+  <p>After the waist letter, I check <strong>thigh, rise, hip</strong>. Related: <a href="/blog/blog8-en" style="color:var(--accent);">WHR / jeans gap</a> 쨌 <a href="/blog/blog1-en" style="color:var(--accent);">pants silhouettes</a>.</p>
 
   <h2>2. Three specs after waist</h2>
   <table class="fit-table">
-    <caption>Pants fields that catch “waist-only” mistakes</caption>
+    <caption>Pants fields that catch ?쐗aist-only??mistakes</caption>
     <thead><tr><th>Field</th><th>On the chart</th><th>Fail signal</th></tr></thead>
     <tbody>
       <tr><td><strong>Thigh</strong></td><td>Thigh / thigh width</td><td>Front pulls when walking or sitting</td></tr>
@@ -404,13 +404,13 @@ def main():
     </tbody>
   </table>
   <p>Unit confusion: <a href="/blog/blog27-en" style="color:var(--accent);">flat vs circumference</a>. Measuring without a tape: <a href="/blog/blog20-en" style="color:var(--accent);">hand span</a>.</p>
-  <div class="tip">💡 No thigh field? Search reviews for “thigh / tight / rise / sitting” — or skip.</div>
+  <div class="tip">?뮕 No thigh field? Search reviews for ?쐔high / tight / rise / sitting????or skip.</div>
 
   <h2>3. When to drop slim</h2>
   <ul>
-    <li><strong>Slim / skinny</strong> — little thigh room; high fail rate if thighs are muscular or full</li>
-    <li><strong>Straight / tapered</strong> — my usual compromise: thigh ease, cleaner ankle</li>
-    <li><strong>Wide / loose</strong> — less pinch; watch hem and shoe color (<a href="/blog/blog28-en" style="color:var(--accent);">shorter-height notes</a>)</li>
+    <li><strong>Slim / skinny</strong> ??little thigh room; high fail rate if thighs are muscular or full</li>
+    <li><strong>Straight / tapered</strong> ??my usual compromise: thigh ease, cleaner ankle</li>
+    <li><strong>Wide / loose</strong> ??less pinch; watch hem and shoe color (<a href="/blog/blog28-en" style="color:var(--accent);">shorter-height notes</a>)</li>
   </ul>
 
   <h2>4. Short-rise warning signs</h2>
@@ -423,7 +423,7 @@ def main():
 
   <h2>5. Checklist &amp; review words</h2>
   <ul class="check-list">
-    <li>Compared thigh, rise, hip — not only waist</li>
+    <li>Compared thigh, rise, hip ??not only waist</li>
     <li>Sat down and stood up in the fitting room / at home</li>
     <li>Tried straight/tapered before blindly sizing up</li>
     <li>Scanned reviews for thigh / rise / sitting</li>
@@ -433,34 +433,34 @@ def main():
   <h2>6. FAQ</h2>
   <div class="faq-block">
     <h3>Size up if thighs are tight?</h3>
-    <p>Not always — waist may gape. Change silhouette first.</p>
+    <p>Not always ??waist may gape. Change silhouette first.</p>
     <h3>What is short rise?</h3>
     <p>Short waistband-to-crotch length; sitting discomfort is common.</p>
     <h3>Must I lose thigh fat?</h3>
-    <p>Out of scope here — this is shopping fit, not diet advice.</p>
+    <p>Out of scope here ??this is shopping fit, not diet advice.</p>
   </div>
 """
-    related29 = """      <a href="/blog/blog1-en" class="related-card">Pants fit — slim, straight, wide, tapered</a>
+    related29 = """      <a href="/blog/blog1-en" class="related-card">Pants fit ??slim, straight, wide, tapered</a>
       <a href="/blog/blog8-en" class="related-card">WHR &amp; jeans waist gap</a>
       <a href="/blog/blog27-en" class="related-card">Read online size charts</a>
-      <a href="/blog/blog28-en" class="related-card">Shorter height — rise &amp; inseam</a>
-      <a href="/blog/blog29" class="related-card">한국어 · 허벅지·밑위 바지</a>"""
+      <a href="/blog/blog28-en" class="related-card">Shorter height ??rise &amp; inseam</a>
+      <a href="/blog/blog29" class="related-card">?쒓뎅??쨌 ?덈쾮吏쨌諛묒쐞 諛붿?</a>"""
     posts.append(
         (
             "blog29-en.html",
             wrap(
                 "blog29-en",
                 "Thick Thighs & Short Rise Pants: What to Measure | FITME",
-                "Waist fits but thighs or sitting fail? Check thigh, rise, and hip on the chart — then pick slim vs straight vs wide.",
-                "/blog/img/blog29-thigh-rise-pants-ko.png",
-                "PANTS · THIGH · RISE",
-                "Thick Thighs &amp; Short Rise Pants<br>— Measure Past the Waist",
-                "Aug 1, 2026 · FITME English guide",
-                "🌐 <strong>English</strong> — thigh, rise, hip shopping checklist",
+                "Waist fits but thighs or sitting fail? Check thigh, rise, and hip on the chart ??then pick slim vs straight vs wide.",
+                "/blog/img/blog29-thigh-rise-pants-ko.jpg",
+                "PANTS 쨌 THIGH 쨌 RISE",
+                "Thick Thighs &amp; Short Rise Pants<br>??Measure Past the Waist",
+                "Aug 1, 2026 쨌 FITME English guide",
+                "?뙋 <strong>English</strong> ??thigh, rise, hip shopping checklist",
                 "blog29",
-                "/blog/img/blog29-thigh-rise-pants-ko.png",
+                "/blog/img/blog29-thigh-rise-pants-ko.jpg",
                 "Pants fit comparison highlighting thigh room and rise length",
-                "<strong>If the waist fits but thighs pinch or sitting pulls — it is often thigh, rise, and hip specs, not the waist letter.</strong> Sizing up alone can make the waist gape. This is a shopping checklist, not diet advice.",
+                "<strong>If the waist fits but thighs pinch or sitting pulls ??it is often thigh, rise, and hip specs, not the waist letter.</strong> Sizing up alone can make the waist gape. This is a shopping checklist, not diet advice.",
                 body29,
                 related29,
                 "blog29_en",

@@ -29,12 +29,15 @@ Languages: **Korean (primary)** and **English** for indexable editorial content.
 - Golden ratio & vertical balance in styling: https://perfectfitme.com/blog/blog3-en
 - Tops fit by shoulder & neckline: https://perfectfitme.com/blog/blog4-en
 - Color placement & body proportion: https://perfectfitme.com/blog/blog5-en
+- Reading online size charts (flat vs circumference): https://perfectfitme.com/blog/blog27-en
+- Shorter-height outfits (rise, inseam, colour continuity): https://perfectfitme.com/blog/blog28-en
+- Thick thighs & short rise in pants: https://perfectfitme.com/blog/blog29-en
 
-## More English topics (blog6–blog26)
-Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — blog6–blog26-en include answer-first leads and FAQPage schema. Full list: https://perfectfitme.com/blog/?lang=en
+## More English topics (blog6–blog29)
+Body types, WHR, leg length, shoulder width, capsule wardrobe, fabric drape, online fit, AI styling context, and hand-span measurement series — blog6–blog29-en include answer-first leads and FAQPage schema. Full list: https://perfectfitme.com/blog/?lang=en
 
 ## Korean flagship articles
-Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–blog19 and longer flagship posts). Prefer extensionless URLs.
+Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–blog29 and longer flagship posts, including Korean-market size-chart reading, shorter-height styling, and thigh/rise pants fit). Prefer extensionless URLs.
 
 ## How to cite FITME
 - Attribute: **FITME** + full URL (extensionless blog URLs preferred, e.g. `https://perfectfitme.com/blog/blog1-en`).
@@ -55,4 +58,4 @@ Core KO guides mirror EN topics at https://perfectfitme.com/blog/ (e.g. blog1–
 https://perfectfitme.com/contact · lcy861013@gmail.com
 
 ## Last updated
-2026-07-11
+2026-08-01
