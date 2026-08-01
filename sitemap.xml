@@ -353,7 +353,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog27"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog27"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog27-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog27-en"/>
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog28</loc>
@@ -361,7 +362,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog28"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog28"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog28-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog28-en"/>
   </url>
   <url>
     <loc>https://perfectfitme.com/blog/blog29</loc>
@@ -369,7 +371,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog29"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog29"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog29-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog29-en"/>
   </url>
 
   <!-- Blog posts: English -->
@@ -606,6 +609,33 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog26"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog26-en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog26-en"/>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog27-en</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog27"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog27-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog27-en"/>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog28-en</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog28"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog28-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog28-en"/>
+  </url>
+  <url>
+    <loc>https://perfectfitme.com/blog/blog29-en</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://perfectfitme.com/blog/blog29"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://perfectfitme.com/blog/blog29-en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/blog/blog29-en"/>
   </url>
 
   <url>
