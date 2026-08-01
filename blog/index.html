@@ -702,7 +702,9 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-t
     
     var saved = localStorage.getItem('fitme_lang');
     var nav = (navigator.language || '').toLowerCase();
-    var isKo = (params.get('lang') === 'ko') || (saved === 'ko') || (!params.get('lang') && !saved && nav.startsWith('ko'));
+    // An explicit ?lang= in the URL wins over the saved preference and the browser locale.
+    var requested = params.get('lang');
+    var isKo = requested ? requested === 'ko' : (saved === 'ko' || (!saved && nav.startsWith('ko')));
     
     if (params.get('all') === '1') isKo = false;
 
