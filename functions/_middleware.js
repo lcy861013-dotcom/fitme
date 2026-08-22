@@ -262,6 +262,16 @@ export async function onRequest(context) {
     return Response.redirect(`https://${APEX_HOST}${path.slice(0, -4)}.jpg`, 301);
   }
 
+  // Retired ja/pt localized blog editions (were noindex, zero traffic).
+  if (
+    path === '/blog/ja' ||
+    path === '/blog/pt' ||
+    path.startsWith('/blog/ja/') ||
+    path.startsWith('/blog/pt/')
+  ) {
+    return Response.redirect(`https://${APEX_HOST}/blog/`, 301);
+  }
+
   // Known scanner paths → 302 home (drops out of 4xx bucket entirely).
   if (isScannerLikePath(path)) {
     return Response.redirect(HOME, 302);
