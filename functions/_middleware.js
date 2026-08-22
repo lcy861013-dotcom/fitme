@@ -16,6 +16,11 @@ const ALIASES_301 = {
   '/apple-touch-icon-precomposed.png': '/icon-192.png',
   '/og-image.png': '/og-image.jpg',
   '/assets/og-image-en.png': '/assets/og-image-en.jpg',
+  // Single-hop fixes (GSC "redirect error" — avoid Cloudflare 308 → _redirects 301 chains)
+  '/en/about.html': '/about',
+  '/en/contact.html': '/contact',
+  '/ko/about.html': '/ko/about',
+  '/ko/contact.html': '/ko/contact',
   '/ja': '/about',
   '/ja/': '/about',
   '/ja/about': '/about',
@@ -238,6 +243,18 @@ export async function onRequest(context) {
   const alias = ALIASES_301[path];
   if (alias) {
     return Response.redirect(`https://${APEX_HOST}${alias}`, 301);
+  }
+
+  // Cloudflare email-protection stub URLs — not real pages (robots.txt also Disallow: /cdn-cgi/)
+  if (path.startsWith('/cdn-cgi/')) {
+    return new Response('Not Found', {
+      status: 404,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'public, max-age=86400',
+        'X-Robots-Tag': 'noindex, nofollow',
+      },
+    });
   }
 
   // Blog illustrations were re-exported as JPEG; keep the old PNG URLs alive.
