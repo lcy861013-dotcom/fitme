@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/consent-init.js?v=8"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JW0DB4GXG3"></script>
+  <script>gtag('js', new Date()); gtag('config', 'G-JW0DB4GXG3');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Size Chart Checker — Flat vs Circumference Converter | FITME</title>
+  <meta name="description" content="Paste a garment size chart and compare it to your own measurements. Converts half-chest to circumference and inches to cm, then tells you which fields will pull or gape.">
+  <meta property="og:title" content="Size Chart Checker — Flat vs Circumference Converter | FITME">
+  <meta property="og:description" content="Compare listed garment measurements to your own and see which fields will be tight or loose before you order.">
+  <meta property="og:image" content="https://perfectfitme.com/assets/og-image-en.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://perfectfitme.com/assets/og-image-en.jpg">
+  <meta property="og:url" content="https://perfectfitme.com/size-check">
+  <link rel="canonical" href="https://perfectfitme.com/size-check">
+  <link rel="alternate" hreflang="ko" href="https://perfectfitme.com/ko/size-check">
+  <link rel="alternate" hreflang="en" href="https://perfectfitme.com/size-check">
+  <link rel="alternate" hreflang="x-default" href="https://perfectfitme.com/size-check">
+  <link rel="icon" href="/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="google-adsense-account" content="ca-pub-6377720400458954">
+<style>
+    :root{--bg:#0f0e0d;--surface:#161412;--card:#1c1a18;--accent:#d4a84b;--text:#e0dcd8;--muted:#8b8178;--border:#2a2724;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.7;}
+    header{padding:16px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;position:sticky;top:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(15px);z-index:100;}
+    .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--accent);text-decoration:none;letter-spacing:2px;}
+    .logo span{color:var(--text);}
+    nav{display:flex;gap:18px;flex-wrap:wrap;}
+    nav a{color:var(--muted);font-size:13px;text-decoration:none;}
+    nav a:hover{color:var(--accent);}
+    main{max-width:800px;margin:0 auto;padding:48px 20px 80px;}
+    h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(30px,6.5vw,44px);color:var(--accent);margin-bottom:10px;letter-spacing:1px;}
+    h2{font-size:17px;font-weight:700;margin:34px 0 12px;}
+    h3{font-size:15px;font-weight:700;margin:20px 0 8px;color:var(--accent);}
+    p,li{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:14px;}
+    ul,ol{margin:0 0 16px 22px;}
+    a{color:var(--accent);}
+    .page-sub{font-size:14px;color:var(--muted);margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+    .lead-answer{font-size:16px;line-height:1.85;margin-bottom:28px;padding:16px 18px;background:rgba(212,168,75,0.06);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin:18px 0;}
+    .tip{background:var(--card);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 16px;margin:18px 0;font-size:14px;}
+    /* form */
+    .sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:14px 0;}
+    .sc-grid[hidden]{display:none;} /* display:grid above would otherwise beat the UA [hidden] rule */
+    .sc-field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px;}
+    .sc-field input{width:100%;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;font-family:inherit;}
+    .sc-field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);}
+    .sc-field .hint{display:block;font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5;}
+    fieldset{border:0;padding:0;margin:0 0 14px;}
+    legend{font-size:13px;color:var(--muted);margin-bottom:8px;}
+    .sc-radios{display:flex;flex-wrap:wrap;gap:8px;}
+    .sc-radios label{display:inline-flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 13px;font-size:14px;cursor:pointer;}
+    .sc-radios input{accent-color:var(--accent);}
+    .sc-radios label:has(input:checked){border-color:var(--accent);color:var(--accent);}
+    select{padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px;font-family:inherit;}
+    .sc-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+    button{font-family:inherit;font-size:15px;font-weight:700;padding:12px 22px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;}
+    button:hover{border-color:var(--accent);color:var(--accent);}
+    button.primary{background:var(--accent);border-color:var(--accent);color:#0a0908;}
+    button.primary:hover{filter:brightness(1.08);color:#0a0908;}
+    /* results */
+    table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+    th,td{padding:10px 8px;text-align:left;border-bottom:1px solid var(--border);}
+    th{color:var(--muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;}
+    .sc-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;}
+    .sc-badge.sc-good{background:rgba(90,170,110,0.18);color:#7fc48f;}
+    .sc-badge.sc-warn{background:rgba(212,168,75,0.18);color:var(--accent);}
+    .sc-badge.sc-bad{background:rgba(210,80,60,0.18);color:#e08272;}
+    .sc-badge.sc-info{background:rgba(139,129,120,0.18);color:var(--muted);}
+    .sc-summary{font-size:16px;font-weight:700;padding:12px 14px;border-radius:8px;margin-bottom:6px;}
+    .sc-summary.sc-good{background:rgba(90,170,110,0.14);color:#7fc48f;}
+    .sc-summary.sc-warn{background:rgba(212,168,75,0.14);color:var(--accent);}
+    .sc-summary.sc-bad{background:rgba(210,80,60,0.14);color:#e08272;}
+    #sc-notes{list-style:none;margin:14px 0 0;}
+    .sc-note{font-size:14px;line-height:1.8;padding:10px 0 10px 14px;border-left:2px solid var(--border);margin-bottom:8px;color:#c8c4c0;}
+    .sc-note-good{border-left-color:#5aaa6e;}
+    .sc-note-warn{border-left-color:var(--accent);}
+    .sc-note-bad{border-left-color:#d2503c;}
+    .sc-error{margin:12px 0 0;font-size:14px;color:#e08272;background:rgba(210,80,60,0.12);border-left:3px solid #d2503c;border-radius:0 6px 6px 0;padding:10px 14px;}
+    #sc-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--card);border:1px solid var(--accent);color:var(--text);padding:12px 20px;border-radius:8px;font-size:14px;z-index:200;max-width:90vw;}
+    .cta{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:center;margin:34px 0 0;}
+    .cta-btn{display:inline-block;margin-top:12px;background:var(--accent);color:#0a0908;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;}
+    footer{text-align:center;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+    footer a{color:var(--muted);}
+    @media(max-width:520px){th,td{padding:8px 5px;font-size:13px;}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"FITME Size Chart Checker","url":"https://perfectfitme.com/size-check","applicationCategory":"UtilityApplication","operatingSystem":"All","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free tool that compares a listed garment size chart against your own measurements and flags which fields will be tight or loose. Converts half-chest to circumference and inches to centimetres.","publisher":{"@type":"Organization","name":"Perfect Fit Me (FITME)","url":"https://perfectfitme.com/"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I tell whether a chart is flat or circumference?","acceptedAnswer":{"@type":"Answer","text":"On Korean and many Asian charts, chest, waist, hip and thigh are measured with the garment laid flat, across one side only. If a top's chest number is in the mid-40s to low-60s in centimetres, it is almost certainly flat. Shoulder width, total length and inseam are listed as-is even on flat charts."}},{"@type":"Question","name":"Where are my measurements stored?","acceptedAnswer":{"@type":"Answer","text":"Everything you enter stays in your own browser and is never sent to a server. It will still be there when you return on the same device, and the clear button removes it."}},{"@type":"Question","name":"Why are length, rise and inseam not compared to my body?","acceptedAnswer":{"@type":"Answer","text":"Because there is no correct answer from the body for those fields — they are preference. The tool compares them against a garment you already own and like instead."}}]}
+  </script>
+  <link rel="stylesheet" href="/assets/satellite-pages-theme.css?v=8">
+</head>
+<body>
+<header>
+  <a href="/" class="logo">FIT<span>ME</span></a>
+  <nav>
+    <a href="/#analysis">Analysis</a>
+    <a href="/size-check" style="color:var(--accent);">Size checker</a>
+    <a href="/blog/">Blog</a>
+    <a href="/how-it-works">How it works</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <h1>Size Chart Checker</h1>
+  <div class="page-sub">Listed garment specs ↔ your measurements · converts flat, circumference and inches · <a href="/ko/size-check">한국어 버전</a></div>
+
+  <p class="lead-answer"><strong>Every guide on this site says the same thing — compare your notes to the listed measurements within about ±1–2 cm.</strong> Doing that by hand on every product page is tedious. Save your numbers here once, type in the numbers from the listing, and you get back exactly which fields will pull and which will gape. Half-chest and inch conversions happen automatically.</p>
+
+  <h2>1. Your measurements (saved once)</h2>
+  <div class="card">
+    <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">These stay in your browser and are never sent to a server. Fill in only what you know — the tool judges only the fields you provide. For how to take them, see <a href="/blog/blog21-en">shoulder width</a> and <a href="/blog/blog20-en">measuring without a tape</a>.</p>
+
+    <h3>Body measurements (circumference, cm)</h3>
+    <div class="sc-grid">
+      <div class="sc-field">
+        <label for="me-shoulder">Shoulder width</label>
+        <input type="number" id="me-shoulder" inputmode="decimal" step="0.1" min="0" placeholder="41">
+        <span class="hint">Bone to bone, not a circumference</span>
+      </div>
+      <div class="sc-field">
+        <label for="me-chest">Chest</label>
+        <input type="number" id="me-chest" inputmode="decimal" step="0.1" min="0" placeholder="98">
+      </div>
+      <div class="sc-field">
+        <label for="me-waist">Waist</label>
+        <input type="number" id="me-waist" inputmode="decimal" step="0.1" min="0" placeholder="84">
+      </div>
+      <div class="sc-field">
+        <label for="me-hip">Hip</label>
+        <input type="number" id="me-hip" inputmode="decimal" step="0.1" min="0" placeholder="98">
+      </div>
+      <div class="sc-field">
+        <label for="me-thigh">Thigh</label>
+        <input type="number" id="me-thigh" inputmode="decimal" step="0.1" min="0" placeholder="58">
+      </div>
+    </div>
+
+    <h3>A garment that already fits you (cm)</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Length and rise have no correct answer from the body — they're preference. So lay out something that <strong>already fits</strong> and use it as the reference.</p>
+    <div class="sc-grid">
+      <div class="sc-field">
+        <label for="me-topLength">Top length</label>
+        <input type="number" id="me-topLength" inputmode="decimal" step="0.1" min="0" placeholder="70">
+        <span class="hint">Shoulder to hem on a tee that fits</span>
+      </div>
+      <div class="sc-field">
+        <label for="me-topSleeve">Top sleeve</label>
+        <input type="number" id="me-topSleeve" inputmode="decimal" step="0.1" min="0" placeholder="22">
+      </div>
+      <div class="sc-field">
+        <label for="me-pantsRise">Pants rise</label>
+        <input type="number" id="me-pantsRise" inputmode="decimal" step="0.1" min="0" placeholder="28">
+        <span class="hint">Waistband to crotch</span>
+      </div>
+      <div class="sc-field">
+        <label for="me-pantsInseam">Pants inseam</label>
+        <input type="number" id="me-pantsInseam" inputmode="decimal" step="0.1" min="0" placeholder="76">
+        <span class="hint">Crotch to hem</span>
+      </div>
+    </div>
+
+    <div class="sc-actions">
+      <button type="button" id="sc-save" class="primary">Save my measurements</button>
+      <button type="button" id="sc-clear">Clear</button>
+    </div>
+  </div>
+
+  <h2>2. The garment you're looking at</h2>
+  <div class="card" id="sc-garment">
+    <fieldset>
+      <legend>Type</legend>
+      <div class="sc-radios">
+        <label><input type="radio" name="sc-type" value="top" checked> Top</label>
+        <label><input type="radio" name="sc-type" value="pants"> Pants</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>How this chart is measured</legend>
+      <div class="sc-radios">
+        <label><input type="radio" name="sc-chart-unit" value="flat" checked> Flat (one side)</label>
+        <label><input type="radio" name="sc-chart-unit" value="circ"> Circumference</label>
+        <label><input type="checkbox" id="sc-inches"> Listed in inches</label>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin:8px 0 0;">Korean and many Asian charts are flat. If a chest number sits in the mid-40s to low-60s in cm, it's almost certainly flat. Shoulder, length and inseam are listed as-is even on flat charts.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Fit you want</legend>
+      <select id="sc-fit" aria-label="Fit you want"></select>
+    </fieldset>
+
+    <div class="sc-grid" data-sc-group="top">
+      <div class="sc-field">
+        <label for="g-shoulder">Shoulder</label>
+        <input type="number" id="g-shoulder" inputmode="decimal" step="0.1" min="0" placeholder="44">
+      </div>
+      <div class="sc-field">
+        <label for="g-chest">Chest</label>
+        <input type="number" id="g-chest" inputmode="decimal" step="0.1" min="0" placeholder="55">
+      </div>
+      <div class="sc-field">
+        <label for="g-length">Length</label>
+        <input type="number" id="g-length" inputmode="decimal" step="0.1" min="0" placeholder="72">
+      </div>
+      <div class="sc-field">
+        <label for="g-sleeve">Sleeve</label>
+        <input type="number" id="g-sleeve" inputmode="decimal" step="0.1" min="0" placeholder="23">
+      </div>
+    </div>
+
+    <div class="sc-grid" data-sc-group="pants" hidden>
+      <div class="sc-field">
+        <label for="g-waist">Waist</label>
+        <input type="number" id="g-waist" inputmode="decimal" step="0.1" min="0" placeholder="42">
+      </div>
+      <div class="sc-field">
+        <label for="g-hip">Hip</label>
+        <input type="number" id="g-hip" inputmode="decimal" step="0.1" min="0" placeholder="53">
+      </div>
+      <div class="sc-field">
+        <label for="g-thigh">Thigh</label>
+        <input type="number" id="g-thigh" inputmode="decimal" step="0.1" min="0" placeholder="32">
+      </div>
+      <div class="sc-field">
+        <label for="g-rise">Rise</label>
+        <input type="number" id="g-rise" inputmode="decimal" step="0.1" min="0" placeholder="29">
+      </div>
+      <div class="sc-field">
+        <label for="g-inseam">Inseam</label>
+        <input type="number" id="g-inseam" inputmode="decimal" step="0.1" min="0" placeholder="78">
+      </div>
+    </div>
+
+    <div class="sc-actions">
+      <button type="button" id="sc-run" class="primary">Compare</button>
+    </div>
+    <p class="sc-error" id="sc-error" hidden role="alert"></p>
+  </div>
+
+  <div class="card" id="sc-result" hidden aria-hidden="true" aria-live="polite">
+    <div class="sc-summary" id="sc-summary"></div>
+    <table>
+      <caption style="position:absolute;left:-9999px;">Field-by-field comparison</caption>
+      <thead>
+        <tr><th>Field</th><th>Listed (converted)</th><th>Yours</th><th>Difference</th><th>Verdict</th></tr>
+      </thead>
+      <tbody id="sc-result-body"></tbody>
+    </table>
+    <ul id="sc-notes"></ul>
+  </div>
+
+  <h2>What the verdicts are based on</h2>
+  <p>The tool uses two different comparisons, because what counts as "correct" differs by field.</p>
+  <ul>
+    <li><strong>Shoulder, chest, waist, hip and thigh</strong> are compared against your <strong>body</strong>. The tool measures how much room the garment leaves over your body (the ease) and checks whether that ease matches the fit you asked for.</li>
+    <li><strong>Length, sleeve, rise and inseam</strong> are compared against a <strong>garment you already own</strong>, because your body can't tell you the right answer for these — preference does.</li>
+  </ul>
+  <p>Chest, for instance, wants 8–15 cm of ease over your body circumference for a regular fit; slim runs 4–9 cm and oversize starts around 14 cm. Shoulder works differently: a regular fit should land within about ±1.5 cm of your actual shoulder width, while an intentional drop-shoulder oversize runs +2 to +6 cm.</p>
+  <div class="tip">💡 If the shoulder comes back "tight," reconsider even when everything else passes — shoulders are effectively unalterable on ready-to-wear. The reverse is also true: if the shoulder fits and only the waist gapes, tailoring is usually the right answer.</div>
+
+  <h2>FAQ</h2>
+  <h3>How do I tell whether a chart is flat or circumference?</h3>
+  <p>On Korean and many Asian charts, chest, waist, hip and thigh are measured with the garment laid flat and read across one side only, so the real circumference is roughly double. If a top's chest number sits in the mid-40s to low-60s in centimetres, it's almost certainly flat. Shoulder width, total length and inseam are listed as-is even on those charts. There's more detail in <a href="/blog/blog27-en">how to read online size charts</a>.</p>
+  <h3>Where are my measurements stored?</h3>
+  <p>Everything you type stays in your own browser and is never sent to a server. It will still be there when you come back on the same device, and the clear button removes it.</p>
+  <h3>Why are length, rise and inseam not compared to my body?</h3>
+  <p>Because those are preference, not anatomy. Two people at the same height can want completely different hems — one cropped at the ankle, one covering the shoe. So the tool anchors them to a garment that already works for you.</p>
+  <h3>What if I don't have a tape measure?</h3>
+  <p>Build rough notes with the <a href="/blog/blog20-en">hand-span method</a> first, then correct them with a real tape once before an order that matters.</p>
+
+  <h2>Related guides</h2>
+  <ul>
+    <li><a href="/blog/blog27-en">How to read online size charts</a> — flat vs circumference and which fields to prioritise</li>
+    <li><a href="/blog/blog26-en">When 2XL oversize fails at the shoulder</a> — why oversize is judged at the shoulder</li>
+    <li><a href="/blog/blog29-en">Thick thighs and short rise pants</a> — what to check when only the waist fits</li>
+    <li><a href="/blog/blog30-en">Wide pants hem length</a> — inseam against shoe height</li>
+    <li><a href="/blog/blog8-en">How to measure your waist-to-hip ratio</a> — why the waist gapes on jeans</li>
+  </ul>
+
+  <p style="font-size:13px;color:var(--muted);margin-top:24px;"><strong>Note:</strong> Style and shopping education only, not medical or health advice. The target ranges come from typical ready-to-wear ease plus my own shopping experience, and they shift with a brand's pattern. Garment measurements follow the seller's chart.</p>
+
+  <div class="cta">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;margin-bottom:8px;letter-spacing:0.5px;">Want your proportions first?</div>
+    <div style="font-size:14px;color:var(--muted);">Height, weight, waist → free 2-minute proportion analysis</div>
+    <a href="/?utm_source=size-check&utm_medium=cta&utm_campaign=en#analysis" class="cta-btn">Analyze My Body Free →</a>
+  </div>
+
+  <div class="fitme-ad-slot" hidden aria-hidden="true">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6377720400458954" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  </div>
+</main>
+<div id="sc-toast" hidden role="status"></div>
+<footer><p>© 2026 Perfect Fit Me (FITME) · Changyong Lee, solo founder (South Korea)</p><p style="margin-top:8px;"><a href="/privacy" style="color:var(--muted);">Privacy</a> · <a href="/terms" style="color:var(--muted);">Terms</a> · <a href="/contact" style="color:var(--muted);">Contact</a> · <a href="/editorial-standards" style="color:var(--muted);">Editorial standards</a> · <a href="/how-it-works" style="color:var(--muted);">How it works</a> · <a href="/blog/" style="color:var(--muted);">Blog</a></p></footer>
+<script defer src="/assets/size-check.js?v=1"></script>
+<link rel="stylesheet" href="/assets/fitme-ads.css?v=11">
+<script defer src="/assets/fitme-ads.js?v=12"></script>
+<script defer src="/cookie-consent.js?v=12"></script>
+</body>
+</html>

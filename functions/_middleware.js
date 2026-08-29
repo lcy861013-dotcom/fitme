@@ -16,6 +16,8 @@ const ALIASES_301 = {
   '/apple-touch-icon-precomposed.png': '/icon-192.png',
   '/og-image.png': '/og-image.jpg',
   '/assets/og-image-en.png': '/assets/og-image-en.jpg',
+  '/size-check.html': '/size-check',
+  '/ko/size-check.html': '/ko/size-check',
   // Single-hop fixes (GSC "redirect error" — avoid Cloudflare 308 → _redirects 301 chains)
   '/en/about.html': '/about',
   '/en/contact.html': '/contact',
