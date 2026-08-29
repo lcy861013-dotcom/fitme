@@ -10,17 +10,11 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[1]
 SITEMAP = ROOT / "sitemap.xml"
 
-DATE = "2026-08-22"
+DATE = "2026-08-29"
 SLUGS = [
-    "/blog/",
-    "/blog/blog20",
-    "/blog/blog19-en",
-    "/blog/blog18-en",
-    "/blog/blog13-en",
-    "/blog/blog6-en",
-    "/blog/blog3-en",
-    "/blog/blog8-en",
-    "/blog/blog29-en",
+    "/blog/blog27-en",
+    "/blog/blog28-en",
+    "/blog/blog30-en",
 ]
 
 text = SITEMAP.read_text(encoding="utf-8")
