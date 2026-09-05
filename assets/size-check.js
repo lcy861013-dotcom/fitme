@@ -1,17 +1,16 @@
-/* FITME size checker — compares a listed garment chart against saved body/reference numbers.
-   Circumference-type fields (chest, waist, hip, thigh) are halved on "flat" charts;
-   widths and lengths (shoulder, total length, sleeve, rise, inseam) are not. */
+/* FITME size checker — compares listed garment charts against saved body/reference
+   numbers. Circumference fields double on flat charts; widths/lengths do not.
+   Supports saving multiple candidate garments and sharing a result via URL hash. */
 (function () {
   'use strict';
 
   var LANG = (document.documentElement.lang || 'en').slice(0, 2) === 'ko' ? 'ko' : 'en';
   var PROFILE_KEY = 'fitme_size_profile';
+  var GARMENTS_KEY = 'fitme_size_garments';
+  var MAX_SAVED = 6;
 
-  /* Fields listed as half-measurements when a chart is laid flat. */
   var HALVED = { chest: true, waist: true, hip: true, thigh: true };
 
-  /* basis 'body' → compare against a body measurement (ease = garment - body).
-     basis 'ref'  → compare against a garment you already own (delta = candidate - reference). */
   var RULES = {
     top: {
       shoulder: { basis: 'body', key: 'shoulder', ranges: { slim: [-1, 0.5], regular: [-0.5, 1.5], oversize: [2, 6] } },
@@ -28,6 +27,13 @@
     }
   };
 
+  var TOP_FIELDS = ['shoulder', 'chest', 'length', 'sleeve'];
+  var PANTS_FIELDS = ['waist', 'hip', 'thigh', 'rise', 'inseam'];
+  var PROFILE_FIELDS = [
+    'shoulder', 'chest', 'waist', 'hip', 'thigh',
+    'topLength', 'topSleeve', 'pantsRise', 'pantsInseam'
+  ];
+
   var STR = {
     ko: {
       labels: {
@@ -41,6 +47,15 @@
       missingMine: '내 치수 없음',
       saved: '내 치수를 저장했습니다. 다음 방문에도 남아 있습니다.',
       cleared: '저장한 치수를 지웠습니다.',
+      garmentSaved: '후보에 저장했습니다.',
+      garmentLimit: '후보는 최대 6개까지입니다. 하나를 지운 뒤 다시 저장하세요.',
+      needName: '후보 이름을 적어 주세요 (예: 브랜드 L호).',
+      linkCopied: '결과 링크를 복사했습니다.',
+      linkFailed: '복사에 실패했습니다. 주소창의 # 뒤 주소를 직접 복사하세요.',
+      compareSaved: '저장한 후보 비교',
+      emptySaved: '저장한 후보가 없습니다. 아래에서 숫자를 넣고 “후보로 저장”을 누르세요.',
+      remove: '삭제',
+      load: '불러오기',
       easeWord: '여유',
       diffWord: '차이',
       summaryPass: '입력한 항목이 모두 적정 범위입니다.',
@@ -89,6 +104,15 @@
       missingMine: 'no saved value',
       saved: 'Saved. Your measurements will still be here next visit.',
       cleared: 'Saved measurements cleared.',
+      garmentSaved: 'Saved as a candidate.',
+      garmentLimit: 'You can keep up to 6 candidates. Remove one, then save again.',
+      needName: 'Name this candidate (e.g. Brand L).',
+      linkCopied: 'Result link copied.',
+      linkFailed: 'Copy failed — copy the #… part of the address bar instead.',
+      compareSaved: 'Saved candidates',
+      emptySaved: 'No saved candidates yet. Enter numbers below and tap “Save as candidate”.',
+      remove: 'Remove',
+      load: 'Load',
       easeWord: 'ease',
       diffWord: 'diff',
       summaryPass: 'Every field you entered is within range.',
@@ -150,8 +174,6 @@
     el._t = setTimeout(function () { el.hidden = true; }, 6000);
   }
 
-  /* Validation feedback stays on screen next to the button, since a page this long
-     can scroll a transient toast out of view. */
   function showError(msg) {
     var el = $('sc-error');
     if (el) { el.textContent = msg; el.hidden = false; }
@@ -163,12 +185,7 @@
     if (el) { el.textContent = ''; el.hidden = true; }
   }
 
-  /* ---------- profile persistence ---------- */
-
-  var PROFILE_FIELDS = [
-    'shoulder', 'chest', 'waist', 'hip', 'thigh',
-    'topLength', 'topSleeve', 'pantsRise', 'pantsInseam'
-  ];
+  /* ---------- profile ---------- */
 
   function readProfileInputs() {
     var out = {};
@@ -183,19 +200,13 @@
     try {
       var raw = localStorage.getItem(PROFILE_KEY);
       return raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      return {};
-    }
+    } catch (e) { return {}; }
   }
 
   function saveProfile() {
     var data = readProfileInputs();
-    try {
-      localStorage.setItem(PROFILE_KEY, JSON.stringify(data));
-      toast(S.saved);
-    } catch (e) {
-      toast(S.saved);
-    }
+    try { localStorage.setItem(PROFILE_KEY, JSON.stringify(data)); } catch (e) { /* ignore */ }
+    toast(S.saved);
     return data;
   }
 
@@ -215,7 +226,7 @@
     toast(S.cleared);
   }
 
-  /* ---------- garment input normalisation ---------- */
+  /* ---------- garment options / inputs ---------- */
 
   function chartMode() {
     var checked = document.querySelector('input[name="sc-chart-unit"]:checked');
@@ -237,11 +248,55 @@
     return checked ? checked.value : 'top';
   }
 
-  /* Convert one listed number into a body-comparable centimetre value. */
-  function normalise(raw, field) {
+  function setRadio(name, value) {
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function (el) {
+      el.checked = el.value === value;
+    });
+  }
+
+  function readGarmentInputs() {
+    var type = garmentType();
+    var fields = type === 'top' ? TOP_FIELDS : PANTS_FIELDS;
+    var measures = {};
+    fields.forEach(function (f) {
+      var v = num($('g-' + f));
+      if (!isNaN(v) && v > 0) measures[f] = v;
+    });
+    return {
+      name: (($('sc-gname') && $('sc-gname').value) || '').trim(),
+      type: type,
+      chart: chartMode(),
+      inches: inInches(),
+      fit: fitIntent(),
+      measures: measures
+    };
+  }
+
+  function fillGarmentInputs(g) {
+    if (!g) return;
+    setRadio('sc-type', g.type || 'top');
+    syncTypeFields();
+    setRadio('sc-chart-unit', g.chart || 'flat');
+    var inch = $('sc-inches');
+    if (inch) inch.checked = !!g.inches;
+    var fit = $('sc-fit');
+    if (fit && g.fit) fit.value = g.fit;
+    var name = $('sc-gname');
+    if (name) name.value = g.name || '';
+    var fields = (g.type === 'pants' ? PANTS_FIELDS : TOP_FIELDS).concat(
+      g.type === 'pants' ? TOP_FIELDS : PANTS_FIELDS
+    );
+    fields.forEach(function (f) {
+      var el = $('g-' + f);
+      if (!el) return;
+      el.value = (g.measures && g.measures[f] != null) ? g.measures[f] : '';
+    });
+  }
+
+  function normalise(raw, field, opts) {
     var v = raw;
-    if (inInches()) v = v * 2.54;
-    if (HALVED[field] && chartMode() === 'flat') v = v * 2;
+    if (opts.inches) v = v * 2.54;
+    if (HALVED[field] && opts.chart === 'flat') v = v * 2;
     return v;
   }
 
@@ -267,64 +322,68 @@
     return { cls: 'good', label: S.verdictGood, note: S.note[field + 'Good'] };
   }
 
-  function run() {
-    clearError();
-    var profile = readProfileInputs();
-    var type = garmentType();
-    var fit = fitIntent();
-    var rules = RULES[type];
+  function evaluate(profile, garment) {
+    var rules = RULES[garment.type] || RULES.top;
+    var fit = garment.fit || 'regular';
+    var opts = { chart: garment.chart || 'flat', inches: !!garment.inches };
     var rows = [];
     var entered = 0;
     var compared = 0;
     var worst = 'good';
 
     Object.keys(rules).forEach(function (field) {
-      var el = $('g-' + field);
-      var raw = num(el);
-      if (isNaN(raw) || raw <= 0) return;
+      var raw = garment.measures && garment.measures[field];
+      if (raw == null || !(raw > 0)) return;
       entered++;
-
-      var listed = raw;
-      var garment = normalise(raw, field);
+      var garmentCm = normalise(raw, field, opts);
       var rule = rules[field];
       var mine = profile[rule.key];
 
       if (mine == null) {
         rows.push({
-          field: field, listed: listed, garment: garment,
+          field: field, listed: raw, garment: garmentCm,
           mine: null, delta: null, cls: 'info', label: S.missingMine, note: ''
         });
         return;
       }
 
-      var delta = garment - mine;
+      var delta = garmentCm - mine;
       var range = rule.ranges[fit] || rule.ranges.regular;
       var verdict = classify(field, delta, range, rule.basis);
       compared++;
-
       if (verdict.cls === 'bad') worst = 'bad';
       else if (verdict.cls === 'warn' && worst !== 'bad') worst = 'warn';
 
       rows.push({
-        field: field, listed: listed, garment: garment, mine: mine,
+        field: field, listed: raw, garment: garmentCm, mine: mine,
         delta: delta, basis: rule.basis,
         cls: verdict.cls, label: verdict.label, note: verdict.note
       });
     });
 
-    if (!Object.keys(profile).length) { showError(S.needProfile); return; }
-    if (!entered) { showError(S.needGarment); return; }
-    if (!compared) { showError(S.noOverlap); return; }
-
-    render(rows, worst);
+    return { rows: rows, entered: entered, compared: compared, worst: worst };
   }
 
-  function render(rows, worst) {
+  function run() {
+    clearError();
+    var profile = readProfileInputs();
+    var garment = readGarmentInputs();
+    if (!Object.keys(profile).length) { showError(S.needProfile); return; }
+    var result = evaluate(profile, garment);
+    if (!result.entered) { showError(S.needGarment); return; }
+    if (!result.compared) { showError(S.noOverlap); return; }
+    renderSingle(result.rows, result.worst, garment.name);
+    updateShareLink(profile, [garment]);
+  }
+
+  function renderSingle(rows, worst, title) {
     var panel = $('sc-result');
     var tbody = $('sc-result-body');
     var summary = $('sc-summary');
     var notes = $('sc-notes');
+    var multi = $('sc-multi');
     if (!panel || !tbody) return;
+    if (multi) { multi.innerHTML = ''; multi.hidden = true; }
 
     tbody.innerHTML = '';
     notes.innerHTML = '';
@@ -332,17 +391,14 @@
     rows.forEach(function (r) {
       var tr = document.createElement('tr');
       var label = S.labels[r.field];
-
       var converted = (r.garment !== r.listed)
         ? round(r.listed) + ' → ' + round(r.garment)
         : round(r.listed);
-
       var deltaTxt = '—';
       if (r.delta != null) {
         var word = r.basis === 'ref' ? S.diffWord : S.easeWord;
         deltaTxt = (r.delta >= 0 ? '+' : '') + round(r.delta) + ' cm ' + word;
       }
-
       tr.innerHTML =
         '<td><strong>' + label + '</strong></td>' +
         '<td>' + converted + '</td>' +
@@ -359,12 +415,267 @@
       }
     });
 
-    summary.textContent = worst === 'bad' ? S.summaryFail : (worst === 'warn' ? S.summaryWarn : S.summaryPass);
+    var head = worst === 'bad' ? S.summaryFail : (worst === 'warn' ? S.summaryWarn : S.summaryPass);
+    if (title) head = title + ' — ' + head;
+    summary.textContent = head;
     summary.className = 'sc-summary sc-' + worst;
+
+    var tableWrap = tbody.closest('table');
+    if (tableWrap) tableWrap.hidden = false;
 
     panel.hidden = false;
     panel.setAttribute('aria-hidden', 'false');
     panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ---------- saved candidates ---------- */
+
+  function loadGarments() {
+    try {
+      var raw = localStorage.getItem(GARMENTS_KEY);
+      var list = raw ? JSON.parse(raw) : [];
+      return Array.isArray(list) ? list : [];
+    } catch (e) { return []; }
+  }
+
+  function saveGarments(list) {
+    try { localStorage.setItem(GARMENTS_KEY, JSON.stringify(list)); } catch (e) { /* ignore */ }
+  }
+
+  function saveCandidate() {
+    clearError();
+    var g = readGarmentInputs();
+    if (!g.name) { showError(S.needName); return; }
+    if (!Object.keys(g.measures).length) { showError(S.needGarment); return; }
+    var list = loadGarments();
+    if (list.length >= MAX_SAVED) { showError(S.garmentLimit); return; }
+    g.id = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    list.push(g);
+    saveGarments(list);
+    toast(S.garmentSaved);
+    renderSavedList();
+  }
+
+  function removeCandidate(id) {
+    var list = loadGarments().filter(function (g) { return g.id !== id; });
+    saveGarments(list);
+    renderSavedList();
+  }
+
+  function renderSavedList() {
+    var box = $('sc-saved');
+    if (!box) return;
+    var list = loadGarments();
+    box.innerHTML = '';
+    if (!list.length) {
+      box.innerHTML = '<p class="sc-muted">' + S.emptySaved + '</p>';
+      return;
+    }
+    var ul = document.createElement('ul');
+    ul.className = 'sc-saved-list';
+    list.forEach(function (g) {
+      var li = document.createElement('li');
+      var bits = Object.keys(g.measures || {}).map(function (k) {
+        return S.labels[k] + ' ' + g.measures[k];
+      }).slice(0, 3).join(' · ');
+      li.innerHTML =
+        '<div><strong></strong><span class="sc-muted"></span></div>' +
+        '<div class="sc-saved-actions"></div>';
+      li.querySelector('strong').textContent = g.name;
+      li.querySelector('.sc-muted').textContent = ' — ' + (g.type === 'pants' ? (LANG === 'ko' ? '바지' : 'Pants') : (LANG === 'ko' ? '상의' : 'Top')) + (bits ? ' · ' + bits : '');
+      var actions = li.querySelector('.sc-saved-actions');
+      var loadBtn = document.createElement('button');
+      loadBtn.type = 'button';
+      loadBtn.textContent = S.load;
+      loadBtn.addEventListener('click', function () {
+        fillGarmentInputs(g);
+        run();
+      });
+      var delBtn = document.createElement('button');
+      delBtn.type = 'button';
+      delBtn.textContent = S.remove;
+      delBtn.addEventListener('click', function () { removeCandidate(g.id); });
+      actions.appendChild(loadBtn);
+      actions.appendChild(delBtn);
+      ul.appendChild(li);
+    });
+    box.appendChild(ul);
+
+    if (list.length >= 2) {
+      var cmp = document.createElement('button');
+      cmp.type = 'button';
+      cmp.className = 'primary';
+      cmp.textContent = S.compareSaved;
+      cmp.addEventListener('click', compareAllSaved);
+      box.appendChild(cmp);
+    }
+  }
+
+  function compareAllSaved() {
+    clearError();
+    var profile = readProfileInputs();
+    if (!Object.keys(profile).length) { showError(S.needProfile); return; }
+    var list = loadGarments();
+    if (list.length < 2) { showError(S.emptySaved); return; }
+
+    var panel = $('sc-result');
+    var multi = $('sc-multi');
+    var summary = $('sc-summary');
+    var notes = $('sc-notes');
+    var tbody = $('sc-result-body');
+    if (!panel || !multi) return;
+
+    if (tbody) {
+      var table = tbody.closest('table');
+      if (table) table.hidden = true;
+    }
+    if (notes) notes.innerHTML = '';
+
+    multi.innerHTML = '';
+    multi.hidden = false;
+    var anyBad = false;
+    var anyWarn = false;
+
+    list.forEach(function (g) {
+      var result = evaluate(profile, g);
+      if (!result.compared) return;
+      if (result.worst === 'bad') anyBad = true;
+      else if (result.worst === 'warn') anyWarn = true;
+
+      var card = document.createElement('div');
+      card.className = 'sc-multi-card';
+      var h = document.createElement('h3');
+      h.textContent = g.name;
+      card.appendChild(h);
+      var badge = document.createElement('span');
+      badge.className = 'sc-badge sc-' + result.worst;
+      badge.textContent = result.worst === 'bad' ? S.summaryFail : (result.worst === 'warn' ? S.summaryWarn : S.summaryPass);
+      card.appendChild(badge);
+
+      var table = document.createElement('table');
+      table.innerHTML = '<thead><tr><th>' + (LANG === 'ko' ? '항목' : 'Field') + '</th><th>' + (LANG === 'ko' ? '차이' : 'Diff') + '</th><th>' + (LANG === 'ko' ? '판정' : 'Verdict') + '</th></tr></thead>';
+      var tb = document.createElement('tbody');
+      result.rows.forEach(function (r) {
+        if (r.delta == null) return;
+        var tr = document.createElement('tr');
+        var word = r.basis === 'ref' ? S.diffWord : S.easeWord;
+        tr.innerHTML =
+          '<td>' + S.labels[r.field] + '</td>' +
+          '<td>' + (r.delta >= 0 ? '+' : '') + round(r.delta) + ' cm ' + word + '</td>' +
+          '<td><span class="sc-badge sc-' + r.cls + '">' + r.label + '</span></td>';
+        tb.appendChild(tr);
+      });
+      table.appendChild(tb);
+      card.appendChild(table);
+      multi.appendChild(card);
+    });
+
+    var worst = anyBad ? 'bad' : (anyWarn ? 'warn' : 'good');
+    summary.textContent = S.compareSaved + ' — ' + (worst === 'bad' ? S.summaryFail : (worst === 'warn' ? S.summaryWarn : S.summaryPass));
+    summary.className = 'sc-summary sc-' + worst;
+
+    panel.hidden = false;
+    panel.setAttribute('aria-hidden', 'false');
+    updateShareLink(profile, list);
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ---------- URL share ---------- */
+
+  function encodeState(profile, garments) {
+    var payload = { v: 1, p: profile, g: garments.map(function (g) {
+      return {
+        n: g.name, t: g.type, c: g.chart, i: g.inches ? 1 : 0, f: g.fit, m: g.measures
+      };
+    }) };
+    try {
+      return btoa(unescape(encodeURIComponent(JSON.stringify(payload))))
+        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    } catch (e) { return ''; }
+  }
+
+  function decodeState(hash) {
+    if (!hash) return null;
+    var raw = hash.replace(/^#?s=/, '');
+    if (!raw) return null;
+    try {
+      var pad = raw.length % 4 === 0 ? '' : '===='.slice(raw.length % 4);
+      var json = decodeURIComponent(escape(atob(raw.replace(/-/g, '+').replace(/_/g, '/') + pad)));
+      var data = JSON.parse(json);
+      if (!data || data.v !== 1) return null;
+      return {
+        profile: data.p || {},
+        garments: (data.g || []).map(function (g) {
+          return {
+            name: g.n || '',
+            type: g.t || 'top',
+            chart: g.c || 'flat',
+            inches: !!g.i,
+            fit: g.f || 'regular',
+            measures: g.m || {}
+          };
+        })
+      };
+    } catch (e) { return null; }
+  }
+
+  function updateShareLink(profile, garments) {
+    var token = encodeState(profile, garments);
+    if (!token) return;
+    var url = location.origin + location.pathname + '#s=' + token;
+    try { history.replaceState(null, '', '#s=' + token); } catch (e) { /* ignore */ }
+    var out = $('sc-share-url');
+    if (out) out.value = url;
+  }
+
+  function copyShareLink() {
+    var out = $('sc-share-url');
+    if (!out || !out.value) {
+      var profile = readProfileInputs();
+      var g = readGarmentInputs();
+      updateShareLink(profile, [g]);
+    }
+    var text = out && out.value;
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast(S.linkCopied); }, function () { toast(S.linkFailed); });
+    } else {
+      out.select();
+      try {
+        document.execCommand('copy');
+        toast(S.linkCopied);
+      } catch (e) { toast(S.linkFailed); }
+    }
+  }
+
+  function applySharedState() {
+    var state = decodeState(location.hash);
+    if (!state) return false;
+    if (state.profile && Object.keys(state.profile).length) {
+      fillProfileInputs(state.profile);
+      try { localStorage.setItem(PROFILE_KEY, JSON.stringify(state.profile)); } catch (e) { /* ignore */ }
+    }
+    if (state.garments && state.garments.length) {
+      if (state.garments.length === 1) {
+        fillGarmentInputs(state.garments[0]);
+        run();
+      } else {
+        fillGarmentInputs(state.garments[0]);
+        var existing = loadGarments();
+        if (!existing.length) {
+          state.garments.forEach(function (g, i) {
+            g.id = 'share' + i;
+          });
+          saveGarments(state.garments.slice(0, MAX_SAVED));
+          renderSavedList();
+          compareAllSaved();
+        } else {
+          run();
+        }
+      }
+      return true;
+    }
+    return false;
   }
 
   /* ---------- wiring ---------- */
@@ -392,12 +703,17 @@
     if (!$('sc-run')) return;
     fillProfileInputs(loadProfile());
     syncTypeFields();
+    renderSavedList();
 
     $('sc-run').addEventListener('click', run);
     var saveBtn = $('sc-save');
     if (saveBtn) saveBtn.addEventListener('click', saveProfile);
     var clearBtn = $('sc-clear');
     if (clearBtn) clearBtn.addEventListener('click', clearProfile);
+    var candBtn = $('sc-save-garment');
+    if (candBtn) candBtn.addEventListener('click', saveCandidate);
+    var shareBtn = $('sc-copy-link');
+    if (shareBtn) shareBtn.addEventListener('click', copyShareLink);
 
     document.querySelectorAll('input[name="sc-type"]').forEach(function (el) {
       el.addEventListener('change', syncTypeFields);
@@ -408,6 +724,8 @@
         if (ev.key === 'Enter') { ev.preventDefault(); run(); }
       });
     });
+
+    applySharedState();
   }
 
   if (document.readyState === 'loading') {

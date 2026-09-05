@@ -1,39 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420">
-  <defs>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#d4a84b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#b08d3d;stop-opacity:1" />
-    </linearGradient>
-    <style>
-      .title { font-family: 'DM Sans', sans-serif; font-size: 24px; font-weight: 700; fill: #e0dcd8; }
-      .subtitle { font-family: 'DM Sans', sans-serif; font-size: 14px; fill: #8b8178; letter-spacing: 4px; }
-      .label { font-family: 'DM Sans', sans-serif; font-size: 12px; fill: #8b8178; }
-      .accent-text { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; fill: #d4a84b; }
-      .line { stroke: #2a2724; stroke-width: 1; }
-      .accent-line { stroke: #d4a84b; stroke-width: 2; fill: none; filter: url(#glow); }
-      .dashed { stroke-dasharray: 4, 3; }
-    </style>
-  </defs>
-  <rect width="800" height="420" fill="#161412"/>
-  
-  <!-- Header -->
-  <text x="400" y="45" text-anchor="middle" class="subtitle">SHOULDER MEASUREMENT</text>
-  <text x="400" y="75" text-anchor="middle" class="title">정확한 어깨 너비 측정 방법</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img" aria-labelledby="t d">
+  <title id="t">Shoulder width — acromion to acromion</title>
+  <desc id="d">Simplified figure with both acromion points marked and a horizontal span between them.</desc>
+  <rect width="800" height="480" fill="#161412"/>
+  <text x="400" y="36" text-anchor="middle" fill="#8b8178" font-family="DM Sans,sans-serif" font-size="13" letter-spacing="3">SHOULDER WIDTH</text>
+  <text x="400" y="64" text-anchor="middle" fill="#e0dcd8" font-family="DM Sans,sans-serif" font-size="22" font-weight="700">Acromion → Acromion</text>
 
-  
-  <g transform="translate(250,180)">
-    <path d="M0,0 Q150,-50 300,0" class="accent-line" />
-    <circle cx="0" cy="0" r="8" fill="#d4a84b" />
-    <circle cx="300" cy="0" r="8" fill="#d4a84b" />
-    <text x="150" y="50" text-anchor="middle" class="accent-text">SHOULDER ARC</text>
+  <!-- torso silhouette -->
+  <g transform="translate(280,110)" fill="none" stroke="#2a2724" stroke-width="2">
+    <ellipse cx="120" cy="28" rx="34" ry="40"/>
+    <path d="M70,55 L50,95 L30,100 M170,55 L190,95 L210,100"/>
+    <path d="M55,95 Q120,115 185,95 L175,220 Q120,240 65,220 Z" fill="#1c1a18" stroke="#2a2724"/>
   </g>
 
+  <!-- measurement line -->
+  <g stroke="#d4a84b" stroke-width="2.5" fill="none">
+    <line x1="310" y1="200" x2="490" y2="200"/>
+    <circle cx="310" cy="200" r="7" fill="#d4a84b"/>
+    <circle cx="490" cy="200" r="7" fill="#d4a84b"/>
+  </g>
+  <text x="310" y="188" text-anchor="middle" fill="#d4a84b" font-family="DM Sans,sans-serif" font-size="12" font-weight="700">L</text>
+  <text x="490" y="188" text-anchor="middle" fill="#d4a84b" font-family="DM Sans,sans-serif" font-size="12" font-weight="700">R</text>
+  <text x="400" y="230" text-anchor="middle" fill="#d4a84b" font-family="DM Sans,sans-serif" font-size="15" font-weight="700">shoulder width</text>
 
-  <!-- Footer -->
-  <line x1="100" y1="380" x2="700" y2="380" class="line" />
-  <text x="400" y="405" text-anchor="middle" class="label">FITME · perfectfitme.com · Body proportion guides</text>
+  <!-- callouts -->
+  <g fill="#c8c4c0" font-family="DM Sans,sans-serif" font-size="13">
+    <text x="80" y="200">1. Find the bony tip</text>
+    <text x="80" y="220" fill="#8b8178">at the end of each clavicle</text>
+    <text x="80" y="248">2. Measure straight across</text>
+    <text x="80" y="268" fill="#8b8178">not around the back</text>
+    <text x="80" y="296">3. Use the wider side</text>
+    <text x="80" y="316" fill="#8b8178">if L/R differ by &lt;1cm, average</text>
+  </g>
+
+  <rect x="520" y="280" width="220" height="110" rx="10" fill="#1c1a18" stroke="#2a2724"/>
+  <text x="630" y="310" text-anchor="middle" fill="#d4a84b" font-family="DM Sans,sans-serif" font-size="13" font-weight="700">Why it matters</text>
+  <text x="540" y="338" fill="#c8c4c0" font-family="DM Sans,sans-serif" font-size="12">Shoulder seam is the</text>
+  <text x="540" y="356" fill="#c8c4c0" font-family="DM Sans,sans-serif" font-size="12">hardest ready-to-wear</text>
+  <text x="540" y="374" fill="#c8c4c0" font-family="DM Sans,sans-serif" font-size="12">alteration. Match this</text>
+  <text x="540" y="392" fill="#c8c4c0" font-family="DM Sans,sans-serif" font-size="12">±1cm before chest/length.</text>
+
+  <line x1="100" y1="440" x2="700" y2="440" stroke="#2a2724"/>
+  <text x="400" y="462" text-anchor="middle" fill="#8b8178" font-family="DM Sans,sans-serif" font-size="12">FITME · perfectfitme.com</text>
 </svg>

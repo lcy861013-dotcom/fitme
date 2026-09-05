@@ -10,16 +10,44 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[1]
 SITEMAP = ROOT / "sitemap.xml"
 
-DATE = "2026-08-29"
-
-# Posts that gained new prose or had their FAQ schema corrected.
-POSTS = [
-    "blog1", "blog7", "blog8", "blog9", "blog11", "blog14", "blog19", "blog20",
-    "blog21", "blog22", "blog23", "blog24", "blog25", "blog26", "blog27",
-    "blog28", "blog29", "blog30",
+DATE = "2026-09-05"
+SLUGS = [
+    "/size-check",
+    "/ko/size-check",
+    "/blog/",
+    "/blog/blog4-en",
+    "/blog/blog5-en",
+    "/blog/blog7-en",
+    "/blog/blog8-en",
+    "/blog/blog9-en",
+    "/blog/blog10-en",
+    "/blog/blog13",
+    "/blog/blog14",
+    "/blog/blog19",
+    "/blog/blog20",
+    "/blog/blog20-en",
+    "/blog/blog21",
+    "/blog/blog21-en",
+    "/blog/blog22",
+    "/blog/blog22-en",
+    "/blog/blog23",
+    "/blog/blog23-en",
+    "/blog/blog24",
+    "/blog/blog24-en",
+    "/blog/blog26-en",
+    # wall-of-text cleanup on EN flagships
+    "/blog/blog2-en",
+    "/blog/blog3-en",
+    "/blog/blog6-en",
+    "/blog/blog11-en",
+    "/blog/blog12-en",
+    "/blog/blog13-en",
+    "/blog/blog14-en",
+    "/blog/blog15-en",
+    "/blog/blog16-en",
+    "/blog/blog18-en",
+    "/blog/blog19-en",
 ]
-SLUGS = [f"/blog/{p}" for p in POSTS] + [f"/blog/{p}-en" for p in POSTS if p != "blog14" and p != "blog19"]
-SLUGS += ["/blog/", "/"]
 
 text = SITEMAP.read_text(encoding="utf-8")
 changed = []

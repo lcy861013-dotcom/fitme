@@ -40,6 +40,12 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,6vw,44px);line-heigh
 .meta{font-size:13px;color:var(--muted);margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
 h2{font-family:'DM Sans',sans-serif;font-size:19px;font-weight:700;margin:32px 0 12px;color:var(--text);}
 p{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:18px;}
+ul,ol{margin:0 0 18px 20px;color:#d0d0d0;font-size:15px;line-height:1.85;}
+li{margin-bottom:8px;}
+.fit-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px;}
+.fit-table th,.fit-table td{border:1px solid var(--border,#2a2724);padding:10px 12px;text-align:left;line-height:1.6;vertical-align:top;}
+.fit-table th{background:var(--card,#1c1a18);color:var(--accent,#d4a84b);font-weight:600;font-family:'DM Sans',sans-serif;}
+.fit-table td{color:#d0d0d0;}
 .tip{background:rgba(232,255,71,0.07);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.75;margin:24px 0;color:#ccc;}
 .cta{margin-top:56px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}
 .cta-btn{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}
@@ -110,38 +116,8 @@ nav a:hover { color: var(--accent); }
 }
 </script>
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Should I size up for shoulders or down for waist?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Size to shoulders always. Take in the waist or sides afterward. Shoulder alterations are the most expensive and complex change on a woven top."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why do fitted tops pull or gap at the back?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Usually shoulder width (too narrow pulls the back; too wide sags) or posture (rounded shoulders shift the seam). If the back hem rides up when you stand straight, the shoulder is likely too small."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which neckline is best for wide shoulders?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "V-necks, deep scoop, and U-necks draw the eye inward and down. Avoid boat necks and wide square necklines that extend the horizontal shoulder line."
-      }
-    }
-  ],
-  "url": "https://perfectfitme.com/blog/blog4-en"
-}
-</script>
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Should I size up for shoulders or down for waist?","acceptedAnswer":{"@type":"Answer","text":"Size to shoulders always. Take in the waist or sides afterward. Shoulder alterations are the most expensive and complex change on a woven top."}},{"@type":"Question","name":"Why do fitted tops pull or gap at the back?","acceptedAnswer":{"@type":"Answer","text":"Usually shoulder width (too narrow pulls the back; too wide sags) or posture (rounded shoulders shift the seam). If the back hem rides up when you stand straight, the shoulder is likely too small."}},{"@type":"Question","name":"Which neckline is best for wide shoulders?","acceptedAnswer":{"@type":"Answer","text":"V-necks, deep scoop, and U-necks draw the eye inward and down. Avoid boat necks and wide square necklines that extend the horizontal shoulder line."}},{"@type":"Question","name":"I’m pear-shaped — can I wear only crew necks?","acceptedAnswer":{"@type":"Answer","text":"Yes. A little horizontal detail or a lighter color on top often balances better, but one neckline alone won’t rewrite your shape."}},{"@type":"Question","name":"If the sleeves are long, do I always need alterations?","acceptedAnswer":{"@type":"Answer","text":"Knits are awkward to shorten, so I prefer a sleeve length that already matches. Shirts and jackets are commonly hemmed at the cuff."}},{"@type":"Question","name":"Do sleeveless summer tops still need a shoulder check?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sleeveless cuts show the shoulder more. Narrow frames often benefit from straps or horizontal detail; broader frames usually look cleaner in a simple armhole."}}],"url":"https://perfectfitme.com/blog/blog4-en"}
+  </script>
   <link rel="stylesheet" href="/assets/blog-lang-banner.css?v=1">
   <link rel="stylesheet" href="/assets/satellite-pages-theme.css?v=7">
 </head>
@@ -202,11 +178,51 @@ nav a:hover { color: var(--accent); }
   <div class="tip">💡 The blazer-over-everything rule: when in doubt, a well-fitted blazer worn open over any top immediately adds structure, defined shoulders, and visual intention to the outfit. It works because it frames rather than hides the body.</div>
 
   <h2>Tops Fit Checklist — 5 Points to Verify Before Buying</h2>
-  <p>Before committing to any top, run through these five checkpoints: (1) <strong>Shoulder seam position</strong> — the seam should sit at the edge of your shoulder bone (acromion), not inside it or past it. This is non-negotiable. (2) <strong>Armhole depth</strong> — the armhole should allow full arm movement without pulling the neckline down or the back hem up. Test by reaching forward with both arms. (3) <strong>Chest and back fit</strong> — no horizontal pull lines across the chest (too small) or excess fabric draping at the sides (too large). The back should lie flat. (4) <strong>Neckline position</strong> — does the neckline sit where it's designed to sit on your body, or does it shift because the top is the wrong size? (5) <strong>Length in proportion</strong> — where does the hem fall relative to your hip? A top that ends at the widest point of the hip creates a horizontal visual break at the worst location. Aim for a hem that ends above the hip, at the true waist, or below the fullest hip point.</p>
+  <p>Before committing to any top, run through these five checkpoints.</p>
+  <ul>
+    <li><strong>Shoulder seam position</strong> — the seam should sit at the edge of your shoulder bone (acromion), not inside it or past it. This is non-negotiable.</li>
+    <li><strong>Armhole depth</strong> — the armhole should allow full arm movement without pulling the neckline down or the back hem up. Test by reaching forward with both arms.</li>
+    <li><strong>Chest and back fit</strong> — no horizontal pull lines across the chest (too small) or excess fabric draping at the sides (too large). The back should lie flat.</li>
+    <li><strong>Neckline position</strong> — does the neckline sit where it's designed to sit on your body, or does it shift because the top is the wrong size?</li>
+    <li><strong>Length in proportion</strong> — where does the hem fall relative to your hip? A top that ends at the widest point of the hip creates a horizontal visual break at the worst location. Aim for a hem that ends above the hip, at the true waist, or below the fullest hip point.</li>
+  </ul>
 
   <h2>Necklines by Shoulder Width — The Quick Reference</h2>
-  <p>Neckline choice interacts directly with shoulder width to either amplify or counteract your natural shoulder proportion. For wide shoulders: V-necks, deep U-necks, and scoop necks draw the eye downward and inward, reducing the horizontal visual span of the shoulders. Avoid boat necks and wide square necks — they extend the horizontal line already created by your shoulders. For narrow shoulders: boat necks (bateau), square necks, and wide off-shoulder designs extend the horizontal line at the shoulder, adding perceived width. Avoid deep V-necks and halter necks — they draw the eye inward and away from the shoulder, making narrow shoulders appear narrower. For average shoulders: any neckline works; choose based on face shape and personal preference rather than proportion correction.</p>
+  <p>Neckline choice interacts directly with shoulder width to either amplify or counteract your natural shoulder proportion.</p>
+  <table class="fit-table">
+    <thead>
+      <tr><th>Shoulders</th><th>Prefer</th><th>Avoid</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Wide</strong></td>
+        <td>V-necks, deep U-necks, and scoop necks — draw the eye downward and inward, reducing the horizontal visual span</td>
+        <td>Boat necks and wide square necks — they extend the horizontal line already created by your shoulders</td>
+      </tr>
+      <tr>
+        <td><strong>Narrow</strong></td>
+        <td>Boat necks (bateau), square necks, and wide off-shoulder designs — extend the horizontal line at the shoulder</td>
+        <td>Deep V-necks and halter necks — they draw the eye inward and away from the shoulder</td>
+      </tr>
+      <tr>
+        <td><strong>Average</strong></td>
+        <td>Any neckline; choose based on face shape and personal preference rather than proportion correction</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
   <div class="tip">💡 To measure your shoulder width for precise top sizing: <a href="/blog/blog21-en" style="color:var(--accent);">How to Measure Shoulder Width Alone — Find Your Acromion & Count Spans</a>.</div>
+
+  <h2>Why shoulders come before neckline and length</h2>
+  <p>Before I pick V-neck vs boat neck, I check whether the shoulder seam lands right. A pretty neckline with a drooping seam still ruins the whole proportion. My order now: ① listed shoulder ② length (tucked or not) ③ neckline. Sleeve style comes after that.</p>
+  <p>I returned jackets more than once after trusting an “oversize” label alone. Oversize that puts the shoulder number far past my acromion is just a big shirt. If the chart has no shoulder line, I zoom review photos for seam position only.</p>
+
+  <h2>Tops cart checklist before you buy</h2>
+  <p>1) Note the shoulder cm of a tee that already fits.<br>
+  2) Check that the candidate’s shoulder is within ±1 cm.<br>
+  3) Confirm where the hem falls relative to the belt line.<br>
+  4) Search reviews for “shoulder / sleeve / length.”</p>
+  <p>On structured shirts and blazers, waist alterations are cheap — so I buy when the shoulder matches. Related: <a href="/blog/blog9-en" style="color:var(--accent);">shoulder-width styling</a>, <a href="/blog/blog21-en" style="color:var(--accent);">shoulder measurement</a>, <a href="/size-check" style="color:var(--accent);">size chart checker</a>.</p>
 
   <h2>FAQ: Common Tops Fit Questions</h2>
   <div class="faq-block">
@@ -216,6 +232,12 @@ nav a:hover { color: var(--accent); }
     <p>Usually shoulder width (too narrow pulls the back; too wide sags) or posture (rounded shoulders shift the seam). If the back hem rides up when you stand straight, the shoulder is likely too small.</p>
     <h3>Which neckline is best for wide shoulders?</h3>
     <p>V-necks, deep scoop, and U-necks draw the eye inward and down. Avoid boat necks and wide square necklines that extend the horizontal shoulder line.</p>
+    <h3>I’m pear-shaped — can I wear only crew necks?</h3>
+    <p>Yes. A little horizontal detail or a lighter color on top often balances better, but one neckline alone won’t rewrite your shape.</p>
+    <h3>If the sleeves are long, do I always need alterations?</h3>
+    <p>Knits are awkward to shorten, so I prefer a sleeve length that already matches. Shirts and jackets are commonly hemmed at the cuff.</p>
+    <h3>Do sleeveless summer tops still need a shoulder check?</h3>
+    <p>Yes. Sleeveless cuts show the shoulder more. Narrow frames often benefit from straps or horizontal detail; broader frames usually look cleaner in a simple armhole.</p>
   </div>
 
 

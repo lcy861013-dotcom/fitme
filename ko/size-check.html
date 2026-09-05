@@ -83,6 +83,18 @@
     .sc-note-warn{border-left-color:var(--accent);}
     .sc-note-bad{border-left-color:#d2503c;}
     .sc-error{margin:12px 0 0;font-size:14px;color:#e08272;background:rgba(210,80,60,0.12);border-left:3px solid #d2503c;border-radius:0 6px 6px 0;padding:10px 14px;}
+    .sc-muted{font-size:13px;color:var(--muted);}
+    .sc-saved-list{list-style:none;margin:0;padding:0;}
+    .sc-saved-list li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);font-size:14px;}
+    .sc-saved-actions{display:flex;gap:8px;flex-shrink:0;}
+    .sc-saved-actions button{padding:8px 12px;font-size:13px;}
+    #sc-saved .primary{margin-top:14px;}
+    .sc-multi{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px;}
+    .sc-multi-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;}
+    .sc-multi-card h3{font-size:15px;margin:0 0 8px;color:var(--text);}
+    .sc-multi-card table{font-size:13px;margin:10px 0 0;}
+    .sc-share{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;}
+    .sc-share input{flex:1;min-width:180px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit;}
     #sc-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--card);border:1px solid var(--accent);color:var(--text);padding:12px 20px;border-radius:8px;font-size:14px;z-index:200;max-width:90vw;}
     .cta{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:center;margin:34px 0 0;}
     .cta-btn{display:inline-block;margin-top:12px;background:var(--accent);color:#0a0908;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;}
@@ -242,14 +254,29 @@
       </div>
     </div>
 
+    <fieldset>
+      <legend>후보 이름 (저장할 때만 필요)</legend>
+      <div class="sc-field" style="max-width:320px;">
+        <label for="sc-gname">이름</label>
+        <input type="text" id="sc-gname" maxlength="40" placeholder="예: 브랜드 L / 무신사 M">
+      </div>
+    </fieldset>
+
     <div class="sc-actions">
       <button type="button" id="sc-run" class="primary">비교하기</button>
+      <button type="button" id="sc-save-garment">후보로 저장</button>
     </div>
     <p class="sc-error" id="sc-error" hidden role="alert"></p>
   </div>
 
+  <h2>3. 저장한 후보 (최대 6개)</h2>
+  <div class="card" id="sc-saved">
+    <p class="sc-muted">아직 저장한 후보가 없습니다. 위에서 숫자를 넣고 “후보로 저장”을 누르세요.</p>
+  </div>
+
   <div class="card" id="sc-result" hidden aria-hidden="true" aria-live="polite">
     <div class="sc-summary" id="sc-summary"></div>
+    <div class="sc-multi" id="sc-multi" hidden></div>
     <table>
       <caption class="sr-only" style="position:absolute;left:-9999px;">항목별 비교 결과</caption>
       <thead>
@@ -258,6 +285,11 @@
       <tbody id="sc-result-body"></tbody>
     </table>
     <ul id="sc-notes"></ul>
+    <div class="sc-share">
+      <input type="text" id="sc-share-url" readonly aria-label="결과 공유 링크" placeholder="비교하면 공유 링크가 만들어집니다">
+      <button type="button" id="sc-copy-link">결과 링크 복사</button>
+    </div>
+    <p class="sc-muted" style="margin-top:8px;">링크는 입력한 숫자만 URL 해시(#)에 담습니다. 서버로 보내지 않습니다. 치수가 민감하면 공유하지 마세요.</p>
   </div>
 
   <h2>판정 기준은 무엇인가</h2>
@@ -305,7 +337,7 @@
   <p>© 2026 Perfect Fit Me (FITME) · 이창용, 1인 창업 (대한민국)</p>
   <p style="margin-top:8px;"><a href="/ko/privacy">개인정보</a> · <a href="/ko/terms">이용약관</a> · <a href="/ko/contact">문의</a> · <a href="/ko/editorial-standards">콘텐츠 기준</a> · <a href="/ko/how-it-works">작동 방식</a> · <a href="/blog/">블로그</a></p>
 </footer>
-<script defer src="/assets/size-check.js?v=1"></script>
+<script defer src="/assets/size-check.js?v=2"></script>
 <link rel="stylesheet" href="/assets/fitme-ads.css?v=11">
 <script defer src="/assets/fitme-ads.js?v=12"></script>
 <script defer src="/cookie-consent.js?v=12"></script>

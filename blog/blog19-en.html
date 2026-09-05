@@ -40,6 +40,12 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,6vw,44px);line-heigh
 .meta{font-size:13px;color:var(--muted);margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border);}
 h2{font-family:'DM Sans',sans-serif;font-size:19px;font-weight:700;margin:32px 0 12px;color:var(--text);}
 p{font-size:15px;line-height:1.9;color:#d0d0d0;margin-bottom:18px;}
+ul,ol{margin:0 0 18px 20px;color:#d0d0d0;font-size:15px;line-height:1.85;}
+li{margin-bottom:8px;}
+.fit-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px;}
+.fit-table th,.fit-table td{border:1px solid var(--border,#2a2724);padding:10px 12px;text-align:left;line-height:1.6;vertical-align:top;}
+.fit-table th{background:var(--card,#1c1a18);color:var(--accent,#d4a84b);font-weight:600;font-family:'DM Sans',sans-serif;}
+.fit-table td{color:#d0d0d0;}
 .tip{background:rgba(232,255,71,0.07);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;font-size:14px;line-height:1.75;margin:24px 0;color:#ccc;}
 .cta{margin-top:56px;padding:32px;background:var(--card);border-radius:16px;border:1px solid var(--border);text-align:center;}
 .cta-btn{display:inline-block;background:var(--accent);color:#0f0e0d;padding:14px 36px;border-radius:50px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:16px;text-decoration:none;margin-top:14px;}
@@ -216,13 +222,38 @@ nav a:hover { color: var(--accent); }
   <p><strong>Very large-scale prints in cling fabrics:</strong> A large print in a cling fabric creates maximum visual surface area at every point it touches the body. Large prints already draw attention to every area they cover; in a fabric that maps body contours directly, the combination can emphasize proportions with maximum visibility. This is a stylistic choice, not a rule — but approach it knowing the visual effect it creates.</p>
 
   <h2>Quick Fabric Cheat Sheet</h2>
-  <div class="tip">
-    <strong>Slim / Straight builds:</strong> Heavy tweed, thick ribbed knit, corduroy, quilted fabrics, stiff poplin, wool flannel — for dimension and volume. Avoid thin cling fabrics that reveal absence of curves.<br><br>
-    <strong>Curvy / Hourglass builds:</strong> Stretch cotton or ponte for structure with give; fluid crepe, silk, or jersey for drape when waist is anchored. Avoid rigid non-stretch canvas and ultra-thin cling fabrics.<br><br>
-    <strong>Athletic builds:</strong> Stretch wovens (elastane blend suiting, stretch cotton twill), structured medium-weight jersey, pique. Avoid rigid no-stretch blazers/jackets and ultra-cling thin jersey.<br><br>
-    <strong>Pear (narrow shoulders, wide hips):</strong> Structured fabrics on top (add shoulder presence), heavy smooth fabrics on bottom (minimize hip emphasis), fluid drape fabrics for skirts and dresses. Avoid thin, clingy bottoms; avoid horizontal-stripe or large-print hip placement.<br><br>
-    <strong>Universal caution list:</strong> Thin smooth jersey, shiny synthetics, stiff no-stretch canvas in fitted cuts, large prints in cling fabrics — all require deliberate, informed styling to work across body types.
-  </div>
+  <table class="fit-table">
+    <thead>
+      <tr><th>Build</th><th>Prefer</th><th>Avoid</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Slim / Straight</strong></td>
+        <td>Heavy tweed, thick ribbed knit, corduroy, quilted fabrics, stiff poplin, wool flannel — for dimension and volume</td>
+        <td>Thin cling fabrics that reveal absence of curves</td>
+      </tr>
+      <tr>
+        <td><strong>Curvy / Hourglass</strong></td>
+        <td>Stretch cotton or ponte for structure with give; fluid crepe, silk, or jersey for drape when waist is anchored</td>
+        <td>Rigid non-stretch canvas and ultra-thin cling fabrics</td>
+      </tr>
+      <tr>
+        <td><strong>Athletic</strong></td>
+        <td>Stretch wovens (elastane blend suiting, stretch cotton twill), structured medium-weight jersey, pique</td>
+        <td>Rigid no-stretch blazers/jackets and ultra-cling thin jersey</td>
+      </tr>
+      <tr>
+        <td><strong>Pear</strong> (narrow shoulders, wide hips)</td>
+        <td>Structured fabrics on top (add shoulder presence), heavy smooth fabrics on bottom (minimize hip emphasis), fluid drape fabrics for skirts and dresses</td>
+        <td>Thin, clingy bottoms; horizontal-stripe or large-print hip placement</td>
+      </tr>
+      <tr>
+        <td><strong>Universal caution</strong></td>
+        <td>—</td>
+        <td>Thin smooth jersey, shiny synthetics, stiff no-stretch canvas in fitted cuts, large prints in cling fabrics — all require deliberate, informed styling</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2>Fabric Weight and Proportion — How They Interact</h2>
   <p>Fabric weight changes how proportions read, and it does so predictably.</p>
@@ -234,6 +265,7 @@ nav a:hover { color: var(--accent); }
 
   <h2>Fabric-Aware Shopping Checklist — 6 Questions Before You Buy</h2>
   <p>Before buying anything fabric-sensitive, run through these six questions.</p>
+  <p>Each one filters a different fabric risk — touch points, stretch, visual weight, shine, pattern scale, and post-wash behavior.</p>
   <ol>
     <li><strong>Where does this fabric touch my body?</strong> Contact points reveal actual measurements; non-contact areas drape away. Decide whether the mapped area is one you're showcasing or managing.</li>
     <li><strong>Does it stretch?</strong> Stretch forgives variation across measurements. Rigid fabric has to fit every point at once. If your hip-to-waist difference is large, elastane-blend suiting or stretch cotton twill solves what rigid weaves can't.</li>
