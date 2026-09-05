@@ -95,6 +95,11 @@
     .sc-multi-card table{font-size:13px;margin:10px 0 0;}
     .sc-share{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;}
     .sc-share input{flex:1;min-width:180px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:inherit;}
+    .sc-focus-btns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;}
+    .sc-focus-btns button{font-weight:600;padding:10px 14px;font-size:13px;line-height:1.4;text-align:left;max-width:100%;}
+    .sc-focus-btns button.is-active{border-color:var(--accent);color:var(--accent);background:rgba(212,168,75,0.08);}
+    .sc-focus-hint{font-size:14px;margin:14px 0 0;padding:12px 14px;background:rgba(212,168,75,0.06);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;line-height:1.7;color:#d0d0d0;}
+    .sc-focus-hint[hidden],#sc-workflow[hidden]{display:none;}
     #sc-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--card);border:1px solid var(--accent);color:var(--text);padding:12px 20px;border-radius:8px;font-size:14px;z-index:200;max-width:90vw;}
     .cta{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:center;margin:34px 0 0;}
     .cta-btn{display:inline-block;margin-top:12px;background:var(--accent);color:#0a0908;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;}
@@ -126,68 +131,83 @@
   <h1>Size Chart Checker</h1>
   <div class="page-sub">Listed garment specs ↔ your measurements · converts flat, circumference and inches · <a href="/ko/size-check">한국어 버전</a></div>
 
-  <p class="lead-answer"><strong>Every guide on this site says the same thing — compare your notes to the listed measurements within about ±1–2 cm.</strong> Doing that by hand on every product page is tedious. Save your numbers here once, type in the numbers from the listing, and you get back exactly which fields will pull and which will gape. Half-chest and inch conversions happen automatically.</p>
+  <p class="lead-answer"><strong>Don’t measure everything.</strong> Pick what fails today — only those fields open. You can also lay out a garment that already fits. Flat and inch conversions are automatic.</p>
 
-  <h2>1. Your measurements (saved once)</h2>
-  <div class="card">
-    <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">These stay in your browser and are never sent to a server. Fill in only what you know — the tool judges only the fields you provide. For how to take them, see <a href="/blog/blog21-en">shoulder width</a> and <a href="/blog/blog20-en">measuring without a tape</a>.</p>
+  <div class="card" id="sc-focus-gate">
+    <h2 style="margin-top:0;">What fails for you right now?</h2>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:0;">Pick one. You can switch to “all fields” anytime.</p>
+    <div class="sc-focus-btns" role="group" aria-label="Failure type">
+      <button type="button" data-sc-focus="thigh">Waist fits, but<br>thigh / when I sit</button>
+      <button type="button" data-sc-focus="rise">Crotch pulls<br>when I sit (rise)</button>
+      <button type="button" data-sc-focus="inseam">Wide-leg hem<br>too short or long</button>
+      <button type="button" data-sc-focus="shoulder">Shoulder / chest<br>feels off</button>
+      <button type="button" data-sc-focus="full">Enter everything</button>
+    </div>
+    <p class="sc-focus-hint" id="sc-focus-hint" hidden></p>
+  </div>
 
-    <h3>Body measurements (circumference, cm)</h3>
-    <div class="sc-grid">
-      <div class="sc-field">
+  <div id="sc-workflow" hidden>
+  <h2 id="sc-me-title">1. Enter only these</h2>
+  <div class="card" id="sc-me-card">
+    <p style="font-size:14px;color:var(--muted);margin-bottom:14px;">Stored in this browser only — never sent to a server. Guides: <a href="/blog/blog21-en">shoulder</a>·<a href="/blog/blog20-en">hand-span</a>·<a href="/blog/blog29-en">thigh &amp; rise</a>.</p>
+
+    <h3 id="sc-body-h">Body measurements (circumference, cm)</h3>
+    <div class="sc-grid" id="sc-body-grid">
+      <div class="sc-field" data-me="shoulder">
         <label for="me-shoulder">Shoulder width</label>
         <input type="number" id="me-shoulder" inputmode="decimal" step="0.1" min="0" placeholder="41">
         <span class="hint">Bone to bone, not a circumference</span>
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="chest">
         <label for="me-chest">Chest</label>
         <input type="number" id="me-chest" inputmode="decimal" step="0.1" min="0" placeholder="98">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="waist">
         <label for="me-waist">Waist</label>
         <input type="number" id="me-waist" inputmode="decimal" step="0.1" min="0" placeholder="84">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="hip">
         <label for="me-hip">Hip</label>
         <input type="number" id="me-hip" inputmode="decimal" step="0.1" min="0" placeholder="98">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="thigh">
         <label for="me-thigh">Thigh</label>
         <input type="number" id="me-thigh" inputmode="decimal" step="0.1" min="0" placeholder="58">
       </div>
     </div>
 
-    <h3>A garment that already fits you (cm)</h3>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Length and rise have no correct answer from the body — they're preference. So lay out something that <strong>already fits</strong> and use it as the reference.</p>
-    <div class="sc-grid">
-      <div class="sc-field">
+    <h3 id="sc-ref-h">A garment that already fits you (cm)</h3>
+    <p id="sc-ref-note" style="font-size:13px;color:var(--muted);margin-bottom:10px;">Length and rise are preference. Lay out something that <strong>already fits</strong> and use it as the reference.</p>
+    <div class="sc-grid" id="sc-ref-grid">
+      <div class="sc-field" data-me="topLength">
         <label for="me-topLength">Top length</label>
         <input type="number" id="me-topLength" inputmode="decimal" step="0.1" min="0" placeholder="70">
         <span class="hint">Shoulder to hem on a tee that fits</span>
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="topSleeve">
         <label for="me-topSleeve">Top sleeve</label>
         <input type="number" id="me-topSleeve" inputmode="decimal" step="0.1" min="0" placeholder="22">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="pantsRise">
         <label for="me-pantsRise">Pants rise</label>
         <input type="number" id="me-pantsRise" inputmode="decimal" step="0.1" min="0" placeholder="28">
-        <span class="hint">Waistband to crotch</span>
+        <span class="hint">Waistband to crotch on pants that fit</span>
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-me="pantsInseam">
         <label for="me-pantsInseam">Pants inseam</label>
         <input type="number" id="me-pantsInseam" inputmode="decimal" step="0.1" min="0" placeholder="76">
-        <span class="hint">Crotch to hem</span>
+        <span class="hint">Crotch to hem on pants that fit</span>
       </div>
     </div>
 
     <div class="sc-actions">
       <button type="button" id="sc-save" class="primary">Save my measurements</button>
       <button type="button" id="sc-clear">Clear</button>
+      <button type="button" id="sc-show-all" hidden>Show all fields</button>
     </div>
   </div>
 
-  <h2>2. The garment you're looking at</h2>
+  <h2 id="sc-g-title">2. Listing numbers (same fields)</h2>
   <div class="card" id="sc-garment">
     <fieldset>
       <legend>Type</legend>
@@ -213,42 +233,42 @@
     </fieldset>
 
     <div class="sc-grid" data-sc-group="top">
-      <div class="sc-field">
+      <div class="sc-field" data-g="shoulder">
         <label for="g-shoulder">Shoulder</label>
         <input type="number" id="g-shoulder" inputmode="decimal" step="0.1" min="0" placeholder="44">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="chest">
         <label for="g-chest">Chest</label>
         <input type="number" id="g-chest" inputmode="decimal" step="0.1" min="0" placeholder="55">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="length">
         <label for="g-length">Length</label>
         <input type="number" id="g-length" inputmode="decimal" step="0.1" min="0" placeholder="72">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="sleeve">
         <label for="g-sleeve">Sleeve</label>
         <input type="number" id="g-sleeve" inputmode="decimal" step="0.1" min="0" placeholder="23">
       </div>
     </div>
 
     <div class="sc-grid" data-sc-group="pants" hidden>
-      <div class="sc-field">
+      <div class="sc-field" data-g="waist">
         <label for="g-waist">Waist</label>
         <input type="number" id="g-waist" inputmode="decimal" step="0.1" min="0" placeholder="42">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="hip">
         <label for="g-hip">Hip</label>
         <input type="number" id="g-hip" inputmode="decimal" step="0.1" min="0" placeholder="53">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="thigh">
         <label for="g-thigh">Thigh</label>
         <input type="number" id="g-thigh" inputmode="decimal" step="0.1" min="0" placeholder="32">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="rise">
         <label for="g-rise">Rise</label>
         <input type="number" id="g-rise" inputmode="decimal" step="0.1" min="0" placeholder="29">
       </div>
-      <div class="sc-field">
+      <div class="sc-field" data-g="inseam">
         <label for="g-inseam">Inseam</label>
         <input type="number" id="g-inseam" inputmode="decimal" step="0.1" min="0" placeholder="78">
       </div>
@@ -291,6 +311,7 @@
     </div>
     <p class="sc-muted" style="margin-top:8px;">The link stores only the numbers you typed in the URL hash — nothing is uploaded. Don’t share it if those numbers are private.</p>
   </div>
+  </div><!-- /#sc-workflow -->
 
   <h2>What the verdicts are based on</h2>
   <p>The tool uses two different comparisons, because what counts as "correct" differs by field.</p>
@@ -334,7 +355,7 @@
 </main>
 <div id="sc-toast" hidden role="status"></div>
 <footer><p>© 2026 Perfect Fit Me (FITME) · Changyong Lee, solo founder (South Korea)</p><p style="margin-top:8px;"><a href="/privacy" style="color:var(--muted);">Privacy</a> · <a href="/terms" style="color:var(--muted);">Terms</a> · <a href="/contact" style="color:var(--muted);">Contact</a> · <a href="/editorial-standards" style="color:var(--muted);">Editorial standards</a> · <a href="/how-it-works" style="color:var(--muted);">How it works</a> · <a href="/blog/" style="color:var(--muted);">Blog</a></p></footer>
-<script defer src="/assets/size-check.js?v=2"></script>
+<script defer src="/assets/size-check.js?v=3"></script>
 <link rel="stylesheet" href="/assets/fitme-ads.css?v=11">
 <script defer src="/assets/fitme-ads.js?v=12"></script>
 <script defer src="/cookie-consent.js?v=12"></script>

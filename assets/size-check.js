@@ -7,7 +7,57 @@
   var LANG = (document.documentElement.lang || 'en').slice(0, 2) === 'ko' ? 'ko' : 'en';
   var PROFILE_KEY = 'fitme_size_profile';
   var GARMENTS_KEY = 'fitme_size_garments';
+  var FOCUS_KEY = 'fitme_size_focus';
   var MAX_SAVED = 6;
+  var currentFocus = 'full';
+
+  var FOCUS_MODES = {
+    thigh: {
+      type: 'pants',
+      me: ['waist', 'thigh'],
+      g: ['waist', 'thigh'],
+      hint: {
+        ko: '지금 2개만: <strong>허리 둘레</strong> + <strong>허벅지 둘레</strong>. 줄자가 없으면 잘 맞는 바지를 펼쳐 허리·허벅지 단면을 재고, 상품 표도 같은 항목만 넣으세요.',
+        en: 'Just two numbers: <strong>waist</strong> + <strong>thigh</strong>. No tape? Lay out pants that already fit and measure flat waist/thigh — then enter the same fields from the listing.'
+      }
+    },
+    rise: {
+      type: 'pants',
+      me: ['waist', 'pantsRise'],
+      g: ['waist', 'rise'],
+      hint: {
+        ko: '지금 2개만: <strong>허리 둘레</strong> + <strong>잘 맞는 바지의 밑위</strong>(허리밴드~가랑이). 상품 표의 허리·밑위만 넣으면 됩니다.',
+        en: 'Just two: <strong>waist</strong> + <strong>rise on pants that already fit</strong> (waistband to crotch). Then enter waist and rise from the listing.'
+      }
+    },
+    inseam: {
+      type: 'pants',
+      me: ['pantsInseam'],
+      g: ['inseam'],
+      hint: {
+        ko: '지금 1개만: <strong>잘 맞는 바지의 인심</strong>(가랑이~밑단). 상품 표의 인심(또는 기장)과 비교합니다. 신발 높이는 결과에 참고하세요.',
+        en: 'Just one: <strong>inseam on pants that already fit</strong> (crotch to hem). Compare to the listing inseam. Factor shoe height when you read the result.'
+      }
+    },
+    shoulder: {
+      type: 'top',
+      me: ['shoulder', 'chest'],
+      g: ['shoulder', 'chest'],
+      hint: {
+        ko: '지금 2개만: <strong>어깨 너비</strong> + <strong>가슴 둘레</strong>. 상품 표의 어깨·가슴만 넣으세요. 어깨가 틀리면 다른 항목이 맞아도 재고하는 편이 낫습니다.',
+        en: 'Just two: <strong>shoulder width</strong> + <strong>chest</strong>. Enter the same from the listing. If the shoulder fails, rethink even when other fields look fine.'
+      }
+    },
+    full: {
+      type: null,
+      me: null,
+      g: null,
+      hint: {
+        ko: '모든 항목이 열렸습니다. 아는 것만 넣어도 되고, 넣은 항목만 판정합니다.',
+        en: 'All fields are open. Enter only what you know — the tool judges only the fields you provide.'
+      }
+    }
+  };
 
   var HALVED = { chest: true, waist: true, hip: true, thigh: true };
 
@@ -678,7 +728,82 @@
     return false;
   }
 
-  /* ---------- wiring ---------- */
+  /* ---------- focus modes (reduce first-screen friction) ---------- */
+
+  function inList(list, key) {
+    if (!list) return true;
+    return list.indexOf(key) >= 0;
+  }
+
+  function applyFocus(mode) {
+    if (!FOCUS_MODES[mode]) mode = 'full';
+    currentFocus = mode;
+    try { sessionStorage.setItem(FOCUS_KEY, mode); } catch (e) { /* ignore */ }
+
+    var cfg = FOCUS_MODES[mode];
+    var workflow = $('sc-workflow');
+    if (workflow) workflow.hidden = false;
+
+    document.querySelectorAll('[data-sc-focus]').forEach(function (btn) {
+      btn.classList.toggle('is-active', btn.getAttribute('data-sc-focus') === mode);
+    });
+
+    var hint = $('sc-focus-hint');
+    if (hint) {
+      hint.innerHTML = cfg.hint[LANG] || cfg.hint.en;
+      hint.hidden = false;
+    }
+
+    var meTitle = $('sc-me-title');
+    var gTitle = $('sc-g-title');
+    if (mode === 'full') {
+      if (meTitle) meTitle.textContent = LANG === 'ko' ? '1. 내 치수 (한 번만 저장)' : '1. Your measurements (saved once)';
+      if (gTitle) gTitle.textContent = LANG === 'ko' ? '2. 보고 있는 상품의 실측' : '2. The garment you\'re looking at';
+    } else {
+      if (meTitle) meTitle.textContent = LANG === 'ko' ? '1. 이것만 입력' : '1. Enter only these';
+      if (gTitle) gTitle.textContent = LANG === 'ko' ? '2. 상품 실측 (같은 항목만)' : '2. Listing numbers (same fields)';
+    }
+
+    var bodyVisible = 0;
+    var refVisible = 0;
+    document.querySelectorAll('#sc-me-card [data-me]').forEach(function (el) {
+      var key = el.getAttribute('data-me');
+      var show = inList(cfg.me, key);
+      el.hidden = !show;
+      if (show) {
+        if (key === 'topLength' || key === 'topSleeve' || key === 'pantsRise' || key === 'pantsInseam') refVisible++;
+        else bodyVisible++;
+      }
+    });
+    var bodyH = $('sc-body-h');
+    var bodyGrid = $('sc-body-grid');
+    if (bodyH) bodyH.hidden = bodyVisible === 0;
+    if (bodyGrid) bodyGrid.hidden = bodyVisible === 0;
+    var refH = $('sc-ref-h');
+    var refNote = $('sc-ref-note');
+    var refGrid = $('sc-ref-grid');
+    if (refH) refH.hidden = refVisible === 0;
+    if (refNote) refNote.hidden = refVisible === 0;
+    if (refGrid) refGrid.hidden = refVisible === 0;
+
+    if (cfg.type) {
+      setRadio('sc-type', cfg.type);
+    }
+    syncTypeFields();
+
+    document.querySelectorAll('#sc-garment [data-g]').forEach(function (el) {
+      var key = el.getAttribute('data-g');
+      el.hidden = !inList(cfg.g, key);
+    });
+
+    var showAll = $('sc-show-all');
+    if (showAll) showAll.hidden = mode === 'full';
+
+    var first = document.querySelector('#sc-me-card [data-me]:not([hidden]) input');
+    if (first && mode !== 'full') {
+      try { first.focus({ preventScroll: true }); } catch (e) { /* ignore */ }
+    }
+  }
 
   function syncTypeFields() {
     var type = garmentType();
@@ -697,13 +822,57 @@
       fitSel.appendChild(o);
     });
     fitSel.value = opts.indexOf(prev) >= 0 ? prev : 'regular';
+
+    /* re-apply per-field focus after type toggle */
+    var cfg = FOCUS_MODES[currentFocus] || FOCUS_MODES.full;
+    document.querySelectorAll('#sc-garment [data-g]').forEach(function (el) {
+      var key = el.getAttribute('data-g');
+      el.hidden = !inList(cfg.g, key);
+    });
   }
+
+  function initFocusGate() {
+    var gate = $('sc-focus-gate');
+    if (!gate) {
+      var workflow = $('sc-workflow');
+      if (workflow) workflow.hidden = false;
+      return;
+    }
+
+    gate.querySelectorAll('[data-sc-focus]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        applyFocus(btn.getAttribute('data-sc-focus'));
+        var wf = $('sc-workflow');
+        if (wf) wf.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    var showAll = $('sc-show-all');
+    if (showAll) {
+      showAll.addEventListener('click', function () { applyFocus('full'); });
+    }
+
+    var savedMode = null;
+    try { savedMode = sessionStorage.getItem(FOCUS_KEY); } catch (e) { /* ignore */ }
+    var profile = loadProfile();
+    var hasProfile = profile && Object.keys(profile).length > 0;
+
+    if (savedMode && FOCUS_MODES[savedMode]) {
+      applyFocus(savedMode);
+    } else if (hasProfile) {
+      applyFocus('full');
+    }
+    /* else: leave workflow hidden until user picks */
+  }
+
+  /* ---------- wiring ---------- */
 
   function init() {
     if (!$('sc-run')) return;
     fillProfileInputs(loadProfile());
     syncTypeFields();
     renderSavedList();
+    initFocusGate();
 
     $('sc-run').addEventListener('click', run);
     var saveBtn = $('sc-save');
@@ -716,7 +885,9 @@
     if (shareBtn) shareBtn.addEventListener('click', copyShareLink);
 
     document.querySelectorAll('input[name="sc-type"]').forEach(function (el) {
-      el.addEventListener('change', syncTypeFields);
+      el.addEventListener('change', function () {
+        applyFocus('full');
+      });
     });
 
     document.querySelectorAll('#sc-garment input').forEach(function (el) {
@@ -725,7 +896,11 @@
       });
     });
 
-    applySharedState();
+    if (applySharedState()) {
+      var wf = $('sc-workflow');
+      if (wf) wf.hidden = false;
+      applyFocus('full');
+    }
   }
 
   if (document.readyState === 'loading') {
